@@ -104,5 +104,37 @@ These are cited as preprints/manuscripts, not independently reproduced findings:
 [TEMPO](https://doi.org/10.48550/arXiv.2608.13057), and
 [FreeBalance](https://doi.org/10.48550/arXiv.2608.14205).
 
-Execution commands and measured results are added only after the harness and
-cluster environment have been verified.
+## Reproduce the pilot
+
+The frozen manifests contain source hashes; editing the harness requires a new
+manifest. The original incomplete diagnostic pilot remains identifiable by
+its separate manifests. The complete pilot uses the `pilot-v2` manifests.
+
+```bash
+mkdir -p logs
+sbatch scripts/run-suite-kuma.sh "$SKB_ROOT/results/pilot-v2" \
+  configs/frozen/pilot-v2-k128.json \
+  configs/frozen/pilot-v2-k64.json \
+  configs/frozen/pilot-v2-k256.json
+```
+
+The suite runs a correctness preflight, then all three parameter candidates
+sequentially on one two-GPU allocation. It refuses to overwrite existing results.
+Use a fresh output directory for independent replication. Preserve the complete
+environment lock and hardware logs alongside the records. The CUDA histogram
+preflight checks exact counts and uses PyTorch's synchronization debug guard;
+that prototype guard is not an exhaustive proof about every CUDA operation.
+
+```bash
+python -m skewbench.analysis cooldown-select \
+  --manifests configs/frozen/pilot-v2-k128.json \
+              configs/frozen/pilot-v2-k64.json \
+              configs/frozen/pilot-v2-k256.json \
+  --records "$SKB_ROOT/results/pilot-v2/records-pilot-v2-k128.jsonl" \
+            "$SKB_ROOT/results/pilot-v2/records-pilot-v2-k64.jsonl" \
+            "$SKB_ROOT/results/pilot-v2/records-pilot-v2-k256.jsonl" \
+  --output-dir "$SKB_ROOT/results/pilot-v2/selection"
+```
+
+The code must not consume held-out final records to select the cooldown or
+thresholds. Final results and their exact commands are added after execution.
