@@ -21,7 +21,7 @@ import traceback
 
 import numpy as np
 
-from .native import NativeLayer, Runtime, Weights, PINNED_COMMIT
+from .native import NativeLayer, Runtime, Weights, PINNED_COMMIT, fill_logical_histogram
 from .traces import TraceConfig, generate_trace
 
 _TRACE_ARTIFACT_CACHE = {}
@@ -233,7 +233,28 @@ def run_case(rt, weights, manifest, config_hash, job, *, diagnostic_checks=False
         layer.forward(hidden, ids[0], combine[0], observe=False)
     rt.sync()
     forced = None
+    histogram_proof = None
     if diagnostic_checks:
+        histogram = torch.empty(weights.config["num_experts"], dtype=torch.int64, device=rt.device)
+        ones = torch.ones(ids[0].numel(), dtype=torch.int64, device=rt.device)
+        frames = sorted({0, min(2 * trace.config.window_steps + trace.config.phase_steps,
+                               trace.config.num_steps - 1), trace.config.num_steps - 1})
+        previous_debug_mode = torch.cuda.get_sync_debug_mode()
+        for frame in frames:
+            try:
+                torch.cuda.set_sync_debug_mode("error")
+                fill_logical_histogram(histogram, ids[frame], ones)
+            finally:
+                torch.cuda.set_sync_debug_mode(previous_debug_mode)
+            rt.sync()
+            expected = np.bincount(trace.expert_ids[frame].reshape(-1),
+                                   minlength=weights.config["num_experts"])
+            if not np.array_equal(histogram.cpu().numpy(), expected):
+                raise AssertionError("Fixed CUDA histogram differs from independent CPU counts")
+        histogram_proof = {"passed": True, "frames_checked": frames,
+                           "histogram_update_sync_debug_mode": "error",
+                           "prior_debug_mode_restored": previous_debug_mode,
+                           "reference": "independent CPU numpy.bincount outside guard and timing"}
         original = layer.map_snapshot()
         before = layer.forward(hidden[:4], ids[0, :4], combine[0, :4], observe=False).clone()
         layer.force_migration(np.roll(original, layer.slots))
@@ -332,6 +353,7 @@ def run_case(rt, weights, manifest, config_hash, job, *, diagnostic_checks=False
         "decision_log": decision_log, "final_map": layer.map_snapshot().tolist(),
         "replica_budget_actual": layer.replicas,
         "forced_contract_checks": forced,
+        "histogram_cuda_validation": histogram_proof,
         "observation_window_assignment_total_expected": expected_window_assignments,
         "observation_count_multiplicity": rt.world_size,
         "observation_conservation_checks": observation_checks,

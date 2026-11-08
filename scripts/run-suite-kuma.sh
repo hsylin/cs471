@@ -20,6 +20,14 @@ if [ "$#" -eq 0 ]; then
   exit 2
 fi
 mkdir -p "$output_directory"
+if [ -e "$output_directory/preflight.jsonl" ]; then
+  echo "Refusing to overwrite prior preflight in $output_directory" >&2
+  exit 2
+fi
+bash scripts/run-kuma.sh --mode smoke --method B4 --batch-tokens 1024 \
+  --num-steps 128 --window-steps 16 --replicas 32 \
+  --weights-dir "$SKB_ROOT/models/qwen3-layer0" \
+  --output "$output_directory/preflight.jsonl"
 for manifest in "$@"; do
   manifest_name="$(basename "$manifest" .json)"
   result_file="$output_directory/records-$manifest_name.jsonl"

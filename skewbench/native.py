@@ -38,6 +38,17 @@ def harness_fingerprint():
     return digest, files
 
 
+def fill_logical_histogram(row, logical_ids, ones):
+    """Fixed-size integer histogram, with no device-valued shape discovery.
+
+    Inputs are validated replay IDs in [0, num_experts). The caller allocates
+    ``row`` and all-one int64 ``ones`` before measurement. Unlike CUDA bincount,
+    this path does not read an input minimum/maximum back to the host.
+    """
+    row.zero_()
+    row.scatter_add_(0, logical_ids.reshape(-1).long(), ones)
+
+
 def validate_layer_shapes(w13_shape, w2_shape, config):
     e, h, m = (int(config[k]) for k in
                ("num_experts", "hidden_size", "intermediate_size"))
@@ -269,6 +280,7 @@ class NativeLayer:
         self.native_valid_steps = 0
         self.logical_ring = self.torch.zeros((2 * window_steps, self.num_experts),
                                               dtype=self.torch.int64, device=self.device)
+        self.histogram_ones = None
         self.collect_history = method == "B4"
         self.warming_up = False
         self.capture_decision_step = None
@@ -369,8 +381,14 @@ class NativeLayer:
     def forward(self, hidden, logical_ids, combining_weights, *, observe=True):
         """The same logical token tensor is replicated on all EP ranks."""
         if observe and self.collect_history:
-            counts = self.torch.bincount(logical_ids.reshape(-1).long(), minlength=self.num_experts)
-            self.logical_ring[self.observation_steps % len(self.logical_ring)].copy_(counts)
+            if self.histogram_ones is None:
+                # First observed step is in the common untimed warmup.
+                self.histogram_ones = self.torch.ones(logical_ids.numel(),
+                                                     dtype=self.torch.int64, device=self.device)
+            elif self.histogram_ones.numel() != logical_ids.numel():
+                raise ValueError("A run must retain its fixed token-batch shape")
+            fill_logical_histogram(self.logical_ring[self.observation_steps % len(self.logical_ring)],
+                                   logical_ids, self.histogram_ones)
             self.observation_steps += 1
         if self.method == "B0":
             physical_ids = logical_ids
