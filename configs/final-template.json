@@ -104,8 +104,10 @@
   "analysis": {
     "candidate": "B4",
     "references": [
+      "B2",
       "B3",
-      "B5"
+      "B5",
+      "SKIP"
     ],
     "minimum_independent_seeds": 5,
     "bootstrap_samples": 10000,
@@ -133,7 +135,13 @@
         "B3"
       ]
     },
-    "require_execution_metadata": true
+    "require_execution_metadata": true,
+    "comparison_roles": {
+      "B2": "secondary paired native-EPLB comparison",
+      "B3": "primary incremental-gate comparator",
+      "B5": "primary one-frozen-cooldown comparator",
+      "SKIP": "secondary paired same-budget no-move control"
+    }
   },
   "pilot_selection": {
     "cooldown_steps_grid": [
