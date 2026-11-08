@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "name": "skewbench-pilot-v2-k64",
+  "split": "pilot",
+  "purpose": "Choose one native layer configuration and freeze thresholds before any held-out final runs.",
+  "environment": {
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "model_id": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "layer_id": 0,
+    "hardware": "2 x NVIDIA H100 94 GB, same node, NV6 interconnect",
+    "gpu_name_contains": "H100",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "weights_source": "pretrained_checkpoint_layer",
+    "input_source": "Seeded Gaussian hidden states with controlled synthetic logical routes",
+    "harness_sha256": "1c650229edfa63eba5cc0ce205e04753d55421dc9e32b011fc1b1f94da9b1e01",
+    "harness_revision": "92bb72ec4b12cde40e5051a846f7acf897800e06"
+  },
+  "matrix": {
+    "methods": [
+      "B3",
+      "B5"
+    ],
+    "cases": [
+      {
+        "regime": "stationary",
+        "trace_variant": "core",
+        "phase_steps": 0
+      },
+      {
+        "regime": "burst",
+        "trace_variant": "core",
+        "phase_steps": 56
+      },
+      {
+        "regime": "persistent",
+        "trace_variant": "core",
+        "phase_steps": 56
+      },
+      {
+        "regime": "periodic",
+        "trace_variant": "core",
+        "phase_steps": 0
+      },
+      {
+        "regime": "uniform",
+        "trace_variant": "core",
+        "phase_steps": 0
+      },
+      {
+        "regime": "burst",
+        "trace_variant": "phase_shift",
+        "phase_steps": 64
+      },
+      {
+        "regime": "periodic",
+        "trace_variant": "phase_shift",
+        "phase_steps": 8
+      }
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "seeds": [
+      11,
+      12
+    ],
+    "repetitions": 1
+  },
+  "trace": {
+    "num_experts": 128,
+    "top_k": 8,
+    "num_steps": 512,
+    "window_steps": 16,
+    "warmup_steps": 32,
+    "hotspot_lifetime_steps": 16,
+    "burst_repeat_steps": 128,
+    "zipf_exponent": 1.2
+  },
+  "policy": {
+    "epsilon": 0.02,
+    "tau": 0.1,
+    "cooldown_steps": 64,
+    "rebalance_interval": 64,
+    "replica_budget": 32
+  },
+  "analysis": {
+    "candidate": "B4",
+    "references": [
+      "B3",
+      "B5"
+    ],
+    "minimum_independent_seeds": 5,
+    "bootstrap_samples": 10000,
+    "bootstrap_seed": 471,
+    "regime_ratio_limits": {
+      "burst": 0.95,
+      "stationary": 1.02
+    },
+    "required_cell_regimes": [
+      "stationary"
+    ],
+    "aggregate_weighting": "equal declared trace_variant/batch cells, then equal independent seeds",
+    "selection_rule": "Pilot informs final configuration only. Score B5 cooldowns using pilot_selection; freeze one cooldown and every other parameter before final runs with disjoint seeds.",
+    "secondary_regimes": [
+      "persistent",
+      "periodic",
+      "uniform"
+    ],
+    "regime_references": {
+      "burst": [
+        "B3",
+        "B5"
+      ],
+      "stationary": [
+        "B3"
+      ]
+    },
+    "require_execution_metadata": true
+  },
+  "pilot_selection": {
+    "cooldown_steps_grid": [
+      64,
+      128,
+      256
+    ],
+    "initial_cooldown_steps": 128,
+    "scope": "Tune only B5 cooldown on pilot seeds. These are parameter candidates for one baseline, not additional final methods.",
+    "ranking_data": "All seven pilot case variants, both batch sizes, both pilot seeds; no final-seed observations.",
+    "eligibility": "All paired B5/B3 GPU runs must complete correctly. A candidate is stable-eligible when the geometric mean paired B5/B3 stationary runtime ratio is at most 1.02 at each batch size.",
+    "objective": "Among stable-eligible candidates minimize the equal-cell, equal-seed geometric mean paired B5/B3 runtime ratio across all seven case variants and both batch sizes.",
+    "tie_rule": "Treat candidates within 1% of the best all-case ratio as tied; choose the largest cooldown among that set to reduce unnecessary churn.",
+    "fallback": "If no candidate satisfies the stationary pilot constraint, minimize the worst per-batch stationary B5/B3 ratio; among candidates within1% of that score, minimize the all-case ratio; among within1% ties choose the largest cooldown. Report that the pilot constraint was not met.",
+    "freeze_rule": "Record all three pilot scores and the selected cooldown, then freeze exactly one B5 value before final runs. Pilot scores are selection evidence only, not confirmatory confidence intervals."
+  },
+  "diagnostics": {
+    "decision_steps": [
+      63
+    ],
+    "coordinate_system": "measured zero-based steps; add32 for raw trace coordinates",
+    "future_steps": 128,
+    "horizon_steps": 128,
+    "analysis_regimes": [
+      "stationary",
+      "burst",
+      "persistent",
+      "periodic"
+    ],
+    "analysis_trace_variants": [
+      "core"
+    ],
+    "analysis_seeds": [
+      1001
+    ],
+    "analysis_repetitions": [
+      0
+    ],
+    "seeds": [
+      11
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "repetitions": 1,
+    "cases": [
+      {
+        "regime": "stationary",
+        "trace_variant": "core",
+        "phase_steps": 0
+      },
+      {
+        "regime": "burst",
+        "trace_variant": "core",
+        "phase_steps": 56
+      },
+      {
+        "regime": "persistent",
+        "trace_variant": "core",
+        "phase_steps": 56
+      },
+      {
+        "regime": "periodic",
+        "trace_variant": "core",
+        "phase_steps": 0
+      }
+    ]
+  },
+  "timing_contract": {
+    "measured_steps": 512,
+    "untimed_observation_prefix_steps": 32,
+    "cadence_reset_after_prefix": true,
+    "first_proposal_measured_step": 63,
+    "first_proposal_raw_step": 95,
+    "burst_core_raw_onsets": [
+      88,
+      216,
+      344,
+      472
+    ],
+    "burst_core_duration_steps": 16,
+    "burst_shift_raw_onsets": [
+      96,
+      224,
+      352,
+      480
+    ],
+    "terminal_proposal": "suppressed_before_planning; last input observation retained"
+  },
+  "implementation_revision": "Fixed-size preallocated scatter histogram; continuously collected windows identical to diagnostic pilot v1",
+  "freeze": {
+    "algorithm": "sha256",
+    "sha256": "8a4964ccb14e38617a8982b2d6abe58b9f4274f5efe91a5c541d9d9527fe2e68",
+    "schema_version": 1
+  }
+}
