@@ -41,6 +41,29 @@ later accepted migration on burst and persistent-change cases. Post-run checks
 confirmed rank agreement, expected committed maps, exact current and previous
 logical windows, and physical dispatch counts interpreted under the old map.
 
+## Transport warm-start correction before final measurements
+
+The second pilot completed all 308 planned runs and eight pilot branch pairs.
+The correctness and metadata checks passed, but the first real weight transfer
+in each fresh process paid lazy transport initialization inside its timer.
+For example, the first B3 run in the 64-step cooldown process took 0.4050 s,
+versus 0.2684 s for B5 despite identical decisions and payloads. In the 256-step
+process, the first B3 run took 1.2973 s; its first proposal step alone took
+1.0428 s. The first branch allow case showed the same startup effect.
+
+The automatically selected cooldown from that pilot is retained as a diagnostic
+record and superseded. It is not the final selection. No slow timing observation
+is individually deleted or replaced to improve a result.
+
+The warm-start contract now explicitly initializes native weight transport in
+the actual measurement process before any run: a throwaway layer transfers a
+full cross-rank map, restores the original map, and verifies the restored expert
+weights. It uses the same native EPLB device process group as subsequent runs.
+Both moves reach normal commit. This startup work is untimed, just like model
+loading and compilation; every migration admitted during the measured horizon
+remains fully charged. The corrected source receives a new hash and complete
+new pilot, with scientific thresholds, traces, and selection rule unchanged.
+
 ## Reporting limits
 
 The native fused MoE path uses its fallback kernel configuration for this

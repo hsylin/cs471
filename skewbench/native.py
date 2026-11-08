@@ -271,6 +271,8 @@ class NativeLayer:
             raise AssertionError("Native initial map differs from loaded weight arrangement")
         self.counter = CountingCommunicator(self.ms.communicator)
         self.ms.communicator = self.counter
+        if self.counter.inner._ep_group is not runtime.eplb_group.device_group:
+            raise AssertionError("Native weight transport did not reuse the process EPLB group")
         self.step_index = -1
         self.last_accepted_step = None
         self.planner_seconds = 0.0

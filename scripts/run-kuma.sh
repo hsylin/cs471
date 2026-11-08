@@ -13,7 +13,8 @@ set -euo pipefail
 cd "${SLURM_SUBMIT_DIR:?Submit from the repository directory}"
 source scripts/cluster-env.sh
 mkdir -p "$SKB_ROOT/results/hardware"
-nvidia-smi -q > "$SKB_ROOT/results/hardware/nvidia-smi-${SLURM_JOB_ID}.txt"
-nvidia-smi topo -m > "$SKB_ROOT/results/hardware/topology-${SLURM_JOB_ID}.txt"
+hardware_stamp="$SLURM_JOB_ID-$BASHPID"
+nvidia-smi -q > "$SKB_ROOT/results/hardware/nvidia-smi-$hardware_stamp.txt"
+nvidia-smi topo -m > "$SKB_ROOT/results/hardware/topology-$hardware_stamp.txt"
 python -c 'import torch,vllm; print({"torch":torch.__version__,"cuda":torch.version.cuda,"vllm":vllm.__version__,"gpus":torch.cuda.device_count()}); assert torch.cuda.device_count()==2'
 exec torchrun --standalone --nproc-per-node=2 -m skewbench.runner "$@"

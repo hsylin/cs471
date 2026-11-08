@@ -187,6 +187,63 @@ def _make_layer(rt, weights, manifest, method, seed):
                        cooldown_steps=int(policy["cooldown_steps"]), seed=seed)
 
 
+def warm_native_transport(rt, weights, manifest):
+    """Warm real P2P connections in this process before any measured method.
+
+    The throwaway layer uses the same persistent native EPLB ProcessGroup as
+    every subsequent layer. It moves actual checkpoint weights across ranks,
+    commits each map, and restores the original arrangement. All initialization
+    and validation work here is outside every primary/branch timing interval.
+    """
+    if rt.rank == 0:
+        print(json.dumps({"event": "initialization", "phase": "warm_native_weight_transport"}), flush=True)
+    layer = _make_layer(rt, weights, manifest, "B2", seed=0)
+    original = layer.map_snapshot()
+    rotated = np.roll(original, layer.slots)
+    rt.barrier()
+    rt.sync()
+    started = time.perf_counter()
+    try:
+        layer.force_migration(rotated)
+        layer.assert_maps_and_weights()
+        first_bytes = rt.gather_scalars(layer.counter.sent_bytes)
+        layer.force_migration(original)
+        layer.assert_maps_and_weights()
+        if not np.array_equal(layer.map_snapshot(), original):
+            raise AssertionError("Transport warmup did not restore the original map")
+        layer.close()
+        elapsed = rt.gather_scalars(time.perf_counter() - started)
+        total_bytes = rt.gather_scalars(layer.counter.sent_bytes)
+        reverse_bytes = [total - first for total, first in zip(total_bytes, first_bytes)]
+        if any(value <= 0 for value in first_bytes + reverse_bytes):
+            raise AssertionError("Transport warmup must send actual payloads in both moves on every rank")
+        messages = rt.gather_scalars(layer.counter.sent_messages)
+        metadata = {
+            "completed": True, "migration_count": 2,
+            "sent_bytes": int(sum(total_bytes)),
+            "sent_bytes_by_rank": [int(value) for value in total_bytes],
+            "forward_sent_bytes_by_rank": [int(value) for value in first_bytes],
+            "rollback_sent_bytes_by_rank": [int(value) for value in reverse_bytes],
+            "sent_messages": int(sum(messages)),
+            "elapsed_seconds_slowest_rank": max(elapsed),
+            "replica_budget_extra": layer.replicas,
+            "world_size": rt.world_size,
+            "shared_native_eplb_process_group_verified": True,
+            "original_map_and_weights_restored": True,
+            "scope": "one process-local cyclic cross-rank native migration and rollback on a throwaway layer; same persistent EPLB device group as all measured methods; excluded from primary and branch timing",
+        }
+    finally:
+        del layer
+        gc.collect()
+        rt.sync()
+    rt.barrier()
+    rt.metadata["process_transport_warmup"] = metadata
+    if rt.rank == 0:
+        print(json.dumps({"event": "initialization", "phase": "native_weight_transport_warm",
+                          "process_transport_warmup": metadata}), flush=True)
+    return metadata
+
+
 def _inputs(rt, weights, trace):
     torch = rt.torch
     generator = torch.Generator(device=rt.device).manual_seed(trace.config.seed)
@@ -569,6 +626,9 @@ def _execute(args, rt):
     if rt.rank == 0:
         output.parent.mkdir(parents=True, exist_ok=True)
     rt.barrier()
+    # A separate preflight torchrun does not initialize these process-local
+    # NCCL P2P connections. Warm them here, even when resuming or running branches.
+    warm_native_transport(rt, weights, manifest)
     for index, job in enumerate(jobs):
         record_id = hashlib.sha256(json.dumps([config_hash, job], sort_keys=True).encode()).hexdigest()
         if record_id in completed:
