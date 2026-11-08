@@ -17,7 +17,9 @@
     "dispatch_backend": "replicated_input_allreduce",
     "eplb_mode": "synchronous",
     "weights_source": "pretrained_checkpoint_layer",
-    "input_source": "Seeded Gaussian hidden states with controlled synthetic logical routes"
+    "input_source": "Seeded Gaussian hidden states with controlled synthetic logical routes",
+    "harness_sha256": "acc158719f8e00148b7de034ad29e1dec579828a185b2b63e8b6c4dd7bd0ca17",
+    "harness_revision": "3ced47cea4582759ab49f8beab238f601a574c1f"
   },
   "matrix": {
     "methods": [
@@ -163,6 +165,36 @@
     ],
     "analysis_repetitions": [
       0
+    ],
+    "seeds": [
+      11
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "repetitions": 1,
+    "cases": [
+      {
+        "regime": "stationary",
+        "trace_variant": "core",
+        "phase_steps": 0
+      },
+      {
+        "regime": "burst",
+        "trace_variant": "core",
+        "phase_steps": 56
+      },
+      {
+        "regime": "persistent",
+        "trace_variant": "core",
+        "phase_steps": 56
+      },
+      {
+        "regime": "periodic",
+        "trace_variant": "core",
+        "phase_steps": 0
+      }
     ]
   },
   "timing_contract": {
@@ -183,6 +215,7 @@
       224,
       352,
       480
-    ]
+    ],
+    "terminal_proposal": "suppressed_before_planning; last input observation retained"
   }
 }
