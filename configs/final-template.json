@@ -18,8 +18,8 @@
     "eplb_mode": "synchronous",
     "weights_source": "pretrained_checkpoint_layer",
     "input_source": "Seeded Gaussian hidden states with controlled synthetic logical routes",
-    "harness_sha256": "1c650229edfa63eba5cc0ce205e04753d55421dc9e32b011fc1b1f94da9b1e01",
-    "harness_revision": "92bb72ec4b12cde40e5051a846f7acf897800e06"
+    "harness_sha256": "036182c3a74868375d07e3114b75266d22e12975f04880b17fe54c63f6820754",
+    "harness_revision": "faff21adae1137e93f2298790c54c0f0dc904e26"
   },
   "matrix": {
     "methods": [
@@ -222,6 +222,7 @@
       352,
       480
     ],
-    "terminal_proposal": "suppressed_before_planning; last input observation retained"
+    "terminal_proposal": "suppressed_before_planning; last input observation retained",
+    "process_transport_warmup": "Before jobs, throwaway B2 layer performs native cross-rank roll and rollback with exact weights/maps restored; same EPLB device process group; untimed startup, all subsequent admitted migrations charged"
   }
 }

@@ -45,7 +45,7 @@ moves, and complete installation of accepted weights. A discarded async result
 must never be counted as a committed migration. The initial study is synchronous.
 
 The primary timer covers 512 completed layer steps after 32 untimed observation
-steps. Candidate opportunities occur every 64 measured steps; a fresh proposal
+steps and process-local native transport warmup. Candidate opportunities occur every 64 measured steps; a fresh proposal
 after the final input is suppressed. B4 pays for its continuous GPU histogram
 collection and two-window calculation. Rejections return the current map through
 the native synchronous no-op path, including that path's overhead. SKIP uses this
@@ -107,15 +107,15 @@ These are cited as preprints/manuscripts, not independently reproduced findings:
 ## Reproduce the pilot
 
 The frozen manifests contain source hashes; editing the harness requires a new
-manifest. The original incomplete diagnostic pilot remains identifiable by
-its separate manifests. The complete pilot uses the `pilot-v2` manifests.
+manifest. Earlier diagnostic pilots remain identifiable by their separate manifests;
+see docs/execution-notes.md for the collector and transport-startup corrections. The complete pilot uses the `pilot-v3` manifests.
 
 ```bash
 mkdir -p logs
-sbatch scripts/run-suite-kuma.sh "$SKB_ROOT/results/pilot-v2" \
-  configs/frozen/pilot-v2-k128.json \
-  configs/frozen/pilot-v2-k64.json \
-  configs/frozen/pilot-v2-k256.json
+sbatch scripts/run-suite-kuma.sh "$SKB_ROOT/results/pilot-v3" \
+  configs/frozen/pilot-v3-k128.json \
+  configs/frozen/pilot-v3-k64.json \
+  configs/frozen/pilot-v3-k256.json
 ```
 
 The suite runs a correctness preflight, then all three parameter candidates
@@ -127,13 +127,13 @@ that prototype guard is not an exhaustive proof about every CUDA operation.
 
 ```bash
 python -m skewbench.analysis cooldown-select \
-  --manifests configs/frozen/pilot-v2-k128.json \
-              configs/frozen/pilot-v2-k64.json \
-              configs/frozen/pilot-v2-k256.json \
-  --records "$SKB_ROOT/results/pilot-v2/records-pilot-v2-k128.jsonl" \
-            "$SKB_ROOT/results/pilot-v2/records-pilot-v2-k64.jsonl" \
-            "$SKB_ROOT/results/pilot-v2/records-pilot-v2-k256.jsonl" \
-  --output-dir "$SKB_ROOT/results/pilot-v2/selection"
+  --manifests configs/frozen/pilot-v3-k128.json \
+              configs/frozen/pilot-v3-k64.json \
+              configs/frozen/pilot-v3-k256.json \
+  --records "$SKB_ROOT/results/pilot-v3/records-pilot-v3-k128.jsonl" \
+            "$SKB_ROOT/results/pilot-v3/records-pilot-v3-k64.jsonl" \
+            "$SKB_ROOT/results/pilot-v3/records-pilot-v3-k256.jsonl" \
+  --output-dir "$SKB_ROOT/results/pilot-v3/selection"
 ```
 
 The code must not consume held-out final records to select the cooldown or
