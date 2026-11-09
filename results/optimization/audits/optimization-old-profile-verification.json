@@ -1,0 +1,5949 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "descriptive_only": true,
+  "old": {
+    "calibration_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/calibration.json",
+    "calibration_sha256": "14ea3f1fcb528eed769db270eb64b23b0cc7159adb221d4e4afd621b7ef79846",
+    "rows": [
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 0,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "18ecc156910e58eff58b5831de5f55c2106062cfc1900aca93df235d711d3795",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch128-domain0-rank0.json",
+          "trace_sha256": "1a6abb78956ed6a74992f8d97027d24150440da6da6b76a57974402524ae59dd",
+          "trace_bytes": 655464,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 186.91199999999998,
+              "us_per_forward": 23.363999999999997
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 23.295999999999996,
+              "us_per_forward": 2.9119999999999995
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2622.78,
+              "us_per_forward": 327.8475
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 2357.95,
+              "us_per_forward": 294.74375
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 214.944,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.319,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 214.272,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.64,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.359,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.576,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.231,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.639,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.808,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.256,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.968,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.64,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.64,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.904,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.168,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.416,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.276803118908382,
+              2.2544031311154598
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              1168.0,
+              1152.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          },
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              4.491228070175438,
+              4.446183953033268
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              2304.0,
+              2272.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          },
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              8.982456140350877,
+              8.892367906066536
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4608.0,
+              4544.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          },
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              17.964912280701753,
+              17.78473581213307
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9216.0,
+              9088.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 1,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "18ecc156910e58eff58b5831de5f55c2106062cfc1900aca93df235d711d3795",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch128-domain0-rank1.json",
+          "trace_sha256": "406937f7ab1ac2149f4ea2797e60b2365787919c78237a596553ccbd6fa36abd",
+          "trace_bytes": 585825,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 187.48999999999995,
+              "us_per_forward": 23.436249999999994
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 24.738,
+              "us_per_forward": 3.09225
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2596.4099999999994,
+              "us_per_forward": 324.5512499999999
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 145.695,
+              "us_per_forward": 18.211875
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 213.312,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.36,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 214.047,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 110.976,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.319,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.488,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.448,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.839,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.639,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.456,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 214.239,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.52,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.48,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.68,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 213.183,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.424,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ],
+              [
+                1168,
+                1152
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.276803118908382,
+              2.2544031311154598
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              1168.0,
+              1152.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          },
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ],
+              [
+                2304,
+                2272
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              4.491228070175438,
+              4.446183953033268
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              2304.0,
+              2272.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          },
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ],
+              [
+                4608,
+                4544
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              8.982456140350877,
+              8.892367906066536
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4608.0,
+              4544.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          },
+          {
+            "physical_counts_sha256": "41b6f3bf86f41b5ee6263b44784a998a1e3d89ca4ac48d248d8f72abacfacc55",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ],
+              [
+                513,
+                511
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ],
+              [
+                72,
+                71
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ],
+              [
+                9216,
+                9088
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              17.964912280701753,
+              17.78473581213307
+            ],
+            "mean_active_physical_experts_by_rank": [
+              72.0,
+              71.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9216.0,
+              9088.0
+            ],
+            "mean_peak_rank_assignments": 513.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 0,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "80b7ebdec1ddb47ccc7b753629d0f0db82da1662d352b5ef84f7fe653cddc4ed",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch128-domain1-rank0.json",
+          "trace_sha256": "6e77825eeef19afef49258fba55accfdae5fbf2af2819fa4e8e39334270455c0",
+          "trace_bytes": 364781,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 186.75799999999995,
+              "us_per_forward": 23.344749999999994
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 24.799999999999997,
+              "us_per_forward": 3.0999999999999996
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2669.0809999999997,
+              "us_per_forward": 333.63512499999996
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 344.005,
+              "us_per_forward": 43.000625
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 217.89,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 114.849,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 219.554,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.393,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 218.626,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.425,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 217.153,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.713,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 217.922,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.49,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 219.01,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.009,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 218.114,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.138,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 218.466,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.329,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.3445544554455444,
+              2.3121387283236996
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              1184.0,
+              1200.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          },
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              4.689108910891089,
+              4.624277456647399
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              2368.0,
+              2400.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          },
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              9.378217821782178,
+              9.248554913294798
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4736.0,
+              4800.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          },
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              18.756435643564355,
+              18.497109826589597
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9472.0,
+              9600.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 1,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "80b7ebdec1ddb47ccc7b753629d0f0db82da1662d352b5ef84f7fe653cddc4ed",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch128-domain1-rank1.json",
+          "trace_sha256": "de7d5d1958d4d622b6b325da281df94df40f1cd85fe89104a50f7666458fa21a",
+          "trace_bytes": 364780,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 189.47100000000006,
+              "us_per_forward": 23.683875000000008
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 23.455999999999996,
+              "us_per_forward": 2.9319999999999995
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2706.6769999999997,
+              "us_per_forward": 338.33462499999996
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 134.558,
+              "us_per_forward": 16.81975
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 219.712,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 118.463,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 220.191,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 117.984,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 220.575,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 117.92,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 220.927,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 118.656,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 219.327,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 117.376,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 219.839,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 117.791,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 219.871,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 118.047,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 221.951,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 118.047,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ],
+              [
+                1184,
+                1200
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.3445544554455444,
+              2.3121387283236996
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              1184.0,
+              1200.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          },
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ],
+              [
+                2368,
+                2400
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              4.689108910891089,
+              4.624277456647399
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              2368.0,
+              2400.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          },
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ],
+              [
+                4736,
+                4800
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              9.378217821782178,
+              9.248554913294798
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4736.0,
+              4800.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          },
+          {
+            "physical_counts_sha256": "37e58c6255afee3261e9a88cd75baaf9786b9e3a11a9fca942c143cabf05dc13",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ],
+              [
+                505,
+                519
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ],
+              [
+                74,
+                75
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ],
+              [
+                9472,
+                9600
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              18.756435643564355,
+              18.497109826589597
+            ],
+            "mean_active_physical_experts_by_rank": [
+              74.0,
+              75.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9472.0,
+              9600.0
+            ],
+            "mean_peak_rank_assignments": 519.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 0,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "8fc08cd89b35e499eda752d4ab670edfea0a398ee237bd46c7a296d22234e5c8",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch1024-domain0-rank0.json",
+          "trace_sha256": "f527ed1eca2223ef57f3426bfd5bc4794e1509274a45feea27852d8ea3652fc7",
+          "trace_bytes": 366397,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 468.129,
+              "us_per_forward": 58.516125
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 23.137999999999998,
+              "us_per_forward": 2.8922499999999998
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3080.863,
+              "us_per_forward": 385.107875
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 476.672,
+              "us_per_forward": 59.584
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 243.712,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.656,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 242.4,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.344,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 243.392,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.504,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.856,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.664,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 243.584,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.215,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 243.232,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.432,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 243.424,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.04,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 242.72,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.688,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.1378470530930347,
+              1.1590797846304455
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4672.0,
+              4736.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          },
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.2937165124208476,
+              1.3000489476260402
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              5312.0,
+              5312.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          },
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.6989771066731612,
+              1.6759667156142928
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              6976.0,
+              6848.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          },
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.4003896736483195,
+              2.3808125305922663
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9856.0,
+              9728.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 1,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "8fc08cd89b35e499eda752d4ab670edfea0a398ee237bd46c7a296d22234e5c8",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch1024-domain0-rank1.json",
+          "trace_sha256": "575e3d7a8eee3c75808ac5ce6e130e6ebf6668b925ff24cb9a140a455ca11622",
+          "trace_bytes": 366392,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 471.70700000000005,
+              "us_per_forward": 58.963375000000006
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 23.199999999999996,
+              "us_per_forward": 2.8999999999999995
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3052.9729999999995,
+              "us_per_forward": 381.62162499999994
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 682.97,
+              "us_per_forward": 85.37125
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.286,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.543,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.086,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.695,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.895,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.887,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.287,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.895,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.223,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.831,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.055,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.791,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.382,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.511,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.191,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.415,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ],
+              [
+                4672,
+                4736
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.1378470530930347,
+              1.1590797846304455
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4672.0,
+              4736.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          },
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ],
+              [
+                5312,
+                5312
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.2937165124208476,
+              1.3000489476260402
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              5312.0,
+              5312.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          },
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ],
+              [
+                6976,
+                6848
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.6989771066731612,
+              1.6759667156142928
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              6976.0,
+              6848.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          },
+          {
+            "physical_counts_sha256": "29860c43fdf6d18902a2eed1d8b6e07d00b14abdb8b3ec24c177688352f781a9",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ],
+              [
+                4106,
+                4086
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ],
+              [
+                77,
+                76
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ],
+              [
+                9856,
+                9728
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.4003896736483195,
+              2.3808125305922663
+            ],
+            "mean_active_physical_experts_by_rank": [
+              77.0,
+              76.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9856.0,
+              9728.0
+            ],
+            "mean_peak_rank_assignments": 4106.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 0,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "db746540915b1453b393e9dd632a1a90b7be5834de1b073e56bf327e6ec0059c",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch1024-domain1-rank0.json",
+          "trace_sha256": "85d2db49ce2e3301ce4bf5e8c0b8db671aecdb0d2351b3851e162fa88662aec3",
+          "trace_bytes": 366393,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 465.0879999999998,
+              "us_per_forward": 58.135999999999974
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 23.072999999999997,
+              "us_per_forward": 2.8841249999999996
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3041.3389999999995,
+              "us_per_forward": 380.16737499999994
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 498.687,
+              "us_per_forward": 62.335875
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.551,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.256,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.552,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.895,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.136,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.16,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.039,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.76,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.615,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.032,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.872,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.352,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.647,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.12,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.256,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.096,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.1364412985111056,
+              1.1487179487179486
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4656.0,
+              4704.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          },
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.2965584574078595,
+              1.3206349206349206
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              5312.0,
+              5408.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          },
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.484012692213815,
+              1.5316239316239317
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              6080.0,
+              6272.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          },
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.374420307542104,
+              2.4068376068376067
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9728.0,
+              9856.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          }
+        ]
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 1,
+        "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+        "fixed_map_sha256": "db746540915b1453b393e9dd632a1a90b7be5834de1b073e56bf327e6ec0059c",
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/profile/batch1024-domain1-rank1.json",
+          "trace_sha256": "90193372c398677be5d2c807f59c18ce93a1424768fe371eb7447f060c1a22af",
+          "trace_bytes": 366395,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 64,
+              "total_us": 466.1429999999999,
+              "us_per_forward": 58.26787499999999
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 23.359999999999996,
+              "us_per_forward": 2.9199999999999995
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3075.0840000000003,
+              "us_per_forward": 384.38550000000004
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 469.502,
+              "us_per_forward": 58.68775
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.918,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.759,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.822,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.919,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 242.527,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.791,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.727,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.598,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 243.391,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.679,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 242.431,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.134,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 242.463,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.503,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.663,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.759,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "padding_estimates": [
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 16,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ],
+              [
+                4656,
+                4704
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.1364412985111056,
+              1.1487179487179486
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              4656.0,
+              4704.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          },
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 32,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ],
+              [
+                5312,
+                5408
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.2965584574078595,
+              1.3206349206349206
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              5312.0,
+              5408.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          },
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 64,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ],
+              [
+                6080,
+                6272
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              1.484012692213815,
+              1.5316239316239317
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              6080.0,
+              6272.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          },
+          {
+            "physical_counts_sha256": "f3f6177d57767af8e1ae5326af1368d3be9cc7e93fbfad4013cc42d2147212ba",
+            "block_m": 128,
+            "owner_assignments_per_step": [
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ],
+              [
+                4097,
+                4095
+              ]
+            ],
+            "active_physical_experts_per_rank_per_step": [
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ],
+              [
+                76,
+                77
+              ]
+            ],
+            "local_padded_rows_per_step": [
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ],
+              [
+                9728,
+                9856
+              ]
+            ],
+            "padded_to_useful_rows_by_rank": [
+              2.374420307542104,
+              2.4068376068376067
+            ],
+            "mean_active_physical_experts_by_rank": [
+              76.0,
+              77.0
+            ],
+            "mean_padded_rows_by_rank": [
+              9728.0,
+              9856.0
+            ],
+            "mean_peak_rank_assignments": 4097.0
+          }
+        ]
+      }
+    ],
+    "preexisting_trace_hash_inventory_verified": true,
+    "scope": "Original fixed-map repeated-input calibration; different sources/maps from new profiles, so not a paired speedup baseline"
+  },
+  "new": null,
+  "limits": [
+    "Device kernel sums are residence times, not exclusive wall-time shares or a bandwidth measurement.",
+    "Padding is an integer tile-row proxy, not a measured instruction count or promised speedup.",
+    "Only new DEFAULT/TUNED runs share inputs/maps; old/new calibration datasets are not paired.",
+    "No confidence intervals, adaptive selection or policy recommendation is computed.",
+    "Output correctness is a recorded runtime attestation; this offline audit does not rerun expert weights."
+  ]
+}
