@@ -1,0 +1,242 @@
+{
+  "pass": true,
+  "errors": [],
+  "statistics_recomputed": true,
+  "observed_rows": 256,
+  "matched_pairs": 128,
+  "source_blocks": 8,
+  "allocations_by_repetition": {
+    "0": [
+      "4869986"
+    ],
+    "1": [
+      "4870000"
+    ]
+  },
+  "primary_useful_gain": "fail",
+  "stable_guard": "inconclusive",
+  "acceptance": "fail",
+  "maximum_numeric_difference": 2.3592239273284576e-16,
+  "cells": [
+    {
+      "regime": "stable",
+      "batch_tokens": 128,
+      "source_blocks": 8,
+      "ratio": 1.0292510814170848,
+      "ci95": [
+        1.013862383590878,
+        1.043080284259081
+      ],
+      "adjusted_ci": [
+        1.011606489943484,
+        1.0444264747433054
+      ],
+      "family_size": 2,
+      "limit": 1.02,
+      "criterion": "inconclusive"
+    },
+    {
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "source_blocks": 8,
+      "ratio": 0.9293881587039411,
+      "ci95": [
+        0.9240792041010748,
+        0.9349247945930761
+      ],
+      "adjusted_ci": [
+        0.9233288838602524,
+        0.9356684520001419
+      ],
+      "family_size": 2,
+      "limit": 1.02,
+      "criterion": "pass"
+    },
+    {
+      "regime": "transient",
+      "batch_tokens": 128,
+      "source_blocks": 8,
+      "ratio": 1.0285647437020684,
+      "ci95": [
+        1.0142853228554591,
+        1.041634984424818
+      ],
+      "adjusted_ci": [
+        1.009924746146278,
+        1.0453764528660914
+      ],
+      "family_size": 6,
+      "limit": 0.95,
+      "criterion": "fail"
+    },
+    {
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "source_blocks": 8,
+      "ratio": 0.927146618473024,
+      "ci95": [
+        0.9218345090558007,
+        0.9330892511481763
+      ],
+      "adjusted_ci": [
+        0.9202872519635625,
+        0.9350751406513094
+      ],
+      "family_size": 6,
+      "limit": 0.95,
+      "criterion": "pass"
+    },
+    {
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "source_blocks": 8,
+      "ratio": 0.9827953757171833,
+      "ci95": [
+        0.976275291312812,
+        0.989133169662116
+      ],
+      "adjusted_ci": [
+        0.9741032413760166,
+        0.9904343652806914
+      ],
+      "family_size": 6,
+      "limit": 0.95,
+      "criterion": "fail"
+    },
+    {
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "source_blocks": 8,
+      "ratio": 0.9324710544862355,
+      "ci95": [
+        0.9282401874208959,
+        0.9360762955879527
+      ],
+      "adjusted_ci": [
+        0.9267467742213664,
+        0.9371548644306189
+      ],
+      "family_size": 6,
+      "limit": 0.95,
+      "criterion": "pass"
+    },
+    {
+      "regime": "switching",
+      "batch_tokens": 128,
+      "source_blocks": 8,
+      "ratio": 0.9966433473841118,
+      "ci95": [
+        0.9884724160598313,
+        1.0038996884962215
+      ],
+      "adjusted_ci": [
+        0.9848756946794213,
+        1.0056189267468305
+      ],
+      "family_size": 6,
+      "limit": 0.95,
+      "criterion": "fail"
+    },
+    {
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "source_blocks": 8,
+      "ratio": 0.9329979483685223,
+      "ci95": [
+        0.9282667661858581,
+        0.9375561654837777
+      ],
+      "adjusted_ci": [
+        0.9266282896754302,
+        0.9390938037382028
+      ],
+      "family_size": 6,
+      "limit": 0.95,
+      "criterion": "pass"
+    }
+  ],
+  "aggregates": [
+    {
+      "group": "changing",
+      "source_blocks": 8,
+      "ratio": 0.9660134269716713,
+      "ci95": [
+        0.9614853151274781,
+        0.9700985593941864
+      ],
+      "adjusted_ci": [
+        0.9614853151274781,
+        0.9700985593941864
+      ],
+      "family_size": 1,
+      "limit": 0.95,
+      "criterion": "fail"
+    },
+    {
+      "group": "stable",
+      "source_blocks": 8,
+      "ratio": 0.9780458922782022,
+      "ci95": [
+        0.9693618354566634,
+        0.9858511068839304
+      ],
+      "adjusted_ci": [
+        0.9693618354566634,
+        0.9858511068839304
+      ],
+      "family_size": 1,
+      "limit": 1.02,
+      "criterion": "pass"
+    }
+  ],
+  "by_allocation": [
+    {
+      "allocation_id": "4869986",
+      "group": "changing",
+      "pairs": 48,
+      "ratio": 0.9650743891026424
+    },
+    {
+      "allocation_id": "4869986",
+      "group": "stable",
+      "pairs": 16,
+      "ratio": 0.9755280708150729
+    },
+    {
+      "allocation_id": "4870000",
+      "group": "changing",
+      "pairs": 48,
+      "ratio": 0.9669533785444825
+    },
+    {
+      "allocation_id": "4870000",
+      "group": "stable",
+      "pairs": 16,
+      "ratio": 0.9805702121959734
+    }
+  ],
+  "limits": [
+    "Intervals resample eight chosen source blocks, conditional on two allocation windows.",
+    "Technical repetitions, ranks and steps are not independent workload units.",
+    "Record checks do not replace actual tape/physical-counter reconstruction or numerical-output validation.",
+    "An independent same-team implementation is not external reproduction."
+  ],
+  "files": {
+    "manifest": {
+      "path": "configs/resident-online-final-frozen-v1.json",
+      "sha256": "5561decbb831eeb26048c6703183836d54a766d67103f139a3bf8541693bccce"
+    },
+    "records": {
+      "path": "../resident-results/final/records.jsonl",
+      "sha256": "8b0cff0504ca8e34cbcaa87afd42976008d6a64beeb030246210d230995674b6"
+    },
+    "summary": {
+      "path": "../resident-results/final/summary.json",
+      "sha256": "6764792ef752bac5c87f304536cd70fd9f404094cd3870581f1481ab5e8d10df"
+    },
+    "verifier": {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/scripts/verify_resident_final.py",
+      "sha256": "0c961756d124dee61e4edc580e8a03cca7eb735d2bc0daeaaafd8ba097dd1ee1"
+    }
+  }
+}
