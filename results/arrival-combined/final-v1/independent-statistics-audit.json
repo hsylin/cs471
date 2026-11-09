@@ -1,0 +1,5180 @@
+{
+  "valid": true,
+  "expected_records": 384,
+  "observed_records": 384,
+  "matched_triplets": 128,
+  "matched_pairs": 384,
+  "pairs_per_contrast": {
+    "combined_over_shortcut": 128,
+    "combined_over_native": 128,
+    "shortcut_over_native": 128
+  },
+  "independent_calendar_blocks": 8,
+  "fixed_payload_strata": 4,
+  "jobs_per_trial": 256,
+  "confirmatory": {
+    "primary": {
+      "name": "high_load_mean_response",
+      "contrast": "combined_over_shortcut",
+      "ratio": 0.8944088104696751,
+      "block_log_ratios": {
+        "combo-fresh-01": -0.09322288788791577,
+        "combo-fresh-02": -0.11830892927085324,
+        "combo-fresh-03": -0.10792327665488544,
+        "combo-fresh-04": -0.09217816016596214,
+        "combo-fresh-05": -0.07004711988012025,
+        "combo-fresh-06": -0.19676559607514088,
+        "combo-fresh-07": -0.10712108109448026,
+        "combo-fresh-08": -0.10717155637704723
+      },
+      "upper_confidence_bound": 0.9058439108839269,
+      "ratio_limit": 0.95,
+      "arrival_blocks": 8,
+      "passes": true,
+      "criterion": "upper < limit",
+      "status": "pass",
+      "ci95": [
+        0.8831180633153093,
+        0.9058439108839269
+      ],
+      "confidence": "two-sided percentile 95%"
+    },
+    "guards": [
+      {
+        "name": "low_load_mean_response",
+        "contrast": "combined_over_shortcut",
+        "ratio": 0.9375904466420497,
+        "block_log_ratios": {
+          "combo-fresh-01": -0.058221815318303616,
+          "combo-fresh-02": -0.08221648702342987,
+          "combo-fresh-03": -0.05716505151835749,
+          "combo-fresh-04": -0.05112818822726917,
+          "combo-fresh-05": -0.06541851323460368,
+          "combo-fresh-06": -0.08555376684351534,
+          "combo-fresh-07": -0.050786885645091706,
+          "combo-fresh-08": -0.06504568717291037
+        },
+        "upper_confidence_bound": 0.9404605143627938,
+        "ratio_limit": 1.02,
+        "arrival_blocks": 8,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9833333333333333,
+        "guard_family_size": 3,
+        "confidence": "one-sided percentile 98.333333%; Bonferroni for three shortcut-relative guards"
+      },
+      {
+        "name": "high_load_p95_response",
+        "contrast": "combined_over_shortcut",
+        "ratio": 0.8948171004200549,
+        "block_log_ratios": {
+          "combo-fresh-01": -0.11984506124933136,
+          "combo-fresh-02": -0.09734247315257649,
+          "combo-fresh-03": -0.06804630173587545,
+          "combo-fresh-04": -0.1445489791143908,
+          "combo-fresh-05": -0.057052683781261715,
+          "combo-fresh-06": -0.17085580608320972,
+          "combo-fresh-07": -0.091844732790475,
+          "combo-fresh-08": -0.13955147140166213
+        },
+        "upper_confidence_bound": 0.91076257453318,
+        "ratio_limit": 1.02,
+        "arrival_blocks": 8,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9833333333333333,
+        "guard_family_size": 3,
+        "confidence": "one-sided percentile 98.333333%; Bonferroni for three shortcut-relative guards"
+      },
+      {
+        "name": "b128_high_load_mean_response",
+        "contrast": "combined_over_shortcut",
+        "ratio": 0.8987880026130454,
+        "block_log_ratios": {
+          "combo-fresh-01": -0.08111560011335284,
+          "combo-fresh-02": -0.11418005715082868,
+          "combo-fresh-03": -0.0798677580857321,
+          "combo-fresh-04": -0.113839877555451,
+          "combo-fresh-05": -0.0597764831735037,
+          "combo-fresh-06": -0.1837539531363399,
+          "combo-fresh-07": -0.09490503031267972,
+          "combo-fresh-08": -0.12622593637321344
+        },
+        "upper_confidence_bound": 0.9104687492579149,
+        "ratio_limit": 1.02,
+        "arrival_blocks": 8,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9833333333333333,
+        "guard_family_size": 3,
+        "confidence": "one-sided percentile 98.333333%; Bonferroni for three shortcut-relative guards"
+      }
+    ],
+    "secondary_baseline": {
+      "name": "high_load_mean_response_baseline",
+      "contrast": "combined_over_native",
+      "ratio": 0.4593570494216306,
+      "block_log_ratios": {
+        "combo-fresh-01": -0.9160405430607874,
+        "combo-fresh-02": -0.6559119215695406,
+        "combo-fresh-03": -0.7412039527897119,
+        "combo-fresh-04": -0.7995890394255145,
+        "combo-fresh-05": -0.7208673443740021,
+        "combo-fresh-06": -0.750118237764186,
+        "combo-fresh-07": -0.8122318069639711,
+        "combo-fresh-08": -0.8274570409922346
+      },
+      "upper_confidence_bound": 0.47655656477617264,
+      "ratio_limit": 0.95,
+      "arrival_blocks": 8,
+      "passes": true,
+      "criterion": "upper < limit",
+      "status": "pass",
+      "ci95": [
+        0.4427782858315094,
+        0.47655656477617264
+      ],
+      "confidence": "two-sided percentile 95%",
+      "gate_passed": true,
+      "confirmatory": true
+    },
+    "incremental_acceptance": "pass",
+    "acceptance": "pass",
+    "bootstrap": {
+      "bootstrap_samples": 100000,
+      "bootstrap_seed": 471432,
+      "bootstrap": "stratified_arrival_blocks",
+      "primary_ratio_limit": 0.95,
+      "guard_ratio_limit": 1.02,
+      "guard_family_size": 3,
+      "secondary_ratio_limit": 0.95,
+      "rng": "numpy.random.default_rng/PCG64",
+      "quantile_method": "linear",
+      "strata": {
+        "combo-fresh-01": [
+          "opt-pilot-01",
+          "domain0"
+        ],
+        "combo-fresh-02": [
+          "opt-pilot-01",
+          "domain1"
+        ],
+        "combo-fresh-03": [
+          "opt-pilot-02",
+          "domain0"
+        ],
+        "combo-fresh-04": [
+          "opt-pilot-02",
+          "domain1"
+        ],
+        "combo-fresh-05": [
+          "opt-pilot-01",
+          "domain0"
+        ],
+        "combo-fresh-06": [
+          "opt-pilot-01",
+          "domain1"
+        ],
+        "combo-fresh-07": [
+          "opt-pilot-02",
+          "domain0"
+        ],
+        "combo-fresh-08": [
+          "opt-pilot-02",
+          "domain1"
+        ]
+      },
+      "resampling": "two arrival blocks within each fixed source/domain stratum; all nested cells/repeats retained",
+      "draw_indices_sha256": "930f67cb9d8f5798e34d654aaff5e558d5c4df2250efafed6ac9845613d921cd"
+    },
+    "hierarchy": "Test combined/native high-load mean only after incremental primary and all three guards pass. Baseline gains cannot rescue failure to establish incremental dispatcher value."
+  },
+  "exact_weighted_distributions": {
+    "high_load_mean_response": {
+      "count_combinations": 81,
+      "ordered_equiprobable_outcomes": 256,
+      "exact_percentile_025": 0.8831180633153093,
+      "exact_percentile_975": 0.9058439108839269,
+      "quantile_definition": "smallest ratio with exact cumulative probability >= q",
+      "used_for_frozen_acceptance": false,
+      "support": [
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8866753804419376,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8883387230634417,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 759
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8900051860024121,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 403
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8865864740178194,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.8882496498569273,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1482
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8899159457006292,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8864975765082965,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 398
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8881605855817315,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 772
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8898267143469193,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 383
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8954138592598794,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 807
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8970935946724609,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1533
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8987764811542681,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 793
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8953240766335783,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8970036436200679,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 2975
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.8986863613598275,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1516
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8952343030097287,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 822
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.8969137015870146,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1576
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.8985962506016462,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 740
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9042384586736288,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9059347484336596,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 773
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9076342203177444,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 382
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9041477912098828,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9058439108839269,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1519
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9075432123629554,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 821
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9040571328373104,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 366
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9057530824424224,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 776
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9074522135334812,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8841104246726137,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 761
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8857689556117958,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1671
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8874305978420559,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 754
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.884021775435117,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.8856801400743676,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3101
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8873416156927287,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1623
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8839331350864277,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 804
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8855913334424215,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1555
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8872526424655899,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8928236250040275,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1500
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.894498501313568,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3049
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.896176519576988,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1540
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8927341020990069,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3092
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8944088104696751,
+          "multiplicity": 16,
+          "probability": 0.0625,
+          "monte_carlo_draws": 6349
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.8960866604791808,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3249
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8926445881703959,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.8943191286190308,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3207
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.8959968103914931,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9016226968034127,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 764
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9033140795723366,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1614
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9050086352601335,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 766
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9015322916205861,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1586
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9032235047955447,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3095
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9049178905712295,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9014418955026346,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 727
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9031329391006329,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1596
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9048271549812426,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 734
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8815528887530383,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 424
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8832066219290312,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8848634573958252,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.881464495958179,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 762
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.8831180633153093,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1583
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8847747326521758,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 733
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8813761120264139,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 338
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8830295135813081,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8846860168049048,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 375
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8902408837229948,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 805
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8919109149858048,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1514
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8935840791135164,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8901516197879387,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8918214835976862,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3162
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.8934944799582051,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1621
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8900623648033252,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 817
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.891732061176801,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1610
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.8934048897869489,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 774
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.899014501753758,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 392
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9007009917264152,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 786
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9023906454393927,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 380
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.8989243580931304,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 770
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.90061067896242,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1606
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9023001632548037,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 813
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.8988342234711553,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 389
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9005203752540332,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9022096901428105,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 447
+        }
+      ],
+      "exact_requested_upper_quantile": 0.9058439108839269,
+      "requested_upper_probability": 0.975,
+      "monte_carlo_minus_exact_requested_upper": 0.0
+    },
+    "low_load_mean_response": {
+      "count_combinations": 81,
+      "ordered_equiprobable_outcomes": 256,
+      "exact_percentile_025": 0.9348247808151056,
+      "exact_percentile_975": 0.9403642946520331,
+      "quantile_definition": "smallest ratio with exact cumulative probability >= q",
+      "used_for_frozen_acceptance": false,
+      "support": [
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.9354746670441361,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.9371035169396515,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 759
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.9387352029910518,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 403
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.9347291377034086,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.9363566894821159,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1482
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.9379870751564253,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.9339842025145244,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 398
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.9356104572109619,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 772
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.9372395435445198,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 383
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.935864991043317,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 807
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.9374945205715661,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1533
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.9391268874390777,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 793
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.935119150632708,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.9367473815025138,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 2975
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.9383784474503559,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1516
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.9343739046218504,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 822
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.9360008378681827,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1576
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.9376306039331272,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 740
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9362554779040159,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9378856873485735,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 773
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9395187353162647,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 382
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9355093262937324,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9371382365379853,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1519
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9387699830432025,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 821
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.934763769331212,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 366
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9363913814105618,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 776
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9380218274905091,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.9363165867508546,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 761
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.9379469025982281,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1671
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.9395800571540041,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 754
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.9355703864396925,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.9371994030019631,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3101
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.9388312560103192,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1623
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.9348247808151056,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 804
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.9364524991277428,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1555
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.9380830516259511,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.9367072620385081,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1500
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.9383382581302793,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3049
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.9399720941148955,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1540
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.935960750377504,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3092
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.9375904466420497,
+          "multiplicity": 16,
+          "probability": 0.0625,
+          "monte_carlo_draws": 6349
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.9392229805361793,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3249
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.9352148336512065,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.9368432311244278,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3207
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.9384744639657757,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9370981003342536,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 764
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9387297769542524,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1614
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9403642946520331,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 766
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9363512771934979,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1586
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9379816534439223,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3095
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.939614868507923,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9356050492356834,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 727
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9372341261528667,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1596
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9388660396212253,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 734
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.9371592641785649,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 424
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.9387910472971414,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.9404256716789352,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.9364123922931001,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 762
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.9380428749572277,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1583
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.9396761966202193,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 733
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.9356661156294238,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 338
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.9372952988755036,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.9389273188578987,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 375
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.9375502910708478,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 805
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.9391827550460364,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1514
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.9408180614699511,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.9368031075553288,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.9384342705334578,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3162
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.9400682736950148,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1621
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.9360565195099527,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 817
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.9376863825278557,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1610
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.9393190834656938,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 774
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9379414811179286,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 392
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9395746262338149,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 786
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9412106149844304,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 380
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9371939858423287,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 770
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9388258294183183,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1606
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9404605143627938,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 813
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9364470862853299,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 389
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9380776293586889,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9397110115360965,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 447
+        }
+      ],
+      "exact_requested_upper_quantile": 0.9404605143627938,
+      "requested_upper_probability": 0.9833333333333333,
+      "monte_carlo_minus_exact_requested_upper": 0.0
+    },
+    "high_load_p95_response": {
+      "count_combinations": 81,
+      "ordered_equiprobable_outcomes": 256,
+      "exact_percentile_025": 0.8797001638530011,
+      "exact_percentile_975": 0.9101938093283704,
+      "quantile_definition": "smallest ratio with exact cumulative probability >= q",
+      "used_for_frozen_acceptance": false,
+      "support": [
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8915211004186132,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8909643513871419,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 759
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8904079500417589,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 403
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8941771495027142,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.8936187417861546,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1482
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8930606827915213,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8968411115759009,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 398
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8962810402326437,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 772
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8957213186502365,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 383
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8997511922821653,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 807
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8991893036127517,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1533
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8986277658390964,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 793
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.9024317607275534,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.9018681980608727,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 2975
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.9013049873353504,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1516
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.9051203152109174,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 822
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.9045550735597415,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1576
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.9039901848982389,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 740
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9080572603756133,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9074901846216045,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 773
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9069234630026539,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 382
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.91076257453318,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9101938093283704,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1519
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9096253993136698,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 821
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9134759484519649,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 366
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9129054887630869,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 776
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.912335385322512,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8845508997380513,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 761
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8839985035508102,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1671
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.883446452331335,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 754
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8871861829702562,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.886632141066064,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3101
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8860784451573771,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1623
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8898293173252353,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 804
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8892736248011178,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1555
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8887182793033068,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8927166460781139,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1500
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8921591504362845,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3049
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8916020029467966,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1540
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8953762569712987,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3092
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8948171004200549,
+          "multiplicity": 16,
+          "probability": 0.0625,
+          "monte_carlo_draws": 6349
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.8942582930583794,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3249
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8980437914650283,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.8974829690561339,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3207
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.896922496877125,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9009577746413022,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 764
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9003951324691847,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1614
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.8998328416633828,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 766
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.903641937776674,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1586
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9030776193624291,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3095
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9025136533613021,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9063340976594406,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 727
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9057680980091526,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1596
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9052024518219032,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 734
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8776351943436971,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 424
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8770871169687402,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8765393818644797,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8802498740781608,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 762
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.8797001638530011,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1583
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8791507969182416,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 733
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8828723435527784,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 338
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8823209956127744,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.881769991985913,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 375
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8857370982344108,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 805
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8851839612740532,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1514
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8846311697440693,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8883759154283226,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8878211305440782,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3162
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.8872666921193251,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1621
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8910225942735039,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 817
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.8904661565558236,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1610
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.8899100663298181,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 774
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.8939137949856176,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 392
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.8933555517322124,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 786
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.8927976570980272,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 380
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.8965769724643357,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 770
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.896017066074207,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1606
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.895457509341916,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 813
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.8992480841692878,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 389
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.8986865096875637,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.8981252859053896,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 447
+        }
+      ],
+      "exact_requested_upper_quantile": 0.91076257453318,
+      "requested_upper_probability": 0.9833333333333333,
+      "monte_carlo_minus_exact_requested_upper": 0.0
+    },
+    "b128_high_load_mean_response": {
+      "count_combinations": 81,
+      "ordered_equiprobable_outcomes": 256,
+      "exact_percentile_025": 0.8879563075886516,
+      "exact_percentile_975": 0.9097518275813326,
+      "quantile_definition": "smallest ratio with exact cumulative probability >= q",
+      "used_for_frozen_acceptance": false,
+      "support": [
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8903279947249059,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8917075192425431,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 759
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8930891812734407,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 403
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8920030815812762,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.893385201573167,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1482
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8947694630998927,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8936813199907742,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 398
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8950660403401132,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 772
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8964529062534278,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 383
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8981047101467368,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 807
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8994962843467996,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1533
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.900890014730582,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 793
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8997944283230993,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.90118862066801,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 2975
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.9025849732533416,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1516
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.9014873255803455,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 822
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.9028841409959515,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1576
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.9042831207163124,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 740
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9059493525607665,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9073530816931762,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 773
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9087589858428443,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 382
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9076538298567777,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9090602000026493,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1519
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9104687492579149,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 821
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9093615140018741,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 366
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9107705301300809,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 776
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9121817294675163,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8879563075886516,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 761
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8893321572801889,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1671
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.8907101387910031,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 754
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8896269322895322,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.891005370541407,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3101
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8923859446234207,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1623
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.891300700148322,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 804
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.892681731830721,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1555
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8940649033616666,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8957123071214645,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1500
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8971001743970581,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3049
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8984901921126527,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1540
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8973975241669108,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3092
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8987880026130454,
+          "multiplicity": 16,
+          "probability": 0.0625,
+          "monte_carlo_draws": 6349
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.9001806355450763,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3249
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8990859118246927,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.9004790063540944,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3207
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.9018742594228997,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9035360527001571,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 764
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9049360425293597,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1614
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9063382015819329,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 766
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9052359895493881,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1586
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9066386133568276,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3095
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9080434104688727,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9069391247051867,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 727
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.9083443874465001,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1596
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9097518275813326,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 734
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.8855909382362991,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 424
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.8869631228908677,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.888337433685898,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.8872571126681371,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 762
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.888631878987545,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1583
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.8900087754475919,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 733
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.8889264218850295,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 338
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.8903037747264897,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.8916832617162925,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 375
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.8933262770638104,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 805
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.8947104472895708,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1514
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.8960967622269143,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.8950070049686116,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.8963937794091849,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3162
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.8977827025964588,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1621
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.8966908950397595,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 817
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.8980802785947849,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1610
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.8994718149392203,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 774
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.9011291814728933,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 392
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.9025254419597765,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 786
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.9039238658915766,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 380
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.9028245899703464,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 770
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.9042234774189825,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1606
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.9056245323828985,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 813
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.9045231882546052,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 389
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.90592470760743,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.9073283985535561,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 447
+        }
+      ],
+      "exact_requested_upper_quantile": 0.9104687492579149,
+      "requested_upper_probability": 0.9833333333333333,
+      "monte_carlo_minus_exact_requested_upper": 0.0
+    },
+    "high_load_mean_response_baseline": {
+      "count_combinations": 81,
+      "ordered_equiprobable_outcomes": 256,
+      "exact_percentile_025": 0.4427782858315094,
+      "exact_percentile_975": 0.47655656477617264,
+      "quantile_definition": "smallest ratio with exact cumulative probability >= q",
+      "used_for_frozen_acceptance": false,
+      "support": [
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.45947598240776444,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.46107935814092277,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 759
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.46268832897336837,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 403
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.4635735949141269,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.4651912695719475,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1482
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.46681458922622027,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.4677077499796114,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 398
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.4693398510800817,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 772
+        },
+        {
+          "first_block_counts": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.47097764751915244,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 383
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.464918657874304,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 807
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.4665410262297116,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1533
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.4681690559605794,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 793
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.46906480822793956,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.4707016448844501,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 2975
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.47234419340463735,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1516
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.47324793400182075,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 822
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.4748993679879228,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1576
+        },
+        {
+          "first_block_counts": [
+            0,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.47655656477617264,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 740
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.47042580399299566,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.472067389945805,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 773
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.47371470433531493,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 382
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.47462106714397934,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 820
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.47627729278066344,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1519
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.47793929794031764,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 821
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.4788537437037442,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 366
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.4805247395811853,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 776
+        },
+        {
+          "first_block_counts": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.482201566523454,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 381
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.44840194176663334,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 761
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.4499666738084741,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1671
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.4515368660995572,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 754
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.45240079584129433,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.4539794821828793,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3101
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.45556367746827686,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1623
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.45643531174615937,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 804
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.45802807683210656,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1555
+        },
+        {
+          "first_block_counts": [
+            1,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.4596263999906956,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.4537134408243493,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1500
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.45529670773857056,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3049
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.4568854995808546,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1540
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.45775966291344355,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3092
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.45935704942163064,
+          "multiplicity": 16,
+          "probability": 0.0625,
+          "monte_carlo_draws": 6349
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.4609600101292574,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3249
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.4618419692612817,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.4634536012821486,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3207
+        },
+        {
+          "first_block_counts": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.46507085721323477,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1545
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.4590878566975655,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 764
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.46068987803709077,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1614
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.4622974897496456,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 766
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.4631820078940336,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1586
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.46479831607972194,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3095
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.46642026449345575,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1546
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.46731267078161914,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 727
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.46894339322374173,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1596
+        },
+        {
+          "first_block_counts": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.47057980619353346,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 734
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "ratio": 0.43759480164003794,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 424
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "ratio": 0.43912182135982647,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 802
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "ratio": 0.4406541697288949,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 367
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "ratio": 0.44149727750509443,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 762
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "ratio": 0.4430379152056716,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1583
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            1,
+            2
+          ],
+          "ratio": 0.4445839290764889,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 733
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "ratio": 0.44543455569828705,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 338
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            1
+          ],
+          "ratio": 0.4469889328249743,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            0,
+            2,
+            2
+          ],
+          "ratio": 0.4485487340666546,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 375
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "ratio": 0.4427782858315094,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 805
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "ratio": 0.4443233937062484,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1514
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "ratio": 0.445873893350234,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 801
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "ratio": 0.44672698807283523,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1542
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "ratio": 0.4482858752387529,
+          "multiplicity": 8,
+          "probability": 0.03125,
+          "monte_carlo_draws": 3162
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "ratio": 0.44985020225778216,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1621
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            0
+          ],
+          "ratio": 0.45071090488969373,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 817
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "ratio": 0.45228369423067966,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1610
+        },
+        {
+          "first_block_counts": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "ratio": 0.45386197193745453,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 774
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "ratio": 0.4480231704515567,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 392
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "ratio": 0.44958658074262425,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 786
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            0,
+            2
+          ],
+          "ratio": 0.4511554466705861,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 380
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "ratio": 0.45201864663893493,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 770
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "ratio": 0.45359599944235685,
+          "multiplicity": 4,
+          "probability": 0.015625,
+          "monte_carlo_draws": 1606
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "ratio": 0.45517885653611057,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 813
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            0
+          ],
+          "ratio": 0.4560497545324766,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 389
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "ratio": 0.45764117418775085,
+          "multiplicity": 2,
+          "probability": 0.0078125,
+          "monte_carlo_draws": 779
+        },
+        {
+          "first_block_counts": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "ratio": 0.4592381472206863,
+          "multiplicity": 1,
+          "probability": 0.00390625,
+          "monte_carlo_draws": 447
+        }
+      ],
+      "exact_requested_upper_quantile": 0.47655656477617264,
+      "requested_upper_probability": 0.975,
+      "monte_carlo_minus_exact_requested_upper": 0.0
+    }
+  },
+  "arm_position_counts": {
+    "native": [
+      43,
+      42,
+      43
+    ],
+    "shortcut": [
+      43,
+      42,
+      43
+    ],
+    "combined": [
+      42,
+      44,
+      42
+    ]
+  },
+  "allocation_ids": [
+    "4872248"
+  ],
+  "plan_sha256": "78797a0cfaa0b48ad5d671d5276fae26201254ebc31ca1e00934981bcfb62612",
+  "hardware": {
+    "hostname": "kh014",
+    "gpu_uuids": [
+      "GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3",
+      "GPU-7d5c9009-305b-9341-957f-1deb96611ed5"
+    ],
+    "world_size": 2,
+    "interconnect": "NV6"
+  },
+  "checks": [
+    "integer raw-clock FCFS envelopes; all256jobs in each384trial",
+    "all384 trial endpoints and384 contrast pairs reproduced independently",
+    "frozen and actual three-arm order, reversed repeats and shared calendar/state",
+    "distinct dispatch identity allowed only for combined; native/shortcut assignment match",
+    "eight whole calendar blocks stratified within four fixed payload states",
+    "100000 PCG64 draws seed471432; linear percentiles and exact81 weighted outcomes",
+    "primary combined/shortcut upper95% strict<.95; three98.333333% guards<=1.02",
+    "secondary combined/native inference only after the incremental gate passes"
+  ],
+  "limitations": [
+    "Recorded numerical/route flags are checked; no GPU execution is reproduced.",
+    "Use the separate execution auditor for NPZ routes, weights, calendar generation and source provenance.",
+    "Inference is conditional on four reused payload strata, native calibration and one allocation.",
+    "Exact weighted quantiles supplement the frozen Monte Carlo rule; they do not replace it.",
+    "Three arms estimate incremental value; without online-only they do not identify synergy."
+  ],
+  "verifier_sha256": "7809a3090c61e26c36ccca36272824a67d5d48c9688e776dd7cee8870208ba34",
+  "independent_helpers_sha256": {
+    "scripts/verify_arrival_fix_statistics.py": "65418f16c92e59fe93607d2be673608efb2ee31fdcde2b1c9230a5b48fa8e9ce",
+    "scripts/verify_instructor_arrivals.py": "7edc056611e17ec01a683179b38a33a41874b73cdcbcc262e7b2f61f9574378e"
+  },
+  "records_file_sha256": "c33aaaedf4ffc8cb5b374d9c5a888fbe3c1a25d41af73161bc24622e511e6368",
+  "summary_file_sha256": "0dc415b40394d7ec6821c34b3283a9dd860c566b9ea43da8d04eee21ae1c8e1f",
+  "plan_file_sha256": "e4eb366a567ab8e63cc94d27f10200c35af0729aebc5a13c60dee118d9ec0f3c",
+  "numpy_version": "2.5.4",
+  "records_decompressed_sha256": "a6df7a48ad3cf9e5e8da991a87cdc8ce76dd92c121584e644099df27d9b8e91f",
+  "summary_records_file_sha256": "a6df7a48ad3cf9e5e8da991a87cdc8ce76dd92c121584e644099df27d9b8e91f"
+}

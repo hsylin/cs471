@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "phase": "pilot",
+  "plan_sha256": "f9698a244d680dd921709f2396b0b67d36a214b317549a5f75bdb10cea066ca2",
+  "records": 24,
+  "jobs_checked": 6144,
+  "timed_native_windows_checked": 96,
+  "route_artifacts": 2,
+  "artifacts": [
+    {
+      "state": [
+        "opt-pilot-01",
+        "domain1",
+        1024
+      ],
+      "artifact": {
+        "path": "results/arrival-combined/pilot-v1/pilot/inputs/opt-pilot-01-domain1-b1024.npz",
+        "sha256": "79b6cac2bfbc3a87b1f7e1489a0b9acfb30e6aa5ea07ea6dece7b0a563656bfa"
+      }
+    },
+    {
+      "state": [
+        "opt-pilot-01",
+        "domain1",
+        128
+      ],
+      "artifact": {
+        "path": "results/arrival-combined/pilot-v1/pilot/inputs/opt-pilot-01-domain1-b128.npz",
+        "sha256": "77619111e43d184b177f367a88276cbc3e87d1917feddf5caa1ed61e070b2300"
+      }
+    }
+  ],
+  "allocation_id": "4872248",
+  "hostname": "kh014",
+  "rank_gpu_uuids": [
+    "GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3",
+    "GPU-7d5c9009-305b-9341-957f-1deb96611ed5"
+  ],
+  "arm_position_counts": {
+    "native": [
+      3,
+      2,
+      3
+    ],
+    "shortcut": [
+      2,
+      4,
+      2
+    ],
+    "combined": [
+      3,
+      2,
+      3
+    ]
+  },
+  "calibration_audit": null,
+  "composition_proofs": [
+    {
+      "verified": true,
+      "batch_tokens": 128,
+      "arms": 3,
+      "steps_per_arm": 128,
+      "timed_performance_evidence": false,
+      "changed_residency_supported": false,
+      "logical_trajectory_sha256": "342df9471603ee98d40cfb25a584ec96810b66a7f9a087099341cce6700058a9"
+    },
+    {
+      "verified": true,
+      "batch_tokens": 1024,
+      "arms": 3,
+      "steps_per_arm": 128,
+      "timed_performance_evidence": false,
+      "changed_residency_supported": false,
+      "logical_trajectory_sha256": "55e9b5d8bdff88cefeed7a69c17b2106d8a866d051cc89247af54fb7168ba0cc"
+    }
+  ],
+  "production_trial_and_pair_metrics_recomputed": false,
+  "statistical_bootstrap_independently_recomputed": false,
+  "helper_sha256": {
+    "verify_arrival_fix.py": "d68eb77c5732e2553c71ded8394294b5729afa67bea0f9fe13ee9af0102a99f3",
+    "verify_instructor_arrivals.py": "7edc056611e17ec01a683179b38a33a41874b73cdcbcc262e7b2f61f9574378e",
+    "verify_resident_online_records.py": "8db9efba10c22cdc25dfe8d770e781cf067fff43c7708d9457507fb11f39b504"
+  },
+  "limitations": [
+    "Independent same-team reanalysis, not another laboratory or hardware allocation.",
+    "Raw saved preflight routes and actual native observation windows are reconstructed; live GPU numerical arithmetic is not rerun.",
+    "Native proposed maps are checked for validity and invariance, not independently optimized.",
+    "Fresh calendars reuse fixed captured payloads; physical assignment equality is required only within each dispatcher.",
+    "Three arms estimate component contrasts, not a factorial interaction or synergy.",
+    "Statistical confidence intervals require the separate independent inference audit."
+  ],
+  "verifier_sha256": "e817f4ded48c95be67cb38f6ebcffa7bc01b72a4d656b94c5ab06257b75d434b",
+  "raw_decompressed_sha256": {
+    "results/arrival-combined/pilot-v1/pilot/records.jsonl": "ef55f731685042246645bbad11f8d7bed22fafc1142b5f2857473d7e40808ef4"
+  }
+}

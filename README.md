@@ -1,5 +1,18 @@
 # SkewBench
 
+**Completed combined-path experiment.** Adding the frozen resident dispatcher
+to the unchanged-map shortcut reduces high-load mean response by another 10.6%
+(95% interval: 9.4–11.7% lower); the combined path is 54.1% lower than native SKIP
+(95% interval: 52.3–55.7% lower). All three frozen regression guards pass.
+The 384 contemporaneous trials use eight fresh synthetic arrival-calendar blocks over
+reused layer payloads on the same reserved H100 pair. Incremental mean service
+improves 4.3%, while completed observed elapsed improves only 0.12%; this is a
+fixed-residency layer latency result, not an equal throughput gain or full-model
+serving claim. Independent execution and statistical audits pass, as do 540 CPU
+tests. Read the [results and limits](docs/arrival-combined-results.md),
+[frozen protocol](docs/arrival-combined-protocol.md), and
+[reproduction guide](docs/arrival-combined-reproduction.md).
+
 **Completed response-time fix.** A rank-agreed unchanged-map fast path avoids
 redundant movement setup and map commit while preserving native routing and
 planning. On 256 paired fresh-arrival trials using one reserved equivalent H100

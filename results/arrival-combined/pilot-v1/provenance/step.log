@@ -1,0 +1,43 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 17:41:01.141443073 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "shortcut", "schedule_name": "constant-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "combined", "schedule_name": "constant-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "native", "schedule_name": "constant-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "native", "schedule_name": "constant-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "combined", "schedule_name": "constant-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "shortcut", "schedule_name": "constant-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "native", "schedule_name": "burst8-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "shortcut", "schedule_name": "burst8-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "combined", "schedule_name": "burst8-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "combined", "schedule_name": "burst8-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "shortcut", "schedule_name": "burst8-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024, "arm": "native", "schedule_name": "burst8-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "native", "schedule_name": "constant-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "shortcut", "schedule_name": "constant-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "combined", "schedule_name": "constant-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "combined", "schedule_name": "constant-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "shortcut", "schedule_name": "constant-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "native", "schedule_name": "constant-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "combined", "schedule_name": "burst8-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "native", "schedule_name": "burst8-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "shortcut", "schedule_name": "burst8-rho0.85", "repetition": 0, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "shortcut", "schedule_name": "burst8-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "native", "schedule_name": "burst8-rho0.85", "repetition": 1, "status": "complete"}
+{"phase": "pilot", "arrival_block_id": "pilot-old-calendar", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128, "arm": "combined", "schedule_name": "burst8-rho0.85", "repetition": 1, "status": "complete"}
