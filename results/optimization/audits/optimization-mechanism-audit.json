@@ -1,0 +1,972 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "descriptive_only": true,
+  "final_outcomes_inspected": false,
+  "source_files_sha256": {
+    "work/optimization-mechanism-source-recheck.json": "cd04416b39ac3854e68ef21343f98f9abf8a2bd268586c03608c569f32519f12",
+    "work/optimization-results/tuning/selection.json": "2bf8788b9a8f8225f27048ad1b8ba847b7d0de678b67601cbcfe1ea9be136775",
+    "work/optimization-results/validation-analysis/summary.json": "4df7ecba66d26f5523cacc5705dbd10098d1a81f17a27b653097e4a01b37a74b"
+  },
+  "checks": {
+    "trace_sha256": 16,
+    "input_artifact_sha256": 16,
+    "physical_count_conservation": 16,
+    "padding_recomputed": 16,
+    "actual_launch_warp_count": 256,
+    "same_state_variant_pairs": 8,
+    "nested_annotations_excluded": true
+  },
+  "selected_configs": {
+    "128": {
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "config": {
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      }
+    },
+    "1024": {
+      "candidate_id": "DEFAULT",
+      "config": null
+    }
+  },
+  "batch_summaries": {
+    "128": {
+      "rank_domain_pairs": 4,
+      "kernel_ratio_range": [
+        0.9811280273867956,
+        0.9857423655423881
+      ],
+      "kernel_ratio_arithmetic_mean_descriptive": 0.9840430233340245,
+      "combined_gemm_saved_us_range": [
+        4.129125000000045,
+        6.256249999999966
+      ],
+      "combined_gemm_saved_us_arithmetic_mean": 4.957406250000005,
+      "padded_rows_ratio_values": [
+        1.0
+      ]
+    },
+    "1024": {
+      "rank_domain_pairs": 4,
+      "kernel_ratio_range": [
+        0.9982630998687695,
+        1.0024295812384696
+      ],
+      "kernel_ratio_arithmetic_mean_descriptive": 1.0000917745281874,
+      "combined_gemm_saved_us_range": [
+        -0.9011249999999791,
+        0.65400000000011
+      ],
+      "combined_gemm_saved_us_arithmetic_mean": -0.02843749999996703,
+      "padded_rows_ratio_values": [
+        1.0
+      ]
+    }
+  },
+  "paired_profile_comparisons": [
+    {
+      "batch_tokens": 128,
+      "domain": 0,
+      "rank": 0,
+      "selected_candidate": "M64_N64_K64_W4_S3",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 20.992125,
+          "tuned_us_per_forward": 21.06375,
+          "tuned_over_default": 1.003411993783383
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.3238749999999997,
+          "tuned_us_per_forward": 3.2881249999999995,
+          "tuned_over_default": 0.9892444812154488
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 289.608,
+          "tuned_us_per_forward": 285.47887499999996,
+          "tuned_over_default": 0.9857423655423881
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 23.104125,
+          "tuned_us_per_forward": 17.660125,
+          "tuned_over_default": 0.7643710809216969
+        }
+      },
+      "default_padded_rows_per_input": 4096.0,
+      "tuned_padded_rows_per_input": 4096.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 64.0,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2088,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 188.804
+          },
+          {
+            "grid": [
+              2784,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 100.804
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              4176,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 185.375375
+          },
+          {
+            "grid": [
+              5568,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 100.1035
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 0,
+      "rank": 1,
+      "selected_candidate": "M64_N64_K64_W4_S3",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 21.235874999999997,
+          "tuned_us_per_forward": 21.172374999999995,
+          "tuned_over_default": 0.9970097770871226
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.2998749999999997,
+          "tuned_us_per_forward": 3.336,
+          "tuned_over_default": 1.0109473843706203
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 295.689625,
+          "tuned_us_per_forward": 291.01800000000003,
+          "tuned_over_default": 0.9842009167551957
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 18.247625,
+          "tuned_us_per_forward": 31.4,
+          "tuned_over_default": 1.7207718812722204
+        }
+      },
+      "default_padded_rows_per_input": 4168.0,
+      "tuned_padded_rows_per_input": 4168.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 65.125,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2088,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 193.550375
+          },
+          {
+            "grid": [
+              2784,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 102.13925
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              4176,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 189.14675
+          },
+          {
+            "grid": [
+              5568,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 101.87125
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 1,
+      "rank": 0,
+      "selected_candidate": "M64_N64_K64_W4_S3",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 21.108125000000005,
+          "tuned_us_per_forward": 21.0955,
+          "tuned_over_default": 0.9994018890829951
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.256,
+          "tuned_us_per_forward": 3.296,
+          "tuned_over_default": 1.0122850122850122
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 320.32725000000005,
+          "tuned_us_per_forward": 315.554625,
+          "tuned_over_default": 0.9851007836517185
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 17.871999999999996,
+          "tuned_us_per_forward": 53.828,
+          "tuned_over_default": 3.0118621307072524
+        }
+      },
+      "default_padded_rows_per_input": 4496.0,
+      "tuned_padded_rows_per_input": 4496.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 70.25,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2088,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 210.65550000000002
+          },
+          {
+            "grid": [
+              2784,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 109.67175
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              4176,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 206.3075
+          },
+          {
+            "grid": [
+              5568,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 109.247125
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 1,
+      "rank": 1,
+      "selected_candidate": "M64_N64_K64_W4_S3",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 21.131875,
+          "tuned_us_per_forward": 21.248,
+          "tuned_over_default": 1.0054952530241636
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.276,
+          "tuned_us_per_forward": 3.3001249999999995,
+          "tuned_over_default": 1.0073641636141635
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 331.51012499999996,
+          "tuned_us_per_forward": 325.253875,
+          "tuned_over_default": 0.9811280273867956
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 48.551624999999994,
+          "tuned_us_per_forward": 17.567875,
+          "tuned_over_default": 0.36183907335748294
+        }
+      },
+      "default_padded_rows_per_input": 4664.0,
+      "tuned_padded_rows_per_input": 4664.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 72.875,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2088,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 217.91887499999999
+          },
+          {
+            "grid": [
+              2784,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 113.59125
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              4176,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 212.430375
+          },
+          {
+            "grid": [
+              5568,
+              1,
+              1
+            ],
+            "block": [
+              128,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 112.8235
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 0,
+      "rank": 0,
+      "selected_candidate": "DEFAULT",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 54.587500000000006,
+          "tuned_us_per_forward": 54.570875,
+          "tuned_over_default": 0.9996954430959468
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.1481249999999994,
+          "tuned_us_per_forward": 3.1119999999999997,
+          "tuned_over_default": 0.9885249156243797
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 370.89725,
+          "tuned_us_per_forward": 371.79837499999996,
+          "tuned_over_default": 1.0024295812384696
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 60.195750000000004,
+          "tuned_us_per_forward": 59.73975,
+          "tuned_over_default": 0.9924247143693699
+        }
+      },
+      "default_padded_rows_per_input": 10640.0,
+      "tuned_padded_rows_per_input": 10640.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 72.125,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 231.77025
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 139.127
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 231.80700000000002
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 139.991375
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 0,
+      "rank": 1,
+      "selected_candidate": "DEFAULT",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 55.85637500000001,
+          "tuned_us_per_forward": 55.79562500000001,
+          "tuned_over_default": 0.9989123891408993
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.1119999999999997,
+          "tuned_us_per_forward": 3.14025,
+          "tuned_over_default": 1.009077763496144
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 366.019875,
+          "tuned_us_per_forward": 366.201625,
+          "tuned_over_default": 1.0004965577347404
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 62.704125,
+          "tuned_us_per_forward": 67.635625,
+          "tuned_over_default": 1.078647138445836
+        }
+      },
+      "default_padded_rows_per_input": 9760.0,
+      "tuned_padded_rows_per_input": 9760.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 71.5,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 231.4
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 134.619875
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 231.674375
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 134.52725
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 1,
+      "rank": 0,
+      "selected_candidate": "DEFAULT",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 54.979874999999986,
+          "tuned_us_per_forward": 54.94749999999998,
+          "tuned_over_default": 0.9994111481701258
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.152,
+          "tuned_us_per_forward": 3.1359999999999997,
+          "tuned_over_default": 0.9949238578680202
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 376.53287500000005,
+          "tuned_us_per_forward": 375.87887499999994,
+          "tuned_over_default": 0.9982630998687695
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 64.488125,
+          "tuned_us_per_forward": 66.667625,
+          "tuned_over_default": 1.033796919975577
+        }
+      },
+      "default_padded_rows_per_input": 10240.0,
+      "tuned_padded_rows_per_input": 10240.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 75.0,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 236.0965
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 140.436375
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 235.84325
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 140.03562499999998
+          }
+        ]
+      }
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 1,
+      "rank": 1,
+      "selected_candidate": "DEFAULT",
+      "kernel_residence": {
+        "other_kernels": {
+          "default_us_per_forward": 55.979625,
+          "tuned_us_per_forward": 55.89562500000001,
+          "tuned_over_default": 0.9984994540424308
+        },
+        "physical_mapping": {
+          "default_us_per_forward": 3.112,
+          "tuned_us_per_forward": 3.1319999999999997,
+          "tuned_over_default": 1.0064267352185088
+        },
+        "fused_expert_gemm": {
+          "default_us_per_forward": 383.29812499999997,
+          "tuned_us_per_forward": 382.983,
+          "tuned_over_default": 0.9991778592707701
+        },
+        "nccl_allreduce": {
+          "default_us_per_forward": 59.611875,
+          "tuned_us_per_forward": 59.667750000000005,
+          "tuned_over_default": 1.000937313245054
+        }
+      },
+      "default_padded_rows_per_input": 10064.0,
+      "tuned_padded_rows_per_input": 10064.0,
+      "padded_rows_tuned_over_default": 1.0,
+      "active_experts_per_input": 76.375,
+      "grid_comparison": {
+        "DEFAULT": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 240.070875
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 143.22725
+          }
+        ],
+        "TUNED": [
+          {
+            "grid": [
+              2676,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 240.08325
+          },
+          {
+            "grid": [
+              3568,
+              1,
+              1
+            ],
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "calls": 8,
+            "us_per_forward": 142.89975
+          }
+        ]
+      }
+    }
+  ],
+  "pilot_tuning_candidates": [
+    {
+      "batch_tokens": 128,
+      "candidate_id": "DEFAULT",
+      "ratio": 1.0,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M16_N64_K64_W4_S3",
+      "ratio": 0.9944460969450205,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M16_N128_K64_W4_S3",
+      "ratio": 1.036985505202228,
+      "eligible": false
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M32_N64_K64_W4_S3",
+      "ratio": 0.9921530834884239,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M32_N128_K64_W4_S3",
+      "ratio": 1.0045982824959843,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "ratio": 0.9861145169913689,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M64_N128_K64_W4_S3",
+      "ratio": 0.9996643129793686,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M128_N64_K64_W8_S3",
+      "ratio": 1.017541957417113,
+      "eligible": false
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "DEFAULT",
+      "ratio": 1.0,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M16_N64_K64_W4_S3",
+      "ratio": 1.1038638514900134,
+      "eligible": false
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M16_N128_K64_W4_S3",
+      "ratio": 1.0801034614035265,
+      "eligible": false
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M32_N64_K64_W4_S3",
+      "ratio": 1.0295086381637362,
+      "eligible": false
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M32_N128_K64_W4_S3",
+      "ratio": 1.0171662538074173,
+      "eligible": false
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "ratio": 1.0012667059724893,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M64_N128_K64_W4_S3",
+      "ratio": 1.0016494503087323,
+      "eligible": true
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M128_N64_K64_W8_S3",
+      "ratio": 1.0134728313676418,
+      "eligible": true
+    }
+  ],
+  "pilot_validation_aggregates": [
+    {
+      "group": "changing",
+      "contrast": "kernel_B3",
+      "ratio": 1.0008435430852103,
+      "criterion": "inconclusive"
+    },
+    {
+      "group": "changing",
+      "contrast": "kernel_SKIP",
+      "ratio": 0.9957496332301603,
+      "criterion": "inconclusive"
+    },
+    {
+      "group": "stable",
+      "contrast": "kernel_B3",
+      "ratio": 0.9988914815598442,
+      "criterion": "inconclusive"
+    },
+    {
+      "group": "stable",
+      "contrast": "kernel_SKIP",
+      "ratio": 1.0038009063087867,
+      "criterion": "inconclusive"
+    },
+    {
+      "group": "all",
+      "contrast": "kernel_B3",
+      "ratio": 1.000355170359794,
+      "criterion": "descriptive"
+    },
+    {
+      "group": "all",
+      "contrast": "kernel_SKIP",
+      "ratio": 0.9977563770302921,
+      "criterion": "descriptive"
+    }
+  ],
+  "interpretation": {
+    "main_repeated_measured_cost": "Two fused expert GEMM kernels per forward dominate named device work. No isolated-memory-bandwidth or compute-saturation classification is identified.",
+    "batch128_intervention": "Ntile128to64 with M64/K64/fourwarps unchanged; actualgrid doubles, kernelcount stays2, physicalcounts and Mpadding unchanged. Both outputwidths are divisible by64and128, so no nominal N-edge-padding reduction.",
+    "batch1024_intervention": "No intervention: TUNED uses selected DEFAULT and is a duplicate-control arm.",
+    "smaller_m_limit": "M16 candidate combinations are8.01\u201310.39percent slower atB1024 in pilot, but also use4ratherthanDEFAULT8warps; not a one-factor causal estimate of M.",
+    "validation_limit": "64-run pilot full-policy validation is nonconfirmatory; changingB3ratio1.0008435 andSKIP0.9957496 do not establish useful whole-policy gain. Final heldout result remains separate.",
+    "sampling_limit": "Onepilotbank,two domains,two ranks,eight profileforwards pervariant. Rank pairs are coupled; descriptive ranges are not confidence intervals.",
+    "profile_limit": "GPUkernelresidence sums exclude nested annotations but can overlapotherwork; allreduce durations includearrivalwaiting. No percentagesofwalltime orbandwidthinferred.",
+    "conditional_negative_recommendation": "If held-out useful gain is not established, do not claim useful full-policy optimization or removed bottleneck. Retain DEFAULT conservatively; distinguish below-margin positive effect, inconclusive result and actual regression. No new search or outcome-dependent exclusion. This bounded negative result is not a hardware-wide ceiling."
+  }
+}

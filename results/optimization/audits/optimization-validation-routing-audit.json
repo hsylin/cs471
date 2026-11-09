@@ -1,0 +1,109 @@
+{
+  "status": "verified",
+  "phase": "validation",
+  "split": "pilot",
+  "manifest_sha256": "b969b53123267980541fd5d5f7d40eca8d949496a0f5e5c5cf533a29900e9321",
+  "records_sha256": "a3d7ed4fde6bf0233cba61b81f1af6e6813ed116a609e755b6843b6bcc660a18",
+  "records": 64,
+  "matched_quartets": 16,
+  "unique_policy_trajectories": 32,
+  "banks_verified": 2,
+  "replays_verified": 16,
+  "actual_logged_windows_checked": 448,
+  "logged_observed_steps_checked": 7168,
+  "logical_counter_entries_checked": 57344,
+  "physical_counter_entries_checked": 1146880,
+  "unique_physical_windows_independently_reconstructed": 208,
+  "complete_map_arrays_checked": 1472,
+  "slots_per_map": 160,
+  "required_logical_expert_coverage_per_map": 128,
+  "negative_logical_or_physical_count_entries": 0,
+  "negative_or_missing_logical_expert_map_entries": 0,
+  "all_current_counts_equal_exact_captured_windows_times_two": true,
+  "all_native_physical_assignments_equal_cpu_reconstruction": true,
+  "all_accepted_map_chains_and_actual_sender_payloads_consistent": true,
+  "all_kernel_and_repetition_policy_trajectories_exact": true,
+  "terminal_step_511_proposals_absent": true,
+  "terminal_suppressions_verified": 64,
+  "policy_summaries": [
+    {
+      "kernel_variant": "DEFAULT",
+      "policy": "B3",
+      "runs": 16,
+      "decisions": 112,
+      "accepted": 23,
+      "rejected": 89,
+      "sender_bytes": 12409896960,
+      "terminal_proposals_suppressed": 16,
+      "final_map_changed_runs": 16
+    },
+    {
+      "kernel_variant": "DEFAULT",
+      "policy": "SKIP",
+      "runs": 16,
+      "decisions": 112,
+      "accepted": 0,
+      "rejected": 112,
+      "sender_bytes": 0,
+      "terminal_proposals_suppressed": 16,
+      "final_map_changed_runs": 0
+    },
+    {
+      "kernel_variant": "TUNED",
+      "policy": "B3",
+      "runs": 16,
+      "decisions": 112,
+      "accepted": 23,
+      "rejected": 89,
+      "sender_bytes": 12409896960,
+      "terminal_proposals_suppressed": 16,
+      "final_map_changed_runs": 16
+    },
+    {
+      "kernel_variant": "TUNED",
+      "policy": "SKIP",
+      "runs": 16,
+      "decisions": 112,
+      "accepted": 0,
+      "rejected": 112,
+      "sender_bytes": 0,
+      "terminal_proposals_suppressed": 16,
+      "final_map_changed_runs": 0
+    }
+  ],
+  "decision_reasons": {
+    "SKIP": {
+      "always_skip": 224
+    },
+    "B3": {
+      "allowed": 46,
+      "below_improvement_threshold": 178
+    }
+  },
+  "numerical": {
+    "native_forward_check_count": 256,
+    "reference_tokens_per_check": 16,
+    "checked_raw_steps": [
+      32,
+      543
+    ],
+    "full_batch_default_comparisons": true,
+    "maximum_recorded_fp32_absolute_error": 0.002286463975906372,
+    "maximum_recorded_default_absolute_difference": 0.015625,
+    "atol": 0.02,
+    "rtol": 0.03
+  },
+  "allocations": [
+    "4867609"
+  ],
+  "hostnames": [
+    "kh071"
+  ],
+  "performance_values_analyzed": false,
+  "limits": [
+    "Exact raw routing reconstruction covers every logged decision window: seven16-step windows per run. It does not add an observation record for the suppressed terminal window or unmonitored intervals.",
+    "Map/weight identities and completed GPU numerical checks are execution attestations; this CPU audit does not rerun expert GEMMs or independently inspect GPU weight tensors.",
+    "Numerical checks use full native batches versus DEFAULT plus16 FP32 reference tokens at each of two raw endpoints, before and after timing. They do not check every measured output.",
+    "The trace is constructed repeated-prefill replay on the named replicated-input/allreduce path, not production serving traffic. No performance ratios are computed by this auditor."
+  ]
+}
