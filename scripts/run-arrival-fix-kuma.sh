@@ -15,7 +15,8 @@ cd "${SLURM_SUBMIT_DIR:?}"
 source scripts/cluster-env.sh
 plan="$1"; banks="$2"; output="$3"
 if [ -e "$output" ]; then echo 'Refusing existing output directory' >&2; exit 2; fi
-mkdir -p "$output/provenance"+nvidia-smi -q > "$output/provenance/nvidia-smi.txt"
+mkdir -p "$output/provenance"
+nvidia-smi -q > "$output/provenance/nvidia-smi.txt"
 nvidia-smi topo -m > "$output/provenance/topology.txt"
 scontrol show job "$SLURM_JOB_ID" > "$output/provenance/slurm-job.txt"
 cp SOURCE_COMMIT "$output/provenance/source-commit.txt"
