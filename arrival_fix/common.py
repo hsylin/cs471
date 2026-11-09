@@ -7,8 +7,9 @@ from optimization.common import canonical_hash, manifest_hash
 from resident_dispatch.common import load_manifest, execution_fingerprint
 
 ROOT = Path(__file__).resolve().parents[1]
-GPU_UUIDS = ['GPU-5c2dc64f-1654-a9c8-7862-1b86eead0511',
-             'GPU-c64a5616-a32f-ef1b-bfd5-c4096ae5bfd6']
+HARDWARE_HOST = 'kh014'
+GPU_UUIDS = ['GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3',
+             'GPU-7d5c9009-305b-9341-957f-1deb96611ed5']
 
 
 def file_hash(path):
@@ -38,6 +39,6 @@ def load_plan(path):
         raise ValueError('Protocol changed after freeze')
     if file_hash(ROOT/'arrival_fix/analysis.py') != plan['analysis_file_sha256']:
         raise ValueError('Analysis changed after freeze')
-    if sorted(plan['hardware']['gpu_uuids']) != sorted(GPU_UUIDS) or plan['hardware']['hostname'] != 'kh083':
-        raise ValueError('This experiment requires the exact previous two GPUs on kh083')
+    if sorted(plan['hardware']['gpu_uuids']) != sorted(GPU_UUIDS) or plan['hardware']['hostname'] != HARDWARE_HOST:
+        raise ValueError('This experiment requires the exact allocated two GPUs on the declared host')
     return plan, base

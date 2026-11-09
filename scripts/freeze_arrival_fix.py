@@ -10,7 +10,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from arrival_fix.common import file_hash, source_identity, load_plan, GPU_UUIDS
+from arrival_fix.common import file_hash, source_identity, load_plan, GPU_UUIDS, HARDWARE_HOST
 from arrival_fix.calendars import arrival_blocks, frozen_weights, make_calendar
 from arrival_fix.analysis import ANALYSIS_DEFAULTS
 from arrival_study.schedules import calibration_capacity, fcfs_metrics
@@ -45,7 +45,7 @@ def main():
                     or row['config_hash'] != manifest_hash(previous) or row['arrival_fix_source_sha256'] != previous['arrival_fix_source_sha256']
                     or not row['correctness_pass'] or not row['normal_completion_verified'] or not row['resident_state_verified']
                     or not row['rank_assignment_agreement'] or row['noop_guard_ranks'] or row['migration_bytes']
-                    or sorted(row['physical_gpu_uuids']) != sorted(GPU_UUIDS) or row['hostname'] != 'kh083'
+                    or sorted(row['physical_gpu_uuids']) != sorted(GPU_UUIDS) or row['hostname'] != HARDWARE_HOST
                     or row['arrival_offsets_ns'] != [0]*256 or row['horizon_ns'] != 1 or not fcfs_metrics(row)['complete']):
                 raise ValueError('Invalid baseline-only calibration')
             capacity = calibration_capacity(row['coordinator_start_ns'], row['coordinator_finish_ns'])
@@ -73,7 +73,7 @@ def main():
             arrival_fix_source_sha256=identity, arrival_fix_source_files=files,
             protocol_file_sha256=file_hash(ROOT/'docs/arrival-response-fix-protocol.md'),
             analysis_file_sha256=file_hash(ROOT/'arrival_fix/analysis.py'),
-            hardware=dict(hostname='kh083', gpu_uuids=GPU_UUIDS, world_size=2, interconnect='NV6'),
+            hardware=dict(hostname=HARDWARE_HOST, gpu_uuids=GPU_UUIDS, world_size=2, interconnect='NV6'),
             order_seed=471421, jobs_per_trial=256,
             matrix=dict(arrival_blocks=blocks, batches=[128, 1024], patterns=['spread', 'cluster'],
                         rhos=[.5, .85], reps=2, arms=['native', 'fast']),

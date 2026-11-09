@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gpus-per-node=2
-#SBATCH --nodelist=kh083
+#SBATCH --nodelist=kh014
 #SBATCH --time=00:20:00
 #SBATCH --job-name=skb-arrival-fix
 #SBATCH --output=logs/%x-%j.log
