@@ -1,0 +1,46 @@
+{
+  "schema": "independent_stock_record_audit_v1",
+  "valid": true,
+  "expected_records": 6,
+  "observed_records": 6,
+  "raw_clock_records_checked": 6,
+  "groups_with_authentic_stock_routes": 6,
+  "rank_windows_reconstructed": 0,
+  "rank_forced_skip_decisions": 0,
+  "errors": [],
+  "missing": [],
+  "plan_sha256": "455682b61567ff8117ebc0151644ddc535cb2b57dcb737ddc73e315c2d93e23a",
+  "limitations": [
+    "Authenticates saved native route tensors and reconstructs counts; does not independently rerun CUDA/router kernels.",
+    "Numerical correctness is all4112 batches against stockoff, sampled64tokens against FP32, and16 whole postflight batches; full-slot weight checks are native assertions.",
+    "Async controller tail is post-output extent, not exclusive controller cost; per-rank host-return timestamps may straddle rank0 observation end.",
+    "No new statistical inference or performance selection."
+  ],
+  "record_files": {
+    "stock-gsm8k-pilot-01.jsonl": {
+      "stored_sha256": "b69fff5597d5d7c89226acade01b4ff02ad057863bec5d588f517c6f4838fda9",
+      "original_bytes_sha256": "b69fff5597d5d7c89226acade01b4ff02ad057863bec5d588f517c6f4838fda9"
+    },
+    "stock-gsm8k-pilot-02.jsonl": {
+      "stored_sha256": "62e0dea7fa73245718231cded9f3432d6f14b189b876df36a045d7acada63162",
+      "original_bytes_sha256": "62e0dea7fa73245718231cded9f3432d6f14b189b876df36a045d7acada63162"
+    },
+    "stock-mbpp-pilot-01.jsonl": {
+      "stored_sha256": "8f8d260b5d15108a91b32bd064903f934cd491c26d9d91d573a3e94eb96aa2ca",
+      "original_bytes_sha256": "8f8d260b5d15108a91b32bd064903f934cd491c26d9d91d573a3e94eb96aa2ca"
+    },
+    "stock-mbpp-pilot-02.jsonl": {
+      "stored_sha256": "3a7a6ec54bc67afae58b682201617726f33ffd813b031176678d940e5b503153",
+      "original_bytes_sha256": "3a7a6ec54bc67afae58b682201617726f33ffd813b031176678d940e5b503153"
+    },
+    "stock-wildchat-pilot-01.jsonl": {
+      "stored_sha256": "4ff4ee6dd05c1b23f20a4f59ab0400975d45cadc3da3c1e46328914ad71add59",
+      "original_bytes_sha256": "4ff4ee6dd05c1b23f20a4f59ab0400975d45cadc3da3c1e46328914ad71add59"
+    },
+    "stock-wildchat-pilot-02.jsonl": {
+      "stored_sha256": "285fc3cc5d1e46abdb01fa920dd317bb4d422d90116e48c30882a906deb70f4c",
+      "original_bytes_sha256": "285fc3cc5d1e46abdb01fa920dd317bb4d422d90116e48c30882a906deb70f4c"
+    }
+  },
+  "auditor_sha256": "20d18bcbcb1358e2ee462b69b35a262daaf92f9543040a9db581c351de3b38b7"
+}
