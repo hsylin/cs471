@@ -1,0 +1,196 @@
+{
+  "status": "verified",
+  "source_commit": "4e1b1de4d31ecc0c0476534a4d42e92f37856ac8",
+  "source_tree": "d54bad5f93432d6cdd99a0c8ecb84fbf68a2f490",
+  "clean_archive_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+  "original_repository_edited": false,
+  "tracked_files_verified_against_commit": 654,
+  "tracked_bytes_verified": 526892066,
+  "tracked_blob_inventory_sha256": "f60f6ec7da8fe2f8b1cd3322dd2794b1262829f1494a2c4d42482663b8135327",
+  "python_executable": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+  "python_version": "3.13.7 (main, Aug 14 2025, 11:12:11) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "archive",
+        "--format=tar",
+        "4e1b1de4d31ecc0c0476534a4d42e92f37856ac8"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+        "-m",
+        "optimization.analysis",
+        "select",
+        "--manifest",
+        "configs/optimization-tuning-frozen-v1.json",
+        "--records",
+        "results/optimization/tuning/records.jsonl.gz",
+        "--output",
+        "reproduced/selection.json"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+        "-m",
+        "optimization.analysis",
+        "report",
+        "--manifest",
+        "configs/optimization-final-frozen-v1.json",
+        "--records",
+        "results/optimization/final/records.jsonl.gz",
+        "--output-dir",
+        "reproduced/analysis",
+        "--no-plots"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+        "scripts/audit_optimization_inputs.py",
+        "--capture-dir",
+        "results/optimization/capture",
+        "--output-prefix",
+        "reproduced/input-audit"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+        "scripts/audit_optimization_routing.py",
+        "--manifest",
+        "configs/optimization-final-frozen-v1.json",
+        "--records",
+        "results/optimization/final/records.jsonl.gz",
+        "--capture-dir",
+        "results/optimization/capture",
+        "--output",
+        "reproduced/routing-audit.json"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+        "scripts/audit_optimization_tuning.py",
+        "--manifest",
+        "configs/optimization-tuning-frozen-v1.json",
+        "--records",
+        "results/optimization/tuning/records.jsonl.gz",
+        "--selection",
+        "results/optimization/tuning/selection.json",
+        "--tuning-dir",
+        "results/optimization/tuning",
+        "--output",
+        "reproduced/tuning-audit.json"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+        "scripts/verify_optimization_results.py",
+        "--manifest",
+        "configs/optimization-final-frozen-v1.json",
+        "--records",
+        "results/optimization/final/records.jsonl.gz",
+        "--report",
+        "reproduced/analysis/summary.json",
+        "--selection",
+        "results/optimization/tuning/selection.json",
+        "--pilots",
+        "configs/optimization-tuning-frozen-v1.json",
+        "configs/optimization-validation-frozen-v1.json",
+        "--output",
+        "reproduced/statistical-audit.json"
+      ],
+      "cwd": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-clean-reproduction-v1",
+      "exit_code": 0
+    }
+  ],
+  "archive_extraction": "Streamed git archive tar into a new empty directory with Python tarfile data filter; no working-tree checkout or GPU execution.",
+  "selected_configs_match": true,
+  "candidate_results_and_selection_rule_match_exactly": true,
+  "selected_configs": {
+    "128": {
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "config": {
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      }
+    },
+    "1024": {
+      "candidate_id": "DEFAULT",
+      "config": null
+    }
+  },
+  "selection_file_difference_scope": "Only record_files_sha256 differs: archived reproduction reads .jsonl.gz, original selection read plaintext; portable audit validates the original decompressed byte SHA.",
+  "tuning_records_decompressed_sha256": "252d49218b3c0f9b70bcfb81d1f9db013533a11c970b3ca07c99c92a19054fea",
+  "final_records_decompressed_sha256": "b250e2b9b7a0d0a2c95b181a01817ecb0371275a3c187d07252a7b523b0678e6",
+  "final_summary_semantically_equal": true,
+  "final_summary_byte_identical": true,
+  "final_summary_numeric_comparisons": 2115,
+  "final_summary_maximum_numerical_difference": 0.0,
+  "independent_statistics_maximum_numerical_difference": 2.220446049250313e-16,
+  "final_records": 512,
+  "matched_four_arm_groups": 128,
+  "source_blocks": 8,
+  "primary_useful_gain": "fail",
+  "stable_guard": "pass",
+  "acceptance": "fail",
+  "input_audit": {
+    "status": "verified",
+    "banks": 10,
+    "replays": 80,
+    "captured_token_records": 40960,
+    "all_artifact_and_content_hashes_verified": true,
+    "all_replay_indices_independently_regenerated": true,
+    "previous_bank_comparison": "Not requested; this audit verifies current corpus pins, captures and replay construction."
+  },
+  "routing_audit": {
+    "status": "verified",
+    "records": 512,
+    "actual_logged_windows_checked": 3584,
+    "all_native_physical_assignments_equal_cpu_reconstruction": true,
+    "all_kernel_and_repetition_policy_trajectories_exact": true
+  },
+  "files_sha256": {
+    "configs/optimization-tuning-frozen-v1.json": "c815502062bd163a08cd733de7a35a09986967762aa973fc98b890b388886338",
+    "configs/optimization-validation-frozen-v1.json": "96ba67a755fe1bb1103ff1c366c074b41ad70e2dd2863b3f26957fa40eb94e49",
+    "configs/optimization-final-frozen-v1.json": "5e0c604b4c9e9b1eca4efe12c087a97fa176f933e809d8be3a2a397ca87b8a46",
+    "results/optimization/tuning/records.jsonl.gz": "78bd0f09bbbd9c35b44518970b9212ae926a07292878a92ce48cffb6e4fc5b3f",
+    "results/optimization/tuning/selection.json": "2bf8788b9a8f8225f27048ad1b8ba847b7d0de678b67601cbcfe1ea9be136775",
+    "results/optimization/final/records.jsonl.gz": "43d85c0686633d2d4adf31ecad0f4096af12a7bd2da3e6a71bc08e4a7830185d",
+    "results/optimization/analysis/summary.json": "96c531f963ad05a6ad4dbaad552c36cf0fc1ce9fbd570e97f2f3eb758cb1de17",
+    "reproduced/selection.json": "16656069ccbb9ff28234a3d81e0211460417695fccadc64ea560d55365b2fa77",
+    "reproduced/analysis/summary.json": "96c531f963ad05a6ad4dbaad552c36cf0fc1ce9fbd570e97f2f3eb758cb1de17",
+    "reproduced/statistical-audit.json": "1a3d33f2f10c8c93df05104bd34923bb6d3814ec65f5abe01daa40b2dec63f2c",
+    "reproduced/tuning-audit.json": "e60a73a1534af5a68f9fd269cec0c0928c59ff941ac1622befc180033abc3bc8",
+    "reproduced/input-audit.json": "3112d2c780c1c1b9f6866da89c000cd1fef1cf8d2e94a91aac896724e5254814",
+    "reproduced/routing-audit.json": "1602895d5aa8fb7a193b01f3c78d33e58a3e9b505c82dfd1e8e9236e0a0abb33"
+  },
+  "limitations": [
+    "CPU reproduction by the same team in an existing analysis environment, not an external laboratory or freshly provisioned dependency environment.",
+    "No GPU measurements, pretrained model forward passes, capture generation, or profiling were rerun.",
+    "Statistics reproduce the frozen finite-corpus single-allocation analysis; they do not establish general production or hardware-day uncertainty.",
+    "The clean archive was exact for all tracked files; reproduced/ outputs and Python bytecode caches were added only in that isolated directory."
+  ]
+}

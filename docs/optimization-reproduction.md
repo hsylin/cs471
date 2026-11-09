@@ -3,18 +3,20 @@
 This guide separates recomputing the archived analysis on a CPU from making new
 GPU timing observations. CPU reproduction should recover the recorded numerical
 analysis; a GPU rerun will produce new elapsed times. Neither check is an
-independent external laboratory replication. The design and decision rules are in
+external laboratory replication. The design and decision rules are in
 [optimization-protocol.md](optimization-protocol.md).
 
-This is the **v1 reproduction layout**, prepared before all measurements and
-reports are available. Commands below that use pending artifacts become usable
-when the complete archive is populated. Their presence here makes no claim about
-an optimization outcome. If an implementation correction requires a new frozen
-version, retain v1 and document the replacement rather than overwrite it.
+All v1 stages are complete: 192 tuning trials, 64 policy validation runs,
+512 held-out policy runs and 16 recorded rank-level profile traces. Clean
+CPU reproduction from data commit `4e1b1de4d31ecc0c0476534a4d42e92f37856ac8`
+recovered the committed final summary byte for byte; the independent numerical,
+input and routing audits also passed. See the
+[reproduction record](../results/optimization/audits/clean-reproduction-verification.json).
+This reproduces archived calculations, not a new GPU timing experiment.
 
 ## Archive and identity
 
-Run commands from the repository root. The intended archive is:
+Run commands from the repository root. The archive is:
 
 ```text
 configs/optimization-tuning-frozen-v1.json
@@ -40,7 +42,7 @@ The tuning matrix contains 192 trials: two pilot banks × two domains × two bat
 sizes × eight declared choices × three technical repetitions. Validation has 64
 complete policy runs. The final matrix has 512 runs: eight held-out blocks × four
 regimes × two batches × two repetitions × four DEFAULT/TUNED and B3/SKIP arms.
-These counts describe the design, not a claim that pending runs succeeded.
+Every declared run completed and passed its required checks.
 
 ## CPU reproduction
 

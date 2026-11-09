@@ -1,5 +1,22 @@
 # SkewBench
 
+**Completed kernel-optimization follow-up.** A bounded eight-option native
+kernel search and 512 fresh held-out policy runs produce a 0.42% lower B3 runtime
+estimate (95% block interval: 0.30–0.55% lower), below the frozen 5% target. The
+stable guard passes. Identical-config controls also show sub-percent differences,
+limiting causal attribution of that small estimate. The selected batch-128
+N-tile change saves only 4–6 microseconds inside the expert GEMMs. At batch 1024,
+selection retains DEFAULT. Fixed placement with default kernels is descriptively
+2.90% lower elapsed time than B3 on these changing traces; it remains an existing control,
+not a new algorithm or a full-serving claim.
+
+Read the [kernel evaluation](docs/optimization-evaluation.md),
+[frozen protocol](docs/optimization-protocol.md),
+[raw artifacts](results/optimization/README.md), and
+[reproduction instructions](docs/optimization-reproduction.md).
+All 206 CPU tests and independent statistics, routing, input and profile audits
+pass; clean-checkout CPU reproduction recovers the final summary byte for byte.
+
 **Completed follow-up: candidate payback.** The literature-guided follow-up uses
 authentic Qwen layer inputs and 1,536 held-out three-arm measurements on two
 H100s. Native and single-copy placements have small resident gains (0.77% and
@@ -35,7 +52,7 @@ Read the [final evaluation](docs/final-evaluation.md),
 [raw-data index](results/README.md), and
 [frozen analysis](results/final/analysis/summary.json).
 
-## Scope
+## Original-study scope
 
 - vLLM v0.31.0, source commit `db9527a46873454610df6dbedf79a36d6bf1a7f6`.
 - Explicitly synchronous native EPLB layer execution, with its execution and
@@ -53,7 +70,7 @@ gate), B4 (stability plus improvement), B5 (one frozen cooldown plus improvement
 and SKIP (fixed placement with the same replica budget). B0 and B1 are
 no-additional-replica contextual controls.
 
-## Reproducibility contract
+## Original-study reproducibility contract
 
 Pilot and final trace seeds are disjoint. Thresholds, cadence, cooldown, batch
 sizes, trace parameters, measurement horizon, and replicate count must be frozen
