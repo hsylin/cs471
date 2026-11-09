@@ -1,0 +1,353 @@
+{
+  "payback_schema_version": 1,
+  "schema_version": 1,
+  "name": "payback-pilot-one_copy",
+  "split": "pilot",
+  "environment": {
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "model_id": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "layer_id": 0,
+    "hardware": "2 x NVIDIA H100 94 GB, same node, NV6 interconnect",
+    "gpu_name_contains": "H100",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "weights_source": "pretrained_checkpoint_layer",
+    "input_source": "Real teacher-forced causal-prefill hidden/router/weights; constructed replay of disjoint source-document blocks",
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61"
+  },
+  "matrix": {
+    "arms": [
+      "KEEP",
+      "PREINSTALLED",
+      "CHARGED"
+    ],
+    "regimes": [
+      "stable",
+      "transient",
+      "persistent",
+      "switching"
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "horizons": [
+      128,
+      512
+    ],
+    "block_ids": [
+      "pilot-01",
+      "pilot-02"
+    ],
+    "candidate_ids": [
+      "one_copy"
+    ],
+    "repetitions": 3
+  },
+  "replay": {
+    "window_steps": 16,
+    "rebalance_interval": 64,
+    "decision_step": 127,
+    "observation_warmup_steps": 32,
+    "prefix_policy": "B3",
+    "prefix_commit_steps": [
+      63
+    ],
+    "raw_steps": 672,
+    "cases": [
+      {
+        "regime": "stable",
+        "phase_steps": 120,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "transient",
+        "phase_steps": 120,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "persistent",
+        "phase_steps": 120,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "switching",
+        "phase_steps": 112,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      }
+    ],
+    "description": "Phases count measured engine steps after32 untimed observation inputs; common prefix B3 commit63, snapshot after127.",
+    "repeat_steps": 1024
+  },
+  "execution": {
+    "conditioning_steps": 2,
+    "order_seed": 471,
+    "timing_contract": "Common candidate formation and prefix excluded; charge candidate transfer/commit only in CHARGED. No future updates.",
+    "planner_cost": "excluded_common_sunk_before_snapshot"
+  },
+  "policy": {
+    "epsilon": 0.02,
+    "tau": 0.1,
+    "cooldown_steps": 256,
+    "replica_budget": 32
+  },
+  "candidate_definitions": {
+    "native": "Unchanged native planner output using observation prefix only",
+    "one_copy": "Exactly one replica-slot change chosen by current-window peak-load reduction; deterministic recorded tie rule; no future information"
+  },
+  "analysis": {
+    "primary_horizon": 512,
+    "useful_gain_ratio": 0.95,
+    "stable_ratio_limit": 1.02,
+    "minimum_independent_blocks": 8,
+    "bootstrap_samples": 20000,
+    "bootstrap_seed": 471,
+    "independent_unit": "Fixed source-document pair, under a finite-corpus block-resampling assumption",
+    "pilot_minimum_payback_seconds": 0.001,
+    "pilot_required_distinct_blocks": 2,
+    "pilot_positive_repetitions": 2,
+    "interval_scope": "Describes variation across the hand-selected corpus; disjoint documents do not establish production-population independence."
+  },
+  "design": {
+    "pilot_initial_repetitions": [
+      0
+    ],
+    "pilot_confirmation_repetitions": [
+      1,
+      2
+    ],
+    "pilot_confirmation_regimes": [
+      "transient",
+      "persistent",
+      "switching"
+    ],
+    "pilot_confirmation_horizons": [
+      512
+    ],
+    "pilot_max_arm_runs_per_candidate": 168,
+    "pilot_confirmation_trigger": "At least two changing H512 states from distinct blocks have at least 1 ms charged payback in repetition 0; confirm all twelve changing H512 states.",
+    "pilot_robust_gate": "Mean payback at least 1 ms and at least two of three repetitions positive, in at least two states from distinct blocks.",
+    "optional_one_copy_trigger": "Native robust pilot gate fails; no other candidate families.",
+    "final_candidates_fixed": [
+      "native",
+      "one_copy"
+    ],
+    "final_arm_runs": 1536,
+    "final_policy_selection_permitted": false
+  },
+  "required_record_metadata": {
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "dtype": "bfloat16",
+    "world_size": 2,
+    "native_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "source_restore_verified": true,
+    "candidate_weights_verified": true,
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+    "commit_completed": true,
+    "expected_arm_weights_verified": true
+  },
+  "blocks": [
+    {
+      "block_id": "pilot-01",
+      "source_document_ids": [
+        "gutenberg-11",
+        "cpython-Lib-heapq.py"
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "source_document_ids": [
+        "gutenberg-84",
+        "cpython-Lib-statistics.py"
+      ]
+    }
+  ],
+  "tapes": [
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-stable-b128.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "cec324a76ef4504bebdd5bf797418c6cdce9574e8bab5331fe8be507018efb66"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-transient-b128.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "5fe0b0b984d82a1cc7b54aeafdc7f8d57bd26836dda32803d249414ce9dc3ead"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-persistent-b128.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "1310687d31744e4f4d02a8caebe87491fd456149eae4c6d9d835b3985d7cf6ab"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-switching-b128.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "a5ffd1ed69f72817d3ebd5cf09d21130205feb4692be44c3334db7effe007ec2"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-stable-b1024.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "e7b85682e6e6c730ffff9ff4e2e96622bb1aea8327a1ba08b040b14ca49fcb1e"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-transient-b1024.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "9d9f550e3a66fcf006e4d1155932703a9c7911b680d9dc548c208b4e1b1803ce"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-persistent-b1024.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "89a197be2901271fb755418c241fbeedf6d2148e525d2f558796c3474405b4a0"
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-01.npz",
+      "replay_path": "tapes-v2/pilot-01-switching-b1024.npz",
+      "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+      "replay_sha256": "a89223b724d85a97bd0a15f6b9c6de4da4c46a875e9c260abed8c88d3817928f"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-stable-b128.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "10b71d3e8cef1d2a0a1d72dd0b927af0fbff74d998baedb11e9ead359450622b"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-transient-b128.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "eaaa838966b971eb01a79d8499c58e9c727efddf5c05c4ce44aab787025d14d8"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-persistent-b128.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "c3b7b59f92e2a6c6e4f79cf9e7add58f9b05fee7328fd88f4161d1b35d3907a0"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-switching-b128.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "cc037300d1bd93abd1de5447c06aaf13d32df25b82eca16a263577eee2f93dfc"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-stable-b1024.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "309b292773ca835341fab01e3da1f3688c72ba61d35398dbe0ebad07da81f8ac"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-transient-b1024.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "dd7e5c2f2f8063d50cf21f680bbd3ac629f413140676822e1964bb42f8806532"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-persistent-b1024.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "e83f1493088e5f80fc7465bc054dbb32f098d125fdae01d778b040af2cdffa35"
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "capture_path": "banks/pilot-02.npz",
+      "replay_path": "tapes-v2/pilot-02-switching-b1024.npz",
+      "capture_sha256": "7de3dff8768b648c7cb466d83d2cee76ee55af71e79b96f7d74770b821d6be0a",
+      "replay_sha256": "b74358b2922eb3c87a1a537556003bdcb15eeca4559c7b542b29582303f40a9a"
+    }
+  ],
+  "source_manifest": {
+    "path": "../followup/corpus/sources.json",
+    "sha256": "517b0bce79080c9d959d55200bb49e2d9cb1172c2d183699d26e010384f0d080"
+  },
+  "followup_source_files": {
+    "followup/__init__.py": "81e9352a027137d135bfba4e17dc132fefcede2c799b54aa02537efc59ead174",
+    "followup/payback.py": "620b1d0532163c382c11baa4afc230ba530e1e4fe1b2a3b7f6cc35260fb4f0f1",
+    "followup/payback_analysis.py": "f8935281d22485e3fd65832fc41261ad94b26e7c32dbed2e871b2411316d59c0",
+    "followup/profile_layer.py": "f9cfac3936b187b04b9fa70f52ab7770915ac019c6ab0d2b1025a51eab3cb0c4",
+    "followup/router_tapes.py": "4553cc578daf81ac33a0ed34d7dd0ba6176e3ce428b0c4a994c3c46c4bd5fde6",
+    "scripts/capture_router_tapes.py": "b78fd4af8e15f828bf03d6bc94d2ea8d89ed03c6254d8a8b8bd2fcf5b4ec659b",
+    "scripts/compose_router_tapes.py": "d3bed5db42d2de9643bfe7777232ce73ccbf06b45060edad0f0e27ec7a513706"
+  },
+  "composition_provenance": {
+    "schema": "qwen_router_replay_index_v2",
+    "composition_script_sha256": "d3bed5db42d2de9643bfe7777232ce73ccbf06b45060edad0f0e27ec7a513706",
+    "router_tapes_module_sha256": "4553cc578daf81ac33a0ed34d7dd0ba6176e3ce428b0c4a994c3c46c4bd5fde6",
+    "contract": {
+      "raw_steps": 672,
+      "warmup_steps": 32,
+      "decision_step": 127,
+      "phase_steps": 120,
+      "switching_phase_steps": 112,
+      "duration_steps": 16,
+      "repeat_steps": 1024,
+      "seed": 471,
+      "natural_temporal_demand": false
+    },
+    "capture_provenance": "Banks and original capture-script hashes retained; no recapture or mutation"
+  }
+}
