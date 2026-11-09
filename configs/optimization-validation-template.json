@@ -1,0 +1,272 @@
+{
+  "optimization_schema_version": 1,
+  "schema_version": 1,
+  "name": "optimization-validation",
+  "phase": "validation",
+  "split": "pilot",
+  "environment": {
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "model_id": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "layer_id": 0,
+    "hardware": "2 x NVIDIA H100 94 GB, same node, NV6 interconnect",
+    "gpu_name_contains": "H100",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "weights_source": "pretrained_checkpoint_layer",
+    "input_source": "Real teacher-forced causal-prefill hidden/router/weights; constructed replay of disjoint source-document blocks",
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+    "optimization_sha256": "UNSET_AFTER_IMPLEMENTATION_SMOKE",
+    "weights_sha256": "80046eef8f68a7afd8d165e582190900854faa44076bd22c6a869730e26d4096"
+  },
+  "trace": {
+    "measured_steps": 512,
+    "warmup_steps": 32,
+    "window_steps": 16,
+    "raw_steps": 544,
+    "seed": 10471,
+    "cases": [
+      {
+        "regime": "stable",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "transient",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "persistent",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "switching",
+        "phase_steps": 112,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      }
+    ]
+  },
+  "policy": {
+    "replica_budget": 32,
+    "rebalance_interval": 64,
+    "epsilon": 0.02,
+    "tau": 0.1,
+    "cooldown_steps": 256
+  },
+  "execution": {
+    "order_seed": 10471,
+    "conditioning_steps": 2,
+    "timing_scope": "512 completed policy steps including observation/planning/native commits; input materialization and32 observation inputs excluded",
+    "terminal_proposal_suppressed": true
+  },
+  "tuning": {
+    "forwards_per_trial": 32,
+    "source_map": "initial",
+    "tie_ratio": 1.01,
+    "max_pilot_cell_ratio": 1.02,
+    "candidate_configs": {
+      "DEFAULT": null,
+      "M16_N64_K64_W4_S3": {
+        "BLOCK_SIZE_M": 16,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      "M16_N128_K64_W4_S3": {
+        "BLOCK_SIZE_M": 16,
+        "BLOCK_SIZE_N": 128,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      "M32_N64_K64_W4_S3": {
+        "BLOCK_SIZE_M": 32,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      "M32_N128_K64_W4_S3": {
+        "BLOCK_SIZE_M": 32,
+        "BLOCK_SIZE_N": 128,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      "M64_N64_K64_W4_S3": {
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      "M64_N128_K64_W4_S3": {
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 128,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      "M128_N64_K64_W8_S3": {
+        "BLOCK_SIZE_M": 128,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 8,
+        "num_stages": 3
+      }
+    }
+  },
+  "selected_configs": {
+    "128": {
+      "candidate_id": "UNSET_PILOT_SELECTION",
+      "config": "UNSET_PILOT_SELECTION"
+    },
+    "1024": {
+      "candidate_id": "UNSET_PILOT_SELECTION",
+      "config": "UNSET_PILOT_SELECTION"
+    }
+  },
+  "analysis": {
+    "primary_contrast": "kernel_B3",
+    "secondary_contrast": "kernel_SKIP",
+    "useful_gain_ratio": 0.95,
+    "stable_ratio_limit": 1.02,
+    "minimum_source_blocks": 8,
+    "bootstrap_samples": 20000,
+    "bootstrap_seed": 10471,
+    "interval_scope": "Finite hand-selected source corpus under block-resampling assumption; not a random production population",
+    "cell_families": {
+      "changing": 6,
+      "stable": 2
+    }
+  },
+  "required_record_metadata": {
+    "native_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+    "optimization_sha256": "UNSET_AFTER_IMPLEMENTATION_SMOKE",
+    "source_restore_verified": true,
+    "expected_arm_weights_verified": true,
+    "commit_completed": true,
+    "logical_routing_preserved": true
+  },
+  "blocks": [
+    {
+      "block_id": "opt-pilot-01",
+      "source_document_ids": [
+        "gutenberg-768",
+        "cpython-Lib-random.py"
+      ]
+    },
+    {
+      "block_id": "opt-pilot-02",
+      "source_document_ids": [
+        "gutenberg-33",
+        "cpython-Lib-string.py"
+      ]
+    }
+  ],
+  "banks": [],
+  "tapes": [],
+  "matrix": {
+    "kernel_variants": [
+      "DEFAULT",
+      "TUNED"
+    ],
+    "policies": [
+      "B3",
+      "SKIP"
+    ],
+    "regimes": [
+      "stable",
+      "transient",
+      "persistent",
+      "switching"
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "block_ids": [
+      "opt-pilot-01",
+      "opt-pilot-02"
+    ],
+    "repetitions": 1
+  },
+  "source_manifest": {
+    "path": "../optimization/corpus/sources.json",
+    "sha256": "421ac030ba4d93d7eeb1b6f2f2af68cd6dc998c5f2c7be62fabdc6e58c7e5f4e"
+  },
+  "excluded_source_document_ids": [
+    "gutenberg-11",
+    "cpython-Lib-heapq.py",
+    "gutenberg-84",
+    "cpython-Lib-statistics.py",
+    "gutenberg-1342",
+    "cpython-Lib-fractions.py",
+    "gutenberg-2701",
+    "cpython-Lib-difflib.py",
+    "gutenberg-98",
+    "cpython-Lib-argparse.py",
+    "gutenberg-1661",
+    "cpython-Lib-pathlib.py",
+    "gutenberg-345",
+    "cpython-Lib-functools.py",
+    "gutenberg-174",
+    "cpython-Lib-unittest-case.py",
+    "gutenberg-43",
+    "cpython-Lib-json-decoder.py",
+    "gutenberg-35",
+    "cpython-Lib-csv.py"
+  ],
+  "default_configs": {
+    "128": {
+      "BLOCK_SIZE_M": 64,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 4,
+      "num_stages": 3
+    },
+    "1024": {
+      "BLOCK_SIZE_M": 128,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 8,
+      "num_stages": 3
+    }
+  }
+}

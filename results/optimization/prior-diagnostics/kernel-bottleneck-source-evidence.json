@@ -1,0 +1,464 @@
+{
+  "schema_version": 1,
+  "profiles": [
+    {
+      "file": "work/payback-results/profile/batch1024-domain0-rank0.json",
+      "sha256": "f527ed1eca2223ef57f3426bfd5bc4794e1509274a45feea27852d8ea3652fc7",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 468.129,
+          "us_per_forward": 58.516125
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 23.137999999999998,
+          "us_per_forward": 2.8922499999999998
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 3080.863,
+          "us_per_forward": 385.107875
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 476.672,
+          "us_per_forward": 59.584
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch1024-domain0-rank1.json",
+      "sha256": "575e3d7a8eee3c75808ac5ce6e130e6ebf6668b925ff24cb9a140a455ca11622",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 471.70700000000005,
+          "us_per_forward": 58.963375000000006
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 23.199999999999996,
+          "us_per_forward": 2.8999999999999995
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 3052.9729999999995,
+          "us_per_forward": 381.62162499999994
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 682.97,
+          "us_per_forward": 85.37125
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch1024-domain1-rank0.json",
+      "sha256": "85d2db49ce2e3301ce4bf5e8c0b8db671aecdb0d2351b3851e162fa88662aec3",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 465.0879999999998,
+          "us_per_forward": 58.135999999999974
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 23.072999999999997,
+          "us_per_forward": 2.8841249999999996
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 3041.3389999999995,
+          "us_per_forward": 380.16737499999994
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 498.687,
+          "us_per_forward": 62.335875
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch1024-domain1-rank1.json",
+      "sha256": "90193372c398677be5d2c807f59c18ce93a1424768fe371eb7447f060c1a22af",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 466.1429999999999,
+          "us_per_forward": 58.26787499999999
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 23.359999999999996,
+          "us_per_forward": 2.9199999999999995
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 3075.0840000000003,
+          "us_per_forward": 384.38550000000004
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 469.502,
+          "us_per_forward": 58.68775
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch128-domain0-rank0.json",
+      "sha256": "1a6abb78956ed6a74992f8d97027d24150440da6da6b76a57974402524ae59dd",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 186.91199999999998,
+          "us_per_forward": 23.363999999999997
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 23.295999999999996,
+          "us_per_forward": 2.9119999999999995
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 2622.78,
+          "us_per_forward": 327.8475
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 2357.95,
+          "us_per_forward": 294.74375
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch128-domain0-rank1.json",
+      "sha256": "406937f7ab1ac2149f4ea2797e60b2365787919c78237a596553ccbd6fa36abd",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 187.48999999999995,
+          "us_per_forward": 23.436249999999994
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 24.738,
+          "us_per_forward": 3.09225
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 2596.4099999999994,
+          "us_per_forward": 324.5512499999999
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 145.695,
+          "us_per_forward": 18.211875
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch128-domain1-rank0.json",
+      "sha256": "6e77825eeef19afef49258fba55accfdae5fbf2af2819fa4e8e39334270455c0",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 186.75799999999995,
+          "us_per_forward": 23.344749999999994
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 24.799999999999997,
+          "us_per_forward": 3.0999999999999996
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 2669.0809999999997,
+          "us_per_forward": 333.63512499999996
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 344.005,
+          "us_per_forward": 43.000625
+        }
+      }
+    },
+    {
+      "file": "work/payback-results/profile/batch128-domain1-rank1.json",
+      "sha256": "de7d5d1958d4d622b6b325da281df94df40f1cd85fe89104a50f7666458fa21a",
+      "filter": "cat == 'kernel' and ph == 'X'",
+      "forwards": 8,
+      "groups": {
+        "other_kernels": {
+          "calls": 64,
+          "total_us": 189.47100000000006,
+          "us_per_forward": 23.683875000000008
+        },
+        "mapping": {
+          "calls": 8,
+          "total_us": 23.455999999999996,
+          "us_per_forward": 2.9319999999999995
+        },
+        "fused_expert_gemm": {
+          "calls": 16,
+          "total_us": 2706.6769999999997,
+          "us_per_forward": 338.33462499999996
+        },
+        "nccl_allreduce": {
+          "calls": 8,
+          "total_us": 134.558,
+          "us_per_forward": 16.81975
+        }
+      }
+    }
+  ],
+  "padding": [
+    {
+      "batch_tokens": 128,
+      "domain": 0,
+      "tokens_by_rank": [
+        513,
+        511
+      ],
+      "active_experts": [
+        72,
+        71
+      ],
+      "estimates": [
+        {
+          "block_m": 16,
+          "local_padded_rows_by_rank": [
+            1168,
+            1152
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            2.276803118908382,
+            2.2544031311154598
+          ]
+        },
+        {
+          "block_m": 32,
+          "local_padded_rows_by_rank": [
+            2304,
+            2272
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            4.491228070175438,
+            4.446183953033268
+          ]
+        },
+        {
+          "block_m": 64,
+          "local_padded_rows_by_rank": [
+            4608,
+            4544
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            8.982456140350877,
+            8.892367906066536
+          ]
+        },
+        {
+          "block_m": 128,
+          "local_padded_rows_by_rank": [
+            9216,
+            9088
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            17.964912280701753,
+            17.78473581213307
+          ]
+        }
+      ]
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 1,
+      "tokens_by_rank": [
+        505,
+        519
+      ],
+      "active_experts": [
+        74,
+        75
+      ],
+      "estimates": [
+        {
+          "block_m": 16,
+          "local_padded_rows_by_rank": [
+            1184,
+            1200
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            2.3445544554455444,
+            2.3121387283236996
+          ]
+        },
+        {
+          "block_m": 32,
+          "local_padded_rows_by_rank": [
+            2368,
+            2400
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            4.689108910891089,
+            4.624277456647399
+          ]
+        },
+        {
+          "block_m": 64,
+          "local_padded_rows_by_rank": [
+            4736,
+            4800
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            9.378217821782178,
+            9.248554913294798
+          ]
+        },
+        {
+          "block_m": 128,
+          "local_padded_rows_by_rank": [
+            9472,
+            9600
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            18.756435643564355,
+            18.497109826589597
+          ]
+        }
+      ]
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 0,
+      "tokens_by_rank": [
+        4106,
+        4086
+      ],
+      "active_experts": [
+        77,
+        76
+      ],
+      "estimates": [
+        {
+          "block_m": 16,
+          "local_padded_rows_by_rank": [
+            4672,
+            4736
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            1.1378470530930347,
+            1.1590797846304455
+          ]
+        },
+        {
+          "block_m": 32,
+          "local_padded_rows_by_rank": [
+            5312,
+            5312
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            1.2937165124208476,
+            1.3000489476260402
+          ]
+        },
+        {
+          "block_m": 64,
+          "local_padded_rows_by_rank": [
+            6976,
+            6848
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            1.6989771066731612,
+            1.6759667156142928
+          ]
+        },
+        {
+          "block_m": 128,
+          "local_padded_rows_by_rank": [
+            9856,
+            9728
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            2.4003896736483195,
+            2.3808125305922663
+          ]
+        }
+      ]
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 1,
+      "tokens_by_rank": [
+        4097,
+        4095
+      ],
+      "active_experts": [
+        76,
+        77
+      ],
+      "estimates": [
+        {
+          "block_m": 16,
+          "local_padded_rows_by_rank": [
+            4656,
+            4704
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            1.1364412985111056,
+            1.1487179487179486
+          ]
+        },
+        {
+          "block_m": 32,
+          "local_padded_rows_by_rank": [
+            5312,
+            5408
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            1.2965584574078595,
+            1.3206349206349206
+          ]
+        },
+        {
+          "block_m": 64,
+          "local_padded_rows_by_rank": [
+            6080,
+            6272
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            1.484012692213815,
+            1.5316239316239317
+          ]
+        },
+        {
+          "block_m": 128,
+          "local_padded_rows_by_rank": [
+            9728,
+            9856
+          ],
+          "padding_to_actual_assignments_by_rank": [
+            2.374420307542104,
+            2.4068376068376067
+          ]
+        }
+      ]
+    }
+  ],
+  "padding_scope": "Exact integer tiling-row proxy from recorded native per-slot counts; not a measured speedup, memory traffic or hardware instruction count"
+}
