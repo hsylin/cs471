@@ -1,5 +1,15 @@
 # SkewBench
 
+**Completed resident-dispatch follow-up.** One fixed GPU dispatcher and 256
+fresh runs reduced completed changing-workload layer time by 3.40% (95% block
+interval: 2.99–3.85%), missing the frozen 5% target. Batch 1024 improved
+6.70–7.29% across regimes; stable batch 128 was 2.93% slower, with the 2%
+regression guard inconclusive. Both final allocations used the same two H100s.
+Read the [result and limits](docs/resident-dispatch-results.md),
+[frozen protocol amendment](docs/resident-online-validation-protocol.md), and
+[reproduction guide](docs/resident-dispatch-reproduction.md). Native SKIP remains
+the unchanged baseline; this is a fixed-map layer experiment, not a serving claim.
+
 **Completed kernel-optimization follow-up.** A bounded eight-option native
 kernel search and 512 fresh held-out policy runs produce a 0.42% lower B3 runtime
 estimate (95% block interval: 0.30–0.55% lower), below the frozen 5% target. The
