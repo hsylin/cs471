@@ -18,8 +18,8 @@
     "eplb_mode": "synchronous",
     "weights_source": "pretrained_checkpoint_layer",
     "input_source": "Seeded Gaussian hidden states with controlled synthetic logical routes",
-    "harness_sha256": "036182c3a74868375d07e3114b75266d22e12975f04880b17fe54c63f6820754",
-    "harness_revision": "faff21adae1137e93f2298790c54c0f0dc904e26"
+    "harness_sha256": "e13b464cad82c6990d0459c3aa1a523703dce4241d4caa28440d0f38dffa1498",
+    "harness_revision": "8b7acf39b667ab447c6ee102c5106ffd2ea1fa3d"
   },
   "matrix": {
     "methods": [
@@ -209,7 +209,8 @@
         "trace_variant": "core",
         "phase_steps": 0
       }
-    ]
+    ],
+    "order_seed": 471
   },
   "timing_contract": {
     "measured_steps": 512,
@@ -231,6 +232,8 @@
       480
     ],
     "terminal_proposal": "suppressed_before_planning; last input observation retained",
-    "process_transport_warmup": "Before jobs, throwaway B2 layer performs native cross-rank roll and rollback with exact weights/maps restored; same EPLB device process group; untimed startup, all subsequent admitted migrations charged"
-  }
+    "process_transport_warmup": "Before jobs, throwaway B2 layer performs native cross-rank roll and rollback with exact weights/maps restored; same EPLB device process group; untimed startup, all subsequent admitted migrations charged",
+    "extra_logical_collection": "Previous W only at measured phases R-2W through R-W-1; native current W reused; ring timestamps and exact offline trace checks required"
+  },
+  "implementation_delta_from_cooldown_pilot": "B4 unused histogram collection removed; all used observations and policy decisions require exact pilot replay equivalence. B3/B5 timed execution paths and selection parameters unchanged. Branch order balanced 4/4 independently of payback outcomes."
 }
