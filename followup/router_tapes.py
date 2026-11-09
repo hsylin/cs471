@@ -140,7 +140,7 @@ def load_router_bank(path: str | Path) -> RouterBank:
 def compose_router_tape(bank_path: str | Path, output: str | Path, *, regime: str,
                         batch_tokens: int, num_steps: int = 672, warmup_steps: int = 32,
                         phase_steps: int = 120, duration_steps: int = 16,
-                        repeat_steps: int = 128, seed: int = 471) -> RouterTape:
+                        repeat_steps: int = 1024, seed: int = 471) -> RouterTape:
     """Sample captured records without replacement within each constructed step.
 
     The same random positions are drawn regardless of the selected domain, so

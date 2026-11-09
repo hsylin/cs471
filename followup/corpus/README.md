@@ -20,3 +20,17 @@ token reuse are explicitly constructed; these are not natural request arrivals,
 autoregressive decode traces, or representative samples of production traffic.
 The finite document pairs are the comparison blocks. Additional random sampling
 seeds or repeat executions of a pair do not create independent source blocks.
+
+The v2 replay schedule contains 672 raw steps: 32 observation warmup steps,
+128 prefix steps, and up to 512 future steps. Its transient switches from prose
+to Python-source tokens at measured step 120 and returns at step 136, with no
+second transient within the tape (`repeat_steps=1024`). Persistent switches at
+120; switching alternates every 16 steps beginning at 112. The tested proposal
+is at measured step 127, after B3 has had its first proposal at step 63.
+
+The original capture job may have composed unused v1 tapes with recurrence 128.
+Retain them with their original metadata. Run `scripts/compose_router_tapes.py`
+on the existing banks with a new `tapes-v2` output directory. This records new
+composition hashes without changing captured tensors, source documents, or the
+original capture-script hashes inside the banks. The later analysis must name
+the v2 tape hashes explicitly.

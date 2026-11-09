@@ -75,9 +75,10 @@ def main() -> None:
     p.add_argument("--phase-steps", type=int, default=120)
     p.add_argument("--periodic-phase-steps", type=int, default=112)
     p.add_argument("--duration-steps", type=int, default=16)
-    p.add_argument("--repeat-steps", type=int, default=128)
+    p.add_argument("--repeat-steps", type=int, default=1024)
     p.add_argument("--local-files-only", action="store_true")
     args = p.parse_args()
+    capture_script_digest = file_sha256(__file__)
     if args.tokens_per_domain < 1024:
         p.error("At least 1024 captured records per domain are required")
     import numpy as np
@@ -235,7 +236,7 @@ def main() -> None:
             "index_sha256": file_sha256(index_path), "tokenizer_files": tokenizer_records,
             "transformers_version": transformers.__version__, "modeling_sha256": MODELING_SHA256,
             "masking_sha256": MASKING_SHA256, "torch_version": torch.__version__,
-            "capture_script_sha256": file_sha256(__file__), "correctness_pass": True,
+            "capture_script_sha256": capture_script_digest, "correctness_pass": True,
         }
         bank = save_router_bank(target, metadata, arrays)
         record = {"block_id": block["block_id"], "split": block["split"], "bank_file": str(target),

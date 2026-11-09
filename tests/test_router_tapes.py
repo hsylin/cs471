@@ -27,7 +27,7 @@ def bank(tmp_path):
 
 def make(bank, path, regime, **kw):
     return compose_router_tape(bank.path,path,regime=regime,batch_tokens=8,num_steps=672,
-                               warmup_steps=32,phase_steps=120,duration_steps=16,repeat_steps=128,**kw)
+                               warmup_steps=32,phase_steps=120,duration_steps=16,repeat_steps=1024,**kw)
 
 
 def test_real_records_preserved_and_reuse_accounted(bank,tmp_path):
@@ -50,6 +50,8 @@ def test_same_history_distinct_future_at_second_decision(bank,tmp_path):
     assert not np.array_equal(transient.indices[168],persistent.indices[168])
     assert np.all(bank.domain_ids[transient.indices[152:168]]==1)
     assert np.all(bank.domain_ids[transient.indices[:152]]==0)
+    assert np.all(bank.domain_ids[transient.indices[168:]]==0)
+    assert sum(transient.metadata["domain_schedule"])==16
     # raw159 = warm32 + measured127; complete shared B3 source history.
     assert np.array_equal(transient.indices[:160],persistent.indices[:160])
 
@@ -118,3 +120,22 @@ def test_invalid_replay_parameters(bank,tmp_path,kwargs):
     parameters=dict(regime="stable",batch_tokens=8)
     parameters.update(kwargs)
     with pytest.raises(ValueError):compose_router_tape(bank.path,tmp_path/"bad.npz",**parameters)
+
+
+def test_default_is_one_transient_and_v1_is_immutable(bank,tmp_path):
+    old=compose_router_tape(bank.path,tmp_path/"v1.npz",regime="transient",batch_tokens=8,repeat_steps=128)
+    before=old.path.read_bytes()
+    new=compose_router_tape(bank.path,tmp_path/"v2.npz",regime="transient",batch_tokens=8)
+    assert sum(old.metadata["domain_schedule"])>16
+    assert sum(new.metadata["domain_schedule"])==16
+    assert old.path.read_bytes()==before
+    assert old.bank.sha256==new.bank.sha256==bank.sha256
+
+
+def test_composer_refuses_nonempty_output_before_mutation(tmp_path):
+    script=Path(__file__).resolve().parents[1]/"scripts/compose_router_tapes.py"
+    spec=importlib.util.spec_from_file_location("compose_router_tapes",script)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    out=tmp_path/"v1";out.mkdir();marker=out/"existing";marker.write_text("preserve")
+    with pytest.raises(FileExistsError):module.compose_directory(tmp_path/"banks",out)
+    assert marker.read_text()=="preserve"
