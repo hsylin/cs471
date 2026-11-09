@@ -1,0 +1,166 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 23:10:58.748847342 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "prepare_content", "group": "fix-wildchat-final-04", "phase": "calibration"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 1522877411.371338, "record_id": "7df99545fc16bf035ddd6bf28a643bd712935cd22696385c7edf8bd3985a7139"}
+{"event": "prepare_content", "group": "fix-wildchat-final-02", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 1512520493.7646484, "record_id": "d138556cf3ffe9f34d6138ab2627348cb285a5e32f732937deabe8c7eb025432"}
+{"event": "prepare_content", "group": "fix-wildchat-final-06", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 1529260785.7109375, "record_id": "803a5f829a4e817a379b96c8aaedab9b6aa9e823c4e172bdf43f502a99fa74ac"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-07", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "stockoff", "mean_response_ns": 1498247174.364746, "record_id": "470c45e5c68ea1ce537b9f3f3e651da45ff4b95d07ea287454b81a8ff77beef5"}
+{"event": "prepare_content", "group": "fix-wildchat-final-08", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 1535027154.7141113, "record_id": "8e8db7b4dd81bf8e2a628b333a748ef1f68cbc0d00617b018b9a59713fff186e"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-08", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "stockoff", "mean_response_ns": 1474510014.6374512, "record_id": "bbd6fe896d05244cb4633c91d45dd81cc352350e3e76c420e45b705cb4659142"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-06", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 1479245676.9438477, "record_id": "363fe222c0abf9acab36e37241114d03b05193e39c68d68eb71541bc29fd00bc"}
+{"event": "prepare_content", "group": "fix-mbpp-final-01", "phase": "calibration"}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 1424363970.152832, "record_id": "f47c87b45a287c87fd4594f577db642928ae8e743d51e1b30f5cc27c8a7ba9f8"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-01", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 1489552348.40625, "record_id": "400b5eb4e71fcf748d4189f89835ca73ff4ee377476333ededf187a908ae6b6d"}
+{"event": "prepare_content", "group": "fix-wildchat-final-07", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 1533530860.4577637, "record_id": "dc218987b40e66719742335134e0fb0dd8809eaedc9e70c74ef957077d9ec725"}
+{"event": "prepare_content", "group": "fix-wildchat-final-01", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 1515056020.5141602, "record_id": "fe64129ec78ff1bde2a14a951e4ddda4bba36ba4ff451bd4320e3ffcb2672653"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-03", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 1481473234.635498, "record_id": "b78b6c4fe94687ff02b6acbcefbaacadebe2f0e1bfc45b29d2d647ef6c5ef8f4"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-05", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 1478667000.6064453, "record_id": "53133a6d3f86cc51ea86524f5be2ddc9d8fe389dcc5cbb4ea2402962ce5c8894"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-02", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 1484729842.7460938, "record_id": "d08f8c876c1bf7ce0c459e45625053ae41af79fdf65ba371a0c1627f60cf3397"}
+{"event": "prepare_content", "group": "fix-wildchat-final-03", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 1527631415.5185547, "record_id": "a7782eee14fce3cf107dcabc9d6e2bf26a49114de1ed289a1aeb186db5741ca4"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-04", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 1480088463.6691895, "record_id": "2be532f4ef096396c03ce4690877ba1aee08a15569a0ba1a59b3c2192be40d68"}
+{"event": "prepare_content", "group": "fix-wildchat-final-05", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 1521506243.5498047, "record_id": "9e0a21ac901311373accc085b1a1d7c1568dde5b7317dcda722c92771605aff2"}
