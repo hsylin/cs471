@@ -413,6 +413,71 @@
       },
       "mode_correction_commit": "2144233110f2867a93bda84b29ad2da9af5a903c",
       "launcher_sha256_before_and_after": "50f4332cc1ea7560ec9c8faa9d93d57f2ffd315b57138697687f0e3368e165d4"
+    },
+    {
+      "id": "generalization-diagnostics-v1",
+      "status": "complete_but_ineligible_failed_float32_digest_attestation",
+      "diagnostic_trials": 24,
+      "eligible_diagnostic_trials": 0,
+      "reason": "Executed combining-weight digest casts fractional float32 values to int64; all24 recorded digests hash zeros. Strict independent float-byte attestation fails. Retain all measurements; rerun same24 conditions only after corrected separate freeze. Main216 unaffected under documented source/record scope audit.",
+      "plan": {
+        "path": "configs/generalization-diagnostics-v1.json",
+        "sha256": "72e4ee041cac247ac3f2f22bf58b575e87773ffb6562de9f790cc33daf5d5542"
+      },
+      "records": {
+        "path": "results/generalization/generalization-diagnostics-v1/records.jsonl.gz",
+        "sha256": "f2d1d2b7a9a2caea4f5fc858a684dca7c271ebce8620315ef26cef52d20884c1"
+      },
+      "summary": {
+        "path": "results/generalization/generalization-diagnostics-v1/summary.json",
+        "sha256": "688bbf46b7402e9038cb6a163441c5e0f2ab224712d2b47c81f402f9fd734ae4"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-diagnostics-v1/independent-execution-audit.json",
+        "sha256": "8544169719fcfb2aee5b885613cb0752bb2496ee7681b9ec1b10f3be6212b170"
+      }
+    },
+    {
+      "id": "generalization-diagnostics-v2",
+      "source_commit": "9b6f3ebae55343f94c68d9ada9df957423a779dd",
+      "status": "complete_corrected_diagnostics_independent_audit_pass",
+      "diagnostic_trials": 24,
+      "eligible_diagnostic_trials": 24,
+      "instrumentation_revision": 2,
+      "same_states_conditions_orders_as_v1_verified": true,
+      "plan": {
+        "path": "configs/generalization-diagnostics-v2.json",
+        "sha256": "f3af52e5719d423759a6ac044bb4872308c15badfc8fa482ca61167292d64414"
+      },
+      "records": {
+        "path": "results/generalization/generalization-diagnostics-v2/records.jsonl.gz",
+        "sha256": "dc6abc923879b881425362ee4a0daeb813b5cf7e5c9eeb17570a11a1946b7237"
+      },
+      "summary": {
+        "path": "results/generalization/generalization-diagnostics-v2/summary.json",
+        "sha256": "88fc6fb6e0fc83953bcfb0c399113eef23ef00d06b1c78269e000d2d7f1fc8d1"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-diagnostics-v2/independent-execution-audit.json",
+        "sha256": "fad3c723ec47c8dfd9df81a3936417f5b8d9b572e103d27d5aaf53dd80b16523"
+      },
+      "source_commit_file": {
+        "path": "results/generalization/generalization-diagnostics-v2/provenance/source-commit.txt",
+        "sha256": "300f21f8523770cba151aafe7e047875111e94d1d22aba436d90ff0d606c4a0b"
+      }
     }
-  ]
+  ],
+  "completed_measurement_budget": {
+    "pilot_treatment_trials": 72,
+    "final_treatment_trials": 216,
+    "eligible_diagnostic_trials": 24,
+    "retained_ineligible_diagnostic_trials": 24,
+    "total_treatment_and_diagnostic_trials": 336,
+    "declared_cap": 384,
+    "native_calibrations_additional_preparation": {
+      "eligible": 24,
+      "retained_superseded": 6
+    },
+    "launch_failures_measured_trials": 0
+  }
 }

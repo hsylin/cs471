@@ -126,7 +126,7 @@ def audit(plan,rows,capture_root,roots,summary=None):
     base,public,external=v.identities(pilot,ROOT);v.matrix(pilot,public,external)
     expected_states=states(pilot)
     require(plan['states']==expected_states,'Identifier-only selected states and exact order')
-    compare(plan,dict(generalization_diagnostic_schema_version=1,phase='diagnostic',seed=471520,expected_trials=24,
+    compare(plan,dict(generalization_diagnostic_schema_version=1,instrumentation_revision=2,phase='diagnostic',seed=471520,expected_trials=24,
         measured_jobs=256,evidence_eligible=False,selection_uses_treatment_outcomes=False,selection_uses_final_inputs=False,
         hardware=pilot['hardware'],physical_to_logical_map=v.MAP.tolist(),main_execution_source_sha256=pilot['execution_source_sha256'],
         comparison_pairs={k:COMPARISONS[k] for k in PAIRS},
@@ -143,7 +143,7 @@ def audit(plan,rows,capture_root,roots,summary=None):
         cal=state['source_case']['calendar'];block=state['source_case']['source_block']
         for row in members:
             name,mode=CONDITIONS[row['condition']]
-            compare(row,dict(generalization_diagnostic_schema_version=1,phase='diagnostic',status='complete',evidence_eligible=False,diagnostic_only=True,
+            compare(row,dict(generalization_diagnostic_schema_version=1,instrumentation_revision=2,phase='diagnostic',status='complete',evidence_eligible=False,diagnostic_only=True,
                 diagnostic_config_hash=plan['freeze']['sha256'],diagnostic_source_sha256=plan['diagnostic_source_sha256'],
                 main_execution_source_sha256=pilot['execution_source_sha256'],pilot_plan_sha256=pilot['freeze']['sha256'],
                 block_id=gid,dataset=state['dataset'],regime='newcontent',batch_tokens=128,policy='SKIP',condition_order=state['condition_order'],
@@ -178,7 +178,7 @@ def audit(plan,rows,capture_root,roots,summary=None):
             for name in ('executed_logical_routing_sha256','executed_combining_weights_sha256','decision_trajectory_sha256'):
                 require(len({v.canonical(r[name]) for r in subset})==1,'Same-sequence invariant '+name)
     if summary is not None:
-        compare(summary,dict(valid=True,expected_records=24,observed_records=24,valid_records=24,errors=[],missing_keys=[],
+        compare(summary,dict(valid=True,instrumentation_revision=2,expected_records=24,observed_records=24,valid_records=24,errors=[],missing_keys=[],
             diagnostic_config_hash=plan['freeze']['sha256'],diagnostic_source_sha256=plan['diagnostic_source_sha256'],confidence_intervals=None,acceptance=None),'Descriptive summary identity')
         saved={(r['content_group_id'],r['condition']):r for r in summary['trial_summaries']}
         require(len(saved)==24,'Summary complete condition matrix')

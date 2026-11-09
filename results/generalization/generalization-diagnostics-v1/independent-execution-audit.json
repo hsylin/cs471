@@ -1,0 +1,231 @@
+{
+  "passed": false,
+  "eligible_mechanism_evidence": false,
+  "status": "retained_failed_float32_weight_attestation",
+  "diagnostic_trials": 24,
+  "records_file_sha256": "f2d1d2b7a9a2caea4f5fc858a684dca7c271ebce8620315ef26cef52d20884c1",
+  "records_jsonl_payload_sha256": "600deb5217999aa2027f7f79a7aa01305cb7cf4fbbe0cee4221e81ef62b1a84b",
+  "first_strict_audit_error": "Actual diagnostic sequence and route identity/executed_combining_weights_sha256: value/type",
+  "finding": "Frozen diagnostic-v1 calls optimization.common.array_hash on fractional combining weights; that helper casts to int64. All24 rows match the all-zero integer array digest and differ from correct float32-byte digest.",
+  "rows": [
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "cycle0_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "37bedd3fe8a0229527b8a7a930ad74c6f0f730c83a4c1c8c58bc24e1de29ed8e",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "cycle0_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "37bedd3fe8a0229527b8a7a930ad74c6f0f730c83a4c1c8c58bc24e1de29ed8e",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "main_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "7d01863e69f5dda0228d59b30978ac483028492589d9b9c794409037bf02580a",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "main_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "7d01863e69f5dda0228d59b30978ac483028492589d9b9c794409037bf02580a",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "cycle16_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "a3787f236b49a4e1a526fa9d00711d7e63c328463066bcea01c78a26685a410e",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "cycle16_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "a3787f236b49a4e1a526fa9d00711d7e63c328463066bcea01c78a26685a410e",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "offline_online",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "7d01863e69f5dda0228d59b30978ac483028492589d9b9c794409037bf02580a",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "gsm8k-pilot-02",
+      "condition": "offline_native",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "7d01863e69f5dda0228d59b30978ac483028492589d9b9c794409037bf02580a",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "main_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "331f1d819d97110b7f7b6c4be92002f1a91166d18ad10113263b3754d4a18c22",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "main_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "331f1d819d97110b7f7b6c4be92002f1a91166d18ad10113263b3754d4a18c22",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "cycle16_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "0c341e1e4317aca7019b82d9a534d4ce6869ab8aa6577f8197bf2d6eb97e314e",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "cycle16_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "0c341e1e4317aca7019b82d9a534d4ce6869ab8aa6577f8197bf2d6eb97e314e",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "offline_native",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "331f1d819d97110b7f7b6c4be92002f1a91166d18ad10113263b3754d4a18c22",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "offline_online",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "331f1d819d97110b7f7b6c4be92002f1a91166d18ad10113263b3754d4a18c22",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "cycle0_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "b616264fd4115ae4ad2fb56e5b099b1a516e93fd42738947bd5d0e4a542872c4",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "mbpp-pilot-01",
+      "condition": "cycle0_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "b616264fd4115ae4ad2fb56e5b099b1a516e93fd42738947bd5d0e4a542872c4",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "cycle16_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "3740baf279a09e0518e18a42e46a331b2563dd755dcc5157a5e45f0caee25eb0",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "cycle16_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "3740baf279a09e0518e18a42e46a331b2563dd755dcc5157a5e45f0caee25eb0",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "offline_online",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "65a4cd1dd290063e7e4339b83bcac25833afda128201d02e425e626ed481a0a0",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "offline_native",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "65a4cd1dd290063e7e4339b83bcac25833afda128201d02e425e626ed481a0a0",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "cycle0_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "84279b07dd2f13c96d1fe62e1f82989bef38530be9ac867625cef4512fd600d1",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "cycle0_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "84279b07dd2f13c96d1fe62e1f82989bef38530be9ac867625cef4512fd600d1",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "main_shortcut",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "65a4cd1dd290063e7e4339b83bcac25833afda128201d02e425e626ed481a0a0",
+      "integer_cast_nonzero_elements": 0
+    },
+    {
+      "content_group_id": "wildchat-pilot-01",
+      "condition": "main_combined",
+      "recorded_digest": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "expected_float32_digest": "65a4cd1dd290063e7e4339b83bcac25833afda128201d02e425e626ed481a0a0",
+      "integer_cast_nonzero_elements": 0
+    }
+  ],
+  "main216_scope_audit": {
+    "conclusion": "The diagnostic-only lossy digest is absent from the main path; no main runtime or numeric input is altered by the correction. Main independent execution/statistics audits remain valid under their stated scope.",
+    "source_files": {
+      "generalization/inputs.py": {
+        "actual_sha256": "864a70ef06c094f5409491b1b70cfa5409d35ca2e0b0a9873ef59e94ebcb3a2f",
+        "declared_sha256": "864a70ef06c094f5409491b1b70cfa5409d35ca2e0b0a9873ef59e94ebcb3a2f"
+      },
+      "generalization/runner.py": {
+        "actual_sha256": "4db15b6b05af29625efbce0ef74d1b7ef8c67df8dbef5a2d8ed35edbf63cb247",
+        "declared_sha256": "4db15b6b05af29625efbce0ef74d1b7ef8c67df8dbef5a2d8ed35edbf63cb247"
+      },
+      "followup/payback.py": {
+        "actual_sha256": "620b1d0532163c382c11baa4afc230ba530e1e4fe1b2a3b7f6cc35260fb4f0f1",
+        "declared_sha256": "620b1d0532163c382c11baa4afc230ba530e1e4fe1b2a3b7f6cc35260fb4f0f1"
+      },
+      "arrival_study/runner.py": {
+        "actual_sha256": "eb7008454741023a50e7ca235631a96e1a7a418554a961dbf9e3711887f07168",
+        "declared_sha256": "eb7008454741023a50e7ca235631a96e1a7a418554a961dbf9e3711887f07168"
+      },
+      "resident_dispatch/common.py": {
+        "actual_sha256": "696bec7cbcdba476951470bb931e6e67523f688dde28f1382442ee7750da8005",
+        "declared_sha256": "696bec7cbcdba476951470bb931e6e67523f688dde28f1382442ee7750da8005"
+      },
+      "optimization/common.py": {
+        "actual_sha256": "441710c1d2bd301924e55bf3c3a2cdcd456ea4d1d892008bf68c25fbbb2c6bff",
+        "declared_sha256": "441710c1d2bd301924e55bf3c3a2cdcd456ea4d1d892008bf68c25fbbb2c6bff"
+      },
+      "skewbench/native.py": {
+        "actual_sha256": "4752fd6d665a181fcadbd4e67649386fdcf55887f57d86cf666555e56c63ea5d",
+        "declared_sha256": "4752fd6d665a181fcadbd4e67649386fdcf55887f57d86cf666555e56c63ea5d"
+      }
+    },
+    "independently_recomputed_package_fingerprints": {
+      "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+      "optimization_sha256": "3784df43528c4224fcb9005c569a5a8e6ecd47ac9b9d4a07ab27635487ad37e7",
+      "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb"
+    },
+    "evidence": [
+      "generalization.inputs array_hash calls hash integer indices, record-use counts and logical IDs; generalization.runner hashes logical IDs, not combining weights.",
+      "load_router_bank computes full capture-file SHA; validate_input_bank matches the frozen SHA, so authenticated NPZ includes float32 combining-weight bytes.",
+      "followup.payback._materialize copies bank.combining_weights into torch.float32 GPU tensor and gathers identical shared indices. It is called once per prepared group.",
+      "All arms receive the same cell tensors. arrival_study.runner.serve forwards each selected tensor view; NativeLayer.forward passes combining_weights unchanged to fused_experts.",
+      "generalization.inputs.prepare builds native references for all272 inputs and FP32 checks at raw16/271. Each arm checks full-batch272 preflight and two-input postflight, with16 FP32 sampled positions at endpoints."
+    ],
+    "limitations": [
+      "These checks combine authenticated input bytes, pinned source inspection and recorded GPU numeric attestations. They are not an independent GPU rerun or direct per-step GPU bitwise weight digest.",
+      "Main native/reference checks share materialized weights; they alone would not independently detect a shared materialization error. The file identity and source inspection provide distinct provenance evidence."
+    ]
+  },
+  "corrective_action": "Retain these24 measurements as ineligible. Parent authorized same24 diagnostic-v2 rerun with explicit LE float32 C-order byte digest; main216 and old evidence remain unchanged.",
+  "verifier_sha256": "a1a527f09cbdca9394bf7a76d4539ee974db24d1f33196fcb865e603d3a9959d"
+}

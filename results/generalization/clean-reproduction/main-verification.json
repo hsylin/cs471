@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "source_commit": "43b8da28e9ee8fad7377aff2f8371b0ae334e2f9",
+  "archive_sha256": "4db1d6f5ce7a3ce694193136a02958b6e6225130c5fca2dd62aaecf3326d3c6c",
+  "archive_bytes": 565340160,
+  "included_paths": [
+    ".gitattributes",
+    ".gitignore",
+    "README.md",
+    "arrival_combo",
+    "arrival_fix",
+    "arrival_study",
+    "configs",
+    "docs",
+    "followup",
+    "generalization",
+    "generalization_diagnostics",
+    "optimization",
+    "pyproject.toml",
+    "resident_dispatch",
+    "scripts",
+    "skewbench",
+    "tests",
+    "uv.lock",
+    "results/generalization"
+  ],
+  "studies": [
+    {
+      "name": "pilot-calibration",
+      "records": 6,
+      "content_groups": 6,
+      "execution_passed": true,
+      "statistics_passed": true,
+      "maximum_absolute_numeric_difference": 0.0,
+      "records_payload_sha256": "9cce6e4fc4b15ea9ebee6f6055e127cdf7e0cac51b3c21cc3fa1f9664422e1a4"
+    },
+    {
+      "name": "pilot",
+      "records": 72,
+      "content_groups": 6,
+      "execution_passed": true,
+      "statistics_passed": true,
+      "maximum_absolute_numeric_difference": 0.0,
+      "records_payload_sha256": "6220d78b5fbcf934fba2acddb4a9761d53f32e1550297699cf29052c57408496"
+    },
+    {
+      "name": "final-calibration",
+      "records": 18,
+      "content_groups": 18,
+      "execution_passed": true,
+      "statistics_passed": true,
+      "maximum_absolute_numeric_difference": 0.0,
+      "records_payload_sha256": "2ab172a9727ae96400e046bb27f9f2a297c0b09178e08597278f1559bb1d0e19"
+    },
+    {
+      "name": "final",
+      "records": 216,
+      "content_groups": 18,
+      "execution_passed": true,
+      "statistics_passed": true,
+      "maximum_absolute_numeric_difference": 0.0,
+      "records_payload_sha256": "a31392bf2dc9fd24f5b9f8c0556e4382f07872e8617451a9223cb41d62e6b0f8"
+    }
+  ],
+  "pilot_allocation_matches_final": true,
+  "calibration_and_common_rate_provenance_checked": [
+    {
+      "treatment": "pilot",
+      "calibration_raw_reproduced": true,
+      "plan_and_records_pins_match": true
+    },
+    {
+      "treatment": "final",
+      "calibration_raw_reproduced": true,
+      "plan_and_records_pins_match": true
+    }
+  ],
+  "final_primary": {
+    "ratio": 0.9220017854699869,
+    "ci95": [
+      0.9124830899466321,
+      0.9318242739706837
+    ],
+    "passes": true
+  },
+  "seven_guards_pass": true,
+  "joint_actual_date_checks_pass": true,
+  "secondary_baseline": {
+    "ratio": 0.5245107124838516,
+    "ci95": [
+      0.5015221714506355,
+      0.5486013213764762
+    ],
+    "passes": true
+  },
+  "extraction_manifest_sha256": "f80efb7139854816b3ba32779103f0529073f48dadeff85d6ce1f01c2b33fd4c",
+  "reproduction_manifest_sha256": "8c147b1d4ed0deb910e922c5e95ae069c094a2d882e45304d3fbdebea940d9ca",
+  "reproduction_command": [
+    "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/policy-test-venv/bin/python",
+    "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/generalization-clean-reproduction-v1/source/scripts/reproduce_generalization_cpu.py",
+    "--repo-root",
+    "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/generalization-clean-reproduction-v1/source",
+    "--bundle",
+    "results/generalization/cpu-reproduction-inputs.json",
+    "--output",
+    "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/generalization-clean-reproduction-v1/reproduced"
+  ],
+  "executed_command_count": 12,
+  "cpu_command_elapsed_seconds": 15.877837086998625,
+  "excluded_diagnostics": "Diagnostic v1 is ineligible following a combining-weight digest attestation failure; it was not included. Corrected diagnostic v2 is separate pending evidence.",
+  "limitations": [
+    "Clean archive extraction and same-team CPU reimplementation, not external-laboratory replication.",
+    "No GPU execution, new performance observations or model-checkpoint arithmetic rerun.",
+    "Independent route/clock audits authenticate captured inputs and saved GPU attestations; they do not independently replay CUDA numerical outputs.",
+    "Result remains conditional on selected content/external calendars, fixed layer/path and one physical allocation."
+  ]
+}
