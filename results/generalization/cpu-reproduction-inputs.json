@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "studies": [
+    {
+      "name": "pilot-calibration",
+      "plan": "configs/generalization-pilot-calibration-v2.json",
+      "records": "results/generalization/generalization-pilot-calibration-v2/records.jsonl",
+      "archived_summary": "results/generalization/generalization-pilot-calibration-v2/summary.json",
+      "capture_root": "results/generalization/capture-pilot-v3",
+      "inputs_roots": [
+        "results/generalization/generalization-pilot-calibration-v2/inputs"
+      ],
+      "hashes": {
+        "plan_file_sha256": "c357db3aa6653eff49dd5ab4cf47a7d93182c037865f7cee669289d01a8e5746",
+        "plan_content_sha256": "415b36edb6707f7335932cad73a7a0856c01c08a4704eab2c95c27af11b6a96f",
+        "archived_summary_sha256": "b8339d80cd792bc298860b8b5419f259a813f34ad60b4ed71baa631317d24bf2",
+        "records_file_sha256": "9cce6e4fc4b15ea9ebee6f6055e127cdf7e0cac51b3c21cc3fa1f9664422e1a4",
+        "records_jsonl_payload_sha256": "9cce6e4fc4b15ea9ebee6f6055e127cdf7e0cac51b3c21cc3fa1f9664422e1a4",
+        "records_compressed": false
+      }
+    },
+    {
+      "name": "pilot",
+      "plan": "configs/generalization-pilot-v2.json",
+      "records": "results/generalization/generalization-pilot-v2/records.jsonl",
+      "archived_summary": "results/generalization/generalization-pilot-v2/summary.json",
+      "capture_root": "results/generalization/capture-pilot-v3",
+      "inputs_roots": [
+        "results/generalization/generalization-pilot-v2/inputs"
+      ],
+      "archived_allocation": "results/generalization/generalization-pilot-v2/allocation.json",
+      "hashes": {
+        "plan_file_sha256": "d1b78c675e98ba5ff62477fee6bab88895ab77d035d67abc0d7ecada8d0cea8b",
+        "plan_content_sha256": "dba46bc99edbc64296a19a3f2ae36ab39930e192858a37c57ae1820c8e81f094",
+        "archived_summary_sha256": "f11f80e4a4d5df621a24971d9dbc918dce342169811cb9c4b2e5560f994fdf41",
+        "records_file_sha256": "6220d78b5fbcf934fba2acddb4a9761d53f32e1550297699cf29052c57408496",
+        "records_jsonl_payload_sha256": "6220d78b5fbcf934fba2acddb4a9761d53f32e1550297699cf29052c57408496",
+        "records_compressed": false
+      },
+      "archived_allocation_sha256": "e04ecdc42d919d76ff2a01a62ff5e66ba1c1a6d8435c4ef58d64115f7ee2ccf7"
+    },
+    {
+      "name": "final-calibration",
+      "plan": "configs/generalization-final-calibration-v1.json",
+      "records": "results/generalization/generalization-final-calibration-v1/records.jsonl",
+      "archived_summary": "results/generalization/generalization-final-calibration-v1/summary.json",
+      "capture_root": "results/generalization/capture-final-v1",
+      "inputs_roots": [
+        "results/generalization/generalization-final-calibration-v1/inputs"
+      ],
+      "hashes": {
+        "plan_file_sha256": "c63d3853c3e92831264e4c4732a799fd2b3576a17ce46d0fbf30472b63c2f452",
+        "plan_content_sha256": "a11215ad474859565eb9687da291f7d095a68b2211460680e38fb5bac98e4ff9",
+        "archived_summary_sha256": "80d4dc4e19f2d7889a4c4c2612010573301342ff06e645e2b4aba829fdf69fe1",
+        "records_file_sha256": "2ab172a9727ae96400e046bb27f9f2a297c0b09178e08597278f1559bb1d0e19",
+        "records_jsonl_payload_sha256": "2ab172a9727ae96400e046bb27f9f2a297c0b09178e08597278f1559bb1d0e19",
+        "records_compressed": false
+      }
+    },
+    {
+      "name": "final",
+      "plan": "configs/generalization-final-v1.json",
+      "records": "results/generalization/generalization-final-v1/records.jsonl.gz",
+      "archived_summary": "results/generalization/generalization-final-v1/summary.json",
+      "capture_root": "results/generalization/capture-final-v1",
+      "inputs_roots": [
+        "results/generalization/generalization-final-v1/inputs"
+      ],
+      "hashes": {
+        "plan_file_sha256": "98ec2de3f8a7d62cb18d92d5bfff33d6c3c723b94cecdb504fe0301c10327325",
+        "plan_content_sha256": "84dc07a9e61a0ef2e0f601df51dfd3f187c71020120c676ece2609f3d387dddd",
+        "archived_summary_sha256": "bd7fc037414423a180596308a0692f842ff3a9fb4592414188eaea0180d2bbb5",
+        "records_file_sha256": "ee326a1a5c41c64eafc2d8a2e80c149539726e1325d3d00e67afb28c96def17d",
+        "records_jsonl_payload_sha256": "a31392bf2dc9fd24f5b9f8c0556e4382f07872e8617451a9223cb41d62e6b0f8",
+        "records_compressed": true
+      }
+    }
+  ],
+  "scope": "Same-team CPU regeneration and independent reimplementation checks; not GPU rerun or external-laboratory replication."
+}

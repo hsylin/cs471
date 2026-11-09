@@ -1,0 +1,830 @@
+{
+  "passed": true,
+  "audit_schema_version": 1,
+  "phase": "final",
+  "plan_sha256": "84dc07a9e61a0ef2e0f601df51dfd3f187c71020120c676ece2609f3d387dddd",
+  "complete_trials": 216,
+  "scheduled_jobs_verified": 55296,
+  "matched_triplets": 72,
+  "paired_comparisons": 216,
+  "pairs_per_contrast": {
+    "combined_over_shortcut": 72,
+    "combined_over_native": 72,
+    "shortcut_over_native": 72
+  },
+  "content_groups_by_dataset": {
+    "gsm8k": 6,
+    "mbpp": 6,
+    "wildchat": 6
+  },
+  "production_modules_imported": false,
+  "exclusions": 0,
+  "scope": "Independent same-team CPU reimplementation; conditional on selected external trace material and one allocation. No arrival-population, GPU-allocation or external-laboratory replication claim.",
+  "confirmatory": {
+    "schema": "generalization_inference_v2",
+    "primary": {
+      "name": "calibrated_mean_response",
+      "contrast": "combined_over_shortcut",
+      "rate_kind": "calibrated",
+      "metric": "response_mean_ns",
+      "datasets": [
+        "gsm8k",
+        "mbpp",
+        "wildchat"
+      ],
+      "ratio": 0.9220017854699869,
+      "content_group_log_ratios": {
+        "gsm8k-final-01": -0.07644933064395065,
+        "gsm8k-final-02": -0.05452798801608605,
+        "gsm8k-final-03": -0.08822902222276596,
+        "gsm8k-final-04": -0.08081504462710054,
+        "gsm8k-final-06": -0.1050505555424337,
+        "gsm8k-final-07": -0.09651986854491046,
+        "mbpp-final-03": -0.038579628750306405,
+        "mbpp-final-04": -0.05726950796719166,
+        "mbpp-final-05": -0.036759658300610454,
+        "mbpp-final-06": -0.02768364293028558,
+        "mbpp-final-07": -0.05815291916968679,
+        "mbpp-final-08": -0.009988270673646937,
+        "wildchat-final-03": -0.090328326847394,
+        "wildchat-final-04": -0.16271630671613302,
+        "wildchat-final-05": -0.1271205945159286,
+        "wildchat-final-06": -0.15791857403011544,
+        "wildchat-final-07": -0.11801823867755523,
+        "wildchat-final-08": -0.07561866218579638
+      },
+      "upper_confidence_bound": 0.9318242739706837,
+      "ratio_limit": 0.95,
+      "passes": true,
+      "criterion": "upper < limit",
+      "status": "pass",
+      "ci95": [
+        0.9124830899466321,
+        0.9318242739706837
+      ]
+    },
+    "guards": [
+      {
+        "name": "gsm8k_calibrated_mean_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "calibrated",
+        "metric": "response_mean_ns",
+        "datasets": [
+          "gsm8k"
+        ],
+        "ratio": 0.9198003577502448,
+        "content_group_log_ratios": {
+          "gsm8k-final-01": -0.07644933064395065,
+          "gsm8k-final-02": -0.05452798801608605,
+          "gsm8k-final-03": -0.08822902222276596,
+          "gsm8k-final-04": -0.08081504462710054,
+          "gsm8k-final-06": -0.1050505555424337,
+          "gsm8k-final-07": -0.09651986854491046
+        },
+        "upper_confidence_bound": 0.9355675083272932,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      },
+      {
+        "name": "gsm8k_common_mean_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "common",
+        "metric": "response_mean_ns",
+        "datasets": [
+          "gsm8k"
+        ],
+        "ratio": 0.9195464977166883,
+        "content_group_log_ratios": {
+          "gsm8k-final-01": -0.07214633722331598,
+          "gsm8k-final-02": -0.10087188233167765,
+          "gsm8k-final-03": -0.07220323830522091,
+          "gsm8k-final-04": -0.07772148072979768,
+          "gsm8k-final-06": -0.10271441658950042,
+          "gsm8k-final-07": -0.07759065124269249
+        },
+        "upper_confidence_bound": 0.929512991698914,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      },
+      {
+        "name": "mbpp_calibrated_mean_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "calibrated",
+        "metric": "response_mean_ns",
+        "datasets": [
+          "mbpp"
+        ],
+        "ratio": 0.9626433668908937,
+        "content_group_log_ratios": {
+          "mbpp-final-03": -0.038579628750306405,
+          "mbpp-final-04": -0.05726950796719166,
+          "mbpp-final-05": -0.036759658300610454,
+          "mbpp-final-06": -0.02768364293028558,
+          "mbpp-final-07": -0.05815291916968679,
+          "mbpp-final-08": -0.009988270673646937
+        },
+        "upper_confidence_bound": 0.9792532958056793,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      },
+      {
+        "name": "mbpp_common_mean_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "common",
+        "metric": "response_mean_ns",
+        "datasets": [
+          "mbpp"
+        ],
+        "ratio": 0.9573135538344496,
+        "content_group_log_ratios": {
+          "mbpp-final-03": -0.04081178042974809,
+          "mbpp-final-04": -0.0403234125099301,
+          "mbpp-final-05": -0.04614634725383304,
+          "mbpp-final-06": -0.043187547332840914,
+          "mbpp-final-07": -0.049281828574859965,
+          "mbpp-final-08": -0.04199487629086285
+        },
+        "upper_confidence_bound": 0.9598656408560011,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      },
+      {
+        "name": "wildchat_calibrated_mean_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "calibrated",
+        "metric": "response_mean_ns",
+        "datasets": [
+          "wildchat"
+        ],
+        "ratio": 0.8851895726796108,
+        "content_group_log_ratios": {
+          "wildchat-final-03": -0.090328326847394,
+          "wildchat-final-04": -0.16271630671613302,
+          "wildchat-final-05": -0.1271205945159286,
+          "wildchat-final-06": -0.15791857403011544,
+          "wildchat-final-07": -0.11801823867755523,
+          "wildchat-final-08": -0.07561866218579638
+        },
+        "upper_confidence_bound": 0.9138078711221884,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      },
+      {
+        "name": "wildchat_common_mean_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "common",
+        "metric": "response_mean_ns",
+        "datasets": [
+          "wildchat"
+        ],
+        "ratio": 0.8891037066636623,
+        "content_group_log_ratios": {
+          "wildchat-final-03": -0.12391388901196176,
+          "wildchat-final-04": -0.14145799959463812,
+          "wildchat-final-05": -0.07129126910426908,
+          "wildchat-final-06": -0.12919540351012415,
+          "wildchat-final-07": -0.09400885464700703,
+          "wildchat-final-08": -0.14538095327551748
+        },
+        "upper_confidence_bound": 0.9149991502396955,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      },
+      {
+        "name": "calibrated_p95_response",
+        "contrast": "combined_over_shortcut",
+        "rate_kind": "calibrated",
+        "metric": "response_p95_ns",
+        "datasets": [
+          "gsm8k",
+          "mbpp",
+          "wildchat"
+        ],
+        "ratio": 0.9319898493605945,
+        "content_group_log_ratios": {
+          "gsm8k-final-01": -0.05950418703864724,
+          "gsm8k-final-02": -0.03143496531965262,
+          "gsm8k-final-03": -0.09241800661377386,
+          "gsm8k-final-04": -0.05168012274639899,
+          "gsm8k-final-06": -0.09097704674008611,
+          "gsm8k-final-07": -0.0860469261164587,
+          "mbpp-final-03": -0.026246859132384337,
+          "mbpp-final-04": -0.0400618602748164,
+          "mbpp-final-05": -0.000978079660915121,
+          "mbpp-final-06": -0.010103011372637027,
+          "mbpp-final-07": -0.056541225021251584,
+          "mbpp-final-08": -0.005523436955857441,
+          "wildchat-final-03": -0.10449461572002594,
+          "wildchat-final-04": -0.22672346809960686,
+          "wildchat-final-05": -0.112825708884019,
+          "wildchat-final-06": -0.11353489753893786,
+          "wildchat-final-07": -0.1225707165076626,
+          "wildchat-final-08": -0.03613526705422654
+        },
+        "upper_confidence_bound": 0.9506615406566264,
+        "ratio_limit": 1.02,
+        "passes": true,
+        "criterion": "upper <= limit",
+        "status": "pass",
+        "one_sided_confidence_level": 0.9928571428571429,
+        "guard_family_size": 7
+      }
+    ],
+    "calendar_date_robustness": {
+      "ratio_limit": 1.02,
+      "date_count": 7,
+      "dates": [
+        "2024-05-12",
+        "2024-05-13",
+        "2024-05-14",
+        "2024-05-15",
+        "2024-05-16",
+        "2024-05-17",
+        "2024-05-18"
+      ],
+      "results": [
+        {
+          "excluded_date": "2024-05-12",
+          "ratio": 0.9269748178571778,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 4,
+          "passes": true,
+          "missing_datasets": []
+        },
+        {
+          "excluded_date": "2024-05-13",
+          "ratio": 0.9220708209528683,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 4,
+          "passes": true,
+          "missing_datasets": []
+        },
+        {
+          "excluded_date": "2024-05-14",
+          "ratio": 0.9211906479052425,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 7,
+          "passes": true,
+          "missing_datasets": []
+        },
+        {
+          "excluded_date": "2024-05-15",
+          "ratio": 0.9190906401382822,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 6,
+          "passes": true,
+          "missing_datasets": []
+        },
+        {
+          "excluded_date": "2024-05-16",
+          "ratio": 0.9204935080147201,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 7,
+          "passes": true,
+          "missing_datasets": []
+        },
+        {
+          "excluded_date": "2024-05-17",
+          "ratio": 0.9219327551557951,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 4,
+          "passes": true,
+          "missing_datasets": []
+        },
+        {
+          "excluded_date": "2024-05-18",
+          "ratio": 0.9222789162330597,
+          "retained_content_groups": {
+            "gsm8k": 6,
+            "mbpp": 6,
+            "wildchat": 6
+          },
+          "removed_arrival_bundles": 4,
+          "passes": true,
+          "missing_datasets": []
+        }
+      ],
+      "passes": true,
+      "ratio_range": [
+        0.9190906401382822,
+        0.9269748178571778
+      ]
+    },
+    "secondary_baseline": {
+      "name": "calibrated_mean_response_baseline",
+      "contrast": "combined_over_native",
+      "rate_kind": "calibrated",
+      "metric": "response_mean_ns",
+      "datasets": [
+        "gsm8k",
+        "mbpp",
+        "wildchat"
+      ],
+      "ratio": 0.5245107124838516,
+      "content_group_log_ratios": {
+        "gsm8k-final-01": -0.8067322935177001,
+        "gsm8k-final-02": -0.6472215110668849,
+        "gsm8k-final-03": -0.5879975369896826,
+        "gsm8k-final-04": -0.8144164599327528,
+        "gsm8k-final-06": -0.550085243560499,
+        "gsm8k-final-07": -0.6860975874636015,
+        "mbpp-final-03": -0.5622811802215475,
+        "mbpp-final-04": -0.6978773819869275,
+        "mbpp-final-05": -0.6053230075416218,
+        "mbpp-final-06": -0.42387126434128053,
+        "mbpp-final-07": -0.7477481970901021,
+        "mbpp-final-08": -0.5311880299563283,
+        "wildchat-final-03": -0.7192461032761983,
+        "wildchat-final-04": -0.692620004313869,
+        "wildchat-final-05": -0.6197378078529612,
+        "wildchat-final-06": -0.7796571323491888,
+        "wildchat-final-07": -0.6232820480397105,
+        "wildchat-final-08": -0.5198268995880744
+      },
+      "upper_confidence_bound": 0.5486013213764762,
+      "ratio_limit": 0.95,
+      "passes": true,
+      "criterion": "upper < limit",
+      "status": "pass",
+      "ci95": [
+        0.5015221714506355,
+        0.5486013213764762
+      ],
+      "confirmatory": true,
+      "gate_passed": true
+    },
+    "descriptive_cells": [
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9128051726283413,
+          "response_p95_ns": 0.9362294943047617
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.4812988794530517,
+          "response_p95_ns": 0.4905271046172814
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5272744873554939,
+          "response_p95_ns": 0.5239389568489763
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9151238767166965,
+          "response_p95_ns": 0.9246056967924606
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.4857375419340589,
+          "response_p95_ns": 0.48559746541706295
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.530788841043903,
+          "response_p95_ns": 0.5251941093394122
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9268491497275398,
+          "response_p95_ns": 0.931034351288999
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5310406466353602,
+          "response_p95_ns": 0.4821684703568341
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5729526177927303,
+          "response_p95_ns": 0.5178847264757538
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9239904924093651,
+          "response_p95_ns": 0.9402731296438382
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5312921803277585,
+          "response_p95_ns": 0.48701033349782247
+        }
+      },
+      {
+        "dataset": "gsm8k",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5749974536451989,
+          "response_p95_ns": 0.5179456034038693
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9580673733020361,
+          "response_p95_ns": 0.967117160851959
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5802975625630625,
+          "response_p95_ns": 0.5177114260843141
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.6056959862468049,
+          "response_p95_ns": 0.5353140726282309
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9524687402094866,
+          "response_p95_ns": 0.953038984077573
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5944783899454401,
+          "response_p95_ns": 0.49132607621285984
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.6241447775122679,
+          "response_p95_ns": 0.5155361789196948
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.96724121668518,
+          "response_p95_ns": 0.9870355792030314
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5245495320271275,
+          "response_p95_ns": 0.48256414588581814
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5423151153802197,
+          "response_p95_ns": 0.48890248340942083
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.9621830110178518,
+          "response_p95_ns": 0.9668153930380533
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5417585097858952,
+          "response_p95_ns": 0.48555636453619805
+        }
+      },
+      {
+        "dataset": "mbpp",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5630514190983195,
+          "response_p95_ns": 0.5022224180879243
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.8711160776293546,
+          "response_p95_ns": 0.8704780120845458
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5356321616034742,
+          "response_p95_ns": 0.5298377140203095
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "code",
+        "rate_kind": "calibrated",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.6148803533291883,
+          "response_p95_ns": 0.6086744371078368
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.8877497729441607,
+          "response_p95_ns": 0.900025094320859
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5227127543048055,
+          "response_p95_ns": 0.5496303774033321
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "code",
+        "rate_kind": "common",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.588806407205563,
+          "response_p95_ns": 0.6106833919092802
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.8994904349751929,
+          "response_p95_ns": 0.904793282145257
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.49966584566781364,
+          "response_p95_ns": 0.46758577699480275
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "conversation",
+        "rate_kind": "calibrated",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5554987871345113,
+          "response_p95_ns": 0.5167874101431886
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "combined_over_shortcut",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.8904597053079578,
+          "response_p95_ns": 0.90438262085947
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "combined_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.44823997980209407,
+          "response_p95_ns": 0.4420349613715562
+        }
+      },
+      {
+        "dataset": "wildchat",
+        "arrival_type": "conversation",
+        "rate_kind": "common",
+        "contrast": "shortcut_over_native",
+        "content_groups": 6,
+        "ratios": {
+          "response_mean_ns": 0.5033804192712731,
+          "response_p95_ns": 0.48876985379426374
+        }
+      }
+    ],
+    "incremental_acceptance": "pass",
+    "acceptance": "pass",
+    "content_groups": 18,
+    "paired_comparisons": 216,
+    "treatment_trials": 216,
+    "bootstrap": {
+      "samples": 100000,
+      "seed": 471512,
+      "rng": "numpy.random.default_rng/PCG64",
+      "strata": [
+        "gsm8k",
+        "mbpp",
+        "wildchat"
+      ],
+      "groups_per_stratum": 6,
+      "unit": "entire content bundle with two types and two rates",
+      "quantile_method": "linear"
+    }
+  },
+  "bootstrap_draw_indices_sha256": "74018f4462bc703f501cad7dfbc828f8bdaed196a1047bac893dc65db8986532",
+  "bootstrap_draw_digest_encoding": "Concatenated dataset-order C-contiguous little-endian int64 tables, each 100000 x n",
+  "production_draw_digest_comparison": "matched",
+  "plan_file_sha256": "98ec2de3f8a7d62cb18d92d5bfff33d6c3c723b94cecdb504fe0301c10327325",
+  "records_file_sha256": "ee326a1a5c41c64eafc2d8a2e80c149539726e1325d3d00e67afb28c96def17d",
+  "records_jsonl_payload_sha256": "a31392bf2dc9fd24f5b9f8c0556e4382f07872e8617451a9223cb41d62e6b0f8",
+  "summary_file_sha256": "bd7fc037414423a180596308a0692f842ff3a9fb4592414188eaea0180d2bbb5",
+  "verifier_sha256": "a56b95aaeba2cff15b7f13ac2f7e204660cc36b45c99b47f69340165c54d7bc6",
+  "numpy_version": "2.5.4"
+}
