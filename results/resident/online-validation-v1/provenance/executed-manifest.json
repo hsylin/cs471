@@ -1,0 +1,211 @@
+{
+  "optimization_schema_version": 1,
+  "schema_version": 1,
+  "name": "resident-online-validation-v1",
+  "phase": "validation",
+  "split": "pilot",
+  "environment": {
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "model_id": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "layer_id": 0,
+    "hardware": "2 x NVIDIA H100 94 GB, same node, NV6 interconnect",
+    "gpu_name_contains": "H100",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "weights_source": "pretrained_checkpoint_layer",
+    "input_source": "Real teacher-forced causal-prefill hidden/router/weights; constructed replay of disjoint source-document blocks",
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+    "optimization_sha256": "3784df43528c4224fcb9005c569a5a8e6ecd47ac9b9d4a07ab27635487ad37e7",
+    "weights_sha256": "80046eef8f68a7afd8d165e582190900854faa44076bd22c6a869730e26d4096",
+    "resident_dispatch_sha256": "e5677540ad9d0cf7cb824f68ebcf2b5e5c5256ae62c03e425df23010bce0462f"
+  },
+  "trace": {
+    "measured_steps": 512,
+    "warmup_steps": 32,
+    "window_steps": 16,
+    "raw_steps": 544,
+    "seed": 10471,
+    "cases": [
+      {
+        "regime": "stable",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "transient",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "persistent",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "switching",
+        "phase_steps": 112,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      }
+    ]
+  },
+  "policy": {
+    "replica_budget": 32,
+    "rebalance_interval": 64,
+    "epsilon": 0.02,
+    "tau": 0.1,
+    "cooldown_steps": 256
+  },
+  "execution": {
+    "order_seed": 20471,
+    "timing_scope": "Completed max-rank elapsed forward+native SKIP step+normal synchronous completion, including current-batch selector, recording, expert kernels, collective and planning; static materialization/JIT/reference checks/initialized timing events and prefix+64 full-policy conditioning excluded; GC enabled",
+    "terminal_proposal_suppressed": true,
+    "measurement_setup_revision": 2,
+    "full_policy_conditioning_steps": 64,
+    "measured_steps": 256,
+    "final_repetitions_in_distinct_allocations": true,
+    "performance_retuning_allowed": false
+  },
+  "analysis": {
+    "phase": "paired_descriptive",
+    "expected_blocks": [
+      "opt-pilot-01",
+      "opt-pilot-02"
+    ],
+    "expected_regimes": [
+      "domain0",
+      "domain1"
+    ],
+    "expected_batches": [
+      128,
+      1024
+    ],
+    "expected_repetitions": [
+      0,
+      1
+    ],
+    "native_arm": "native",
+    "treatment_arm": "online"
+  },
+  "blocks": [
+    {
+      "block_id": "opt-pilot-01",
+      "source_document_ids": [
+        "gutenberg-768",
+        "cpython-Lib-random.py"
+      ]
+    },
+    {
+      "block_id": "opt-pilot-02",
+      "source_document_ids": [
+        "gutenberg-33",
+        "cpython-Lib-string.py"
+      ]
+    }
+  ],
+  "banks": [
+    {
+      "block_id": "opt-pilot-01",
+      "capture_path": "banks/opt-pilot-01.npz",
+      "capture_sha256": "d63447a15f1aff577904a5b878c67cb3b26ed0c5ef8bad2b62e79c8c020aab39"
+    },
+    {
+      "block_id": "opt-pilot-02",
+      "capture_path": "banks/opt-pilot-02.npz",
+      "capture_sha256": "4a90e617452b60be90e49f62a91995538c8cbdfe576c14ee40879f043170b334"
+    }
+  ],
+  "matrix": {
+    "block_ids": [
+      "opt-pilot-01",
+      "opt-pilot-02"
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "repetitions": 2,
+    "arms": [
+      "native",
+      "online"
+    ],
+    "regimes": [
+      "domain0",
+      "domain1"
+    ]
+  },
+  "source_manifest": {
+    "path": "../optimization/corpus/sources.json",
+    "sha256": "421ac030ba4d93d7eeb1b6f2f2af68cd6dc998c5f2c7be62fabdc6e58c7e5f4e"
+  },
+  "excluded_source_document_ids": [
+    "gutenberg-11",
+    "cpython-Lib-heapq.py",
+    "gutenberg-84",
+    "cpython-Lib-statistics.py",
+    "gutenberg-1342",
+    "cpython-Lib-fractions.py",
+    "gutenberg-2701",
+    "cpython-Lib-difflib.py",
+    "gutenberg-98",
+    "cpython-Lib-argparse.py",
+    "gutenberg-1661",
+    "cpython-Lib-pathlib.py",
+    "gutenberg-345",
+    "cpython-Lib-functools.py",
+    "gutenberg-174",
+    "cpython-Lib-unittest-case.py",
+    "gutenberg-43",
+    "cpython-Lib-json-decoder.py",
+    "gutenberg-35",
+    "cpython-Lib-csv.py"
+  ],
+  "default_configs": {
+    "128": {
+      "BLOCK_SIZE_M": 64,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 4,
+      "num_stages": 3
+    },
+    "1024": {
+      "BLOCK_SIZE_M": 128,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 8,
+      "num_stages": 3
+    }
+  },
+  "resident_dispatch_schema_version": 1,
+  "protocol_sha256": "aca62c36e2dbe2e4954201b183a33eecf657e70b8cf9e565d155e688ec782b40",
+  "execution_source_sha256": {
+    "resident_dispatch/__init__.py": "cfab1590cd37d517ca08ffa4d2afdc70a4c2114a7deedece5bfc04e442699c83",
+    "resident_dispatch/common.py": "696bec7cbcdba476951470bb931e6e67523f688dde28f1382442ee7750da8005",
+    "resident_dispatch/assignments.py": "1a7e1802bac95b4c6ce66860169268e8e8aa37651b4cdcd998097614060136c0",
+    "resident_dispatch/gpu.py": "92dd2b5d18bcc7539ccf3405406f57c70d90bb6bcf122b3cf4ce39a5ebcb22aa",
+    "resident_dispatch/pilot.py": "fa69022bde32233300c72c075e7ab6e0f03133043db022d5e5ac5bc76e5e8cfc",
+    "resident_dispatch/online.py": "ff7893a260a2f8728a7d1e5f25203c616934ac37e45f6e097d82a2e2042aa251",
+    "resident_dispatch/online_gpu.py": "963faa1b6c1aecc8448d95f8ee2aaa1bd66e03b9a95ef4b6635690295f59f4fe",
+    "resident_dispatch/runner.py": "d858438dd78d5efe2cb7d42ed66479dba7dc33657e3364e12e511202d197c9b2"
+  },
+  "analysis_source_sha256": "bc1a422cbaa717148c57ec15f84b6d01ff888917b6d6dd3ef482b6d070c18a5d",
+  "online_algorithm": "current_batch_one_home_lpt_active_caps_v1",
+  "online_protocol_sha256": "9030c1291bce90cf0388f84d193f7b8ed0ea3c6ab5a460da9309f9d696632455",
+  "freeze": {
+    "algorithm": "sha256",
+    "sha256": "3b1a64b3966358bbb18a1c4581d5775212f91f32491f35b658e819f7c2c8154a"
+  }
+}

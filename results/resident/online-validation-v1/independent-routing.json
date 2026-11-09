@@ -1,0 +1,78 @@
+{
+  "phase": "validation",
+  "manifest_sha256": "3b1a64b3966358bbb18a1c4581d5775212f91f32491f35b658e819f7c2c8154a",
+  "rows": 32,
+  "states": 8,
+  "repetitions": [
+    0,
+    1
+  ],
+  "allocations": {
+    "0": [
+      "4869806"
+    ],
+    "1": [
+      "4869806"
+    ]
+  },
+  "captured_banks": 2,
+  "unique_artifacts": 8,
+  "artifacts": [
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-01-domain0-b128.npz",
+      "sha256": "dac2d9cf6e09164940a002ce667f1861a432456f2b5ec4964095fc6927e7a78d"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-01-domain0-b1024.npz",
+      "sha256": "f8178f0babf2d7523a6a3c537d1fdf2aa11fde3ba8c5d63003762d7f840dac8f"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-01-domain1-b128.npz",
+      "sha256": "77619111e43d184b177f367a88276cbc3e87d1917feddf5caa1ed61e070b2300"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-01-domain1-b1024.npz",
+      "sha256": "79b6cac2bfbc3a87b1f7e1489a0b9acfb30e6aa5ea07ea6dece7b0a563656bfa"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-02-domain0-b128.npz",
+      "sha256": "e43777e801d83a99f43f7fc600945a9cc2b4c5e969f862930c4e9525869b32cf"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-02-domain0-b1024.npz",
+      "sha256": "47275422f69c1dc3565a0e627d04d1fa8bec3371aa3c55e757932cf71334f32e"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-02-domain1-b128.npz",
+      "sha256": "1e72b7bc367871eeee4f15b812179acafe9783e6709745a3a57aafa87f14ba41"
+    },
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/inputs/opt-pilot-02-domain1-b1024.npz",
+      "sha256": "0216da4ab95d317ea001444a2b5eaaf2eb541093aa4749b85822e2de602efab0"
+    }
+  ],
+  "reconstructed_physical_routes": 3538944,
+  "checked_timed_observation_windows": 128,
+  "checked_timed_step_windows_per_row": 64,
+  "unique_preflight_route_inputs_per_state": 48,
+  "full_batch_numerical_inputs_preflight": 48,
+  "full_batch_numerical_inputs_after_measurement": 2,
+  "maximum_recorded_fp32_abs_error": 0.008345603942871094,
+  "maximum_recorded_native_abs_difference": 0.0078125,
+  "limitations": [
+    "Independent CPU implementation within the same project team; not external laboratory reproduction.",
+    "All unique physical routes/counts are GPU preflight artifacts. Timed route evidence covers native 16-step observation windows, not every timed output.",
+    "GPU numerical outputs and live resident tensors were not saved; this audit verifies their recorded attestations and hash invariance, not their arithmetic independently.",
+    "FP32 references cover 16 positions at each selected reference input, not all token positions.",
+    "Native proposed maps are checked for eligibility and cross-arm invariance; the native planner itself is not independently reimplemented.",
+    "This audit verifies correctness evidence, not latency confidence intervals or production-serving generalization."
+  ],
+  "pass": true,
+  "verifier_sha256": "8db9efba10c22cdc25dfe8d770e781cf067fff43c7708d9457507fb11f39b504",
+  "records": [
+    {
+      "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/resident-results/online-validation/records.jsonl",
+      "sha256": "80038ddd5d1abe092f8f7bab7cc87b6289dd75701db580f6ed53851d69d46ad5"
+    }
+  ]
+}

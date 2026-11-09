@@ -1,0 +1,36 @@
+{
+  "pass": true,
+  "known_assignment_fixtures": 3,
+  "negative_mutations": {
+    "elapsed_not_max_rank": {
+      "rejected": true,
+      "message": "opt-pilot-01/domain0/128/0/native: completed max-rank elapsed"
+    },
+    "physical_window_corruption": {
+      "rejected": true,
+      "message": "opt-pilot-01/domain0/128/0/native: timed physical window"
+    },
+    "logical_window_corruption": {
+      "rejected": true,
+      "message": "opt-pilot-01/domain0/128/0/native: native replicated-input logical aggregation"
+    },
+    "route_digest_corruption": {
+      "rejected": true,
+      "message": "opt-pilot-01/domain0/128/0/native: record contract/provenance"
+    },
+    "final_map_mutation": {
+      "rejected": true,
+      "message": "opt-pilot-01/domain0/128/0/native: record contract/provenance"
+    },
+    "cross_state_input_reuse": {
+      "rejected": true,
+      "message": "Input artifact reused for a different state"
+    },
+    "missing_run": {
+      "rejected": true,
+      "message": "Incomplete/duplicate/extra record matrix"
+    }
+  },
+  "scope": "CPU test-only mutations of retained records; no GPU experiments or original data edits",
+  "verifier_sha256": "8db9efba10c22cdc25dfe8d770e781cf067fff43c7708d9457507fb11f39b504"
+}
