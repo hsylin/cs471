@@ -1,0 +1,106 @@
+{
+  "schema": "resident_fix_final_mechanism_review_v1",
+  "consequential_state_mismatch_found": false,
+  "records": 204,
+  "distinct_input_groups": 17,
+  "unique_measured_batches": 69632,
+  "plan_sha256": "c51db22a98b6817bc9f27b9c303c16966292bc2646d5c2b73f93f768be40a3cc",
+  "source_sha256": "08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff",
+  "mechanism_file_sha256": "961ed77cb13639520fcb3cf6ef79b0061399f150e30a28b610d4b5912c559452",
+  "per_arm": {
+    "stockoff": {
+      "trials": 68,
+      "physical_slots": [
+        128
+      ],
+      "local_expert_weight_bytes": [
+        603979776
+      ],
+      "controller_steps_per_trial": [
+        0
+      ],
+      "mapper_calls_per_trial": [
+        0
+      ],
+      "decisions_per_trial": [
+        0
+      ],
+      "sum_sender_bytes": 0,
+      "pending_rank_states": 0,
+      "full_state_audits_true": true,
+      "stock_router_unmodified": [
+        true
+      ],
+      "expert_classes": [
+        "vllm.model_executor.layers.fused_moe.experts.triton_moe.TritonExperts"
+      ],
+      "same_start_and_end_map_each_rank": true
+    },
+    "current": {
+      "trials": 68,
+      "physical_slots": [
+        160
+      ],
+      "local_expert_weight_bytes": [
+        754974720
+      ],
+      "controller_steps_per_trial": [
+        4096
+      ],
+      "mapper_calls_per_trial": [
+        4096
+      ],
+      "decisions_per_trial": [
+        64
+      ],
+      "sum_sender_bytes": 0,
+      "pending_rank_states": 0,
+      "full_state_audits_true": true,
+      "stock_router_unmodified": [
+        false
+      ],
+      "expert_classes": [
+        "vllm.model_executor.layers.fused_moe.experts.triton_moe.TritonExperts"
+      ],
+      "same_start_and_end_map_each_rank": true
+    },
+    "fix": {
+      "trials": 68,
+      "physical_slots": [
+        160
+      ],
+      "local_expert_weight_bytes": [
+        754974720
+      ],
+      "controller_steps_per_trial": [
+        0
+      ],
+      "mapper_calls_per_trial": [
+        4096
+      ],
+      "decisions_per_trial": [
+        0
+      ],
+      "sum_sender_bytes": 0,
+      "pending_rank_states": 0,
+      "full_state_audits_true": true,
+      "stock_router_unmodified": [
+        false
+      ],
+      "expert_classes": [
+        "vllm.model_executor.layers.fused_moe.experts.triton_moe.TritonExperts"
+      ],
+      "same_start_and_end_map_each_rank": true
+    }
+  },
+  "main_service_mean_ratio_of_arithmetic_means": {
+    "fix_over_current": 0.8926846119652905,
+    "fix_over_stockoff": 1.0276020217068105
+  },
+  "main_service_difference_us": {
+    "fix_minus_current": -90.62261132431027,
+    "fix_minus_stockoff": 20.24829985809329
+  },
+  "all_actual_configs_equal": true,
+  "scope": "Descriptive source/state/mechanism review; independent complete execution/statistical audits are separate; no new interval or performance gate"
+}

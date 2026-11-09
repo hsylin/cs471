@@ -1,0 +1,715 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 23:16:40.391537672 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "prepare_content", "group": "fix-wildchat-final-04", "phase": "final"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-04", "input": 4096, "total": 4112}
+WARNING:vllm.model_executor.layers.fused_moe.fused_moe:Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-04", "arm": "fix", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "current", "mean_response_ns": 2334221.0861816406, "record_id": "f6db8890f903e83672dfd9377af33d77c357de795ed4bc89f78c70377685ba8f"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 1830458.1208496094, "record_id": "e122981240ff0f3582752e378b841bef5961bda5d1edb3d22037fee0a5ccaef7"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "fix", "mean_response_ns": 1942658.4150390625, "record_id": "5e4df5dbee00ec53ec715702523b70613ddf2bf969dbc591a9f2e03aba49cc02"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "fix", "mean_response_ns": 4126095.358154297, "record_id": "176e8242425a83ae5fc4b68f6799c1757cd4f432307a25d1e4cede3764bd97aa"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 3399210.9995117188, "record_id": "b0f148e310350f258e23bb5fab3ce9e3de886c716677d59d5a0e556246ff8fe3"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "current", "mean_response_ns": 26614358.143798828, "record_id": "ef45c51e612496d88c3272a0a586575d0e3e2056017c0decc91df7def18673f3"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "fix", "mean_response_ns": 1557388.9580078125, "record_id": "c1b5206ba7026db79110b90d6ad24129d4119fdb19fa47e5087a018c68343a40"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 1453768.8696289062, "record_id": "a59f0ba5b98de802385ce0e023df99a810b72fc032d8da5989bfc9a0d3a83c80"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "current", "mean_response_ns": 2396235.5017089844, "record_id": "dc7d458129b51dd28823747026ae48089afbd74fca70d68860740eeca5274adc"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "current", "mean_response_ns": 110290064.3762207, "record_id": "d1819ebf9ca0ed69d17d9ee46d2a68728cf84c572914328358a004be5a80083b"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 21608644.279296875, "record_id": "a2fdd19424e35c594a69c4414e5eaa1613a375f1adcaa971d2f574a01999f60e"}
+{"event": "trial_start", "group": "fix-wildchat-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-04", "arm": "fix", "mean_response_ns": 31307545.608398438, "record_id": "c58bf61dd770aa7b3dfb717e3560c27adad23b8358061a4ae99df87ba7f75f3b"}
+{"event": "prepare_content", "group": "fix-wildchat-final-02", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-02", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 4061849.9645996094, "record_id": "6e5fda04789a8720b7da7ae17b44879d6dbd5c7db54f4487140b28dfe0bd588b"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "fix", "mean_response_ns": 6203175.264892578, "record_id": "cc8d59f7099bcd9065ce6d55a23a131faf90f0aea9f8c7e2d271d2de7910b53c"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "current", "mean_response_ns": 27373614.444580078, "record_id": "9d38e4d7324ed16d6ba349484f38ba52bb08e5e38f8f2ffb6e65ad640c09fb0c"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "fix", "mean_response_ns": 1801620.4509277344, "record_id": "827620b3afb5b600777b584f4d6d9777f676de57553d37387b1cc587a8191081"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "current", "mean_response_ns": 2180838.9184570312, "record_id": "df7efaed457c0d8a9538f3a6dc1ea7c20657fc028f03e655a808f7219be13dd7"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 1710816.388671875, "record_id": "a09120ead7b2040e905887da44d96b6348733f14a88bd7e013dd24604fe4a46f"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 1284195.5388183594, "record_id": "644bd14636ee28ef360ecd645e40c12cbecaa2877e9b411c839015d6576c346a"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "current", "mean_response_ns": 1865659.8505859375, "record_id": "5ad3df57276bc8657a5be2a13f52eb1062801721b6d77c7f71038af79d11a154"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "fix", "mean_response_ns": 1400256.3522949219, "record_id": "2b308546e5e278fd2d93dbf6e545bea83b623b19a271188fdc18a9420342e836"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "current", "mean_response_ns": 48397737.12207031, "record_id": "3a235f52d6dcfd800abe2bac7341f1be77cfcb7fac812ce483a3f88475467742"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "fix", "mean_response_ns": 9466195.445800781, "record_id": "3ea49b88f0248679f5ec7dd0b50fd3656a774b9d8d8b11272eee1535bdc1a515"}
+{"event": "trial_start", "group": "fix-wildchat-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 6009782.888427734, "record_id": "4e0e9144028f94c9e35b5c3910a3314d1f5bc61c5bb5dd18eade1a38f0983bdb"}
+{"event": "prepare_content", "group": "fix-wildchat-final-06", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-06", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "fix", "mean_response_ns": 2574283.1740722656, "record_id": "f68a6e1b53f039446f994545374b77f42d6c43cb42e30e3c9991cc0fa40f4989"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "current", "mean_response_ns": 3174894.083251953, "record_id": "6fac88e315c497ad41b8ace780b29c0564f836f5a64420efc8a5f458d8ad111c"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 2450174.8369140625, "record_id": "5c99d0c63c819a5bb8eafdeb9b1980382194f68a0977e9e9d876545bec8e21b5"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 2080839.5844726562, "record_id": "b90c030f53f968f07cf969d2151185e7607d00184edb135a8ef23a3254910558"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "current", "mean_response_ns": 2696579.564453125, "record_id": "950d6f503cc8e3404c032b9227f967e945b1b94f2a1ddc5489872aaee3a98c9d"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "fix", "mean_response_ns": 2226053.658935547, "record_id": "fda9f0cb3f0aad1c6fc1782a3358492e3317795dacf3ca80b762c8c2a106046b"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 6874232.5322265625, "record_id": "2438c923c7ceee07e8dc6e6ac6c9cfdd12dd1f87edd7d45bbeda5d79d4351ef8"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "current", "mean_response_ns": 56397873.90307617, "record_id": "dd6502eb9f56f1790119509bbb4fe779a699aa85bb7175a87c90adfbaacd5d51"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "fix", "mean_response_ns": 9447128.198730469, "record_id": "76410db01a5131b8d4e762ee3be12bdf74daa3232166cb94e327dbf94bbfee8b"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "fix", "mean_response_ns": 4901507.2890625, "record_id": "e9354393dde9f33aa6fd0073b50fa210ad313ce71e250e0cd546222ef827e1b5"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "current", "mean_response_ns": 20968934.693359375, "record_id": "b484d2874ce4bb97655c7c08680947883765ec96c30da32cf9c86e6f80182489"}
+{"event": "trial_start", "group": "fix-wildchat-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 4410437.121582031, "record_id": "8c1af2882c61092a6906ace98554cd69a9232404bd16b30f4e6443aa66971bca"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-07", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-07", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-07", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "fix", "mean_response_ns": 5405613.5703125, "record_id": "928854309f1e2efbd34452bd75837944f5764f54179373d1049539dcca32202a"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "current", "mean_response_ns": 48127372.8359375, "record_id": "9373ee147d8755c22d4e06ec9d2358bdb5252154dde50eb32e81f6da5cc07504"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "stockoff", "mean_response_ns": 4614518.6181640625, "record_id": "5cf34588e137459479935b106d459934bca4cbd2dee19f53500c305a354975f2"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "stockoff", "mean_response_ns": 12766327.526855469, "record_id": "97ef0117b5965eafbeb7ce9055b57c01ab46b333dc5482f9d0fc7bb34e9f38a8"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "current", "mean_response_ns": 71976500.31713867, "record_id": "aed35dc9db8bf2d61761fa0533fccd87c7715ef504111cbd6c79862f813b606c"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "fix", "mean_response_ns": 18175804.333984375, "record_id": "3695717de3de2d5a49ad5353104c5f3132646dadef3dd0bb383ecae116df256f"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "fix", "mean_response_ns": 2261748.3420410156, "record_id": "149ac3619621ba429d77bcd0fbb78dbe21b83b69f2523fce8ed4d905357b3042"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "current", "mean_response_ns": 2796157.509765625, "record_id": "013988c15a9c76c4a465ef0348c71fe33c92c413579ec72a88f3ff49bd31d995"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "stockoff", "mean_response_ns": 2215858.012451172, "record_id": "689d38acadbef423bfdfc7bc12d8e3ba0411e2d23bb1b2b8287c82569b439a3f"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "stockoff", "mean_response_ns": 1299512.1650390625, "record_id": "ddf86ab690db66bc9baa0084fe172dea1dac9cd2f8062cc300724a2c94695415"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "current", "mean_response_ns": 1765828.591796875, "record_id": "ec0acc1ea2f8b89b4605a5d1b1ede711b53083537442629a73e93be0f8f19d56"}
+{"event": "trial_start", "group": "fix-gsm8k-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-07", "arm": "fix", "mean_response_ns": 1366676.7946777344, "record_id": "cbac25d752848eb98c34d725eacf13e3d72661159f1e9180763f8a7b40564dc0"}
+{"event": "prepare_content", "group": "fix-wildchat-final-08", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-08", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-08", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "current", "mean_response_ns": 3185548.978515625, "record_id": "33b8dc16bd37e030aca1a7b3373abe235c9f489374bba9752046409f5004ce4c"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 2530085.2275390625, "record_id": "7818d87a3f591e38806dda9d895870955d04c6ac5da1803571146d2bbd1a6511"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "fix", "mean_response_ns": 2674538.63671875, "record_id": "23305759deac3d4e1c7870823eeefa7949880f79758a3160679e2ce3312df00e"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "fix", "mean_response_ns": 6783053.4697265625, "record_id": "a5b4db6c45f8adfa33b277cbd74d3cd0bcace090f5de66d56c8a866a42486abf"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 4651991.815673828, "record_id": "3faae8841cfc83a6f4a199950eb492b152545bbe18fbd19b05cfe4e10873999e"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "current", "mean_response_ns": 31008912.088378906, "record_id": "98bf848a0e2db78ac04922329058074bc1c6a369d7a39e66abd4ebda0c01a439"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "current", "mean_response_ns": 28775903.432373047, "record_id": "64f16d56e78377ae1b78227e278625adfda7040cddb51702d88eb1f33527ad51"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 4468207.034912109, "record_id": "0d376b0e5cd3e9f0914721ad029541e7735d2b7639ab37653a259fc86abc41f7"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "fix", "mean_response_ns": 5548274.796386719, "record_id": "3cfda322e56ad1d64cbd64f43f1a28e64cccd2e387c35aee791800339e11711a"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "fix", "mean_response_ns": 2743741.0173339844, "record_id": "7c13b74d70f56aeeb987cfc6ee9ab1ceed450d5c6569b6c914277b9035060524"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 2598643.757080078, "record_id": "f7253408ef318e26e6be08d3886acd9063be8cad45fa2ed4060b9724450d9703"}
+{"event": "trial_start", "group": "fix-wildchat-final-08", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-08", "arm": "current", "mean_response_ns": 3235719.4782714844, "record_id": "8480fde39377bef4cc3967ce7162bbdefebc1bea97658481f4f6e10e2d3cf35c"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-08", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-08", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-08", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "current", "mean_response_ns": 3328427.3852539062, "record_id": "fad62449b9a25a8c44a80762233b0aacfefdb80e101702549fe46c5422767092"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "fix", "mean_response_ns": 2699339.0119628906, "record_id": "1ee16d4929689f1edb2e48905f43641be7cad99a5a100ace4a95841a2b408d24"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "stockoff", "mean_response_ns": 2594233.2133789062, "record_id": "d1f44f9e29c77866087e8d5cff11ba02a316c6f7f26e8101c702fa67e1f50d66"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "stockoff", "mean_response_ns": 2094287.8278808594, "record_id": "b751cbebd7b419573110637d0462771d62a527886b0ff30e695cc82cff92e284"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "fix", "mean_response_ns": 2186053.1064453125, "record_id": "d9807ace6a91cce26ad075c893d83dbf9709f9fb1238dfc63acf58efdf27a054"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "current", "mean_response_ns": 2663026.6196289062, "record_id": "62dca87db314d185de63255885e39400641c9b6ebf5846f84636007b8c42f5e9"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "current", "mean_response_ns": 22552301.24609375, "record_id": "20eeec7ce981cc55f71ed3096e71a1170d5250ba5109268d0f95703482865e98"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "stockoff", "mean_response_ns": 4295928.810058594, "record_id": "0652bb08f9a782bdaf8207b1482a518ee1c62bb05c99cb6fb4ee7ea1d087c224"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "fix", "mean_response_ns": 5314662.380371094, "record_id": "2379b534fd6939eb1cce5f856e53b65f00de4e6d16939b7d5601e0e62108e826"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "fix", "mean_response_ns": 7487973.823730469, "record_id": "9f1969c71079537150d78e0311c4eec970d15ea4eea7d378efe4499ec7276b24"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "stockoff", "mean_response_ns": 5952419.411621094, "record_id": "8ca63826e92a2d835299605fa47a0c743e294c0f757c5321ecf5f4d113850c60"}
+{"event": "trial_start", "group": "fix-gsm8k-final-08", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-08", "arm": "current", "mean_response_ns": 29915838.630371094, "record_id": "fa4814de3c9fba453f8093dc968caecd857e315aaf3ccefeae9327b8dd345b2c"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-06", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-06", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 2254003.6850585938, "record_id": "7f00925d3aeac70d7b12b8842e55839772344f5717204319cfb9e6bd62f5e900"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "fix", "mean_response_ns": 2320367.8107910156, "record_id": "8b03d99592952009c6ad859c614e2dff7d85a41e32b8aa6a14c3341bdd67d7e6"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "current", "mean_response_ns": 2782362.326904297, "record_id": "6cd3350b13e199ab1fe6f003d6cb088dbc301bfc14068c1d0510fe3ca2dee126"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "current", "mean_response_ns": 2142713.137939453, "record_id": "61624b772b58004e923fe3ecf0f69fcf8ed008deca470f7bbd95b3c6a75dc84c"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "fix", "mean_response_ns": 1703503.5517578125, "record_id": "459b16ebfab4daf4a6cfee55b0f9b75bb135e9a7e116559f51dcfdb81cb70eb7"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 1660346.0456542969, "record_id": "cfc7ae0772a686622de5736ab0cd0d30136aab747833a514a13f0c3300c877cb"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 3654575.7407226562, "record_id": "f5d3659a2bec3027d9cb287a6d630e11ead37c750ebb89a9eaa435b75e8e59a7"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "current", "mean_response_ns": 16249208.529785156, "record_id": "f43973c6690286d0d98cf392368662b7a2691815d271a3cbe1f0f4a62c930cce"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "fix", "mean_response_ns": 4059095.5209960938, "record_id": "6fb989f29ef3775a17402691ddcdddd385321905ef0ed153a62641718c86ecf4"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "fix", "mean_response_ns": 4778500.509033203, "record_id": "2633339e37a3791ef6437e2e8fca1988613d182e7e581d6188eb73aad7be272a"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "current", "mean_response_ns": 41215681.84472656, "record_id": "bfde6082ecb0ab9586a963b5eecf58b6918dede5ae15227b85f4bb859e18b00e"}
+{"event": "trial_start", "group": "fix-gsm8k-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 4455454.865478516, "record_id": "5cb6f1392054ace8b01a4f8517e60ecab30f5ee59960747af80c39e7ad49a7d8"}
+{"event": "prepare_content", "group": "fix-mbpp-final-01", "phase": "final"}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-final-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "current", "mean_response_ns": 2746446.8598632812, "record_id": "d55e2455a4cf13e71b559ca8f8b483b92be7b2a27853321138e78a145a0cbaff"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "fix", "mean_response_ns": 2240639.4458007812, "record_id": "9979504ae889890c02d1001d61ad62eec3b5033de7e4cfce641f1ce67a32163f"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 2167366.6044921875, "record_id": "162429182f2175426512996b897f97154e3d7b5e133651a3d403c950df027825"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 5427243.1953125, "record_id": "4ef16cd96bbfbe055496dfd1d1ae79004d60df4ff559315fe91f6e3cc4468122"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "current", "mean_response_ns": 23801616.71435547, "record_id": "d34dd30e44c6b7789dc2993ae47183e2a3ac7ebfe3c4d35e826f155f1e172eef"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "fix", "mean_response_ns": 6091145.370605469, "record_id": "0f2a62927b6931d84d207510e8104952439f85cb983a8f839c3087a978e21685"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "fix", "mean_response_ns": 4920709.609619141, "record_id": "039a52ef6addc9cbf3af902dfc298bbcb5e4f4c92d6872121c8818ba6fef6dd1"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "current", "mean_response_ns": 17592997.80029297, "record_id": "75d38b452445121b4aae53532e1629aa5b6916b63e5674f7e85157af4e307058"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 4080388.8193359375, "record_id": "d607524342396d9ae8cec76cca14bdb3d02f3bd2f1beaa023ceb6585c33a1d55"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 1982941.3327636719, "record_id": "bf5d59f48a2749bcc75f1529a3202439c25899a7f6a15b036c787c14af5f90f3"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "fix", "mean_response_ns": 2064273.7919921875, "record_id": "db0c8e4dd7377951c35ac045aed069f68bc08546df444b1030ec5c1ce0e782dd"}
+{"event": "trial_start", "group": "fix-mbpp-final-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-final-01", "arm": "current", "mean_response_ns": 2542663.4313964844, "record_id": "1c83deaee17b80f8c0836243770ae55a79dcdfc5a3598c0696696ff37edcfc88"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-01", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 4076537.1774902344, "record_id": "e7d6b3b4b241310c3c4d1e7387b800374d769642ef1224b4dc282dfbb8b10ec7"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "fix", "mean_response_ns": 4478913.982666016, "record_id": "1a0a998e331d4529cbca356b45e5a1e5c506aa97c6ecb31e0deb3ac379db4252"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "current", "mean_response_ns": 15399234.16430664, "record_id": "0108823eafb8a138fef8ae29796b393b02a45dff2a64907e720ebf56f2f7a28e"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "current", "mean_response_ns": 1971211.669921875, "record_id": "c3fd5c3e36549da3055555cdd5569351991b455456508a66065e68b00b3d943f"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "fix", "mean_response_ns": 1604692.2587890625, "record_id": "734bd07217ab3717b1f5348bd3bb505a0d40ae2608852f3785f9567d044b2666"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 1566455.3271484375, "record_id": "d510fd6e082ab7cc56c7e0d1cbefe74773e0b12c6753a3cb65f7be439733c71e"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 2164016.6923828125, "record_id": "17aa899b9d6ac828bfa5d8a6807a014d54be0347bf8dcff3505c9dd515da387e"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "fix", "mean_response_ns": 2266058.05859375, "record_id": "64bfe5dffbf3b90cf3abaedb10c30b650939610b09c52466d0af0d35ba624238"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "current", "mean_response_ns": 2806434.8251953125, "record_id": "191230e44f94fbf2790314484562591ef13b387270620fe05d22487912f5e551"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "current", "mean_response_ns": 17841633.954589844, "record_id": "90d6b8445d49cd8c0380aa3e31487526a0152142718f999420574c10b93cc8c4"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "fix", "mean_response_ns": 5375950.230224609, "record_id": "7abaecc11e9872fc96dddb57578904b0bc22222fe3d599f6db27c0bea263ccb8"}
+{"event": "trial_start", "group": "fix-gsm8k-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 4402056.547363281, "record_id": "dfa293a30bd34442ee90bc63de522d23ec38b7f3797f2f4e6c8b1ffab5c384e9"}
+{"event": "prepare_content", "group": "fix-wildchat-final-07", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-07", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-07", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "fix", "mean_response_ns": 6853859.220214844, "record_id": "44a8b00e4436f144e352a6d6ff8ad912092f89ad131001d0cd0bd552c0a42fa6"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "current", "mean_response_ns": 28782770.727294922, "record_id": "3142d4c5e21c1362e883c98846b7dffb8317309af158bc9c9e263beb95eeb168"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 4647292.883056641, "record_id": "bfe64ad87c9a1f1c47150ae452156b679e195590b16dfb1c32bf1b62596181bb"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "current", "mean_response_ns": 1951039.8930664062, "record_id": "69148555d2ce973ae0dc67c5a4b92d72144df7127f453db6ec3d0168ad74607a"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "fix", "mean_response_ns": 1597500.7026367188, "record_id": "b8d737e38e30882c7bdc927623d4d875aec2e68835ebf66b8e675632355a35da"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 1522668.6706542969, "record_id": "82b953c4702554920e07f730f77970e32c03c8f20eaf9bf6f4a815852cd6bba7"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 2110335.397216797, "record_id": "e2e0ecb72466bd6ad88c89671c8f6cc16677838aa6edf4e6e202a8f985c78773"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "fix", "mean_response_ns": 2234532.233642578, "record_id": "e9b62066c1acd8bd2a53b5ded76347737c1e3e9c7790ee72958b395e12fc99c7"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "current", "mean_response_ns": 2660022.5505371094, "record_id": "11bb93b4c84bfdcafa6ce9ca4e38b498b69a56817e416805e4b7ce8f5b43eb38"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 4112827.8850097656, "record_id": "e5d0a141137917e14e882657b2e0c8f26606bef36f3e8ba5caadf4e4dc89a457"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "current", "mean_response_ns": 53623761.7800293, "record_id": "cdf3336cc8257b385968c77cc81fbdeaeae50c573bd11bc7b18a6623243d0cd3"}
+{"event": "trial_start", "group": "fix-wildchat-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-07", "arm": "fix", "mean_response_ns": 8383412.141113281, "record_id": "ca23ad09c58d745014b5be760eef8583c0e60fbaf27ae83098a929b84ed73efe"}
+{"event": "prepare_content", "group": "fix-wildchat-final-01", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 9121129.536376953, "record_id": "73c818fbf3938b58be719a9bdf0786b857734985861eea32147c8b4b720f61b4"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "current", "mean_response_ns": 34418396.45776367, "record_id": "9871b3f47cd5937d830f76aa28198a9213e7da1f77785793e2c7707bf5e5efb8"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "fix", "mean_response_ns": 13082183.168945312, "record_id": "402330f75a791c961e57c39783082af3615e65d1acc481b9f4936eba4afc2a44"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "fix", "mean_response_ns": 7440990.137939453, "record_id": "219fbb4c83e1c13f10117683787acbdd20481f24c95f722ff0256d189eb76297"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "current", "mean_response_ns": 46214682.38354492, "record_id": "dda760d545b3021dd3bd9cdca94b6b0e8af1d485d9e15b690e5cc4e736751e4a"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 5664075.691650391, "record_id": "1f18f5b9684857e668f85ee8f6a94fbbdaa7abb57a343695b848542c3c9eed6b"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "fix", "mean_response_ns": 1943016.4514160156, "record_id": "9e7d53ed8d26d016b43ebc2494dec761bf966ea83b241623b2bf66d888e68429"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "current", "mean_response_ns": 2381430.6870117188, "record_id": "b5eb0a7a82fd81ccb02cb6a58d475a769459656efaf466b292fc64da98a28414"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 1854856.8549804688, "record_id": "c2a69f8d8b2a9e07925c408315b5478b084864573b165158871f2a9e705e5886"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 2270632.4416503906, "record_id": "15b5c409c85a97add4f113238a054e73aa355032a98054ead11a97b463e88637"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "current", "mean_response_ns": 2896773.311279297, "record_id": "77765c3b1d8989195ca4681300afdc9ff1ec67df95c58fc7adffe6a298f5f4c5"}
+{"event": "trial_start", "group": "fix-wildchat-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-01", "arm": "fix", "mean_response_ns": 2349591.067138672, "record_id": "5de0e4aa1271a361fe791b70a19195cbed99a14e5f2ad83131a7b8da7d8457db"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-03", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-03", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "current", "mean_response_ns": 41181983.189208984, "record_id": "e79d05709b0f2477bb203b706161da030c7862af7311cca83ff23cc9d0368c24"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "fix", "mean_response_ns": 4330008.422363281, "record_id": "d4bb1396b6038b032ae227c05afff07fb09555aa55e39f8ede967b10dab2dbb6"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 3835071.23828125, "record_id": "34bff4e496a05e62e1b9bc0ca4aa6336eae0276cd19ae8bb8b1eefef747a9c68"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "current", "mean_response_ns": 2976442.6318359375, "record_id": "093322e2584f7f7221dc433cf17ed6b1e82b5c2afd8e6cd9d79fe360c899c02c"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 2359698.8784179688, "record_id": "92afdeb08d87c49be76ef75fe35fa59a67b373c47420eae1679a4635dba1671d"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "fix", "mean_response_ns": 2427914.76953125, "record_id": "a7ff240b724e963345906b007d1817d2b71b31ee5eed4d66e7431228181362db"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 4684697.770751953, "record_id": "acb6c43b345ed9783a7ac35b59430d60c04b0dde38837528ca202655c02d9fb3"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "fix", "mean_response_ns": 5668732.595703125, "record_id": "e7df2223e2d84114383d8f22bfc25df7f6df18763898169c6b012868366ec8f0"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "current", "mean_response_ns": 24274989.00805664, "record_id": "3514f101c89f5fe0973e3791b1d27b2580c5f33bcb4a6b57891e7cebc126a752"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "fix", "mean_response_ns": 2049662.5847167969, "record_id": "b7d856c4a90dfe42567b6b0f8559836565a74b28cc8dbb6eca06cfd13edfbf1d"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 1979303.5478515625, "record_id": "bcce038c8c0530d0822918c498ae09db1a797c79c85ae2382ee82530f47060d7"}
+{"event": "trial_start", "group": "fix-gsm8k-final-03", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-03", "arm": "current", "mean_response_ns": 2500035.233642578, "record_id": "0bca2a4168989b00afc1112e3b0495157cd8f7aad3772c5272ccf500c91369e8"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-05", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-05", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "current", "mean_response_ns": 1691952.4055175781, "record_id": "9dca2548e25732d282379dd9e961e20ed572720f05b469200b5d81621fc43b1d"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 1269778.9360351562, "record_id": "3cf1055fb76419380259c96a5895262fc48f720c19151cc42c49a073e4732f94"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "fix", "mean_response_ns": 1334581.4670410156, "record_id": "fc1c18ab7639084e0b4e4f23bda9028f8fcecc12868889c0716fa60b0faff83f"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "fix", "mean_response_ns": 5523176.955566406, "record_id": "586ff1efdc9c7540ba366abfeff6012ad248a604336e1a914e0ce51dd2244cb6"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 4512297.426513672, "record_id": "02aca5274570a88e12228d24818446ad6018d16a1a962e397f826508dc6ae29c"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "current", "mean_response_ns": 25209124.400390625, "record_id": "500aad9db133cfc04ad996963814df7b1079e804441d125c3b2545c12b3637c4"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "current", "mean_response_ns": 26240750.04296875, "record_id": "6c8a8a0d7298c038b00b0689ddb28fa08669531eff2dae66decb3282d06e8eaa"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 5203738.259277344, "record_id": "5940d231cb1040e6d8466a512f4862de829cf04605f80043d560d8b5fbdebed7"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "fix", "mean_response_ns": 6074091.091308594, "record_id": "8b1ee6d7d0492431c3a918c3b087d0f25a22c5d2599f091d50e1a1c00c369873"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "fix", "mean_response_ns": 2098329.0209960938, "record_id": "292af295405ac59d4fe5e184b668480cb605c4e1af2027d76ec0c330fa53307f"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 2071986.2351074219, "record_id": "454416fa1b6d294822dc5d4057d6492e4677d97290410fb8172c4ccd3b95bdf3"}
+{"event": "trial_start", "group": "fix-gsm8k-final-05", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-05", "arm": "current", "mean_response_ns": 2618817.510986328, "record_id": "7e71114fef4e75d41941568a14968b93a69b7e6ee5f7744e4cb1c196fad9ea3d"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-02", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-02", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "fix", "mean_response_ns": 1473124.248046875, "record_id": "4e6ec9eda780daeef624f450d1876fa405a499af3e8f627e7d0bdb67cfcb69b4"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 1423585.8156738281, "record_id": "2087f82b9452d070567c3d99f26b7d56acc2d2de21a9a7b79109e939fa0049cc"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "current", "mean_response_ns": 2305964.39453125, "record_id": "8ee5178ee8a4780d00f05b480bbdba8227d5db0309323ae355b6f05cb04360e4"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "current", "mean_response_ns": 2486405.2888183594, "record_id": "c0296ae55f80473cabc115c76750d75f6e450fc21d913640148cc931814a8248"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 1962930.490234375, "record_id": "8b4419f41484ddaaf0c70939d24ceb25b65d5da663afb7c66fc0606f84a801b0"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "fix", "mean_response_ns": 2038617.5207519531, "record_id": "75921450973a9446e1b2e2e5987aaca23f680da94a4c42fb0b06166ce9849756"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "current", "mean_response_ns": 46236321.95727539, "record_id": "40ee7f21859fe049053485ddd1dc5ba147d0cc91a0542c74af3eda5bf2d9d19c"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 12249937.030761719, "record_id": "c5edc3ed6fdece258fdb49c0bb7900b84bfccd2d267199ac2d88b96ab695d1f3"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "fix", "mean_response_ns": 16496996.049072266, "record_id": "79128676f23addbf17fa3fda81a65cdb69063a1f24af418761a559bef63e0b09"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "fix", "mean_response_ns": 6489690.675537109, "record_id": "559da18cc304e711d23d4dd55da9475edf77f31f5202e40b45b9c9521028024d"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 5424601.816162109, "record_id": "16a91b67d57e340488ab2b744f9e9dbcedc8efaf6a1650a552d2428600fdccb9"}
+{"event": "trial_start", "group": "fix-gsm8k-final-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-02", "arm": "current", "mean_response_ns": 26675437.810791016, "record_id": "4ec5264de21c0dfc462e72ee70cc71e8e9a339cf6a2a947318fc2ae7e9b290a4"}
+{"event": "prepare_content", "group": "fix-wildchat-final-03", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-03", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "current", "mean_response_ns": 3096550.818359375, "record_id": "d997e59ef4c57770a2890248bf3c598369eb5ba648be97609c4062b1c1de4355"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 2422772.8198242188, "record_id": "35a57cec91f9c9bc24b6e220a0860fabf020f54e822872eb14787ac69b20ca12"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "fix", "mean_response_ns": 2568982.1411132812, "record_id": "18ec7d79eb512e0988cddeec7e912a62be48ddacc0b8e576a808a6d92a261453"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "current", "mean_response_ns": 38971575.64086914, "record_id": "cbe3cb6b5e9c25cd6e5a4558b30b9cf87865aa48c442933f5e53db26c3d28077"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "fix", "mean_response_ns": 7447420.887939453, "record_id": "e7b6fc915e5017a13c2a60593799c8719761870a4eae5425b28a6cba638e5bc0"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 5648400.719482422, "record_id": "0618e351e9df255ae380e71197fc07e718d5854fbbf4c7c0a1c37e2c091958ee"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 4969925.128662109, "record_id": "257fe431649b261545980f37ba750fc42a3142f0e87717dc689d09bd645c83ac"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "fix", "mean_response_ns": 5556831.988525391, "record_id": "ab0d75377f68b710accee7795e8b7e3692fe4fd6901f686b3bc33eaffe8fa7bf"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "current", "mean_response_ns": 21937354.545166016, "record_id": "d86fcc67e8e489cb2e22e0ef3df7e528a0c9d90775f0658254672f2c0ed50c8e"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "fix", "mean_response_ns": 2831891.283203125, "record_id": "4c5552ff9f0ecec5df0d3d56d730c4317d09218566cfba02328426264af394fe"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 2730959.948486328, "record_id": "d280beca8bdb1d4517a8b825f2f2cc5b1aa60d0195376a4bdafe468cb488a1d2"}
+{"event": "trial_start", "group": "fix-wildchat-final-03", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-03", "arm": "current", "mean_response_ns": 3396787.6372070312, "record_id": "9b0da5c7928aab7067884c000fae428bce47d06a98ef7459719d93891c247449"}
+{"event": "prepare_content", "group": "fix-gsm8k-final-04", "phase": "final"}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-final-04", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-final-04", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "fix", "mean_response_ns": 9879320.865722656, "record_id": "49383d6251ea020d57c9967d91e647253a55be35f0f0122fd987130d37c6b7ab"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "current", "mean_response_ns": 75911799.43066406, "record_id": "7dd57b21d7ec5b653546ff64cbe55f33843b7002996a99426487c099856e6088"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 9313014.862792969, "record_id": "6e3e36be7da536574d6f7f7434adfaed5d6bb450aaa042d8c7c240efbe716042"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "fix", "mean_response_ns": 2558260.356689453, "record_id": "45f4273d12dfad35202ddb5862c02bd15822d35ec67e9ac4ace030e501a711e8"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "current", "mean_response_ns": 3029211.7265625, "record_id": "8b03650554793885d8942ebbf2255fff89aab170a89fb53b76ab3aeb6bda82ac"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 2439342.9704589844, "record_id": "abaab351880e394958d5cb75d6b8b2f694ff89c5cfac17985cf3878a86ab4c5d"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 2594417.0395507812, "record_id": "d61e190cae0a9a1b7d12d52581250654922f7eb93174312f0614701cb1691306"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "current", "mean_response_ns": 3330148.4592285156, "record_id": "f8680ffccf5ac59a5862c43c862f38cc5cc944a869b79158bf390298ae37f3b5"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "fix", "mean_response_ns": 2719432.145751953, "record_id": "1f7c858cc49a0acc34a007d44abf13cad5a5a25d44c3e357b64cade712aaa568"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 4880236.03515625, "record_id": "0544437d47d620614c178e66f9045bd215f9521e1e60b337325ebe240a358f6f"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "current", "mean_response_ns": 51918842.03417969, "record_id": "b31f220c5785d0adaf36c34d3b6ed7574075900fec8658f53e3f29ab2eb0d56e"}
+{"event": "trial_start", "group": "fix-gsm8k-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-final-04", "arm": "fix", "mean_response_ns": 5194775.218017578, "record_id": "8abe6f9a536f039bcceadd26f3e14165a723c88dd44fa17689d8520827e4adac"}
+{"event": "prepare_content", "group": "fix-wildchat-final-05", "phase": "final"}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-final-05", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "current", "mean_response_ns": 3289672.692138672, "record_id": "174e36b199d89ccba169eff222acea1585f9f43d04298b5058747b44b27d4f0f"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "fix", "mean_response_ns": 2685093.7241210938, "record_id": "8f5c8fad597cf6ff1b824ded7b6186068f6f13c2cd0d2d83bd8d591cc7874695"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 2602862.1362304688, "record_id": "f64a2e7443cf0913c06f1231ad5c574e29f83c47575a2824413bfb6b8b634098"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "current", "mean_response_ns": 30532942.024902344, "record_id": "7da9b6205169b7e0d3e4730265dab774bd0b5b7427f38f5e044e8f96e672c87f"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "fix", "mean_response_ns": 7163377.353759766, "record_id": "4c04dc203b6aace765c4a30bb45251991597b9206f951baf4000038356cbea98"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 4513997.7939453125, "record_id": "1aa997109acf0e714132f4aae380de2ae658e0293c21028920033af81ac60a37"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 1302793.1708984375, "record_id": "b0b66e2d983a93a7a1e3fc20312cbf3d2bcd25624abb2e869490905cdde480a5"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "fix", "mean_response_ns": 1370551.5014648438, "record_id": "7cf249ca0008430c292386dcc2854d9804a93079871d7d3a6684c9c04a341d33"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "current", "mean_response_ns": 1739055.0910644531, "record_id": "5b23f1c8ef774aefac774bd854f9ae807be36aeec535ef20eed9945bacba8328"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 4565281.482666016, "record_id": "f4a4e72861f56b3e38abe4decc550a4b8de239f0db76d6727f7e69463355b551"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "fix", "mean_response_ns": 6147316.361083984, "record_id": "7e7c2c906e41d66a50288805a7d8b62ed72fa18a2511f934c51f8dbe16566b70"}
+{"event": "trial_start", "group": "fix-wildchat-final-05", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-final-05", "arm": "current", "mean_response_ns": 42114677.19873047, "record_id": "41a79e987bb848245a67a186437ef28527c0725de28ccc6bd94f0c2262e364ba"}

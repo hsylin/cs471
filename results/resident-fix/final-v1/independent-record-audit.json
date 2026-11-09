@@ -1,0 +1,98 @@
+{
+  "schema": "resident_fix_independent_record_audit_v1",
+  "valid": true,
+  "phase": "final",
+  "expected_records": 204,
+  "observed_records": 204,
+  "groups_with_actual_routes": 17,
+  "prepared_batches_reconstructed": 69904,
+  "exact_greedy_assignment_batches": 69904,
+  "raw_clock_records": 204,
+  "rank_windows_reconstructed": 8704,
+  "rank_forced_skip_decisions": 8704,
+  "static_trials": 68,
+  "static_rank_states": 136,
+  "errors": [],
+  "missing": [],
+  "plan_sha256": "c51db22a98b6817bc9f27b9c303c16966292bc2646d5c2b73f93f768be40a3cc",
+  "source_sha256": "08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff",
+  "old_closure_sha256": "9c6d6a7e1e94f4be769d435fbf7652e0cbb86501637c046ae078a0ccef1015d4",
+  "limitations": [
+    "Independent CPU implementation within same team; no production analysis/inference imports.",
+    "Actual stored stock routes and every 4,112 prepared greedy assignment are reconstructed; GPU kernel arithmetic is not rerun.",
+    "Full-batch preflight, 64 FP32 positions/group, 16 whole postflight batches/trial and resident-weight checks retain their recorded coverage limits.",
+    "No performance selection or additional inference."
+  ],
+  "record_files": {
+    "fix-gsm8k-final-01.jsonl": {
+      "stored_sha256": "769eaf9dc9bf7138d474801ce7457d75f511d9bee31664d1b682d0dd96469956",
+      "original_bytes_sha256": "769eaf9dc9bf7138d474801ce7457d75f511d9bee31664d1b682d0dd96469956"
+    },
+    "fix-gsm8k-final-02.jsonl": {
+      "stored_sha256": "1741cc8735cfc84a3cb4324cd6a60e7bc0ba93bc420fc8f9649e2c343f5c1b26",
+      "original_bytes_sha256": "1741cc8735cfc84a3cb4324cd6a60e7bc0ba93bc420fc8f9649e2c343f5c1b26"
+    },
+    "fix-gsm8k-final-03.jsonl": {
+      "stored_sha256": "56b2c2719f3b653d5682c50120b3d108ae11a454645fab7ebea85ee2df860e84",
+      "original_bytes_sha256": "56b2c2719f3b653d5682c50120b3d108ae11a454645fab7ebea85ee2df860e84"
+    },
+    "fix-gsm8k-final-04.jsonl": {
+      "stored_sha256": "5bce35297ffbce53752bb74146d1191a289652cab56aca32cf7ff217b72d2320",
+      "original_bytes_sha256": "5bce35297ffbce53752bb74146d1191a289652cab56aca32cf7ff217b72d2320"
+    },
+    "fix-gsm8k-final-05.jsonl": {
+      "stored_sha256": "d81328df4b8376aa83710ea236940162d14d6a9911e1f7ca1dbed31070aefed0",
+      "original_bytes_sha256": "d81328df4b8376aa83710ea236940162d14d6a9911e1f7ca1dbed31070aefed0"
+    },
+    "fix-gsm8k-final-06.jsonl": {
+      "stored_sha256": "17f883c36c78c7e0d25b648ab83ac06ecb667a926782e1fe9520dbc0cb186717",
+      "original_bytes_sha256": "17f883c36c78c7e0d25b648ab83ac06ecb667a926782e1fe9520dbc0cb186717"
+    },
+    "fix-gsm8k-final-07.jsonl": {
+      "stored_sha256": "8b9a0015604168cde26abe207f584e6b690ef73c884985a46bd832eb2a24f244",
+      "original_bytes_sha256": "8b9a0015604168cde26abe207f584e6b690ef73c884985a46bd832eb2a24f244"
+    },
+    "fix-gsm8k-final-08.jsonl": {
+      "stored_sha256": "420aaf6c06be5d12075db25c064c795b21e7506f6838015b69a146597ed74c35",
+      "original_bytes_sha256": "420aaf6c06be5d12075db25c064c795b21e7506f6838015b69a146597ed74c35"
+    },
+    "fix-mbpp-final-01.jsonl": {
+      "stored_sha256": "da8604a0e39a380e04631390e7eed4ead741a81ab6626e918bdbe809a079fd90",
+      "original_bytes_sha256": "da8604a0e39a380e04631390e7eed4ead741a81ab6626e918bdbe809a079fd90"
+    },
+    "fix-wildchat-final-01.jsonl": {
+      "stored_sha256": "97401163144d83789edbeab1eb4e10107e4fd267dd672e2735c177a56da31178",
+      "original_bytes_sha256": "97401163144d83789edbeab1eb4e10107e4fd267dd672e2735c177a56da31178"
+    },
+    "fix-wildchat-final-02.jsonl": {
+      "stored_sha256": "1762d0a79a5aa26c427c2b2a96e42a350055237eb9788e537237aab80cf4dd88",
+      "original_bytes_sha256": "1762d0a79a5aa26c427c2b2a96e42a350055237eb9788e537237aab80cf4dd88"
+    },
+    "fix-wildchat-final-03.jsonl": {
+      "stored_sha256": "0459ca8336de810ddf3c2ab08f84bc626407e8c85a7e714e4d19387572d2dc20",
+      "original_bytes_sha256": "0459ca8336de810ddf3c2ab08f84bc626407e8c85a7e714e4d19387572d2dc20"
+    },
+    "fix-wildchat-final-04.jsonl": {
+      "stored_sha256": "d03c020c168d6e8d15290adaf2495867ee7a748d8f3230e7b9ed6a61212cb040",
+      "original_bytes_sha256": "d03c020c168d6e8d15290adaf2495867ee7a748d8f3230e7b9ed6a61212cb040"
+    },
+    "fix-wildchat-final-05.jsonl": {
+      "stored_sha256": "50dbe9b401c3c43708fc858a6a19ea58e938b88a05db9134a1619db81ced454f",
+      "original_bytes_sha256": "50dbe9b401c3c43708fc858a6a19ea58e938b88a05db9134a1619db81ced454f"
+    },
+    "fix-wildchat-final-06.jsonl": {
+      "stored_sha256": "21b7f5400c695d5ff0a426f0691cbae1e410571cb438ea11f41efc8e04397892",
+      "original_bytes_sha256": "21b7f5400c695d5ff0a426f0691cbae1e410571cb438ea11f41efc8e04397892"
+    },
+    "fix-wildchat-final-07.jsonl": {
+      "stored_sha256": "e4cdbf2ca0015dfd8728c3ad680836587a6676bba132a3bbda00d6b56b4afa2a",
+      "original_bytes_sha256": "e4cdbf2ca0015dfd8728c3ad680836587a6676bba132a3bbda00d6b56b4afa2a"
+    },
+    "fix-wildchat-final-08.jsonl": {
+      "stored_sha256": "6f5801e7ee165e456a4050888e27a20434bbcdebf307acfd23e3bd9c4ab26122",
+      "original_bytes_sha256": "6f5801e7ee165e456a4050888e27a20434bbcdebf307acfd23e3bd9c4ab26122"
+    }
+  },
+  "auditor_sha256": "781875d98856570f04f21918513ba3797690ac22723a80ef13f57854e78b2187",
+  "independent_primitives_sha256": "20d18bcbcb1358e2ee462b69b35a262daaf92f9543040a9db581c351de3b38b7"
+}
