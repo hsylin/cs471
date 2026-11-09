@@ -162,6 +162,14 @@ def build_jobs(manifest):
     return jobs
 
 
+def assign_balanced_branch_orders(jobs, order_seed=471):
+    """Balance temporal order across declared states, independently of outcomes."""
+    orders = [["allow", "skip"] if index % 2 == 0 else ["skip", "allow"]
+              for index in range(len(jobs))]
+    random.Random(order_seed).shuffle(orders)
+    return [{**job, "branch_order": order} for job, order in zip(jobs, orders)]
+
+
 def _trace_config(manifest, job, weights):
     trace = dict(manifest["trace"])
     for key in ("num_experts", "top_k"):
@@ -340,6 +348,8 @@ def run_case(rt, weights, manifest, config_hash, job, *, diagnostic_checks=False
     layer.warming_up = False
     layer.state.expert_rearrangement_step = 0
     layer.state._update_layer_should_record(log_stats=False)
+    warmup_histogram_captures = layer.histogram_capture_count
+    layer.histogram_capture_count = 0
     layer.planner_seconds = layer.controller_seconds = 0.0
     layer.decisions.clear()
     layer.last_accepted_step = None
@@ -411,6 +421,12 @@ def run_case(rt, weights, manifest, config_hash, job, *, diagnostic_checks=False
         "replica_budget_actual": layer.replicas,
         "forced_contract_checks": forced,
         "histogram_cuda_validation": histogram_proof,
+        "logical_histogram_collection_enabled": layer.collect_history,
+        "logical_histogram_measured_capture_steps": layer.histogram_capture_count,
+        "logical_histogram_warmup_capture_steps": warmup_histogram_captures,
+        "logical_histogram_schedule": "continuous untimed warmup; measured capture iff W < R - native_counter <= 2W before step increment; native supplies current W",
+        "logical_histogram_count_method": "preallocated_int64_scatter_add",
+        "previous_window_timestamp_checks": layer.previous_window_timestamp_checks,
         "observation_window_assignment_total_expected": expected_window_assignments,
         "observation_count_multiplicity": rt.world_size,
         "observation_conservation_checks": observation_checks,
@@ -454,6 +470,7 @@ def branch_case(rt, weights, manifest, config_hash, job):
     scout.warming_up = False
     scout.state.expert_rearrangement_step = 0
     scout.state._update_layer_should_record(log_stats=False)
+    scout.histogram_capture_count = 0
     scout.capture_decision_step = decision_step
     for step in range(decision_step + 1):
         trace_step = 2 * w + step
@@ -486,8 +503,9 @@ def branch_case(rt, weights, manifest, config_hash, job):
                                    tau=float(manifest["policy"]["tau"]),
                                    step=decision_step, windows_complete=True)
     results = []
-    order = ["allow", "skip"]
-    random.Random(job["seed"] + job["repetition"]).shuffle(order)
+    order = job["branch_order"]
+    if sorted(order) != ["allow", "skip"]:
+        raise ValueError("Declared branch_order must contain allow and skip exactly once")
     for branch in order:
         layer = _make_layer(rt, weights, manifest, "B4", job["seed"])
         layer.restore_snapshot(source_map, *source_weights)
@@ -528,6 +546,9 @@ def branch_case(rt, weights, manifest, config_hash, job):
         "snapshot_scope": "actual B3 trajectory at a native proposal boundary; exact committed map and cloned local weights restored in both branches",
         "timing_scope": "future layer replay plus actual candidate migration in allow branch; shared prefix and candidate planning excluded",
         "future_rebalancing_enabled": False,
+        "diagnostic_prefix_histogram_capture_steps": scout.histogram_capture_count,
+        "previous_window_timestamp_checks": scout.previous_window_timestamp_checks,
+        "logical_histogram_schedule": "continuous untimed warmup; capture previous W only at fixed cadence; diagnostic prefix collection is outside both branch timings",
     })
     del scout, source_weights, hidden, ids, combine
     gc.collect()
@@ -612,7 +633,7 @@ def _execute(args, rt):
                 ])
                 unique.extend({**job, "method": "BRANCH", "decision_step": int(step)}
                               for step in steps if int(step) < int(manifest["trace"]["num_steps"]) - 1)
-        jobs = unique
+        jobs = assign_balanced_branch_orders(unique, order_seed=diag.get("order_seed", 471))
     output = Path(args.output)
     rt.artifact_dir = output.parent / "traces"
     completed = set()

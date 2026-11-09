@@ -64,6 +64,37 @@ loading and compilation; every migration admitted during the measured horizon
 remains fully charged. The corrected source receives a new hash and complete
 new pilot, with scientific thresholds, traces, and selection rule unchanged.
 
+## Final bounded collection correction
+
+The valid warm-start pilot selected cooldown 256 by its predeclared 1% tie rule;
+all three candidates met the pilot stationary constraint. The comparator
+execution paths, thresholds, and selection remain fixed.
+
+A final implementation audit identified unused B4 work: with R=64 and W=16,
+only phases 32–47 supply the previous window, while native EPLB supplies phases
+48–63 for the current window. Continuous collection computed four times as
+many histograms as the gate reads. The final collector uses that fixed previous
+window schedule, retains continuous warmup, and advances logical timestamps
+on every input step. Exact timestamp and vector checks guard against stale
+history. This optimization is valid for this synchronous, fixed-cadence harness;
+it is not claimed to support arbitrary asynchronous or dummy-step schedules.
+
+The unused continuous-collector final manifest is archived as
+`final-unexecuted-continuous.json`; no held-out run used it. Before freezing the
+final execution hash, a 28-run B4 replay compares the same pilot tapes with the
+valid warm-start pilot. Counts, TV, admission, candidate/committed maps, and
+payload accounting must match. This validation is not final performance
+evidence. No further performance optimization follows it.
+
+The pilot branch execution used seed 11, but its original analysis selector
+accidentally named final seed 1001. The frozen files and original report remain
+unchanged. A supplemental execution-based audit validates all eight declared
+pilot states and explicitly records that mismatch. The final execution and
+analysis selectors both name seed 1001. The final eight pairs also use a
+predeclared balanced order: four allow-first and four skip-first, shuffled with
+order seed 471. The original seed-only shuffle gave all pilot strata the same
+order; this additional correction removes that diagnostic order confound.
+
 ## Reporting limits
 
 The native fused MoE path uses its fallback kernel configuration for this

@@ -7,8 +7,9 @@ import pytest
 
 from skewbench.native import (
     CountingCommunicator, initial_mapping, validate_layer_shapes, verify_native_sources,
+    should_capture_previous_window, previous_window_indices,
 )
-from skewbench.runner import build_jobs, _trace_config
+from skewbench.runner import build_jobs, _trace_config, assign_balanced_branch_orders
 from types import SimpleNamespace
 
 
@@ -85,3 +86,50 @@ def test_measured_horizon_excludes_two_real_history_windows_and_case_phase_wins(
     cfg = _trace_config(manifest, job, weights)
     assert cfg.num_steps == 544 and cfg.warmup_steps == 32
     assert cfg.phase_steps == 56 and cfg.burst_repeat_steps == 128
+
+
+def test_previous_window_capture_boundaries_and_continuous_warmup():
+    capture = lambda step: should_capture_previous_window(16, 64, step)
+    assert [step for step in range(64) if capture(step)] == list(range(32, 48))
+    assert not capture(31) and capture(32) and capture(47) and not capture(48)
+    assert all(should_capture_previous_window(16, 64, step, warming_up=True)
+               for step in range(64))
+
+
+@pytest.mark.parametrize("window,cadence", [(1, 2), (3, 7), (8, 16), (16, 64)])
+def test_sparse_capture_keeps_exact_previous_rows_across_wraparound(window, cadence):
+    stamps = np.full(2 * window, -1, dtype=np.int64)
+    seen = 0
+    for _ in range(2 * window):
+        stamps[seen % len(stamps)] = seen
+        seen += 1
+    captured = 0
+    for step in range(3 * cadence):
+        phase = step % cadence
+        if should_capture_previous_window(window, cadence, phase):
+            stamps[seen % len(stamps)] = seen
+            captured += 1
+        seen += 1  # time advances on every actual observed step, not just captures
+        if phase == cadence - 1:
+            indices = previous_window_indices(stamps, seen, window)
+            assert stamps[indices].tolist() == list(range(seen - 2 * window, seen - window))
+    assert captured == 3 * window  # includes the unoptimized terminal cycle
+
+
+def test_previous_window_timestamp_guard_rejects_missing_or_stale_rows():
+    with pytest.raises(AssertionError, match="complete"):
+        previous_window_indices(np.arange(8), 7, 4)
+    stamps = np.arange(8)
+    with pytest.raises(AssertionError, match="stale"):
+        previous_window_indices(stamps, 16, 4)
+
+
+def test_declared_branch_orders_are_balanced_deterministic_and_preserve_jobs():
+    jobs = [{"state": index, "seed": 1001, "repetition": 0} for index in range(8)]
+    assigned = assign_balanced_branch_orders(jobs, order_seed=471)
+    assert assigned == assign_balanced_branch_orders(jobs, order_seed=471)
+    assert sum(job["branch_order"] == ["allow", "skip"] for job in assigned) == 4
+    assert sum(job["branch_order"] == ["skip", "allow"] for job in assigned) == 4
+    assert [{key: value for key, value in job.items() if key != "branch_order"}
+            for job in assigned] == jobs
+    assert all("branch_order" not in job for job in jobs)

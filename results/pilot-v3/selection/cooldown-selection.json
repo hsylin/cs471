@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "status": "selected",
+  "selected_cooldown_steps": 256,
+  "stationary_constraint_met": true,
+  "candidates": [
+    {
+      "cooldown_steps": 64,
+      "manifest_sha256": "8a15d3f83586d334c4ad4d9f8afec810241b3a4f2bccd3094241fb39fe4c3952",
+      "status": "complete",
+      "all_case_runtime_ratio": 0.995167300422131,
+      "worst_stationary_batch_ratio": 1.0072816832702405,
+      "stationary_batch_ratios": {
+        "128": 0.9988958657207346,
+        "1024": 1.0072816832702405
+      },
+      "stable_eligible": true,
+      "missing_records": 0,
+      "invalid_records": 0
+    },
+    {
+      "cooldown_steps": 128,
+      "manifest_sha256": "0bf4b386f6cb81dd74a221b80b8eebb76f63e9247931153565397f235bd73016",
+      "status": "complete",
+      "all_case_runtime_ratio": 0.999256922390772,
+      "worst_stationary_batch_ratio": 1.0035904211072786,
+      "stationary_batch_ratios": {
+        "128": 0.9966134770660118,
+        "1024": 1.0035904211072786
+      },
+      "stable_eligible": true,
+      "missing_records": 0,
+      "invalid_records": 0
+    },
+    {
+      "cooldown_steps": 256,
+      "manifest_sha256": "13fdb4389e34bf45b1b1504c67bdcc6a6218b9aab332d215283b00adf44b34cb",
+      "status": "complete",
+      "all_case_runtime_ratio": 0.9990280725437083,
+      "worst_stationary_batch_ratio": 0.9975258017085231,
+      "stationary_batch_ratios": {
+        "128": 0.9954529254847762,
+        "1024": 0.9975258017085231
+      },
+      "stable_eligible": true,
+      "missing_records": 0,
+      "invalid_records": 0
+    }
+  ],
+  "missing_grid_candidates": [],
+  "selection_rule": {
+    "cooldown_steps_grid": [
+      64,
+      128,
+      256
+    ],
+    "initial_cooldown_steps": 128,
+    "scope": "Tune only B5 cooldown on pilot seeds. These are parameter candidates for one baseline, not additional final methods.",
+    "ranking_data": "All seven pilot case variants, both batch sizes, both pilot seeds; no final-seed observations.",
+    "eligibility": "All paired B5/B3 GPU runs must complete correctly. A candidate is stable-eligible when the geometric mean paired B5/B3 stationary runtime ratio is at most 1.02 at each batch size.",
+    "objective": "Among stable-eligible candidates minimize the equal-cell, equal-seed geometric mean paired B5/B3 runtime ratio across all seven case variants and both batch sizes.",
+    "tie_rule": "Treat candidates within 1% of the best all-case ratio as tied; choose the largest cooldown among that set to reduce unnecessary churn.",
+    "fallback": "If no candidate satisfies the stationary pilot constraint, minimize the worst per-batch stationary B5/B3 ratio; among candidates within1% of that score, minimize the all-case ratio; among within1% ties choose the largest cooldown. Report that the pilot constraint was not met.",
+    "freeze_rule": "Record all three pilot scores and the selected cooldown, then freeze exactly one B5 value before final runs. Pilot scores are selection evidence only, not confirmatory confidence intervals."
+  },
+  "interpretation": "Descriptive pilot-only parameter selection. B5/B3 runs are paired within each frozen manifest. No confidence interval or final-performance claim is made."
+}

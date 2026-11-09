@@ -45,9 +45,10 @@ moves, and complete installation of accepted weights. A discarded async result
 must never be counted as a committed migration. The initial study is synchronous.
 
 The primary timer covers 512 completed layer steps after 32 untimed observation
-steps and process-local native transport warmup. Candidate opportunities occur every 64 measured steps; a fresh proposal
-after the final input is suppressed. B4 pays for its continuous GPU histogram
-collection and two-window calculation. Rejections return the current map through
+steps and process-local native transport warmup. Candidate opportunities occur
+every 64 measured steps; a fresh proposal after the final input is suppressed.
+B4 pays for collecting the required previous window and calculating stability;
+it reuses native EPLB's current window. Rejections return the current map through
 the native synchronous no-op path, including that path's overhead. SKIP uses this
 same admission point and therefore still pays for native monitoring and planning.
 
@@ -62,7 +63,8 @@ Exact input tapes, numerical input tensors, source hashes, per-decision mappings
 transfer payloads, commit checks, and step timings are retained outside Git.
 Branch diagnostics restore identical recorded weights and mappings from a B3
 trajectory, force allow or skip, and replay 128 future steps with later balancing
-disabled. Positive `skip_time - allow_time` means the move repaid its cost over
+disabled. Four pairs run allow first and four run skip first, with their order
+shuffled using the frozen diagnostic order seed. Positive `skip_time - allow_time` means the move repaid its cost over
 that particular future; these few cases do not establish population accuracy.
 
 ## Cluster setup
@@ -107,8 +109,11 @@ These are cited as preprints/manuscripts, not independently reproduced findings:
 ## Reproduce the pilot
 
 The frozen manifests contain source hashes; editing the harness requires a new
-manifest. Earlier diagnostic pilots remain identifiable by their separate manifests;
-see docs/execution-notes.md for the collector and transport-startup corrections. The complete pilot uses the `pilot-v3` manifests.
+manifest. Earlier diagnostic pilots remain identifiable by their separate
+manifests; see `docs/execution-notes.md` for corrections. The complete cooldown
+pilot uses the `pilot-v3` manifests and source checkout `de304a6`. Use that
+checkout to repeat the commands below. The final source additionally avoids
+collecting unused B4 histograms; the B3/B5 selection paths are unchanged.
 
 ```bash
 mkdir -p logs

@@ -49,6 +49,29 @@ def fill_logical_histogram(row, logical_ids, ones):
     row.scatter_add_(0, logical_ids.reshape(-1).long(), ones)
 
 
+def should_capture_previous_window(window_steps, rebalance_interval, native_counter,
+                                   *, warming_up=False):
+    """Capture the earlier of the two windows at a fixed synchronous cadence.
+
+    The counter is read before the current forward/step increment. The native
+    recorder supplies the immediately preceding window at the decision itself.
+    Runtime construction requires rebalance_interval >= 2 * window_steps.
+    """
+    remaining = rebalance_interval - native_counter
+    return warming_up or window_steps < remaining <= 2 * window_steps
+
+
+def previous_window_indices(row_timestamps, observation_steps, window_steps):
+    """Reject stale ring rows before they can become a stability observation."""
+    if observation_steps < 2 * window_steps or len(row_timestamps) != 2 * window_steps:
+        raise AssertionError("Two complete observation windows are required")
+    expected = range(observation_steps - 2 * window_steps, observation_steps - window_steps)
+    indices = [step % (2 * window_steps) for step in expected]
+    if any(row_timestamps[index] != step for index, step in zip(indices, expected)):
+        raise AssertionError("Previous-window ring timestamps are incomplete or stale")
+    return indices
+
+
 def validate_layer_shapes(w13_shape, w2_shape, config):
     e, h, m = (int(config[k]) for k in
                ("num_experts", "hidden_size", "intermediate_size"))
@@ -282,6 +305,9 @@ class NativeLayer:
         self.native_valid_steps = 0
         self.logical_ring = self.torch.zeros((2 * window_steps, self.num_experts),
                                               dtype=self.torch.int64, device=self.device)
+        self.logical_ring_timestamps = np.full(2 * window_steps, -1, dtype=np.int64)
+        self.histogram_capture_count = 0
+        self.previous_window_timestamp_checks = 0
         self.histogram_ones = None
         self.collect_history = method == "B4"
         self.warming_up = False
@@ -325,9 +351,9 @@ class NativeLayer:
                 t0 = time.perf_counter()
                 prev = None
                 if owner.collect_history and owner.observation_steps >= 2 * owner.window_steps:
-                    end = owner.observation_steps
-                    indices = [(j % (2 * owner.window_steps))
-                               for j in range(end - 2 * owner.window_steps, end - owner.window_steps)]
+                    indices = previous_window_indices(owner.logical_ring_timestamps,
+                                                      owner.observation_steps, owner.window_steps)
+                    owner.previous_window_timestamp_checks += 1
                     previous_tensor = owner.logical_ring[indices].sum(dim=0)
                     owner.torch.distributed.all_reduce(
                         previous_tensor, group=owner.rt.ep_group.device_group)
@@ -383,14 +409,22 @@ class NativeLayer:
     def forward(self, hidden, logical_ids, combining_weights, *, observe=True):
         """The same logical token tensor is replicated on all EP ranks."""
         if observe and self.collect_history:
-            if self.histogram_ones is None:
-                # First observed step is in the common untimed warmup.
-                self.histogram_ones = self.torch.ones(logical_ids.numel(),
-                                                     dtype=self.torch.int64, device=self.device)
-            elif self.histogram_ones.numel() != logical_ids.numel():
-                raise ValueError("A run must retain its fixed token-batch shape")
-            fill_logical_histogram(self.logical_ring[self.observation_steps % len(self.logical_ring)],
-                                   logical_ids, self.histogram_ones)
+            capture = should_capture_previous_window(
+                self.window_steps, self.rebalance_interval, self.state.expert_rearrangement_step,
+                warming_up=self.warming_up)
+            if capture:
+                if self.histogram_ones is None:
+                    # First observed step is in the common untimed warmup.
+                    self.histogram_ones = self.torch.ones(logical_ids.numel(),
+                                                         dtype=self.torch.int64, device=self.device)
+                elif self.histogram_ones.numel() != logical_ids.numel():
+                    raise ValueError("A run must retain its fixed token-batch shape")
+                index = self.observation_steps % len(self.logical_ring)
+                fill_logical_histogram(self.logical_ring[index], logical_ids, self.histogram_ones)
+                self.logical_ring_timestamps[index] = self.observation_steps
+                self.histogram_capture_count += 1
+            # Absolute observed-step positions advance even when the histogram
+            # is unnecessary. Native current-window recording remains untouched.
             self.observation_steps += 1
         if self.method == "B0":
             physical_ids = logical_ids
