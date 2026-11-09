@@ -1,0 +1,802 @@
+{
+  "review_date": "2026-11-09",
+  "scope": "Focused literature and implementation review; no new GPU measurements or implementation changes.",
+  "executed_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "papers": {
+    "scope": "Primary-paper component of bounded pivot review, checked 2026-11-09. No GPU experiments or artifact executions.",
+    "primary_sources": [
+      {
+        "key": "PROBE",
+        "title": "PROBE: Co-Balancing Computation and Communication in MoE Inference via Real-Time Predictive Prefetching",
+        "authors": "Qianchao Zhu; Xucheng Ye; Yuliang Liu; Haodong Ouyang; Chengru Song",
+        "year": 2026,
+        "status": "arXiv preprint",
+        "version": "2602.00509v2, 2026-02-03",
+        "doi": "10.48550/arXiv.2602.00509",
+        "primary": "https://arxiv.org/html/2602.00509v2",
+        "read": "Full HTML; especially sections 3.4 and 4.2–4.4",
+        "method": "Distilled next-layer predictor; joint replication and token assignment; exposed transfer cost and per-sender/receiver hiding budgets.",
+        "artifact": null,
+        "artifact_observation": "No own implementation link located in retrieved fulltext; no code executed.",
+        "boundary": "Eight Hopper GPUs and large BF16 models; predictor and runtime changed together."
+      },
+      {
+        "key": "Director",
+        "title": "Director: Accelerating Distributed MoE Serving via Online Proactive Expert Placement",
+        "authors": "Qianli Liu et al.",
+        "year": 2026,
+        "status": "IEEE INFOCOM 2026 proceedings",
+        "version": "arXiv 2607.08782v1 reviewed",
+        "doi": "10.1109/INFOCOM59046.2026.11571522",
+        "primary": "https://arxiv.org/html/2607.08782v1",
+        "read": "Full HTML; especially sections V–VI and evaluation setup",
+        "method": "Cascade activation prediction, relaxed placement optimization, migration in compute windows.",
+        "artifact": null,
+        "artifact_observation": "No own code link located in retrieved fulltext.",
+        "boundary": "Approximation result applies to optimization formulation, not an end-to-end runtime guarantee."
+      },
+      {
+        "key": "vExpert",
+        "title": "vExpert: Virtualizing Expert Storage for Adaptive Load Balancing in Distributed MoE Inference",
+        "authors": "Wenxun Wang et al.",
+        "year": 2026,
+        "status": "Reviewed arXiv preprint; author repository says NeurIPS 2026, proceedings entry not independently established",
+        "version": "2611.06057v1, 2026-11-04",
+        "doi": "10.48550/arXiv.2611.06057",
+        "primary": "https://arxiv.org/html/2611.06057v1",
+        "read": "Full HTML; especially sections 3.2 and 4.1; author README",
+        "method": "Virtual expert storage, cross-layer budgets, compute/A2A gain minus transfer and contention model, periodic allocation.",
+        "artifact": "https://github.com/Flying-Cloud/vExpert",
+        "artifact_observation": "Public repository and documentation accessible; SGLang v0.5.1 fork, modified DeepGEMM/DeepEP and IPC CUDA dependencies. Not built or run.",
+        "boundary": "Eight nodes of eight H100s; DeepSeek-oriented implementation and topology-specific coefficients."
+      },
+      {
+        "key": "Libra",
+        "title": "Libra: Effective yet Efficient Load Balancing for Large-Scale MoE Inference",
+        "authors": "Jaehoon Yang; Yushin Kim; Seokwon Moon; Yeonhong Park; Jae W. Lee",
+        "year": 2026,
+        "status": "ICLR 2026 proceedings",
+        "version": "Official proceedings abstract and current author artifact",
+        "doi": null,
+        "primary": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9ff1ac9a659085fed0735362cafe5e53-Abstract-Conference.html",
+        "read": "Official abstract, full author README, .gitmodules, Libra-Core README, public metadata for both submodules; full PDF retrieval blocked/timed out",
+        "method": "Next-layer lookahead, locality-aware temporary replication, local-before-remote compute, overlapped CPU token sharding and AllGather.",
+        "artifact": "https://github.com/SNU-ARC/Libra",
+        "artifact_observation": "Libra-Core and Libra-Internal both public; SGLang v0.4.10 forks and reproduction documentation. No execution.",
+        "boundary": "Eight H200s, prefill; baseline trace/table reproduction up to about 0.6 TB and hundreds of GB of host RAM."
+      },
+      {
+        "key": "LLEP",
+        "title": "Least-Loaded Expert Parallelism: Load Balancing An Imbalanced Mixture-of-Experts",
+        "authors": "Xuan-Phi Nguyen; Shrey Pandit; Austin Xu; Caiming Xiong; Shafiq Joty",
+        "year": 2026,
+        "status": "ICML 2026, PMLR 306:92659–92673",
+        "version": "arXiv 2601.17111v1 methods; official proceedings metadata",
+        "doi": "10.48550/arXiv.2601.17111",
+        "primary": "https://proceedings.mlr.press/v306/nguyen26m.html",
+        "fulltext": "https://arxiv.org/html/2601.17111v1",
+        "read": "Full HTML; sections 3.2, 4 and 5.3; repository README",
+        "method": "Exact current loads; temporary expert weights and token spill; capacity and minimum GEMM size; imbalance threshold falls back to standard EP.",
+        "artifact": "https://github.com/SalesforceAIResearch/LeastLoadedEP",
+        "artifact_observation": "Public benchmark code and example launch in README; not run.",
+        "boundary": "Temporary replication rather than replacement of long-lived placement; small workload can lose."
+      },
+      {
+        "key": "UltraEP",
+        "title": "UltraEP: Unleash MoE Training and Inference on Rack-Scale Nodes with Near-Optimal Load Balancing",
+        "authors": "Xinming Wei et al.",
+        "year": 2026,
+        "status": "arXiv preprint",
+        "version": "2606.04101v3, 2026-06-18",
+        "doi": "10.48550/arXiv.2606.04101",
+        "primary": "https://arxiv.org/html/2606.04101v3",
+        "read": "Full HTML; especially sections 4.3, 5.1–5.3 and 8",
+        "method": "Fixed main layout plus temporary replicas and quotas; GPU-native solver; replica distribution and token reroute modeled alongside compute.",
+        "artifact": null,
+        "artifact_observation": "No own public implementation link found in fulltext; dependency references are not a complete artifact.",
+        "boundary": "Rack-scale node fabric and persistent streaming transport; also includes training results that are not inference evidence."
+      },
+      {
+        "key": "Patterns behind Chaos",
+        "title": "Patterns behind Chaos: Forecasting Data Movement for Efficient Large-Scale MoE LLM Inference",
+        "authors": "Zhongkai Yu et al.",
+        "year": 2026,
+        "status": "ISCA 2026 proceedings",
+        "version": "arXiv 2510.05497v5, 2026-05-12",
+        "doi": "10.1109/ISCA66397.2026.00021",
+        "primary": "https://arxiv.org/html/2510.05497v5",
+        "read": "Full HTML; empirical patterns, section VI-B, artifact appendix; dataset access limits supplied by parent from primary card",
+        "method": "Request/layer-dependent activation structure; prefill-guided remap/duplication and oracle comparisons; distinct wafer-scale simulation.",
+        "artifact": "https://github.com/zhongkaiyu/moe_exp_placement",
+        "additional_artifacts": [
+          "https://github.com/zhongkaiyu/waferscale_gpu_moe_sim",
+          "https://huggingface.co/datasets/core12345/MoE_expert_selection_trace"
+        ],
+        "artifact_observation": "Code links and gated dataset card; dataset not downloaded or used.",
+        "boundary": "Reported real-GPU improvement is MoE computation, not complete inference. Dataset ~199 GB, gated identity/terms, 235B–1T models; selected IDs do not establish availability of replay hidden states or combining weights; decode cap128."
+      },
+      {
+        "key": "Fiddler",
+        "title": "Fiddler: CPU-GPU Orchestration for Fast Inference of Mixture-of-Experts Models",
+        "authors": "Keisuke Kamahori; Tian Tang; Yile Gu; Kan Zhu; Baris Kasikci",
+        "year": 2025,
+        "status": "ICLR 2025 proceedings",
+        "version": "arXiv 2402.07033v3, 2025-05-01",
+        "doi": "10.48550/arXiv.2402.07033",
+        "primary": "https://arxiv.org/html/2402.07033v3",
+        "proceedings": "https://proceedings.iclr.cc/paper_files/paper/2025/file/8cd1ce03ea58b3d7dfd809e4d42f08ea-Paper-Conference.pdf",
+        "read": "Full HTML; CPU/GPU placement and profile-based cost comparison; author repository README",
+        "method": "Choose CPU execution versus GPU fetch based on profiled compute/transfer cost and residency.",
+        "artifact": "https://github.com/efeslab/fiddler",
+        "artifact_observation": "Public code; README describes earlier proof of concept and narrower model/hardware support than final paper. Not run.",
+        "boundary": "Memory-constrained hybrid inference is a different action space from resident EP migration."
+      },
+      {
+        "key": "ProMoE",
+        "title": "ProMoE: Fast MoE-based LLM Serving using Proactive Caching",
+        "authors": "Xiaoniu Song; Zihang Zhong; Rong Chen; Haibo Chen",
+        "year": 2025,
+        "status": "Reviewed arXiv preprint; no proceedings established",
+        "version": "2410.22134v3, 2025-09-01; first version 2024",
+        "doi": "10.48550/arXiv.2410.22134",
+        "primary": "https://arxiv.org/html/2410.22134v3",
+        "read": "Full HTML; sections 4.1, 4.3 and 5; repo README and directory inventory",
+        "method": "Prediction quality combines accuracy and on-time arrival; demand-prioritized speculative prefetch, chunk preemption, stale-task cancellation.",
+        "artifact": "https://github.com/promoe-opensource/promoe",
+        "artifact_observation": "Public src/tests/eval directories; README refers to external script and predictor directories. No turnkey reproduction established.",
+        "boundary": "Offloading/cache system; predictor training and runtime integration costs required."
+      },
+      {
+        "key": "MoE-Infinity",
+        "title": "MoE-Infinity: Efficient MoE Inference on Personal Machines with Sparsity-Aware Expert Cache",
+        "authors": "Leyang Xue et al.",
+        "year": 2025,
+        "status": "Reviewed arXiv preprint; no proceedings established",
+        "version": "2401.14361v3, 2025-03-12; first version 2024",
+        "doi": "10.48550/arXiv.2401.14361",
+        "primary": "https://arxiv.org/html/2401.14361v3",
+        "read": "Full HTML; sections 4.5–4.6; current author repo README",
+        "method": "Request-level activation matrix matching, future-expert probability and layer-proximity cache priorities.",
+        "artifact": "https://github.com/EfficientMoE/MoE-Infinity",
+        "artifact_observation": "Public runtime; README explicitly separates public Hugging Face version from paper performance version. Not run.",
+        "boundary": "Paper focus single-user/batch-one limited-memory inference; current repository support does not reproduce paper automatically."
+      },
+      {
+        "key": "FreeBalance",
+        "title": "FreeBalance: Pre-Routing Online MoE Load Balancing via Residual Workload Prediction",
+        "authors": "Pengfei Chen et al.",
+        "year": 2026,
+        "status": "arXiv preprint",
+        "version": "2608.14205v1",
+        "doi": "10.48550/arXiv.2608.14205",
+        "primary": "https://arxiv.org/html/2608.14205v1",
+        "read": "Fulltext read in preceding review; sections 3.3 and 4.3 checked against saved audit",
+        "method": "Residual-stream prediction, slot-preserving swaps, positive-gain filter and rank/link overlap budgets.",
+        "artifact": null,
+        "artifact_observation": "No implementation/trace link located in retrieved fulltext.",
+        "boundary": "95% success is whole swap-plan completion, not individual-swap accuracy; fixed-swap baseline is not a cooldown."
+      }
+    ],
+    "screened_or_citation_leads": [
+      {
+        "title": "Accelerating MoE Model Inference with Expert Sharding",
+        "key": "MoEShard",
+        "doi": "10.1145/3721146.3721940",
+        "status": "EuroMLSys 2025 workshop proceedings",
+        "primary": "https://arxiv.org/html/2503.08467v1",
+        "artifact": "https://github.com/sacs-epfl/moe-inference",
+        "disposition": "Full methods screened. Expert sharding changes parallel layout; most evaluation uses custom random router except per-layer study. Useful boundary example, not direct natural-routing serving evidence."
+      },
+      {
+        "title": "Toward Efficient Inference for Mixture of Experts",
+        "doi": "10.52202/079017-2670",
+        "status": "NeurIPS 2024 proceedings",
+        "primary": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/98bf3b8505c611ac21055dd9d355c66e-Abstract-Conference.html",
+        "artifact": "https://github.com/hyhuang00/moe_inference",
+        "disposition": "Official abstract and artifact inspected; full PDF not retrieved. Repo only README at inspection, public release pending approval. Do not treat as runnable code or infer detailed method from abstract."
+      },
+      {
+        "title": "KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Inference for MoE Models",
+        "doi": "10.1145/3731569.3764843",
+        "status": "SOSP 2025 proceedings",
+        "disposition": "Forward-citation lead from ProMoE; metadata checked, methods not deeply read here. No performance claim used."
+      },
+      {
+        "title": "ISER-MoE",
+        "primary": "https://arxiv.org/html/2611.09008v1",
+        "status": "arXiv preprint, 2026-11-06",
+        "disposition": "Screened only; specialized rack/NVLink-switch multicast not chosen for two-H100 project."
+      },
+      {
+        "title": "Aurora",
+        "primary": "https://arxiv.org/html/2410.17043v1",
+        "status": "arXiv preprint reviewed version",
+        "disposition": "Screened only; deployment/co-location scope broader than selected project."
+      }
+    ],
+    "citation_walk": {
+      "anchors": [
+        "10.48550/arXiv.2410.22134",
+        "10.48550/arXiv.2510.05497"
+      ],
+      "method": "Literature-review kernel expand_citations, one backward and forward step via OpenAlex",
+      "results": "ProMoE:24 backward,15 capped forward; Patterns:48 backward,7 forward. Saved in pivot-primary/citation-graph.json. Metadata graph is not fulltext evidence. Index lag, duplicate versions and cap limit completeness."
+    },
+    "local_evidence": [
+      "pivot-primary/retrieval.json",
+      "pivot-primary/doi-verification.json",
+      "pivot-primary/citation-graph.json",
+      "pivot-primary/*.html",
+      "final-literature-audit.md"
+    ],
+    "limitations": "Artifact availability means resources or documentation were retrieved; no claim of reproducing paper results. Proceedings records and reviewed manuscript versions may differ. No statement of exhaustive novelty."
+  },
+  "open_source": {
+    "schema_version": 1,
+    "retrieved_date": "2026-11-09",
+    "scope": "Read-only primary open-source repository/code/docs review; no benchmark execution or implementation changes.",
+    "repositories": [
+      {
+        "repo": "deepseek-ai/EPLB",
+        "sha": "d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+        "date": "2025-03-24T09:17:10Z",
+        "message": "Fix missing device for pphy2mlog tensor",
+        "url": "https://github.com/deepseek-ai/EPLB/commit/d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+        "license": "MIT",
+        "license_url": "https://github.com/deepseek-ai/EPLB/blob/d52c72d5b2f2fb4c41afbf8eb21366820239913d/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      },
+      {
+        "repo": "deepseek-ai/LPLB",
+        "sha": "0490f79452f7ef277e814449600b1b1dd4c663b3",
+        "date": "2025-11-19T07:19:47Z",
+        "message": "Initial commit.",
+        "url": "https://github.com/deepseek-ai/LPLB/commit/0490f79452f7ef277e814449600b1b1dd4c663b3",
+        "license": "MIT",
+        "license_url": "https://github.com/deepseek-ai/LPLB/blob/0490f79452f7ef277e814449600b1b1dd4c663b3/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "sha": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "message": "docs: update V4.1 Flash Q&A to v0.2",
+        "url": "https://github.com/deepseek-ai/DeepInfer/commit/a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "sha": "f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "date": "2026-11-09T08:12:39Z",
+        "message": "[CI] [AMD] spur: Schedule stage-b-test-1-gpu-small-amd-mi35x on the Spur runners (#49053)",
+        "url": "https://github.com/sgl-project/sglang/commit/f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/sgl-project/sglang/blob/f01950a82a1b3cc424f9f9ff6c07534216b3a84f/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "sha": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "message": "[Rust Frontend] Keep special tokens' spelling in logprob tokens (#66477)",
+        "url": "https://github.com/vllm-project/vllm/commit/3a092abe98f494f88b8cf91d11115158245c04f8",
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      },
+      {
+        "repo": "deepseek-ai/DeepEP",
+        "sha": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+        "date": "2026-10-21T03:50:43Z",
+        "message": "fix: use HTTPS for DeepJIT submodule (#788)",
+        "url": "https://github.com/deepseek-ai/DeepEP/commit/f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+        "license": "MIT",
+        "license_url": "https://github.com/deepseek-ai/DeepEP/blob/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      },
+      {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "sha": "683a49ef4930051aa54121ac59349b7efe0c5d6c",
+        "date": "2026-11-09T08:16:30Z",
+        "message": "[https://nvbugs/6858527][fix] Check RADIO video_embedder weights when loading, not per video (#21631)",
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/commit/683a49ef4930051aa54121ac59349b7efe0c5d6c",
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/NVIDIA/TensorRT-LLM/blob/683a49ef4930051aa54121ac59349b7efe0c5d6c/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector.",
+        "license_note": "Top-level Apache-2.0; bundled portions retain stated third-party licenses."
+      },
+      {
+        "repo": "flashinfer-ai/flashinfer",
+        "sha": "023a8474e1f7469572c0d4284535fc6ffa699574",
+        "date": "2026-11-09T08:04:46Z",
+        "message": "perf(cake_gated_act_mxfp8): retune the per-size programs on SM100, SM103 and SM107 (#9226)",
+        "url": "https://github.com/flashinfer-ai/flashinfer/commit/023a8474e1f7469572c0d4284535fc6ffa699574",
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/flashinfer-ai/flashinfer/blob/023a8474e1f7469572c0d4284535fc6ffa699574/LICENSE",
+        "artifact_status": "Public source repository; specific inspected files downloaded through GitHub connector."
+      }
+    ],
+    "files": [
+      {
+        "repo": "deepseek-ai/EPLB",
+        "path": "README.md",
+        "url": "https://github.com/deepseek-ai/EPLB/blob/d52c72d5b2f2fb4c41afbf8eb21366820239913d/README.md",
+        "commit": "d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+        "date": "2025-03-24T09:17:10Z",
+        "snapshot_sha256": "63c58cb25a4e4eb953bb6236e10d761a86f33627739fbd9300eb595c4b1dbc54",
+        "snapshot_bytes": 3132,
+        "line_count": 68
+      },
+      {
+        "repo": "deepseek-ai/EPLB",
+        "path": "eplb.py",
+        "url": "https://github.com/deepseek-ai/EPLB/blob/d52c72d5b2f2fb4c41afbf8eb21366820239913d/eplb.py",
+        "commit": "d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+        "date": "2025-03-24T09:17:10Z",
+        "snapshot_sha256": "6b70cc142c9ea4adfd9cd712f313831e0d1a818c79eb6e310253e43013d8e1da",
+        "snapshot_bytes": 7913,
+        "line_count": 165
+      },
+      {
+        "repo": "deepseek-ai/DeepEP",
+        "path": "README.md",
+        "url": "https://github.com/deepseek-ai/DeepEP/blob/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/README.md",
+        "commit": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+        "date": "2026-10-21T03:50:43Z",
+        "snapshot_sha256": "a5df6f4f117774c60f3a2d70ba5996ef56ea32b12b42c25366fd7ba45f67fa3c",
+        "snapshot_bytes": 32915,
+        "line_count": 534
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "path": "docs/docs/advanced_features/expert_parallelism.mdx",
+        "url": "https://github.com/sgl-project/sglang/blob/f01950a82a1b3cc424f9f9ff6c07534216b3a84f/docs/docs/advanced_features/expert_parallelism.mdx",
+        "commit": "f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "date": "2026-11-09T08:12:39Z",
+        "snapshot_sha256": "b564a7c58063d18522c6c0dee1eadce2e8c7a17e872cde6599a4a5187a723a36",
+        "snapshot_bytes": 22287,
+        "line_count": 300
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "docs/serving/expert_parallel_deployment.md",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/docs/serving/expert_parallel_deployment.md",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "6df6c55c0e7f1194365b6f4e1b6d45574649893e02d1f5f5e1a833435dbee51e",
+        "snapshot_bytes": 24626,
+        "line_count": 421
+      },
+      {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "path": "examples/wide_ep/ep_load_balancer/README.md",
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/blob/683a49ef4930051aa54121ac59349b7efe0c5d6c/examples/wide_ep/ep_load_balancer/README.md",
+        "commit": "683a49ef4930051aa54121ac59349b7efe0c5d6c",
+        "date": "2026-11-09T08:16:30Z",
+        "snapshot_sha256": "2d2f26f9b9984e34314595e37ef95636ee6eac1d05fcbcc2c3220fff2ef3d1af",
+        "snapshot_bytes": 19232,
+        "line_count": 317
+      },
+      {
+        "repo": "deepseek-ai/LPLB",
+        "path": "README.md",
+        "url": "https://github.com/deepseek-ai/LPLB/blob/0490f79452f7ef277e814449600b1b1dd4c663b3/README.md",
+        "commit": "0490f79452f7ef277e814449600b1b1dd4c663b3",
+        "date": "2025-11-19T07:19:47Z",
+        "snapshot_sha256": "69f8a2a0691d24469372443b54296a17eca02ab09e35ea545442c2e49f9089bb",
+        "snapshot_bytes": 4570,
+        "line_count": 80
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "path": "README.md",
+        "url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/README.md",
+        "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "snapshot_sha256": "d7beb89bfc0f5621837bf0891f7108098b29ea8823b7ba66fe8422841582d8e4",
+        "snapshot_bytes": 4661,
+        "line_count": 108
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "vllm/distributed/eplb/migration_scheduler.py",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/vllm/distributed/eplb/migration_scheduler.py",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "6d3cee59f609a239f69eaba02a9c2e8bc0d2c68564ff84ea2453acfe9833f472",
+        "snapshot_bytes": 5159,
+        "line_count": 130
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "vllm/distributed/eplb/eplb_state.py",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/vllm/distributed/eplb/eplb_state.py",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "4d2fadd55c10c62267948b1db584c6bffc6d9281c2fb3c329e7d3ae346be03d1",
+        "snapshot_bytes": 58572,
+        "line_count": 1488
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "vllm/distributed/eplb/policy/default.py",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/vllm/distributed/eplb/policy/default.py",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "c893deed7e87c954086143ee3a051478dd4e1ca4a3102222be2436fa200fd0a1",
+        "snapshot_bytes": 13722,
+        "line_count": 333
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "path": "python/sglang/srt/eplb/lplb_solver.py",
+        "url": "https://github.com/sgl-project/sglang/blob/f01950a82a1b3cc424f9f9ff6c07534216b3a84f/python/sglang/srt/eplb/lplb_solver.py",
+        "commit": "f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "date": "2026-11-09T08:12:39Z",
+        "snapshot_sha256": "8eff9ed7d67a4e670fe5331908f491c2282a28d843ea273ec4d08a1dafbfe112",
+        "snapshot_bytes": 11696,
+        "line_count": 285
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "path": "python/sglang/srt/eplb/expert_location_dispatch.py",
+        "url": "https://github.com/sgl-project/sglang/blob/f01950a82a1b3cc424f9f9ff6c07534216b3a84f/python/sglang/srt/eplb/expert_location_dispatch.py",
+        "commit": "f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "date": "2026-11-09T08:12:39Z",
+        "snapshot_sha256": "9bed746a4f897329fd1da36a2ab96e63195c92850edc2baa6de8aa866bcf572d",
+        "snapshot_bytes": 8348,
+        "line_count": 207
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "vllm/distributed/eplb/async_worker.py",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/vllm/distributed/eplb/async_worker.py",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "cef9d3dbd8c1d6fdb4696c0ebfbc546a63db48e4b5fe4bca32694f8ee75f8608",
+        "snapshot_bytes": 9220,
+        "line_count": 232
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "path": "python/sglang/srt/eplb/eplb_manager.py",
+        "url": "https://github.com/sgl-project/sglang/blob/f01950a82a1b3cc424f9f9ff6c07534216b3a84f/python/sglang/srt/eplb/eplb_manager.py",
+        "commit": "f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "date": "2026-11-09T08:12:39Z",
+        "snapshot_sha256": "26807bb4a74eafe81e5564f54425fed68d2adc63a53f3aa6e7ca07f6bd800015",
+        "snapshot_bytes": 13350,
+        "line_count": 354
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "path": "doc/inference_deployment_qa.md",
+        "url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/doc/inference_deployment_qa.md",
+        "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "snapshot_sha256": "682005d834c5aba66745fd75c5d60dd7a68c039d68499e28011da858f6d026dd",
+        "snapshot_bytes": 34527,
+        "line_count": 373
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "path": "deepinfer/model_executor/models/v4_modules/mlp.py",
+        "url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/deepinfer/model_executor/models/v4_modules/mlp.py",
+        "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "snapshot_sha256": "cd21e5f2d40c47a311f31a5c39d8c438d3602d3306ec1729f1d8540a9eac7c2c",
+        "snapshot_bytes": 25525,
+        "line_count": 617
+      },
+      {
+        "repo": "deepseek-ai/LPLB",
+        "path": "lplb/planner.py",
+        "url": "https://github.com/deepseek-ai/LPLB/blob/0490f79452f7ef277e814449600b1b1dd4c663b3/lplb/planner.py",
+        "commit": "0490f79452f7ef277e814449600b1b1dd4c663b3",
+        "date": "2025-11-19T07:19:47Z",
+        "snapshot_sha256": "ba45d66042b705d8d16d3676379eba860ba7a500f80b744f19412a755a5122f7",
+        "snapshot_bytes": 10492,
+        "line_count": 267
+      },
+      {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "path": "examples/wide_ep/README.md",
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/blob/683a49ef4930051aa54121ac59349b7efe0c5d6c/examples/wide_ep/README.md",
+        "commit": "683a49ef4930051aa54121ac59349b7efe0c5d6c",
+        "date": "2026-11-09T08:16:30Z",
+        "snapshot_sha256": "6074435bb74054ce473ca991e054e99788eacbfc60174e9375bc6b4b685703fb",
+        "snapshot_bytes": 14529,
+        "line_count": 206
+      },
+      {
+        "repo": "flashinfer-ai/flashinfer",
+        "path": "flashinfer/fused_moe/api.py",
+        "url": "https://github.com/flashinfer-ai/flashinfer/blob/023a8474e1f7469572c0d4284535fc6ffa699574/flashinfer/fused_moe/api.py",
+        "commit": "023a8474e1f7469572c0d4284535fc6ffa699574",
+        "date": "2026-11-09T08:04:46Z",
+        "snapshot_sha256": "379bba0e52185be412a29dde6b8bb4db01e6ad80454f41ef124c1185d914f07f",
+        "snapshot_bytes": 149081,
+        "line_count": 3860
+      },
+      {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "path": "tensorrt_llm/_torch/moe/fused_moe/moe_load_balancer.py",
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/blob/683a49ef4930051aa54121ac59349b7efe0c5d6c/tensorrt_llm/_torch/moe/fused_moe/moe_load_balancer.py",
+        "commit": "683a49ef4930051aa54121ac59349b7efe0c5d6c",
+        "date": "2026-11-09T08:16:30Z",
+        "snapshot_sha256": "ce7f8a134b11fb2caf024b5e1f97933f6a2fba3026593b3a2fbb9973477e8c5c",
+        "snapshot_bytes": 49564,
+        "line_count": 1268
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "path": "deepinfer/model_executor/eplb/__init__.py",
+        "url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/deepinfer/model_executor/eplb/__init__.py",
+        "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "snapshot_sha256": "8057abd14f93e987bde3e99fe49c66fb70d3f380a8c55a64a51d29ff25798c23",
+        "snapshot_bytes": 19271,
+        "line_count": 435
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "path": "deepinfer/model_executor/eplb/policy.py",
+        "url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/deepinfer/model_executor/eplb/policy.py",
+        "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "snapshot_sha256": "7d2d9e1c459eadef9bb02bbfe96892e52e589ddbb1d3e59a7e1cbafc52bda99a",
+        "snapshot_bytes": 7863,
+        "line_count": 141
+      },
+      {
+        "repo": "deepseek-ai/DeepEP",
+        "path": "tests/ep/test_ep.py",
+        "url": "https://github.com/deepseek-ai/DeepEP/blob/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/tests/ep/test_ep.py",
+        "commit": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+        "date": "2026-10-21T03:50:43Z",
+        "snapshot_sha256": "c247218873d74a5d89d2faca2d6d470765d4be15d615819ca46c5ffe8fabc59c",
+        "snapshot_bytes": 39013,
+        "line_count": 617
+      },
+      {
+        "repo": "flashinfer-ai/flashinfer",
+        "path": "benchmarks/bench_cutlass_fused_moe.py",
+        "url": "https://github.com/flashinfer-ai/flashinfer/blob/023a8474e1f7469572c0d4284535fc6ffa699574/benchmarks/bench_cutlass_fused_moe.py",
+        "commit": "023a8474e1f7469572c0d4284535fc6ffa699574",
+        "date": "2026-11-09T08:04:46Z",
+        "snapshot_sha256": "700fcda2de8395ca3d154f97e05c9d4721a2455fd95130dab1720f66b6938233",
+        "snapshot_bytes": 8053,
+        "line_count": 233
+      },
+      {
+        "repo": "deepseek-ai/DeepEP",
+        "path": "tests/ep/test_prefetch_weights.py",
+        "url": "https://github.com/deepseek-ai/DeepEP/blob/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/tests/ep/test_prefetch_weights.py",
+        "commit": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+        "date": "2026-10-21T03:50:43Z",
+        "snapshot_sha256": "7d862e0a396b1405037961c232b6325023778f574aa499842632273ac3f45007",
+        "snapshot_bytes": 14804,
+        "line_count": 251
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "vllm/config/parallel.py",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/vllm/config/parallel.py",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "aabc75ad290b4ca2c1ce737490b54da1aa0bfac07ab6633df5bc464b909209a5",
+        "snapshot_bytes": 62596,
+        "line_count": 1444
+      },
+      {
+        "repo": "deepseek-ai/LPLB",
+        "path": "LICENSE",
+        "url": "https://github.com/deepseek-ai/LPLB/blob/0490f79452f7ef277e814449600b1b1dd4c663b3/LICENSE",
+        "commit": "0490f79452f7ef277e814449600b1b1dd4c663b3",
+        "date": "2025-11-19T07:19:47Z",
+        "snapshot_sha256": "787dee2dbb79b5df1b33d12b282115c9cbf1c8792f4899dfd40769b0f285d07d",
+        "snapshot_bytes": 1066,
+        "line_count": 22
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "path": "LICENSE",
+        "url": "https://github.com/deepseek-ai/DeepInfer/blob/a679bb86ce36e883a98a97733492b686e5b9a08e/LICENSE",
+        "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+        "date": "2026-11-03T07:31:40Z",
+        "snapshot_sha256": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c",
+        "snapshot_bytes": 11358,
+        "line_count": 202
+      },
+      {
+        "repo": "deepseek-ai/EPLB",
+        "path": "LICENSE",
+        "url": "https://github.com/deepseek-ai/EPLB/blob/d52c72d5b2f2fb4c41afbf8eb21366820239913d/LICENSE",
+        "commit": "d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+        "date": "2025-03-24T09:17:10Z",
+        "snapshot_sha256": "6c73a30c14a2938abaa6afe98ebb19e6d81dac5bd4ace0cb05c61c20afa37b85",
+        "snapshot_bytes": 1065,
+        "line_count": 21
+      },
+      {
+        "repo": "flashinfer-ai/flashinfer",
+        "path": "LICENSE",
+        "url": "https://github.com/flashinfer-ai/flashinfer/blob/023a8474e1f7469572c0d4284535fc6ffa699574/LICENSE",
+        "commit": "023a8474e1f7469572c0d4284535fc6ffa699574",
+        "date": "2026-11-09T08:04:46Z",
+        "snapshot_sha256": "00f453cd672d241d74d5dc1d4e348278e5c140f8d5d467d714bf3555f60db45c",
+        "snapshot_bytes": 12457,
+        "line_count": 233
+      },
+      {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "path": "LICENSE",
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/blob/683a49ef4930051aa54121ac59349b7efe0c5d6c/LICENSE",
+        "commit": "683a49ef4930051aa54121ac59349b7efe0c5d6c",
+        "date": "2026-11-09T08:16:30Z",
+        "snapshot_sha256": "cb5bf79c3274a85c6421470274b2128dd7b49f3d4fe068f6869cc39f2fd94408",
+        "snapshot_bytes": 40679,
+        "line_count": 792
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "path": "LICENSE",
+        "url": "https://github.com/sgl-project/sglang/blob/f01950a82a1b3cc424f9f9ff6c07534216b3a84f/LICENSE",
+        "commit": "f01950a82a1b3cc424f9f9ff6c07534216b3a84f",
+        "date": "2026-11-09T08:12:39Z",
+        "snapshot_sha256": "d13198dd60d1a2756e6b821d529ae7f9a94d6bce0c965efcb1b1246e79ab4aad",
+        "snapshot_bytes": 11347,
+        "line_count": 202
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "path": "LICENSE",
+        "url": "https://github.com/vllm-project/vllm/blob/3a092abe98f494f88b8cf91d11115158245c04f8/LICENSE",
+        "commit": "3a092abe98f494f88b8cf91d11115158245c04f8",
+        "date": "2026-11-09T08:20:45Z",
+        "snapshot_sha256": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c",
+        "snapshot_bytes": 11358,
+        "line_count": 202
+      },
+      {
+        "repo": "deepseek-ai/DeepEP",
+        "path": "LICENSE",
+        "url": "https://github.com/deepseek-ai/DeepEP/blob/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/LICENSE",
+        "commit": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+        "date": "2026-10-21T03:50:43Z",
+        "snapshot_sha256": "787dee2dbb79b5df1b33d12b282115c9cbf1c8792f4899dfd40769b0f285d07d",
+        "snapshot_bytes": 1066,
+        "line_count": 22
+      }
+    ],
+    "executed_experiment_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "source_snapshot_note": "Hashes identify locally saved source-text snapshots; commit-pinned URLs identify upstream evidence. No code was executed from these repositories."
+  },
+  "industry": {
+    "retrieved_on": "2026-11-09",
+    "scope": "Five primary engineering blog posts and one official engineering guide; focused industry supplement, not an exhaustive literature review.",
+    "selected_sources": [
+      {
+        "id": "microsoft-deepspeed",
+        "title": "DeepSpeed: Advancing MoE inference and training to power next-generation AI scale",
+        "url": "https://www.microsoft.com/en-us/research/blog/deepspeed-advancing-moe-inference-and-training-to-power-next-generation-ai-scale/",
+        "publisher": "Microsoft Research",
+        "published": "2022-01-19",
+        "type": "Company engineering/research blog with linked research paper",
+        "method": "Critical-path parameter grouping, expert/tensor parallelism, communication optimization, and fused kernels.",
+        "evidence_limit": "Headline speedups combine several system and model interventions; they do not isolate a migration admission rule.",
+        "actionable_transfer": "Measure the union of active expert weights and actual latency, not only tokens or FLOPs.",
+        "artifacts": [
+          "https://github.com/microsoft/DeepSpeed",
+          "https://arxiv.org/abs/2201.05596"
+        ]
+      },
+      {
+        "id": "nvidia-wide-ep",
+        "title": "Scaling Large MoE Models with Wide Expert Parallelism on NVL72 Rack Scale Systems",
+        "url": "https://developer.nvidia.com/blog/scaling-large-moe-models-with-wide-expert-parallelism-on-nvl72-rack-scale-systems/",
+        "publisher": "NVIDIA Technical Blog",
+        "published": "2025-10-20",
+        "type": "Company engineering blog; main article read separately from its AI-generated summary",
+        "method": "Grouped GEMM weight reuse, static/online expert placement, graph-compatible containers, and custom communication.",
+        "evidence_limit": "Rack-scale GB200 comparisons combine topology and software. They do not predict a two-H100 gain.",
+        "actionable_transfer": "Treat kernel granularity and hardware movement cost as part of placement's objective.",
+        "artifacts": [
+          "https://github.com/NVIDIA/TensorRT-LLM/blob/main/examples/wide_ep/ep_load_balancer/README.md"
+        ]
+      },
+      {
+        "id": "meta-parallelism",
+        "title": "Scaling LLM Inference: Innovations in Tensor Parallelism, Context Parallelism, and Expert Parallelism",
+        "url": "https://engineering.fb.com/2025/10/17/ai-research/scaling-llm-inference-innovations-tensor-parallelism-context-parallelism-expert-parallelism/",
+        "publisher": "Engineering at Meta",
+        "published": "2025-10-17",
+        "type": "Company production-engineering account",
+        "method": "Two-shot token all-to-all, with dynamic and persistent communication strategies discussed.",
+        "evidence_limit": "Reported communication fractions are configuration-specific; no artifact isolating a placement selector is supplied in the EP section.",
+        "actionable_transfer": "Profile host overhead, handle exchange, and communication separately. Current all-reduce harness cannot validate its all-to-all mechanisms."
+      },
+      {
+        "id": "amd-moe-playbook",
+        "title": "The vLLM MoE Playbook: A Practical Guide to TP, DP, PP and Expert Parallelism",
+        "url": "https://rocm.blogs.amd.com/software-tools-optimization/vllm-moe-guide/README.html",
+        "publisher": "AMD ROCm Blogs",
+        "published": "2025-11-24",
+        "type": "Company engineering guide with configuration benchmarks",
+        "method": "Separates parallelism layouts, replicated-input TP+EP/all-reduce and request-sharded DP+EP/all-to-all.",
+        "evidence_limit": "Mostly single-node MI300X and particular models; concurrency cutoffs are not H100 constants. Inspect pinned implementation before reusing version-sensitive statements.",
+        "actionable_transfer": "Keep execution path explicit and avoid inferring all-to-all benefits from our replicated-input layer."
+      },
+      {
+        "id": "nvidia-sglang-lplb",
+        "title": "Improving DeepEP MoE Load Balance in SGLang with Waterfill and LPLB",
+        "url": "https://www.lmsys.org/blog/2026-06-26-waterfill-lplb",
+        "publisher": "LMSYS community platform",
+        "author": "NVIDIA Team",
+        "published": "2026-06-26",
+        "type": "Vendor-authored community engineering blog, not a corporate-hosted blog",
+        "method": "Shared-expert dispatch and per-batch min-max LP allocation across existing redundant replicas; no expert-weight migration for LPLB.",
+        "evidence_limit": "Blog matrix: 16 Hopper GPUs, DeepSeek-V3 FP8, DeepEP, batch1000/concurrency256/max_tokens1; configuration-level comparisons without uncertainty intervals in the displayed table. Zero-replica regressions are disclosed.",
+        "actionable_transfer": "Existing replicas provide an alternative actuator; charge counting, collective and solver overhead. Waterfill does not apply to a layer without shared experts.",
+        "artifacts": [
+          "https://github.com/sgl-project/sglang/pull/24515",
+          "https://github.com/sgl-project/sglang/pull/20089",
+          "https://github.com/sgl-project/sglang/pull/19290"
+        ],
+        "blog_benchmark_commit": "a462e0f864103785fd3e64327104103f1356f220"
+      },
+      {
+        "id": "nvidia-moe-performance-guide",
+        "title": "MoE Performance Guide",
+        "url": "https://nvidia.github.io/TensorRT-LLM/developer-guide/moe-perf-guide.html",
+        "publisher": "NVIDIA TensorRT-LLM official documentation",
+        "last_updated": "2026-11-03",
+        "type": "Living engineering documentation, not a blog",
+        "page_commit": "9e334fb",
+        "method": "Module benchmark sweeps with explicit configurations and serving cross-validation; fixed-cost versus data-volume interpretation.",
+        "evidence_limit": "Published decision tree uses Blackwell workloads and perfect routing; thresholds are not portable to H100/Qwen.",
+        "actionable_transfer": "Use actual kernel measurements and raw slowest-rank timings; verify routing realization and an external replay rather than trusting ideal routing.",
+        "artifacts": [
+          "https://github.com/NVIDIA/TensorRT-LLM/blob/main/tests/microbenchmarks/bench_moe/BENCH_MOE_USER_GUIDE.md",
+          "https://github.com/NVIDIA/TensorRT-LLM/blob/main/examples/wide_ep/ep_load_balancer/README.md"
+        ]
+      }
+    ],
+    "artifact_checks": [
+      {
+        "url": "https://github.com/sgl-project/sglang/pull/24515",
+        "read_via": "GitHub connector, pull request body and metadata",
+        "merged_at": "2026-06-16T17:19:42Z",
+        "merge_commit": "92b42c8d8adedb4f0ad6436cb98f3c1a5d767b91",
+        "limits": "At this revision DeepSeek-v2 paths only; Qwen3 idle collective participation not supported. Requires DP-attention, DeepEP, SM90 or newer, Math-DX. Separate PR benchmark uses three repetitions and reports all p-values above 0.05; do not pool with blog matrix. Current Qwen support has not been established by this check."
+      },
+      {
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/blob/main/tests/microbenchmarks/bench_moe/BENCH_MOE_USER_GUIDE.md",
+        "read_via": "GitHub connector, current main file",
+        "limits": "Documents native/projected/forced routing, actual versus requested configurations, raw forward timings, and profiling limitations. Forced routing is not directly equivalent to native scoring. Adopt methodology without claiming backend portability."
+      },
+      {
+        "url": "https://github.com/NVIDIA/TensorRT-LLM/blob/main/examples/wide_ep/ep_load_balancer/README.md",
+        "read_via": "GitHub connector, current main file",
+        "limits": "Standard online EPLB: decayed counts and cyclic layer updates. New per-layer helper slots avoid redundant copies, but require Blackwell/NVFP4/multicast and MegaMoE CuteDSL; not an H100 baseline. Expert-ID counting overhead is explicitly warned about."
+      }
+    ],
+    "screened_but_not_selected": [
+      {
+        "url": "https://research.google/blog/mixture-of-experts-with-expert-choice-routing/",
+        "reason": "Changes learned logical routing and training; not a semantics-preserving placement change on this checkpoint."
+      },
+      {
+        "url": "https://aws.amazon.com/blogs/machine-learning/scaling-moe-reinforcement-learning-on-amazon-eks-with-efa-and-deepep-with-40-more-throughput/",
+        "reason": "RL/training orchestration and EFA scale differ from the bounded layer question; not used for an inference-selector claim."
+      },
+      {
+        "url": "https://docs.vllm.ai/projects/ascend/en/latest/user_guide/feature_guide/expert_parallelism_load_balancer.html",
+        "reason": "Useful hardware-specific overhead warning and migration controls, but NPU thresholds do not transfer to H100; community documentation, not a large-company blog."
+      }
+    ],
+    "recommended_pivot": "Runtime-aware small-change expert placement with an explicit payback/abstention test, conditional on finding profitable actions in a prespecified real-trace pilot.",
+    "no_experiments_or_code_changes": true
+  }
+}

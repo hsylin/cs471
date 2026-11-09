@@ -1,0 +1,309 @@
+{
+  "schema": "qwen_public_source_blocks_v1",
+  "retrieved_on": "2026-11-09",
+  "cpython_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+  "cpython_license_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+  "selection_rule": "First 2048 tokenizer tokens of each cleaned document; no chat template. Distinct source documents in every block and split. Blocks are finite corpus units, not a representative sample of all language workloads.",
+  "blocks": [
+    {
+      "block_id": "pilot-01",
+      "split": "pilot",
+      "sources": [
+        {
+          "source_id": "gutenberg-11",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+          "title": "Alice in Wonderland",
+          "author": "Lewis Carroll",
+          "author_death_year": 1898,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/11",
+          "file": "raw/gutenberg_11.txt",
+          "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-heapq.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/heapq.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_heapq.py",
+          "sha256": "6d43277e5c76fc0f073cd388fcff852d14d068f6bb6d4886c340f8b75a1229a9",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "split": "pilot",
+      "sources": [
+        {
+          "source_id": "gutenberg-84",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+          "title": "Frankenstein",
+          "author": "Mary Shelley",
+          "author_death_year": 1851,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/84",
+          "file": "raw/gutenberg_84.txt",
+          "sha256": "2b97b7f8aad508649481d8dd4f6b54f9b965ddb3ba634e9151c815f537b49e42",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-statistics.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/statistics.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_statistics.py",
+          "sha256": "b9ef01a757de37e9fbf13d32beeb9530c8271582cabec4998226dcb7e0613cd0",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-01",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-1342",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+          "title": "Pride and Prejudice",
+          "author": "Jane Austen",
+          "author_death_year": 1817,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/1342",
+          "file": "raw/gutenberg_1342.txt",
+          "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-fractions.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/fractions.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_fractions.py",
+          "sha256": "8e8332fbb22d666ee48e1aae31d7e1c19a2508c0e3ceb5e9f7f043efbe529a08",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-02",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-2701",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/2701.txt.utf-8",
+          "title": "Moby Dick",
+          "author": "Herman Melville",
+          "author_death_year": 1891,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/2701",
+          "file": "raw/gutenberg_2701.txt",
+          "sha256": "b5e88b71a1cda068e9ab1d94344c9d932338ba6da1a66def97a1aecd9cfcc87d",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-difflib.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/difflib.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_difflib.py",
+          "sha256": "0c6afc23568d55b3e9ac914f9c5361e3033e778aa5b58d3cc82835fc5c638679",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-03",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-98",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/98.txt.utf-8",
+          "title": "A Tale of Two Cities",
+          "author": "Charles Dickens",
+          "author_death_year": 1870,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/98",
+          "file": "raw/gutenberg_98.txt",
+          "sha256": "d54c2b80d40a40b982cd88852c6180bb944d95acdb028af3d0e01a1750681784",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-argparse.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/argparse.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_argparse.py",
+          "sha256": "97e4748d9dd71994c979ddd3245bc84a209cf18e683a6c5a663886224f01d752",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-04",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-1661",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+          "title": "The Adventures of Sherlock Holmes",
+          "author": "Arthur Conan Doyle",
+          "author_death_year": 1930,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/1661",
+          "file": "raw/gutenberg_1661.txt",
+          "sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-pathlib.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/pathlib.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_pathlib.py",
+          "sha256": "b48c9afd06eaf5b60ed3a0be4232fd3e3a72564e10c84d03b7ba388e0b703199",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-05",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-345",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/345.txt.utf-8",
+          "title": "Dracula",
+          "author": "Bram Stoker",
+          "author_death_year": 1912,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/345",
+          "file": "raw/gutenberg_345.txt",
+          "sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-functools.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/functools.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_functools.py",
+          "sha256": "cca971c456e1bec8b751aecdf41466f34dbf72321ee0840627280ba2ccf9d033",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-06",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-174",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/174.txt.utf-8",
+          "title": "The Picture of Dorian Gray",
+          "author": "Oscar Wilde",
+          "author_death_year": 1900,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/174",
+          "file": "raw/gutenberg_174.txt",
+          "sha256": "38f36b510417177aa87a6a24c968e3ec63a447b7df36a9c1a7c5a3f2d9e51547",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-unittest-case.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/unittest/case.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_unittest_case.py",
+          "sha256": "45bac6d80a4fc3a0dea8340a80681e30b263f017b4a5002cb8f489a632e0f987",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-07",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-43",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/43.txt.utf-8",
+          "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+          "author": "Robert Louis Stevenson",
+          "author_death_year": 1894,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/43",
+          "file": "raw/gutenberg_43.txt",
+          "sha256": "b43448a88391591f9cf82b25553df00faf47a2752a873185fcdd1156eebdb990",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-json-decoder.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/json/decoder.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_json_decoder.py",
+          "sha256": "9f02654649816145bc76f8c210a5fe3ba1de142d4d97a1c93105732e747c285b",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "final-08",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-35",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+          "title": "The Time Machine",
+          "author": "H G Wells",
+          "author_death_year": 1946,
+          "license": "Public-domain literary work; complete Project Gutenberg notice retained in raw source",
+          "license_url": "https://www.gutenberg.org/ebooks/35",
+          "file": "raw/gutenberg_35.txt",
+          "sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-csv.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/csv.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_csv.py",
+          "sha256": "46004923196e98a67f87d30da64d070027c81f144f5ac91242fbfae33507dda8",
+          "cleaning": "none"
+        }
+      ]
+    }
+  ]
+}
