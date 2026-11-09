@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "rows": 72,
+  "paired_cases": 24,
+  "dataset_rate_summaries": 6,
+  "rank_step_observations": 36864,
+  "all_padded_rows_equal_64_times_active": true,
+  "all_m_tiles_equal_active": true,
+  "active_vs_padded_content_reductions_identical": true,
+  "boundary_excess_ns_ranges": {
+    "native": [
+      27628801.492063493,
+      33012861.80952381
+    ],
+    "shortcut": [
+      6803586.047619048,
+      7343777.222222222
+    ],
+    "combined": [
+      6837252.920634921,
+      7151804.507936507
+    ]
+  },
+  "records_sha256": "6220d78b5fbcf934fba2acddb4a9761d53f32e1550297699cf29052c57408496",
+  "mechanism_sha256": "e56057c7c64b88e8cc99f753f705dad89555f5d504b730ee1e5085d07f691c9b",
+  "independent_method": "Scalar Python arithmetic and order-statistic p95; product-root geometric ratios; pairwise tied ranks; no reporter imports",
+  "limitations": "Descriptive pilot only; no GPU counters or causal mediation identification.",
+  "current_descriptive_output": "mechanism-v2.json",
+  "reporter_sha256": "3919eafb0baa698f4317acb86579f28a78fefa1bef068b0262428e43eaa895db",
+  "reporter_current_source_hash_matches": true,
+  "numerical_fields_unchanged_after_explicit_key_rename": true,
+  "every_rank_job_has_one_tile_per_active_copy_verified": true,
+  "interpretation_corrections_verified": [
+    "max_rank_active_reduction names the maximum-count rank, not a measured critical-path rank",
+    "collinear active-copy and tile/padding proxies explicitly disclosed"
+  ],
+  "superseded_descriptive_outputs": [
+    {
+      "path": "mechanism.json",
+      "sha256": "b70d301b3061f56c9b4e63af50ac638b676d5f923fb439c23f2a76cbb4779122",
+      "status": "superseded by mechanism-v2.json; retained unchanged as historical descriptive output"
+    }
+  ],
+  "audit_method_extension": "Compared every prior independently audited arithmetic field to v2 after the explicit key rename; freshly checked all 36864 raw rank-step tile/active/padding triples and current reporter, records, summary hashes."
+}

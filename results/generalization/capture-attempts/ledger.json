@@ -5,7 +5,11 @@
       "source_commit": "29b8466",
       "status": "failed_before_capture",
       "reason": "Python digest variable shadowing; fixed before retry",
-      "performance_measurements": 0
+      "performance_measurements": 0,
+      "log": {
+        "path": "results/generalization/capture-attempts/generalization-capture-pilot-v1.log",
+        "sha256": "9ce7214266257d4a8e36ba6dcd71dd7efcaa14fd8197304b81f9e7fa6a6cae47"
+      }
     },
     {
       "id": "generalization-capture-pilot-v2",
@@ -13,7 +17,360 @@
       "status": "capture_complete_but_performance_ineligible",
       "reason": "Subsequent independent audit found near-duplicate truncated prefixes across source splits; regenerate selection and capture",
       "documents": 384,
+      "performance_measurements": 0,
+      "log": {
+        "path": "results/generalization/capture-attempts/generalization-capture-pilot-v2.log",
+        "sha256": "f81ae0a82795d6a91b5c019551d377ece55bccb5f538b4d6ca83db33aa327852"
+      },
+      "capture_index": {
+        "path": "results/generalization/capture-attempts/rejected-pilot-v2/capture-index.json",
+        "sha256": "f614f9ab419d316e609c5f6684e462f31aa9f988fbdff248b4f801863b8cbe27"
+      },
+      "source_commit_file": {
+        "path": "results/generalization/capture-attempts/rejected-pilot-v2/source-commit.txt",
+        "sha256": "460203bd922a94974692de9207ddf19e6f1b8c2156f8fa7cb0384d5cdb8dccae"
+      },
+      "rejection_evidence": {
+        "path": "results/generalization/content-v1/prefix-leakage-audit.json",
+        "sha256": "c9bb7f696bf3a4d952a794d3ee7017b6186f98e54cca95065ff9d2900d9ececd"
+      },
+      "retained_banks_outside_published_repo": "../generalization-rejected-capture-pilot-v2/banks",
+      "retention_note": "Full rejected capture moved outside repository without deletion; index and source identity retained publicly."
+    },
+    {
+      "id": "generalization-capture-pilot-v3",
+      "source_commit": "66cc35b",
+      "status": "capture_complete_correctness_pass",
+      "content_selection": "content-v2: full-text and captured-prefix deduplication before split",
+      "capture_index": {
+        "path": "results/generalization/capture-pilot-v3/capture-index.json",
+        "sha256": "ae22a78512fb35942f2b35ccfd7022c27350e6b83dc4c363f4c139bf58747268"
+      },
+      "source_commit_file": {
+        "path": "results/generalization/capture-pilot-v3/source-commit.txt",
+        "sha256": "b00d00d3b4493aeab8d1b619f913eddc688697fbeb53e5a8a49ad3d015d45483"
+      },
+      "log": {
+        "path": "results/generalization/capture-attempts/generalization-capture-pilot-v3.log",
+        "sha256": "bbdbfe023f7c57976ddaff66deec4bac06fa601a60d70a0bfb5c04df47012a19"
+      },
+      "banks": 6,
+      "documents": 384,
+      "captured_records": 26095,
+      "all_capture_correctness_pass": true,
+      "all_local_bank_file_hashes_verified": true,
+      "bank_inventory": [
+        {
+          "block_id": "gsm8k-pilot-01",
+          "sha256": "160d4ab46c30288255988803794cdc64dbbd72c2f77a00960e37c3a3199fa6bc",
+          "bytes": 12784698
+        },
+        {
+          "block_id": "gsm8k-pilot-02",
+          "sha256": "15792e909d9a9bdf5739b441e60a79b25470395767c2293b201788daf671ec9c",
+          "bytes": 12952959
+        },
+        {
+          "block_id": "mbpp-pilot-01",
+          "sha256": "8409d2a895179282e72ba546d116f55d3d869c6fa8ba81ec09d735c41a32054b",
+          "bytes": 3631856
+        },
+        {
+          "block_id": "mbpp-pilot-02",
+          "sha256": "7eaf0c81dfbbc806fa7e4f718d8ed6f9d957335a7509178a1c51c89bba87c058",
+          "bytes": 3469820
+        },
+        {
+          "block_id": "wildchat-pilot-01",
+          "sha256": "88187d9dc6656374aad6ad6a8bc86c8c25701eaf9359606c6f0eee81944856d2",
+          "bytes": 30335812
+        },
+        {
+          "block_id": "wildchat-pilot-02",
+          "sha256": "87cc04a875de7be5362d0e1fd8369f49a9a563f98cb6c573b420c0061dd71987",
+          "bytes": 23334153
+        }
+      ],
       "performance_measurements": 0
+    },
+    {
+      "id": "generalization-capture-final-v1",
+      "source_commit": "66cc35b",
+      "status": "capture_complete_correctness_pass",
+      "content_selection": "content-v2: full-text and captured-prefix deduplication before split",
+      "capture_index": {
+        "path": "results/generalization/capture-final-v1/capture-index.json",
+        "sha256": "5373cf7ef4d53315244d0e54d452525b9bd22ab6af22c741282eaec2cc8cef48"
+      },
+      "source_commit_file": {
+        "path": "results/generalization/capture-final-v1/source-commit.txt",
+        "sha256": "b00d00d3b4493aeab8d1b619f913eddc688697fbeb53e5a8a49ad3d015d45483"
+      },
+      "log": {
+        "path": "results/generalization/capture-attempts/generalization-capture-final-v1.log",
+        "sha256": "658ea8aa90775df969cb5247a841dbd423ac61e1e8db6d9121cefd66b66b3c4f"
+      },
+      "banks": 24,
+      "documents": 1536,
+      "captured_records": 109869,
+      "all_capture_correctness_pass": true,
+      "all_local_bank_file_hashes_verified": true,
+      "bank_inventory": [
+        {
+          "block_id": "gsm8k-final-01",
+          "sha256": "68df2a88f6c69e28064a48463a55dedf661945f907498348c14882f1f56e1a8f",
+          "bytes": 12320767
+        },
+        {
+          "block_id": "gsm8k-final-02",
+          "sha256": "7b4e2a1e7c3c802e788d5464ec1fa44cc3bd8d0b91cb4ea8092df5e05f5ecc81",
+          "bytes": 12857165
+        },
+        {
+          "block_id": "gsm8k-final-03",
+          "sha256": "061bbb5609539d5323492d2c7cdd0dc432f92e3c5724ea7f64f743f9813beab1",
+          "bytes": 14809829
+        },
+        {
+          "block_id": "gsm8k-final-04",
+          "sha256": "a2366970ebb1d86b8f6b887c963820ce8289fc900357236b852ac2cad66d678e",
+          "bytes": 12928599
+        },
+        {
+          "block_id": "gsm8k-final-05",
+          "sha256": "5ef6ad06c6a157366d92e05505066302046ae6520c3b8da9435b41ce854a66fe",
+          "bytes": 14293886
+        },
+        {
+          "block_id": "gsm8k-final-06",
+          "sha256": "1e1f179f9fd0ca76f4a6a39b0e3e08eab44fecd9b954c2aa5eff5c6e7af4afa2",
+          "bytes": 12671909
+        },
+        {
+          "block_id": "gsm8k-final-07",
+          "sha256": "8221ed031e9bb9fa55f9cf85befa994908c480fbb5f7b14cd9ecd3b7b8537db1",
+          "bytes": 12287172
+        },
+        {
+          "block_id": "gsm8k-final-08",
+          "sha256": "f4cfdb5feae9e1114b4444926e50e042e8a77df434b48b6a09498ae9ccd8eaa3",
+          "bytes": 12825558
+        },
+        {
+          "block_id": "mbpp-final-01",
+          "sha256": "5603c79afa35ece396457df173070e8c2614e2688892ebf2b3fab6b4720d8192",
+          "bytes": 3367455
+        },
+        {
+          "block_id": "mbpp-final-02",
+          "sha256": "6a386cba432e01acbd885a5e5ba2435e1405162c0be45b081f0f626ed264a27e",
+          "bytes": 3411182
+        },
+        {
+          "block_id": "mbpp-final-03",
+          "sha256": "24e92f7d513851e3ef421664f34d1061b8b600614dc2eee185912084a3fc5e64",
+          "bytes": 3413749
+        },
+        {
+          "block_id": "mbpp-final-04",
+          "sha256": "4fd9984eac114f9883c5c342b2a84fdb86845a56a67914a3aae037effbad3eb9",
+          "bytes": 3433981
+        },
+        {
+          "block_id": "mbpp-final-05",
+          "sha256": "39f5d05c0ec77a7574e49b57552f74cfb195d1ad51e1d60520b414f2789fdd86",
+          "bytes": 3718892
+        },
+        {
+          "block_id": "mbpp-final-06",
+          "sha256": "45e79303eae340b2bc9b3171bbb4f6cf32447b5a6db6815dc77f73bc5e02640f",
+          "bytes": 3380099
+        },
+        {
+          "block_id": "mbpp-final-07",
+          "sha256": "a67cd397f95bf050bcb9b0c6a4c1dc522cbff669dc9a0364bd4743eb653d94fe",
+          "bytes": 3442863
+        },
+        {
+          "block_id": "mbpp-final-08",
+          "sha256": "296f225ce117c66630283aed331eb6e7c1ff8b53ed82da81a722bd75b52a288c",
+          "bytes": 3117976
+        },
+        {
+          "block_id": "wildchat-final-01",
+          "sha256": "75c3d22ed4bcc9428e51983942371d8c4c7178753a8ffc29b7e649086c43384f",
+          "bytes": 27803131
+        },
+        {
+          "block_id": "wildchat-final-02",
+          "sha256": "d5ad42a22543112c224aa98580e0ad3aadc673b0ff369d11da443d44df820a78",
+          "bytes": 29108606
+        },
+        {
+          "block_id": "wildchat-final-03",
+          "sha256": "d53f9dca4171a96c7c4f48438b93cbf829368f78749c44d70287b1805e77e849",
+          "bytes": 28799271
+        },
+        {
+          "block_id": "wildchat-final-04",
+          "sha256": "d6c143fd8ab07bedea65d6a39d3e34ed2b0e9526e9098c3d7c10d8f0c07e2575",
+          "bytes": 22151069
+        },
+        {
+          "block_id": "wildchat-final-05",
+          "sha256": "92dd700a04bd01616a3d107910536696b3a2d4be2f68f06389cfca2f0a94ed42",
+          "bytes": 28706073
+        },
+        {
+          "block_id": "wildchat-final-06",
+          "sha256": "7f08f16d0f62f23ec881c0a0a309beb26e0883bffb11c475db629c4026aa9298",
+          "bytes": 40570171
+        },
+        {
+          "block_id": "wildchat-final-07",
+          "sha256": "8ae4f1af463869e10841bbf9e11f69230f4383303fc087935d6644aa3fe72a89",
+          "bytes": 29920004
+        },
+        {
+          "block_id": "wildchat-final-08",
+          "sha256": "6a0897c53c828135435f77ccd0bc781ad429d84f10b2c4177914a733bbbb4aef",
+          "bytes": 24884940
+        }
+      ],
+      "performance_measurements": 0
+    }
+  ],
+  "schema_version": 2,
+  "previous_ledger_sha256": "158f23109b3de3f35d17bc8022d7e75f2a4ba95591c17500d745b03d3aee9d8f",
+  "revision_note": "Original failure/rejection entries retained; append successful captures and audited preparation/execution attempts. No old evidence overwritten.",
+  "execution_preparation_attempts": [
+    {
+      "id": "generalization-pilot-calibration-v1",
+      "source_commit": "8a750f3",
+      "status": "complete_native_calibration_superseded_before_treatment",
+      "native_calibration_trials": 6,
+      "treatment_trials": 0,
+      "plan": {
+        "path": "configs/generalization-pilot-calibration-v1.json",
+        "sha256": "0d5a9b1562c57c291f8fe7ce0ee7f86f836a8e73ec14476ae82968a69e20b3b9"
+      },
+      "records": {
+        "path": "results/generalization/generalization-pilot-calibration-v1/records.jsonl",
+        "sha256": "85858f00a700feeb97aeba1484b475756fb7be429600fbdc2ce1dcc0694e6fd8"
+      },
+      "summary": {
+        "path": "results/generalization/generalization-pilot-calibration-v1/summary.json",
+        "sha256": "734dbae13ce5a62cbf1771020b3d53bc226e7562c2668814a40eec624e02d2f9"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-pilot-calibration-v1/independent-execution-audit.json",
+        "sha256": "7241da2d32d5ff9a5a3f220a03446ec3166597d4f2c00fd5f2af4c6870f50ead"
+      }
+    },
+    {
+      "id": "generalization-pilot-calibration-v2",
+      "source_commit": "9263d53",
+      "status": "complete_native_calibration_eligible",
+      "native_calibration_trials": 6,
+      "treatment_trials": 0,
+      "plan": {
+        "path": "configs/generalization-pilot-calibration-v2.json",
+        "sha256": "c357db3aa6653eff49dd5ab4cf47a7d93182c037865f7cee669289d01a8e5746"
+      },
+      "records": {
+        "path": "results/generalization/generalization-pilot-calibration-v2/records.jsonl",
+        "sha256": "9cce6e4fc4b15ea9ebee6f6055e127cdf7e0cac51b3c21cc3fa1f9664422e1a4"
+      },
+      "summary": {
+        "path": "results/generalization/generalization-pilot-calibration-v2/summary.json",
+        "sha256": "b8339d80cd792bc298860b8b5419f259a813f34ad60b4ed71baa631317d24bf2"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-pilot-calibration-v2/independent-execution-audit.json",
+        "sha256": "e4542c2bfefc108d35ea5b8bfadec33a150bde06dd4506203337f072cc7bc56c"
+      },
+      "independent_statistics_audit": {
+        "path": "results/generalization/generalization-pilot-calibration-v2/independent-statistics-audit.json",
+        "sha256": "4098b8d26d9afe584053cb0313a25e29c6cb2b7d01ccf4377fdd08c1c1f565a8"
+      }
+    },
+    {
+      "id": "generalization-final-calibration-v1",
+      "source_commit": "9263d53",
+      "status": "complete_native_calibration_eligible",
+      "native_calibration_trials": 18,
+      "treatment_trials": 0,
+      "plan": {
+        "path": "configs/generalization-final-calibration-v1.json",
+        "sha256": "c63d3853c3e92831264e4c4732a799fd2b3576a17ce46d0fbf30472b63c2f452"
+      },
+      "records": {
+        "path": "results/generalization/generalization-final-calibration-v1/records.jsonl",
+        "sha256": "2ab172a9727ae96400e046bb27f9f2a297c0b09178e08597278f1559bb1d0e19"
+      },
+      "summary": {
+        "path": "results/generalization/generalization-final-calibration-v1/summary.json",
+        "sha256": "80d4dc4e19f2d7889a4c4c2612010573301342ff06e645e2b4aba829fdf69fe1"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-final-calibration-v1/independent-execution-audit.json",
+        "sha256": "d8b25d66a561254c4ae5588e00ebcb4f26f65ceb54911b1ed8273a9e161fb47f"
+      },
+      "independent_statistics_audit": {
+        "path": "results/generalization/generalization-final-calibration-v1/independent-statistics-audit.json",
+        "sha256": "cebf05567167dae1ab8044d99f88a62fe6f6bd4b832197049b3248b60ee9afee"
+      }
+    },
+    {
+      "id": "generalization-pilot-v1",
+      "status": "unexecuted_plan_superseded",
+      "treatment_trials": 0,
+      "reason": "Global order balance concealed three orders perrate; corrected before any treatment",
+      "plan": {
+        "path": "configs/generalization-pilot-v1.json",
+        "sha256": "ac6a51b8d716723bdde9de61137c181c4b550ac649305a3bc0a8322b8f7b254d"
+      }
+    },
+    {
+      "id": "generalization-pilot-v2-launch-1",
+      "source_commit": "9263d53",
+      "status": "shell_failure_before_torchrun",
+      "treatment_trials": 0,
+      "reason": "Unset SLURM_SUBMIT_DIR; line3 failed before output creation/torchrun; explicit export used for retry",
+      "log": {
+        "path": "results/generalization/capture-attempts/generalization-pilot-v2-launch-failure.log",
+        "sha256": "dc6022df1926b052d838d505d1309f36d79964e5499bf250581da73e5148f1f6"
+      }
+    },
+    {
+      "id": "generalization-pilot-v2",
+      "source_commit": "9263d53",
+      "status": "complete_pilot_independent_audits_pass",
+      "treatment_trials": 72,
+      "records": {
+        "path": "results/generalization/generalization-pilot-v2/records.jsonl",
+        "sha256": "6220d78b5fbcf934fba2acddb4a9761d53f32e1550297699cf29052c57408496"
+      },
+      "summary": {
+        "path": "results/generalization/generalization-pilot-v2/summary.json",
+        "sha256": "f11f80e4a4d5df621a24971d9dbc918dce342169811cb9c4b2e5560f994fdf41"
+      },
+      "allocation": {
+        "path": "results/generalization/generalization-pilot-v2/allocation.json",
+        "sha256": "e04ecdc42d919d76ff2a01a62ff5e66ba1c1a6d8435c4ef58d64115f7ee2ccf7"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-pilot-v2/independent-execution-audit.json",
+        "sha256": "4f0e3223669c21892e9ac1942c9bf3727d88e065993b65625760832ece7f9192"
+      },
+      "independent_statistics_audit": {
+        "path": "results/generalization/generalization-pilot-v2/independent-statistics-audit.json",
+        "sha256": "10cb4e6f76a14c51b45d0ed54197294c11a49fb1d1827ae39bd2ee9b1668d712"
+      },
+      "plan": {
+        "path": "configs/generalization-pilot-v2.json",
+        "sha256": "d1b78c675e98ba5ff62477fee6bab88895ab77d035d67abc0d7ecada8d0cea8b"
+      }
     }
   ]
 }
