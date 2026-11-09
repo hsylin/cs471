@@ -1,5 +1,18 @@
 # SkewBench
 
+**Completed response-time fix.** A rank-agreed unchanged-map fast path avoids
+redundant movement setup and map commit while preserving native routing and
+planning. On 256 paired fresh-arrival trials using one reserved equivalent H100
+pair, the high-load mean-response ratio is 0.5196 (95% CI 0.5019–0.5379), a 48.0%
+reduction; both frozen regression guards pass. Mean service improves 11.9%,
+while completed observed elapsed improves 2.1% under the fixed arrival horizon.
+Independent execution and statistical audits pass, as do 490 CPU tests.
+These are synthetic arrival calendars over reused layer payloads, not full-model
+serving results. Read the [diagnosis](docs/arrival-response-diagnosis.md),
+[results and limits](docs/arrival-response-results.md),
+[frozen protocol](docs/arrival-response-fix-protocol.md), and
+[reproduction guide](docs/arrival-response-reproduction.md).
+
 **Instructor-feedback supplement.** The bounded arrival study completed eight native calibrations and 128 evaluation trials on two H100s. Online dispatch reduced mean service in 27/32 descriptive cells, but mean response in only 21/32; it did not establish a general latency improvement. Independent raw-data audits and all 425 CPU tests pass. Architectural accounting explains reduced padded work without claiming measured hardware utilization; the counter probe was denied by node permissions. The historical 5% target failure remains unchanged. Read the [results and feedback response](docs/instructor-feedback-results.md), [notation and parameter history](docs/instructor-feedback-response.md), and [reproduction guide](docs/instructor-supplement-reproduction.md).
 
 **Completed resident-dispatch follow-up.** One fixed GPU dispatcher and 256
