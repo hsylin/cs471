@@ -1,0 +1,7 @@
+These are the exact captured numerical inputs and constructed replay indices used in the payback follow-up. Ten banks contain 40,960 teacher-forced causal-prefill token records, including lossless BF16 hidden-state bits, logical top-8 IDs, combining weights and original token positions. Eighty tapes select these records into the four declared temporal regimes and two batch sizes.
+
+`banks/` and `tapes-v2/` are portable: the runner resolves archived bank and tape names under `--banks-dir`, rather than trusting original absolute paths in capture/composition inventories. Those original inventories remain unchanged as provenance. The first composed `tapes/` used a different transient recurrence, was never used for payback timing, and is not part of this measured-input archive. The server retains that initial construction.
+
+Source texts, URLs, hashes and licenses are in `followup/corpus/`; Qwen model/revision and capture implementation pins are embedded in every bank. These derived activations are not natural serving traces. The repository code license does not replace the original source-text or model terms. Expert checkpoint weights are not included; use the pinned exporter described in `docs/payback-reproduction.md`.
+
+`all-input-audit.json` records successful content/file-hash checks for all banks and tapes. Reconstructing physical dispatch from these exact logical IDs is a separate check performed by `scripts/audit_payback_records.py`.

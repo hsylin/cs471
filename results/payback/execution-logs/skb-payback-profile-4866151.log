@@ -1,0 +1,46 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+slurmstepd: error: *** JOB 4866151 ON kh024 CANCELLED AT 2026-11-09T10:22:28 ***
+W1109 10:22:28.154000 600343 torch/distributed/elastic/agent/server/api.py:753] Received 15 death signal, shutting down workers
+W1109 10:22:28.163000 600343 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 600577 closing signal SIGTERM
+W1109 10:22:28.164000 600343 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 600578 closing signal SIGTERM
+/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/venv/bin/torchrun", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 374, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 745, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 923, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 600343 got signal: 15

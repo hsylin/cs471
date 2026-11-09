@@ -1,0 +1,1096 @@
+{
+  "status": "verified",
+  "scope": "independent raw-record and source/provenance audit; no performance-based edits",
+  "split": "pilot",
+  "stage": "screening",
+  "records": 96,
+  "matched_triples": 32,
+  "source_states": 16,
+  "manifest_sha256": "2f71314b0564ad391d5d884f0c668923275c5887588017e7dd3062b911783fdf",
+  "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+  "record_file_sha256": "8a0b9dc34cd4cc7d7ccf988e063f127f15b18b9109d871066153c41f9fe1e2bb",
+  "checks": {
+    "exact_declared_matrix_and_unique_record_ids": true,
+    "source_and_candidate_pairing_exact": true,
+    "cross_horizon_repetition_family_source_pairing_exact": true,
+    "cross_regime_step63_state_exact": true,
+    "transient_persistent_step127_history_exact": true,
+    "arm_order_assignment_and_execution_exact": true,
+    "native_payload_matches_two_rank_sender_set_difference": true,
+    "prefix_physical_windows_reconstruct_global_logical_counts": true,
+    "sampled_numerical_checks_pass": true,
+    "final_map_and_weight_attestations_pass": true,
+    "full_future_dispatch_conservation_attestations_pass": true,
+    "archived_execution_source_hashes_match_records": true,
+    "saved_analyzer_point_estimates_and_gate_agree": null,
+    "one_copy_exhaustive_search_independently_reproduced": false
+  },
+  "raw_input_reconstruction": {
+    "enabled": false,
+    "banks_verified": 0,
+    "tapes_verified": 0,
+    "unique_future_physical_arrays_reproduced": 0,
+    "prefix_logical_and_physical_exact": false,
+    "future_physical_full_hash_owner_counts_and_activity_exact": false,
+    "transient_persistent_input_indices_identical_through_raw167_then_different": false
+  },
+  "arm_position_counts": {
+    "KEEP": [
+      11,
+      10,
+      11
+    ],
+    "PREINSTALLED": [
+      11,
+      11,
+      10
+    ],
+    "CHARGED": [
+      10,
+      11,
+      11
+    ]
+  },
+  "allocations": [
+    "4866303"
+  ],
+  "hostnames": [
+    "kh071"
+  ],
+  "process_run_ids": [
+    "4d65ffbf-7c29-411b-83a1-5f7a1bbaacf7"
+  ],
+  "source_index_path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/pilot-native/provenance/source-files.json",
+  "records_path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-native-audit-input.jsonl.gz",
+  "manifest_path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/payback-results/pilot-native/provenance/executed-manifest.json",
+  "local_executed_source_agreement": {
+    "followup/__init__.py": true,
+    "followup/payback.py": true,
+    "followup/payback_analysis.py": true,
+    "followup/profile_layer.py": true,
+    "followup/router_tapes.py": true,
+    "scripts/capture_router_tapes.py": true,
+    "scripts/compose_router_tapes.py": true
+  },
+  "execution_hashes_not_in_optional_source_index_but_verified_locally": [
+    "scripts/capture_router_tapes.py",
+    "scripts/compose_router_tapes.py"
+  ],
+  "numerical_checks": {
+    "checked_steps_per_arm": 2,
+    "reference_tokens_per_step": 4,
+    "native_forward_uses_full_batch": true,
+    "raw_steps": {
+      "128": [
+        160,
+        287
+      ],
+      "512": [
+        160,
+        671
+      ]
+    },
+    "maximum_observed_absolute_error": 0.0018066167831420898,
+    "atol": 0.02,
+    "rtol": 0.03
+  },
+  "screening_gate": [
+    {
+      "candidate_id": "native",
+      "qualified_states": 0,
+      "distinct_qualified_blocks": 0,
+      "confirmation_trigger": false
+    }
+  ],
+  "qualified_screening_states": [],
+  "source_state_details": [
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.004435802394118005,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.0011170007514367953,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 63,
+          "native_sender_bytes": 509607936
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.011247142954128856,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.00019322639777673146,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 65,
+          "native_sender_bytes": 537919488
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.004435802394118005,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.003325425309730998,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 68,
+          "native_sender_bytes": 575668224
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.011247142954128856,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.013236973187287341,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 69,
+          "native_sender_bytes": 556793856
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.004435802394118005,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.01044496769908833,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 74,
+          "native_sender_bytes": 575668224
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.011247142954128856,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.018031784077999432,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 62,
+          "native_sender_bytes": 519045120
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.004435802394118005,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.0011170007514367953,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 63,
+          "native_sender_bytes": 509607936
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": false,
+      "first_b3_gain": 0.011247142954128856,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.00019322639777673146,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": true,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 65,
+          "native_sender_bytes": 537919488
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.054475157250851176,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 452984832,
+      "target_b3_step127_would_allow": true,
+      "target_b3_gain": 0.02932290741069842,
+      "target_b3_reason": "allowed",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 75,
+          "native_sender_bytes": 575668224
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.06707000249119185,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 519045120,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.01591186657857314,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 59,
+          "native_sender_bytes": 509607936
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.054475157250851176,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 452984832,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.013526531267560697,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 67,
+          "native_sender_bytes": 547356672
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.06707000249119185,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 519045120,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.0014094092670563917,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 68,
+          "native_sender_bytes": 594542592
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.054475157250851176,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 452984832,
+      "target_b3_step127_would_allow": true,
+      "target_b3_gain": 0.07425956958068956,
+      "target_b3_reason": "allowed",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 72,
+          "native_sender_bytes": 594542592
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.06707000249119185,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 519045120,
+      "target_b3_step127_would_allow": true,
+      "target_b3_gain": 0.03409037880108966,
+      "target_b3_reason": "allowed",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 68,
+          "native_sender_bytes": 566231040
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.054475157250851176,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 452984832,
+      "target_b3_step127_would_allow": true,
+      "target_b3_gain": 0.02932290741069842,
+      "target_b3_reason": "allowed",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 75,
+          "native_sender_bytes": 575668224
+        }
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "first_b3_step63_committed": true,
+      "first_b3_gain": 0.06707000249119185,
+      "first_b3_reason": "allowed",
+      "prefix_sender_bytes": 519045120,
+      "target_b3_step127_would_allow": false,
+      "target_b3_gain": 0.01591186657857314,
+      "target_b3_reason": "below_improvement_threshold",
+      "source_is_initial_map": false,
+      "candidates": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 59,
+          "native_sender_bytes": 509607936
+        }
+      ]
+    }
+  ],
+  "descriptive_cells": [
+    {
+      "candidate_id": "native",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -9.542000538203865,
+      "mean_headroom_ms": -1.4415779151022434,
+      "mean_transition_ms": 8.100422623101622,
+      "preinstalled_over_keep_geomean": 1.0314275182450394,
+      "charged_over_keep_geomean": 1.2042384749050903
+    },
+    {
+      "candidate_id": "native",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -14.873042004182935,
+      "mean_headroom_ms": -6.204774021171033,
+      "mean_transition_ms": 8.668267983011901,
+      "preinstalled_over_keep_geomean": 1.033994311985866,
+      "charged_over_keep_geomean": 1.0805522846711004
+    },
+    {
+      "candidate_id": "native",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.890129043720663,
+      "mean_headroom_ms": -0.702261517290026,
+      "mean_transition_ms": 8.187867526430637,
+      "preinstalled_over_keep_geomean": 1.0107207725972602,
+      "charged_over_keep_geomean": 1.1359964269398046
+    },
+    {
+      "candidate_id": "native",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -11.200650944374502,
+      "mean_headroom_ms": -2.8681529802270234,
+      "mean_transition_ms": 8.332497964147478,
+      "preinstalled_over_keep_geomean": 1.0109802211177454,
+      "charged_over_keep_geomean": 1.042945937170048
+    },
+    {
+      "candidate_id": "native",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -9.145890013314784,
+      "mean_headroom_ms": -1.1877890792675316,
+      "mean_transition_ms": 7.958100934047252,
+      "preinstalled_over_keep_geomean": 1.0256778856515103,
+      "charged_over_keep_geomean": 1.1941754878380844
+    },
+    {
+      "candidate_id": "native",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -13.600180041976273,
+      "mean_headroom_ms": -5.776731006335467,
+      "mean_transition_ms": 7.823449035640806,
+      "preinstalled_over_keep_geomean": 1.0315897340838347,
+      "charged_over_keep_geomean": 1.0735595426663425
+    },
+    {
+      "candidate_id": "native",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.024289039894938,
+      "mean_headroom_ms": -0.3859850694425404,
+      "mean_transition_ms": 7.638303970452398,
+      "preinstalled_over_keep_geomean": 1.0058929811111135,
+      "charged_over_keep_geomean": 1.1226078358438965
+    },
+    {
+      "candidate_id": "native",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -9.379908966366202,
+      "mean_headroom_ms": -1.4080284745432436,
+      "mean_transition_ms": 7.971880491822958,
+      "preinstalled_over_keep_geomean": 1.0053868831768158,
+      "charged_over_keep_geomean": 1.0359450971353537
+    },
+    {
+      "candidate_id": "native",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.322432986460626,
+      "mean_headroom_ms": -0.2671235124580562,
+      "mean_transition_ms": 8.05530947400257,
+      "preinstalled_over_keep_geomean": 1.0053147456988265,
+      "charged_over_keep_geomean": 1.1642786269250853
+    },
+    {
+      "candidate_id": "native",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -10.37085399730131,
+      "mean_headroom_ms": -1.8029400380328298,
+      "mean_transition_ms": 8.56791395926848,
+      "preinstalled_over_keep_geomean": 1.0090167481073615,
+      "charged_over_keep_geomean": 1.0516776404016719
+    },
+    {
+      "candidate_id": "native",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.49024805938825,
+      "mean_headroom_ms": -0.7336376002058387,
+      "mean_transition_ms": 7.756610459182411,
+      "preinstalled_over_keep_geomean": 1.0110855977357875,
+      "charged_over_keep_geomean": 1.128012004122778
+    },
+    {
+      "candidate_id": "native",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -10.537061432842165,
+      "mean_headroom_ms": -2.981691504828632,
+      "mean_transition_ms": 7.555369928013533,
+      "preinstalled_over_keep_geomean": 1.0112965434240953,
+      "charged_over_keep_geomean": 1.039830429309714
+    },
+    {
+      "candidate_id": "native",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.796128968242556,
+      "mean_headroom_ms": -0.4548924043774605,
+      "mean_transition_ms": 8.341236563865095,
+      "preinstalled_over_keep_geomean": 1.009472059659559,
+      "charged_over_keep_geomean": 1.1803749818712077
+    },
+    {
+      "candidate_id": "native",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -10.877154010813683,
+      "mean_headroom_ms": -2.3345184745267034,
+      "mean_transition_ms": 8.54263553628698,
+      "preinstalled_over_keep_geomean": 1.0121855534814161,
+      "charged_over_keep_geomean": 1.0562891517923585
+    },
+    {
+      "candidate_id": "native",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "horizon_steps": 128,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.146080537699163,
+      "mean_headroom_ms": -0.3222305094823241,
+      "mean_transition_ms": 7.823850028216839,
+      "preinstalled_over_keep_geomean": 1.004903467951691,
+      "charged_over_keep_geomean": 1.1237655802356261
+    },
+    {
+      "candidate_id": "native",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "horizon_steps": 512,
+      "blocks": 2,
+      "triples": 2,
+      "mean_net_payback_ms": -8.839818940032274,
+      "mean_headroom_ms": -1.1893059127032757,
+      "mean_transition_ms": 7.650513027328998,
+      "preinstalled_over_keep_geomean": 1.0045394487401003,
+      "charged_over_keep_geomean": 1.033657757169267
+    }
+  ],
+  "paired_outcomes": [
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -1.4515729853883386,
+      "net_payback_ms": -9.261226980015635,
+      "transition_ms": 7.809653994627297,
+      "preinstalled_over_keep": 1.029030269464415,
+      "charged_over_keep": 1.18521694569084,
+      "charged_over_preinstalled": 1.1517804488955572
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -6.377580109983683,
+      "net_payback_ms": -14.090831042267382,
+      "transition_ms": 7.7132509322836995,
+      "preinstalled_over_keep": 1.0321596007859037,
+      "charged_over_keep": 1.0710544584695307,
+      "charged_over_preinstalled": 1.0376829878383262
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -1.0311061050742865,
+      "net_payback_ms": -8.859569090418518,
+      "transition_ms": 7.828462985344231,
+      "preinstalled_over_keep": 1.0156708030821477,
+      "charged_over_keep": 1.1346481821079217,
+      "charged_over_preinstalled": 1.117141674905615
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -4.613903001882136,
+      "net_payback_ms": -12.060044915415347,
+      "transition_ms": 7.446141913533211,
+      "preinstalled_over_keep": 1.0175799267420198,
+      "charged_over_keep": 1.0459512707640328,
+      "charged_over_preinstalled": 1.0278811946623687
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -3.108070930466056,
+      "net_payback_ms": -11.287617031484842,
+      "transition_ms": 8.179546101018786,
+      "preinstalled_over_keep": 1.0687861051919418,
+      "charged_over_keep": 1.2498112912685828,
+      "charged_over_preinstalled": 1.1693745691464905
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -12.886427924968302,
+      "net_payback_ms": -21.109788911417127,
+      "transition_ms": 8.223360986448824,
+      "preinstalled_over_keep": 1.0717913755100374,
+      "charged_over_keep": 1.1176044122934012,
+      "charged_over_preinstalled": 1.0427443603579685
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -1.2829119805246592,
+      "net_payback_ms": -9.21908498276025,
+      "transition_ms": 7.936173002235591,
+      "preinstalled_over_keep": 1.0196631410018018,
+      "charged_over_keep": 1.1413005495899056,
+      "charged_over_preinstalled": 1.1192917579315431
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -5.261638900265098,
+      "net_payback_ms": -13.073084875941277,
+      "transition_ms": 7.811445975676179,
+      "preinstalled_over_keep": 1.0202285515654828,
+      "charged_over_keep": 1.0502599240551433,
+      "charged_over_preinstalled": 1.029435926335897
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -2.399283810518682,
+      "net_payback_ms": -10.633871890604496,
+      "transition_ms": 8.234588080085814,
+      "preinstalled_over_keep": 1.0503269555190708,
+      "charged_over_keep": 1.2230542278023604,
+      "charged_over_preinstalled": 1.164450956319528
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -10.15866408124566,
+      "net_payback_ms": -18.800678080879152,
+      "transition_ms": 8.642013999633491,
+      "preinstalled_over_keep": 1.0536930390410195,
+      "charged_over_keep": 1.0993699106615702,
+      "charged_over_preinstalled": 1.0433493151498106
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -0.7748049683868885,
+      "net_payback_ms": -8.474854985252023,
+      "transition_ms": 7.700050016865134,
+      "preinstalled_over_keep": 1.0118253378367617,
+      "charged_over_keep": 1.1293461289062432,
+      "charged_over_preinstalled": 1.1161473098911874
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -3.004264901392162,
+      "net_payback_ms": -10.661973967216909,
+      "transition_ms": 7.657709065824747,
+      "preinstalled_over_keep": 1.0114953773996622,
+      "charged_over_keep": 1.0407964738800954,
+      "charged_over_preinstalled": 1.0289680972697672
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -2.590108080767095,
+      "net_payback_ms": -10.469057015143335,
+      "transition_ms": 7.87894893437624,
+      "preinstalled_over_keep": 1.0566608264312896,
+      "charged_over_keep": 1.229019563638685,
+      "charged_over_preinstalled": 1.1631164257214972
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -11.575194075703621,
+      "net_payback_ms": -19.267213065177202,
+      "transition_ms": 7.692018989473581,
+      "preinstalled_over_keep": 1.0642972263584984,
+      "charged_over_keep": 1.1070244137287877,
+      "charged_over_preinstalled": 1.0401459163024231
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -0.8876620559021831,
+      "net_payback_ms": -8.643086068332195,
+      "transition_ms": 7.755424012430012,
+      "preinstalled_over_keep": 1.013607057697026,
+      "charged_over_keep": 1.1324907041257113,
+      "charged_over_preinstalled": 1.117287705848059
+    },
+    {
+      "block_id": "pilot-01",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -3.536999924108386,
+      "net_payback_ms": -11.716526001691818,
+      "transition_ms": 8.179526077583432,
+      "preinstalled_over_keep": 1.0135967229057488,
+      "charged_over_keep": 1.0450399663220697,
+      "charged_over_preinstalled": 1.0310214533115107
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": 0.9173259604722261,
+      "net_payback_ms": -7.383638992905617,
+      "transition_ms": 8.300964953377843,
+      "preinstalled_over_keep": 0.9821457812368521,
+      "charged_over_keep": 1.1437102093781164,
+      "charged_over_preinstalled": 1.16450147343483
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": 2.771700033918023,
+      "net_payback_ms": -6.6508769523352385,
+      "transition_ms": 9.422576986253262,
+      "preinstalled_over_keep": 0.9863927993170288,
+      "charged_over_keep": 1.0326513750769213,
+      "charged_over_preinstalled": 1.0468967086863588
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -0.4361690953373909,
+      "net_payback_ms": -8.120927028357983,
+      "transition_ms": 7.684757933020592,
+      "preinstalled_over_keep": 1.006521092116154,
+      "charged_over_keep": 1.121414638924668,
+      "charged_over_preinstalled": 1.1141491695588381
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "persistent",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -1.3494800077751279,
+      "net_payback_ms": -9.014077950268984,
+      "transition_ms": 7.664597942493856,
+      "preinstalled_over_keep": 1.005051958931582,
+      "charged_over_keep": 1.0337454066369736,
+      "charged_over_preinstalled": 1.028549218227378
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": 0.22491510026156902,
+      "net_payback_ms": -7.796384044922888,
+      "transition_ms": 8.021299145184457,
+      "preinstalled_over_keep": 0.995374771645321,
+      "charged_over_keep": 1.1603274146849534,
+      "charged_over_preinstalled": 1.1657191318672577
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": 0.4768798826262355,
+      "net_payback_ms": -8.636295096948743,
+      "transition_ms": 9.113174979574978,
+      "preinstalled_over_keep": 0.9975301739205978,
+      "charged_over_keep": 1.0447285524866112,
+      "charged_over_preinstalled": 1.0473152389771925
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": -0.12161105405539274,
+      "net_payback_ms": -8.561173104681075,
+      "transition_ms": 8.439562050625682,
+      "preinstalled_over_keep": 1.0018568280853426,
+      "charged_over_keep": 1.130716954866712,
+      "charged_over_preinstalled": 1.1286212991407516
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "stable",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": -0.4746670601889491,
+      "net_payback_ms": -9.328217012807727,
+      "transition_ms": 8.853549952618778,
+      "preinstalled_over_keep": 1.0018157264104797,
+      "charged_over_keep": 1.035682884727875,
+      "charged_over_preinstalled": 1.033805776276583
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": 1.489499001763761,
+      "net_payback_ms": -6.958386045880616,
+      "transition_ms": 8.447885047644377,
+      "preinstalled_over_keep": 0.9702063094531421,
+      "charged_over_keep": 1.139185055049417,
+      "charged_over_preinstalled": 1.1741678485800817
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": 5.489627132192254,
+      "net_payback_ms": -2.9536299407482147,
+      "transition_ms": 8.443257072940469,
+      "preinstalled_over_keep": 0.9723131469188695,
+      "charged_over_keep": 1.0148965888313195,
+      "charged_over_preinstalled": 1.0437960157665165
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": 0.13034394942224026,
+      "net_payback_ms": -7.817306090146303,
+      "transition_ms": 7.947650039568543,
+      "preinstalled_over_keep": 0.9980289503920804,
+      "charged_over_keep": 1.1182126072768905,
+      "charged_over_preinstalled": 1.1204210126746277
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "switching",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": 0.6256530759856105,
+      "net_payback_ms": -7.017663912847638,
+      "transition_ms": 7.643316988833249,
+      "preinstalled_over_keep": 0.9976313551419711,
+      "charged_over_keep": 1.0265680041872334,
+      "charged_over_preinstalled": 1.0290053524241372
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": 0.21452992223203182,
+      "net_payback_ms": -7.822723011486232,
+      "transition_ms": 8.037252933718264,
+      "preinstalled_over_keep": 0.9956034129395834,
+      "charged_over_keep": 1.160319280460671,
+      "charged_over_preinstalled": 1.165443253187284
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 128,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": 0.02173206303268671,
+      "net_payback_ms": -7.933147018775344,
+      "transition_ms": 7.954879081808031,
+      "preinstalled_over_keep": 0.9998873934006653,
+      "charged_over_keep": 1.0411063002376812,
+      "charged_over_preinstalled": 1.0412235488806678
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 128,
+      "repetition": 0,
+      "headroom_ms": 0.11569191701710224,
+      "net_payback_ms": -7.405492011457682,
+      "transition_ms": 7.521183928474784,
+      "preinstalled_over_keep": 0.9982376126578265,
+      "charged_over_keep": 1.112811212054085,
+      "charged_over_preinstalled": 1.114775878952511
+    },
+    {
+      "block_id": "pilot-02",
+      "regime": "transient",
+      "batch_tokens": 1024,
+      "candidate_id": "native",
+      "horizon_steps": 512,
+      "repetition": 0,
+      "headroom_ms": 0.7209429750218987,
+      "net_payback_ms": -7.043291931040585,
+      "transition_ms": 7.764234906062484,
+      "preinstalled_over_keep": 0.997243540770587,
+      "charged_over_keep": 1.0269293796061714,
+      "charged_over_preinstalled": 1.0297678928184841
+    }
+  ],
+  "limits": [
+    "Screening uses one repetition per state; descriptive differences are not confirmatory estimates or a robust-feasibility pass.",
+    "Common prefix/planner and candidate selection costs are excluded in all arms. This diagnoses a fixed candidate conditional on its state; it does not measure a full online controller.",
+    "Raw NPZ banks/tapes and checkpoint tensors are not reexecuted by this local record audit. Recorded hashes and runtime attestations are checked.",
+    "Numerical references cover four tokens at two future inputs per arm, not every output element.",
+    "Future physical diagnostics preserve owner counts/activity and hashes; full per-slot future arrays are runtime-attested rather than independently reconstructed here.",
+    "Constructed replay of fixed captured prefill tokens, replicated-input/allreduce execution, one layer and allocation do not establish natural-serving or production-population effects."
+  ]
+}

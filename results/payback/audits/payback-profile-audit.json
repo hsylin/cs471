@@ -1,0 +1,958 @@
+{
+  "scope": "Pilot-only fixed-map calibration/profile audit; no policy, migration, or final-data conclusions",
+  "capture_sha256": "fe7581bc63afc5f57ce10f3a1f20280b7412ca16f333c10f1547423d77ad51a3",
+  "source_block": "pilot-01",
+  "source_prompt_ids": [
+    "gutenberg-11",
+    "cpython-Lib-heapq.py"
+  ],
+  "provenance_match": "Capture hash matched smoke record provenance; no smoke timing used.",
+  "calibration_design": {
+    "trials_per_cell": 5,
+    "forwards_per_trial": 32,
+    "statistical_unit": "repeated measurements of the same fixed batch/map, not independent workload samples",
+    "map_formation": "64 repeated B2 observed forwards, native update, then16 fixed-map warmup forwards",
+    "profiled_forward_count_per_rank": 8,
+    "profile_separate_from_unprofiled_calibration": true
+  },
+  "runtime": {
+    "native_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "native_source_attestation": {
+      "commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+      "verified_source_files": 6
+    },
+    "eplb_mode": "synchronous",
+    "dispatch_backend": "replicated_input_allreduce",
+    "output_collective": "torch_distributed_nccl_all_reduce",
+    "weight_communicator": "torch_nccl",
+    "reject_execution": "native_noop_mapping",
+    "world_size": 2,
+    "gpu_name": "NVIDIA H100",
+    "torch_version": "2.13.0+cu129",
+    "vllm_version": "0.31.0",
+    "cuda_version": "12.9",
+    "torch_num_threads": 4,
+    "cpu_affinity": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "harness_file_sha256": {
+      "skewbench/__init__.py": "28118ff5c09951594d4134df7ffa1db503e501313c87367511c24746c361a052",
+      "skewbench/analysis.py": "b0a5771ec8f883f763305ad34448a00b504036cdbce414d30c490d75ff85244f",
+      "skewbench/native.py": "4752fd6d665a181fcadbd4e67649386fdcf55887f57d86cf666555e56c63ea5d",
+      "skewbench/policies.py": "6c4560865e5ade58990dcd63c03875ab0d3f88491b6bb73b52857bf40b162f49",
+      "skewbench/runner.py": "85be8fbd9b6cf4b0bde2b92a78fa9b056159c02bd307a21ab37fc30567b8deb8",
+      "skewbench/traces.py": "b92661781b58b712844e25cb54a75f797ec932bfd748b58c618be1c01d742d99",
+      "skewbench/native_sources.json": "6914423275b1deed994dd92e66d820d064736b99a29bfb2a89f67bb227c3ef9d"
+    }
+  },
+  "hardware": {
+    "gpu_count": 2,
+    "gpu_name": "NVIDIA H100",
+    "memory_mib_per_gpu": 95830,
+    "interconnect": "NV6",
+    "driver": "560.35.03",
+    "nvidia_smi_reported_cuda": "12.6",
+    "torch_build_cuda": "12.9",
+    "note": "Hardware log snapshot does not establish in-run power/clock/bandwidth utilization."
+  },
+  "calibration": [
+    {
+      "batch_tokens": 128,
+      "domain": 0,
+      "domain_name": "prose: Alice in Wonderland",
+      "trial_forward_mean_us": [
+        393.12493754550815,
+        392.8751866624225,
+        392.79759221244603,
+        392.4554985133,
+        392.9931881430093
+      ],
+      "median_trial_forward_mean_us": 392.8751866624225,
+      "mean_trial_forward_mean_us": 392.8492806153372,
+      "min_trial_forward_mean_us": 392.4554985133,
+      "max_trial_forward_mean_us": 393.12493754550815,
+      "tokens_by_rank": [
+        513,
+        511
+      ],
+      "active_physical_experts_by_rank": [
+        72,
+        71
+      ],
+      "mean_assignments_per_active_slot_by_rank": [
+        7.125,
+        7.197183098591549
+      ],
+      "max_assignments_per_slot": 18,
+      "rank_max_over_mean_assignment_ratio": 1.001953125,
+      "physical_assignment_count": 1024,
+      "fixed_map_sha256": "d3ad6b26f7ed3c38a5e3644632ba38b869300b96ea173988d827363bc4830566",
+      "correctness": {
+        "correctness_max_abs_error": 0.0007740557193756104,
+        "correctness_atol": 0.02,
+        "correctness_rtol": 0.03,
+        "correctness_forward_batch_tokens": 128,
+        "correctness_reference_tokens": 4
+      }
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 1,
+      "domain_name": "code: CPython Lib/heapq.py",
+      "trial_forward_mean_us": [
+        446.7295620997902,
+        403.14737270819023,
+        403.66221946896985,
+        403.4938428958412,
+        404.57262730342336
+      ],
+      "median_trial_forward_mean_us": 403.66221946896985,
+      "mean_trial_forward_mean_us": 412.321124895243,
+      "min_trial_forward_mean_us": 403.14737270819023,
+      "max_trial_forward_mean_us": 446.7295620997902,
+      "tokens_by_rank": [
+        505,
+        519
+      ],
+      "active_physical_experts_by_rank": [
+        74,
+        75
+      ],
+      "mean_assignments_per_active_slot_by_rank": [
+        6.824324324324325,
+        6.92
+      ],
+      "max_assignments_per_slot": 12,
+      "rank_max_over_mean_assignment_ratio": 1.013671875,
+      "physical_assignment_count": 1024,
+      "fixed_map_sha256": "3eda692d8247ac3d606dfa6c9714ffb9f6bc9f54d346087bc14a23bb2cd65aa4",
+      "correctness": {
+        "correctness_max_abs_error": 0.007279396057128906,
+        "correctness_atol": 0.02,
+        "correctness_rtol": 0.03,
+        "correctness_forward_batch_tokens": 128,
+        "correctness_reference_tokens": 4
+      }
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 0,
+      "domain_name": "prose: Alice in Wonderland",
+      "trial_forward_mean_us": [
+        528.4467188175768,
+        528.9634063956328,
+        528.5637489578221,
+        528.4404360281769,
+        528.5521874611732
+      ],
+      "median_trial_forward_mean_us": 528.5521874611732,
+      "mean_trial_forward_mean_us": 528.5932995320763,
+      "min_trial_forward_mean_us": 528.4404360281769,
+      "max_trial_forward_mean_us": 528.9634063956328,
+      "tokens_by_rank": [
+        4106,
+        4086
+      ],
+      "active_physical_experts_by_rank": [
+        77,
+        76
+      ],
+      "mean_assignments_per_active_slot_by_rank": [
+        53.324675324675326,
+        53.76315789473684
+      ],
+      "max_assignments_per_slot": 106,
+      "rank_max_over_mean_assignment_ratio": 1.00244140625,
+      "physical_assignment_count": 8192,
+      "fixed_map_sha256": "6cb217e0762d150f8c4654cdbb2a60ce1c8539c59f4fa5d19721bca61e1183c4",
+      "correctness": {
+        "correctness_max_abs_error": 0.0009568929672241211,
+        "correctness_atol": 0.02,
+        "correctness_rtol": 0.03,
+        "correctness_forward_batch_tokens": 1024,
+        "correctness_reference_tokens": 4
+      }
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 1,
+      "domain_name": "code: CPython Lib/heapq.py",
+      "trial_forward_mean_us": [
+        527.2959715512116,
+        527.5747789710294,
+        527.8226562950294,
+        527.5453768263105,
+        527.9716242512222
+      ],
+      "median_trial_forward_mean_us": 527.5747789710294,
+      "mean_trial_forward_mean_us": 527.6420815789606,
+      "min_trial_forward_mean_us": 527.2959715512116,
+      "max_trial_forward_mean_us": 527.9716242512222,
+      "tokens_by_rank": [
+        4097,
+        4095
+      ],
+      "active_physical_experts_by_rank": [
+        76,
+        77
+      ],
+      "mean_assignments_per_active_slot_by_rank": [
+        53.9078947368421,
+        53.18181818181818
+      ],
+      "max_assignments_per_slot": 83,
+      "rank_max_over_mean_assignment_ratio": 1.000244140625,
+      "physical_assignment_count": 8192,
+      "fixed_map_sha256": "57148b5c238cb0886e2544a5a6c723ffcc5b5783edf91dba15756eebd704652f",
+      "correctness": {
+        "correctness_max_abs_error": 0.007279396057128906,
+        "correctness_atol": 0.02,
+        "correctness_rtol": 0.03,
+        "correctness_forward_batch_tokens": 1024,
+        "correctness_reference_tokens": 4
+      }
+    }
+  ],
+  "batch_comparisons": [
+    {
+      "domain": 0,
+      "median_runtime_ratio_B1024_over_B128": 1.345343776865529,
+      "interpretation": "Descriptive comparison of separately formed fixed maps and batches; not a controlled single-map batch-scaling law."
+    },
+    {
+      "domain": 1,
+      "median_runtime_ratio_B1024_over_B128": 1.3069709116326775,
+      "interpretation": "Descriptive comparison of separately formed fixed maps and batches; not a controlled single-map batch-scaling law."
+    }
+  ],
+  "profiles": [
+    {
+      "batch_tokens": 1024,
+      "domain": 0,
+      "rank": 0,
+      "source_file": "work/payback-results/profile/batch1024-domain0-rank0.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 4845.0,
+      "self_cuda_total_us": 4049.0000000000005,
+      "fused_moe_kernel_us_per_forward": 385.125,
+      "nccl_kernel_us_per_forward": 59.584,
+      "physical_mapping_kernel_us_per_forward": 2.89225,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 4216.0,
+          "cuda_total_us": 4216.0,
+          "self_cuda_percent_reported": 104.14,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1597.0,
+          "cpu_total_us": 2331.0,
+          "self_cuda_us": 3081.0,
+          "cuda_total_us": 3503.0,
+          "self_cuda_percent_reported": 76.09,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3081.0,
+          "cuda_total_us": 3081.0,
+          "self_cuda_percent_reported": 76.09,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 476.672,
+          "cuda_total_us": 476.672,
+          "self_cuda_percent_reported": 11.77,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 32.335,
+          "cpu_total_us": 62.192,
+          "self_cuda_us": 139.938,
+          "cuda_total_us": 139.938,
+          "self_cuda_percent_reported": 3.46,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 46.631,
+          "cpu_total_us": 80.942,
+          "self_cuda_us": 116.226,
+          "cuda_total_us": 116.226,
+          "self_cuda_percent_reported": 2.87,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 23.138,
+          "cuda_total_us": 23.138,
+          "self_cuda_percent_reported": 0.57,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 886.221,
+          "cpu_total_us": 4331.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 4027.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 0,
+      "rank": 1,
+      "source_file": "work/payback-results/profile/batch1024-domain0-rank1.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 4847.0,
+      "self_cuda_total_us": 4231.0,
+      "fused_moe_kernel_us_per_forward": 381.625,
+      "nccl_kernel_us_per_forward": 85.37125,
+      "physical_mapping_kernel_us_per_forward": 2.9,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3989.0,
+          "cuda_total_us": 3989.0,
+          "self_cuda_percent_reported": 94.27,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1402.0,
+          "cpu_total_us": 2117.0,
+          "self_cuda_us": 3053.0,
+          "cuda_total_us": 3479.0,
+          "self_cuda_percent_reported": 72.16,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3053.0,
+          "cuda_total_us": 3053.0,
+          "self_cuda_percent_reported": 72.16,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 682.97,
+          "cuda_total_us": 682.97,
+          "self_cuda_percent_reported": 16.14,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 33.09,
+          "cpu_total_us": 60.58,
+          "self_cuda_us": 141.087,
+          "cuda_total_us": 141.087,
+          "self_cuda_percent_reported": 3.33,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 45.389,
+          "cpu_total_us": 75.364,
+          "self_cuda_us": 118.624,
+          "cuda_total_us": 118.624,
+          "self_cuda_percent_reported": 2.8,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 23.2,
+          "cuda_total_us": 23.2,
+          "self_cuda_percent_reported": 0.55,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 889.097,
+          "cpu_total_us": 4118.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 4209.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 1,
+      "rank": 0,
+      "source_file": "work/payback-results/profile/batch1024-domain1-rank0.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 4826.0,
+      "self_cuda_total_us": 4027.9999999999995,
+      "fused_moe_kernel_us_per_forward": 380.125,
+      "nccl_kernel_us_per_forward": 62.335875,
+      "physical_mapping_kernel_us_per_forward": 2.884125,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 4016.0,
+          "cuda_total_us": 4016.0,
+          "self_cuda_percent_reported": 99.7,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1429.0,
+          "cpu_total_us": 2155.0,
+          "self_cuda_us": 3041.0,
+          "cuda_total_us": 3464.0,
+          "self_cuda_percent_reported": 75.5,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3041.0,
+          "cuda_total_us": 3041.0,
+          "self_cuda_percent_reported": 75.5,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 498.687,
+          "cuda_total_us": 498.687,
+          "self_cuda_percent_reported": 12.38,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 32.689,
+          "cpu_total_us": 58.888,
+          "self_cuda_us": 138.942,
+          "cuda_total_us": 138.942,
+          "self_cuda_percent_reported": 3.45,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 44.274,
+          "cpu_total_us": 75.011,
+          "self_cuda_us": 118.433,
+          "cuda_total_us": 118.433,
+          "self_cuda_percent_reported": 2.94,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 23.073,
+          "cuda_total_us": 23.073,
+          "self_cuda_percent_reported": 0.57,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 896.217,
+          "cpu_total_us": 4334.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 4006.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 1024,
+      "domain": 1,
+      "rank": 1,
+      "source_file": "work/payback-results/profile/batch1024-domain1-rank1.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 4829.0,
+      "self_cuda_total_us": 4034.0,
+      "fused_moe_kernel_us_per_forward": 384.375,
+      "nccl_kernel_us_per_forward": 58.68775,
+      "physical_mapping_kernel_us_per_forward": 2.92,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 4046.0000000000005,
+          "cuda_total_us": 4046.0000000000005,
+          "self_cuda_percent_reported": 100.29,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1425.0,
+          "cpu_total_us": 2159.0,
+          "self_cuda_us": 3075.0,
+          "cuda_total_us": 3496.0,
+          "self_cuda_percent_reported": 76.23,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3075.0,
+          "cuda_total_us": 3075.0,
+          "self_cuda_percent_reported": 76.23,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 469.502,
+          "cuda_total_us": 469.502,
+          "self_cuda_percent_reported": 11.64,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 33.951,
+          "cpu_total_us": 61.49,
+          "self_cuda_us": 139.423,
+          "cuda_total_us": 139.423,
+          "self_cuda_percent_reported": 3.46,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 54.182,
+          "cpu_total_us": 84.888,
+          "self_cuda_us": 115.681,
+          "cuda_total_us": 115.681,
+          "self_cuda_percent_reported": 2.87,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 23.36,
+          "cuda_total_us": 23.36,
+          "self_cuda_percent_reported": 0.58,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 894.586,
+          "cpu_total_us": 4334.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 4011.9999999999995,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 0,
+      "rank": 0,
+      "source_file": "work/payback-results/profile/batch128-domain0-rank0.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 65562.0,
+      "self_cuda_total_us": 5191.0,
+      "fused_moe_kernel_us_per_forward": 327.875,
+      "nccl_kernel_us_per_forward": 294.75,
+      "physical_mapping_kernel_us_per_forward": 2.912,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3655.0,
+          "cuda_total_us": 3655.0,
+          "self_cuda_percent_reported": 70.42,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1579.0,
+          "cpu_total_us": 2427.0,
+          "self_cuda_us": 2623.0,
+          "cuda_total_us": 2767.0,
+          "self_cuda_percent_reported": 50.53,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 2623.0,
+          "cuda_total_us": 2623.0,
+          "self_cuda_percent_reported": 50.53,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 2358.0,
+          "cuda_total_us": 2358.0,
+          "self_cuda_percent_reported": 45.42,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 58.669,
+          "cpu_total_us": 91.696,
+          "self_cuda_us": 40.096,
+          "cuda_total_us": 40.096,
+          "self_cuda_percent_reported": 0.77,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 45.508,
+          "cpu_total_us": 72.199,
+          "self_cuda_us": 32.959,
+          "cuda_total_us": 32.959,
+          "self_cuda_percent_reported": 0.63,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 23.296,
+          "cuda_total_us": 23.296,
+          "self_cuda_percent_reported": 0.45,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 59803.0,
+          "cpu_total_us": 64428.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 6156.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 0,
+      "rank": 1,
+      "source_file": "work/payback-results/profile/batch128-domain0-rank1.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 65575.0,
+      "self_cuda_total_us": 2954.0,
+      "fused_moe_kernel_us_per_forward": 324.5,
+      "nccl_kernel_us_per_forward": 18.211875,
+      "physical_mapping_kernel_us_per_forward": 3.09225,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 4447.0,
+          "cuda_total_us": 4447.0,
+          "self_cuda_percent_reported": 150.52,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1514.0,
+          "cpu_total_us": 2313.0,
+          "self_cuda_us": 2596.0,
+          "cuda_total_us": 2742.0,
+          "self_cuda_percent_reported": 87.88,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 2596.0,
+          "cuda_total_us": 2596.0,
+          "self_cuda_percent_reported": 87.88,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 145.695,
+          "cuda_total_us": 145.695,
+          "self_cuda_percent_reported": 4.93,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 55.002,
+          "cpu_total_us": 88.702,
+          "self_cuda_us": 40.576,
+          "cuda_total_us": 40.576,
+          "self_cuda_percent_reported": 1.37,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 41.386,
+          "cpu_total_us": 68.175,
+          "self_cuda_us": 33.792,
+          "cuda_total_us": 33.792,
+          "self_cuda_percent_reported": 1.14,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 24.738,
+          "cuda_total_us": 24.738,
+          "self_cuda_percent_reported": 0.84,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 61478.0,
+          "cpu_total_us": 65440.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 4396.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 1,
+      "rank": 0,
+      "source_file": "work/payback-results/profile/batch128-domain1-rank0.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 4345.0,
+      "self_cuda_total_us": 3225.0,
+      "fused_moe_kernel_us_per_forward": 333.625,
+      "nccl_kernel_us_per_forward": 43.000625,
+      "physical_mapping_kernel_us_per_forward": 3.1,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 3839.0,
+          "cuda_total_us": 3839.0,
+          "self_cuda_percent_reported": 119.06,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1388.0,
+          "cpu_total_us": 2108.0,
+          "self_cuda_us": 2669.0,
+          "cuda_total_us": 2814.0,
+          "self_cuda_percent_reported": 82.77,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 2669.0,
+          "cuda_total_us": 2669.0,
+          "self_cuda_percent_reported": 82.77,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 344.005,
+          "cuda_total_us": 344.005,
+          "self_cuda_percent_reported": 10.67,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 44.646,
+          "cpu_total_us": 75.613,
+          "self_cuda_us": 41.218,
+          "cuda_total_us": 41.218,
+          "self_cuda_percent_reported": 1.28,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 32.099,
+          "cpu_total_us": 61.672,
+          "self_cuda_us": 33.089,
+          "cuda_total_us": 33.089,
+          "self_cuda_percent_reported": 1.03,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 24.8,
+          "cuda_total_us": 24.8,
+          "self_cuda_percent_reported": 0.77,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 890.212,
+          "cpu_total_us": 4142.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 3201.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    },
+    {
+      "batch_tokens": 128,
+      "domain": 1,
+      "rank": 1,
+      "source_file": "work/payback-results/profile/batch128-domain1-rank1.txt",
+      "profile_forwards": 8,
+      "self_cpu_total_us": 4352.0,
+      "self_cuda_total_us": 3054.0,
+      "fused_moe_kernel_us_per_forward": 338.375,
+      "nccl_kernel_us_per_forward": 16.81975,
+      "physical_mapping_kernel_us_per_forward": 2.932,
+      "selected_profiler_rows": [
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 4045.0,
+          "cuda_total_us": 4045.0,
+          "self_cuda_percent_reported": 132.44,
+          "calls": 8
+        },
+        {
+          "name": "vllm::fused_experts",
+          "self_cpu_us": 1401.0,
+          "cpu_total_us": 2119.0,
+          "self_cuda_us": 2707.0,
+          "cuda_total_us": 2853.0,
+          "self_cuda_percent_reported": 88.62,
+          "calls": 8
+        },
+        {
+          "name": "fused_moe_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 2707.0,
+          "cuda_total_us": 2707.0,
+          "self_cuda_percent_reported": 88.62,
+          "calls": 16
+        },
+        {
+          "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 134.558,
+          "cuda_total_us": 134.558,
+          "self_cuda_percent_reported": 4.41,
+          "calls": 8
+        },
+        {
+          "name": "_C::silu_and_mul",
+          "self_cpu_us": 44.816,
+          "cpu_total_us": 77.224,
+          "self_cuda_us": 41.311,
+          "cuda_total_us": 41.311,
+          "self_cuda_percent_reported": 1.35,
+          "calls": 8
+        },
+        {
+          "name": "_moe_C::moe_sum",
+          "self_cpu_us": 32.167,
+          "cpu_total_us": 59.418,
+          "self_cuda_us": 34.401,
+          "cuda_total_us": 34.401,
+          "self_cuda_percent_reported": 1.13,
+          "calls": 8
+        },
+        {
+          "name": "_eplb_map_and_record_i32_kernel",
+          "self_cpu_us": 0.0,
+          "cpu_total_us": 0.0,
+          "self_cuda_us": 23.456,
+          "cuda_total_us": 23.456,
+          "self_cuda_percent_reported": 0.77,
+          "calls": 8
+        },
+        {
+          "name": "captured_fixed_map_moe",
+          "self_cpu_us": 895.304,
+          "cpu_total_us": 4169.0,
+          "self_cuda_us": 0.0,
+          "cuda_total_us": 3032.0,
+          "self_cuda_percent_reported": 0.0,
+          "calls": 8
+        }
+      ],
+      "warning": "Inclusive operator/annotation/kernel rows overlap; not an additive wall-time partition. Reported times rounded in profiler text."
+    }
+  ],
+  "limitations": [
+    "One selected pilot document pair and first128/1024 captured tokens per domain; exact batch repeated, not natural online temporal demand.",
+    "Resident map is formed separately for each batch/domain; no keep/install/charged comparison and no policy admission measured.",
+    "Replicated inputs and NCCL output allreduce; excludes logical router inference, attention, token all-to-all and serving scheduler.",
+    "No Nsight hardware counters, achieved bandwidth, FLOP rate or roofline measurement; memory-bound versus compute-bound labels unsupported.",
+    "First profile has a large CPU-time outlier; CPU/CUDA inclusive rows overlap and annotation CUDA percentages exceed100, so no additive percentage breakdown.",
+    "Rank-specific NCCL kernel time can include arrival/synchronization waiting; it is not isolated link-transfer time.",
+    "Correctness compares four reference tokens per batch, not all tokens.",
+    "Kernel configuration fallback logs and Chrome profiler JSON traces were not present in the fetched profile directory; no fallback claim made."
+  ],
+  "input_file_sha256": {
+    "batch1024-domain0-rank0.txt": "6157615ad38c53a38e73fb0c3102da78193c71a591c579fbfa0a5bc8b52fe41c",
+    "batch1024-domain0-rank1.txt": "fc7844541d5ca304ed7e96d6d216b665cdccf6819bbf29d9691980765782a6f4",
+    "batch1024-domain1-rank0.txt": "1e43ef77779fc084c9c5b728caf1107d4e365b7298476a093137645df68b7077",
+    "batch1024-domain1-rank1.txt": "04578fe2f6cf819f1f682720a8c64f9577cef7332e10969c03b72d67bffd0345",
+    "batch128-domain0-rank0.txt": "2ec4a9fc9d80d969714caedbbb35af4cea709f52834ea4bba045f95b5d116dbd",
+    "batch128-domain0-rank1.txt": "a47e8c19d59852005bbefc355f64c18249c78df231ae6df154abc95298c85ad7",
+    "batch128-domain1-rank0.txt": "871b0f6abeb2b8ee2e566350a15851e7d6eddac3179ac973b151dfb0e6197c4f",
+    "batch128-domain1-rank1.txt": "6e9ae1dfe39a9f01a8395a362dabc1d0cfe2c6d188cbf702a24434422bf280ab",
+    "calibration.json": "14ea3f1fcb528eed769db270eb64b23b0cc7159adb221d4e4afd621b7ef79846",
+    "environment-lock.txt": "a86032c7f6da71b8756bf3b21034f5e85424414a1c92f2509195b123fced5e49",
+    "nvidia-smi.txt": "3d6a05624ff1d5a21397cfe73f3088479ab6edecca6c124d082a00a6ad1f5704",
+    "topology.txt": "892073cd8601bbabe7ffb62178d15b6a1af885310de89c801f5e05f90c648aa1"
+  }
+}

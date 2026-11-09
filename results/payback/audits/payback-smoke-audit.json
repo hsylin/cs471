@@ -1,0 +1,105 @@
+{
+  "status": "verified",
+  "records": 24,
+  "matched_groups": 8,
+  "source_states": [
+    {
+      "batch_tokens": 128,
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "first_b3_opportunity_step": 63,
+      "first_b3_committed": false,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_native_b3_would_allow": false,
+      "source_is_initial_map": true,
+      "families": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 63,
+          "native_sender_bytes": 509607936
+        },
+        {
+          "candidate_id": "one_copy",
+          "changed_slots": 1,
+          "native_sender_bytes": 9437184
+        }
+      ]
+    },
+    {
+      "batch_tokens": 1024,
+      "block_id": "pilot-01",
+      "regime": "persistent",
+      "first_b3_opportunity_step": 63,
+      "first_b3_committed": false,
+      "first_b3_reason": "below_improvement_threshold",
+      "prefix_sender_bytes": 0,
+      "target_native_b3_would_allow": false,
+      "source_is_initial_map": true,
+      "families": [
+        {
+          "candidate_id": "native",
+          "changed_slots": 65,
+          "native_sender_bytes": 537919488
+        },
+        {
+          "candidate_id": "one_copy",
+          "changed_slots": 1,
+          "native_sender_bytes": 9437184
+        }
+      ]
+    }
+  ],
+  "manifest_sha256": "1ef53556253b2b6eb02ec8f1b7aee1bdfdde76011bdbd418acb7d87270814d5d",
+  "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+  "all_smoke_evidence_ineligible": true,
+  "source_and_candidate_pairing_exact": true,
+  "cross_horizon_and_family_source_pairing_exact": true,
+  "independently_reproduced_one_copy_search": true,
+  "payload_prediction_matches_native_senders": true,
+  "prefix_physical_windows_reconstructed_logical_counts": true,
+  "full_future_dispatch_aggregate_checks_pass": true,
+  "record_allocation_ids": [
+    "4866237"
+  ],
+  "hostnames": [
+    "kh074"
+  ],
+  "process_run_ids": [
+    "fa082af9-c3a6-4972-a654-da5a3d91dcbf"
+  ],
+  "local_executed_source_agreement": {
+    "followup/__init__.py": true,
+    "followup/payback.py": true,
+    "followup/payback_analysis.py": true,
+    "followup/profile_layer.py": true,
+    "followup/router_tapes.py": true,
+    "scripts/capture_router_tapes.py": true,
+    "scripts/compose_router_tapes.py": true
+  },
+  "numerical_checks": {
+    "native_forward_uses_full_batch": true,
+    "reference_tokens_per_checked_step": 4,
+    "checked_raw_steps_by_horizon": {
+      "128": [
+        160,
+        287
+      ],
+      "512": [
+        160,
+        671
+      ]
+    },
+    "maximum_observed_absolute_error": 0.0017007887363433838,
+    "atol": 0.02,
+    "rtol": 0.03,
+    "all_runtime_attestations_pass": true
+  },
+  "limits": [
+    "No elapsed timings or performance ratios analyzed.",
+    "B3 rejected both actual first opportunities; these smoke source states have no prior committed migration.",
+    "Raw NPZ banks/tapes and checkpoint tensors are not included in this local smoke folder; their recorded hashes and runtime attestations are checked, not independently rerun.",
+    "Numerical reference checks are sampled tokens at two future inputs, not every output element.",
+    "Future physical diagnostics store owner counts/activity plus hashes; full per-slot future arrays are runtime-attested rather than independently reconstructed here."
+  ]
+}

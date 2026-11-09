@@ -1,0 +1,72 @@
+{'torch': '2.13.0+cu129', 'cuda': '12.9', 'gpus': 2}
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "warm_native_weight_transport"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 10:31:04.501675112 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "native_weight_transport_warm", "process_transport_warmup": {"completed": true, "migration_count": 2, "sent_bytes": 1811939328, "sent_bytes_by_rank": [905969664, 905969664], "forward_sent_bytes_by_rank": [452984832, 452984832], "rollback_sent_bytes_by_rank": [452984832, 452984832], "sent_messages": 192, "elapsed_seconds_slowest_rank": 0.7652356659527868, "replica_budget_extra": 32, "world_size": 2, "shared_native_eplb_process_group_verified": true, "original_map_and_weights_restored": true, "scope": "one process-local cyclic cross-rank native migration and rollback on a throwaway layer; same persistent EPLB device group as all measured methods; excluded from primary and branch timing"}}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "KEEP", "candidate_id": "native", "horizon": 128, "repetition": 0}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "payback_complete", "record_id": "b1cd63011ac6cb0c8557451ec37919ee4c618809e9a7549ea2e3f43011bae1f3", "elapsed_seconds": 0.049564115004613996}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "CHARGED", "candidate_id": "native", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "74b414ec3ad31a3693bf8dc87f00de959fdb7b558e4e745117fc849bc4b75316", "elapsed_seconds": 0.05938937503378838}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "PREINSTALLED", "candidate_id": "native", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "954fdfdf90413794a7c946175b637d98552bc20421dc0d04ee99d3da7f02fedd", "elapsed_seconds": 0.05144355702213943}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "KEEP", "candidate_id": "native", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "5eaf2a7d84980b6fd6742ae47efef405f6e0dc12de04293e03d5fde651a818fa", "elapsed_seconds": 0.19802267209161073}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "PREINSTALLED", "candidate_id": "native", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "6241376e680a81b1d9e695ef4878cf55a1e5e4c1bc57568e48383b95aada53d7", "elapsed_seconds": 0.2047237530350685}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "CHARGED", "candidate_id": "native", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "f717706e2154a8144dd130d6fa8a4b3981d5946fa693d694193cf9586a287142", "elapsed_seconds": 0.2125441450625658}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "6b867533268198bd5d5885b965cd2f797b0522643114ef7fd78a882963930f5f", "elapsed_seconds": 0.04974931094329804}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "c5951fdd39394108ddb5150542418a676fd075560c1e95fe02bdf8cd29eb7ba0", "elapsed_seconds": 0.05574390001129359}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "d3f377d4e28b0bb4e24fba8daeec2cca14ae1140ffb76ff37a9fe226ab3c586d", "elapsed_seconds": 0.049481010995805264}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "74e3e43a54bea4da478b8b493b0a731ae1a57ae5590e27907103d521d121631c", "elapsed_seconds": 0.1968570330645889}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "b6dd48d2ce07e6a79fb8259bdc14a57d74e448b651b67e140749f8dd9d83229c", "elapsed_seconds": 0.19693225505761802}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "bde12759e78ad19a57fd603277ae3314d233ffd7aeeea5b16c604e7de82922b9", "elapsed_seconds": 0.2029459619661793}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "CHARGED", "candidate_id": "native", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "6066ed2086b54e980a968cefc2f0e1941690331852ab8493b115e996d3b4071f", "elapsed_seconds": 0.07443610101472586}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "PREINSTALLED", "candidate_id": "native", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "979b90ae9cbdb7f7a52b7a2a064763c6846f193791f94bd79b1747bd0b808568", "elapsed_seconds": 0.06629528303164989}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "KEEP", "candidate_id": "native", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e3b25371d897b3b72a60454d7629fcc62d948798d94d620511e23871d145a020", "elapsed_seconds": 0.06547398795373738}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "CHARGED", "candidate_id": "native", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "ea80013c7e422ceb8223f9b339c8002dab8a145ebf8bcbf9d1a82b5a4d201683", "elapsed_seconds": 0.2732461349805817}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "KEEP", "candidate_id": "native", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "c81f44b7375fbb4e40610a7679478cb422cd4adc9c78eff314f76b9d7b903bb5", "elapsed_seconds": 0.26053597300779074}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "PREINSTALLED", "candidate_id": "native", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "528fa123ac2e0d814445e2d34935b5eec6a36bed9129264f837c8f7d00e1891f", "elapsed_seconds": 0.2653466359479353}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "a2161d530ce3c217070a18200e374a2fdcb707fd3745a90732ac42d492179460", "elapsed_seconds": 0.06551275600213557}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "9f35725a643d30c8a7c0b9054af7b9af65a4011eaad54e794384cb177c2194c1", "elapsed_seconds": 0.0657290379749611}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "9c167e3c714aec338eb119831ad9920ff6f6adbf9cc4f3a8174d65211472ebd2", "elapsed_seconds": 0.07161109894514084}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "da4396edcb717da38a156718f7593489bd7298524669a12fdfdb5e750d9fec9d", "elapsed_seconds": 0.26096356997732073}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "ad3b1d7ebdacc5464fc36e89ce0534102ea807625716abb89103beddffd943b5", "elapsed_seconds": 0.26791786891408265}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "3c4313b5d47a7b4b3f16639e8a4219c746d576d44cb7499b219e5a9adf25112c", "elapsed_seconds": 0.2610796829685569}

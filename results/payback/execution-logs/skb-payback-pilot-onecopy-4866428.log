@@ -1,0 +1,216 @@
+{'torch': '2.13.0+cu129', 'cuda': '12.9', 'gpus': 2}
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "warm_native_weight_transport"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 10:48:24.479940778 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "native_weight_transport_warm", "process_transport_warmup": {"completed": true, "migration_count": 2, "sent_bytes": 1811939328, "sent_bytes_by_rank": [905969664, 905969664], "forward_sent_bytes_by_rank": [452984832, 452984832], "rollback_sent_bytes_by_rank": [452984832, 452984832], "sent_messages": 192, "elapsed_seconds_slowest_rank": 0.5054277150193229, "replica_budget_extra": 32, "world_size": 2, "shared_native_eplb_process_group_verified": true, "original_map_and_weights_restored": true, "scope": "one process-local cyclic cross-rank native migration and rollback on a throwaway layer; same persistent EPLB device group as all measured methods; excluded from primary and branch timing"}}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "payback_start", "state_id": "64395e36a5a1f93b110cfe31a212d2b37059d204e9be8845c28f2e1f2a58397d", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "payback_complete", "record_id": "0cae0391b50c763e95c0dd2d8849d5552ad28544133f05fb41ab009ba21d6150", "elapsed_seconds": 0.04484139592386782}
+{"event": "payback_start", "state_id": "64395e36a5a1f93b110cfe31a212d2b37059d204e9be8845c28f2e1f2a58397d", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e8bc9e859ddb21ded453a44e7f725e9cd9f667be350206ee8d7cf8ee36ab6d8d", "elapsed_seconds": 0.05094151105731726}
+{"event": "payback_start", "state_id": "64395e36a5a1f93b110cfe31a212d2b37059d204e9be8845c28f2e1f2a58397d", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "f1e5439d8429ef978228b8b7f10990b9b1c393da701211185fca8aadf0e65f20", "elapsed_seconds": 0.045125458971597254}
+{"event": "payback_start", "state_id": "64395e36a5a1f93b110cfe31a212d2b37059d204e9be8845c28f2e1f2a58397d", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "53116ed4c333fa1751b2fb2f8c3a4974278b955c78548aab6fa60595a4c65539", "elapsed_seconds": 0.17824170005042106}
+{"event": "payback_start", "state_id": "64395e36a5a1f93b110cfe31a212d2b37059d204e9be8845c28f2e1f2a58397d", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "d2c74521a5c6b1cdb5333e5da31e29590a2ce69f3b89879190c178535e0e12af", "elapsed_seconds": 0.18432337697595358}
+{"event": "payback_start", "state_id": "64395e36a5a1f93b110cfe31a212d2b37059d204e9be8845c28f2e1f2a58397d", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "ad1daa4acf6c0329ff43001aa834363d3d1ccbb117e510b8bb8d3b11e073ecb0", "elapsed_seconds": 0.1794726219959557}
+{"event": "payback_start", "state_id": "b0c5ed529948ec1d2a2a957227b959119053cba57507b51a020c76b676f621c7", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "27f5deded1c51862ca554833c4dfd52cd04765439efd0248014e273519d9e4d4", "elapsed_seconds": 0.06539597897790372}
+{"event": "payback_start", "state_id": "b0c5ed529948ec1d2a2a957227b959119053cba57507b51a020c76b676f621c7", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "eb47af0b17cfbbc55e1156e68bf0396d244785cddbb3308cfe4dc8b8789955ba", "elapsed_seconds": 0.06529732199851424}
+{"event": "payback_start", "state_id": "b0c5ed529948ec1d2a2a957227b959119053cba57507b51a020c76b676f621c7", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "bc87e1cdd9a5861efe57aa487b5044a7574d03455d1750b480b1ba1c2a5d4abd", "elapsed_seconds": 0.07125134998932481}
+{"event": "payback_start", "state_id": "b0c5ed529948ec1d2a2a957227b959119053cba57507b51a020c76b676f621c7", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "4281e396003a5c67354ee69f28fdc38debd42f063f211b6c3da87a4bafa663c7", "elapsed_seconds": 0.2603480250108987}
+{"event": "payback_start", "state_id": "b0c5ed529948ec1d2a2a957227b959119053cba57507b51a020c76b676f621c7", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "4dd9b85ddb61429bf0c4c9313140616f1df24942013524b9a48cbedba8e9ea6e", "elapsed_seconds": 0.2601121540647}
+{"event": "payback_start", "state_id": "b0c5ed529948ec1d2a2a957227b959119053cba57507b51a020c76b676f621c7", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "59d342accb38cc631be67a96332239348f93516c511eb8eeffe535e0b8172d84", "elapsed_seconds": 0.2663192490581423}
+{"event": "payback_start", "state_id": "c54e1a991bfae6c7d14015f689641d70acb836107d9b4172ea5bd0ba529e357d", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e39d601799da27d37bba66b5ba0b7c720ca339bd5c4cc5e060fcf572402ed2c0", "elapsed_seconds": 0.04566133697517216}
+{"event": "payback_start", "state_id": "c54e1a991bfae6c7d14015f689641d70acb836107d9b4172ea5bd0ba529e357d", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e9a230c39c77c462e163efaf61f7ce5d87b9aa6882263a685442611618f3956a", "elapsed_seconds": 0.05154905607923865}
+{"event": "payback_start", "state_id": "c54e1a991bfae6c7d14015f689641d70acb836107d9b4172ea5bd0ba529e357d", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "2e566151857322c2b9e3f8fdcb229133ea84414a9a5219da5bc2b5244b74659e", "elapsed_seconds": 0.04539816500619054}
+{"event": "payback_start", "state_id": "c54e1a991bfae6c7d14015f689641d70acb836107d9b4172ea5bd0ba529e357d", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "9ec776aff8310b261f848b5f89329cc32d1aaf851fc582d863228143778fce06", "elapsed_seconds": 0.1798293220344931}
+{"event": "payback_start", "state_id": "c54e1a991bfae6c7d14015f689641d70acb836107d9b4172ea5bd0ba529e357d", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "88cef476a5dc094ea735fb735aa98948aa6cce87d7306e3b1e2f3bdbf0cbba0e", "elapsed_seconds": 0.1795565449865535}
+{"event": "payback_start", "state_id": "c54e1a991bfae6c7d14015f689641d70acb836107d9b4172ea5bd0ba529e357d", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "1c4869e887a0ac288fca15f0927853688201a1686fc04b56ee589f251a6c2889", "elapsed_seconds": 0.18576373998075724}
+{"event": "payback_start", "state_id": "410f2ae74e006aad8ab6013250fb8c4c54663f8aea7d028695f5efbe367447f3", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "80b538e654744d4f117e0763c5c5c8a8df3a5f31b96ecdfb057d356f0305920e", "elapsed_seconds": 0.06505367904901505}
+{"event": "payback_start", "state_id": "410f2ae74e006aad8ab6013250fb8c4c54663f8aea7d028695f5efbe367447f3", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "34e98b4f03527db03e660d6150b8eed327a792b97fad07da7e900b293df8fe80", "elapsed_seconds": 0.0652153299888596}
+{"event": "payback_start", "state_id": "410f2ae74e006aad8ab6013250fb8c4c54663f8aea7d028695f5efbe367447f3", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "ff61e1403afa6aa0ba5959027c2fab92eaf5ac8da0a0506064b123c85e13903c", "elapsed_seconds": 0.07106183702126145}
+{"event": "payback_start", "state_id": "410f2ae74e006aad8ab6013250fb8c4c54663f8aea7d028695f5efbe367447f3", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "74b2fdb3aee775c653343307a6eb244be9761abc1dffc09df1b6771f67a12196", "elapsed_seconds": 0.2657627969747409}
+{"event": "payback_start", "state_id": "410f2ae74e006aad8ab6013250fb8c4c54663f8aea7d028695f5efbe367447f3", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "c92f37c79329b199611be7cb588b470285d28b6bcf1df71d2c68834696d532e5", "elapsed_seconds": 0.2591793320607394}
+{"event": "payback_start", "state_id": "410f2ae74e006aad8ab6013250fb8c4c54663f8aea7d028695f5efbe367447f3", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "f51e39cbcac0667abc31689e49958620b3ccc48aa1fc1a58061d533e5f77c152", "elapsed_seconds": 0.2603206620551646}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "519c26db573d60ef01ac0a1e134753bc1a253cd79999f0ee2fc74c8df5a13f06", "elapsed_seconds": 0.049889112007804215}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e9a4ed3badac6642aae303878635b077ff92ed40b7fb56ba3236970248674752", "elapsed_seconds": 0.05577630107291043}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "c3c193934d1bd45b14220b604eec3bf732222303e62af53c321a7fdef0591942", "elapsed_seconds": 0.04966001200955361}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "e1cac6a056914e7bd0399701c3e45b7d999f073cad4dadc502e5c160bc1879b7", "elapsed_seconds": 0.20384717197157443}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "2c457f92317468d39084241199c7fd3db8df736192a3c7058b006d3e787e6355", "elapsed_seconds": 0.19798098504543304}
+{"event": "payback_start", "state_id": "e4c1b86d31e29c6abbaaa3a714a1606af89d843a91ef671c94d47ddcd670820a", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "088dbe3c68614e72bca42ffb3b539695133eb45e09308d09e0a1ef5b93b7c3f6", "elapsed_seconds": 0.19769369706045836}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "08cb3d75b74cedabf85e7b0ff7bc7320422d27702ac517716d256fc5262b5090", "elapsed_seconds": 0.06581540300976485}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "82d5dca2f1869fe8649c8bedcf99f1830019c8139b9e9de5f8ace3f053d318d7", "elapsed_seconds": 0.07173300592694432}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "23a2e26e3ecd18b7194bb81f82e37b8cf3b7e2daec46971f8c0a0299f1b0715b", "elapsed_seconds": 0.0659328680485487}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "e253fec61c39e6726d69cd00b3d806a5a006cb8918c0a2cfd9e705d694011dce", "elapsed_seconds": 0.2623772530350834}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "98e84b6fee7872b9bc5c48fec452457ee907c218a274e4a9e4854afebb3c54f1", "elapsed_seconds": 0.26221896696370095}
+{"event": "payback_start", "state_id": "d12e2b5b0790e89e9f920fd4feaee943dc890d1d4a041113e865c361fe8a2be8", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "b5c16c1d84ffe1fa85b32d7165162ad005790ff8d4a4a58a9cc8357d3b77e1aa", "elapsed_seconds": 0.26858410600107163}
+{"event": "payback_start", "state_id": "8435d811365d82da96a3e8c1bf0ec1c4de4213f6b2bb9437813c781434ddb3cb", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "0df882e9db524886dea07d8a5ef9c06f6245ee2b3afd8321c68f02e2d8c287da", "elapsed_seconds": 0.05380449409130961}
+{"event": "payback_start", "state_id": "8435d811365d82da96a3e8c1bf0ec1c4de4213f6b2bb9437813c781434ddb3cb", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "48615d9e9fd011dd022ca1c669c715fafd9f87fb88c8af75636a508e2c1c5a98", "elapsed_seconds": 0.04772558994591236}
+{"event": "payback_start", "state_id": "8435d811365d82da96a3e8c1bf0ec1c4de4213f6b2bb9437813c781434ddb3cb", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "5299fe298b6b45b1e4c6e728feaef6c0e4ad34fc19fb83b0f5f5cd6d5083818f", "elapsed_seconds": 0.04766716400627047}
+{"event": "payback_start", "state_id": "8435d811365d82da96a3e8c1bf0ec1c4de4213f6b2bb9437813c781434ddb3cb", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "dec8015bf093c91d5d23bf27fafecb2bb5249fb971b88483cb09a8688ea72013", "elapsed_seconds": 0.19579906400758773}
+{"event": "payback_start", "state_id": "8435d811365d82da96a3e8c1bf0ec1c4de4213f6b2bb9437813c781434ddb3cb", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "a002a891fabeba9633172697d4d5961caf51e64e3fb3a6cd8bac32f74403704f", "elapsed_seconds": 0.18961408198811114}
+{"event": "payback_start", "state_id": "8435d811365d82da96a3e8c1bf0ec1c4de4213f6b2bb9437813c781434ddb3cb", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "4427ad3b1e5d42885da3d9a4dc5aaad2e813c83f4bf5fa8bed994ef12af2f4ab", "elapsed_seconds": 0.1885649679461494}
+{"event": "payback_start", "state_id": "61b26e1cebcb242d80f72d1baa7b8cf88dec985dd04d0d65872882f4e31cb84c", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "34e5dbcf1a5436d58f0c91f3bb29a761679206e6dc96255ec3950d7716646bae", "elapsed_seconds": 0.06526327005121857}
+{"event": "payback_start", "state_id": "61b26e1cebcb242d80f72d1baa7b8cf88dec985dd04d0d65872882f4e31cb84c", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "4469e3d778ddb42b73e8d616c08f5db2f08fc7e0d56964abf184b96d88a8a239", "elapsed_seconds": 0.06552888499572873}
+{"event": "payback_start", "state_id": "61b26e1cebcb242d80f72d1baa7b8cf88dec985dd04d0d65872882f4e31cb84c", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "0a63fbfcbeb02f8c252ffd5580c43b20a2fa344c1d74516a1cccae84b41c8b11", "elapsed_seconds": 0.0710785809205845}
+{"event": "payback_start", "state_id": "61b26e1cebcb242d80f72d1baa7b8cf88dec985dd04d0d65872882f4e31cb84c", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "0155fa8a5233025c92b20994b22aabe3f1d943627f83fcc08fd1e4bb14e3791e", "elapsed_seconds": 0.2660332249943167}
+{"event": "payback_start", "state_id": "61b26e1cebcb242d80f72d1baa7b8cf88dec985dd04d0d65872882f4e31cb84c", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "fa29a39e539bc248e087702b7658b95320fce93ec444ade739212ac24529ea96", "elapsed_seconds": 0.2610885810572654}
+{"event": "payback_start", "state_id": "61b26e1cebcb242d80f72d1baa7b8cf88dec985dd04d0d65872882f4e31cb84c", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "72ad361ab5513d30f0fe7d6c71bcdd29aaa4e3bd341e65b695c8e12318d18cd7", "elapsed_seconds": 0.25993213802576065}
+{"event": "payback_start", "state_id": "068bdeba29c6f487aee3bd143c2e9ceec72a8b4c068bebc1150504d4705888d3", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "3d7ee67165f48bd8f546b26c1da4a52c4a2d3a4247b4b821a157305b683057d4", "elapsed_seconds": 0.04854521108791232}
+{"event": "payback_start", "state_id": "068bdeba29c6f487aee3bd143c2e9ceec72a8b4c068bebc1150504d4705888d3", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "80bf4656f1b5fc4fcf8c5e46e296dc22bf6cb8a9a376e4b366017e59240b9a99", "elapsed_seconds": 0.0482414880534634}
+{"event": "payback_start", "state_id": "068bdeba29c6f487aee3bd143c2e9ceec72a8b4c068bebc1150504d4705888d3", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "2f95742dda2eb488bad106b81fac95a8af370becc411267256fa3af0dd201b9a", "elapsed_seconds": 0.05438590899575502}
+{"event": "payback_start", "state_id": "068bdeba29c6f487aee3bd143c2e9ceec72a8b4c068bebc1150504d4705888d3", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "7f7da3e26a3b469318329ce0ceb6f5cb3f32521dfa0762cd51feb81e781e42f3", "elapsed_seconds": 0.19204136496409774}
+{"event": "payback_start", "state_id": "068bdeba29c6f487aee3bd143c2e9ceec72a8b4c068bebc1150504d4705888d3", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "319f0cb236fb9ff32494f8d29035d50d0e5859a7e64b97f53059b20217b93a93", "elapsed_seconds": 0.19809378904756159}
+{"event": "payback_start", "state_id": "068bdeba29c6f487aee3bd143c2e9ceec72a8b4c068bebc1150504d4705888d3", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "f3c4fb4c2a798cc8acc2048695e842a5f597670c05d791ed4434fc54e9c5425c", "elapsed_seconds": 0.19278025499079376}
+{"event": "payback_start", "state_id": "926370803622ac83cb2358b490579164f07ea5c32220bb49adf1fc45347ae21b", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "7900d714845208c0403c604e761ee23a0bdb83c74ac6e419a221964aca4e8929", "elapsed_seconds": 0.06567089608870447}
+{"event": "payback_start", "state_id": "926370803622ac83cb2358b490579164f07ea5c32220bb49adf1fc45347ae21b", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "f5fb7a287808afe52df00e53a985cc2b070db9d8e83ec6b9356aa6b16834490d", "elapsed_seconds": 0.0715508129214868}
+{"event": "payback_start", "state_id": "926370803622ac83cb2358b490579164f07ea5c32220bb49adf1fc45347ae21b", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "705a11259b162c67b7dad44a9d5864074d19a0dc4c1bc84872fbbe9ea8d4e12d", "elapsed_seconds": 0.06555252894759178}
+{"event": "payback_start", "state_id": "926370803622ac83cb2358b490579164f07ea5c32220bb49adf1fc45347ae21b", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "2eaeb1ad7648a0d63bcb6e9e1001e16cdbf8b707ae4873d7ac7ce3c29ede0b4c", "elapsed_seconds": 0.2671493059024215}
+{"event": "payback_start", "state_id": "926370803622ac83cb2358b490579164f07ea5c32220bb49adf1fc45347ae21b", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "26b473d1fefbbb85e7a71b9cce1405465c5e40342c6255a7495128b3a8acc119", "elapsed_seconds": 0.26120275794528425}
+{"event": "payback_start", "state_id": "926370803622ac83cb2358b490579164f07ea5c32220bb49adf1fc45347ae21b", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "72587a5a3f7ac6c187a0a6a2ff093ef5dd9f937865167a28b0486ac817064cec", "elapsed_seconds": 0.2611891180276871}
+{"event": "payback_start", "state_id": "57be1b356c006584f9d194f5b27abd715ae5edee2ada33fc5d75eaf5eedf266e", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "77b2971034d702f082ffaaac07e91c89fd9a1687a976e99fedec238107030efd", "elapsed_seconds": 0.05439262907020748}
+{"event": "payback_start", "state_id": "57be1b356c006584f9d194f5b27abd715ae5edee2ada33fc5d75eaf5eedf266e", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "2d918506d8c2c4dbeb8212ff655f890671d47a03b5d953d50f11286dab741a38", "elapsed_seconds": 0.048751255962997675}
+{"event": "payback_start", "state_id": "57be1b356c006584f9d194f5b27abd715ae5edee2ada33fc5d75eaf5eedf266e", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "f6d01e50b7984a532a33b632840870c8205e162770d52376410a23cb9878031b", "elapsed_seconds": 0.048350579920224845}
+{"event": "payback_start", "state_id": "57be1b356c006584f9d194f5b27abd715ae5edee2ada33fc5d75eaf5eedf266e", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "24a99f4ee2fdf981226a5a0066fb4d6c261145060ed2f6c22f00cdd2688da71b", "elapsed_seconds": 0.19286845508031547}
+{"event": "payback_start", "state_id": "57be1b356c006584f9d194f5b27abd715ae5edee2ada33fc5d75eaf5eedf266e", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "0dcef7a97b00076bfc94cbcf73f90f9b350c859ce1d5b31b20c266b6d9731f7e", "elapsed_seconds": 0.19201945094391704}
+{"event": "payback_start", "state_id": "57be1b356c006584f9d194f5b27abd715ae5edee2ada33fc5d75eaf5eedf266e", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "00348e6b8b9ba05ea5e125594ee3981e28a98962cdb4a38d152a7ec99c84b2dd", "elapsed_seconds": 0.1981738869799301}
+{"event": "payback_start", "state_id": "fc92ac781933f55f08c50568871244eeacc1d663053b1391501edbe4d6df2608", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "bcb1b8a79f0310086d7d4216e41972252333b31255134e2c70ae5ce6d0e98c6a", "elapsed_seconds": 0.06541538494639099}
+{"event": "payback_start", "state_id": "fc92ac781933f55f08c50568871244eeacc1d663053b1391501edbe4d6df2608", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "7f52cc93f0a284170a4ec1174c590e3894690bde4ce6a5d5aeb392f990e7cd00", "elapsed_seconds": 0.0656455080024898}
+{"event": "payback_start", "state_id": "fc92ac781933f55f08c50568871244eeacc1d663053b1391501edbe4d6df2608", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "7c0830e0d9cd818a5f9e376cda5826c6d4c98f436399953c5cfc1c076ee17163", "elapsed_seconds": 0.07192280690651387}
+{"event": "payback_start", "state_id": "fc92ac781933f55f08c50568871244eeacc1d663053b1391501edbe4d6df2608", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "bf933c3bd95ccb1fd40beb65c2807820ccad3ac5c6d5df833fb5dd8e7a017a86", "elapsed_seconds": 0.2603329209377989}
+{"event": "payback_start", "state_id": "fc92ac781933f55f08c50568871244eeacc1d663053b1391501edbe4d6df2608", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "cbea602b38301793e8ac5578e5082c0209cfae89640cdbbb84a835bb5203296d", "elapsed_seconds": 0.2668616039445624}
+{"event": "payback_start", "state_id": "fc92ac781933f55f08c50568871244eeacc1d663053b1391501edbe4d6df2608", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "be79dd36113f8071a775eb55fba994801d3d863c0382a52960402418eb1e5372", "elapsed_seconds": 0.2611602629767731}
+{"event": "payback_start", "state_id": "953f6c5e23fd473843efa40153fa01a80d6c6179f0f9f4dc3d2c3c5f643dc1e5", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "479ea58559e6e023af932bb69c088841636c2e5dc3d13def9bde5a49fd8ae200", "elapsed_seconds": 0.05040722293779254}
+{"event": "payback_start", "state_id": "953f6c5e23fd473843efa40153fa01a80d6c6179f0f9f4dc3d2c3c5f643dc1e5", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "772de6cb00d3a066d7352f4c89a7558ab26e4a8544d06c8201e239697d9b5fb6", "elapsed_seconds": 0.05127762909978628}
+{"event": "payback_start", "state_id": "953f6c5e23fd473843efa40153fa01a80d6c6179f0f9f4dc3d2c3c5f643dc1e5", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "599c7a0bebf60d37564973313312ef7f36a64557311c13c51dd231c912a0dac3", "elapsed_seconds": 0.05652971100062132}
+{"event": "payback_start", "state_id": "953f6c5e23fd473843efa40153fa01a80d6c6179f0f9f4dc3d2c3c5f643dc1e5", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "4091c8ff0c8d5d2a0b432be87c20eebd913180dcdcb0040b7c1758df6ac14544", "elapsed_seconds": 0.20291476603597403}
+{"event": "payback_start", "state_id": "953f6c5e23fd473843efa40153fa01a80d6c6179f0f9f4dc3d2c3c5f643dc1e5", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "c79c230cb10062e41bc24c52c947a395255ff86ff99be644c9fd78b8f12dc176", "elapsed_seconds": 0.20659313397482038}
+{"event": "payback_start", "state_id": "953f6c5e23fd473843efa40153fa01a80d6c6179f0f9f4dc3d2c3c5f643dc1e5", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "25260a3222b33e8bc899d1e364582e3a89143cb8e3bdebdcaf13a85ef7d8d764", "elapsed_seconds": 0.20053479098714888}
+{"event": "payback_start", "state_id": "0aff34ceea27ee96f55ed9e42e0862bf0735db22aeaa3cbbdda37c00f651523c", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "978cfc6eac883137831dde06e168d6a53fe7c75859975144655a2d2eefc779cc", "elapsed_seconds": 0.06693453702609986}
+{"event": "payback_start", "state_id": "0aff34ceea27ee96f55ed9e42e0862bf0735db22aeaa3cbbdda37c00f651523c", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "a477d0da31794f7874532f267498c617db6eb27c556fa3a2d9fa523849e0a435", "elapsed_seconds": 0.07283183000981808}
+{"event": "payback_start", "state_id": "0aff34ceea27ee96f55ed9e42e0862bf0735db22aeaa3cbbdda37c00f651523c", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "a13b39a7b35fa77a0dda7ecfc60b4e990fb2b1de011d5e91d0c1a384c013bc13", "elapsed_seconds": 0.06703389505855739}
+{"event": "payback_start", "state_id": "0aff34ceea27ee96f55ed9e42e0862bf0735db22aeaa3cbbdda37c00f651523c", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "f87af99e365f7aa20f10ad3d0ffb3f8b6ec2cc3346841c9aa0f3a7cabac8847f", "elapsed_seconds": 0.27340427599847317}
+{"event": "payback_start", "state_id": "0aff34ceea27ee96f55ed9e42e0862bf0735db22aeaa3cbbdda37c00f651523c", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "1dba232302db7281d0cbfd749dee3b5c28880259c12605f2e2dbc95bf971b3a6", "elapsed_seconds": 0.2672413680702448}
+{"event": "payback_start", "state_id": "0aff34ceea27ee96f55ed9e42e0862bf0735db22aeaa3cbbdda37c00f651523c", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "5124386877bbcad135be7a1b246313c3c45267fcac576a655fb17f9472701c29", "elapsed_seconds": 0.26705560204572976}
+{"event": "payback_start", "state_id": "bbc9d70f65c9450bed91bf85c2ba93037e17e877f3f6246817e89d7f264232cf", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e88f75270fdfe0fe80483bc562c2fcf0f9fc6984201190bc2125744054185d8a", "elapsed_seconds": 0.049575373996049166}
+{"event": "payback_start", "state_id": "bbc9d70f65c9450bed91bf85c2ba93037e17e877f3f6246817e89d7f264232cf", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "e2979014c6555810305b68b93f2fb1c08069e22a6ced40ff92317c9c7aa94a90", "elapsed_seconds": 0.049879546044394374}
+{"event": "payback_start", "state_id": "bbc9d70f65c9450bed91bf85c2ba93037e17e877f3f6246817e89d7f264232cf", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "5bc3f5e32aa3d53a48caf60175b5b2ecd57e6a1921a59246c93fd414db24c700", "elapsed_seconds": 0.05556994106154889}
+{"event": "payback_start", "state_id": "bbc9d70f65c9450bed91bf85c2ba93037e17e877f3f6246817e89d7f264232cf", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "eedab9214ae3b197bad49b7a8e561ab6a4d0e37bf3ef8efe67fab0eb37f78654", "elapsed_seconds": 0.203433066024445}
+{"event": "payback_start", "state_id": "bbc9d70f65c9450bed91bf85c2ba93037e17e877f3f6246817e89d7f264232cf", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "e59ab2ba8291f9bb0dd8b2dcad03c7070d83da5a7d4fe1a615de6786887a512a", "elapsed_seconds": 0.19740636995993555}
+{"event": "payback_start", "state_id": "bbc9d70f65c9450bed91bf85c2ba93037e17e877f3f6246817e89d7f264232cf", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "a236b99cee792cfd06074d296b3c3de80e4bd718f50a46a8ba00149088873712", "elapsed_seconds": 0.19788010593038052}
+{"event": "payback_start", "state_id": "4f9bc4b8234468d767b6491923c70bc475a6dd3016abba930f090a7a29df03bc", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "791636df4e57a81a76a4823f5e0dbef5f4763db9a7d7fb4241ea985839c9e3c8", "elapsed_seconds": 0.07214119099080563}
+{"event": "payback_start", "state_id": "4f9bc4b8234468d767b6491923c70bc475a6dd3016abba930f090a7a29df03bc", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "78eed96dac1b1257e996dc8feb81cbf196ab0321c6d54f2a11f75688f6cd7ef5", "elapsed_seconds": 0.06618057296145707}
+{"event": "payback_start", "state_id": "4f9bc4b8234468d767b6491923c70bc475a6dd3016abba930f090a7a29df03bc", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 128, "repetition": 0}
+{"event": "payback_complete", "record_id": "86eb4eee9565dc48747fffd656c5d5540bd2f8b97511622b1b3cfd78dd44e78b", "elapsed_seconds": 0.06620857596863061}
+{"event": "payback_start", "state_id": "4f9bc4b8234468d767b6491923c70bc475a6dd3016abba930f090a7a29df03bc", "arm": "KEEP", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "626bf4167c48a93a472e993a1725f6e621b10f170eaebfdcbb271bcd0967848d", "elapsed_seconds": 0.26418457401450723}
+{"event": "payback_start", "state_id": "4f9bc4b8234468d767b6491923c70bc475a6dd3016abba930f090a7a29df03bc", "arm": "CHARGED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "a768157d0c462f46b3462b0ffbdce66a9b75a0b379ca576d4f95e18f74826640", "elapsed_seconds": 0.2697158820228651}
+{"event": "payback_start", "state_id": "4f9bc4b8234468d767b6491923c70bc475a6dd3016abba930f090a7a29df03bc", "arm": "PREINSTALLED", "candidate_id": "one_copy", "horizon": 512, "repetition": 0}
+{"event": "payback_complete", "record_id": "b64f28de6b45fb7a1847d445d9a113a530d4ac975ca2266751dff3cd230a806f", "elapsed_seconds": 0.26377310999669135}

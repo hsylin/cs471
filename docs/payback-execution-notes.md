@@ -90,3 +90,32 @@ Before any final timing, the unchanged execution/analysis fingerprint and
 The final matrix retains both families, eight held-out document pairs, two
 technical repetitions and all three arms: 1,536 arm records. No online
 controller is developed, following the pilot-only stopping rule.
+
+The final execution log confirms that vLLM uses its default fused-MoE kernel
+configuration because the shape-specific `E=80,N=768,device_name=NVIDIA_H100.json`
+configuration is absent. This setting is common to every arm; it was not changed
+during the pilot or final campaign. Results characterize this pinned default
+execution path, not an independently tuned optimum. The separate profiler does
+not establish a roofline bound or prove that kernel tuning cannot change payback.
+
+Final job 4866456 completed on kh071 in 29m22s, exit 0:0. All 1,536 arms
+form 512 valid triples with no missing or invalid records. The independent
+statistics implementation matched all 96 cell and 24 aggregate estimates
+(maximum absolute arithmetic difference 2.22e-16). The independent raw-input
+audit verified all eight final banks, 64 tapes, 64 single-copy searches and
+192 full future physical-counter arrays. Maximum sampled numerical absolute
+error was 0.004194676876068115, within the frozen reference tolerance.
+
+The archived-data reproduction command completed from a fresh local output
+directory, including archive checksums, frozen analyses, independent interval
+reconstruction, raw-dispatch audit and mechanism summaries. The primary plot
+was visually inspected. Runtime/source fingerprints stayed unchanged. The
+standalone audit and reporting helpers live outside the measured modules.
+The report was reviewed against raw results and the literature skill style
+pass ran once with no issues; precision edits preserve the measured scope.
+
+The frozen decision remains no new controller. Primary changing aggregate
+CHARGED/KEEP is 1.0299333341 for native and 1.0244932189 for one-copy. Small
+resident gains remain, and three native H512 technical pairs have positive
+payback. These final observations are retained without reopening pilot-only
+selection or extending the horizon/candidate set.

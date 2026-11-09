@@ -1,5 +1,22 @@
 # SkewBench
 
+**Completed follow-up: candidate payback.** The literature-guided follow-up uses
+authentic Qwen layer inputs and 1,536 held-out three-arm measurements on two
+H100s. Native and single-copy placements have small resident gains (0.77% and
+0.20%), but charging their transitions makes changing-workload elapsed time
+2.99% and 2.45% worse at H512. Both fail the frozen 5% useful-gain and 2% stable
+regression criteria. Rare profitable native cases are retained; this is a
+candidate-specific boundary for the pinned default kernel and constructed
+prefill replay, not a universal result about migration.
+
+Read the [follow-up evaluation](docs/payback-final-evaluation.md),
+[exact inputs and raw records](results/payback/README.md),
+[reproduction instructions](docs/payback-reproduction.md), and
+[literature synthesis](docs/payback-literature-review.md). The full CPU-only
+reproduction command and independent arithmetic/dispatch audits pass.
+
+**Original TV-gate study.**
+
 SkewBench tests whether two-window demand stability improves expert-migration
 admission beyond an improvement threshold and a fixed cooldown. The required
 study uses one distributed MoE layer, one hardware configuration, and one fixed
