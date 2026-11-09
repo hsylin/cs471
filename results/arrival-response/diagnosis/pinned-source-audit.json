@@ -1,0 +1,86 @@
+{
+  "source_pin": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "installed_source_sha_match_verified_via_read_only_ssh": {
+    "vllm/distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+    "vllm/distributed/eplb/rebalance_execute.py": "686eb68f425e7c1450abea9466178d430e95441bd74ea6aaed12c13090654431",
+    "vllm/distributed/eplb/policy/default.py": "4b77c5b6075694b882d3f53ca6fa93aa9b5beb823920a69bb9b7333c7ef27270"
+  },
+  "arrival_records_sha256": "d32f70bd460a6c27aaaa84bd5b9f841da5c41b8447baaaf33d2adeb2c5a589d5",
+  "boundary_service_descriptive": {
+    "native": {
+      "ordinary": {
+        "n": 16128,
+        "mean_ms": 0.8123221817956349,
+        "median_ms": 0.8245359999999999,
+        "max_ms": 13.111739
+      },
+      "63": {
+        "n": 64,
+        "mean_ms": 9.87789609375,
+        "median_ms": 8.660072,
+        "max_ms": 16.630654
+      },
+      "127": {
+        "n": 64,
+        "mean_ms": 9.72411375,
+        "median_ms": 8.5948145,
+        "max_ms": 17.892839
+      },
+      "191": {
+        "n": 64,
+        "mean_ms": 10.264291203125,
+        "median_ms": 8.641859499999999,
+        "max_ms": 18.854755
+      },
+      "255": {
+        "n": 64,
+        "mean_ms": 8.2789908125,
+        "median_ms": 6.7073655,
+        "max_ms": 14.780491
+      }
+    },
+    "online": {
+      "ordinary": {
+        "n": 16128,
+        "mean_ms": 0.7821733306051587,
+        "median_ms": 0.7857529999999999,
+        "max_ms": 13.624334
+      },
+      "63": {
+        "n": 64,
+        "mean_ms": 9.735976046875,
+        "median_ms": 8.604789,
+        "max_ms": 15.662398
+      },
+      "127": {
+        "n": 64,
+        "mean_ms": 10.3268375,
+        "median_ms": 8.8141465,
+        "max_ms": 19.025139
+      },
+      "191": {
+        "n": 64,
+        "mean_ms": 10.244953359375,
+        "median_ms": 8.604929,
+        "max_ms": 18.675687
+      },
+      "255": {
+        "n": 64,
+        "mean_ms": 8.3051781875,
+        "median_ms": 6.7268295,
+        "max_ms": 16.942169
+      }
+    }
+  },
+  "sources": {
+    "native_step": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L640-L717",
+    "native_rearrange": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L750-L955",
+    "compute_inverse_maps": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L1254-L1332",
+    "map_commit": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L1380-L1418",
+    "weight_transfer_plan": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/rebalance_execute.py#L508-L615",
+    "empty_transport": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_communicator.py#L144-L153"
+  },
+  "component_timings_measured": false,
+  "recommendation": "Explicit static SKIP retaining native physical routing and recording/cadence, bypassing only rearrange; do not reuse B0.",
+  "scope": "Read-only source and saved-record audit; no implementation or GPU job."
+}

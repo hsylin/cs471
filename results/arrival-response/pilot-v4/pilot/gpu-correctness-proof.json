@@ -1,0 +1,194 @@
+{
+  "gpu_noop_proof_schema_version": 1,
+  "passed": true,
+  "diagnostic_only": true,
+  "evidence_eligible": false,
+  "batch_tokens": 1024,
+  "native_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "capture_sha256": "d63447a15f1aff577904a5b878c67cb3b26ed0c5ef8bad2b62e79c8c020aab39",
+  "replay_sha256": "7071fe58162c9c976807079ee9eb72a8cdb7675fe2809be0a24ace784b7dd08a",
+  "source_prompt_ids": [
+    "gutenberg-768",
+    "cpython-Lib-random.py"
+  ],
+  "assignment_artifact": {
+    "path": "/work/cs-471/skewbench-hlin/results/arrival-response-pilot-v4/pilot/inputs/opt-pilot-01-domain1-b1024.npz",
+    "sha256": "79b6cac2bfbc3a87b1f7e1489a0b9acfb30e6aa5ea07ea6dece7b0a563656bfa"
+  },
+  "logical_routing_sha256": "d393523e3e46a8dcb9d4824416626b07a6d0e882ece171633ebd36f89cd20d89",
+  "resolved_kernel_config": {
+    "BLOCK_SIZE_M": 128,
+    "BLOCK_SIZE_N": 128,
+    "BLOCK_SIZE_K": 64,
+    "GROUP_SIZE_M": 1,
+    "SPLIT_K": 1,
+    "num_warps": 8,
+    "num_stages": 3
+  },
+  "source_map_sha256": "1bbdae6d6dec1a948ea90af40b97620b1d46e96946711319d26c21a75e0ed7a2",
+  "changed_map_sha256": "dd5b31cf93678775ea79635aa5e025efa3d40b8921264a09ffdedae291756b7a",
+  "source_weights_sha256": "11f95f14c8e9456707bb66c71fa2b6d2da4091e5161256b56c607e23ec911330",
+  "restored_weights_sha256": "11f95f14c8e9456707bb66c71fa2b6d2da4091e5161256b56c607e23ec911330",
+  "source_weight_hashes_by_rank": [
+    "60643d7ea563b6a942c3688abed50f90e8da83caca085b554e4647daaad9819c",
+    "5a6cad2720ce77f30fb3d8616b6329aa14f6b6d7a39e636df34bbf27e706a3d6"
+  ],
+  "restored_weight_hashes_by_rank": [
+    "60643d7ea563b6a942c3688abed50f90e8da83caca085b554e4647daaad9819c",
+    "5a6cad2720ce77f30fb3d8616b6329aa14f6b6d7a39e636df34bbf27e706a3d6"
+  ],
+  "source_restore_verified": true,
+  "native_symbols_restored": true,
+  "no_pending_async_work": true,
+  "guard_counters_by_rank": [
+    {
+      "mode": "fast",
+      "diagnostic_timing": false,
+      "pending_pair": false,
+      "movement_calls": 4,
+      "commit_calls": 4,
+      "agreement_calls": 4,
+      "local_unchanged_calls": 2,
+      "unanimously_unchanged_calls": 2,
+      "movement_skips": 2,
+      "commit_skips": 2,
+      "original_movement_calls": 2,
+      "original_commit_calls": 2,
+      "fallback_calls": 2,
+      "diagnostics": []
+    },
+    {
+      "mode": "fast",
+      "diagnostic_timing": false,
+      "pending_pair": false,
+      "movement_calls": 4,
+      "commit_calls": 4,
+      "agreement_calls": 4,
+      "local_unchanged_calls": 2,
+      "unanimously_unchanged_calls": 2,
+      "movement_skips": 2,
+      "commit_skips": 2,
+      "original_movement_calls": 2,
+      "original_commit_calls": 2,
+      "fallback_calls": 2,
+      "diagnostics": []
+    }
+  ],
+  "total_transfer_bytes": 28311552,
+  "numerical_raw_indices": [
+    16,
+    47
+  ],
+  "steps": [
+    {
+      "name": "unchanged_before",
+      "expected_skip": true,
+      "map_sha256": "1bbdae6d6dec1a948ea90af40b97620b1d46e96946711319d26c21a75e0ed7a2",
+      "exact_checkpoint_weights_verified": true,
+      "inverse_map_and_replica_count_verified": true,
+      "transfer_payload_by_rank": [
+        {
+          "rank": 0,
+          "bytes": 0,
+          "messages": 0
+        },
+        {
+          "rank": 1,
+          "bytes": 0,
+          "messages": 0
+        }
+      ],
+      "actual_transfer_bytes": 0,
+      "actual_transfer_messages": 0,
+      "correctness_pass": true,
+      "correctness_atol": 0.02,
+      "correctness_rtol": 0.03,
+      "correctness_max_abs_error": 0.008345603942871094,
+      "full_batch_max_abs_difference": 0.0,
+      "full_batch_inputs_checked": 2
+    },
+    {
+      "name": "changed_swap_0_80",
+      "expected_skip": false,
+      "map_sha256": "dd5b31cf93678775ea79635aa5e025efa3d40b8921264a09ffdedae291756b7a",
+      "exact_checkpoint_weights_verified": true,
+      "inverse_map_and_replica_count_verified": true,
+      "transfer_payload_by_rank": [
+        {
+          "rank": 0,
+          "bytes": 0,
+          "messages": 0
+        },
+        {
+          "rank": 1,
+          "bytes": 9437184,
+          "messages": 1
+        }
+      ],
+      "actual_transfer_bytes": 9437184,
+      "actual_transfer_messages": 1,
+      "correctness_pass": true,
+      "correctness_atol": 0.02,
+      "correctness_rtol": 0.03,
+      "correctness_max_abs_error": 0.008345603942871094,
+      "full_batch_max_abs_difference": 0.001953125,
+      "full_batch_inputs_checked": 2
+    },
+    {
+      "name": "restore_original",
+      "expected_skip": false,
+      "map_sha256": "1bbdae6d6dec1a948ea90af40b97620b1d46e96946711319d26c21a75e0ed7a2",
+      "exact_checkpoint_weights_verified": true,
+      "inverse_map_and_replica_count_verified": true,
+      "transfer_payload_by_rank": [
+        {
+          "rank": 0,
+          "bytes": 9437184,
+          "messages": 1
+        },
+        {
+          "rank": 1,
+          "bytes": 9437184,
+          "messages": 1
+        }
+      ],
+      "actual_transfer_bytes": 18874368,
+      "actual_transfer_messages": 2,
+      "correctness_pass": true,
+      "correctness_atol": 0.02,
+      "correctness_rtol": 0.03,
+      "correctness_max_abs_error": 0.008345603942871094,
+      "full_batch_max_abs_difference": 0.0,
+      "full_batch_inputs_checked": 2
+    },
+    {
+      "name": "unchanged_after_restore",
+      "expected_skip": true,
+      "map_sha256": "1bbdae6d6dec1a948ea90af40b97620b1d46e96946711319d26c21a75e0ed7a2",
+      "exact_checkpoint_weights_verified": true,
+      "inverse_map_and_replica_count_verified": true,
+      "transfer_payload_by_rank": [
+        {
+          "rank": 0,
+          "bytes": 0,
+          "messages": 0
+        },
+        {
+          "rank": 1,
+          "bytes": 0,
+          "messages": 0
+        }
+      ],
+      "actual_transfer_bytes": 0,
+      "actual_transfer_messages": 0,
+      "correctness_pass": true,
+      "correctness_atol": 0.02,
+      "correctness_rtol": 0.03,
+      "correctness_max_abs_error": 0.008345603942871094,
+      "full_batch_max_abs_difference": 0.0,
+      "full_batch_inputs_checked": 2
+    }
+  ],
+  "proof_source_sha256": "3f4d91528af6d42b88b9223f5e7e615fc20de07ec1370a6705cd2c6e5ee14440",
+  "scope": "Untimed fresh-layer unchanged skip, cross-rank swap0/80 changed fallback, normal restore, unchanged skip; no primary latency or mixed-rank GPU corruption test."
+}

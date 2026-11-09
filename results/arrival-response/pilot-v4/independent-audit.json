@@ -1,0 +1,63 @@
+{
+  "pass": true,
+  "phase": "pilot",
+  "plan_sha256": "a4ad6ec65a1daae362df921c98673f0515532bfd6d971828432d6e9f85ed21a7",
+  "records": 24,
+  "diagnostic_records": 4,
+  "jobs_checked": 6656,
+  "timed_native_windows_checked": 104,
+  "route_artifacts": 2,
+  "artifacts": [
+    {
+      "state": [
+        "opt-pilot-01",
+        "domain1",
+        1024
+      ],
+      "artifact": {
+        "path": "results/arrival-response/pilot-v4/pilot/inputs/opt-pilot-01-domain1-b1024.npz",
+        "sha256": "79b6cac2bfbc3a87b1f7e1489a0b9acfb30e6aa5ea07ea6dece7b0a563656bfa"
+      }
+    },
+    {
+      "state": [
+        "opt-pilot-01",
+        "domain1",
+        128
+      ],
+      "artifact": {
+        "path": "results/arrival-response/pilot-v4/pilot/inputs/opt-pilot-01-domain1-b128.npz",
+        "sha256": "77619111e43d184b177f367a88276cbc3e87d1917feddf5caa1ed61e070b2300"
+      }
+    }
+  ],
+  "allocation_id": "4872248",
+  "hostname": "kh014",
+  "rank_gpu_uuids": [
+    "GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3",
+    "GPU-7d5c9009-305b-9341-957f-1deb96611ed5"
+  ],
+  "calibration_audit": null,
+  "gpu_proof": {
+    "verified": true,
+    "unchanged_skips": 2,
+    "real_native_movements": 2,
+    "actual_transfer_bytes": 28311552,
+    "mixed_rank_gpu_corruption_test": false
+  },
+  "production_trials_and_pairs_recomputed": false,
+  "statistical_bootstrap_independently_recomputed": false,
+  "independent_timing_auditor_sha256": "7edc056611e17ec01a683179b38a33a41874b73cdcbcc262e7b2f61f9574378e",
+  "independent_route_auditor_sha256": "8db9efba10c22cdc25dfe8d770e781cf067fff43c7708d9457507fb11f39b504",
+  "limitations": [
+    "Same-team independent arithmetic, not an external laboratory replication.",
+    "CPU audit reconstructs saved raw routes and actual observed count windows, not live GPU numerical output.",
+    "GPU numerical/state assertions are checked as recorded evidence; weights are not re-executed on GPU.",
+    "Fresh randomized arrival calendars reuse previously observed captured layer inputs.",
+    "Final endpoint confidence intervals require the separate independent statistical check."
+  ],
+  "verifier_sha256": "d68eb77c5732e2553c71ded8394294b5729afa67bea0f9fe13ee9af0102a99f3",
+  "raw_decompressed_sha256": {
+    "results/arrival-response/pilot-v4/pilot/records.jsonl": "815415e705fdccd2a745514f4e447587ae9bdb0a605e15e1c327815ac908ae6e"
+  }
+}

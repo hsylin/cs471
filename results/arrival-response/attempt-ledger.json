@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "reservation_job_id": 4872248,
+  "source_commit": "3f3feb8",
+  "attempts": [
+    {
+      "plan_version": 1,
+      "job_id": 4872158,
+      "state": "cancelled_while_pending",
+      "measurement_rows": 0,
+      "reason": "Exact historical pair was busy; user authorized equivalent pair and 48-hour reservation."
+    },
+    {
+      "plan_version": 2,
+      "step_id": "4872248.0",
+      "state": "failed_before_measurement",
+      "measurement_rows": 0,
+      "reason": "Launcher joined mkdir and nvidia-smi commands; fixed command separation in cc68d1c before v3."
+    },
+    {
+      "plan_version": 3,
+      "step_id": "4872248.1",
+      "state": "failed_before_measurement",
+      "measurement_rows": 0,
+      "reason": "Torch bare CUDA UUID strings differed from NVML GPU-prefixed strings. Both were the required physical pair; canonicalized syntax in 3f3feb8 before v4."
+    },
+    {
+      "purpose": "identity_probe",
+      "step_ids": [
+        "4872248.2",
+        "4872248.3"
+      ],
+      "state": "completed",
+      "measurement_rows": 0,
+      "reason": "Read CUDA UUID strings outside measured execution; second probe recovered output lost from first tool response."
+    },
+    {
+      "plan_version": 4,
+      "step_id": "4872248.4",
+      "phase": "pilot",
+      "state": "completed",
+      "measurement_rows": 24,
+      "diagnostic_rows": 4,
+      "independent_audit": "pilot-v4/independent-audit.json"
+    },
+    {
+      "plan_version": 4,
+      "step_id": "4872248.5",
+      "phase": "calibration_and_final",
+      "state": "completed",
+      "calibration_rows": 8,
+      "final_rows": 256,
+      "final_jobs": 65536,
+      "final_plan_sha256": "adc50cf406fce064a9525aed36b2fc1a7006d7b8ca858b955ac111f000830ad0",
+      "independent_execution_audit": "final-v4/independent-execution-audit.json",
+      "independent_statistics_audit": "final-v4/independent-statistics-audit.json"
+    }
+  ],
+  "changes_before_measurement": [
+    "authorized equivalent hardware pair",
+    "launcher formatting repair",
+    "UUID representation normalization"
+  ],
+  "unchanged_design": [
+    "treatment",
+    "arrival gamma draws",
+    "calibration rule",
+    "paired final order",
+    "primary and guard endpoints",
+    "bootstrap rule"
+  ],
+  "reservation_retained_after_experiments": true
+}
