@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "independent_outcome_checks_pass": true,
+  "allocation_id": "4870934",
+  "node": "kh083",
+  "scheduler_completion": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:00:41",
+    "source": "Read-only sacct query on 2026-11-09"
+  },
+  "counter_outcome": "unavailable_permission_denied",
+  "ncu_probe_exit_code": 1,
+  "driver_permission_setting": "RmProfilingAdminOnly: 1",
+  "probe_program_completed": true,
+  "hardware_counter_capture_completed": false,
+  "full_expert_counter_collection_started": false,
+  "raw_counter_reports_present": false,
+  "system_configuration_changed_recorded": false,
+  "source_commit_recorded": "81e7903f1f3e23d7a9f9071e9097cdde0d4d133c",
+  "validation_manifest_sha256": "3b1a64b3966358bbb18a1c4581d5775212f91f32491f35b658e819f7c2c8154a",
+  "raw_file_inventory": {
+    "permission-probe.json": {
+      "sha256": "2973c99eab0f4ff51c76ef4c9cf04fcf28ab54b1ad59649333364dcb948b05f3",
+      "bytes": 227
+    },
+    "permission-probe.log": {
+      "sha256": "7b7d5ee134791c4fce980a4940847e5a39fe00366dc70cf1015ce1b470bda968",
+      "bytes": 631
+    },
+    "provenance/counter-permission-setting.txt": {
+      "sha256": "c82dbb97fbc8843a13273f548b170686fe5cf4f2edf83b4f022a7230c3dc421a",
+      "bytes": 24
+    },
+    "provenance/environment-lock.txt": {
+      "sha256": "a86032c7f6da71b8756bf3b21034f5e85424414a1c92f2509195b123fced5e49",
+      "bytes": 4457
+    },
+    "provenance/executed-manifest.json": {
+      "sha256": "5366e55414a45b24b712cb7955efd5aa6d3c2e37d79c16a6ca67d818912d5cf3",
+      "bytes": 6587
+    },
+    "provenance/ncu-version.txt": {
+      "sha256": "c60db57a5351fb60df3a73a36799f1c551908b9222c123e4ce43e82664286ca9",
+      "bytes": 144
+    },
+    "provenance/nvidia-smi.txt": {
+      "sha256": "78378c0c557feb87e145abf91c2b43876335df6a0756c5bb7fd2fcabc1664ee4",
+      "bytes": 19648
+    },
+    "provenance/slurm-job.txt": {
+      "sha256": "0b3487142fa1ec78b1a855a08e8714867b944aebc59c098620edb679aa868064",
+      "bytes": 1510
+    },
+    "provenance/source-commit.txt": {
+      "sha256": "ea2878a0be2327d9eed5f21dd5f6ece4772d65137f4d4d13d5aa59b284d5b09c",
+      "bytes": 41
+    },
+    "provenance/topology.txt": {
+      "sha256": "07d3350bd3bc56f7709f01883e5efd6ff6243b5cd2fc1fc36ab4c8ba065dad8e",
+      "bytes": 830
+    },
+    "status.json": {
+      "sha256": "19db851b6d976df92fe813487c0d0e64684af976c30fba4286b20289414252c9",
+      "bytes": 204
+    }
+  },
+  "interpretation": "A successful probe program and clean batch exit do not mean counter collection succeeded. The wrapper intentionally stops after permission denial; no HBM/SM/Tensor Core counter measurements exist."
+}

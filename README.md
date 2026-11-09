@@ -1,5 +1,7 @@
 # SkewBench
 
+**Instructor-feedback supplement.** The bounded arrival study completed eight native calibrations and 128 evaluation trials on two H100s. Online dispatch reduced mean service in 27/32 descriptive cells, but mean response in only 21/32; it did not establish a general latency improvement. Independent raw-data audits and all 425 CPU tests pass. Architectural accounting explains reduced padded work without claiming measured hardware utilization; the counter probe was denied by node permissions. The historical 5% target failure remains unchanged. Read the [results and feedback response](docs/instructor-feedback-results.md), [notation and parameter history](docs/instructor-feedback-response.md), and [reproduction guide](docs/instructor-supplement-reproduction.md).
+
 **Completed resident-dispatch follow-up.** One fixed GPU dispatcher and 256
 fresh runs reduced completed changing-workload layer time by 3.40% (95% block
 interval: 2.99–3.85%), missing the frozen 5% target. Batch 1024 improved

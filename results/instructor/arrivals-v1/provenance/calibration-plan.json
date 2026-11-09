@@ -1,0 +1,56 @@
+{
+  "arrival_schema_version": 1,
+  "phase": "calibration",
+  "base_manifest": {
+    "path": "configs/resident-online-validation-frozen-v1.json",
+    "sha256": "3b1a64b3966358bbb18a1c4581d5775212f91f32491f35b658e819f7c2c8154a"
+  },
+  "arrival_source_sha256": "7627f8df6d9c5d5ab9cdfe6fc5f8e56cea11ac695b9d8a36428bd2f94dd9d3c7",
+  "arrival_source_files": {
+    "arrival_study/__init__.py": "395c0348588d6ee073a03220d79b96614bccb7eedcb03a8967fd3cc9eb6613a1",
+    "arrival_study/common.py": "e5149423188c8f67b10fa7f67b704be3fe8bcc450afcbb51595231ba3e24028d",
+    "arrival_study/schedules.py": "a9f9a97b8e635f0250002f753ea2e8bfa31a1d78b3982960d0617e9b31de1ff7",
+    "arrival_study/runner.py": "eb7008454741023a50e7ca235631a96e1a7a418554a961dbf9e3711887f07168",
+    "scripts/run-instructor-arrivals-kuma.sh": "666e9d8ad3665ed6848afead0e17e11da7b30d2e1a1fd1f5421eb9c7246db369",
+    "scripts/run-instructor-arrival-study-kuma.sh": "55060de626d6f0c47465934a658b063e42f768fa96c25af89383d8f99eeb42f4",
+    "scripts/freeze_instructor_arrivals.py": "b5fbdc788733876e129ac6db68f45c3ae701f88442e1a114ea13d91d31f17d1f"
+  },
+  "protocol_file_sha256": "f25c34b19cb52234a0dbe5dd4c43562311a51aefe33670acd4074f5aec020b6b",
+  "order_seed": 30471,
+  "matrix": {
+    "block_ids": [
+      "opt-pilot-01",
+      "opt-pilot-02"
+    ],
+    "regimes": [
+      "domain0",
+      "domain1"
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "arms": [
+      "native",
+      "online"
+    ],
+    "repetitions": 2
+  },
+  "jobs_per_trial": 256,
+  "offered_load_fractions": [
+    0.5,
+    0.85
+  ],
+  "arrival_patterns": [
+    "constant",
+    "burst8"
+  ],
+  "burst_size": 8,
+  "control_contract": "one FCFS layer job in flight; rank0 CPU command/ACK coordination; same-host CLOCK_MONOTONIC",
+  "inference": "descriptive supplementary reuse of two development blocks; no new confirmatory acceptance or policy selection",
+  "analysis_file_sha256": "7dbe11c2d75e5489d9042555d36440fb7cc23d3262caa3066953b48eb1c26c26",
+  "freeze": {
+    "algorithm": "sha256",
+    "sha256": "875419578f9a9d6ccd4cee216c85753dc977f10673fb21cc505ef4355cb7e1a2"
+  }
+}

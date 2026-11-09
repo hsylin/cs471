@@ -1,0 +1,193 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain0", "batch_tokens": 128}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 15:51:53.602154889 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain0", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain0", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain0", "batch_tokens": 128}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain1", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain1", "batch_tokens": 128}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "calibration_saturated", "repetition": 0, "completed": 256}
+50c9194dafcc49a0faf8de8f757dc0131fab06580fae69d7e58f76c334b4a2d6
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain0", "batch_tokens": 128}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 15:52:49.514562864 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 128}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain0", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain0", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain0/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain0", "batch_tokens": 128}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain0/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain1", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-02", "regime": "domain1", "batch_tokens": 128}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-02/domain1/B128", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "prepare_state", "block_id": "opt-pilot-01", "regime": "domain1", "batch_tokens": 1024}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "constant-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.5", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "constant-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 0, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "online", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"event": "trial_complete", "state": "opt-pilot-01/domain1/B1024", "arm": "native", "schedule": "burst8-rho0.85", "repetition": 1, "completed": 256}
+{"valid": true, "expected_records": 8, "observed_records": 8, "valid_records": 8}
+{"valid": true, "expected_records": 128, "observed_records": 128, "valid_records": 128}
