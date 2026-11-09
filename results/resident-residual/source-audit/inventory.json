@@ -1,0 +1,57 @@
+{
+  "schema": "resident_residual_alignment_source_audit_v1",
+  "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "files": [
+    {
+      "repository_path": "vllm/model_executor/layers/fused_moe/experts/triton_moe.py",
+      "archived_file": "vllm/model_executor/layers/fused_moe/experts/triton_moe.py",
+      "sha256": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+      "pinned_url": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/experts/triton_moe.py",
+      "installed_python_file_hash_verified_via_read_only_ssh": true
+    },
+    {
+      "repository_path": "vllm/model_executor/layers/fused_moe/fused_moe.py",
+      "archived_file": "vllm/model_executor/layers/fused_moe/fused_moe.py",
+      "sha256": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+      "pinned_url": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py",
+      "installed_python_file_hash_verified_via_read_only_ssh": true
+    },
+    {
+      "repository_path": "vllm/model_executor/layers/fused_moe/moe_align_block_size.py",
+      "archived_file": "vllm/model_executor/layers/fused_moe/moe_align_block_size.py",
+      "sha256": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6",
+      "pinned_url": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/moe_align_block_size.py",
+      "installed_python_file_hash_verified_via_read_only_ssh": true
+    },
+    {
+      "repository_path": "csrc/libtorch_stable/moe/moe_align_sum_kernels.cu",
+      "archived_file": "csrc/libtorch_stable/moe/moe_align_sum_kernels.cu",
+      "sha256": "129513bb83e013ccbc67e0f052ba85688712f29f1e3cde734ea229e45d52d580",
+      "pinned_url": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/csrc/libtorch_stable/moe/moe_align_sum_kernels.cu",
+      "installed_python_file_hash_verified_via_read_only_ssh": false
+    }
+  ],
+  "installed_root": "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm",
+  "retrieved_date": "2026-11-10",
+  "compiled_cuda_binary_attestation": "Pinned C++ source reviewed; this source-file digest does not attest compiled object equivalence.",
+  "intervention": "Keep original alignment allocation and CUDA operation; shorten only sorted-token view supplied to unchanged GEMM invocation.",
+  "geometry": {
+    "tokens": 128,
+    "top_k": 8,
+    "routes": 1024,
+    "block_m": 64,
+    "active_cap": 64,
+    "safe_view_rows": 5056,
+    "safe_view_m_programs": 79,
+    "native_global_128_rows": 9088,
+    "native_global_128_m_programs": 142,
+    "native_global_160_rows": 11104,
+    "native_global_160_m_programs": 174
+  },
+  "claims": {
+    "actual_padded_work_reduced": false,
+    "alignment_initialization_reduced": false,
+    "selector_changed": false,
+    "latency_benefit_measured": false
+  }
+}

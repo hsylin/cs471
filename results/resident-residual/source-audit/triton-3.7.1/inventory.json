@@ -1,0 +1,39 @@
+{
+  "schema": "triton_prebound_launch_source_audit_v1",
+  "version": "3.7.1",
+  "retrieved_date": "2026-11-10",
+  "installed_root": "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/triton",
+  "files": [
+    {
+      "installed_relative_path": "compiler/compiler.py",
+      "sha256": "021a45ca590052ab6ca6d850eb0a102abf542165836ad92bfb3bb573218fc5d3"
+    },
+    {
+      "installed_relative_path": "runtime/jit.py",
+      "sha256": "5fe46fbfac257a2b8645b7a2cc709232273d42dd5e1d55de9770b412a9476d77"
+    },
+    {
+      "installed_relative_path": "backends/nvidia/driver.py",
+      "sha256": "992ba21e12ee170a904f3a1caca24a78ce3dd66b661087faea5973b995480f63"
+    }
+  ],
+  "api": {
+    "prepare": "JITFunction.warmup(...,grid=(1,),N=1024,TOPK=8,num_warps=4)",
+    "bind": "CompiledKernel[(1,1,1)] once",
+    "invoke": "runner(ids,real,output,homes,counts,summary,1024,8,stream=fixed_stream)"
+  },
+  "preserved": [
+    "same CompiledKernel object as normal JIT on same setup inputs",
+    "same cubin/PTX and GPU algorithm",
+    "CompiledKernel dynamic launch_metadata and launch_enter/exit hooks",
+    "existing mapper input checks and extra16-byte alignment guard"
+  ],
+  "omitted_jit_services": [
+    "percall device/stream discovery",
+    "binder/options specialization/cachekey and lookup",
+    "pre_run hooks (required empty)",
+    "global-value checks (required empty dependencies)",
+    "custom compilation-stage hooks/debug/instrumentation (unsupported)"
+  ],
+  "scope": "Pinned private/internal API specialization; not guaranteed portable across Triton versions. Requires GPU preflight; no speedup inferred from source."
+}

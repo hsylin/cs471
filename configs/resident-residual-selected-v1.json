@@ -1,0 +1,50 @@
+{
+  "schema": "resident_residual_selection_v1",
+  "selector": "fused",
+  "selector_launch": "prebound_compiled",
+  "alignment_trim": false,
+  "mapper_input_checks": true,
+  "implementation_id": "b128_prebound_same_compiled_selector_v1",
+  "policy_id": "current_batch_one_home_lpt_active_caps_v1",
+  "batch_tokens": 128,
+  "physical_slots": 160,
+  "replica_budget_max": 32,
+  "physical_policy_unchanged": true,
+  "gpu_algorithm_changed": false,
+  "control_mode": "static_no_recording_no_planning_no_migration",
+  "no_final_treatment_outcomes_used": true,
+  "decision": "Evaluate one bounded exact-kernel invocation repair. Reused development remained slower than EPLB-off in all four groups; this is not a demonstrated speedup or deployment recommendation.",
+  "changes": [
+    "Warm and bind both exact unchanged int32/int64 Triton compiled kernels once.",
+    "Preserve actual native gate/topk and combining weights, input checks, fixed map, native expert alignment/allocation/GEMM geometry and output reduction.",
+    "Use bound compiled launchers with explicit constructing stream; check pointer alignment and reject unsupported JIT hooks/global dependencies."
+  ],
+  "diagnostic_basis": {
+    "trials": 56,
+    "source_sha256": "6c689ae08fd7ba9ac8a093564c94bb59ad9a8f84f65bae028824626aaa1f6ddf",
+    "audit_sha256": "fffa106129b1a8909b1dec057d494dd7247be2bafcf646719d78d4897baa5b88",
+    "selector_invocation_package_us": 29.549,
+    "trim_added_service_us": 6.713,
+    "scope": "Four reused pilot groups; exact physical-ID replay only a diagnostic; input checks had no consistent benefit."
+  },
+  "development_basis": {
+    "trials": 24,
+    "source_sha256": "cc07b0171f10e354ede40317ca3e3d30c87df7689c16e9c83c630db7af7b131f",
+    "records_sha256": "f8413856a4787d3bfe7ea7f1a8546d34799bba73f73b5d53ec612b1e45b69359",
+    "audit_sha256": "62eeb524c5ddb9daff6d52d41a07f24080b36b5bc26335319675fb5c8822eb30",
+    "mean_service_us": {
+      "stockoff": 721.6813041992187,
+      "previous": 741.12169140625,
+      "fix": 734.1109497070313
+    },
+    "groups_worse_than_previous": 2,
+    "groups_slower_than_stockoff": 4,
+    "scope": "Four reused pilot groups, two reverse technical repetitions. Descriptive only; no confidence intervals."
+  },
+  "limits": [
+    "Exact pinned Triton3.7.1 and SM90 compiled signatures; fixed B128/top8/map only.",
+    "Sequential constructing stream; no concurrent reuse, graphs or deployment integration.",
+    "Native full expert-kernel launch extent retained; rejected trim result preserved.",
+    "Keep prior5%response useful-gain criterion and2%regression margins unchanged."
+  ]
+}

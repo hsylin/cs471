@@ -1,0 +1,425 @@
+{
+  "schema": "independent_residual_development_v1",
+  "passed": true,
+  "records": 24,
+  "source_sha256": "cc07b0171f10e354ede40317ca3e3d30c87df7689c16e9c83c630db7af7b131f",
+  "source_archive_sha256": "543691c1a9e26f34332268f7e68d3e83dd29528eb522e10130daddc11d37250f",
+  "plan_sha256": "db5db3f68033934dd9aea1d9e9be34c3d2e16033d03517d4b2f10d8ab1ff2278",
+  "records_container_sha256": "f8413856a4787d3bfe7ea7f1a8546d34799bba73f73b5d53ec612b1e45b69359",
+  "records_decompressed_sha256": "f8413856a4787d3bfe7ea7f1a8546d34799bba73f73b5d53ec612b1e45b69359",
+  "auditor_sha256": "6a1d0215758301cd295f7b42b08229cea8b84fff09fc5631bff95d3675cad8d1",
+  "primitives_sha256": "1882a92935425f532e5e75213691b1369d44407b8bd33351a4a8030f9a087ab1",
+  "artifacts": {
+    "fix-gsm8k-pilot-01": {
+      "inputs_sha256": "c6c7c775068d903ce0a846d60a4d9aa7d2e9b78cbd63907d375178c3bea8b3f6",
+      "geometry_sha256": "ac4c74e0e0b285fec486249365a56ccb74fb5d16998f7f271d623f3d12e74785"
+    },
+    "fix-gsm8k-pilot-02": {
+      "inputs_sha256": "1144d605465f684921db58b539bcd9b5710a4ce219984255c465ef8da0e7bfb3",
+      "geometry_sha256": "abcea56c625747dce8cb4302920a5233a07eab636b3da3eebfd6c77ecb6dc100"
+    },
+    "fix-wildchat-pilot-01": {
+      "inputs_sha256": "37b12cc8de53d522b23b0e266cd1f3132c154c3588f2b0de3306533314b8e512",
+      "geometry_sha256": "7b5bd4c8d2cbf58759845233c957bebe7e32e78dcfaea6693d0141d2ca0cc214"
+    },
+    "fix-wildchat-pilot-02": {
+      "inputs_sha256": "6979b84a089bad24b4abda936f28b031d40f2727d3befacadeb1c7be1f1bec52",
+      "geometry_sha256": "008a21a46c1595fa50c2b596aadd24e1a351e109ed73ed2832bc5ae677621ddc"
+    }
+  },
+  "unique_batch_oracles": 256,
+  "native_geometry_batches": 1536,
+  "raw_jobs": 12288,
+  "per_group": {
+    "fix-gsm8k-pilot-01": {
+      "dataset": "gsm8k",
+      "variants": {
+        "stockoff": {
+          "mean_service_us": 706.3828349609375,
+          "job_completion_per_job_us": 719.758595703125,
+          "completed_per_job_us": 719.9259736328124
+        },
+        "previous": {
+          "mean_service_us": 727.1602070312499,
+          "job_completion_per_job_us": 740.6310263671875,
+          "completed_per_job_us": 740.817203125
+        },
+        "fix": {
+          "mean_service_us": 711.1761132812501,
+          "job_completion_per_job_us": 724.6590078125,
+          "completed_per_job_us": 724.8511201171875
+        }
+      },
+      "paired_effects": {
+        "mean_service_us": {
+          "fix_minus_previous": -15.984093749999829,
+          "fix_minus_stockoff": 4.793278320312538,
+          "fix_over_previous": 0.9780184702140708,
+          "fix_over_stockoff": 1.006785666473022
+        },
+        "job_completion_per_job_us": {
+          "fix_minus_previous": -15.972018554687452,
+          "fix_minus_stockoff": 4.900412109374997,
+          "fix_over_previous": 0.978434580801954,
+          "fix_over_stockoff": 1.006808410679122
+        },
+        "completed_per_job_us": {
+          "fix_minus_previous": -15.966083007812472,
+          "fix_minus_stockoff": 4.925146484375091,
+          "fix_over_previous": 0.9784480126265123,
+          "fix_over_stockoff": 1.006841184600581
+        }
+      }
+    },
+    "fix-gsm8k-pilot-02": {
+      "dataset": "gsm8k",
+      "variants": {
+        "stockoff": {
+          "mean_service_us": 708.2805927734375,
+          "job_completion_per_job_us": 721.76841796875,
+          "completed_per_job_us": 721.9341044921875
+        },
+        "previous": {
+          "mean_service_us": 725.002470703125,
+          "job_completion_per_job_us": 738.5311289062499,
+          "completed_per_job_us": 738.6967275390625
+        },
+        "fix": {
+          "mean_service_us": 726.1623046875,
+          "job_completion_per_job_us": 739.5515390625001,
+          "completed_per_job_us": 739.7435556640626
+        }
+      },
+      "paired_effects": {
+        "mean_service_us": {
+          "fix_minus_previous": 1.1598339843749272,
+          "fix_minus_stockoff": 17.881711914062407,
+          "fix_over_previous": 1.0015997655611437,
+          "fix_over_stockoff": 1.0252466495574055
+        },
+        "job_completion_per_job_us": {
+          "fix_minus_previous": 1.0204101562501364,
+          "fix_minus_stockoff": 17.783121093750083,
+          "fix_over_previous": 1.0013816752149112,
+          "fix_over_stockoff": 1.0246382643671172
+        },
+        "completed_per_job_us": {
+          "fix_minus_previous": 1.0468281250000473,
+          "fix_minus_stockoff": 17.809451171875025,
+          "fix_over_previous": 1.0014171284181637,
+          "fix_over_stockoff": 1.024669081376066
+        }
+      }
+    },
+    "fix-wildchat-pilot-01": {
+      "dataset": "wildchat",
+      "variants": {
+        "stockoff": {
+          "mean_service_us": 736.3800712890625,
+          "job_completion_per_job_us": 749.72915234375,
+          "completed_per_job_us": 749.92167578125
+        },
+        "previous": {
+          "mean_service_us": 747.8657451171875,
+          "job_completion_per_job_us": 761.4028017578125,
+          "completed_per_job_us": 761.5688798828126
+        },
+        "fix": {
+          "mean_service_us": 752.4291816406251,
+          "job_completion_per_job_us": 766.36130859375,
+          "completed_per_job_us": 766.520443359375
+        }
+      },
+      "paired_effects": {
+        "mean_service_us": {
+          "fix_minus_previous": 4.563436523437531,
+          "fix_minus_stockoff": 16.049110351562604,
+          "fix_over_previous": 1.0061019461758105,
+          "fix_over_stockoff": 1.0217946016972839
+        },
+        "job_completion_per_job_us": {
+          "fix_minus_previous": 4.958506835937442,
+          "fix_minus_stockoff": 16.63215624999998,
+          "fix_over_previous": 1.0065123306934123,
+          "fix_over_stockoff": 1.0221842197252244
+        },
+        "completed_per_job_us": {
+          "fix_minus_previous": 4.951563476562455,
+          "fix_minus_stockoff": 16.598767578125035,
+          "fix_over_previous": 1.0065017933470763,
+          "fix_over_stockoff": 1.0221340016086784
+        }
+      }
+    },
+    "fix-wildchat-pilot-02": {
+      "dataset": "wildchat",
+      "variants": {
+        "stockoff": {
+          "mean_service_us": 735.6817177734374,
+          "job_completion_per_job_us": 749.1009736328125,
+          "completed_per_job_us": 749.262708984375
+        },
+        "previous": {
+          "mean_service_us": 764.4583427734375,
+          "job_completion_per_job_us": 777.9643398437499,
+          "completed_per_job_us": 778.12909765625
+        },
+        "fix": {
+          "mean_service_us": 746.6761992187501,
+          "job_completion_per_job_us": 760.0472294921875,
+          "completed_per_job_us": 760.2167001953126
+        }
+      },
+      "paired_effects": {
+        "mean_service_us": {
+          "fix_minus_previous": -17.782143554687423,
+          "fix_minus_stockoff": 10.994481445312658,
+          "fix_over_previous": 0.976738897910154,
+          "fix_over_stockoff": 1.0149446169174732
+        },
+        "job_completion_per_job_us": {
+          "fix_minus_previous": -17.917110351562428,
+          "fix_minus_stockoff": 10.946255859375015,
+          "fix_over_previous": 0.9769692395474566,
+          "fix_over_stockoff": 1.0146125238715022
+        },
+        "completed_per_job_us": {
+          "fix_minus_previous": -17.912397460937427,
+          "fix_minus_stockoff": 10.953991210937602,
+          "fix_over_previous": 0.9769801726797133,
+          "fix_over_stockoff": 1.0146196935728802
+        }
+      }
+    }
+  },
+  "variant_arithmetic_means": {
+    "stockoff": {
+      "mean_service_us": 721.6813041992187,
+      "job_completion_per_job_us": 735.0892849121094,
+      "completed_per_job_us": 735.2611157226562
+    },
+    "previous": {
+      "mean_service_us": 741.12169140625,
+      "job_completion_per_job_us": 754.63232421875,
+      "completed_per_job_us": 754.8029770507814
+    },
+    "fix": {
+      "mean_service_us": 734.1109497070313,
+      "job_completion_per_job_us": 747.6547712402344,
+      "completed_per_job_us": 747.8329548339844
+    }
+  },
+  "compiled_kernels": {
+    "int32": {
+      "compiled_hash": "a015be38624e4567821db35a87fae91b93d02ad0d9b990adf35743d2b467803b",
+      "cubin_sha256": "677e4a904dc49939013043fdd4741aad63d2b0cdae2ec46b6ac95de4fa5082d2",
+      "ptx_sha256": "6f2abc594171a24ccca76e0f0465b867d9b7abd81db3602bdfb3e390ccd59f7f",
+      "signature": [
+        [
+          "'N'",
+          "'constexpr'"
+        ],
+        [
+          "'TOPK'",
+          "'constexpr'"
+        ],
+        [
+          "'homes'",
+          "'*i32'"
+        ],
+        [
+          "'ids'",
+          "'*i32'"
+        ],
+        [
+          "'logical_counts'",
+          "'*i32'"
+        ],
+        [
+          "'output'",
+          "'*i32'"
+        ],
+        [
+          "'real_tokens'",
+          "'*i32'"
+        ],
+        [
+          "'summary'",
+          "'*i32'"
+        ]
+      ],
+      "constants": [
+        [
+          "(6,)",
+          "1024"
+        ],
+        [
+          "(7,)",
+          "8"
+        ]
+      ],
+      "pointer_specialization_attributes": [
+        [
+          "(0,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(1,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(2,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(3,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(4,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(5,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(6,)",
+          "[]"
+        ],
+        [
+          "(7,)",
+          "[]"
+        ]
+      ],
+      "num_warps": 4,
+      "num_ctas": 1,
+      "shared": 512,
+      "arch": 90,
+      "baseline_jit_same_compiled_object": true
+    },
+    "int64": {
+      "compiled_hash": "48b46df47bc75a58318f96974720406c5dd89a92466a27aca4dd174f92a125dc",
+      "cubin_sha256": "772606d1bc78303540071773adadc5c085852cd1f0594d7a951360e9840b8a59",
+      "ptx_sha256": "26a47db1e593dd2e7c8c69aea4b404df32f75dd1a0168efbc8a12122fd745ce0",
+      "signature": [
+        [
+          "'N'",
+          "'constexpr'"
+        ],
+        [
+          "'TOPK'",
+          "'constexpr'"
+        ],
+        [
+          "'homes'",
+          "'*i32'"
+        ],
+        [
+          "'ids'",
+          "'*i64'"
+        ],
+        [
+          "'logical_counts'",
+          "'*i32'"
+        ],
+        [
+          "'output'",
+          "'*i64'"
+        ],
+        [
+          "'real_tokens'",
+          "'*i32'"
+        ],
+        [
+          "'summary'",
+          "'*i32'"
+        ]
+      ],
+      "constants": [
+        [
+          "(6,)",
+          "1024"
+        ],
+        [
+          "(7,)",
+          "8"
+        ]
+      ],
+      "pointer_specialization_attributes": [
+        [
+          "(0,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(1,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(2,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(3,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(4,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(5,)",
+          "[['tt.divisibility', 16]]"
+        ],
+        [
+          "(6,)",
+          "[]"
+        ],
+        [
+          "(7,)",
+          "[]"
+        ]
+      ],
+      "num_warps": 4,
+      "num_ctas": 1,
+      "shared": 512,
+      "arch": 90,
+      "baseline_jit_same_compiled_object": true
+    }
+  },
+  "compiled_binary_verification": {
+    "independently_hashed": false,
+    "scope": "Recorded runtime artifact attestation only"
+  },
+  "submission_diagnostic": {
+    "sha256": "b6c3de36afff23cc8aa38608e9ee0d45b959ca3fd238672306a9883dc61f4264",
+    "scope": "Host mapper-call submission only; excludes subsequent completion wait; not exclusive GPU time or layer service, not an independent trial",
+    "per_rank": {
+      "0": {
+        "previous": {
+          "mean_us": 22.2205,
+          "samples": 64
+        },
+        "fix": {
+          "mean_us": 11.466203125,
+          "samples": 64
+        }
+      },
+      "1": {
+        "previous": {
+          "mean_us": 21.4484375,
+          "samples": 64
+        },
+        "fix": {
+          "mean_us": 11.533546875,
+          "samples": 64
+        }
+      }
+    }
+  },
+  "limits": [
+    "Descriptive reused-content results; technical repetitions averaged within four groups; no CI or p-value.",
+    "Host-submission measurements exclude completion wait; they are not exclusive GPU time or layer-service components.",
+    "GPU functional checks are authenticated recorded evidence, not a new GPU execution by this CPU verifier."
+  ]
+}

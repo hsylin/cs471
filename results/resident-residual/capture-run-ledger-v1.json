@@ -1,0 +1,57 @@
+{
+  "schema": "resident_residual_capture_run_ledger_v1",
+  "passed": true,
+  "splits": [
+    {
+      "split": "pilot",
+      "banks": 4,
+      "documents": 128,
+      "captured_token_records": 13154,
+      "capture_index_sha256": "81fc3716def54bb1b9d0300c3409a938babffa06158f829e4a56f90817071715",
+      "provenance_sha256": "83520637412506dbe9d11896a2a4922507c847a74c54376982d8bfc83019c155",
+      "nvidia_smi_sha256": "44f41fb0ebab4a41d3afbf6b4a8c8bbb39d3d55e5924f874859448b7146a93fa",
+      "gpu_uuids": [
+        "GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3",
+        "GPU-7d5c9009-305b-9341-957f-1deb96611ed5"
+      ],
+      "allocation_id": "4872248",
+      "step_id": "38",
+      "hostname": "kh014",
+      "base_source_commit": null
+    },
+    {
+      "split": "final",
+      "banks": 16,
+      "documents": 512,
+      "captured_token_records": 44320,
+      "capture_index_sha256": "967d593d9cff72df876cbb9f0ac0bfe3f14db7992d3ce34892d8e114db4ea4f4",
+      "provenance_sha256": "83520637412506dbe9d11896a2a4922507c847a74c54376982d8bfc83019c155",
+      "nvidia_smi_sha256": "2be94f77b497eb2c7632c12136721e1c5b9413501842628b5b6b0298bed03dd5",
+      "gpu_uuids": [
+        "GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3",
+        "GPU-7d5c9009-305b-9341-957f-1deb96611ed5"
+      ],
+      "allocation_id": "4872248",
+      "step_id": "38",
+      "hostname": "kh014",
+      "base_source_commit": null
+    }
+  ],
+  "total_banks": 20,
+  "source_documents": 640,
+  "captured_token_records": 57474,
+  "capture_script_sha256": "87df3d1d2af72308bcbeae647f7b007ee4adac36b2fecd84425fa9eaacf3ff40",
+  "source_selection_sha256": "777b3e2752745494c686e71249ebf4bd3b18b172ab4bc3c26f0907ff88fab92c",
+  "audit_sha256": "609eb82d74a7aaaf947d135f196af33e78795ae0ebfe79f7f1bd74c227813e08",
+  "metadata_only_download": true,
+  "bank_location": "/work/cs-471/skewbench-hlin/repo-resident-residual/results/resident-residual/capture-{pilot,final}-v1/banks",
+  "git_source_scope": "Capture ran from a source-only working-tree snapshot with base_source_commit null; exact preparation/capture file hashes and archived script bytes identify executed code. No claim that new code was already committed.",
+  "checks": [
+    "Remote independently implemented CPU audit checked all20 bank bytes and capture attestation fields",
+    "Downloaded capture index/provenance file hashes equal the remote audit",
+    "Both hardware logs name exactly the fixed GPU UUID pair",
+    "No bank payloads were downloaded; later offline replay requires the authenticated bank files"
+  ],
+  "cpu_only_audit": true,
+  "no_extra_gpu_launch": true
+}
