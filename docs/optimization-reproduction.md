@@ -88,6 +88,18 @@ compressed versus original uncompressed record files. Keep the **archived
 selection file** for verifying the frozen final manifest's file-level linkage;
 do not replace it with a reformatted or recompressed reconstruction.
 
+Independently verify the pilot selection, actual saved input indices and original
+decompressed timing payload:
+
+```bash
+.venv-analysis/bin/python scripts/audit_optimization_tuning.py \
+  --manifest configs/optimization-tuning-frozen-v1.json \
+  --records results/optimization/tuning/records.jsonl.gz \
+  --selection results/optimization/tuning/selection.json \
+  --tuning-dir results/optimization/tuning \
+  --output work/optimization-reproduction-new/independent-tuning.json
+```
+
 Recompute validation and final reports separately:
 
 ```bash
