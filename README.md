@@ -1,5 +1,20 @@
 # SkewBench
 
+**New-content and external-arrival validation.** The frozen combined path lowers
+mean layer-job response latency by **7.8% beyond the unchanged-map shortcut**
+(conditional 95% interval: **6.8–8.8% lower**) and **47.5% versus native SKIP**
+(45.1–49.8% lower). The 216 held-out trials use 1,152 new documents from
+WildChat, MBPP and GSM8K, with contiguous Azure code/conversation timestamp
+blocks, one fixed placement and the reserved H100 pair. All seven frozen guards
+and shared-date checks pass; independent audits and clean-archive CPU
+reproduction recover the result. MBPP's point gain is only 3.7%, and completed
+elapsed improves about 0.06% beyond the shortcut. These are conditional
+fixed-layer results, not full-request or all-to-all serving claims. Read the
+[result and limits](docs/generalization/results.md),
+[literature synthesis](docs/generalization/literature-review.md),
+[50-paper evidence matrix](docs/generalization/evidence-matrix.html), and
+[reproduction guide](docs/generalization/reproduction.md).
+
 **Completed combined-path experiment.** Adding the frozen resident dispatcher
 to the unchanged-map shortcut reduces high-load mean response by another 10.6%
 (95% interval: 9.4–11.7% lower); the combined path is 54.1% lower than native SKIP
