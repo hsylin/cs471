@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import uuid
 
 from optimization.common import canonical_hash, manifest_hash
 from resident_dispatch.common import load_manifest, execution_fingerprint
@@ -10,6 +11,11 @@ ROOT = Path(__file__).resolve().parents[1]
 HARDWARE_HOST = 'kh014'
 GPU_UUIDS = ['GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3',
              'GPU-7d5c9009-305b-9341-957f-1deb96611ed5']
+
+
+def canonical_gpu_uuid(value):
+    """Normalize Torch's bare UUID and NVML's GPU-prefixed UUID identically."""
+    return 'GPU-' + str(uuid.UUID(str(value).removeprefix('GPU-')))
 
 
 def file_hash(path):

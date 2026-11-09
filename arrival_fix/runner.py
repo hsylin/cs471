@@ -16,7 +16,7 @@ from types import SimpleNamespace
 import numpy as np
 
 from arrival_fix.calendars import validate_calendar
-from arrival_fix.common import load_plan, source_identity
+from arrival_fix.common import load_plan, source_identity, canonical_gpu_uuid
 from arrival_fix.noop import unchanged_map_fast_path
 from arrival_fix.proof import run_gpu_proof
 from arrival_study.runner import serve
@@ -228,7 +228,7 @@ def main():
             raise ValueError('Shared physical devices/node/monotonic clock required')
         rt.metadata.update(arrival_clock_contract=clock_contract, physical_gpu_uuids=uuids)
         rank_uuids = [None]*rt.world_size
-        device_uuid = str(rt.torch.cuda.get_device_properties(rt.device).uuid)
+        device_uuid = canonical_gpu_uuid(rt.torch.cuda.get_device_properties(rt.device).uuid)
         rt.torch.distributed.all_gather_object(rank_uuids, device_uuid, group=rt.ep_group.cpu_group)
         if sorted(rank_uuids) != uuids:
             raise ValueError('Actual CUDA rank devices differ from the required physical pair')
