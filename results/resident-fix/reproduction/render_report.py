@@ -233,7 +233,7 @@ def build(data, paths, groups):
     for rho,contrast in itertools.product(LOADS,CONTRASTS):
         subset=[x for x in a['paired_cases'] if x['rho']==rho and x['contrast']==contrast and x['dataset'] in MAIN]
         require(len(subset)==32,'Main descriptive pair count differs')
-        rows.append([str(rho),contrast.replace('_over_',' / ')]+[number(paired_ratio(subset,key)) for key,_ in metrics])
+        rows.append([str(rho),contrast.replace('_over_',' / ')]+[number(paired_ratio(subset,key),6 if key in ('completed_elapsed_ns','throughput_jobs_per_second') else 4) for key,_ in metrics])
     doc.table(['Load','Treatment / control']+[name for _,name in metrics],rows)
     doc.paragraph('These are hierarchically aggregated matched geometric ratios over the 16 main bundles, without additional intervals. Lower latency/time ratios favor the numerator; higher throughput ratios favor it. Finite-episode throughput includes the offered horizon and drain and is not saturated capacity. Queue ratios would be N/A if any paired denominator/log ratio were undefined; no pair would be silently removed.')
     absolute=[('response_mean_ns','Response mean ms',1e6),('response_p95_ns','Mean trial p95 ms',1e6),('service_mean_ns','Service mean ms',1e6),('queue_mean_ns','Queue mean ms',1e6),('completed_elapsed_ns','Extent s',1e9),('drain_including_controller_ns','Drain ms',1e6),('controller_tail_elapsed_ns','Tail ms',1e6),('throughput_jobs_per_second','Jobs/s',1)]
@@ -274,6 +274,9 @@ def build(data, paths, groups):
         rows.append([arm]+[number(v[phase]['mean_service_ms'],6) for phase in ('all','nonrecording_ordinary','recording_ordinary','boundary')])
     doc.table(['Main arm','All jobs ms','Positions 0–47 ms','Positions 48–62 ms','Position 63 ms'],rows)
     doc.paragraph('Actual final coordinator-service means at matched positions modulo 64, averaged over all main groups, loads and arrival types. Each trial contributes 3,072 nonrecording-position jobs, 960 recording-position jobs and 64 boundary-position jobs. The labels describe the current controller; stockoff/fix use the same positions without that controller. Temporal associations are not exclusive causal stage costs.')
+    high=[x for x in a['paired_cases'] if x['rho']==.85 and x['contrast']=='fix_over_stockoff' and x['dataset'] in MAIN]
+    service_ratio=paired_ratio(high,'service_mean_ns');queue_ratio=paired_ratio(high,'queue_mean_ns')
+    doc.paragraph(f"The repaired path still has {(service_ratio-1)*100:.2f}% higher matched mean service than stockoff at high load. With identical absolute arrivals, its mean queueing ratio is {number(queue_ratio)} and its response ratio is {number(primary['ratio'])}. Small per-job delays accumulate under bursty load; improved service relative to the old method therefore does not establish an advantage over stockoff. This is observed FCFS behavior, not an extra GPU-work percentage or a full-serving prediction.")
     archkeys=[('global_active_copies','Global active copies'),('max_rank_active_copies','Max-rank active copies'),('max_rank_routes','Max-rank routes'),('global_nonempty_m_tiles','Global nonempty M tiles'),('global_padded_rows','Padded rows'),('counted_tile_flops_proxy','Counted-tile GFLOP proxy'),('useful_to_counted_tile_flops_fraction','Useful/proxy fraction')]
     archrows=[]
     main_groups=[g for g,d in groups.items() if d in MAIN]

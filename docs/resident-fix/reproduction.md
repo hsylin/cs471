@@ -2,6 +2,8 @@
 
 The CPU procedure reconstructs archived observations. It does not rerun GPU arithmetic, capture new inputs, or constitute external-laboratory replication. Run it from a complete checkout containing all four resident-fix run directories, their capture banks and frozen plans. An incomplete live directory is not a valid substitute.
 
+The completed clean replay is archived in `results/resident-fix/clean-cpu-reproduction-v1/`. It extracted a fresh Git archive of `1ddf5af3d16d2f9dc0eabc891816d771e056b1b4`, checked all 83 measured source files, and passed all four phases: 5 pilot calibrations, 60 pilot treatments, 17 final calibrations and 204 final treatments. Every archived analysis matched exactly after path/compression normalization. Both independent audits passed; the final statistical reimplementation compared 47,936 scalar fields with maximum numerical difference `5.55e-17`. The archive's commit, path selection and SHA256 are recorded in `archive-provenance.json`. This demonstrates artifact reconstruction, not another physical experiment.
+
 ## Exact implementation and scope
 
 The measurement source was committed as `331cc69f2820d58b4bde2b509f6b3d3c193da894` before fresh timing. Later artifact/documentation commits retain the same 83-file execution inventory, `08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff`. The preceding 62-file closure remains `9c6d6a7e1e94f4be769d435fbf7652e0cbb86501637c046ae078a0ccef1015d4`. The protocol and selected implementation are separately hashed inside every plan.
@@ -43,6 +45,7 @@ Numerical checks recorded by the GPU run cover 4,112 whole prepared batches per 
 Use the pinned environment, checkpoint and exported layer weights described in the existing cluster setup. `scripts/run-resident-fix-kuma.sh` invokes the runner with a frozen plan, capture-bank directory and new output directory. It refuses to overwrite an existing run. The exact original-pair replay command is:
 
 ```bash
+git rev-parse HEAD > SOURCE_COMMIT
 export SLURM_SUBMIT_DIR="$PWD"
 srun --jobid=4872248 --exact --nodes=1 --ntasks=1 \
   --cpus-per-task=8 --gpus-per-node=2 \

@@ -1,5 +1,22 @@
 # SkewBench
 
+**Resident-path repair: much faster than our previous method, still slower than EPLB-off.**
+The controller-free, one-launch dispatcher preserves the previous physical
+assignments while removing inactive recording/planning work. On the same two
+H100s, 204 held-out trials over 544 fresh documents show **28.5% higher high-load
+mean layer-job response than stock EPLB-off** (conditional 95% interval:
+**23.1–34.5% higher**). Service remains 2.7% higher than stockoff, and completed
+elapsed is 0.065% higher. Against our previous method, the observed service,
+high-load response and completed elapsed reductions are 10.8%, 79.7% and 1.32%;
+these comparisons are descriptive because the primary gate closed. All five
+stockoff regression guards fail to establish the 2% margin, and the separate
+MBPP sentinel fails. All 204 records pass numerical/state checks and independent
+raw/statistical audits. These are eager B128 layer-job results, not full-model
+serving gains. Read the [complete result](docs/resident-fix/results.md),
+[diagnosis](docs/resident-fix/diagnosis.md),
+[frozen protocol](docs/resident-fix/protocol-v1.md), and
+[reproduction guide](docs/resident-fix/reproduction.md).
+
 **Genuine stock-vLLM comparison: the current combined method loses to EPLB-off.**
 On the same reserved two H100s, 216 held-out trials over 576 new documents and
 fresh Azure arrival blocks compare the actual pinned vLLM layer with EPLB disabled,
