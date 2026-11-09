@@ -1,0 +1,235 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 23:01:07.601589641 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "prepare_content", "group": "fix-gsm8k-pilot-02", "phase": "pilot"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 4096, "total": 4112}
+WARNING:vllm.model_executor.layers.fused_moe.fused_moe:Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-02", "arm": "fix", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 4400524.109130859, "record_id": "79e756e685b7d11b384e18e3fc0b8c15e9e845711b10bfd51c64cbe85ec9ad21"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "current", "mean_response_ns": 21490609.79296875, "record_id": "d6ddabca35129c997000ce8b1c5541839aab8084588b42da771f3eae2dc506ad"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "fix", "mean_response_ns": 4662825.822265625, "record_id": "21bceb9bf28a548ee2647778f26b0820c8364ad8a80de0debb9f3c7ef561366b"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 2396845.196533203, "record_id": "a7ee5484bf81890a1e975fffc4da7316bcc32738477b3a56426e5e884cfdae54"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "fix", "mean_response_ns": 2437720.173095703, "record_id": "666236cb39c1238b6105f1fe14d6c7aab6826d96e5e66c1fdd274968cfb127d0"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "current", "mean_response_ns": 2921041.4169921875, "record_id": "7805a0b56409716fe0ded50dd775c222045d08cc9e2f2f956c780ec7882d5679"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "current", "mean_response_ns": 2258454.0087890625, "record_id": "b15df4ff4f29c4babd7e851a0eaba03e83aa58ba9a22f98cce3018365ff59717"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "fix", "mean_response_ns": 1842150.8122558594, "record_id": "a7a4484893b6bdb35949ed7b85d02df0f1112495539c461ed69d1147ba9daf6c"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 1815064.6506347656, "record_id": "788bf8a1516be3d5a717e9f05482a6fde0df44ccff5018b5f2dc73bd33d7dae5"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "fix", "mean_response_ns": 6726382.798339844, "record_id": "6530f56ff04b2ad49ae1f2812a398b3045f9f3ae7edcb4619ead9b92239cb38a"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "current", "mean_response_ns": 44065479.55957031, "record_id": "cd1f3283a256b86608400b5e0aec7708fb72ffb2716f72f71b4af1be0e8500de"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 6329033.895751953, "record_id": "e044b7abe7d0c7110cc1c0b47a297952e7ed36a400679cce61250c26bdcdac45"}
+{"event": "prepare_content", "group": "fix-mbpp-pilot-01", "phase": "pilot"}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-mbpp-pilot-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "fix", "mean_response_ns": 5595758.480712891, "record_id": "feece368e8cc97d88a656b135eaa700a199dcccdbbf0c1ca51a8a92981f5eea2"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 4389769.260009766, "record_id": "7b7470c82f22c28ce0f9b4f29117429acc5b8456bfd0e2ef54aa37971c4defde"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "current", "mean_response_ns": 27802847.994384766, "record_id": "809c16771d9d798f95223ee5eb12d330abd7c89b4b8ca4b139f30cb18aa825d3"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 2070294.8669433594, "record_id": "caef13b1f6d44d19026f51c80ab482367dc056d371f90dc6463e722db4feae1f"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "current", "mean_response_ns": 2688743.5681152344, "record_id": "beb63051a45a6454ddbec8f362aaa9ccb2bf55a101e82eec4f5373f115f58d63"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "fix", "mean_response_ns": 2167191.997314453, "record_id": "0f345244e104d4e01679e6da210fc67418af87c918fade30f6cc7996c6fd1120"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "current", "mean_response_ns": 45527295.403808594, "record_id": "3809cf986de0bb9c4b68052124f5543c699b61fff17d37e7630b382fc5d5f4f5"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 3691873.5095214844, "record_id": "b023685ca3de429104a6847178023c17a94c91fb2141033a5563054a6fa4f00a"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "fix", "mean_response_ns": 4744321.7724609375, "record_id": "230c081bb36e48417112cf165f85a244badd4faf2d9201ab1fc47347a4ceacf5"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "fix", "mean_response_ns": 1785399.298828125, "record_id": "0e5b282a1d594dfccbb259b220397bba6e8e3f1ba20698af9f164396f02faff0"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "current", "mean_response_ns": 2217176.6696777344, "record_id": "4e8c62ae93546c0122aa29466845bd7f2251f5f13de254d88755693cb14ae847"}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 1730444.9760742188, "record_id": "97baa35c7009f44aa050e1bf1134b3879a5b05ab999fefb7c407aeac9d03ec11"}
+{"event": "prepare_content", "group": "fix-wildchat-pilot-01", "phase": "pilot"}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "fix", "mean_response_ns": 1568645.4841308594, "record_id": "587352b9f0de7285380b08ffd32ed3fdcc4fabf1d5278c70557fa42ffdfed638"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "current", "mean_response_ns": 2067903.0656738281, "record_id": "c36f3f0adc6fb95fa92c8b801c6670f69734dc347118cd8c2e81ed8ffd55b250"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 1512492.8771972656, "record_id": "9f3213290fa5cae50d012755de02f76fd819608932080535bfbbb62ca7ec0afe"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 20374240.307617188, "record_id": "0640694825f0a8d3146fe7b49510bfbb970f89231ec01604d404881a17387eeb"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "current", "mean_response_ns": 59859967.85205078, "record_id": "4ab88c5630e8e20d0bae1bfa5194ec405e63f316615393f58b2e73824deff99e"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "fix", "mean_response_ns": 23161930.033447266, "record_id": "8bdf97946c492816c2efe668d08dbc7e8ef602c4f0295ee43606890911e2d07e"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 2013074.8745117188, "record_id": "bff0b17b8fc090df1922a27ca31a702d4ae37d34d68bbd31ef832509ee416a19"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "current", "mean_response_ns": 2486745.440673828, "record_id": "67daf7f9404a76a8cf9ca78344acc5744561634ff4e59651f1603f22cdbe1df1"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "fix", "mean_response_ns": 2067787.0278320312, "record_id": "527292ba47906f1794524c2d51e48aad8004ed2b15aa419ec34c969c661f4cc9"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "fix", "mean_response_ns": 4867376.874511719, "record_id": "dbde66214a45c65a16d1ddf5b73744b42f2b3b8736e723af176a719ed8cfc774"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "current", "mean_response_ns": 26106828.018066406, "record_id": "99bdf40de99ccf67a6c2d9f0ded4e788e4c229ca02fdc968ccca55128fe1acde"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 4473138.245849609, "record_id": "26bfcfd4d88b759cd3ecc95bfa6f0a9d78c896a5893bc77989cb8c83a4962a1c"}
+{"event": "prepare_content", "group": "fix-gsm8k-pilot-01", "phase": "pilot"}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-gsm8k-pilot-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "fix", "mean_response_ns": 9264215.580810547, "record_id": "6c04cdde47c028e0138ae62e3a2b1ca662c48f5c91c98aa16ce6e6a3d82e6992"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 8420782.520996094, "record_id": "9e168c8bba60449ffe0ed7ec2110828d23f1f368d5ac033cbd71ebe3aeab4d17"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "current", "mean_response_ns": 31965066.55834961, "record_id": "bfc7853da069bc5113f614d70cb2ae33286a50c3e140f223f9e8e55458ebe1cd"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "current", "mean_response_ns": 1977904.2111816406, "record_id": "c30cd96980655f8d56febb6cc2dc04b1eecb1350b38b535f4f8c55f9cfb0c6c5"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 1397654.771484375, "record_id": "8e1e25cd14fc0c4ab3bf8013cd2b0637afee5274b89907c861eca09748ed45c8"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "fix", "mean_response_ns": 1469602.4699707031, "record_id": "f07d3d11d7d0e5e7f4d1ace8b8635231c3bd7ba5c7a87d47408db15bcb1e0b38"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "fix", "mean_response_ns": 1633817.318359375, "record_id": "461d3b29a7321ba932798c176e1c5c4a5babdeb802950a3440f9b3489c05f7f1"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 1587386.0571289062, "record_id": "099c3e8624ed3bc0372dba9461cf6fff22f5ab730d1c31f44e52fee379fa73e6"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "current", "mean_response_ns": 2019573.3181152344, "record_id": "ae585c88e920dc2f22b33721587373cb8bacbd46e0bb6ad523f0362f40f935ff"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "current", "mean_response_ns": 17347533.685058594, "record_id": "1ef68f3a854c1c91ddf11ee28577d64c42df0423d7c07dfa473792b48d7a8a78"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 3568777.7709960938, "record_id": "acb3135798b6fe95aab9e0b320083c47aff6ff45fd6f6f2ca317a5dd2004b5ba"}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "fix", "mean_response_ns": 3998181.302734375, "record_id": "e5418412c593e2eeb477ce9aef7516a168aa925e7123793235482ac500ecb2d5"}
+{"event": "prepare_content", "group": "fix-wildchat-pilot-02", "phase": "pilot"}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "current", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "current", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "current", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "current", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "current", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "fix-wildchat-pilot-02", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "fix", "mean_response_ns": 1483824.20703125, "record_id": "8371996ff815325a1bfce0be56b0755c3479ccfc72f89a2d3593393b87347243"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 1399775.9233398438, "record_id": "ecf5fc8e4a10c91068907279df4ddfb6d06b3b505b0a5074a2c2bc107f8c33f6"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "current", "mean_response_ns": 1909897.2165527344, "record_id": "0899bf4420e8123f7eb0e1a407773e76f8a6abef0155c42062d895e6cc063af8"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "current", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "current", "mean_response_ns": 2517489.045654297, "record_id": "203bac82fdd6a7a2ee0d3b04522b4ceea121dee7d9929d9de36fa634d4f581f4"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 2028351.2189941406, "record_id": "996893912a0e5682961b391e9144cd9046f99e20b2ac39c7c1a43bd3a3126c7d"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "fix", "mean_response_ns": 2126578.6372070312, "record_id": "3997d8f937301febdc7ab8b61645a43a7522cb75da638c98a3488b185f18e8a8"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 3922479.908935547, "record_id": "3bb2edfc72c979969233593a78c9ed556b251003ab6e53367fb3523673ee3678"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "fix", "mean_response_ns": 4903119.723144531, "record_id": "3a102087f2c78cca0a5db1300ecfd997b644b0c58a13373ee846ef1d9adbf574"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "current", "mean_response_ns": 42004730.185791016, "record_id": "3eb59480c9f42abcc84a114bba3908856250d0018434fbedef863471804a52f6"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "current", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "current", "mean_response_ns": 71563654.88305664, "record_id": "451ea17113414d80b8d2e31bbab25d7260958ae91809f8544a6ddf7092e38b41"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "fix", "mean_response_ns": 21981627.662353516, "record_id": "f9f172131a75fd703b4636419dae63af575c97905643f0d5d5cbf26d2f9c6399"}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 13615611.270996094, "record_id": "eb30f7408366ba2a28457b9fd654e5d644962b6d663692471b08d0b6b22e400f"}

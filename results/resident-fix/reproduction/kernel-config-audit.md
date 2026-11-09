@@ -1,0 +1,24 @@
+# Actual tile configuration and the limits of equal-work claims
+
+All examined archived rank records agree on the same unquantized B128 expert-kernel configuration: `BLOCK_SIZE_M=64`, `BLOCK_SIZE_N=128`, `BLOCK_SIZE_K=64`, `GROUP_SIZE_M=1`, `SPLIT_K=1`, four warps, three stages. This includes both development runs, all 216 prior stock-study final trials, and the five fresh native-only pilot calibrations. The fresh treatments must be checked separately; the new summary script rejects a different configuration instead of carrying forward an equal-work statement.
+
+The native modular expert implementation calls the same selector with actual weight shapes and batch size. Its lookup uses local expert count 64 or 80 and intermediate dimension 768. At batch 128, the unquantized default branch selects the same M/N/K tiles for both; the tokens-per-expert grouping condition also yields 1 in both cases. [Actual call](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/experts/triton_moe.py#L301-L315), [selector/default](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py#L1369-L1454).
+
+For a physical expert receiving `c` routed rows, the nonempty M-tile proxy is `ceil(c/64)`. Both stock-off and the resident one-home policy place all assignments of a logical expert on exactly one physical copy in a batch. With identical logical routes and the verified common tile size, moving that whole count between ranks preserves the global number of active copies, global nonempty M tiles and their counted padded rows. All 384 saved development batches satisfy these equalities. They can still have different maximum rank counts: development group mean resident/off ratios ranged 0.8634–0.9553 for peak routed rows and 0.9299–0.9772 for peak active copies/nonempty M tiles. These are rank-imbalance proxies, not latency predictions.
+
+Equal nonempty expert tiles do **not** imply equal launched programs. In this pinned path, global expert count includes redundant physical slots. The alignment buffer allocates `128*8 + E_global*(64-1)` sorted-ID elements; the Triton grid uses that allocated extent. Programs beyond the actual post-padding count return early. Nonlocal experts are filtered during alignment in this unquantized EP path. [Global expert count](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/layer.py#L69-L85), [alignment allocation](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/moe_align_block_size.py#L137-L164), [grid](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py#L820-L839), [early return](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py#L402-L405), [EP filtering](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/experts/triton_moe.py#L332-L374).
+
+| Source-derived quantity, per rank | Stock-off128 | Current/fix160 |
+|---|---:|---:|
+| Local weight experts |64|80|
+| Allocated sorted-ID elements |9,088|11,104|
+| M-grid positions, rounded up |142|174|
+| First GEMM programs: M positions×12 N tiles |1,704|2,088|
+| Second GEMM programs: M positions×16 N tiles |2,272|2,784|
+| Combined program count |3,976|4,872|
+
+This table is a source-derived launch extent, not a measured profiler grid or a count of programs that perform a full GEMM. It includes early-return programs. The larger allocated grid is a possible residual overhead of 160-slot execution, but these experiments have not measured its exclusive cost. It cannot be used to explain a particular number of microseconds or to justify a new kernel change after the freeze.
+
+For the two matmuls, useful arithmetic is `2*1024*(2048*1536 + 768*2048) = 9,663,676,416` FLOPs per global input batch. The counted padded-tile proxy replaces 1024 with the sum of padded expert rows (N/K are exactly divisible by the observed tiles). Neither quantity measures actual hardware instructions, HBM traffic, SM/tensor utilization, scheduling, or cache effects. Active-copy minimization is not a runtime bound.
+
+Outside-closure artifacts: `work/resident-fix-kernel-config-audit.json` records exact metadata-file hashes, per-group checks and source links. `work/summarize_resident_fix_service.py` will verify actual final configurations and summarize complete fresh raw service records by matched phase positions, with main datasets and MBPP sentinel kept separate. It emits no confidence intervals, hypothesis tests, performance gates or causal component timings.

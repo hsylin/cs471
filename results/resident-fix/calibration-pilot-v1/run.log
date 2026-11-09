@@ -1,0 +1,70 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 22:57:39.070334549 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "prepare_content", "group": "fix-gsm8k-pilot-02", "phase": "calibration"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-02", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 1481849150.331543, "record_id": "7a5e10b1ab7ff53ce6c1884219b4596f3ea7eb34300ae15a7b83e9e62a1f373c"}
+{"event": "prepare_content", "group": "fix-mbpp-pilot-01", "phase": "calibration"}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-mbpp-pilot-01", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 1390342367.69458, "record_id": "edba1e0290f41fa8de6fbe485172d14c4ea3728d1eccc61568cc48631514e2ad"}
+{"event": "prepare_content", "group": "fix-wildchat-pilot-01", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-01", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 1530067787.5141602, "record_id": "a1fc9eae5905f6e7d144de404100b4f5b49b5c720251ca47a3db3919053f264a"}
+{"event": "prepare_content", "group": "fix-gsm8k-pilot-01", "phase": "calibration"}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-gsm8k-pilot-01", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 1479503294.0549316, "record_id": "d2fa1e547661d731d4a781cf0d67cd640d895b81109505389bd4f3f32779df69"}
+{"event": "prepare_content", "group": "fix-wildchat-pilot-02", "phase": "calibration"}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "fix-wildchat-pilot-02", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "fix-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 1525186478.3215332, "record_id": "869087e55097afe682a4f1d45dcc6536300514477da926b75d1fee3a222be99b"}

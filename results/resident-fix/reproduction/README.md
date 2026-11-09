@@ -16,7 +16,7 @@ python results/resident-fix/reproduction/verify_resident_fix_statistics.py \
 
 For a baseline calibration, omit `--calibration`; its records contain only stockoff. Pilot and calibration statistics remain descriptive, with no confirmatory inference. For treatment records, the raw audit requires the actual baseline calibration records and compares their uncompressed file hashes to the frozen plan. Gzip storage changes are reported separately from original record-byte identity.
 
-The raw audit verifies exact selected source, model, hardware, calibration, arrival and input hashes; it regenerates every one of the 4,112 prepared job compositions per content group. Saved **actual stock gate/top-k outputs**, rather than historical captured router outputs, drive a separate scalar greedy oracle for all current/fix assignments. It compares physical-ID and float32-weight byte hashes, full physical counts and rank loads; reconstructs current-arm observation windows; and checks the static arm has no control, recording or migration work. It also validates the fused stream/storage contract, precision settings and the recorded numerical coverage.
+The raw audit verifies exact selected source, model, hardware, calibration, arrival and input hashes; it regenerates every one of the 4,112 prepared job compositions per content group. Saved **actual stock gate/top-k outputs**, rather than historical captured router outputs, drive a separate scalar greedy oracle for all current/fix assignments. It compares physical-ID and float32-weight byte hashes, full physical counts and rank loads; float32 weights are authenticated against saved native outputs, without independently recomputing softmax/top-k from hidden states; reconstructs current-arm observation windows; and checks the static arm has no control, recording or migration work. It also validates the fused stream/storage contract, precision settings and the recorded numerical coverage.
 
 The statistical verifier recomputes FCFS summaries, all descriptive paired ratios and the registered final endpoints directly from clocks. It uses two main eight-content-group strata, 100,000 PCG64 draws with seed 471712, ten one-sided guards, date-deletion point sensitivity, the gated secondary contrast and six descriptive MBPP sentinel checks. Production output is read only after reconstruction, as the comparison target. The main bootstrap excludes the single MBPP group.
 
@@ -31,3 +31,27 @@ python -m pytest results/resident-fix/reproduction/test_independent_verifiers.py
 ```
 
 Tests cover the full 100,000-draw table, gates and sentinel separation, unestimable date deletion, complete phase matrices and intentional record/calendar/assignment/clock corruption. Test fixtures do not estimate GPU performance.
+
+## One-command clean-archive replay
+
+Extract the committed source/config/protocol/results bundle into a fresh directory. Use an ordinary CPU Python environment with NumPy; no Torch, CUDA or GPU allocation is needed for these analysis commands. The bundle must contain all source files pinned by the frozen plans, the capture banks, saved input/route/assignment artifacts, raw trial records and archived `analysis.json` files. Install NumPy in your chosen environment before replay; the reproduction report records the Python and NumPy versions.
+
+Run all four completed phases into a **new** output directory:
+
+```sh
+python results/resident-fix/reproduction/reproduce_cpu.py \
+  --output-dir /absolute/path/to/new-cpu-replay
+```
+
+A bounded partial replay is available while later phases are unavailable:
+
+```sh
+python results/resident-fix/reproduction/reproduce_cpu.py \
+  --phases calibration-pilot --output-dir /absolute/path/to/new-calibration-replay
+```
+
+The other phase names are `pilot`, `calibration-final`, and `final`. An extracted checkout is inferred from the helper location; `--repo-root` and `--results-root` can override the source and archived-data roots. The helper checks tool hashes, all frozen execution-source bytes, protocol/selection hashes and each archived executed plan **before running analysis**. It refuses an existing output directory and leaves archived evidence unchanged.
+
+For each requested phase it reruns production analysis, checks exact JSON outcomes against the archived analysis, then runs both independent verifiers. Only record-path relocation and gzip packaging are normalized for the archive comparison; original uncompressed trial-byte hashes and every numerical result are retained. Any other difference fails the replay and must be investigated rather than silently accepted. Logs, newly derived analyses/audits and `reproduction-report.json` are written under the output directory. The helper adds no tests of experimental effects, changes no confidence interval, and never turns calibration or pilot observations into confirmatory evidence.
+
+The tool manifest is an integrity inventory, not a signature: its trust comes from the reviewed committed archive. The independent audits retain the numerical and population-scope limitations stated above.

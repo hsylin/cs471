@@ -171,3 +171,25 @@ def test_matrix_or_pair_corruption_is_rejected(monkeypatch,mutation):
             r=next(x for x in rows if x['arm']=='fix');r['preflight']['physical_assignment_digest']='0'*64
         r['record_id']=stats.digest({k:v for k,v in r.items() if k!='record_id'})
     with pytest.raises(ValueError):stats.reconstruct(p,rows,b'CPU QA protocol',draw_count=10)
+
+
+replay=load('independent_replay',HERE/'reproduce_cpu.py')
+
+def test_archive_comparison_allows_only_relocation_compression(tmp_path):
+    baseline=dict(valid=True,confirmatory={'ratio':.9},record_files=[dict(path='/original/trials/a.jsonl',stored_bytes_sha256='a'*64,uncompressed_bytes_sha256='a'*64)])
+    regenerated=copy.deepcopy(baseline)
+    regenerated['record_files'][0].update(path='/extracted/trials/a.jsonl.gz',stored_bytes_sha256='b'*64)
+    old=tmp_path/'archived.json';new=tmp_path/'regenerated.json'
+    import json
+    old.write_text(json.dumps(baseline));new.write_text(json.dumps(regenerated))
+    assert replay.compare_archived(new,old)['passed']
+    regenerated['confirmatory']['ratio']+=.0000001;new.write_text(json.dumps(regenerated))
+    with pytest.raises(ValueError,match='differs beyond'):replay.compare_archived(new,old)
+
+
+def test_archive_comparison_rejects_changed_original_record_bytes(tmp_path):
+    import json
+    baseline=dict(valid=True,record_files=[dict(path='a.jsonl',stored_bytes_sha256='a'*64,uncompressed_bytes_sha256='a'*64)])
+    changed=copy.deepcopy(baseline);changed['record_files'][0]['uncompressed_bytes_sha256']='b'*64
+    old=tmp_path/'old.json';new=tmp_path/'new.json';old.write_text(json.dumps(baseline));new.write_text(json.dumps(changed))
+    with pytest.raises(ValueError,match='differs beyond'):replay.compare_archived(new,old)

@@ -1,0 +1,854 @@
+{
+  "schema": "resident_fix_actual_tiles_and_launch_extent_v1",
+  "pinned_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "actual_metadata": [
+    {
+      "stage": "fresh_pilot_calibration",
+      "actual_common_config": {
+        "BLOCK_SIZE_K": 64,
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 128,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_stages": 3,
+        "num_warps": 4
+      },
+      "rank_records": [
+        {
+          "arm": "stockoff",
+          "local_experts": 64,
+          "count": 10
+        }
+      ],
+      "files": {
+        "results/resident-fix/calibration-pilot-v1/trials/fix-gsm8k-pilot-01.jsonl": "00b8d18c6d06f23b20cbe5f08a850e3b147ef09e66cde91dcc632374a9a20820",
+        "results/resident-fix/calibration-pilot-v1/trials/fix-gsm8k-pilot-02.jsonl": "b2cdc35fbd08c50dad068b21ea39d5b7e107b2fc4aa96e1fa5bffb006268d336",
+        "results/resident-fix/calibration-pilot-v1/trials/fix-mbpp-pilot-01.jsonl": "00ea65a36725fcb5e67844bb728cad2b052109989a9241cf4349f8455a34e7ac",
+        "results/resident-fix/calibration-pilot-v1/trials/fix-wildchat-pilot-02.jsonl": "6ed515cf2c452b462a4881ba984da48aaeb7ff5ece8c7ebbb1654ef964f9c5f5",
+        "results/resident-fix/calibration-pilot-v1/trials/fix-wildchat-pilot-01.jsonl": "d2142731ab9c3a617e260fba5ad8f34cc3452bf0270848c646bf33d23c5048c5"
+      }
+    },
+    {
+      "stage": "factorial_development",
+      "actual_common_config": {
+        "BLOCK_SIZE_K": 64,
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 128,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_stages": 3,
+        "num_warps": 4
+      },
+      "rank_records": [
+        {
+          "arm": "current_offline",
+          "local_experts": 80,
+          "count": 24
+        },
+        {
+          "arm": "current_online",
+          "local_experts": 80,
+          "count": 24
+        },
+        {
+          "arm": "static_offline",
+          "local_experts": 80,
+          "count": 24
+        },
+        {
+          "arm": "static_online",
+          "local_experts": 80,
+          "count": 24
+        },
+        {
+          "arm": "stockoff",
+          "local_experts": 64,
+          "count": 24
+        }
+      ],
+      "files": {
+        "results/resident-fix/diagnostic-v1/trials.jsonl": "6c23403b94f6f0a9f6388320d01bf68db6750ec8a5d3429ed21be57a304280b5"
+      }
+    },
+    {
+      "stage": "fused_development",
+      "actual_common_config": {
+        "BLOCK_SIZE_K": 64,
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 128,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_stages": 3,
+        "num_warps": 4
+      },
+      "rank_records": [
+        {
+          "arm": "current_online",
+          "local_experts": 80,
+          "count": 24
+        },
+        {
+          "arm": "static_online",
+          "local_experts": 80,
+          "count": 24
+        },
+        {
+          "arm": "stockoff",
+          "local_experts": 64,
+          "count": 24
+        }
+      ],
+      "files": {
+        "results/resident-fix/fused-development-v1/trials.jsonl": "b032f87534efc92be2cb4c66ef641bcb3b1893421f9eedfcaa6aa3ded2cce574"
+      }
+    },
+    {
+      "stage": "previous_stock_final",
+      "actual_common_config": {
+        "BLOCK_SIZE_K": 64,
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 128,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_stages": 3,
+        "num_warps": 4
+      },
+      "rank_records": [
+        {
+          "arm": "ours",
+          "local_experts": 80,
+          "count": 144
+        },
+        {
+          "arm": "stockoff",
+          "local_experts": 64,
+          "count": 144
+        },
+        {
+          "arm": "stockon32",
+          "local_experts": 80,
+          "count": 144
+        }
+      ],
+      "files": {
+        "results/stock-comparison/final-v1/trials/stock-mbpp-final-06.jsonl": "13ba4aa4b64e51505242574dbf6df70692ae3661278b68b3d4818880842b4228",
+        "results/stock-comparison/final-v1/trials/stock-mbpp-final-04.jsonl": "ee8b1e713a70dd40060bc891a4440fbbe17330810c1a3e2a9858e4cbd5db7184",
+        "results/stock-comparison/final-v1/trials/stock-mbpp-final-02.jsonl": "f1b7bdac14e93d5bd4a3c6dc3d137e5ec2940154e3a24c35a7472543e689922d",
+        "results/stock-comparison/final-v1/trials/stock-mbpp-final-05.jsonl": "b81389dc5952ef8633b7aa4d0ec38d6456a45678eb9179ea1a2858b5cb7ca422",
+        "results/stock-comparison/final-v1/trials/stock-mbpp-final-03.jsonl": "315f30cd930f99b10b4c0c7773695d195efad4a993918fd50bb5d2ef18e28048",
+        "results/stock-comparison/final-v1/trials/stock-mbpp-final-01.jsonl": "0f20b4a45420a3a40a3e43555979987d1da37727ef2c132be32b7d70d5868b4f",
+        "results/stock-comparison/final-v1/trials/stock-wildchat-final-02.jsonl": "19438c50907c5030d2c3c63540238279b159af7643dcdfe8c48900789793d175",
+        "results/stock-comparison/final-v1/trials/stock-gsm8k-final-04.jsonl": "414aa3c71dd4f191bad9e113ef1c1e8feae51c4506f33fe995292b33ac23b00b",
+        "results/stock-comparison/final-v1/trials/stock-gsm8k-final-06.jsonl": "c7e192c52a2561434af93fd419b7e3ac675ace6e175a449993de828da13486f0",
+        "results/stock-comparison/final-v1/trials/stock-gsm8k-final-02.jsonl": "0cdcdcc13643d338a9fb5b0239da2d5b83ef09382e12634ce20e53a306542373",
+        "results/stock-comparison/final-v1/trials/stock-wildchat-final-04.jsonl": "3f9798c5d8380f2daf0e3f144ddd1663f9fb952728986ba71772fa85e83fead2",
+        "results/stock-comparison/final-v1/trials/stock-wildchat-final-06.jsonl": "ce353a0f350ddcacef9917632f8df38dfbe6eaeb5d697c414173371194bab9af",
+        "results/stock-comparison/final-v1/trials/stock-wildchat-final-01.jsonl": "9b40ffb8a07f584ca7c3605e1f099d5937879c5a8952c3a1f8f0c3232c8430ba",
+        "results/stock-comparison/final-v1/trials/stock-gsm8k-final-05.jsonl": "2deb0afcd83364f7d540f668a6f93a55087ee6c7d2f16725e324da9ec0ec1b3f",
+        "results/stock-comparison/final-v1/trials/stock-wildchat-final-03.jsonl": "81b002b1bacfa0cd3f2a687847004292098596ee87814b534efdfcd65d60e8ad",
+        "results/stock-comparison/final-v1/trials/stock-gsm8k-final-01.jsonl": "7be2e107686f80da0727f64413b685274272a0f611703fe02ca1260fe3655ed0",
+        "results/stock-comparison/final-v1/trials/stock-wildchat-final-05.jsonl": "7f9600605d8fc949231b11eb15c8dbdf7eabd3d16b82a3ef2c83ca8224a18e25",
+        "results/stock-comparison/final-v1/trials/stock-gsm8k-final-03.jsonl": "908ab0b6d2a1be85c1909436d0df3a981909cd01f91f9b67e57fbd47a592a780"
+      }
+    }
+  ],
+  "development_384_batch_proxies": {
+    "stock-gsm8k-pilot-01": {
+      "batches": 64,
+      "all_batch_invariants": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 108.140625,
+            "min": 103.0,
+            "max": 112.0
+          },
+          "max_rank_active_copies": {
+            "mean": 57.984375,
+            "min": 54.0,
+            "max": 61.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 108.140625,
+            "min": 103.0,
+            "max": 112.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 57.984375,
+            "min": 54.0,
+            "max": 61.0
+          },
+          "max_rank_routes": {
+            "mean": 591.984375,
+            "min": 547.0,
+            "max": 619.0
+          },
+          "global_padded_rows": {
+            "mean": 6921.0,
+            "min": 6592.0,
+            "max": 7168.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65314750464.0,
+            "min": 62209916928.0,
+            "max": 67645734912.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14800697952014935,
+            "min": 0.14285714285714285,
+            "max": 0.1553398058252427
+          }
+        },
+        "resident": {
+          "global_active_copies": {
+            "mean": 108.140625,
+            "min": 103.0,
+            "max": 112.0
+          },
+          "max_rank_active_copies": {
+            "mean": 54.375,
+            "min": 52.0,
+            "max": 56.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 108.140625,
+            "min": 103.0,
+            "max": 112.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 54.375,
+            "min": 52.0,
+            "max": 56.0
+          },
+          "max_rank_routes": {
+            "mean": 512.796875,
+            "min": 512.0,
+            "max": 518.0
+          },
+          "global_padded_rows": {
+            "mean": 6921.0,
+            "min": 6592.0,
+            "max": 7168.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65314750464.0,
+            "min": 62209916928.0,
+            "max": 67645734912.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14800697952014935,
+            "min": 0.14285714285714285,
+            "max": 0.1553398058252427
+          }
+        }
+      },
+      "mean_peak_ratios": {
+        "max_rank_routes": 0.866233800512049,
+        "max_rank_active_copies": 0.9377526273241714,
+        "max_rank_nonempty_m_tiles": 0.9377526273241714
+      }
+    },
+    "stock-gsm8k-pilot-02": {
+      "batches": 64,
+      "all_batch_invariants": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 107.390625,
+            "min": 102.0,
+            "max": 112.0
+          },
+          "max_rank_active_copies": {
+            "mean": 57.984375,
+            "min": 56.0,
+            "max": 60.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 107.390625,
+            "min": 102.0,
+            "max": 112.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 57.984375,
+            "min": 56.0,
+            "max": 60.0
+          },
+          "max_rank_routes": {
+            "mean": 594.390625,
+            "min": 567.0,
+            "max": 630.0
+          },
+          "global_padded_rows": {
+            "mean": 6873.0,
+            "min": 6528.0,
+            "max": 7168.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 64861765632.0,
+            "min": 61605937152.0,
+            "max": 67645734912.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14904367852531689,
+            "min": 0.14285714285714285,
+            "max": 0.1568627450980392
+          }
+        },
+        "resident": {
+          "global_active_copies": {
+            "mean": 107.390625,
+            "min": 102.0,
+            "max": 112.0
+          },
+          "max_rank_active_copies": {
+            "mean": 53.921875,
+            "min": 51.0,
+            "max": 56.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 107.390625,
+            "min": 102.0,
+            "max": 112.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 53.921875,
+            "min": 51.0,
+            "max": 56.0
+          },
+          "max_rank_routes": {
+            "mean": 513.1875,
+            "min": 512.0,
+            "max": 520.0
+          },
+          "global_padded_rows": {
+            "mean": 6873.0,
+            "min": 6528.0,
+            "max": 7168.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 64861765632.0,
+            "min": 61605937152.0,
+            "max": 67645734912.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14904367852531689,
+            "min": 0.14285714285714285,
+            "max": 0.1568627450980392
+          }
+        }
+      },
+      "mean_peak_ratios": {
+        "max_rank_routes": 0.8633842433164217,
+        "max_rank_active_copies": 0.9299380220964699,
+        "max_rank_nonempty_m_tiles": 0.9299380220964699
+      }
+    },
+    "stock-mbpp-pilot-01": {
+      "batches": 64,
+      "all_batch_invariants": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 92.90625,
+            "min": 85.0,
+            "max": 99.0
+          },
+          "max_rank_active_copies": {
+            "mean": 49.234375,
+            "min": 45.0,
+            "max": 54.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 92.90625,
+            "min": 85.0,
+            "max": 99.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 49.234375,
+            "min": 45.0,
+            "max": 54.0
+          },
+          "max_rank_routes": {
+            "mean": 538.71875,
+            "min": 514.0,
+            "max": 562.0
+          },
+          "global_padded_rows": {
+            "mean": 5946.0,
+            "min": 5440.0,
+            "max": 6336.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 56113496064.0,
+            "min": 51338280960.0,
+            "max": 59793997824.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.17237564139453543,
+            "min": 0.16161616161616163,
+            "max": 0.18823529411764706
+          }
+        },
+        "resident": {
+          "global_active_copies": {
+            "mean": 92.90625,
+            "min": 85.0,
+            "max": 99.0
+          },
+          "max_rank_active_copies": {
+            "mean": 46.671875,
+            "min": 43.0,
+            "max": 50.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 92.90625,
+            "min": 85.0,
+            "max": 99.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 46.671875,
+            "min": 43.0,
+            "max": 50.0
+          },
+          "max_rank_routes": {
+            "mean": 514.625,
+            "min": 512.0,
+            "max": 523.0
+          },
+          "global_padded_rows": {
+            "mean": 5946.0,
+            "min": 5440.0,
+            "max": 6336.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 56113496064.0,
+            "min": 51338280960.0,
+            "max": 59793997824.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.17237564139453543,
+            "min": 0.16161616161616163,
+            "max": 0.18823529411764706
+          }
+        }
+      },
+      "mean_peak_ratios": {
+        "max_rank_routes": 0.9552758280642729,
+        "max_rank_active_copies": 0.9479530307838782,
+        "max_rank_nonempty_m_tiles": 0.9479530307838782
+      }
+    },
+    "stock-mbpp-pilot-02": {
+      "batches": 64,
+      "all_batch_invariants": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 88.875,
+            "min": 81.0,
+            "max": 96.0
+          },
+          "max_rank_active_copies": {
+            "mean": 47.921875,
+            "min": 44.0,
+            "max": 51.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 88.875,
+            "min": 81.0,
+            "max": 96.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 47.921875,
+            "min": 44.0,
+            "max": 51.0
+          },
+          "max_rank_routes": {
+            "mean": 545.671875,
+            "min": 514.0,
+            "max": 582.0
+          },
+          "global_padded_rows": {
+            "mean": 5688.0,
+            "min": 5184.0,
+            "max": 6144.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 53678702592.0,
+            "min": 48922361856.0,
+            "max": 57982058496.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.1802603867270281,
+            "min": 0.16666666666666666,
+            "max": 0.19753086419753085
+          }
+        },
+        "resident": {
+          "global_active_copies": {
+            "mean": 88.875,
+            "min": 81.0,
+            "max": 96.0
+          },
+          "max_rank_active_copies": {
+            "mean": 44.703125,
+            "min": 41.0,
+            "max": 48.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 88.875,
+            "min": 81.0,
+            "max": 96.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 44.703125,
+            "min": 41.0,
+            "max": 48.0
+          },
+          "max_rank_routes": {
+            "mean": 515.46875,
+            "min": 512.0,
+            "max": 539.0
+          },
+          "global_padded_rows": {
+            "mean": 5688.0,
+            "min": 5184.0,
+            "max": 6144.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 53678702592.0,
+            "min": 48922361856.0,
+            "max": 57982058496.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.1802603867270281,
+            "min": 0.16666666666666666,
+            "max": 0.19753086419753085
+          }
+        }
+      },
+      "mean_peak_ratios": {
+        "max_rank_routes": 0.9446496578186295,
+        "max_rank_active_copies": 0.9328333876752527,
+        "max_rank_nonempty_m_tiles": 0.9328333876752527
+      }
+    },
+    "stock-wildchat-pilot-01": {
+      "batches": 64,
+      "all_batch_invariants": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 119.6875,
+            "min": 117.0,
+            "max": 123.0
+          },
+          "max_rank_active_copies": {
+            "mean": 62.28125,
+            "min": 60.0,
+            "max": 63.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 119.6875,
+            "min": 117.0,
+            "max": 123.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 62.28125,
+            "min": 60.0,
+            "max": 63.0
+          },
+          "max_rank_routes": {
+            "mean": 558.90625,
+            "min": 522.0,
+            "max": 586.0
+          },
+          "global_padded_rows": {
+            "mean": 7660.0,
+            "min": 7488.0,
+            "max": 7872.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 72288829440.0,
+            "min": 70665633792.0,
+            "max": 74289512448.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13370010342316363,
+            "min": 0.13008130081300814,
+            "max": 0.13675213675213677
+          }
+        },
+        "resident": {
+          "global_active_copies": {
+            "mean": 119.6875,
+            "min": 117.0,
+            "max": 123.0
+          },
+          "max_rank_active_copies": {
+            "mean": 60.078125,
+            "min": 59.0,
+            "max": 62.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 119.6875,
+            "min": 117.0,
+            "max": 123.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 60.078125,
+            "min": 59.0,
+            "max": 62.0
+          },
+          "max_rank_routes": {
+            "mean": 512.984375,
+            "min": 512.0,
+            "max": 520.0
+          },
+          "global_padded_rows": {
+            "mean": 7660.0,
+            "min": 7488.0,
+            "max": 7872.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 72288829440.0,
+            "min": 70665633792.0,
+            "max": 74289512448.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13370010342316363,
+            "min": 0.13008130081300814,
+            "max": 0.13675213675213677
+          }
+        }
+      },
+      "mean_peak_ratios": {
+        "max_rank_routes": 0.9178361755661169,
+        "max_rank_active_copies": 0.964626191670848,
+        "max_rank_nonempty_m_tiles": 0.964626191670848
+      }
+    },
+    "stock-wildchat-pilot-02": {
+      "batches": 64,
+      "all_batch_invariants": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 123.015625,
+            "min": 120.0,
+            "max": 127.0
+          },
+          "max_rank_active_copies": {
+            "mean": 63.15625,
+            "min": 62.0,
+            "max": 64.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 123.015625,
+            "min": 120.0,
+            "max": 127.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 63.15625,
+            "min": 62.0,
+            "max": 64.0
+          },
+          "max_rank_routes": {
+            "mean": 554.546875,
+            "min": 525.0,
+            "max": 601.0
+          },
+          "global_padded_rows": {
+            "mean": 7873.0,
+            "min": 7680.0,
+            "max": 8128.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 74298949632.0,
+            "min": 72477573120.0,
+            "max": 76705431552.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13009219759766977,
+            "min": 0.12598425196850394,
+            "max": 0.13333333333333333
+          }
+        },
+        "resident": {
+          "global_active_copies": {
+            "mean": 123.015625,
+            "min": 120.0,
+            "max": 127.0
+          },
+          "max_rank_active_copies": {
+            "mean": 61.71875,
+            "min": 60.0,
+            "max": 64.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 123.015625,
+            "min": 120.0,
+            "max": 127.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 61.71875,
+            "min": 60.0,
+            "max": 64.0
+          },
+          "max_rank_routes": {
+            "mean": 513.09375,
+            "min": 512.0,
+            "max": 518.0
+          },
+          "global_padded_rows": {
+            "mean": 7873.0,
+            "min": 7680.0,
+            "max": 8128.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 74298949632.0,
+            "min": 72477573120.0,
+            "max": 76705431552.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13009219759766977,
+            "min": 0.12598425196850394,
+            "max": 0.13333333333333333
+          }
+        }
+      },
+      "mean_peak_ratios": {
+        "max_rank_routes": 0.9252486545884873,
+        "max_rank_active_copies": 0.9772389905987136,
+        "max_rank_nonempty_m_tiles": 0.9772389905987136
+      }
+    }
+  },
+  "source_derived_launch_extents": {
+    "128": {
+      "global_experts": 128,
+      "local_experts": 64,
+      "allocated_sorted_id_elements": 9088,
+      "allocated_m_positions": 142,
+      "gemm1_programs_per_rank": 1704,
+      "gemm2_programs_per_rank": 2272,
+      "total_programs_per_rank": 3976,
+      "not_measured_profiler_grid": true
+    },
+    "160": {
+      "global_experts": 160,
+      "local_experts": 80,
+      "allocated_sorted_id_elements": 11104,
+      "allocated_m_positions": 174,
+      "gemm1_programs_per_rank": 2088,
+      "gemm2_programs_per_rank": 2784,
+      "total_programs_per_rank": 4872,
+      "not_measured_profiler_grid": true
+    }
+  },
+  "primary_source_links": {
+    "config_selector": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py#L1369-L1454",
+    "actual_expert_call": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/experts/triton_moe.py#L301-L315",
+    "global_expert_count": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/layer.py#L69-L85",
+    "alignment_capacity": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/moe_align_block_size.py#L137-L164",
+    "grid_extent": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py#L820-L839",
+    "padded_tail_early_return": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/fused_moe.py#L402-L405",
+    "local_expert_filter": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/layers/fused_moe/experts/triton_moe.py#L332-L374"
+  },
+  "scope": "No fresh treatment outcomes used; source/archived metadata and old development routes only",
+  "limits": [
+    "Nonempty M-tile count is a useful-expert arithmetic proxy, not launched-program count.",
+    "Source-derived larger allocated grid is a potential residual contributor, not a measured causal timing attribution.",
+    "Actual final kernel configuration must be checked before transferring any equal-work statement."
+  ]
+}

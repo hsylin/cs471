@@ -129,6 +129,7 @@ def audit(plan,rows,inputs,repo,calibration_rows=None,calibration_files=None,ban
         by={r['content_group_id']:r for r in calibration_rows};require(len(by)==len(calibration_rows)==len(groups) and set(by)==set(groups),'Calibration matrix')
         for gid,r in by.items():
             require(r['record_id']==sha({k:v for k,v in r.items() if k!='record_id'}) and r['arm']=='stockoff' and r['phase']=='calibration','Baseline-only calibration identity')
+            require(r['input_meta']['capture_sha256']==groups[gid]['capture_sha256'] and r['input_meta']['block_id']==gid and r['dataset']==groups[gid]['dataset'],'Calibration belongs to same captured content')
             stock.raw_clock_check(r);elapsed=r['coordinator_finish_ns'][-1]-r['coordinator_start_ns'][0]
             p=plan['calibration_provenance'][gid]
             require(p['raw_record_sha256']==sha(r) and p['record_id']==r['record_id'] and p['calibration_elapsed_ns']==elapsed and r['calibration_capacity']['calibration_elapsed_ns']==elapsed,'Calibration raw provenance/capacity')

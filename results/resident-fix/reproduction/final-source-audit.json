@@ -1,0 +1,56 @@
+{
+  "source_commit": "331cc69f2820d58b4bde2b509f6b3d3c193da894",
+  "passed": true,
+  "plans": [
+    {
+      "plan": "results/resident-fix/plans/final-calibration-v1.json",
+      "plan_sha256": "c90a5a2686cda517b961616325acced5f3269e4bda1ed05f7150f42e5120466e",
+      "source_sha256": "08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff",
+      "source_file_count": 83,
+      "split": "final",
+      "phase": "calibration",
+      "banks": 17,
+      "dataset_counts": {
+        "wildchat": 8,
+        "gsm8k": 8,
+        "mbpp": 1
+      },
+      "errors": []
+    },
+    {
+      "plan": "results/resident-fix/plans/pilot-calibration-v1.json",
+      "plan_sha256": "39b5fcfc2c3f8f84c1301889710eb382068603969478f0a5b348bad15bda0f90",
+      "source_sha256": "08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff",
+      "source_file_count": 83,
+      "split": "pilot",
+      "phase": "calibration",
+      "banks": 5,
+      "dataset_counts": {
+        "gsm8k": 2,
+        "mbpp": 1,
+        "wildchat": 2
+      },
+      "errors": []
+    }
+  ],
+  "old_source_closure": {
+    "passed": true,
+    "source_sha256": "9c6d6a7e1e94f4be769d435fbf7652e0cbb86501637c046ae078a0ccef1015d4",
+    "unchanged_files": 62,
+    "new_closure_preserves_exact_old_entries": true
+  },
+  "review": {
+    "consequential_mismatch_found": false,
+    "calibration_exact_bank_identity_guard": true,
+    "fused_post_episode_stream_and_residency_check": true,
+    "both_rank_highest_no_tf32_assertion": true,
+    "stockoff_original_layer_algorithm_preserved": true,
+    "single_stream_output_lifetime_supported": true,
+    "primary_timing_preserves_inference_stream_completion": true,
+    "limits": [
+      "Static160-slot custom mode is not supported upstream EPLB-disabled mode.",
+      "Current-vs-fix changes controller package plus selector implementation.",
+      "Fresh treatment results were not consulted for this source review."
+    ]
+  }
+}

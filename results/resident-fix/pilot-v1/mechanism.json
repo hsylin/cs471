@@ -1,0 +1,2887 @@
+{
+  "schema": "resident_fix_descriptive_service_architecture_v1",
+  "phase": "pilot",
+  "complete": true,
+  "trials": 60,
+  "descriptive_only": true,
+  "confidence_intervals": false,
+  "hypothesis_tests": false,
+  "plan_sha256": "2356d9d605c4852e7ec0abc82e4581c12d65f47a6c17a523f0f9db885b422eca",
+  "source_sha256": "08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff",
+  "observed_kernel_configs": {
+    "fix": {
+      "BLOCK_SIZE_M": 64,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 4,
+      "num_stages": 3
+    },
+    "stockoff": {
+      "BLOCK_SIZE_M": 64,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 4,
+      "num_stages": 3
+    },
+    "current": {
+      "BLOCK_SIZE_M": 64,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 4,
+      "num_stages": 3
+    }
+  },
+  "kernel_metadata_records": [
+    {
+      "arm": "current",
+      "rank": 0,
+      "local_experts": 80,
+      "records": 20
+    },
+    {
+      "arm": "current",
+      "rank": 1,
+      "local_experts": 80,
+      "records": 20
+    },
+    {
+      "arm": "fix",
+      "rank": 0,
+      "local_experts": 80,
+      "records": 20
+    },
+    {
+      "arm": "fix",
+      "rank": 1,
+      "local_experts": 80,
+      "records": 20
+    },
+    {
+      "arm": "stockoff",
+      "rank": 0,
+      "local_experts": 64,
+      "records": 20
+    },
+    {
+      "arm": "stockoff",
+      "rank": 1,
+      "local_experts": 64,
+      "records": 20
+    }
+  ],
+  "group_summaries": {
+    "main": {
+      "stockoff": {
+        "trials": 16,
+        "content_groups": 4,
+        "all": {
+          "jobs_per_trial": 4096,
+          "mean_service_ms": 0.7357916352996825,
+          "mean_total_service_ms": 3013.8025381874995
+        },
+        "boundary": {
+          "jobs_per_trial": 64,
+          "mean_service_ms": 0.7349916875,
+          "mean_total_service_ms": 47.039468
+        },
+        "recording_ordinary": {
+          "jobs_per_trial": 960,
+          "mean_service_ms": 0.7357799363932291,
+          "mean_total_service_ms": 706.3487389375
+        },
+        "nonrecording_ordinary": {
+          "jobs_per_trial": 3072,
+          "mean_service_ms": 0.7358119567871094,
+          "mean_total_service_ms": 2260.41433125
+        }
+      },
+      "current": {
+        "trials": 16,
+        "content_groups": 4,
+        "all": {
+          "jobs_per_trial": 4096,
+          "mean_service_ms": 0.8423760379333496,
+          "mean_total_service_ms": 3450.372251375
+        },
+        "boundary": {
+          "jobs_per_trial": 64,
+          "mean_service_ms": 3.075197380859375,
+          "mean_total_service_ms": 196.812632375
+        },
+        "recording_ordinary": {
+          "jobs_per_trial": 960,
+          "mean_service_ms": 0.8103184131510417,
+          "mean_total_service_ms": 777.9056766250001
+        },
+        "nonrecording_ordinary": {
+          "jobs_per_trial": 3072,
+          "mean_service_ms": 0.8058769343668619,
+          "mean_total_service_ms": 2475.653942375
+        }
+      },
+      "fix": {
+        "trials": 16,
+        "content_groups": 4,
+        "all": {
+          "jobs_per_trial": 4096,
+          "mean_service_ms": 0.7505404387969971,
+          "mean_total_service_ms": 3074.2136373125
+        },
+        "boundary": {
+          "jobs_per_trial": 64,
+          "mean_service_ms": 0.751450154296875,
+          "mean_total_service_ms": 48.092809875
+        },
+        "recording_ordinary": {
+          "jobs_per_trial": 960,
+          "mean_service_ms": 0.7503521952473958,
+          "mean_total_service_ms": 720.3381074375
+        },
+        "nonrecording_ordinary": {
+          "jobs_per_trial": 3072,
+          "mean_service_ms": 0.7505803125,
+          "mean_total_service_ms": 2305.78272
+        }
+      },
+      "descriptive_phase_differences": {
+        "stockoff": {
+          "all": {
+            "fix_minus_control_ms_per_job": 0.014748803497314555,
+            "fix_minus_control_ms_per_trial": 60.41109912500042
+          },
+          "boundary": {
+            "fix_minus_control_ms_per_job": 0.016458466796875015,
+            "fix_minus_control_ms_per_trial": 1.053341875000001
+          },
+          "recording_ordinary": {
+            "fix_minus_control_ms_per_job": 0.014572258854166686,
+            "fix_minus_control_ms_per_trial": 13.989368499999955
+          },
+          "nonrecording_ordinary": {
+            "fix_minus_control_ms_per_job": 0.01476835571289059,
+            "fix_minus_control_ms_per_trial": 45.36838875000012
+          }
+        },
+        "current": {
+          "all": {
+            "fix_minus_control_ms_per_job": -0.09183559913635253,
+            "fix_minus_control_ms_per_trial": -376.15861406249996
+          },
+          "boundary": {
+            "fix_minus_control_ms_per_job": -2.3237472265625,
+            "fix_minus_control_ms_per_trial": -148.7198225
+          },
+          "recording_ordinary": {
+            "fix_minus_control_ms_per_job": -0.05996621790364587,
+            "fix_minus_control_ms_per_trial": -57.56756918750011
+          },
+          "nonrecording_ordinary": {
+            "fix_minus_control_ms_per_job": -0.055296621866861906,
+            "fix_minus_control_ms_per_trial": -169.8712223749999
+          }
+        }
+      }
+    },
+    "mbpp_sentinel": {
+      "stockoff": {
+        "trials": 4,
+        "content_groups": 1,
+        "all": {
+          "jobs_per_trial": 4096,
+          "mean_service_ms": 0.6754240908813477,
+          "mean_total_service_ms": 2766.53707625
+        },
+        "boundary": {
+          "jobs_per_trial": 64,
+          "mean_service_ms": 0.67545848828125,
+          "mean_total_service_ms": 43.22934325
+        },
+        "recording_ordinary": {
+          "jobs_per_trial": 960,
+          "mean_service_ms": 0.6750264109375,
+          "mean_total_service_ms": 648.0253544999999
+        },
+        "nonrecording_ordinary": {
+          "jobs_per_trial": 3072,
+          "mean_service_ms": 0.6755476492513021,
+          "mean_total_service_ms": 2075.2823785
+        }
+      },
+      "current": {
+        "trials": 4,
+        "content_groups": 1,
+        "all": {
+          "jobs_per_trial": 4096,
+          "mean_service_ms": 0.7894090021972656,
+          "mean_total_service_ms": 3233.419273
+        },
+        "boundary": {
+          "jobs_per_trial": 64,
+          "mean_service_ms": 3.07619029296875,
+          "mean_total_service_ms": 196.87617875
+        },
+        "recording_ordinary": {
+          "jobs_per_trial": 960,
+          "mean_service_ms": 0.7560140054687501,
+          "mean_total_service_ms": 725.77344525
+        },
+        "nonrecording_ordinary": {
+          "jobs_per_trial": 3072,
+          "mean_service_ms": 0.7522036617838541,
+          "mean_total_service_ms": 2310.769649
+        }
+      },
+      "fix": {
+        "trials": 4,
+        "content_groups": 1,
+        "all": {
+          "jobs_per_trial": 4096,
+          "mean_service_ms": 0.6945354042358398,
+          "mean_total_service_ms": 2844.81701575
+        },
+        "boundary": {
+          "jobs_per_trial": 64,
+          "mean_service_ms": 0.69429725,
+          "mean_total_service_ms": 44.435024
+        },
+        "recording_ordinary": {
+          "jobs_per_trial": 960,
+          "mean_service_ms": 0.6945230356770834,
+          "mean_total_service_ms": 666.74211425
+        },
+        "nonrecording_ordinary": {
+          "jobs_per_trial": 3072,
+          "mean_service_ms": 0.6945442309570312,
+          "mean_total_service_ms": 2133.6398775
+        }
+      },
+      "descriptive_phase_differences": {
+        "stockoff": {
+          "all": {
+            "fix_minus_control_ms_per_job": 0.01911131335449212,
+            "fix_minus_control_ms_per_trial": 78.27993949999973
+          },
+          "boundary": {
+            "fix_minus_control_ms_per_job": 0.018838761718749986,
+            "fix_minus_control_ms_per_trial": 1.205680749999999
+          },
+          "recording_ordinary": {
+            "fix_minus_control_ms_per_job": 0.019496624739583357,
+            "fix_minus_control_ms_per_trial": 18.71675975000005
+          },
+          "nonrecording_ordinary": {
+            "fix_minus_control_ms_per_job": 0.018996581705729154,
+            "fix_minus_control_ms_per_trial": 58.357498999999734
+          }
+        },
+        "current": {
+          "all": {
+            "fix_minus_control_ms_per_job": -0.0948735979614258,
+            "fix_minus_control_ms_per_trial": -388.6022572500001
+          },
+          "boundary": {
+            "fix_minus_control_ms_per_job": -2.38189304296875,
+            "fix_minus_control_ms_per_trial": -152.44115475
+          },
+          "recording_ordinary": {
+            "fix_minus_control_ms_per_job": -0.06149096979166668,
+            "fix_minus_control_ms_per_trial": -59.03133100000002
+          },
+          "nonrecording_ordinary": {
+            "fix_minus_control_ms_per_job": -0.0576594308268229,
+            "fix_minus_control_ms_per_trial": -177.12977150000006
+          }
+        }
+      }
+    }
+  },
+  "per_trial_service": [
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7265414085286458,
+        "total_ms": 2231.935207
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7254474916666667,
+        "total_ms": 696.429592
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7220741093749999,
+        "total_ms": 46.212742999999996
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7262152202148437,
+        "total_ms": 2974.577542
+      },
+      "completed_elapsed_ms": 3491.152525
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7194713557942708,
+        "total_ms": 2210.2160049999998
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7192536072916667,
+        "total_ms": 690.483463
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7133778125,
+        "total_ms": 45.65618
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7193251093749999,
+        "total_ms": 2946.3556479999997
+      },
+      "completed_elapsed_ms": 3489.382797
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7843103024088541,
+        "total_ms": 2409.401249
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7901681979166668,
+        "total_ms": 758.5614700000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.0170651250000002,
+        "total_ms": 193.09216800000002
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8205700407714844,
+        "total_ms": 3361.0548870000002
+      },
+      "completed_elapsed_ms": 3554.376143
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7945729117838543,
+        "total_ms": 2440.9279850000003
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.8019612729166667,
+        "total_ms": 769.882822
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.1097879062499993,
+        "total_ms": 199.02642599999996
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8324797932128907,
+        "total_ms": 3409.837233
+      },
+      "completed_elapsed_ms": 5933.822848
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7312119505208333,
+        "total_ms": 2246.283112
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7339976947916668,
+        "total_ms": 704.6377870000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7307102031249999,
+        "total_ms": 46.765452999999994
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7318570195312499,
+        "total_ms": 2997.6863519999997
+      },
+      "completed_elapsed_ms": 5931.462621
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7441381484375,
+        "total_ms": 2285.992392
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7464342635416668,
+        "total_ms": 716.576893
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.745621921875,
+        "total_ms": 47.719803
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.744699484375,
+        "total_ms": 3050.289088
+      },
+      "completed_elapsed_ms": 5931.472385
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7342611777343752,
+        "total_ms": 2255.6503380000004
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.73615156875,
+        "total_ms": 706.705506
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7358376093750001,
+        "total_ms": 47.093607000000006
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7347288698730469,
+        "total_ms": 3009.449451
+      },
+      "completed_elapsed_ms": 5930.879071
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7194440406901043,
+        "total_ms": 2210.132093
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7202400177083333,
+        "total_ms": 691.430417
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.716672578125,
+        "total_ms": 45.867045
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7195872937011719,
+        "total_ms": 2947.429555
+      },
+      "completed_elapsed_ms": 5930.831881
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7930970003255208,
+        "total_ms": 2436.3939849999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7962343385416666,
+        "total_ms": 764.384965
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.1150344375,
+        "total_ms": 199.362204
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8301125864257812,
+        "total_ms": 3400.141154
+      },
+      "completed_elapsed_ms": 5933.344055
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7873888105468749,
+        "total_ms": 2418.858426
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7913798458333333,
+        "total_ms": 759.724652
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.013672953125,
+        "total_ms": 192.875069
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8231098991699218,
+        "total_ms": 3371.458147
+      },
+      "completed_elapsed_ms": 3560.120834
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7171689055989584,
+        "total_ms": 2203.142878
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7158736166666666,
+        "total_ms": 687.238672
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.714887828125,
+        "total_ms": 45.752821
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7168296804199219,
+        "total_ms": 2936.134371
+      },
+      "completed_elapsed_ms": 3491.66666
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7314463955078127,
+        "total_ms": 2247.0033270000004
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7298773885416666,
+        "total_ms": 700.682293
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.730098796875,
+        "total_ms": 46.726323
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7310576032714844,
+        "total_ms": 2994.411943
+      },
+      "completed_elapsed_ms": 3498.508568
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7185077493489583,
+        "total_ms": 2207.255806
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7166073614583334,
+        "total_ms": 687.943067
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7156640468750001,
+        "total_ms": 45.802499000000005
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7180179130859374,
+        "total_ms": 2941.0013719999997
+      },
+      "completed_elapsed_ms": 3483.292611
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7869521722005208,
+        "total_ms": 2417.517073
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7876920854166667,
+        "total_ms": 756.184402
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.018700703125,
+        "total_ms": 193.196845
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8219966601562501,
+        "total_ms": 3366.8983200000002
+      },
+      "completed_elapsed_ms": 3492.301687
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7325583720703125,
+        "total_ms": 2250.419319
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7294325333333334,
+        "total_ms": 700.255232
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.728059140625,
+        "total_ms": 46.595785
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.731755453125,
+        "total_ms": 2997.270336
+      },
+      "completed_elapsed_ms": 3483.384738
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7295009550781252,
+        "total_ms": 2241.0269340000004
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7278363187500001,
+        "total_ms": 698.7228660000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.728902765625,
+        "total_ms": 46.649777
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7291014592285155,
+        "total_ms": 2986.3995769999997
+      },
+      "completed_elapsed_ms": 5919.441666
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7369364775390626,
+        "total_ms": 2263.868859
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7350235083333333,
+        "total_ms": 705.622568
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7349493437500001,
+        "total_ms": 47.036758000000006
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7364570764160157,
+        "total_ms": 3016.528185
+      },
+      "completed_elapsed_ms": 5919.510077
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.797869412109375,
+        "total_ms": 2451.054834
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.800087215625,
+        "total_ms": 768.083727
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.126866515625,
+        "total_ms": 200.119457
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8347797895507812,
+        "total_ms": 3419.258018
+      },
+      "completed_elapsed_ms": 5922.110744
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7925539638671876,
+        "total_ms": 2434.725777
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7962439760416667,
+        "total_ms": 764.394217
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.1176394375,
+        "total_ms": 199.528924
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8297482709960937,
+        "total_ms": 3398.648918
+      },
+      "completed_elapsed_ms": 5920.428165
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.73782792578125,
+        "total_ms": 2266.607388
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7376383229166666,
+        "total_ms": 708.13279
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7352237500000001,
+        "total_ms": 47.054320000000004
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7377427973632812,
+        "total_ms": 3021.7944979999997
+      },
+      "completed_elapsed_ms": 5918.41158
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7316771468098958,
+        "total_ms": 2247.712195
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7311091864583333,
+        "total_ms": 701.864819
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.730015578125,
+        "total_ms": 46.720997
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7315180690917968,
+        "total_ms": 2996.298011
+      },
+      "completed_elapsed_ms": 5918.411741
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7301472887369792,
+        "total_ms": 2243.012471
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7295301677083333,
+        "total_ms": 700.348961
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7301193125000001,
+        "total_ms": 46.727636000000004
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7300022138671876,
+        "total_ms": 2990.089068
+      },
+      "completed_elapsed_ms": 3482.999103
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7887739801432291,
+        "total_ms": 2423.1136669999996
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7898660927083333,
+        "total_ms": 758.271449
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.021011578125,
+        "total_ms": 193.344741
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8239086564941406,
+        "total_ms": 3374.729857
+      },
+      "completed_elapsed_ms": 3580.673176
+    },
+    {
+      "content_group_id": "fix-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7206522867838542,
+        "total_ms": 2213.843825
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7207499958333334,
+        "total_ms": 691.9199960000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.72258875,
+        "total_ms": 46.24568
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7207054445800782,
+        "total_ms": 2952.0095010000005
+      },
+      "completed_elapsed_ms": 3482.768289
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6853916777343749,
+        "total_ms": 2105.523234
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.6852336187500001,
+        "total_ms": 657.8242740000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.6815105312499999,
+        "total_ms": 43.616673999999996
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.6852939897460937,
+        "total_ms": 2806.9641819999997
+      },
+      "completed_elapsed_ms": 3276.764182
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6663231878255208,
+        "total_ms": 2046.944833
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.6649945770833334,
+        "total_ms": 638.394794
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.66735440625,
+        "total_ms": 42.710682
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.6660279074707032,
+        "total_ms": 2728.050309
+      },
+      "completed_elapsed_ms": 3275.493869
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7529228492838541,
+        "total_ms": 2312.9789929999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7552329833333334,
+        "total_ms": 725.023664
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.0247174062499997,
+        "total_ms": 193.58191399999998
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.788961076904297,
+        "total_ms": 3231.5845710000003
+      },
+      "completed_elapsed_ms": 3320.660374
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6836918802083334,
+        "total_ms": 2100.301456
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.682848603125,
+        "total_ms": 655.5346589999999
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.681779546875,
+        "total_ms": 43.633891
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.6834643569335938,
+        "total_ms": 2799.470006
+      },
+      "completed_elapsed_ms": 5562.66001
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7549753186848959,
+        "total_ms": 2319.284179
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7564064114583334,
+        "total_ms": 726.150155
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.12032015625,
+        "total_ms": 199.70049
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.792269244140625,
+        "total_ms": 3245.134824
+      },
+      "completed_elapsed_ms": 5564.469416
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.701743412109375,
+        "total_ms": 2155.755762
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.6998708239583333,
+        "total_ms": 671.875991
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7016260156249999,
+        "total_ms": 44.904064999999996
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7013026899414062,
+        "total_ms": 2872.535818
+      },
+      "completed_elapsed_ms": 5562.6603
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7451125400390625,
+        "total_ms": 2288.985723
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7524960708333334,
+        "total_ms": 722.3962280000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.033557015625,
+        "total_ms": 194.147649
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7826,
+        "total_ms": 3205.5296
+      },
+      "completed_elapsed_ms": 3408.5805
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6696062353515625,
+        "total_ms": 2057.030355
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.6694644854166667,
+        "total_ms": 642.685906
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.669186640625,
+        "total_ms": 42.827945
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.6695664565429688,
+        "total_ms": 2742.544206
+      },
+      "completed_elapsed_ms": 3280.926495
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6931020328776042,
+        "total_ms": 2129.209445
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.6944160375,
+        "total_ms": 666.639396
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.6935785156250001,
+        "total_ms": 44.389025000000004
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.6934174477539063,
+        "total_ms": 2840.2378660000004
+      },
+      "completed_elapsed_ms": 3282.565898
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6979398011067707,
+        "total_ms": 2144.0710689999996
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.6985716624999999,
+        "total_ms": 670.628796
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7004739375,
+        "total_ms": 44.830332
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.6981274895019531,
+        "total_ms": 2859.530197
+      },
+      "completed_elapsed_ms": 5563.452711
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.755803939127604,
+        "total_ms": 2321.8297009999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.75992055625,
+        "total_ms": 729.523734
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.1261665937500003,
+        "total_ms": 200.07466200000002
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7938056877441406,
+        "total_ms": 3251.428097
+      },
+      "completed_elapsed_ms": 5565.786359
+    },
+    {
+      "content_group_id": "fix-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.6825692936197917,
+        "total_ms": 2096.85287
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.682797978125,
+        "total_ms": 655.486059
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.683513359375,
+        "total_ms": 43.744855
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.682637642578125,
+        "total_ms": 2796.083784
+      },
+      "completed_elapsed_ms": 5563.414033
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7661922649739582,
+        "total_ms": 2353.7426379999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7715999989583333,
+        "total_ms": 740.735999
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.768304484375,
+        "total_ms": 49.171487
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7674927060546874,
+        "total_ms": 3143.650124
+      },
+      "completed_elapsed_ms": 6122.058434
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.8242461360677084,
+        "total_ms": 2532.08413
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.8317009218750001,
+        "total_ms": 798.432885
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.1333782968749997,
+        "total_ms": 200.53621099999998
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8620735415039062,
+        "total_ms": 3531.053226
+      },
+      "completed_elapsed_ms": 6124.513934
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7519747093098959,
+        "total_ms": 2310.066307
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7522244614583333,
+        "total_ms": 722.135483
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7529858593750001,
+        "total_ms": 48.191095000000004
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7520490441894532,
+        "total_ms": 3080.392885
+      },
+      "completed_elapsed_ms": 6121.969772
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7464509394531249,
+        "total_ms": 2293.0972859999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.748186296875,
+        "total_ms": 718.2588450000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7484125625,
+        "total_ms": 47.898404
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7468883142089844,
+        "total_ms": 3059.254535
+      },
+      "completed_elapsed_ms": 3601.868675
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.8125185807291665,
+        "total_ms": 2496.0570799999996
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.8176237072916666,
+        "total_ms": 784.9187589999999
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.03307675,
+        "total_ms": 194.116912
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8484113161621094,
+        "total_ms": 3475.092751
+      },
+      "completed_elapsed_ms": 3622.367467
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7555257190755208,
+        "total_ms": 2320.975009
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7562602833333333,
+        "total_ms": 726.009872
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.756499953125,
+        "total_ms": 48.415997
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7557131049804688,
+        "total_ms": 3095.4008780000004
+      },
+      "completed_elapsed_ms": 3601.843107
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7524527825520835,
+        "total_ms": 2311.5349480000004
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7524098625000001,
+        "total_ms": 722.3134680000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.75088675,
+        "total_ms": 48.056752
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7524182539062501,
+        "total_ms": 3081.9051680000002
+      },
+      "completed_elapsed_ms": 6123.295978
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.8241259990234374,
+        "total_ms": 2531.715069
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.82994038125,
+        "total_ms": 796.7427660000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.1348277656250003,
+        "total_ms": 200.62897700000002
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8615934599609375,
+        "total_ms": 3529.086812
+      },
+      "completed_elapsed_ms": 6125.835363
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.766151675455729,
+        "total_ms": 2353.6179469999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.764007821875,
+        "total_ms": 733.4475090000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7652754374999999,
+        "total_ms": 48.977627999999996
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7656355185546875,
+        "total_ms": 3136.043084
+      },
+      "completed_elapsed_ms": 6123.352733
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7565278212890624,
+        "total_ms": 2324.0534669999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7538733020833334,
+        "total_ms": 723.71837
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.75188384375,
+        "total_ms": 48.120566
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7558331062011718,
+        "total_ms": 3095.892403
+      },
+      "completed_elapsed_ms": 3602.917038
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.8110132939453125,
+        "total_ms": 2491.432839
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.814434978125,
+        "total_ms": 781.857579
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.0301371718750003,
+        "total_ms": 193.92877900000002
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8464890617675782,
+        "total_ms": 3467.2191970000003
+      },
+      "completed_elapsed_ms": 3630.792764
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7418783277994793,
+        "total_ms": 2279.050223
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7408258447916667,
+        "total_ms": 711.192811
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.740110828125,
+        "total_ms": 47.367093
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7416040349121094,
+        "total_ms": 3037.610127
+      },
+      "completed_elapsed_ms": 3602.977227
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7753235299479168,
+        "total_ms": 2381.793884
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7737265052083334,
+        "total_ms": 742.7774450000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.77534859375,
+        "total_ms": 49.62231
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7749496188964844,
+        "total_ms": 3174.193639
+      },
+      "completed_elapsed_ms": 6125.451119
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7490282275390624,
+        "total_ms": 2301.014715
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7504960197916667,
+        "total_ms": 720.476179
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.74850653125,
+        "total_ms": 47.904418
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.74936408984375,
+        "total_ms": 3069.395312
+      },
+      "completed_elapsed_ms": 6125.446173
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.829281478515625,
+        "total_ms": 2547.552702
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.835547196875,
+        "total_ms": 802.125309
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.13049384375,
+        "total_ms": 200.351606
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8667064494628907,
+        "total_ms": 3550.029617
+      },
+      "completed_elapsed_ms": 6125.445682
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.827618689453125,
+        "total_ms": 2542.444614
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.8327562791666666,
+        "total_ms": 799.446028
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.13635034375,
+        "total_ms": 200.726422
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.864896744140625,
+        "total_ms": 3542.617064
+      },
+      "completed_elapsed_ms": 6128.469108
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7565240442708333,
+        "total_ms": 2324.041864
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7553170666666666,
+        "total_ms": 725.104384
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7628459375,
+        "total_ms": 48.82214
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7563399384765626,
+        "total_ms": 3097.9683880000002
+      },
+      "completed_elapsed_ms": 6126.170712
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7815788697916668,
+        "total_ms": 2401.0102880000004
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.782009209375,
+        "total_ms": 750.728841
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.8083712031250001,
+        "total_ms": 51.73575700000001
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7820983608398437,
+        "total_ms": 3203.474886
+      },
+      "completed_elapsed_ms": 6126.222429
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7403530947265624,
+        "total_ms": 2274.3647069999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7397069541666667,
+        "total_ms": 710.1186759999999
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.7386343125,
+        "total_ms": 47.272596
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7401747995605469,
+        "total_ms": 3031.755979
+      },
+      "completed_elapsed_ms": 3605.635569
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7674945029296877,
+        "total_ms": 2357.7431130000004
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7679992677083334,
+        "total_ms": 737.279297
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.76579375,
+        "total_ms": 49.0108
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7675862329101563,
+        "total_ms": 3144.03321
+      },
+      "completed_elapsed_ms": 3608.152611
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.8203342236328125,
+        "total_ms": 2520.066735
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.82626104375,
+        "total_ms": 793.210602
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.0310446874999997,
+        "total_ms": 193.98685999999998
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8562656730957031,
+        "total_ms": 3507.264197
+      },
+      "completed_elapsed_ms": 3652.079559
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "current",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.8193739951171874,
+        "total_ms": 2517.116913
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.8231970770833333,
+        "total_ms": 790.269194
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 3.034070578125,
+        "total_ms": 194.180517
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.8548746640625,
+        "total_ms": 3501.566624
+      },
+      "completed_elapsed_ms": 3611.998112
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "fix",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7666334222005208,
+        "total_ms": 2355.0978729999997
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7666234906249999,
+        "total_ms": 735.9585509999999
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.76974121875,
+        "total_ms": 49.263438
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7666796538085938,
+        "total_ms": 3140.3198620000003
+      },
+      "completed_elapsed_ms": 3606.755208
+    },
+    {
+      "content_group_id": "fix-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "arm": "stockoff",
+      "nonrecording_ordinary": {
+        "jobs": 3072,
+        "mean_ms": 0.7466947923177084,
+        "total_ms": 2293.846402
+      },
+      "recording_ordinary": {
+        "jobs": 960,
+        "mean_ms": 0.7476446770833334,
+        "total_ms": 717.7388900000001
+      },
+      "boundary": {
+        "jobs": 64,
+        "mean_ms": 0.74466465625,
+        "total_ms": 47.658538
+      },
+      "all": {
+        "jobs": 4096,
+        "mean_ms": 0.7468857006835938,
+        "total_ms": 3059.2438300000003
+      },
+      "completed_elapsed_ms": 3605.74347
+    }
+  ],
+  "architecture_by_group": {
+    "fix-gsm8k-pilot-01": {
+      "measured_batches": 4096,
+      "current_fix_exact_assignment_identity": true,
+      "all_arms_equal_each_batch": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 108.608154296875,
+            "min": 101.0,
+            "max": 117.0
+          },
+          "max_rank_active_copies": {
+            "mean": 57.741455078125,
+            "min": 53.0,
+            "max": 60.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 108.608154296875,
+            "min": 101.0,
+            "max": 117.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 57.741455078125,
+            "min": 53.0,
+            "max": 60.0
+          },
+          "max_rank_routes": {
+            "mean": 593.029052734375,
+            "min": 540.0,
+            "max": 648.0
+          },
+          "global_padded_rows": {
+            "mean": 6950.921875,
+            "min": 6464.0,
+            "max": 7488.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65597128704.0,
+            "min": 61001957376.0,
+            "max": 70665633792.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14737926688899872,
+            "min": 0.13675213675213677,
+            "max": 0.15841584158415842
+          }
+        },
+        "current": {
+          "global_active_copies": {
+            "mean": 108.608154296875,
+            "min": 101.0,
+            "max": 117.0
+          },
+          "max_rank_active_copies": {
+            "mean": 54.55908203125,
+            "min": 51.0,
+            "max": 59.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 108.608154296875,
+            "min": 101.0,
+            "max": 117.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 54.55908203125,
+            "min": 51.0,
+            "max": 59.0
+          },
+          "max_rank_routes": {
+            "mean": 514.522705078125,
+            "min": 512.0,
+            "max": 535.0
+          },
+          "global_padded_rows": {
+            "mean": 6950.921875,
+            "min": 6464.0,
+            "max": 7488.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65597128704.0,
+            "min": 61001957376.0,
+            "max": 70665633792.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14737926688899872,
+            "min": 0.13675213675213677,
+            "max": 0.15841584158415842
+          }
+        },
+        "fix": {
+          "global_active_copies": {
+            "mean": 108.608154296875,
+            "min": 101.0,
+            "max": 117.0
+          },
+          "max_rank_active_copies": {
+            "mean": 54.55908203125,
+            "min": 51.0,
+            "max": 59.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 108.608154296875,
+            "min": 101.0,
+            "max": 117.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 54.55908203125,
+            "min": 51.0,
+            "max": 59.0
+          },
+          "max_rank_routes": {
+            "mean": 514.522705078125,
+            "min": 512.0,
+            "max": 535.0
+          },
+          "global_padded_rows": {
+            "mean": 6950.921875,
+            "min": 6464.0,
+            "max": 7488.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65597128704.0,
+            "min": 61001957376.0,
+            "max": 70665633792.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14737926688899872,
+            "min": 0.13675213675213677,
+            "max": 0.15841584158415842
+          }
+        }
+      },
+      "current_over_stockoff_mean_ratios": {
+        "global_active_copies": 1.0,
+        "max_rank_active_copies": 0.9448858182986694,
+        "global_nonempty_m_tiles": 1.0,
+        "max_rank_nonempty_m_tiles": 0.9448858182986694,
+        "max_rank_routes": 0.8676180411494714,
+        "global_padded_rows": 1.0,
+        "counted_tile_flops_proxy": 1.0,
+        "useful_matmul_flops": 1.0,
+        "useful_to_counted_tile_flops_fraction": 1.0
+      },
+      "artifact_hashes": {
+        "results/resident-fix/pilot-v1/inputs/fix-gsm8k-pilot-01-stock-routes.npz": "c624c2bb0d78aab2a935b729b4d39cf8c4574cff376f97c4eac3d3136a0ed9b5",
+        "results/resident-fix/pilot-v1/inputs/fix-gsm8k-pilot-01-current-resident-diagnostics.json": "25a2c89d12636395dcf48b35fd5d9c9ac76a3f980fb2309726960c6c0f9c2033",
+        "results/resident-fix/pilot-v1/inputs/fix-gsm8k-pilot-01-fix-resident-diagnostics.json": "25a2c89d12636395dcf48b35fd5d9c9ac76a3f980fb2309726960c6c0f9c2033"
+      }
+    },
+    "fix-gsm8k-pilot-02": {
+      "measured_batches": 4096,
+      "current_fix_exact_assignment_identity": true,
+      "all_arms_equal_each_batch": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 107.852294921875,
+            "min": 99.0,
+            "max": 115.0
+          },
+          "max_rank_active_copies": {
+            "mean": 57.749755859375,
+            "min": 52.0,
+            "max": 61.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 107.852294921875,
+            "min": 99.0,
+            "max": 115.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 57.749755859375,
+            "min": 52.0,
+            "max": 61.0
+          },
+          "max_rank_routes": {
+            "mean": 598.585693359375,
+            "min": 543.0,
+            "max": 656.0
+          },
+          "global_padded_rows": {
+            "mean": 6902.546875,
+            "min": 6336.0,
+            "max": 7360.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65140604928.0,
+            "min": 59793997824.0,
+            "max": 69457674240.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14840394668675522,
+            "min": 0.1391304347826087,
+            "max": 0.16161616161616163
+          }
+        },
+        "current": {
+          "global_active_copies": {
+            "mean": 107.852294921875,
+            "min": 99.0,
+            "max": 115.0
+          },
+          "max_rank_active_copies": {
+            "mean": 54.17529296875,
+            "min": 50.0,
+            "max": 58.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 107.852294921875,
+            "min": 99.0,
+            "max": 115.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 54.17529296875,
+            "min": 50.0,
+            "max": 58.0
+          },
+          "max_rank_routes": {
+            "mean": 514.74169921875,
+            "min": 512.0,
+            "max": 533.0
+          },
+          "global_padded_rows": {
+            "mean": 6902.546875,
+            "min": 6336.0,
+            "max": 7360.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65140604928.0,
+            "min": 59793997824.0,
+            "max": 69457674240.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14840394668675522,
+            "min": 0.1391304347826087,
+            "max": 0.16161616161616163
+          }
+        },
+        "fix": {
+          "global_active_copies": {
+            "mean": 107.852294921875,
+            "min": 99.0,
+            "max": 115.0
+          },
+          "max_rank_active_copies": {
+            "mean": 54.17529296875,
+            "min": 50.0,
+            "max": 58.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 107.852294921875,
+            "min": 99.0,
+            "max": 115.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 54.17529296875,
+            "min": 50.0,
+            "max": 58.0
+          },
+          "max_rank_routes": {
+            "mean": 514.74169921875,
+            "min": 512.0,
+            "max": 533.0
+          },
+          "global_padded_rows": {
+            "mean": 6902.546875,
+            "min": 6336.0,
+            "max": 7360.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 65140604928.0,
+            "min": 59793997824.0,
+            "max": 69457674240.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.14840394668675522,
+            "min": 0.1391304347826087,
+            "max": 0.16161616161616163
+          }
+        }
+      },
+      "current_over_stockoff_mean_ratios": {
+        "global_active_copies": 1.0,
+        "max_rank_active_copies": 0.9381042770236279,
+        "global_nonempty_m_tiles": 1.0,
+        "max_rank_nonempty_m_tiles": 0.9381042770236279,
+        "max_rank_routes": 0.8599298395020489,
+        "global_padded_rows": 1.0,
+        "counted_tile_flops_proxy": 1.0,
+        "useful_matmul_flops": 1.0,
+        "useful_to_counted_tile_flops_fraction": 1.0
+      },
+      "artifact_hashes": {
+        "results/resident-fix/pilot-v1/inputs/fix-gsm8k-pilot-02-stock-routes.npz": "fcee75498cc331466773c102f0d0eae98157ccf9679c7ffe4a9f6ac7d619a546",
+        "results/resident-fix/pilot-v1/inputs/fix-gsm8k-pilot-02-current-resident-diagnostics.json": "0af0e8e5a49e7e0317edd6927ae788ad2077ad81ad127b3fe3d3885b55062826",
+        "results/resident-fix/pilot-v1/inputs/fix-gsm8k-pilot-02-fix-resident-diagnostics.json": "0af0e8e5a49e7e0317edd6927ae788ad2077ad81ad127b3fe3d3885b55062826"
+      }
+    },
+    "fix-mbpp-pilot-01": {
+      "measured_batches": 4096,
+      "current_fix_exact_assignment_identity": true,
+      "all_arms_equal_each_batch": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 88.541259765625,
+            "min": 76.0,
+            "max": 96.0
+          },
+          "max_rank_active_copies": {
+            "mean": 47.502685546875,
+            "min": 42.0,
+            "max": 51.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 88.541748046875,
+            "min": 76.0,
+            "max": 96.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 47.502685546875,
+            "min": 42.0,
+            "max": 51.0
+          },
+          "max_rank_routes": {
+            "mean": 530.770263671875,
+            "min": 512.0,
+            "max": 573.0
+          },
+          "global_padded_rows": {
+            "mean": 5666.671875,
+            "min": 4864.0,
+            "max": 6144.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 53477425152.0,
+            "min": 45902462976.0,
+            "max": 57982058496.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.180847759983689,
+            "min": 0.16666666666666666,
+            "max": 0.21052631578947367
+          }
+        },
+        "current": {
+          "global_active_copies": {
+            "mean": 88.541259765625,
+            "min": 76.0,
+            "max": 96.0
+          },
+          "max_rank_active_copies": {
+            "mean": 44.5166015625,
+            "min": 38.0,
+            "max": 48.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 88.541748046875,
+            "min": 76.0,
+            "max": 96.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 44.51708984375,
+            "min": 38.0,
+            "max": 48.0
+          },
+          "max_rank_routes": {
+            "mean": 516.364013671875,
+            "min": 512.0,
+            "max": 550.0
+          },
+          "global_padded_rows": {
+            "mean": 5666.671875,
+            "min": 4864.0,
+            "max": 6144.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 53477425152.0,
+            "min": 45902462976.0,
+            "max": 57982058496.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.180847759983689,
+            "min": 0.16666666666666666,
+            "max": 0.21052631578947367
+          }
+        },
+        "fix": {
+          "global_active_copies": {
+            "mean": 88.541259765625,
+            "min": 76.0,
+            "max": 96.0
+          },
+          "max_rank_active_copies": {
+            "mean": 44.5166015625,
+            "min": 38.0,
+            "max": 48.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 88.541748046875,
+            "min": 76.0,
+            "max": 96.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 44.51708984375,
+            "min": 38.0,
+            "max": 48.0
+          },
+          "max_rank_routes": {
+            "mean": 516.364013671875,
+            "min": 512.0,
+            "max": 550.0
+          },
+          "global_padded_rows": {
+            "mean": 5666.671875,
+            "min": 4864.0,
+            "max": 6144.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 53477425152.0,
+            "min": 45902462976.0,
+            "max": 57982058496.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.180847759983689,
+            "min": 0.16666666666666666,
+            "max": 0.21052631578947367
+          }
+        }
+      },
+      "current_over_stockoff_mean_ratios": {
+        "global_active_copies": 1.0,
+        "max_rank_active_copies": 0.9371386280586521,
+        "global_nonempty_m_tiles": 1.0,
+        "max_rank_nonempty_m_tiles": 0.9371489070827616,
+        "max_rank_routes": 0.972857842675026,
+        "global_padded_rows": 1.0,
+        "counted_tile_flops_proxy": 1.0,
+        "useful_matmul_flops": 1.0,
+        "useful_to_counted_tile_flops_fraction": 1.0
+      },
+      "artifact_hashes": {
+        "results/resident-fix/pilot-v1/inputs/fix-mbpp-pilot-01-stock-routes.npz": "02cfa80f3336c826fdf7969cd0bd77c178b35df9beca1de66c02301a4ab2c141",
+        "results/resident-fix/pilot-v1/inputs/fix-mbpp-pilot-01-current-resident-diagnostics.json": "fc645ec27cfb2d175da0921881f2b5501c96b9d38e0b37c571f94fc1ee40e9ad",
+        "results/resident-fix/pilot-v1/inputs/fix-mbpp-pilot-01-fix-resident-diagnostics.json": "fc645ec27cfb2d175da0921881f2b5501c96b9d38e0b37c571f94fc1ee40e9ad"
+      }
+    },
+    "fix-wildchat-pilot-01": {
+      "measured_batches": 4096,
+      "current_fix_exact_assignment_identity": true,
+      "all_arms_equal_each_batch": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 120.3369140625,
+            "min": 115.0,
+            "max": 125.0
+          },
+          "max_rank_active_copies": {
+            "mean": 62.637451171875,
+            "min": 60.0,
+            "max": 64.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 120.3369140625,
+            "min": 115.0,
+            "max": 125.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 62.637451171875,
+            "min": 60.0,
+            "max": 64.0
+          },
+          "max_rank_routes": {
+            "mean": 558.02490234375,
+            "min": 512.0,
+            "max": 609.0
+          },
+          "global_padded_rows": {
+            "mean": 7701.5625,
+            "min": 7360.0,
+            "max": 8000.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 72681062400.0,
+            "min": 69457674240.0,
+            "max": 75497472000.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13298013554045648,
+            "min": 0.128,
+            "max": 0.1391304347826087
+          }
+        },
+        "current": {
+          "global_active_copies": {
+            "mean": 120.3369140625,
+            "min": 115.0,
+            "max": 125.0
+          },
+          "max_rank_active_copies": {
+            "mean": 60.4228515625,
+            "min": 58.0,
+            "max": 63.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 120.3369140625,
+            "min": 115.0,
+            "max": 125.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 60.4228515625,
+            "min": 58.0,
+            "max": 63.0
+          },
+          "max_rank_routes": {
+            "mean": 513.490966796875,
+            "min": 512.0,
+            "max": 533.0
+          },
+          "global_padded_rows": {
+            "mean": 7701.5625,
+            "min": 7360.0,
+            "max": 8000.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 72681062400.0,
+            "min": 69457674240.0,
+            "max": 75497472000.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13298013554045648,
+            "min": 0.128,
+            "max": 0.1391304347826087
+          }
+        },
+        "fix": {
+          "global_active_copies": {
+            "mean": 120.3369140625,
+            "min": 115.0,
+            "max": 125.0
+          },
+          "max_rank_active_copies": {
+            "mean": 60.4228515625,
+            "min": 58.0,
+            "max": 63.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 120.3369140625,
+            "min": 115.0,
+            "max": 125.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 60.4228515625,
+            "min": 58.0,
+            "max": 63.0
+          },
+          "max_rank_routes": {
+            "mean": 513.490966796875,
+            "min": 512.0,
+            "max": 533.0
+          },
+          "global_padded_rows": {
+            "mean": 7701.5625,
+            "min": 7360.0,
+            "max": 8000.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 72681062400.0,
+            "min": 69457674240.0,
+            "max": 75497472000.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.13298013554045648,
+            "min": 0.128,
+            "max": 0.1391304347826087
+          }
+        }
+      },
+      "current_over_stockoff_mean_ratios": {
+        "global_active_copies": 1.0,
+        "max_rank_active_copies": 0.9646441614730106,
+        "global_nonempty_m_tiles": 1.0,
+        "max_rank_nonempty_m_tiles": 0.9646441614730106,
+        "max_rank_routes": 0.9201936412517993,
+        "global_padded_rows": 1.0,
+        "counted_tile_flops_proxy": 1.0,
+        "useful_matmul_flops": 1.0,
+        "useful_to_counted_tile_flops_fraction": 1.0
+      },
+      "artifact_hashes": {
+        "results/resident-fix/pilot-v1/inputs/fix-wildchat-pilot-01-stock-routes.npz": "4a0baa22f444a040ebca725ceed752416864df1a7d9f7fc6d09bdf0f280aba3b",
+        "results/resident-fix/pilot-v1/inputs/fix-wildchat-pilot-01-current-resident-diagnostics.json": "2c5c15be9fed9ddbf7da50a3e43bee37b61b777d826d69613249350e1ae26078",
+        "results/resident-fix/pilot-v1/inputs/fix-wildchat-pilot-01-fix-resident-diagnostics.json": "2c5c15be9fed9ddbf7da50a3e43bee37b61b777d826d69613249350e1ae26078"
+      }
+    },
+    "fix-wildchat-pilot-02": {
+      "measured_batches": 4096,
+      "current_fix_exact_assignment_identity": true,
+      "all_arms_equal_each_batch": {
+        "global_active_copies": true,
+        "global_nonempty_m_tiles": true,
+        "global_padded_rows": true,
+        "counted_tile_flops_proxy": true
+      },
+      "per_arm": {
+        "stockoff": {
+          "global_active_copies": {
+            "mean": 124.0693359375,
+            "min": 118.0,
+            "max": 128.0
+          },
+          "max_rank_active_copies": {
+            "mean": 63.42919921875,
+            "min": 60.0,
+            "max": 64.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 124.0693359375,
+            "min": 118.0,
+            "max": 128.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 63.42919921875,
+            "min": 60.0,
+            "max": 64.0
+          },
+          "max_rank_routes": {
+            "mean": 526.144775390625,
+            "min": 512.0,
+            "max": 576.0
+          },
+          "global_padded_rows": {
+            "mean": 7940.4375,
+            "min": 7552.0,
+            "max": 8192.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 74935369728.0,
+            "min": 71269613568.0,
+            "max": 77309411328.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.12898783989855972,
+            "min": 0.125,
+            "max": 0.13559322033898305
+          }
+        },
+        "current": {
+          "global_active_copies": {
+            "mean": 124.0693359375,
+            "min": 118.0,
+            "max": 128.0
+          },
+          "max_rank_active_copies": {
+            "mean": 62.284423828125,
+            "min": 59.0,
+            "max": 64.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 124.0693359375,
+            "min": 118.0,
+            "max": 128.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 62.284423828125,
+            "min": 59.0,
+            "max": 64.0
+          },
+          "max_rank_routes": {
+            "mean": 513.06298828125,
+            "min": 512.0,
+            "max": 527.0
+          },
+          "global_padded_rows": {
+            "mean": 7940.4375,
+            "min": 7552.0,
+            "max": 8192.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 74935369728.0,
+            "min": 71269613568.0,
+            "max": 77309411328.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.12898783989855972,
+            "min": 0.125,
+            "max": 0.13559322033898305
+          }
+        },
+        "fix": {
+          "global_active_copies": {
+            "mean": 124.0693359375,
+            "min": 118.0,
+            "max": 128.0
+          },
+          "max_rank_active_copies": {
+            "mean": 62.284423828125,
+            "min": 59.0,
+            "max": 64.0
+          },
+          "global_nonempty_m_tiles": {
+            "mean": 124.0693359375,
+            "min": 118.0,
+            "max": 128.0
+          },
+          "max_rank_nonempty_m_tiles": {
+            "mean": 62.284423828125,
+            "min": 59.0,
+            "max": 64.0
+          },
+          "max_rank_routes": {
+            "mean": 513.06298828125,
+            "min": 512.0,
+            "max": 527.0
+          },
+          "global_padded_rows": {
+            "mean": 7940.4375,
+            "min": 7552.0,
+            "max": 8192.0
+          },
+          "counted_tile_flops_proxy": {
+            "mean": 74935369728.0,
+            "min": 71269613568.0,
+            "max": 77309411328.0
+          },
+          "useful_matmul_flops": {
+            "mean": 9663676416.0,
+            "min": 9663676416.0,
+            "max": 9663676416.0
+          },
+          "useful_to_counted_tile_flops_fraction": {
+            "mean": 0.12898783989855972,
+            "min": 0.125,
+            "max": 0.13559322033898305
+          }
+        }
+      },
+      "current_over_stockoff_mean_ratios": {
+        "global_active_copies": 1.0,
+        "max_rank_active_copies": 0.9819519179695619,
+        "global_nonempty_m_tiles": 1.0,
+        "max_rank_nonempty_m_tiles": 0.9819519179695619,
+        "max_rank_routes": 0.97513652568409,
+        "global_padded_rows": 1.0,
+        "counted_tile_flops_proxy": 1.0,
+        "useful_matmul_flops": 1.0,
+        "useful_to_counted_tile_flops_fraction": 1.0
+      },
+      "artifact_hashes": {
+        "results/resident-fix/pilot-v1/inputs/fix-wildchat-pilot-02-stock-routes.npz": "46f36b045e0fa05befdee4dbbca93a4a7a4f0a9dcb358ddad724b8a17aac24c3",
+        "results/resident-fix/pilot-v1/inputs/fix-wildchat-pilot-02-current-resident-diagnostics.json": "3f442f7152c0e0c7e0a9988f43a82c5855cec473182312101ee15b24bf2aebb7",
+        "results/resident-fix/pilot-v1/inputs/fix-wildchat-pilot-02-fix-resident-diagnostics.json": "3f442f7152c0e0c7e0a9988f43a82c5855cec473182312101ee15b24bf2aebb7"
+      }
+    }
+  },
+  "source_derived_launch_extent": {
+    "stockoff": {
+      "global_physical_experts": 128,
+      "allocated_sorted_id_elements_source_derived": 9088,
+      "allocated_m_grid_positions_source_derived": 142,
+      "gemm1_grid_programs_per_rank_source_derived": 1704,
+      "gemm2_grid_programs_per_rank_source_derived": 2272,
+      "early_return_programs_included": true,
+      "measured_profiler_launch_counts": false
+    },
+    "current": {
+      "global_physical_experts": 160,
+      "allocated_sorted_id_elements_source_derived": 11104,
+      "allocated_m_grid_positions_source_derived": 174,
+      "gemm1_grid_programs_per_rank_source_derived": 2088,
+      "gemm2_grid_programs_per_rank_source_derived": 2784,
+      "early_return_programs_included": true,
+      "measured_profiler_launch_counts": false
+    },
+    "fix": {
+      "global_physical_experts": 160,
+      "allocated_sorted_id_elements_source_derived": 11104,
+      "allocated_m_grid_positions_source_derived": 174,
+      "gemm1_grid_programs_per_rank_source_derived": 2088,
+      "gemm2_grid_programs_per_rank_source_derived": 2784,
+      "early_return_programs_included": true,
+      "measured_profiler_launch_counts": false
+    }
+  },
+  "metric_definitions": {
+    "service": "coordinator_finish minus coordinator_start, includes completion/ACK",
+    "phase": "Index modulo64;0..47 nonrecording ordinary,48..62 recording ordinary,63 boundary of CURRENT controller only. Other arms use matched positions.",
+    "global_nonempty_m_tiles": "Sum over physical experts ceil(route_count / observed BLOCK_SIZE_M), summed once over owner ranks.",
+    "counted_tile_flops_proxy": "Two matmuls with observed M/N/K tiling;2*tileM*(rounded2I*roundedH+roundedH*roundedI), summed over nonempty M tiles.",
+    "useful_matmul_flops": "1024 routed rows *2*(2048*1536+768*2048); excludes activations/router/reduction.",
+    "allocated_launch_extent": "Pinned source formula, includes early-return programs; not observed Nsight grid measurements."
+  },
+  "limitations": [
+    "Descriptive phase associations are not exclusive causal stage timings.",
+    "Current/fix same assignment guarantees equal work proxies only with the attested common tile configuration.",
+    "Equal global nonempty expert tiles do not imply equal launched programs, cache traffic, hardware instructions or runtime.",
+    "Proxy FLOPs and useful fraction are not SM/tensor-core utilization, HBM bytes or roofline measurements.",
+    "MBPP sentinel is reported separately and never pooled into the main summary.",
+    "Independent execution/statistics audits remain required; this script adds no decision gate."
+  ],
+  "records_files": {
+    "results/resident-fix/pilot-v1/trials/fix-gsm8k-pilot-01.jsonl": "486f03246ad786926ca1a26457bffb073f7ed38f842b8618de4c343d2db6748f",
+    "results/resident-fix/pilot-v1/trials/fix-gsm8k-pilot-02.jsonl": "a68db1696c0e835692d80e69e89a02423d2c933875ede7919376522bd17e6166",
+    "results/resident-fix/pilot-v1/trials/fix-mbpp-pilot-01.jsonl": "5fb7c88cae05763fc188c8471fbbf3dd8b4add099ed20c6d92b9805cbe5fd8e9",
+    "results/resident-fix/pilot-v1/trials/fix-wildchat-pilot-01.jsonl": "dfb4fd349dff79c8117a4c55642fe85e787f5749575f39631e7623a934b50b52",
+    "results/resident-fix/pilot-v1/trials/fix-wildchat-pilot-02.jsonl": "a97dec697a56d70c875af62ed1b934a583cbb1e9c7d84cb94a7e7ffafbf55ecd"
+  },
+  "script_sha256": "56550b45f307959a464c276dd4a68d31e29024ec312c2c55f94513002622d972",
+  "numpy_version": "2.5.4"
+}
