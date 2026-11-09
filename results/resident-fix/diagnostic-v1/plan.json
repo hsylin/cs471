@@ -1,0 +1,212 @@
+{
+  "schema": "resident_fix_diagnostic_plan_v1",
+  "previous_source_sha256": "9c6d6a7e1e94f4be769d435fbf7652e0cbb86501637c046ae078a0ccef1015d4",
+  "diagnostic_files": {
+    "resident_fastpath/native.py": "6852471bcc29197aec958ae9f51b828522284d947feb43095b3cc9849849414c",
+    "resident_fastpath/diagnose.py": "b68a0ad5fe19edd1397d3fb6e5704ad3a6f5fa32f99efb9257441907775dec71",
+    "scripts/run-resident-fix-diagnostic-kuma.sh": "ad04768c86a9c551d87a2a72e0af28d9f8d18ca233d09fcf6c69d54b9b393645"
+  },
+  "groups": [
+    {
+      "block_id": "stock-gsm8k-pilot-01",
+      "split": "pilot",
+      "dataset": "gsm8k",
+      "bank_file": "results/stock-capture-pilot-v1/banks/stock-gsm8k-pilot-01.npz",
+      "capture_sha256": "7d64da0d5674fb29ab1a9e6e4e6bfe6f7563bf984c889a6bc648ec125835e619",
+      "tokens": 1799,
+      "documents": 32,
+      "correctness_pass": true
+    },
+    {
+      "block_id": "stock-gsm8k-pilot-02",
+      "split": "pilot",
+      "dataset": "gsm8k",
+      "bank_file": "results/stock-capture-pilot-v1/banks/stock-gsm8k-pilot-02.npz",
+      "capture_sha256": "3e556d9a5cd693844987aad7c47c15b558ede6d4226a8e5ea5599d240e339371",
+      "tokens": 2108,
+      "documents": 32,
+      "correctness_pass": true
+    },
+    {
+      "block_id": "stock-mbpp-pilot-01",
+      "split": "pilot",
+      "dataset": "mbpp",
+      "bank_file": "results/stock-capture-pilot-v1/banks/stock-mbpp-pilot-01.npz",
+      "capture_sha256": "00e83ea39f558c6890d4f8a6e5f01c7680889b75d06afd748a12139dc7661749",
+      "tokens": 498,
+      "documents": 32,
+      "correctness_pass": true
+    },
+    {
+      "block_id": "stock-mbpp-pilot-02",
+      "split": "pilot",
+      "dataset": "mbpp",
+      "bank_file": "results/stock-capture-pilot-v1/banks/stock-mbpp-pilot-02.npz",
+      "capture_sha256": "7414478b88c36e394dfa47fcb9249b8075a31c9abec3c4faff4979499a25ccbc",
+      "tokens": 501,
+      "documents": 32,
+      "correctness_pass": true
+    },
+    {
+      "block_id": "stock-wildchat-pilot-01",
+      "split": "pilot",
+      "dataset": "wildchat",
+      "bank_file": "results/stock-capture-pilot-v1/banks/stock-wildchat-pilot-01.npz",
+      "capture_sha256": "db40d60516bc740f1f9fe5b204d1b15f365c6385a14db97d8c37d540544485cd",
+      "tokens": 3710,
+      "documents": 32,
+      "correctness_pass": true
+    },
+    {
+      "block_id": "stock-wildchat-pilot-02",
+      "split": "pilot",
+      "dataset": "wildchat",
+      "bank_file": "results/stock-capture-pilot-v1/banks/stock-wildchat-pilot-02.npz",
+      "capture_sha256": "e1908ff455d893e5918564cfe9c0df299b733611e08c4fdf2360e247dbe915aa",
+      "tokens": 4490,
+      "documents": 32,
+      "correctness_pass": true
+    }
+  ],
+  "cases": [
+    {
+      "group": "stock-gsm8k-pilot-01",
+      "repeat": 0,
+      "order": [
+        "stockoff",
+        "current_online",
+        "current_offline",
+        "static_online",
+        "static_offline"
+      ]
+    },
+    {
+      "group": "stock-gsm8k-pilot-01",
+      "repeat": 1,
+      "order": [
+        "static_offline",
+        "static_online",
+        "current_offline",
+        "current_online",
+        "stockoff"
+      ]
+    },
+    {
+      "group": "stock-gsm8k-pilot-02",
+      "repeat": 0,
+      "order": [
+        "current_online",
+        "current_offline",
+        "static_online",
+        "static_offline",
+        "stockoff"
+      ]
+    },
+    {
+      "group": "stock-gsm8k-pilot-02",
+      "repeat": 1,
+      "order": [
+        "stockoff",
+        "static_offline",
+        "static_online",
+        "current_offline",
+        "current_online"
+      ]
+    },
+    {
+      "group": "stock-mbpp-pilot-01",
+      "repeat": 0,
+      "order": [
+        "current_offline",
+        "static_online",
+        "static_offline",
+        "stockoff",
+        "current_online"
+      ]
+    },
+    {
+      "group": "stock-mbpp-pilot-01",
+      "repeat": 1,
+      "order": [
+        "current_online",
+        "stockoff",
+        "static_offline",
+        "static_online",
+        "current_offline"
+      ]
+    },
+    {
+      "group": "stock-mbpp-pilot-02",
+      "repeat": 0,
+      "order": [
+        "static_online",
+        "static_offline",
+        "stockoff",
+        "current_online",
+        "current_offline"
+      ]
+    },
+    {
+      "group": "stock-mbpp-pilot-02",
+      "repeat": 1,
+      "order": [
+        "current_offline",
+        "current_online",
+        "stockoff",
+        "static_offline",
+        "static_online"
+      ]
+    },
+    {
+      "group": "stock-wildchat-pilot-01",
+      "repeat": 0,
+      "order": [
+        "static_offline",
+        "stockoff",
+        "current_online",
+        "current_offline",
+        "static_online"
+      ]
+    },
+    {
+      "group": "stock-wildchat-pilot-01",
+      "repeat": 1,
+      "order": [
+        "static_online",
+        "current_offline",
+        "current_online",
+        "stockoff",
+        "static_offline"
+      ]
+    },
+    {
+      "group": "stock-wildchat-pilot-02",
+      "repeat": 0,
+      "order": [
+        "stockoff",
+        "current_online",
+        "current_offline",
+        "static_online",
+        "static_offline"
+      ]
+    },
+    {
+      "group": "stock-wildchat-pilot-02",
+      "repeat": 1,
+      "order": [
+        "static_offline",
+        "static_online",
+        "current_offline",
+        "current_online",
+        "stockoff"
+      ]
+    }
+  ],
+  "jobs": 512,
+  "unique_batches": 64,
+  "repeats_of_sequence": 8,
+  "purpose": "Factorial current/control-free and online/exact-offline dispatch plus stockoff; old pilot inputs only; offline excludes selection cost and is not deployable",
+  "timing": "same common FCFS saturated512-job path; actual native gate/topk/experts/reduction; inference stream completion; full final quiescence charged",
+  "selection_rule": "Choose simplest runtime path supported by identical-assignment payback; final source/criteria/data plan freeze before fresh treatment timing; preserve any negative result",
+  "order_contract": "Each group has one rotated order and its exact reverse, fixed before timing."
+}

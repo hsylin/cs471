@@ -1,0 +1,68 @@
+{
+  "schema": "resident_fix_capture_run_ledger_v1",
+  "capture_only": true,
+  "allocation_id": "4872248",
+  "hostname": "kh014",
+  "capture_device": "cuda:0",
+  "gpu_pair_reserved": [
+    "GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3",
+    "GPU-7d5c9009-305b-9341-957f-1deb96611ed5"
+  ],
+  "source_selection_sha256": "483864373cef39ff7050e463f135fccb8941988b3ed6b75e8d880e319e332df6",
+  "capture_script_sha256": "c392d497dfe78e61fe5f732217bf9e6815c6f8333c5bdd8ba232178b295b773f",
+  "source_snapshot": "Uncommitted working-tree capture snapshot based on 572546662b37d7a3be2e6da9c74682f90dbb7e5d; exact file hashes archived per split.",
+  "steps": [
+    {
+      "step_id": "4872248.31",
+      "scheduler_state": "FAILED",
+      "exit_code": "1:0",
+      "start_local": "2026-11-09T22:41:17",
+      "end_local": "2026-11-09T22:41:52",
+      "elapsed_seconds": 35,
+      "split": "pilot",
+      "completed_banks": 5,
+      "completed_documents": 160,
+      "captured_tokens": 11139,
+      "failure_stage": "Post-capture provenance copy: SOURCE_COMMIT missing in source-only server snapshot.",
+      "resolution": "All five captured banks retained unchanged. CPU-only provenance archive completed; original wrapper and failed log preserved.",
+      "recaptured_or_replaced_banks": 0,
+      "log": "capture-sequential-v1.log",
+      "log_sha256": "9a017967149552ed8d516785f8a3056bcf842dae27dd82fde7fc27c15838edf8"
+    },
+    {
+      "step_id": "4872248.32",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "start_local": "2026-11-09T22:43:26",
+      "end_local": "2026-11-09T22:44:06",
+      "elapsed_seconds": 40,
+      "split": "final",
+      "completed_banks": 17,
+      "completed_documents": 544,
+      "captured_tokens": 51792,
+      "scope": "Final capture only after archive-only wrapper repair.",
+      "recaptured_or_replaced_banks": 0,
+      "log": "capture-final-only-v1.log",
+      "log_sha256": "4e576604663c039b8d707f229e83a8d3b171588a09619b5a086ae8cc979809ab"
+    }
+  ],
+  "timestamp_timezone": "Europe/Zurich (Slurm display)",
+  "performance_measurement": false,
+  "scope": "Scheduler completion and capture attempt ledger; numerical/source authenticity requires the separate independent capture audit.",
+  "complete_capture_audit": {
+    "path": "capture-audit-v1.json",
+    "sha256": "fab1394c818a5ebef39eb4d1c50ab3be334d17dd1b1aa2b16bbc86858eb85625",
+    "passed": true,
+    "banks": 22,
+    "documents": 704,
+    "captured_token_records": 62931
+  },
+  "capture_index_file_sha256": {
+    "pilot": "b9994cafc033d8bfef43688bd6c5da1999251d4885f85ceb4b3a04a47a0512b6",
+    "final": "6d107fdbf95ae48bb15e377da4eb6495b7ec6efcc95840080ac79fabe6cfb84f"
+  },
+  "capture_provenance_file_sha256": {
+    "pilot": "9f5a447267c7701b293298a96159132de1a1b3a6c7fb69c2520ca359641d3f4d",
+    "final": "b17054a401ed4c42dd8a8ec93a46e40f736e58a42863d5c278f6eaf4b1247664"
+  }
+}

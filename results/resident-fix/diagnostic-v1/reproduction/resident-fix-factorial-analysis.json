@@ -1,0 +1,669 @@
+{
+  "schema": "resident_fix_factorial_analysis_v1",
+  "complete": true,
+  "trials": 60,
+  "content_groups": 6,
+  "technical_repetitions": 2,
+  "jobs_per_trial": 512,
+  "unique_batches_per_group": 64,
+  "phase": "old_development_exploratory",
+  "estimand": "Arithmetic mean coordinator service per trial; average technical repetitions within group; equally weight six content groups",
+  "uncertainty": {
+    "unit": "content group",
+    "descriptive_only": true,
+    "confidence_intervals": false,
+    "hypothesis_tests": false,
+    "range": "Observed minimum and maximum of six content-group effects after averaging repetitions"
+  },
+  "limitations": [
+    "Only six previously measured development groups; this is not fresh held-out evidence.",
+    "Matched ablations change the declared control or selection package; differences do not identify individual Python/GPU operations.",
+    "Offline homes use prior knowledge and are never an online-production comparison.",
+    "Clock intervals include coordinator protocol and GPU completion; not device-kernel residence.",
+    "Reported ranges are the six observed content-group effects, not uncertainty intervals or advancement tests.",
+    "Floating-point correctness comes from runner assertions; this CPU analysis does not rerun GPU arithmetic."
+  ],
+  "contrasts": {
+    "control_removal_online": {
+      "treatment": "static_online",
+      "control": "current_online",
+      "service_ratio": {
+        "ratio": 0.9360215419304286,
+        "observed_content_group_range": [
+          0.9289649119641813,
+          0.947027624915611
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.947027624915611,
+          "stock-gsm8k-pilot-02": 0.9416288982951899,
+          "stock-mbpp-pilot-01": 0.9313930365266806,
+          "stock-mbpp-pilot-02": 0.9302004188148287,
+          "stock-wildchat-pilot-01": 0.9289649119641813,
+          "stock-wildchat-pilot-02": 0.9370522531462872
+        }
+      },
+      "saved_ms_per_job": {
+        "point": 0.05240654150390626,
+        "observed_content_group_range": [
+          0.04359463574218747,
+          0.06027420703124997
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.04359463574218747,
+          "stock-gsm8k-pilot-02": 0.04770582226562492,
+          "stock-mbpp-pilot-01": 0.05448890039062504,
+          "stock-mbpp-pilot-02": 0.05464353808593758,
+          "stock-wildchat-pilot-01": 0.06027420703124997,
+          "stock-wildchat-pilot-02": 0.05373214550781258
+        }
+      }
+    },
+    "control_removal_known_homes": {
+      "treatment": "static_offline",
+      "control": "current_offline",
+      "service_ratio": {
+        "ratio": 0.9344812867731727,
+        "observed_content_group_range": [
+          0.9179742160194805,
+          0.9452667174957203
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.9179742160194805,
+          "stock-gsm8k-pilot-02": 0.9452667174957203,
+          "stock-mbpp-pilot-01": 0.9419751470602509,
+          "stock-mbpp-pilot-02": 0.9289261535970105,
+          "stock-wildchat-pilot-01": 0.9282324912590231,
+          "stock-wildchat-pilot-02": 0.944846813500951
+        }
+      },
+      "saved_ms_per_job": {
+        "point": 0.051338272460937494,
+        "observed_content_group_range": [
+          0.04275262011718761,
+          0.06495083691406245
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.06495083691406245,
+          "stock-gsm8k-pilot-02": 0.04275262011718761,
+          "stock-mbpp-pilot-01": 0.043727858398437514,
+          "stock-mbpp-pilot-02": 0.05291607031250001,
+          "stock-wildchat-pilot-01": 0.058522654296874976,
+          "stock-wildchat-pilot-02": 0.04515959472656239
+        }
+      }
+    },
+    "selection_removed_current": {
+      "treatment": "current_offline",
+      "control": "current_online",
+      "service_ratio": {
+        "ratio": 0.9563303308597177,
+        "observed_content_group_range": [
+          0.9488647516643223,
+          0.9621676563180269
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.9621676563180269,
+          "stock-gsm8k-pilot-02": 0.955735561153101,
+          "stock-mbpp-pilot-01": 0.9488647516643223,
+          "stock-mbpp-pilot-02": 0.9510246433811326,
+          "stock-wildchat-pilot-01": 0.9610313652554621,
+          "stock-wildchat-pilot-02": 0.9592359222652624
+        }
+      },
+      "saved_ms_per_job": {
+        "point": 0.03568777636718753,
+        "observed_content_group_range": [
+          0.031134855468749945,
+          0.04061254589843766
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.031134855468749945,
+          "stock-gsm8k-pilot-02": 0.036176659179687376,
+          "stock-mbpp-pilot-01": 0.04061254589843766,
+          "stock-mbpp-pilot-02": 0.03834101464843753,
+          "stock-wildchat-pilot-01": 0.0330653994140625,
+          "stock-wildchat-pilot-02": 0.03479618359375014
+        }
+      }
+    },
+    "selection_removed_static": {
+      "treatment": "static_offline",
+      "control": "static_online",
+      "service_ratio": {
+        "ratio": 0.9547566569022689,
+        "observed_content_group_range": [
+          0.932649773618322,
+          0.9672150101606853
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.932649773618322,
+          "stock-gsm8k-pilot-02": 0.9594278789879586,
+          "stock-mbpp-pilot-01": 0.9596453687504936,
+          "stock-mbpp-pilot-02": 0.9497218514237902,
+          "stock-wildchat-pilot-01": 0.960273662503556,
+          "stock-wildchat-pilot-02": 0.9672150101606853
+        }
+      },
+      "saved_ms_per_job": {
+        "point": 0.03461950732421876,
+        "observed_content_group_range": [
+          0.026223632812499953,
+          0.05249105664062492
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 0.05249105664062492,
+          "stock-gsm8k-pilot-02": 0.031223457031250068,
+          "stock-mbpp-pilot-01": 0.029851503906250132,
+          "stock-mbpp-pilot-02": 0.03661354687499996,
+          "stock-wildchat-pilot-01": 0.03131384667968751,
+          "stock-wildchat-pilot-02": 0.026223632812499953
+        }
+      }
+    },
+    "static_online_over_stockoff": {
+      "treatment": "static_online",
+      "control": "stockoff",
+      "service_ratio": {
+        "ratio": 1.0837456789392714,
+        "observed_content_group_range": [
+          1.0642251125448123,
+          1.0988850989457104
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 1.0988850989457104,
+          "stock-gsm8k-pilot-02": 1.087370616257225,
+          "stock-mbpp-pilot-01": 1.0907319848748402,
+          "stock-mbpp-pilot-02": 1.0724485162124016,
+          "stock-wildchat-pilot-01": 1.0642251125448123,
+          "stock-wildchat-pilot-02": 1.089196888161059
+        }
+      },
+      "saved_ms_per_job": {
+        "point": -0.05929505045572917,
+        "observed_content_group_range": [
+          -0.07013338867187491,
+          -0.04756957421875008
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": -0.07013338867187491,
+          "stock-gsm8k-pilot-02": -0.0618359560546875,
+          "stock-mbpp-pilot-01": -0.06153400683593757,
+          "stock-mbpp-pilot-02": -0.04919438867187498,
+          "stock-wildchat-pilot-01": -0.04756957421875008,
+          "stock-wildchat-pilot-02": -0.06550298828125001
+        }
+      }
+    },
+    "static_known_homes_over_stockoff": {
+      "treatment": "static_offline",
+      "control": "stockoff",
+      "service_ratio": {
+        "ratio": 1.0347134013563384,
+        "observed_content_group_range": [
+          1.0185277903739385,
+          1.0534875792496854
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": 1.0248749387642642,
+          "stock-gsm8k-pilot-02": 1.0432536840294988,
+          "stock-mbpp-pilot-01": 1.0467158978331739,
+          "stock-mbpp-pilot-02": 1.0185277903739385,
+          "stock-wildchat-pilot-01": 1.0219473465516657,
+          "stock-wildchat-pilot-02": 1.0534875792496854
+        }
+      },
+      "saved_ms_per_job": {
+        "point": -0.02467554313151042,
+        "observed_content_group_range": [
+          -0.039279355468750055,
+          -0.01258084179687502
+        ],
+        "per_group": {
+          "stock-gsm8k-pilot-01": -0.017642332031249985,
+          "stock-gsm8k-pilot-02": -0.030612499023437434,
+          "stock-mbpp-pilot-01": -0.03168250292968744,
+          "stock-mbpp-pilot-02": -0.01258084179687502,
+          "stock-wildchat-pilot-01": -0.01625572753906257,
+          "stock-wildchat-pilot-02": -0.039279355468750055
+        }
+      }
+    }
+  },
+  "main_effect_control_cost_ms": {
+    "point": 0.051872406982421876,
+    "observed_content_group_range": [
+      0.045229221191406266,
+      0.059398430664062474
+    ],
+    "per_group": {
+      "stock-gsm8k-pilot-01": 0.05427273632812496,
+      "stock-gsm8k-pilot-02": 0.045229221191406266,
+      "stock-mbpp-pilot-01": 0.049108379394531276,
+      "stock-mbpp-pilot-02": 0.053779804199218795,
+      "stock-wildchat-pilot-01": 0.059398430664062474,
+      "stock-wildchat-pilot-02": 0.049445870117187485
+    }
+  },
+  "main_effect_selection_cost_ms": {
+    "point": 0.03515364184570314,
+    "observed_content_group_range": [
+      0.030509908203125047,
+      0.041812956054687433
+    ],
+    "per_group": {
+      "stock-gsm8k-pilot-01": 0.041812956054687433,
+      "stock-gsm8k-pilot-02": 0.03370005810546872,
+      "stock-mbpp-pilot-01": 0.035232024902343895,
+      "stock-mbpp-pilot-02": 0.037477280761718745,
+      "stock-wildchat-pilot-01": 0.032189623046875004,
+      "stock-wildchat-pilot-02": 0.030509908203125047
+    }
+  },
+  "interaction_ms": {
+    "point": 0.0010682690429687687,
+    "observed_content_group_range": [
+      -0.021356201171874978,
+      0.010761041992187526
+    ],
+    "per_group": {
+      "stock-gsm8k-pilot-01": -0.021356201171874978,
+      "stock-gsm8k-pilot-02": 0.004953202148437308,
+      "stock-mbpp-pilot-01": 0.010761041992187526,
+      "stock-mbpp-pilot-02": 0.0017274677734375743,
+      "stock-wildchat-pilot-01": 0.0017515527343749948,
+      "stock-wildchat-pilot-02": 0.008572550781250188
+    }
+  },
+  "interaction_definition": "(current_online-current_offline)-(static_online-static_offline); positive means greater selection package cost with current control",
+  "group_means": {
+    "stock-gsm8k-pilot-01": {
+      "stockoff": {
+        "mean_service_ms": 0.7092412246093751,
+        "ordinary_nonrecording_ms": 0.7102629153645834,
+        "ordinary_recording_ms": 0.7065909875,
+        "boundary_ms": 0.699953625,
+        "total_service_ms": 363.13150700000006,
+        "completed_elapsed_ms": 370.11124
+      },
+      "current_online": {
+        "mean_service_ms": 0.8229692490234375,
+        "ordinary_nonrecording_ms": 0.7880089674479167,
+        "ordinary_recording_ms": 0.7872024124999999,
+        "boundary_ms": 3.0375653125,
+        "total_service_ms": 421.3602555,
+        "completed_elapsed_ms": 427.73411150000004
+      },
+      "current_offline": {
+        "mean_service_ms": 0.7918343935546875,
+        "ordinary_nonrecording_ms": 0.7563019531249999,
+        "ordinary_recording_ms": 0.7580583833333333,
+        "boundary_ms": 3.0040316875,
+        "total_service_ms": 405.4192095,
+        "completed_elapsed_ms": 411.5939765
+      },
+      "static_online": {
+        "mean_service_ms": 0.77937461328125,
+        "ordinary_nonrecording_ms": 0.7804152695312501,
+        "ordinary_recording_ms": 0.7766555083333333,
+        "boundary_ms": 0.7702096875,
+        "total_service_ms": 399.039802,
+        "completed_elapsed_ms": 405.8067755
+      },
+      "static_offline": {
+        "mean_service_ms": 0.7268835566406251,
+        "ordinary_nonrecording_ms": 0.7275490026041667,
+        "ordinary_recording_ms": 0.7251218916666666,
+        "boundary_ms": 0.721367125,
+        "total_service_ms": 372.16438100000005,
+        "completed_elapsed_ms": 379.1537615
+      }
+    },
+    "stock-gsm8k-pilot-02": {
+      "stockoff": {
+        "mean_service_ms": 0.70774316015625,
+        "ordinary_nonrecording_ms": 0.7078584869791666,
+        "ordinary_recording_ms": 0.7075965875,
+        "boundary_ms": 0.7044060624999999,
+        "total_service_ms": 362.364498,
+        "completed_elapsed_ms": 369.31647499999997
+      },
+      "current_online": {
+        "mean_service_ms": 0.8172849384765625,
+        "ordinary_nonrecording_ms": 0.7812214049479167,
+        "ordinary_recording_ms": 0.7870583625,
+        "boundary_ms": 3.0017331874999997,
+        "total_service_ms": 418.4498885,
+        "completed_elapsed_ms": 424.8047555
+      },
+      "current_offline": {
+        "mean_service_ms": 0.7811082792968751,
+        "ordinary_nonrecording_ms": 0.7452967200520834,
+        "ordinary_recording_ms": 0.7499897875,
+        "boundary_ms": 2.9668405,
+        "total_service_ms": 399.92743900000005,
+        "completed_elapsed_ms": 406.2615085
+      },
+      "static_online": {
+        "mean_service_ms": 0.7695791162109376,
+        "ordinary_nonrecording_ms": 0.7701611341145833,
+        "ordinary_recording_ms": 0.7675333166666667,
+        "boundary_ms": 0.77232925,
+        "total_service_ms": 394.0245075,
+        "completed_elapsed_ms": 401.02222
+      },
+      "static_offline": {
+        "mean_service_ms": 0.7383556591796875,
+        "ordinary_nonrecording_ms": 0.7383913541666667,
+        "ordinary_recording_ms": 0.7379216916666667,
+        "boundary_ms": 0.7431518125000001,
+        "total_service_ms": 378.0380975,
+        "completed_elapsed_ms": 385.063575
+      }
+    },
+    "stock-mbpp-pilot-01": {
+      "stockoff": {
+        "mean_service_ms": 0.6781953125,
+        "ordinary_nonrecording_ms": 0.6792039348958333,
+        "ordinary_recording_ms": 0.6751376041666668,
+        "boundary_ms": 0.6756470625,
+        "total_service_ms": 347.236,
+        "completed_elapsed_ms": 354.187552
+      },
+      "current_online": {
+        "mean_service_ms": 0.7942182197265626,
+        "ordinary_nonrecording_ms": 0.7585063216145833,
+        "ordinary_recording_ms": 0.7617318166666667,
+        "boundary_ms": 2.995685375,
+        "total_service_ms": 406.63972850000005,
+        "completed_elapsed_ms": 413.02256
+      },
+      "current_offline": {
+        "mean_service_ms": 0.7536056738281249,
+        "ordinary_nonrecording_ms": 0.7189228098958333,
+        "ordinary_recording_ms": 0.7181530041666666,
+        "boundary_ms": 2.9501731875,
+        "total_service_ms": 385.84610499999997,
+        "completed_elapsed_ms": 392.16177400000004
+      },
+      "static_online": {
+        "mean_service_ms": 0.7397293193359376,
+        "ordinary_nonrecording_ms": 0.7397444986979167,
+        "ordinary_recording_ms": 0.7399341166666666,
+        "boundary_ms": 0.73592875,
+        "total_service_ms": 378.7414115,
+        "completed_elapsed_ms": 385.738205
+      },
+      "static_offline": {
+        "mean_service_ms": 0.7098778154296874,
+        "ordinary_nonrecording_ms": 0.7095374596354167,
+        "ordinary_recording_ms": 0.7111712541666667,
+        "boundary_ms": 0.7068133125,
+        "total_service_ms": 363.45744149999996,
+        "completed_elapsed_ms": 370.471261
+      }
+    },
+    "stock-mbpp-pilot-02": {
+      "stockoff": {
+        "mean_service_ms": 0.679025482421875,
+        "ordinary_nonrecording_ms": 0.6787930013020833,
+        "ordinary_recording_ms": 0.6800753583333334,
+        "boundary_ms": 0.6744364375,
+        "total_service_ms": 347.661047,
+        "completed_elapsed_ms": 354.587723
+      },
+      "current_online": {
+        "mean_service_ms": 0.7828634091796876,
+        "ordinary_nonrecording_ms": 0.7461590442708332,
+        "ordinary_recording_ms": 0.7515380375,
+        "boundary_ms": 3.0145535,
+        "total_service_ms": 400.8260655,
+        "completed_elapsed_ms": 407.22108849999995
+      },
+      "current_offline": {
+        "mean_service_ms": 0.74452239453125,
+        "ordinary_nonrecording_ms": 0.7081345520833333,
+        "ordinary_recording_ms": 0.7128626541666667,
+        "boundary_ms": 2.9660349375,
+        "total_service_ms": 381.195466,
+        "completed_elapsed_ms": 387.5807815
+      },
+      "static_online": {
+        "mean_service_ms": 0.72821987109375,
+        "ordinary_nonrecording_ms": 0.7287915390625002,
+        "ordinary_recording_ms": 0.7269856291666668,
+        "boundary_ms": 0.7192934375,
+        "total_service_ms": 372.848574,
+        "completed_elapsed_ms": 379.831817
+      },
+      "static_offline": {
+        "mean_service_ms": 0.69160632421875,
+        "ordinary_nonrecording_ms": 0.6922629466145834,
+        "ordinary_recording_ms": 0.6901664041666666,
+        "boundary_ms": 0.68168725,
+        "total_service_ms": 354.102438,
+        "completed_elapsed_ms": 361.113204
+      }
+    },
+    "stock-wildchat-pilot-01": {
+      "stockoff": {
+        "mean_service_ms": 0.74066937890625,
+        "ordinary_nonrecording_ms": 0.7409174609375,
+        "ordinary_recording_ms": 0.7402692500000001,
+        "boundary_ms": 0.734763375,
+        "total_service_ms": 379.222722,
+        "completed_elapsed_ms": 386.24742349999997
+      },
+      "current_online": {
+        "mean_service_ms": 0.84851316015625,
+        "ordinary_nonrecording_ms": 0.81354718359375,
+        "ordinary_recording_ms": 0.8130725166666666,
+        "boundary_ms": 3.0584896875,
+        "total_service_ms": 434.438738,
+        "completed_elapsed_ms": 440.879813
+      },
+      "current_offline": {
+        "mean_service_ms": 0.8154477607421875,
+        "ordinary_nonrecording_ms": 0.7804012838541667,
+        "ordinary_recording_ms": 0.7783300541666667,
+        "boundary_ms": 3.0544442500000004,
+        "total_service_ms": 417.5092535,
+        "completed_elapsed_ms": 423.916807
+      },
+      "static_online": {
+        "mean_service_ms": 0.788238953125,
+        "ordinary_nonrecording_ms": 0.7891106575520832,
+        "ordinary_recording_ms": 0.7853099791666667,
+        "boundary_ms": 0.79033175,
+        "total_service_ms": 403.578344,
+        "completed_elapsed_ms": 410.59612300000003
+      },
+      "static_offline": {
+        "mean_service_ms": 0.7569251064453125,
+        "ordinary_nonrecording_ms": 0.7570803802083332,
+        "ordinary_recording_ms": 0.7565949375000001,
+        "boundary_ms": 0.7544245,
+        "total_service_ms": 387.5456545,
+        "completed_elapsed_ms": 394.5247655
+      }
+    },
+    "stock-wildchat-pilot-02": {
+      "stockoff": {
+        "mean_service_ms": 0.734364052734375,
+        "ordinary_nonrecording_ms": 0.73514102734375,
+        "ordinary_recording_ms": 0.7320510083333333,
+        "boundary_ms": 0.7317649374999999,
+        "total_service_ms": 375.994395,
+        "completed_elapsed_ms": 383.035762
+      },
+      "current_online": {
+        "mean_service_ms": 0.8535991865234376,
+        "ordinary_nonrecording_ms": 0.8178217239583334,
+        "ordinary_recording_ms": 0.8218468750000001,
+        "boundary_ms": 3.0472020625,
+        "total_service_ms": 437.04278350000004,
+        "completed_elapsed_ms": 443.410595
+      },
+      "current_offline": {
+        "mean_service_ms": 0.8188030029296874,
+        "ordinary_nonrecording_ms": 0.7832017434895833,
+        "ordinary_recording_ms": 0.7867848208333335,
+        "boundary_ms": 3.0079361875,
+        "total_service_ms": 419.22713749999997,
+        "completed_elapsed_ms": 425.6495085
+      },
+      "static_online": {
+        "mean_service_ms": 0.799867041015625,
+        "ordinary_nonrecording_ms": 0.7999930338541666,
+        "ordinary_recording_ms": 0.8001892291666668,
+        "boundary_ms": 0.7889865625,
+        "total_service_ms": 409.531925,
+        "completed_elapsed_ms": 416.568264
+      },
+      "static_offline": {
+        "mean_service_ms": 0.773643408203125,
+        "ordinary_nonrecording_ms": 0.7733502304687501,
+        "ordinary_recording_ms": 0.7749355791666668,
+        "boundary_ms": 0.7683333750000001,
+        "total_service_ms": 396.105425,
+        "completed_elapsed_ms": 403.2995535
+      }
+    }
+  },
+  "group_datasets": {
+    "stock-gsm8k-pilot-01": "gsm8k",
+    "stock-gsm8k-pilot-02": "gsm8k",
+    "stock-mbpp-pilot-01": "mbpp",
+    "stock-mbpp-pilot-02": "mbpp",
+    "stock-wildchat-pilot-01": "wildchat",
+    "stock-wildchat-pilot-02": "wildchat"
+  },
+  "arm_position_counts": {
+    "stockoff": [
+      3,
+      2,
+      2,
+      2,
+      3
+    ],
+    "current_online": [
+      2,
+      3,
+      2,
+      3,
+      2
+    ],
+    "current_offline": [
+      2,
+      2,
+      4,
+      2,
+      2
+    ],
+    "static_online": [
+      2,
+      3,
+      2,
+      3,
+      2
+    ],
+    "static_offline": [
+      3,
+      2,
+      2,
+      2,
+      3
+    ]
+  },
+  "source_pair_identity": {
+    "stock-gsm8k-pilot-01": {
+      "dataset": "gsm8k",
+      "bank_sha256": "7d64da0d5674fb29ab1a9e6e4e6bfe6f7563bf984c889a6bc648ec125835e619",
+      "indices_sha256": "674551f6454aafed9ecdf35cae95065afe680da53034e7a8984a027288cf5383",
+      "logical_routes_sha256": "6ec098ff5ae14d69e93abf4ea22fb38c3a9f1ec6c8915296e9241cff09df24bf",
+      "exact_physical_assignment_sha256": "9e1b45807da2fc6bcd995312d459df9feb609e9ed7ac0420b9aecda9df72cb7d"
+    },
+    "stock-gsm8k-pilot-02": {
+      "dataset": "gsm8k",
+      "bank_sha256": "3e556d9a5cd693844987aad7c47c15b558ede6d4226a8e5ea5599d240e339371",
+      "indices_sha256": "a4c025eddc55a5b1250acc39265dd16c20ca9d7ae5f7213c0d40111cac193806",
+      "logical_routes_sha256": "41741a233c0d6868e62a9574f166341bc24040f20257f0de8d3c73fa29e7dfff",
+      "exact_physical_assignment_sha256": "a84252cb252fd753bb2b92f3b041a1ce704ca4baada27c8677b5eba43b7ca21d"
+    },
+    "stock-mbpp-pilot-01": {
+      "dataset": "mbpp",
+      "bank_sha256": "00e83ea39f558c6890d4f8a6e5f01c7680889b75d06afd748a12139dc7661749",
+      "indices_sha256": "ba52089a2fe90cd5fd5ce3e70d4d922284ec69388730b414855d0a2e6de4edad",
+      "logical_routes_sha256": "6fa55aa1402de7b76a0a8a2aa3149180ad9b66c25f38889ee4e039657e714602",
+      "exact_physical_assignment_sha256": "7e53a5ea82fe44c993dd25418aeb8fbadbc26c1e206039f4692108f1f9599f9b"
+    },
+    "stock-mbpp-pilot-02": {
+      "dataset": "mbpp",
+      "bank_sha256": "7414478b88c36e394dfa47fcb9249b8075a31c9abec3c4faff4979499a25ccbc",
+      "indices_sha256": "38b94ace37d9252f553cbd326eb45cd7525890d17d4c7798c96e697df0028160",
+      "logical_routes_sha256": "efbeb7bd01a7e6d6c78637aa1254e80ee5e61e983025de34dccdf165de9ff52d",
+      "exact_physical_assignment_sha256": "4d7d0514bf1ccd670f3bc453840fb14bd83812f0755a40808d6863afb14f6876"
+    },
+    "stock-wildchat-pilot-01": {
+      "dataset": "wildchat",
+      "bank_sha256": "db40d60516bc740f1f9fe5b204d1b15f365c6385a14db97d8c37d540544485cd",
+      "indices_sha256": "7ea670467ccc70e8aaeca69dcb32b30d7a6a4e7e699dbd052c963d91c7096372",
+      "logical_routes_sha256": "010817cb5eb183415d754e7efee994833c98fb4debe31e3c1cd753405992d5a8",
+      "exact_physical_assignment_sha256": "80e6b0da14f8361728d2ab60246fe3275f6c37653e9f0f62c2864b7b94cbc3dc"
+    },
+    "stock-wildchat-pilot-02": {
+      "dataset": "wildchat",
+      "bank_sha256": "e1908ff455d893e5918564cfe9c0df299b733611e08c4fdf2360e247dbe915aa",
+      "indices_sha256": "d586aed7382672942f823ab8b89af10d781a56e40899d6d196632c5e4a69f94b",
+      "logical_routes_sha256": "4bbb44068dca3e92ffe6768ff47d08586528608cc6f5015a8aafbf6c0692de25",
+      "exact_physical_assignment_sha256": "39bd92079d579944791e2ee59ac4171990836e195e771aa4f1b35586092c2c20"
+    }
+  },
+  "artifact_audit": {
+    "plan_sha256": "d9bad3d8a62b3ccf0a2cfac863a33623cfec2c767937c74bbcf42508b0f9097a",
+    "archived_source_hashes_verified": {
+      "resident_fastpath/native.py": "6852471bcc29197aec958ae9f51b828522284d947feb43095b3cc9849849414c",
+      "resident_fastpath/diagnose.py": "b68a0ad5fe19edd1397d3fb6e5704ad3a6f5fa32f99efb9257441907775dec71",
+      "scripts/run-resident-fix-diagnostic-kuma.sh": "ad04768c86a9c551d87a2a72e0af28d9f8d18ca233d09fcf6c69d54b9b393645"
+    },
+    "orders_match_plan": true,
+    "input_artifacts": {
+      "stock-gsm8k-pilot-01": {
+        "file_sha256": "70e5a2f208b6baf908ad68d5234f2535e1d822dab7c1f86514dcf0df10fe44f5",
+        "batches_verified": 64,
+        "routes_verified": 65536
+      },
+      "stock-gsm8k-pilot-02": {
+        "file_sha256": "d564e6f6af4a5290bac47f433431f1172d6482b3ec988e3fbeb13dfe07aa6070",
+        "batches_verified": 64,
+        "routes_verified": 65536
+      },
+      "stock-mbpp-pilot-01": {
+        "file_sha256": "48426bea015943c311c98636a49d019e424b2422102953fc1586fc0a24f130f2",
+        "batches_verified": 64,
+        "routes_verified": 65536
+      },
+      "stock-mbpp-pilot-02": {
+        "file_sha256": "b4efc65503a119dd645e4a0568f3d9afa99aa7b763cfdeeac796c5fdf8c91c0b",
+        "batches_verified": 64,
+        "routes_verified": 65536
+      },
+      "stock-wildchat-pilot-01": {
+        "file_sha256": "3f0ae39875bd98127c79c5f9e9af508e028cbe22315ff4175a2316f1ae7a178d",
+        "batches_verified": 64,
+        "routes_verified": 65536
+      },
+      "stock-wildchat-pilot-02": {
+        "file_sha256": "29990733b7014ebb028eace8753932043743d4c92826c2009279457e690ecd85",
+        "batches_verified": 64,
+        "routes_verified": 65536
+      }
+    },
+    "independent_saved_assignment_oracle": true,
+    "scope": "Saved assignments and recorded execution contracts; no external GPU rerun"
+  },
+  "source_files": {
+    "results/resident-fix/diagnostic-v1/trials.jsonl": "6c23403b94f6f0a9f6388320d01bf68db6750ec8a5d3429ed21be57a304280b5"
+  },
+  "script_sha256": "37bc8292f659cc9c861cd4a861308c8093542f5fc5cb822edd9428c685105881",
+  "numpy_version": "2.5.4"
+}

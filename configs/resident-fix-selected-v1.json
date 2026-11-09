@@ -1,0 +1,35 @@
+{
+  "schema": "resident_fix_selection_v1",
+  "selector": "fused",
+  "implementation_id": "b128_single_cta_static_resident_v1",
+  "policy_id": "current_batch_one_home_lpt_active_caps_v1",
+  "physical_slots": 160,
+  "replica_budget_max": 32,
+  "batch_tokens": 128,
+  "control_mode": "static_no_recording_no_planning_no_migration",
+  "selection_input": "Current stock logical gate/topk inside every timed forward",
+  "decision": "Select the controller-free one-launch implementation as the bounded custom repair; not an established gain over stockoff and not a deployment recommendation.",
+  "physical_policy_unchanged": true,
+  "no_final_treatment_outcomes_used": true,
+  "diagnostic_basis": {
+    "factorial_trials": 60,
+    "fused_development_trials": 36,
+    "factorial_audit_sha256": "4d2afcf7c231cd669e733279015063d1160bfccb4e3851388185417e90f16e1f",
+    "fused_development_audit_sha256": "96c84cf09a0dba95bafeefdf22bdfb794f5863b84029bcc157ebf19aea339bf5",
+    "fused_vs_current_service_ratio": 0.8920736445,
+    "fused_vs_stockoff_service_ratio": 1.0215418704,
+    "scope": "Six reused stock-pilot groups; two technical repeats averaged within group; descriptive only."
+  },
+  "changes": [
+    "No per-job EPLB flag/length/history updates or periodic forced-SKIP planning in fixed-residency mode.",
+    "Fuse histogram, unchanged greedy-home choice and physical remapping into one CTA/launch.",
+    "Reuse physical-ID output buffers on one sequential inference stream; preserve stock gate/topk, experts and reduction."
+  ],
+  "limits": [
+    "B128/top8 and exact frozen160-slot map only.",
+    "No concurrent/multistream reuse.",
+    "EPLB-enabled construction/layout buffers remain allocated but inactive.",
+    "Development remained slower than stockoff in every group; full fresh criteria remain5%useful gain and2%regression guard.",
+    "Cross-run fusion versus three-kernel comparison is descriptive, not a contemporaneous factorial contrast."
+  ]
+}

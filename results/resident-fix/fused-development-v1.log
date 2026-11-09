@@ -1,0 +1,69 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 22:38:09.858933853 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+WARNING:vllm.model_executor.layers.fused_moe.fused_moe:Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-01", "variant": "stockoff", "repeat": 0, "mean_service_ns": 735210.5390625}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-01", "variant": "current_online", "repeat": 0, "mean_service_ns": 822786.728515625}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-01", "variant": "static_online", "repeat": 0, "mean_service_ns": 732783.2578125}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-01", "variant": "static_online", "repeat": 1, "mean_service_ns": 740678.421875}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-01", "variant": "current_online", "repeat": 1, "mean_service_ns": 814438.77734375}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-01", "variant": "stockoff", "repeat": 1, "mean_service_ns": 720941.5390625}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-02", "variant": "current_online", "repeat": 0, "mean_service_ns": 830677.3515625}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-02", "variant": "static_online", "repeat": 0, "mean_service_ns": 743757.0859375}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-02", "variant": "stockoff", "repeat": 0, "mean_service_ns": 731486.31640625}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-02", "variant": "stockoff", "repeat": 1, "mean_service_ns": 708580.326171875}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-02", "variant": "static_online", "repeat": 1, "mean_service_ns": 721093.43359375}
+{"event": "diagnostic_complete", "group": "stock-gsm8k-pilot-02", "variant": "current_online", "repeat": 1, "mean_service_ns": 822918.10546875}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-01", "variant": "static_online", "repeat": 0, "mean_service_ns": 685336.3046875}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-01", "variant": "stockoff", "repeat": 0, "mean_service_ns": 701314.634765625}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-01", "variant": "current_online", "repeat": 0, "mean_service_ns": 779001.013671875}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-01", "variant": "current_online", "repeat": 1, "mean_service_ns": 789010.6796875}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-01", "variant": "stockoff", "repeat": 1, "mean_service_ns": 671963.439453125}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-01", "variant": "static_online", "repeat": 1, "mean_service_ns": 698819.314453125}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-02", "variant": "stockoff", "repeat": 0, "mean_service_ns": 681779.685546875}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-02", "variant": "current_online", "repeat": 0, "mean_service_ns": 778208.79296875}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-02", "variant": "static_online", "repeat": 0, "mean_service_ns": 696957.650390625}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-02", "variant": "static_online", "repeat": 1, "mean_service_ns": 691189.00390625}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-02", "variant": "current_online", "repeat": 1, "mean_service_ns": 778626.478515625}
+{"event": "diagnostic_complete", "group": "stock-mbpp-pilot-02", "variant": "stockoff", "repeat": 1, "mean_service_ns": 665145.1328125}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-01", "variant": "current_online", "repeat": 0, "mean_service_ns": 840114.9296875}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-01", "variant": "static_online", "repeat": 0, "mean_service_ns": 765937.318359375}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-01", "variant": "stockoff", "repeat": 0, "mean_service_ns": 733119.84375}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-01", "variant": "stockoff", "repeat": 1, "mean_service_ns": 744551.80078125}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-01", "variant": "static_online", "repeat": 1, "mean_service_ns": 749428.875}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-01", "variant": "current_online", "repeat": 1, "mean_service_ns": 847039.94921875}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-02", "variant": "static_online", "repeat": 0, "mean_service_ns": 755197.271484375}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-02", "variant": "stockoff", "repeat": 0, "mean_service_ns": 732576.2265625}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-02", "variant": "current_online", "repeat": 0, "mean_service_ns": 843484.63671875}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-02", "variant": "current_online", "repeat": 1, "mean_service_ns": 859598.501953125}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-02", "variant": "stockoff", "repeat": 1, "mean_service_ns": 736751.412109375}
+{"event": "diagnostic_complete", "group": "stock-wildchat-pilot-02", "variant": "static_online", "repeat": 1, "mean_service_ns": 767644.4453125}

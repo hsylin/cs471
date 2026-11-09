@@ -1,0 +1,834 @@
+{
+  "schema": "resident_fix_old_pilot_phase_association_v1",
+  "source_scope": "Old six development content groups only; 24 matched ours/stockoff trials; no new final demand",
+  "timing": "Coordinator finish minus start; includes inference-stream completion and coordinator protocol",
+  "causal_claim": false,
+  "limitations": [
+    "Recording phase is associated with elapsed service, not randomized independently of input, calendar, queue, or controller state.",
+    "Phase differences do not isolate a kernel, synchronization, memory operation or Python component.",
+    "The new matched control/selector ablation is needed for component attribution.",
+    "Repeated jobs and arrival conditions are not independent workload samples."
+  ],
+  "phase_definition": {
+    "nonrecording_ordinary": "measured index modulo64 0..47",
+    "recording_ordinary": "48..62",
+    "boundary": "63, includes recording+scheduled planner/no-op commit"
+  },
+  "source_files": {
+    "results/stock-comparison/pilot-v1/trials/stock-gsm8k-pilot-01.jsonl": "a87df18e69ecd2125c357ec3f8c763eee3e1c3b5af33b7c65a828452c999d82f",
+    "results/stock-comparison/pilot-v1/trials/stock-gsm8k-pilot-02.jsonl": "6a2c2204a21aa6925956e1e07c6c7c99454315308efdd6b4a475ae71edf744ae",
+    "results/stock-comparison/pilot-v1/trials/stock-mbpp-pilot-01.jsonl": "df6023c7e1e557544cd2a15f55e723c9e91d404922a8d568ffc3fa6bd431a988",
+    "results/stock-comparison/pilot-v1/trials/stock-mbpp-pilot-02.jsonl": "941413a30e61b541975953bdf61cf473e1eb965abaa311c3da707de3a3dc1a1b",
+    "results/stock-comparison/pilot-v1/trials/stock-wildchat-pilot-01.jsonl": "131acaaa3de12f4587f70c611571cc36234fdb5ee5c27aaaf060eb98180333c5",
+    "results/stock-comparison/pilot-v1/trials/stock-wildchat-pilot-02.jsonl": "1e3fdc61b060a099f11f9a1ece2de9ea28d2b61f24cf9e6e11b7fbaa65cb81ee"
+  },
+  "script_sha256": "894d07f767465aa187261093830e72873d38f1ffb5236051efe2f542a34551ce",
+  "summaries": {
+    "all": {
+      "paired_trials": 24,
+      "unique_content_groups": 6,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072.0,
+          "ours_mean_ms": 0.791365991590712,
+          "stockoff_mean_ms": 0.7194262779405382,
+          "paired_extra_mean_ms": 0.07193971365017361,
+          "paired_extra_total_ms": 220.99880033333338
+        },
+        "recording_ordinary": {
+          "jobs": 960.0,
+          "ours_mean_ms": 0.7949715891059027,
+          "stockoff_mean_ms": 0.718777320138889,
+          "paired_extra_mean_ms": 0.07619426896701388,
+          "paired_extra_total_ms": 73.14649820833334
+        },
+        "boundary": {
+          "jobs": 64.0,
+          "ours_mean_ms": 3.0747677161458333,
+          "stockoff_mean_ms": 0.7192131334635418,
+          "paired_extra_mean_ms": 2.355554582682292,
+          "paired_extra_total_ms": 150.75549329166668
+        }
+      }
+    },
+    "gsm8k": {
+      "paired_trials": 8,
+      "unique_content_groups": 2,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072.0,
+          "ours_mean_ms": 0.7953863994954427,
+          "stockoff_mean_ms": 0.7271847022705078,
+          "paired_extra_mean_ms": 0.0682016972249349,
+          "paired_extra_total_ms": 209.51561387499999
+        },
+        "recording_ordinary": {
+          "jobs": 960.0,
+          "ours_mean_ms": 0.7988380635416666,
+          "stockoff_mean_ms": 0.7269554766927083,
+          "paired_extra_mean_ms": 0.07188258684895833,
+          "paired_extra_total_ms": 69.007283375
+        },
+        "boundary": {
+          "jobs": 64.0,
+          "ours_mean_ms": 3.083263103515625,
+          "stockoff_mean_ms": 0.725424384765625,
+          "paired_extra_mean_ms": 2.35783871875,
+          "paired_extra_total_ms": 150.901678
+        }
+      }
+    },
+    "mbpp": {
+      "paired_trials": 8,
+      "unique_content_groups": 2,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072.0,
+          "ours_mean_ms": 0.7560414954427084,
+          "stockoff_mean_ms": 0.6833787572428385,
+          "paired_extra_mean_ms": 0.07266273819986979,
+          "paired_extra_total_ms": 223.21993175
+        },
+        "recording_ordinary": {
+          "jobs": 960.0,
+          "ours_mean_ms": 0.7604912497395833,
+          "stockoff_mean_ms": 0.682842345703125,
+          "paired_extra_mean_ms": 0.07764890403645834,
+          "paired_extra_total_ms": 74.54294787500001
+        },
+        "boundary": {
+          "jobs": 64.0,
+          "ours_mean_ms": 3.06527658203125,
+          "stockoff_mean_ms": 0.685780716796875,
+          "paired_extra_mean_ms": 2.379495865234375,
+          "paired_extra_total_ms": 152.287735375
+        }
+      }
+    },
+    "wildchat": {
+      "paired_trials": 8,
+      "unique_content_groups": 2,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072.0,
+          "ours_mean_ms": 0.8226700798339844,
+          "stockoff_mean_ms": 0.7477153743082682,
+          "paired_extra_mean_ms": 0.07495470552571615,
+          "paired_extra_total_ms": 230.260855375
+        },
+        "recording_ordinary": {
+          "jobs": 960.0,
+          "ours_mean_ms": 0.8255854540364583,
+          "stockoff_mean_ms": 0.7465341380208333,
+          "paired_extra_mean_ms": 0.07905131601562498,
+          "paired_extra_total_ms": 75.889263375
+        },
+        "boundary": {
+          "jobs": 64.0,
+          "ours_mean_ms": 3.0757634628906247,
+          "stockoff_mean_ms": 0.746434298828125,
+          "paired_extra_mean_ms": 2.3293291640625,
+          "paired_extra_total_ms": 149.0770665
+        }
+      }
+    }
+  },
+  "pairs": [
+    {
+      "content_group_id": "stock-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7990899827473958,
+          "stockoff_mean_ms": 0.7317703294270834,
+          "paired_extra_mean_ms": 0.0673196533203125,
+          "paired_extra_total_ms": 206.805975
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.80322023125,
+          "stockoff_mean_ms": 0.7306762864583334,
+          "paired_extra_mean_ms": 0.07254394479166666,
+          "paired_extra_total_ms": 69.642187
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.124465421875,
+          "stockoff_mean_ms": 0.735386625,
+          "paired_extra_mean_ms": 2.389078796875,
+          "paired_extra_total_ms": 152.901043
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7911425335286458,
+          "stockoff_mean_ms": 0.7277918811848959,
+          "paired_extra_mean_ms": 0.06335065234375,
+          "paired_extra_total_ms": 194.613204
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7954432479166667,
+          "stockoff_mean_ms": 0.7280945479166667,
+          "paired_extra_mean_ms": 0.0673487,
+          "paired_extra_total_ms": 64.654752
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.01987,
+          "stockoff_mean_ms": 0.72653803125,
+          "paired_extra_mean_ms": 2.29333196875,
+          "paired_extra_total_ms": 146.773246
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8085189827473959,
+          "stockoff_mean_ms": 0.7298891956380209,
+          "paired_extra_mean_ms": 0.078629787109375,
+          "paired_extra_total_ms": 241.550706
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8091784364583333,
+          "stockoff_mean_ms": 0.7298006218749999,
+          "paired_extra_mean_ms": 0.07937781458333334,
+          "paired_extra_total_ms": 76.202702
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.18586359375,
+          "stockoff_mean_ms": 0.724716078125,
+          "paired_extra_mean_ms": 2.461147515625,
+          "paired_extra_total_ms": 157.513441
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-01",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7888754085286459,
+          "stockoff_mean_ms": 0.7195981800130209,
+          "paired_extra_mean_ms": 0.069277228515625,
+          "paired_extra_total_ms": 212.819646
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.792495359375,
+          "stockoff_mean_ms": 0.7193481770833333,
+          "paired_extra_mean_ms": 0.07314718229166667,
+          "paired_extra_total_ms": 70.221295
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.016033828125,
+          "stockoff_mean_ms": 0.717162125,
+          "paired_extra_mean_ms": 2.298871703125,
+          "paired_extra_total_ms": 147.127789
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8002043854166666,
+          "stockoff_mean_ms": 0.7305941520182291,
+          "paired_extra_mean_ms": 0.0696102333984375,
+          "paired_extra_total_ms": 213.842637
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8027244979166667,
+          "stockoff_mean_ms": 0.730754521875,
+          "paired_extra_mean_ms": 0.07196997604166668,
+          "paired_extra_total_ms": 69.091177
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.128516,
+          "stockoff_mean_ms": 0.729932765625,
+          "paired_extra_mean_ms": 2.398583234375,
+          "paired_extra_total_ms": 153.509327
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7878333531901042,
+          "stockoff_mean_ms": 0.7227793971354166,
+          "paired_extra_mean_ms": 0.0650539560546875,
+          "paired_extra_total_ms": 199.845753
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.793068921875,
+          "stockoff_mean_ms": 0.7220908645833334,
+          "paired_extra_mean_ms": 0.07097805729166667,
+          "paired_extra_total_ms": 68.138935
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.04524259375,
+          "stockoff_mean_ms": 0.721968390625,
+          "paired_extra_mean_ms": 2.323274203125,
+          "paired_extra_total_ms": 148.689549
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7977793714192709,
+          "stockoff_mean_ms": 0.7315726673177084,
+          "paired_extra_mean_ms": 0.0662067041015625,
+          "paired_extra_total_ms": 203.386995
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8011639864583333,
+          "stockoff_mean_ms": 0.7315045333333333,
+          "paired_extra_mean_ms": 0.069659453125,
+          "paired_extra_total_ms": 66.873075
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.11300665625,
+          "stockoff_mean_ms": 0.72581284375,
+          "paired_extra_mean_ms": 2.3871938125,
+          "paired_extra_total_ms": 152.780404
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-gsm8k-pilot-02",
+      "dataset": "gsm8k",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7896471783854166,
+          "stockoff_mean_ms": 0.7234818154296875,
+          "paired_extra_mean_ms": 0.06616536295572917,
+          "paired_extra_total_ms": 203.259995
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7934098270833333,
+          "stockoff_mean_ms": 0.7233742604166666,
+          "paired_extra_mean_ms": 0.07003556666666666,
+          "paired_extra_total_ms": 67.234144
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.033106734375,
+          "stockoff_mean_ms": 0.72187821875,
+          "paired_extra_mean_ms": 2.311228515625,
+          "paired_extra_total_ms": 147.918625
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7692642477213542,
+          "stockoff_mean_ms": 0.6919719459635416,
+          "paired_extra_mean_ms": 0.0772923017578125,
+          "paired_extra_total_ms": 237.441951
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7714514833333332,
+          "stockoff_mean_ms": 0.6940201020833333,
+          "paired_extra_mean_ms": 0.07743138125,
+          "paired_extra_total_ms": 74.334126
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.118488125,
+          "stockoff_mean_ms": 0.690870296875,
+          "paired_extra_mean_ms": 2.427617828125,
+          "paired_extra_total_ms": 155.367541
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7596733284505208,
+          "stockoff_mean_ms": 0.6753641715494791,
+          "paired_extra_mean_ms": 0.08430915690104167,
+          "paired_extra_total_ms": 258.99773
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7641269177083333,
+          "stockoff_mean_ms": 0.6740117437500001,
+          "paired_extra_mean_ms": 0.09011517395833334,
+          "paired_extra_total_ms": 86.510567
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.02552490625,
+          "stockoff_mean_ms": 0.717759359375,
+          "paired_extra_mean_ms": 2.307765546875,
+          "paired_extra_total_ms": 147.696995
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7615323102213541,
+          "stockoff_mean_ms": 0.6949706474609375,
+          "paired_extra_mean_ms": 0.06656166276041667,
+          "paired_extra_total_ms": 204.477428
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7652392416666667,
+          "stockoff_mean_ms": 0.693236809375,
+          "paired_extra_mean_ms": 0.07200243229166667,
+          "paired_extra_total_ms": 69.122335
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.1207886875,
+          "stockoff_mean_ms": 0.690468015625,
+          "paired_extra_mean_ms": 2.430320671875,
+          "paired_extra_total_ms": 155.540523
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-01",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7536644241536459,
+          "stockoff_mean_ms": 0.687009939453125,
+          "paired_extra_mean_ms": 0.06665448470052082,
+          "paired_extra_total_ms": 204.762577
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7625694260416667,
+          "stockoff_mean_ms": 0.6861566072916667,
+          "paired_extra_mean_ms": 0.07641281875,
+          "paired_extra_total_ms": 73.356306
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.01193690625,
+          "stockoff_mean_ms": 0.683095078125,
+          "paired_extra_mean_ms": 2.328841828125,
+          "paired_extra_total_ms": 149.045877
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-02",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7577964850260416,
+          "stockoff_mean_ms": 0.6856092685546875,
+          "paired_extra_mean_ms": 0.07218721647135418,
+          "paired_extra_total_ms": 221.759129
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7644258760416667,
+          "stockoff_mean_ms": 0.6853929520833333,
+          "paired_extra_mean_ms": 0.07903292395833333,
+          "paired_extra_total_ms": 75.871607
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.10670328125,
+          "stockoff_mean_ms": 0.682446625,
+          "paired_extra_mean_ms": 2.42425665625,
+          "paired_extra_total_ms": 155.152426
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-02",
+      "dataset": "mbpp",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7442868072916666,
+          "stockoff_mean_ms": 0.6774125322265625,
+          "paired_extra_mean_ms": 0.06687427506510417,
+          "paired_extra_total_ms": 205.437773
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7478207312499999,
+          "stockoff_mean_ms": 0.6764352364583334,
+          "paired_extra_mean_ms": 0.07138549479166667,
+          "paired_extra_total_ms": 68.530075
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.0118824375,
+          "stockoff_mean_ms": 0.67390925,
+          "paired_extra_mean_ms": 2.3379731875,
+          "paired_extra_total_ms": 149.630284
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-02",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.757024462890625,
+          "stockoff_mean_ms": 0.68459211328125,
+          "paired_extra_mean_ms": 0.072432349609375,
+          "paired_extra_total_ms": 222.512178
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7601392822916667,
+          "stockoff_mean_ms": 0.6842324739583334,
+          "paired_extra_mean_ms": 0.07590680833333334,
+          "paired_extra_total_ms": 72.870536
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.118006828125,
+          "stockoff_mean_ms": 0.680487078125,
+          "paired_extra_mean_ms": 2.43751975,
+          "paired_extra_total_ms": 156.001264
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-mbpp-pilot-02",
+      "dataset": "mbpp",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.7450898977864584,
+          "stockoff_mean_ms": 0.670099439453125,
+          "paired_extra_mean_ms": 0.07499045833333333,
+          "paired_extra_total_ms": 230.370688
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.7481570395833333,
+          "stockoff_mean_ms": 0.6692528406249999,
+          "paired_extra_mean_ms": 0.07890419895833334,
+          "paired_extra_total_ms": 75.748031
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.008881484375,
+          "stockoff_mean_ms": 0.66721003125,
+          "paired_extra_mean_ms": 2.341671453125,
+          "paired_extra_total_ms": 149.866973
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.823645666015625,
+          "stockoff_mean_ms": 0.7538460263671874,
+          "paired_extra_mean_ms": 0.0697996396484375,
+          "paired_extra_total_ms": 214.424493
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8266541447916667,
+          "stockoff_mean_ms": 0.752125725,
+          "paired_extra_mean_ms": 0.07452841979166666,
+          "paired_extra_total_ms": 71.547283
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.131521703125,
+          "stockoff_mean_ms": 0.75590621875,
+          "paired_extra_mean_ms": 2.375615484375,
+          "paired_extra_total_ms": 152.039391
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8113696585286458,
+          "stockoff_mean_ms": 0.7409555615234374,
+          "paired_extra_mean_ms": 0.07041409700520833,
+          "paired_extra_total_ms": 216.312106
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8137864187499999,
+          "stockoff_mean_ms": 0.7387247322916667,
+          "paired_extra_mean_ms": 0.07506168645833333,
+          "paired_extra_total_ms": 72.059219
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.02628440625,
+          "stockoff_mean_ms": 0.737617796875,
+          "paired_extra_mean_ms": 2.288666609375,
+          "paired_extra_total_ms": 146.474663
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.824073265625,
+          "stockoff_mean_ms": 0.7447425618489584,
+          "paired_extra_mean_ms": 0.07933070377604168,
+          "paired_extra_total_ms": 243.703922
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8276196322916667,
+          "stockoff_mean_ms": 0.7428612802083333,
+          "paired_extra_mean_ms": 0.08475835208333334,
+          "paired_extra_total_ms": 81.368018
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.12347853125,
+          "stockoff_mean_ms": 0.744182078125,
+          "paired_extra_mean_ms": 2.379296453125,
+          "paired_extra_total_ms": 152.274973
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-01",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8185358792317708,
+          "stockoff_mean_ms": 0.7390751350911459,
+          "paired_extra_mean_ms": 0.079460744140625,
+          "paired_extra_total_ms": 244.103406
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8198928645833333,
+          "stockoff_mean_ms": 0.737933403125,
+          "paired_extra_mean_ms": 0.08195946145833333,
+          "paired_extra_total_ms": 78.681083
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.031799109375,
+          "stockoff_mean_ms": 0.736389140625,
+          "paired_extra_mean_ms": 2.29540996875,
+          "paired_extra_total_ms": 146.906238
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8287031588541667,
+          "stockoff_mean_ms": 0.7546757845052083,
+          "paired_extra_mean_ms": 0.07402737434895833,
+          "paired_extra_total_ms": 227.412094
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8334445625,
+          "stockoff_mean_ms": 0.7529355395833333,
+          "paired_extra_mean_ms": 0.08050902291666667,
+          "paired_extra_total_ms": 77.288662
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.102593640625,
+          "stockoff_mean_ms": 0.75025178125,
+          "paired_extra_mean_ms": 2.352341859375,
+          "paired_extra_total_ms": 150.549879
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "code",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8230575315755209,
+          "stockoff_mean_ms": 0.7451012591145834,
+          "paired_extra_mean_ms": 0.0779562724609375,
+          "paired_extra_total_ms": 239.481669
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8261301947916667,
+          "stockoff_mean_ms": 0.7464360833333333,
+          "paired_extra_mean_ms": 0.07969411145833334,
+          "paired_extra_total_ms": 76.506347
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.0412735,
+          "stockoff_mean_ms": 0.74424109375,
+          "paired_extra_mean_ms": 2.29703240625,
+          "paired_extra_total_ms": 147.010074
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.5,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8293715852864584,
+          "stockoff_mean_ms": 0.7583037164713541,
+          "paired_extra_mean_ms": 0.07106786881510417,
+          "paired_extra_total_ms": 218.320493
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.830534409375,
+          "stockoff_mean_ms": 0.7591088375,
+          "paired_extra_mean_ms": 0.071425571875,
+          "paired_extra_total_ms": 68.568549
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.129288125,
+          "stockoff_mean_ms": 0.75905425,
+          "paired_extra_mean_ms": 2.370233875,
+          "paired_extra_total_ms": 151.694968
+        }
+      }
+    },
+    {
+      "content_group_id": "stock-wildchat-pilot-02",
+      "dataset": "wildchat",
+      "arrival_type": "conversation",
+      "rho": 0.85,
+      "phases": {
+        "nonrecording_ordinary": {
+          "jobs": 3072,
+          "ours_mean_ms": 0.8226038935546875,
+          "stockoff_mean_ms": 0.7450229495442708,
+          "paired_extra_mean_ms": 0.07758094401041667,
+          "paired_extra_total_ms": 238.32866
+        },
+        "recording_ordinary": {
+          "jobs": 960,
+          "ours_mean_ms": 0.8266214052083333,
+          "stockoff_mean_ms": 0.742147503125,
+          "paired_extra_mean_ms": 0.08447390208333333,
+          "paired_extra_total_ms": 81.094946
+        },
+        "boundary": {
+          "jobs": 64,
+          "ours_mean_ms": 3.0198686875,
+          "stockoff_mean_ms": 0.74383203125,
+          "paired_extra_mean_ms": 2.27603665625,
+          "paired_extra_total_ms": 145.666346
+        }
+      }
+    }
+  ]
+}
