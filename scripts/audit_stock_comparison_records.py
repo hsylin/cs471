@@ -59,6 +59,7 @@ def calendar_check(case):
 
 
 def raw_clock_check(r):
+    require(r.get('per_job_completion_scope')=='current_inference_stream_after_native_step','Per-job inference-stream completion contract')
     n=4096;e=r['epoch_monotonic_ns'];h=r['horizon_ns'];end=r['observation_end_ns']
     names=('arrival_offsets_ns','coordinator_admit_ns','coordinator_start_ns','coordinator_finish_ns')
     raw=[r[name] for name in names]
@@ -118,7 +119,31 @@ def input_artifacts(root,gid,meta):
     require(np.all(np.isfinite(weights)) and np.all(weights>=0) and np.allclose(weights.sum(-1),1,atol=2e-6,rtol=0),'Stock combining weights finite/normalized')
     # The selected stock router, not historical HF IDs, supplies this oracle.
     per_step=np.stack([np.bincount(x.ravel(),minlength=128) for x in ids[16:]])
-    return dict(logical_routing_sha256=ih,float32_combining_weights_sha256=wh,per_step=per_step)
+    return dict(logical_routing_sha256=ih,float32_combining_weights_sha256=wh,per_step=per_step,logical_ids=ids[16:])
+
+
+def native_sampled_physical_counts(logical_ids,selected,initial,events):
+    """Reproduce native token-index mapping under each job's committed map.
+
+    A commit in state.step follows that job's forward. Historical physical ring
+    entries stay physical when the inverse map changes; they are not relabeled.
+    """
+    segments={}
+    for step in selected:
+        mapping=initial
+        for event in events:
+            if event['commit_step']<step:mapping=event['committed_map']
+        segments.setdefault(tuple(mapping),[]).append(step)
+    total=np.zeros(160,np.int64)
+    for key,steps in segments.items():
+        mapping=np.asarray(key,np.int64);copies=np.bincount(mapping,minlength=128)
+        inverse=np.zeros((128,int(copies.max())),np.int64)
+        for expert in range(128):inverse[expert,:copies[expert]]=np.flatnonzero(mapping==expert)
+        ids=logical_ids[steps]
+        hashed=(np.arange(128,dtype=np.int64)*2654435769)&0xffffffff
+        physical=inverse[ids,hashed[None,:,None]%copies[ids]]
+        total+=np.bincount(physical.ravel(),minlength=160)
+    return total
 
 
 def native_check(row,artifact):
@@ -157,7 +182,8 @@ def native_check(row,artifact):
                 require(event['sampled_step_indices']==selected and event['window_valid_steps']==len(selected),'Exact sampled native indices')
                 require(event['source_map']==previous,'Native source/committed-map chain')
                 observed=np.asarray(event['current_counts']).reshape(-1)
-                expected=artifact['per_step'][selected].sum(0)*2
+                physical_counts=native_sampled_physical_counts(artifact['logical_ids'],selected,initial,events)
+                expected=np.bincount(event['source_map'],weights=physical_counts,minlength=128).astype(np.int64)*2
                 require(np.array_equal(observed,expected),'Exact native logical observation window')
                 require(len(event['source_map'])==len(event['committed_map'])==160 and set(event['committed_map'])==set(range(128)),'Native committed map coverage')
                 previous=event['committed_map']
@@ -165,6 +191,8 @@ def native_check(row,artifact):
             deferred.extend(range(due,4096))
             require(end['deferred_boundary_steps']==deferred,'Pending-work native deferral evidence')
             require(end['native_counter']==4095-events[-1]['launch_step'] and end['native_valid_steps']==len(recorded),'Native final observation/counter state')
+            terminal=native_sampled_physical_counts(artifact['logical_ids'],recorded[-1000:],initial,events)
+            require(np.array_equal(end['terminal_physical_window_totals_local'],terminal),'Native terminal physical window')
             require(events[-1]['committed_map']==end['final_map'],'Last committed map/final map')
             require(sum(event['sent_bytes_local'] for event in events)==end['migration_sent_bytes_local'],'Actual sender payload accounting')
         elif arm=='ours':

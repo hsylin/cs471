@@ -69,6 +69,7 @@ def validate_plan(plan):
 
 def clock_metrics(row):
     """Reconstruct complete FCFS outcomes and distinguish output from quiescence."""
+    _require(row.get('per_job_completion_scope')=='current_inference_stream_after_native_step','Wrong per-job completion stream scope')
     _require(row.get('n_jobs')==4096,'Wrong measured job count')
     _require(np.asarray(row.get('per_rank_start_ns')).shape==(2,4096) and np.asarray(row.get('per_rank_gpu_complete_ns')).shape==(2,4096),'Missing rank timing arrays')
     m=fcfs_metrics(row)

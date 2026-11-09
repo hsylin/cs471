@@ -13,7 +13,7 @@ def clocks():
     arrivals=[20*i for i in range(n)]
     starts=[epoch+x+2 for x in arrivals];finishes=[s+10 for s in starts]
     q=finishes[-1]+80;end=q+1
-    row=dict(n_jobs=n,arrival_offsets_ns=arrivals,horizon_ns=20*n,
+    row=dict(n_jobs=n,per_job_completion_scope='current_inference_stream_after_native_step',arrival_offsets_ns=arrivals,horizon_ns=20*n,
         epoch_monotonic_ns=epoch,observation_end_ns=end,
         coordinator_admit_ns=[s-1 for s in starts],coordinator_start_ns=starts,coordinator_finish_ns=finishes,
         per_rank_start_ns=[[s+1 for s in starts],[s+2 for s in starts]],
@@ -70,6 +70,11 @@ def test_tampered_tail_or_completed_extent_rejected(field):
 def test_rank_completion_outside_service_rejected():
     row=clocks();row['per_rank_gpu_complete_ns'][1][100]=row['coordinator_finish_ns'][100]+1
     with pytest.raises(ValueError,match='outside'):clock_metrics(row)
+
+
+def test_devicewide_per_job_barrier_is_not_the_frozen_async_contract():
+    row=clocks();row['per_job_completion_scope']='all_cuda_streams'
+    with pytest.raises(ValueError,match='stream scope'):clock_metrics(row)
 
 
 def test_precomputed_summary_cannot_hide_service_spike():

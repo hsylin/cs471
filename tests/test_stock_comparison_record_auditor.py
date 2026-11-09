@@ -14,7 +14,7 @@ def clock_fixture():
     a=e+offset;s=a+2;f=s+10;q=int(f[-1])+80;end=q+1
     vectors=dict(response=f-a,queue_wait=s-a,service=f-s,admission_delay=s-1-a,dispatch_delay=np.ones(n,dtype=np.int64))
     summaries={name:dict(mean=float(v.mean()),p50=float(np.quantile(v,.5)),p95=float(np.quantile(v,.95)),p99=float(np.quantile(v,.99)),max=int(v.max())) for name,v in vectors.items()}
-    return dict(n_jobs=n,epoch_monotonic_ns=e,horizon_ns=n*20,observation_end_ns=end,
+    return dict(n_jobs=n,per_job_completion_scope='current_inference_stream_after_native_step',epoch_monotonic_ns=e,horizon_ns=n*20,observation_end_ns=end,
         arrival_offsets_ns=offset.tolist(),coordinator_admit_ns=(s-1).tolist(),coordinator_start_ns=s.tolist(),coordinator_finish_ns=f.tolist(),
         per_rank_start_ns=[(s+1).tolist(),(s+2).tolist()],per_rank_gpu_complete_ns=[(f-2).tolist(),(f-1).tolist()],
         controller_quiescent_ns=q,controller_quiescence_start_ns=int(f[-1])+5,
@@ -47,3 +47,18 @@ def test_float_bytes_identity_distinguishes_fractional_weights():
     x=np.array([.25,.75],dtype='<f4');y=np.array([.5,.5],dtype='<f4')
     assert audit.tensor_sha(x)!=audit.tensor_sha(y)
     assert audit.tensor_sha(x)!=audit.tensor_sha(x.astype('<f8'))
+
+
+def test_native_history_retains_physical_slots_across_changed_commit():
+    ids=np.zeros((3,128,8),np.int32);ids[:]=np.arange(8)
+    old=list(range(128))+list(range(32));new=old.copy();new[0],new[32]=new[32],new[0]
+    event=dict(commit_step=0,committed_map=new)
+    first=audit.native_sampled_physical_counts(ids,[0],old,[event])
+    second=audit.native_sampled_physical_counts(ids,[1],old,[event])
+    together=audit.native_sampled_physical_counts(ids,[0,1],old,[event])
+    assert np.array_equal(together,first+second)
+    # The commit is after forward0; only forward1 uses the new placement.
+    assert first[0]>0 and second[0]==0 and second[32]>0
+    recovered=np.bincount(new,weights=together,minlength=128)
+    true=np.bincount(ids[:2].ravel(),minlength=128)
+    assert not np.array_equal(recovered,true)
