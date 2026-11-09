@@ -26,3 +26,14 @@ def test_exact_timestamp_ties_and_absolute_overload_contract():
     assert c['absolute_arrivals'] and c['drop_policy'].startswith('none')
     rows.reverse()
     with pytest.raises(ValueError):select_arrival_blocks(rows,trace='code',count=2,jobs=4)
+
+
+def test_truncation_near_duplicate_leakage_is_rejected_before_split():
+    from generalization.data import deduplicate_captured_prefixes
+    prefix='the identical visible prefix with several distinct tokens for hashing'
+    a=dict(dataset='wildchat',source_id='a',text=prefix+' '+'a '*100,captured_prefix_text=prefix)
+    b=dict(dataset='wildchat',source_id='b',text=prefix+' '+'b '*100,captured_prefix_text=prefix)
+    full,_=deduplicate([a,b]);assert len(full)==2
+    visible,rejected=deduplicate_captured_prefixes(full)
+    assert len(visible)==1 and len(rejected)==1
+    assert visible[0]['text']==a['text'] and 'captured_prefix_text' not in visible[0]

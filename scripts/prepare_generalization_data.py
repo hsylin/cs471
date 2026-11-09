@@ -7,7 +7,7 @@ selected prompt text stays in the requested private output directory.
 from pathlib import Path
 import argparse, csv, json, sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from generalization.data import digest, deduplicate, split_records, validate_splits, select_arrival_blocks
+from generalization.data import digest, deduplicate, deduplicate_captured_prefixes, split_records, validate_splits, select_arrival_blocks
 from followup.router_tapes import MODEL, REVISION, file_sha256
 
 
@@ -45,17 +45,20 @@ def main():
         if len(ids)<8:
             short.append([r['dataset'],r['source_id']]);continue
         eligible.append({**r,'full_token_count':len(ids),'captured_token_count':min(512,len(ids)),
-                         'token_ids_sha256':digest(ids[:512]),'token_ids':ids[:512]})
+                         'token_ids_sha256':digest(ids[:512]),'token_ids':ids[:512],
+                         'captured_prefix_text':tokenizer.decode(ids[:512],skip_special_tokens=False)})
     unique,dropped=deduplicate(eligible)
+    unique,prefix_dropped=deduplicate_captured_prefixes(unique)
     blocks=split_records(unique,pilot_documents=64,final_documents=64)
     counts={d:sum(r['dataset']==d for r in unique) for d in ('wildchat','mbpp','gsm8k')}
     names=['wildchat-metadata.json','mbpp-metadata.json','gsm8k-metadata.json','wildchat-first-shard.parquet','wildchat-readme.md','wildchat-license.md','mbpp-full.jsonl','mbpp-readme.md','google-readme.md','gsm8k.jsonl','gsm8k-license.txt','qwen-tokenizer.json']
     files={name:dict(bytes=(root/name).stat().st_size,sha256=file_sha256(root/name)) for name in names}
     manifest={'schema':'generalization_sources_v1','seed':471501,'arrival_seed':471502,'source_model':MODEL,'source_revision':REVISION,
         'formatting':{'chat_template':None,'add_special_tokens':False,'role':'plain first user/question/task text','phase':'causal_prefill_layer0','generated_outputs':False,'teacher_forced_answer':False,'truncation':'first 512 tokens; no concatenation across prompts in attention'},
-        'selection':{'wildchat_frame':'first 8192 rows of pinned first shard; English, non-toxic, nonempty first user turn','minimum_tokens':8,'near_duplicate_jaccard':0.8,'shingle_width':5,'pilot_blocks_per_dataset':2,'final_blocks_per_dataset':8,'documents_per_block':64,'eligible_counts':counts,'deduplicated_before_split':True},
+        'selection':{'wildchat_frame':'first 8192 rows of pinned first shard; English, non-toxic, nonempty first user turn','minimum_tokens':8,'near_duplicate_jaccard':0.8,'shingle_width':5,'pilot_blocks_per_dataset':2,'final_blocks_per_dataset':8,'documents_per_block':64,'eligible_counts':counts,'deduplicated_before_split':True,'captured_prefix_deduplicated':True,'prefix_decoder_tokenizers_version':tokenizers.__version__},
         'capture_limit_note':'Captured prefixes are bounded; inference runs do not generate responses. Unseen means new to this experiment, not proven absent from checkpoint training.',
-        'raw_files':files,'blocks':blocks,'duplicate_rejections':dropped,'short_rejections':short}
+        'preparation_source_sha256':file_sha256(__file__),'data_contract_sha256':file_sha256(Path(__file__).resolve().parents[1]/'generalization/data.py'),
+        'raw_files':files,'blocks':blocks,'duplicate_rejections':dropped,'prefix_duplicate_rejections':prefix_dropped,'short_rejections':short}
     manifest['content_sha256']=digest(manifest)
     validate_splits(blocks)
     args.output.mkdir(parents=True);args.public_output.mkdir(parents=True)

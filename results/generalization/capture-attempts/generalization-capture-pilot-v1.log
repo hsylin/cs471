@@ -1,0 +1,11 @@
+{'capture_only': True, 'host': 'kh014', 'gpu_uuids': ['GPU-204281f9-9c87-3c25-adfb-9edd6c972ec3', 'GPU-7d5c9009-305b-9341-957f-1deb96611ed5']}
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/repo-generalization/scripts/capture_generalization_inputs.py", line 184, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/cs-471/skewbench-hlin/repo-generalization/scripts/capture_generalization_inputs.py", line 28, in main
+    if manifest['schema']!='generalization_sources_v1' or manifest['content_sha256']!=digest({k:v for k,v in manifest.items() if k!='content_sha256'}):
+                                                                                      ^^^^^^
+UnboundLocalError: cannot access local variable 'digest' where it is not associated with a value
+srun: error: kh014: task 0: Exited with exit code 1
+srun: Terminating StepId=4872248.8

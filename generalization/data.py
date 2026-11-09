@@ -67,6 +67,19 @@ def deduplicate(records, threshold=0.8):
     return kept, dropped
 
 
+def deduplicate_captured_prefixes(records, threshold=0.8):
+    """Filter the actual model-visible view as well as full source documents."""
+    views=[{**r,'text':r['captured_prefix_text']} for r in records]
+    kept,dropped=deduplicate(views,threshold=threshold)
+    keys={(r['dataset'],r['source_id']) for r in kept}
+    result=[]
+    for r in records:
+        if (r['dataset'],r['source_id']) in keys:
+            result.append({k:v for k,v in r.items() if k!='captured_prefix_text'})
+            result[-1]['captured_prefix_normalized_sha256']=digest(normalized(r['captured_prefix_text']).encode())
+    return result,dropped
+
+
 def split_records(records, *, seed=471501, pilot_blocks=2, final_blocks=8,
                   pilot_documents=16, final_documents=32):
     """Hash-ranked document sampling; all splits chosen before capture/timing."""
