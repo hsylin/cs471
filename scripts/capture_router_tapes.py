@@ -155,7 +155,10 @@ def main() -> None:
     for name in ("tokenizer.json", "tokenizer_config.json", "vocab.json", "merges.txt"):
         path = get(name)
         tokenizer_records.append({"file": name, "sha256": file_sha256(path)})
-    run_records = []
+    index_file = args.output_dir/"capture-index.json"
+    run_records = json.loads(index_file.read_text()) if index_file.exists() else []
+    if len({r["block_id"] for r in run_records}) != len(run_records):
+        raise ValueError("Existing capture index has duplicate source blocks")
     for block in manifest["blocks"]:
         if args.split != "all" and block["split"] != args.split:
             continue
@@ -248,7 +251,9 @@ def main() -> None:
                         duration_steps=args.duration_steps, repeat_steps=args.repeat_steps)
                     record["replays"].append({"file": str(out), "sha256": tape.sha256})
         run_records.append(record)
-        (args.output_dir/"capture-index.json").write_text(json.dumps(run_records, indent=2)+"\n")
+        temporary_index = index_file.with_suffix(".json.tmp")
+        temporary_index.write_text(json.dumps(run_records, indent=2)+"\n")
+        temporary_index.replace(index_file)
         print(canonical_json(record), flush=True)
 
 
