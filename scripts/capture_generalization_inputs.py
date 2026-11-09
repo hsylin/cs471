@@ -14,6 +14,15 @@ from generalization.data import digest, validate_splits
 from scripts.capture_optimization_tapes import TRANSFORMERS_VERSION, MODELING_SHA256, MASKING_SHA256
 
 
+def validate_sources(path):
+    manifest=json.loads(path.read_text())
+    if manifest['schema']!='generalization_sources_v1' or manifest['content_sha256']!=digest({k:v for k,v in manifest.items() if k!='content_sha256'}):
+        raise ValueError('Changed/unfrozen source selection')
+    validate_splits(manifest['blocks'])
+    if (manifest['source_model'],manifest['source_revision'])!=(MODEL,REVISION):raise ValueError('Wrong checkpoint')
+    return manifest
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--sources',type=Path,required=True)
@@ -24,11 +33,7 @@ def main():
     p.add_argument('--local-files-only',action='store_true')
     args=p.parse_args()
     if args.output_dir.exists():raise FileExistsError('Fresh capture directory required')
-    manifest=json.loads(args.sources.read_text())
-    if manifest['schema']!='generalization_sources_v1' or manifest['content_sha256']!=digest({k:v for k,v in manifest.items() if k!='content_sha256'}):
-        raise ValueError('Changed/unfrozen source selection')
-    validate_splits(manifest['blocks'])
-    if (manifest['source_model'],manifest['source_revision'])!=(MODEL,REVISION):raise ValueError('Wrong checkpoint')
+    manifest=validate_sources(args.sources)
     import numpy as np
     import torch
     import transformers
@@ -40,8 +45,8 @@ def main():
 
     if transformers.__version__ != TRANSFORMERS_VERSION:
         raise RuntimeError(f"Expected Transformers {TRANSFORMERS_VERSION}, got {transformers.__version__}")
-    for module, digest in ((qwen, MODELING_SHA256), (masks, MASKING_SHA256)):
-        if file_sha256(inspect.getfile(module)) != digest:
+    for module, expected_digest in ((qwen, MODELING_SHA256), (masks, MASKING_SHA256)):
+        if file_sha256(inspect.getfile(module)) != expected_digest:
             raise RuntimeError(f"Pinned implementation changed: {module.__name__}")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     download_args = dict(revision=REVISION, cache_dir=str(args.cache_dir), local_files_only=args.local_files_only)
