@@ -207,7 +207,11 @@ def main():
                 raise AssertionError('Measured router differs from authenticated checkpoint capture gate')
             reference,preflights=prepare_references(rt,layers,weights,hidden,args.output,entry['block_id'])
             if 'output_reduction_probe' not in rt.metadata:
-                layers['stockoff'].attest_output_reduction(hidden[WARMUP])
+                probe=layers['stockoff'].attest_output_reduction(hidden[WARMUP])
+                probes=gather(rt,probe)
+                if len({digest(p['observed_successful_backends']) for p in probes})!=1:
+                    raise AssertionError('Ranks select different native output reduction backends')
+                rt.metadata['output_reduction_probe_per_rank']=probes
             cases=[None] if plan['phase']=='calibration' else [c for c in plan['cases'] if c['block_id']==entry['block_id']]
             for case in cases:
                 order=['stockoff'] if case is None else case['arm_order']
