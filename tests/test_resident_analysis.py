@@ -10,7 +10,7 @@ import sys
 import tempfile
 import unittest
 
-from resident_dispatch.analysis import analyze, analyze_pilot, criterion
+from resident_dispatch.analysis import analyze, analyze_pilot, criterion, describe_validation
 
 
 REGIMES = ("stable", "transient", "persistent", "switching")
@@ -225,6 +225,46 @@ class ResidentAnalysisTests(unittest.TestCase):
             self.assertFalse(result["claim_eligible"])
             self.assertEqual(result["expected_records"], 80)
             self.assertEqual(json.loads(completed.stdout)["status"], "complete")
+
+    def test_online_validation_is_32_rows_and_descriptive_even_when_slow(self):
+        plan, rows = pilot_fixture(candidate=1.2)
+        rows = [row for row in rows if row["arm"] in {"native", "one_copy_home"}]
+        for row in rows:
+            if row["arm"] == "one_copy_home":
+                row["arm"] = "online"
+        result = describe_validation(rows, **plan)
+        self.assertEqual(result["status"], "complete")
+        self.assertEqual(result["expected_records"], 32)
+        self.assertEqual(result["eligible_matched_pairs"], 16)
+        self.assertEqual(len(result["cells"]), 8)
+        self.assertEqual(len(result["by_block"]), 2)
+        self.assertAlmostEqual(result["overall_ratio"], 1.2)
+        self.assertFalse(result["claim_eligible"])
+        self.assertNotIn("acceptance", result)
+        self.assertTrue(all("ci95" not in cell for cell in result["cells"]))
+        self.assertTrue(all(cell["paired_repetitions"] == 2 for cell in result["cells"]))
+        incomplete = describe_validation(rows[1:], **plan)
+        self.assertEqual(incomplete["status"], "incomplete")
+        self.assertIsNone(incomplete["overall_ratio"])
+
+    def test_online_validation_cli_routes_domain_plan_without_changing_final_api(self):
+        plan, rows = pilot_fixture(candidate=.9)
+        rows = [row for row in rows if row["arm"] in {"native", "one_copy_home"}]
+        for row in rows:
+            if row["arm"] == "one_copy_home":
+                row["arm"] = "online"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            records, config, output = root / "synthetic.jsonl", root / "plan.json", root / "summary.json"
+            records.write_text("\n".join(json.dumps(row) for row in rows) + "\n")
+            config.write_text(json.dumps({"phase": "paired_descriptive", **plan}))
+            subprocess.run([sys.executable, "-m", "resident_dispatch.analysis",
+                            "--plan", str(config), "--records", str(records),
+                            "--output", str(output)], capture_output=True, text=True, check=True)
+            result = json.loads(output.read_text())
+            self.assertAlmostEqual(result["overall_ratio"], .9)
+            self.assertEqual(result["phase"], "paired_descriptive")
+            self.assertFalse(result["claim_eligible"])
 
 
 if __name__ == "__main__":

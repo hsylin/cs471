@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "audit_pass": true,
+  "records": 80,
+  "unique_source_cells": 8,
+  "artifact_count": 8,
+  "expected_records": 80,
+  "capture_banks_verified": true,
+  "measurement_setup_revision_counts": {
+    "2": 80
+  },
+  "revision2_setup_metadata_checked": true,
+  "checks": [
+    "artifact SHA",
+    "native scalar hash",
+    "logical route eligibility/conservation",
+    "one-home active-count optimum",
+    "token-only balance optimum",
+    "all per-step route diagnostics",
+    "three decision windows and terminal window",
+    "zero migration/fixed committed maps",
+    "native planning trajectory agreement",
+    "local paired order reversal",
+    "completed timer metadata",
+    "revision2 initialized events,64-step conditioning and GC metadata"
+  ],
+  "limitations": [
+    "No runtime optimality or speedup inference.",
+    "One-home token tie-break optimality covered by separate exhaustive unit tests.",
+    "GPU resident-weight content relies on runtime exact-check attestations; no weights copied."
+  ],
+  "artifacts": [
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-01-d0-b128.npz",
+      "sha256": "a0b9bf0f385df8eca0106e373ee2c92ffead84006ec9c03ec71123c7ef656ccf"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-01-d1-b1024.npz",
+      "sha256": "4181a779ad75e7e1e956f0ee76ba51e23678fd2ffe2d7c626a79eca02680fdba"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-01-d0-b1024.npz",
+      "sha256": "c7a682f8ed2c358cca064ac5063b288e8f7b211a142d416169e64db5a615ff5e"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-01-d1-b128.npz",
+      "sha256": "92fda30b98ec5d6cc0b859951e199fc444f921ae8c96bc1169ca0ee5c5956536"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-02-d1-b128.npz",
+      "sha256": "40ff88570b956423ad3a5cbb7cb481dbf38a9d5384d2d717d2cc6142269d89b6"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-02-d0-b128.npz",
+      "sha256": "cfc9ac07657b4307673ccdab4f4def557b007d4e38531f897057b0d6f2525a35"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-02-d0-b1024.npz",
+      "sha256": "16c6b36ce11b7aa5bfbe439de07e9319e9a5ef0d553a8a52d2a8279f7041b5a0"
+    },
+    {
+      "path": "../resident-results/revised-pilot/inputs/opt-pilot-02-d1-b1024.npz",
+      "sha256": "834f2732c70f78733c24df04731d6604341a954a0cc560cfd739821251357215"
+    }
+  ]
+}

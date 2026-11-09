@@ -12,7 +12,8 @@ def execution_fingerprint():
     names = ['resident_dispatch/' + name for name in
              ('__init__.py', 'common.py', 'assignments.py', 'gpu.py', 'pilot.py')]
     # Added only if an online implementation is justified by the frozen pilot.
-    names += [name for name in ('resident_dispatch/online.py', 'resident_dispatch/runner.py')
+    names += [name for name in ('resident_dispatch/online.py', 'resident_dispatch/online_gpu.py',
+                               'resident_dispatch/runner.py')
               if (root / name).exists()]
     files = {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
              for name in names}
@@ -65,11 +66,11 @@ def numerical_check(rt, layer, tensors, references, raw_indices, select_raw):
                 full_batch_inputs_checked=len(raw_indices))
 
 
-def references_for(rt, layer, tensors, fp32_steps):
+def references_for(rt, layer, tensors, fp32_steps, raw_steps=None):
     refs = {}
     positions = rt.torch.tensor([i * (tensors[0].shape[1] - 1) // 15 for i in range(16)],
                                device=rt.device, dtype=rt.torch.long)
-    for raw in range(len(tensors[0])):
+    for raw in (range(len(tensors[0])) if raw_steps is None else raw_steps):
         args = [t[raw] for t in tensors]
         output = layer.forward(*args, observe=False).clone()
         refs[raw] = {'native': output}

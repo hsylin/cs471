@@ -279,10 +279,68 @@ def analyze_pilot(records, *, expected_blocks, expected_regimes=("domain0", "dom
             "interpretation": "Cyclic pilot: 16 conditioning inputs, then 32 inputs repeated eight times for 256 timed forwards with native SKIP observation/planning. Precomputed assignments omit selection cost; pre_native/native is an adapter contrast, not A/A. This is a descriptive development screen, not statistical equivalence, an online-policy result or a runtime bound."}
 
 
+def describe_validation(records, *, expected_blocks,
+                        expected_regimes=("domain0", "domain1"),
+                        expected_batches=(128, 1024), expected_repetitions=(0, 1),
+                        native_arm="native", treatment_arm="online"):
+    """Describe the fixed online implementation on 32 development rows.
+
+    Two development blocks support paired descriptive ratios, not confirmation.
+    No timing threshold selects, retunes or disqualifies the fixed algorithm;
+    fresh evaluation is conditional on correctness under the explicit amendment.
+    """
+    blocks = _unique(expected_blocks, "blocks")
+    regimes = _unique(expected_regimes, "regimes")
+    batches = _unique(expected_batches, "batches")
+    repetitions = _unique(expected_repetitions, "repetitions")
+    if (len(blocks) != 2 or len(regimes) != 2 or set(batches) != {128, 1024}
+            or len(repetitions) != 2 or native_arm == treatment_arm):
+        raise ValueError("online validation requires two blocks/domains/batches/repetitions and distinct arms")
+    summary, valid = _collect(records, blocks, regimes, batches, repetitions,
+                              (native_arm, treatment_arm))
+    complete = not (summary["missing"] or summary["invalid_groups"] or summary["allocation_errors"])
+    pairs = []
+    for identity, rows in valid:
+        native, treatment = rows[native_arm], rows[treatment_arm]
+        pairs.append({**identity, "allocation_id": str(native["allocation_id"]),
+                      "native_seconds": native["elapsed_seconds"],
+                      "treatment_seconds": treatment["elapsed_seconds"],
+                      "log_ratio": math.log(treatment["elapsed_seconds"]) - math.log(native["elapsed_seconds"])})
+    cells = []
+    for block, regime, batch in itertools.product(blocks, regimes, batches):
+        selected = [pair["log_ratio"] for pair in pairs
+                    if (pair["block_id"], pair["regime"], pair["batch_tokens"]) == (block, regime, batch)]
+        if len(selected) == len(repetitions):
+            cells.append({"block_id": block, "regime": regime, "batch_tokens": batch,
+                          "paired_repetitions": len(selected),
+                          "log_ratio": statistics.mean(selected),
+                          "ratio": math.exp(statistics.mean(selected))})
+    by_block = []
+    for block in blocks:
+        selected = [cell["log_ratio"] for cell in cells if cell["block_id"] == block]
+        by_block.append({"block_id": block, "complete_cells": len(selected),
+                         "ratio": math.exp(statistics.mean(selected))
+                         if len(selected) == len(regimes) * len(batches) else None})
+    by_batch = []
+    for batch in batches:
+        selected = [cell["log_ratio"] for cell in cells if cell["batch_tokens"] == batch]
+        by_batch.append({"batch_tokens": batch, "complete_cells": len(selected),
+                         "ratio": math.exp(statistics.mean(selected))
+                         if len(selected) == len(blocks) * len(regimes) else None})
+    return {**summary, "phase": "paired_descriptive", "status": "complete" if complete else "incomplete",
+            "claim_eligible": False, "native_arm": native_arm, "treatment_arm": treatment_arm,
+            "eligible_matched_pairs": len(pairs), "pairs": pairs, "cells": cells,
+            "by_block": by_block, "by_batch": by_batch,
+            "overall_ratio": math.exp(statistics.mean(cell["log_ratio"] for cell in cells))
+            if complete and len(cells) == len(blocks) * len(regimes) * len(batches) else None,
+            "performance_gate": "not_applied_by_predeclared_user_directed_fresh_test_amendment",
+            "interpretation": "Descriptive fully charged online/native comparison on two development blocks; no confidence interval, parameter selection or confirmatory acceptance. Numerical correctness, native accounting and source/input audits are separate prerequisites for fresh evaluation. Selector cost is not inferred by subtracting these whole-replay times."}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--records", required=True)
-    parser.add_argument("--plan", required=True, help="JSON kwargs for analyze/analyze_pilot; include phase=pilot_screen for the latter")
+    parser.add_argument("--plan", required=True, help="JSON kwargs; phase=pilot_screen, paired_descriptive, or pilot/validation/final")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     opener = gzip.open if args.records.endswith(".gz") else open
@@ -292,6 +350,9 @@ def main():
     if plan.get("phase") == "pilot_screen":
         plan.pop("phase")
         result = analyze_pilot(records, **plan)
+    elif plan.get("phase") == "paired_descriptive":
+        plan.pop("phase")
+        result = describe_validation(records, **plan)
     else:
         result = analyze(records, **plan)
     destination = Path(args.output)

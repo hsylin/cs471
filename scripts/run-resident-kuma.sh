@@ -32,7 +32,7 @@ fi
 manifest="$1"; banks_directory="$2"; shift 2
 cp "$manifest" "$output_directory/provenance/executed-manifest.json"
 module_name=resident_dispatch.pilot
-if [ "$mode" = final ]; then module_name=resident_dispatch.runner; fi
+if [ "$mode" = final ] || [ "$mode" = online-validation ]; then module_name=resident_dispatch.runner; fi
 exec torchrun --standalone --nproc-per-node=2 -m "$module_name" \
   --manifest "$manifest" --banks-dir "$banks_directory" \
   --weights-dir "$SKB_ROOT/models/qwen3-layer0" --output "$output_directory/records.jsonl" "$@"
