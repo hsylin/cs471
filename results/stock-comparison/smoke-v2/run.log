@@ -1,0 +1,52 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_stockon32"}
+{"event": "initialization", "phase": "stock_ready_stockon32"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "smoke_start", "arm": "stockoff"}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 0}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 749}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 750}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 1000}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 3749}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 3750}
+{"event": "smoke_checkpoint", "arm": "stockoff", "step": 4095}
+{"event": "smoke_start", "arm": "stockon32"}
+WARNING:vllm.model_executor.layers.fused_moe.fused_moe:Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 0}
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 749}
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 750}
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 1000}
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 3749}
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 3750}
+{"event": "smoke_checkpoint", "arm": "stockon32", "step": 4095}
+{"event": "smoke_start", "arm": "ours"}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 0}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 749}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 750}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 1000}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 3749}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 3750}
+{"event": "smoke_checkpoint", "arm": "ours", "step": 4095}

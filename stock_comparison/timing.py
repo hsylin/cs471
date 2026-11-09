@@ -23,7 +23,10 @@ def serve(rt,layer,hidden,raw_indices,offsets,horizon_ns):
         rank_starts[i]=time.monotonic_ns()
         layer.forward(hidden[raw],observe=True)
         layer.step(i)
-        rt.sync()
+        # Output/default-stream dependencies are complete; unrelated native
+        # async transfer-stream work must remain concurrent. Device-wide sync
+        # belongs to setup and the separately charged normal-commit tail.
+        torch.cuda.current_stream(rt.device).synchronize()
         rank_finishes[i]=time.monotonic_ns()
         dist.barrier(group=cpu)
         if rt.rank==0:finishes[i]=time.monotonic_ns()
@@ -41,6 +44,7 @@ def serve(rt,layer,hidden,raw_indices,offsets,horizon_ns):
         tail_start=tail_start,quiescent=quiescent),group=cpu)
     if rt.rank!=0:return None
     row=dict(n_jobs=n,arrival_offsets_ns=list(map(int,offsets)),horizon_ns=int(horizon_ns),
+        per_job_completion_scope='current_inference_stream_after_native_step',
         epoch_monotonic_ns=epoch,observation_end_ns=observation_end,
         coordinator_admit_ns=admits.tolist(),coordinator_start_ns=starts.tolist(),
         coordinator_finish_ns=finishes.tolist(),per_rank_start_ns=[p['start'] for p in peers],
