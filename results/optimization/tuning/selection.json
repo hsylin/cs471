@@ -1,0 +1,559 @@
+{
+  "optimization_schema_version": 1,
+  "status": "selected",
+  "config_hash": "8469e235d3254921fe7f5b912a6635489ddd0656d2701690dd1f81c808ae61e8",
+  "expected_trials": 192,
+  "selected_configs": {
+    "128": {
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "config": {
+        "BLOCK_SIZE_M": 64,
+        "BLOCK_SIZE_N": 64,
+        "BLOCK_SIZE_K": 64,
+        "GROUP_SIZE_M": 1,
+        "SPLIT_K": 1,
+        "num_warps": 4,
+        "num_stages": 3
+      }
+    },
+    "1024": {
+      "candidate_id": "DEFAULT",
+      "config": null
+    }
+  },
+  "candidate_results": [
+    {
+      "batch_tokens": 128,
+      "candidate_id": "DEFAULT",
+      "ratio": 1.0,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M16_N64_K64_W4_S3",
+      "ratio": 0.9944460969450205,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0038186554254809,
+          "log_ratio": 0.0038113828692294405
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 0.9884713063175693,
+          "log_ratio": -0.01159566429143677
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 0.9964349905006731,
+          "log_ratio": -0.0035713792891055953
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 0.9891375545392803,
+          "log_ratio": -0.010921872562339749
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M16_N128_K64_W4_S3",
+      "ratio": 1.036985505202228,
+      "eligible": false,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0403490666195068,
+          "log_ratio": 0.03955629781874315
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0140228921756105,
+          "log_ratio": 0.013925481024224418
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0376129171221111,
+          "log_ratio": 0.036922802980880576
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0564003410393847,
+          "log_ratio": 0.05486722427246615
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M32_N64_K64_W4_S3",
+      "ratio": 0.9921530834884239,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 0.9983929224517339,
+          "log_ratio": -0.0016083702825910133
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 0.9856303550023905,
+          "log_ratio": -0.014473888176343763
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0022967355160974,
+          "log_ratio": 0.002294102050560317
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 0.9824328281479884,
+          "log_ratio": -0.017723305873152146
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M32_N128_K64_W4_S3",
+      "ratio": 1.0045982824959843,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0082083540512188,
+          "log_ratio": 0.008174848737220408
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0012624393310299,
+          "log_ratio": 0.001261643124535361
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0097050141976283,
+          "log_ratio": 0.00965822304297248
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 0.999256532375076,
+          "log_ratio": -0.0007437441340375864
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "ratio": 0.9861145169913689,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 0.9883824667593752,
+          "log_ratio": -0.011685544038197845
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 0.983384113452271,
+          "log_ratio": -0.016755478850801826
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 0.9899473361904999,
+          "log_ratio": -0.010103533035618284
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 0.982763678091821,
+          "log_ratio": -0.01738659659659092
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M64_N128_K64_W4_S3",
+      "ratio": 0.9996643129793686,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 0.9991382602740353,
+          "log_ratio": -0.0008621112370882736
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0006678851193067,
+          "log_ratio": 0.0006676621832986859
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 0.9978688943718078,
+          "log_ratio": -0.002133379665174573
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0009853403435824,
+          "log_ratio": 0.0009848552144381035
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 128,
+      "candidate_id": "M128_N64_K64_W8_S3",
+      "ratio": 1.017541957417113,
+      "eligible": false,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.022104476783793,
+          "log_ratio": 0.021863714329401596
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0153828594279337,
+          "log_ratio": 0.015265742778015698
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0165079353475983,
+          "log_ratio": 0.01637316059548688
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0161864797729772,
+          "log_ratio": 0.01605687539795812
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "DEFAULT",
+      "ratio": 1.0,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0,
+          "log_ratio": 0.0
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M16_N64_K64_W4_S3",
+      "ratio": 1.1038638514900134,
+      "eligible": false,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.1176516942377737,
+          "log_ratio": 0.11122978257752629
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.070299647430171,
+          "log_ratio": 0.06793865359598399
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.1518593856158845,
+          "log_ratio": 0.1413774937263151
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.077582966816739,
+          "log_ratio": 0.07472053939734973
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M16_N128_K64_W4_S3",
+      "ratio": 1.0801034614035265,
+      "eligible": false,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0907658956848327,
+          "log_ratio": 0.08688010608507835
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0575137521506535,
+          "log_ratio": 0.055920636251520627
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.114369033900783,
+          "log_ratio": 0.10828835585831875
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0588021673753802,
+          "log_ratio": 0.057138238379840146
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M32_N64_K64_W4_S3",
+      "ratio": 1.0295086381637362,
+      "eligible": false,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0249524929754275,
+          "log_ratio": 0.024646263199599023
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0212235128606193,
+          "log_ratio": 0.02100143085633821
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0548205563575022,
+          "log_ratio": 0.053370663700634736
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0174588493371584,
+          "log_ratio": 0.017308194604892673
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M32_N128_K64_W4_S3",
+      "ratio": 1.0171662538074173,
+      "eligible": false,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0149761514408333,
+          "log_ratio": 0.014865116100306905
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0120965363878982,
+          "log_ratio": 0.012023958003422486
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0328764448286523,
+          "log_ratio": 0.03234757487996346
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.00888490329172,
+          "log_ratio": 0.00884566478740408
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M64_N64_K64_W4_S3",
+      "ratio": 1.0012667059724893,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 0.9947568274642845,
+          "log_ratio": -0.005256966201005575
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 0.999898669061114,
+          "log_ratio": -0.00010133607321242503
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0085582902903047,
+          "log_ratio": 0.00852187574064652
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0019018502703683,
+          "log_ratio": 0.0019000440428964538
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M64_N128_K64_W4_S3",
+      "ratio": 1.0016494503087323,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 0.9982060853545615,
+          "log_ratio": -0.0017955256372588952
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0029206968741242,
+          "log_ratio": 0.002916439925831682
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 0.9978037087518659,
+          "log_ratio": -0.0021987066329979634
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0076996491981425,
+          "log_ratio": 0.0076701581828357845
+        }
+      ],
+      "issues": []
+    },
+    {
+      "batch_tokens": 1024,
+      "candidate_id": "M128_N64_K64_W8_S3",
+      "ratio": 1.0134728313676418,
+      "eligible": true,
+      "cells": [
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 0,
+          "ratio": 1.0188947774788173,
+          "log_ratio": 0.01871848833850187
+        },
+        {
+          "block_id": "opt-pilot-01",
+          "domain": 1,
+          "ratio": 1.0111488567589626,
+          "log_ratio": 0.011087166350318256
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 0,
+          "ratio": 1.0134344432337605,
+          "log_ratio": 0.013345001279377358
+        },
+        {
+          "block_id": "opt-pilot-02",
+          "domain": 1,
+          "ratio": 1.0104349313591394,
+          "log_ratio": 0.010380863268844465
+        }
+      ],
+      "issues": []
+    }
+  ],
+  "rule": "Per batch, minimum equal-cell geometric paired runtime among complete correct candidates with every cell\u22641.02; default wins within1%; frozen candidate order breaks ties.",
+  "scope": "Pilot selection only; no final-data inference or new routing algorithm.",
+  "record_files_sha256": {
+    "../optimization-results/tuning/records.jsonl": "252d49218b3c0f9b70bcfb81d1f9db013533a11c970b3ca07c99c92a19054fea"
+  }
+}
