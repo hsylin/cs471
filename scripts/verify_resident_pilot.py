@@ -64,6 +64,30 @@ def count_rows(physical, slots):
     return np.stack([np.bincount(row.ravel(), minlength=slots) for row in physical])
 
 
+def check_setup_metadata(row, manifest=None):
+    """Check the optional second apparatus contract without rewriting old runs.
+
+    The first frozen apparatus did not emit these fields. A revision-two
+    manifest makes every revision-two attestation mandatory; omitting the row's
+    revision marker must not silently downgrade the verification.
+    """
+    revision = row.get('measurement_setup_revision', 1)
+    assert type(revision) is int and revision in (1, 2), 'Unknown setup revision'
+    if manifest is not None:
+        declared = manifest.get('pilot', {}).get('measurement_setup_revision', 1)
+        assert revision == declared, 'Record and frozen setup revisions differ'
+    if revision == 2:
+        assert row['timing_events_initialized_before_timer'] is True
+        assert row['full_policy_conditioning_steps'] == 64
+        assert row['full_policy_conditioning_calls'] == 1
+        assert row['conditioning_raw_indices'] == list(range(16, 48)) * 2
+        assert row['gc_enabled_during_measurement'] is True
+        duration = row['instrumentation_and_conditioning_seconds_excluded']
+        assert (type(duration) in (int, float) and np.isfinite(duration)
+                and duration > 0), 'Invalid excluded conditioning duration'
+    return revision
+
+
 def audit_artifact(path, expected_sha, batch, bank=None):
     assert sha(path) == expected_sha, f'Artifact SHA mismatch: {path}'
     with np.load(path, allow_pickle=False) as data:
@@ -144,6 +168,7 @@ def audit(records, artifacts_dir, manifest=None, banks_dir=None, allow_partial=F
             rows += [json.loads(line) for line in f if line.strip()]
     assert rows, 'No records'
     ids, cache, trajectories, orders = set(), {}, {}, {}
+    setup_revisions = {}
     manifest_digest = None
     if manifest:
         manifest_digest = canonical({k: v for k, v in manifest.items() if k != 'freeze'})
@@ -153,6 +178,8 @@ def audit(records, artifacts_dir, manifest=None, banks_dir=None, allow_partial=F
     if manifest_digest:
         assert configurations == {manifest_digest}
     for row in rows:
+        revision = check_setup_metadata(row, manifest)
+        setup_revisions[str(revision)] = setup_revisions.get(str(revision), 0) + 1
         assert row['record_id'] not in ids, 'Duplicate record'
         ids.add(row['record_id'])
         assert row['resident_dispatch_schema_version'] == 1
@@ -243,11 +270,15 @@ def audit(records, artifacts_dir, manifest=None, banks_dir=None, allow_partial=F
             'unique_source_cells':len(cache), 'artifact_count':len(cache),
             'expected_records':len(expected) if expected is not None else 80,
             'capture_banks_verified':banks_dir is not None,
+            'measurement_setup_revision_counts':setup_revisions,
+            'revision2_setup_metadata_checked':bool(setup_revisions.get('2', 0)),
             'checks':['artifact SHA','native scalar hash','logical route eligibility/conservation',
                       'one-home active-count optimum','token-only balance optimum',
                       'all per-step route diagnostics','three decision windows and terminal window',
                       'zero migration/fixed committed maps','native planning trajectory agreement',
-                      'local paired order reversal','completed timer metadata'],
+                      'local paired order reversal','completed timer metadata'] +
+                     (['revision2 initialized events,64-step conditioning and GC metadata']
+                      if setup_revisions.get('2', 0) else []),
             'limitations':['No runtime optimality or speedup inference.',
                            'One-home token tie-break optimality covered by separate exhaustive unit tests.',
                            'GPU resident-weight content relies on runtime exact-check attestations; no weights copied.'],

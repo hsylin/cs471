@@ -1,0 +1,209 @@
+{
+  "optimization_schema_version": 1,
+  "schema_version": 1,
+  "name": "resident-dispatch-headroom-v1",
+  "phase": "pilot",
+  "split": "pilot",
+  "environment": {
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "model_id": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "layer_id": 0,
+    "hardware": "2 x NVIDIA H100 94 GB, same node, NV6 interconnect",
+    "gpu_name_contains": "H100",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "weights_source": "pretrained_checkpoint_layer",
+    "input_source": "Real teacher-forced causal-prefill hidden/router/weights; constructed replay of disjoint source-document blocks",
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "ba8c8ab0dc4519a78564d25f3acb301fab5b6e4e5d30631bed99cd9ba9e6fc61",
+    "optimization_sha256": "3784df43528c4224fcb9005c569a5a8e6ecd47ac9b9d4a07ab27635487ad37e7",
+    "weights_sha256": "80046eef8f68a7afd8d165e582190900854faa44076bd22c6a869730e26d4096",
+    "resident_dispatch_sha256": "bc42471c679a6b488e16e0c0ce9f383da888975954adc9b113d141bc268bdbaa"
+  },
+  "trace": {
+    "measured_steps": 512,
+    "warmup_steps": 32,
+    "window_steps": 16,
+    "raw_steps": 544,
+    "seed": 10471,
+    "cases": [
+      {
+        "regime": "stable",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "transient",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "persistent",
+        "phase_steps": 120,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "switching",
+        "phase_steps": 112,
+        "duration_steps": 16,
+        "repeat_steps": 1024
+      }
+    ]
+  },
+  "policy": {
+    "replica_budget": 32,
+    "rebalance_interval": 64,
+    "epsilon": 0.02,
+    "tau": 0.1,
+    "cooldown_steps": 256
+  },
+  "execution": {
+    "order_seed": 20471,
+    "timing_scope": "256 completed native SKIP forward+step calls;32 varying real inputs cycled8times; includes mapping adapter, observations, native planning and final completion; offline assignment selection,48-input materialization,JIT,checks and16conditioning forwards excluded",
+    "terminal_proposal_suppressed": true
+  },
+  "analysis": {
+    "phase": "pilot_screen",
+    "expected_blocks": [
+      "opt-pilot-01",
+      "opt-pilot-02"
+    ],
+    "expected_regimes": [
+      "domain0",
+      "domain1"
+    ],
+    "expected_batches": [
+      128,
+      1024
+    ],
+    "expected_repetitions": [
+      0,
+      1
+    ]
+  },
+  "blocks": [
+    {
+      "block_id": "opt-pilot-01",
+      "source_document_ids": [
+        "gutenberg-768",
+        "cpython-Lib-random.py"
+      ]
+    },
+    {
+      "block_id": "opt-pilot-02",
+      "source_document_ids": [
+        "gutenberg-33",
+        "cpython-Lib-string.py"
+      ]
+    }
+  ],
+  "banks": [
+    {
+      "block_id": "opt-pilot-01",
+      "capture_path": "banks/opt-pilot-01.npz",
+      "capture_sha256": "d63447a15f1aff577904a5b878c67cb3b26ed0c5ef8bad2b62e79c8c020aab39"
+    },
+    {
+      "block_id": "opt-pilot-02",
+      "capture_path": "banks/opt-pilot-02.npz",
+      "capture_sha256": "4a90e617452b60be90e49f62a91995538c8cbdfe576c14ee40879f043170b334"
+    }
+  ],
+  "matrix": {
+    "block_ids": [
+      "opt-pilot-01",
+      "opt-pilot-02"
+    ],
+    "domains": [
+      0,
+      1
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "repetitions": 2,
+    "arms": [
+      "native",
+      "native_aa",
+      "pre_native",
+      "one_copy_home",
+      "token_balanced"
+    ]
+  },
+  "source_manifest": {
+    "path": "../optimization/corpus/sources.json",
+    "sha256": "421ac030ba4d93d7eeb1b6f2f2af68cd6dc998c5f2c7be62fabdc6e58c7e5f4e"
+  },
+  "excluded_source_document_ids": [
+    "gutenberg-11",
+    "cpython-Lib-heapq.py",
+    "gutenberg-84",
+    "cpython-Lib-statistics.py",
+    "gutenberg-1342",
+    "cpython-Lib-fractions.py",
+    "gutenberg-2701",
+    "cpython-Lib-difflib.py",
+    "gutenberg-98",
+    "cpython-Lib-argparse.py",
+    "gutenberg-1661",
+    "cpython-Lib-pathlib.py",
+    "gutenberg-345",
+    "cpython-Lib-functools.py",
+    "gutenberg-174",
+    "cpython-Lib-unittest-case.py",
+    "gutenberg-43",
+    "cpython-Lib-json-decoder.py",
+    "gutenberg-35",
+    "cpython-Lib-csv.py"
+  ],
+  "default_configs": {
+    "128": {
+      "BLOCK_SIZE_M": 64,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 4,
+      "num_stages": 3
+    },
+    "1024": {
+      "BLOCK_SIZE_M": 128,
+      "BLOCK_SIZE_N": 128,
+      "BLOCK_SIZE_K": 64,
+      "GROUP_SIZE_M": 1,
+      "SPLIT_K": 1,
+      "num_warps": 8,
+      "num_stages": 3
+    }
+  },
+  "resident_dispatch_schema_version": 1,
+  "pilot": {
+    "unique_conditioning_inputs": 16,
+    "unique_measured_inputs": 32,
+    "cycles": 8,
+    "measured_steps": 256,
+    "offline_selection_excluded": true
+  },
+  "protocol_sha256": "427bee3b3f75e3db9f1e52bac23eefca8129ca9022697bd032fa806f11d172ea",
+  "execution_source_sha256": {
+    "resident_dispatch/__init__.py": "cfab1590cd37d517ca08ffa4d2afdc70a4c2114a7deedece5bfc04e442699c83",
+    "resident_dispatch/common.py": "0fbac4d4bf26393409b242cae20be592fe5623a1cacc014c9c8e046516654867",
+    "resident_dispatch/assignments.py": "1a7e1802bac95b4c6ce66860169268e8e8aa37651b4cdcd998097614060136c0",
+    "resident_dispatch/gpu.py": "92dd2b5d18bcc7539ccf3405406f57c70d90bb6bcf122b3cf4ce39a5ebcb22aa",
+    "resident_dispatch/pilot.py": "10c1a7cadf8eac166ad357d9ecefd9c4279cec2184dd0095be1e4a06e34dd160"
+  },
+  "freeze": {
+    "algorithm": "sha256",
+    "sha256": "f53e66c48eaf39be9cb594f002772765757c169526db202c88f58cd8f74f4b55"
+  },
+  "analysis_source_sha256": "3b0a860011379bad076b4a4a8134c328097d342c46f1fc275ca868791a2778e9"
+}

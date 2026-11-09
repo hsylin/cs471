@@ -1,0 +1,76 @@
+{
+  "evidence_eligible": false,
+  "config_hash": "f53e66c48eaf39be9cb594f002772765757c169526db202c88f58cd8f74f4b55",
+  "profile_source_sha256": {
+    "resident_dispatch/profile.py": "c24b97ee14f460432645ba9fb70de9630a95f3d92e22484e6efb5611c5846da4",
+    "scripts/profile-resident-kuma.sh": "953e5eef15b1e26ebe0d0899e0b20ab335116fccb17ea29e375af3e05b98b3e5"
+  },
+  "profiles": [
+    {
+      "arm": "native",
+      "batch_tokens": 128,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b128-native-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "pre_native",
+      "batch_tokens": 128,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b128-pre_native-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "one_copy_home",
+      "batch_tokens": 128,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b128-one_copy_home-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "token_balanced",
+      "batch_tokens": 128,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b128-token_balanced-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "native",
+      "batch_tokens": 1024,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b1024-native-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "pre_native",
+      "batch_tokens": 1024,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b1024-pre_native-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "one_copy_home",
+      "batch_tokens": 1024,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b1024-one_copy_home-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    },
+    {
+      "arm": "token_balanced",
+      "batch_tokens": 1024,
+      "rank": 1,
+      "profile_stem": "opt-pilot-01-d0-b1024-token_balanced-rank1",
+      "correctness_pass": true,
+      "phase_events": 160
+    }
+  ],
+  "scope": "one pilot source bank/domain; both ranks; eight arm profiles per rank; no measured-study result",
+  "ncu": "Not invoked. Availability is separately logged; counter permissions and one-kernel replay safety remain unverified. Never replay NCCL kernels."
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "audit_pass": true,
+  "records": 80,
+  "unique_source_cells": 8,
+  "artifact_count": 8,
+  "expected_records": 80,
+  "capture_banks_verified": true,
+  "checks": [
+    "artifact SHA",
+    "native scalar hash",
+    "logical route eligibility/conservation",
+    "one-home active-count optimum",
+    "token-only balance optimum",
+    "all per-step route diagnostics",
+    "three decision windows and terminal window",
+    "zero migration/fixed committed maps",
+    "native planning trajectory agreement",
+    "local paired order reversal",
+    "completed timer metadata"
+  ],
+  "limitations": [
+    "No runtime optimality or speedup inference.",
+    "One-home token tie-break optimality covered by separate exhaustive unit tests.",
+    "GPU resident-weight content relies on runtime exact-check attestations; no weights copied."
+  ],
+  "artifacts": [
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-01-d0-b128.npz",
+      "sha256": "11f35f82aee377e9f18abf6f0fc1d61010528877cb87f3a9f1decbf3cd9d15c2"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-01-d1-b1024.npz",
+      "sha256": "4e21a48df7b5d30b0b6ebe9c4feebb26b129f58512f943ff30b7aaf2894c84d9"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-01-d0-b1024.npz",
+      "sha256": "fc630f6a51bf3ecd8dd255f9a1be059af41bf9dc459bdd3c6dbd4468bb870122"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-01-d1-b128.npz",
+      "sha256": "a25400a3b7235081a69b68af534f3d361c7bb8e61ef4ce4b338158a214ff4fa1"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-02-d1-b128.npz",
+      "sha256": "e86bb5f07c2beaedadc0ab60fe00d49936d9023e3310359a2d32b99c7136754f"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-02-d0-b128.npz",
+      "sha256": "9415ecc6486cc9cd6c1e7ce882f83fedae0d1a624eb56e6863356a058720f29c"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-02-d0-b1024.npz",
+      "sha256": "b846c64240c282a3badcbd93e1ad440ba33d458c59661a71952ae15dc1dc6863"
+    },
+    {
+      "path": "../resident-results/pilot/inputs/opt-pilot-02-d1-b1024.npz",
+      "sha256": "699618547e67e09c1bb38a98dabda15a5a97bf6a31c2b87ec0c863dfa5992b28"
+    }
+  ]
+}

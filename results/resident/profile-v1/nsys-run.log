@@ -1,0 +1,111 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 14:06:40.690335851 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 128, "repetition": 0, "arm": "native", "backend": "nsys"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 128, "repetition": 0, "arm": "pre_native", "backend": "nsys"}
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 128, "repetition": 0, "arm": "one_copy_home", "backend": "nsys"}
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 128, "repetition": 0, "arm": "token_balanced", "backend": "nsys"}
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 1024, "repetition": 0, "arm": "native", "backend": "nsys"}
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 1024, "repetition": 0, "arm": "pre_native", "backend": "nsys"}
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 1024, "repetition": 0, "arm": "one_copy_home", "backend": "nsys"}
+{"event": "profile_start", "block_id": "opt-pilot-01", "domain": 0, "regime": "domain0", "batch_tokens": 1024, "repetition": 0, "arm": "token_balanced", "backend": "nsys"}
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-89e3.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-2a77.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-c2e7.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-d28b.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-a08b.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-8f60.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-5eee.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-a9e2.qdstrm'
+[1/8] [0%                          ] rank1.1.nsys-repCapture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-5057.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-6eff.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-baf2.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-b32b.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-200e.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-e152.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-473b.qdstrm'
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/4869048/nsys-report-cc3b.qdstrm'
+[1/8] [0%                          ] rank0.1.nsys-rep[1/8] [0%                          ] rank0.1.nsys-rep[1/8] [0%                          ] rank1.1.nsys-rep[1/8] [=====29%                    ] rank1.1.nsys-rep[1/8] [=====29%                    ] rank0.1.nsys-rep[1/8] [============54%             ] rank0.1.nsys-rep[1/8] [============54%             ] rank1.1.nsys-rep[1/8] [======================90%   ] rank1.1.nsys-rep[1/8] [======================90%   ] rank0.1.nsys-rep[1/8] [======================91%   ] rank0.1.nsys-rep[1/8] [========================100%] rank0.1.nsys-rep[1/8] [======================92%   ] rank1.1.nsys-rep[1/8] [========================100%] rank1.1.nsys-rep[1/8] [========================100%] rank0.1.nsys-rep[1/8] [========================100%] rank1.1.nsys-rep
+
+[2/8] [0%                          ] rank1.2.nsys-rep[2/8] [0%                          ] rank0.2.nsys-rep[2/8] [0%                          ] rank1.2.nsys-rep[2/8] [0%                          ] rank0.2.nsys-rep[2/8] [5%                          ] rank0.2.nsys-rep[2/8] [=====30%                    ] rank0.2.nsys-rep[2/8] [5%                          ] rank1.2.nsys-rep[2/8] [=====30%                    ] rank1.2.nsys-rep[2/8] [============55%             ] rank0.2.nsys-rep[2/8] [======================90%   ] rank0.2.nsys-rep[2/8] [======================92%   ] rank0.2.nsys-rep[2/8] [========================100%] rank0.2.nsys-rep[2/8] [============55%             ] rank1.2.nsys-rep[2/8] [======================91%   ] rank1.2.nsys-rep[2/8] [======================92%   ] rank1.2.nsys-rep[2/8] [========================100%] rank1.2.nsys-rep[2/8] [========================100%] rank0.2.nsys-rep
+[3/8] [0%                          ] rank0.3.nsys-rep[2/8] [========================100%] rank1.2.nsys-rep
+[3/8] [0%                          ] rank1.3.nsys-rep[3/8] [0%                          ] rank1.3.nsys-rep[3/8] [0%                          ] rank0.3.nsys-rep[3/8] [=====29%                    ] rank1.3.nsys-rep[3/8] [=====29%                    ] rank0.3.nsys-rep[3/8] [============56%             ] rank1.3.nsys-rep[3/8] [======================91%   ] rank1.3.nsys-rep[3/8] [=======================93%  ] rank1.3.nsys-rep[3/8] [========================100%] rank1.3.nsys-rep[3/8] [========================100%] rank1.3.nsys-rep
+[4/8] [0%                          ] rank1.4.nsys-rep[3/8] [============56%             ] rank0.3.nsys-rep[3/8] [======================91%   ] rank0.3.nsys-rep[3/8] [=======================93%  ] rank0.3.nsys-rep[3/8] [========================100%] rank0.3.nsys-rep[3/8] [========================100%] rank0.3.nsys-rep
+[4/8] [0%                          ] rank0.4.nsys-rep[4/8] [0%                          ] rank1.4.nsys-rep[4/8] [5%                          ] rank1.4.nsys-rep[4/8] [=====30%                    ] rank1.4.nsys-rep[4/8] [0%                          ] rank0.4.nsys-rep[4/8] [=====29%                    ] rank0.4.nsys-rep[4/8] [============56%             ] rank1.4.nsys-rep[4/8] [======================91%   ] rank1.4.nsys-rep[4/8] [=======================93%  ] rank1.4.nsys-rep[4/8] [========================100%] rank1.4.nsys-rep[4/8] [========================100%] rank1.4.nsys-rep
+[5/8] [0%                          ] rank1.5.nsys-rep[4/8] [============54%             ] rank0.4.nsys-rep[4/8] [=====================88%    ] rank0.4.nsys-rep[4/8] [=====================89%    ] rank0.4.nsys-rep[4/8] [========================100%] rank0.4.nsys-rep[4/8] [========================100%] rank0.4.nsys-rep
+[5/8] [0%                          ] rank0.5.nsys-rep[5/8] [0%                          ] rank1.5.nsys-rep[5/8] [=====29%                    ] rank1.5.nsys-rep[5/8] [0%                          ] rank0.5.nsys-rep[5/8] [5%                          ] rank0.5.nsys-rep[5/8] [=====30%                    ] rank0.5.nsys-rep[5/8] [============55%             ] rank1.5.nsys-rep[5/8] [======================90%   ] rank1.5.nsys-rep[5/8] [======================92%   ] rank1.5.nsys-rep[5/8] [========================100%] rank1.5.nsys-rep[5/8] [============56%             ] rank0.5.nsys-rep[5/8] [======================91%   ] rank0.5.nsys-rep[5/8] [=======================93%  ] rank0.5.nsys-rep[5/8] [========================100%] rank0.5.nsys-rep[5/8] [========================100%] rank1.5.nsys-rep
+[6/8] [0%                          ] rank1.6.nsys-rep[5/8] [========================100%] rank0.5.nsys-rep
+[6/8] [0%                          ] rank0.6.nsys-rep[6/8] [0%                          ] rank1.6.nsys-rep[6/8] [5%                          ] rank1.6.nsys-rep[6/8] [=====30%                    ] rank1.6.nsys-rep[6/8] [0%                          ] rank0.6.nsys-rep[6/8] [=====29%                    ] rank0.6.nsys-rep[6/8] [============56%             ] rank1.6.nsys-rep[6/8] [======================91%   ] rank1.6.nsys-rep[6/8] [=======================93%  ] rank1.6.nsys-rep[6/8] [========================100%] rank1.6.nsys-rep[6/8] [========================100%] rank1.6.nsys-rep
+[7/8] [0%                          ] rank1.7.nsys-rep[6/8] [============56%             ] rank0.6.nsys-rep[6/8] [======================91%   ] rank0.6.nsys-rep[6/8] [=======================93%  ] rank0.6.nsys-rep[6/8] [========================100%] rank0.6.nsys-rep[6/8] [========================100%] rank0.6.nsys-rep
+[7/8] [0%                          ] rank0.7.nsys-rep[7/8] [0%                          ] rank1.7.nsys-rep[7/8] [5%                          ] rank1.7.nsys-rep[7/8] [=====30%                    ] rank1.7.nsys-rep[7/8] [0%                          ] rank0.7.nsys-rep[7/8] [=====30%                    ] rank0.7.nsys-rep[7/8] [============56%             ] rank1.7.nsys-rep[7/8] [======================91%   ] rank1.7.nsys-rep[7/8] [=======================93%  ] rank1.7.nsys-rep[7/8] [========================100%] rank1.7.nsys-rep[7/8] [========================100%] rank1.7.nsys-rep
+[8/8] [0%                          ] rank1.8.nsys-rep[7/8] [============56%             ] rank0.7.nsys-rep[7/8] [======================91%   ] rank0.7.nsys-rep[7/8] [=======================93%  ] rank0.7.nsys-rep[7/8] [========================100%] rank0.7.nsys-rep[7/8] [========================100%] rank0.7.nsys-rep
+[8/8] [0%                          ] rank0.8.nsys-rep[8/8] [0%                          ] rank1.8.nsys-rep[8/8] [=====29%                    ] rank1.8.nsys-rep[8/8] [0%                          ] rank0.8.nsys-rep[8/8] [5%                          ] rank0.8.nsys-rep[8/8] [=====30%                    ] rank0.8.nsys-rep[8/8] [============55%             ] rank1.8.nsys-rep[8/8] [======================91%   ] rank1.8.nsys-rep[8/8] [======================92%   ] rank1.8.nsys-rep[8/8] [========================100%] rank1.8.nsys-rep[8/8] [========================100%] rank1.8.nsys-rep
+[8/8] [============55%             ] rank0.8.nsys-rep[8/8] [======================91%   ] rank0.8.nsys-rep[8/8] [======================92%   ] rank0.8.nsys-rep[8/8] [========================100%] rank0.8.nsys-rep[8/8] [========================100%] rank0.8.nsys-rep
+Generated:
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.1.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.2.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.3.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.4.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.5.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.6.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.7.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank1.8.nsys-rep
+Generated:
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.1.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.2.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.3.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.4.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.5.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.6.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.7.nsys-rep
+    /work/cs-471/skewbench-hlin/results/resident-profile-v1/nsys-traces/rank0.8.nsys-rep
