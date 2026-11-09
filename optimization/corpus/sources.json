@@ -1,0 +1,372 @@
+{
+  "schema": "qwen_public_source_blocks_v1",
+  "study_id": "kernel_optimization_v1",
+  "retrieved_on": "2026-11-09",
+  "cpython_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+  "cpython_license_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+  "excluded_source_manifest": "followup/corpus/sources.json",
+  "excluded_source_manifest_sha256": "517b0bce79080c9d959d55200bb49e2d9cb1172c2d183699d26e010384f0d080",
+  "selection_rule": "First 2048 tokenizer tokens of each cleaned document; no chat template. Twenty new document IDs, raw contents and cleaned contents disjoint from every prior source. Two pilot and eight final pairs; no demand or performance-based corpus selection. Finite hand-selected blocks are not a production workload sample.",
+  "blocks": [
+    {
+      "block_id": "opt-pilot-01",
+      "split": "pilot",
+      "sources": [
+        {
+          "source_id": "gutenberg-768",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/768.txt.utf-8",
+          "title": "Wuthering Heights",
+          "author": "Emily Bronte",
+          "author_death_year": 1848,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/768",
+          "metadata_file": "raw/gutenberg_768.metadata.html",
+          "metadata_sha256": "cf8f6a36c1484337debf7e6055c7accf963f154f6f5c22b01c104f6161602a0c",
+          "file": "raw/gutenberg_768.txt",
+          "sha256": "e533fe750589f0421d5d744576315f5c2b9b0d69e981179ea0551bbf134c5e02",
+          "cleaned_text_sha256": "d23b4feab29dcfa7411bbb8041e825dd48e3e1c1721c61c392ccfb46968fd6fd",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-random.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/random.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/random.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_random.py",
+          "sha256": "0e0ae8bebeade7958da189d6c839eadfe9812992896afbd86cd4c9f62b966ee0",
+          "cleaned_text_sha256": "0e0ae8bebeade7958da189d6c839eadfe9812992896afbd86cd4c9f62b966ee0",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-pilot-02",
+      "split": "pilot",
+      "sources": [
+        {
+          "source_id": "gutenberg-33",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/33.txt.utf-8",
+          "title": "The Scarlet Letter",
+          "author": "Nathaniel Hawthorne",
+          "author_death_year": 1864,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/33",
+          "metadata_file": "raw/gutenberg_33.metadata.html",
+          "metadata_sha256": "ca99992073b87a194f7be6fc16bc2667a79460b0e7193ed23d7a570e3e1b659b",
+          "file": "raw/gutenberg_33.txt",
+          "sha256": "ae8d5a2d55a7b5d2b4b37497338892dab5ff6cc535bf523698da4ba6abe15ee7",
+          "cleaned_text_sha256": "f1606ccbb321f26ff6e3afb37a8e64cb1382c1f77d3bea39aad84c5fbc09dc54",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-string.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/string.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/string.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_string.py",
+          "sha256": "24aeae1f0526250f442022022bf98df9a823b1cb330543ee79e70e44907462e9",
+          "cleaned_text_sha256": "24aeae1f0526250f442022022bf98df9a823b1cb330543ee79e70e44907462e9",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-01",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-1260",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+          "title": "Jane Eyre: An Autobiography",
+          "author": "Charlotte Bronte",
+          "author_death_year": 1855,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/1260",
+          "metadata_file": "raw/gutenberg_1260.metadata.html",
+          "metadata_sha256": "daddf8018a89da8ff546b551d2ff2c164511af5afd511f61e2ef31744635af81",
+          "file": "raw/gutenberg_1260.txt",
+          "sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+          "cleaned_text_sha256": "67453a6d7b7ebe4c3f4525bea71e5564ca1562eb4c62c01e8e086d65370627e1",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-calendar.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/calendar.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/calendar.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_calendar.py",
+          "sha256": "33902e316ef7f4f7e1c686767a124a98b7ac4c7562ae921aa40d5b1a10066a00",
+          "cleaned_text_sha256": "33902e316ef7f4f7e1c686767a124a98b7ac4c7562ae921aa40d5b1a10066a00",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-02",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-145",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/145.txt.utf-8",
+          "title": "Middlemarch",
+          "author": "George Eliot",
+          "author_death_year": 1880,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/145",
+          "metadata_file": "raw/gutenberg_145.metadata.html",
+          "metadata_sha256": "694c243178181c294d03b103648892fa5cde078771197b6bddd11ec3bf381137",
+          "file": "raw/gutenberg_145.txt",
+          "sha256": "dc2e0107e6ae07e8e33da934b2ec4e8e600826a2e0cd48df265119cd02e5fb50",
+          "cleaned_text_sha256": "9d0ce5c0b701c05b38198f6fab45b8ebf2eb3645a81aa55794ccd0aa66cdaf0d",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-textwrap.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/textwrap.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/textwrap.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_textwrap.py",
+          "sha256": "62867e40cdea6669b361f72af4d7daf0359f207c92cbeddfc7c7506397c1f31c",
+          "cleaned_text_sha256": "62867e40cdea6669b361f72af4d7daf0359f207c92cbeddfc7c7506397c1f31c",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-03",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-205",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/205.txt.utf-8",
+          "title": "Walden, and On The Duty Of Civil Disobedience",
+          "author": "Henry David Thoreau",
+          "author_death_year": 1862,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/205",
+          "metadata_file": "raw/gutenberg_205.metadata.html",
+          "metadata_sha256": "d708f0f4c3dce3ccaa7b705335069a2b6c19acf1f6c2813186f646f89992682a",
+          "file": "raw/gutenberg_205.txt",
+          "sha256": "2d9a76a2e3e8195c69430516ebd33c4d0757a53ad432ff6186b7b794e6fe99f9",
+          "cleaned_text_sha256": "4d3b0d14c7941f0458042dcb8cc6223939372bcf47426b54f4a465f583550bcf",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-configparser.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/configparser.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/configparser.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_configparser.py",
+          "sha256": "6a16889607e4e5eec6d8b336377417e70dd4ad3e944eb808d82a8145e428b145",
+          "cleaned_text_sha256": "6a16889607e4e5eec6d8b336377417e70dd4ad3e944eb808d82a8145e428b145",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-04",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-45",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/45.txt.utf-8",
+          "title": "Anne of Green Gables",
+          "author": "Lucy Maud Montgomery",
+          "author_death_year": 1942,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/45",
+          "metadata_file": "raw/gutenberg_45.metadata.html",
+          "metadata_sha256": "9277ae4c2fd2000b046df4bd6fab80f1184dbf57c70e8662318220e6b4139f67",
+          "file": "raw/gutenberg_45.txt",
+          "sha256": "89a5e9fb2e0bb44562a969785385366f94e1da736aebee7d9cdf459eb0b5f9f6",
+          "cleaned_text_sha256": "ba195d6366477f4a8f9a72a0fc75c2f5fe2ea76eae5aeb21c8849a5db5dd62b9",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-pprint.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/pprint.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/pprint.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_pprint.py",
+          "sha256": "f46048e8ca174f5728403b4e42233e361ad515eaf61acdb4a2eeb4438f7461e9",
+          "cleaned_text_sha256": "f46048e8ca174f5728403b4e42233e361ad515eaf61acdb4a2eeb4438f7461e9",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-05",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-514",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/514.txt.utf-8",
+          "title": "Little Women",
+          "author": "Louisa May Alcott",
+          "author_death_year": 1888,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/514",
+          "metadata_file": "raw/gutenberg_514.metadata.html",
+          "metadata_sha256": "edc899e3703e86ae7e890872c41a83585659edfed44a27b9e25fb2aaa8f93398",
+          "file": "raw/gutenberg_514.txt",
+          "sha256": "36831477b339dbcd7e7206119d77e9e58b9727ef3c299d1a1dc4446e1db97850",
+          "cleaned_text_sha256": "bfa1ebb5ff5d0db9cca68f77ea96c8c2627aa89533a3f6dce5f64b7580c4bf8a",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-shlex.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/shlex.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/shlex.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_shlex.py",
+          "sha256": "f927227de5ba5b1b2bdd75e3d9c8cb72b602b3bba3cc8edbf8fb554de0dc1fd7",
+          "cleaned_text_sha256": "f927227de5ba5b1b2bdd75e3d9c8cb72b602b3bba3cc8edbf8fb554de0dc1fd7",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-06",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-76",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/76.txt.utf-8",
+          "title": "Adventures of Huckleberry Finn",
+          "author": "Mark Twain",
+          "author_death_year": 1910,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/76",
+          "metadata_file": "raw/gutenberg_76.metadata.html",
+          "metadata_sha256": "d4abfb0f9959ebc0f53bc9977dfac46e57a3efe15623425d91eb40212612426e",
+          "file": "raw/gutenberg_76.txt",
+          "sha256": "d617a37aa7ae1e1a93dcde2634db2bccb86824e31e29a55230bdbf77d6872d59",
+          "cleaned_text_sha256": "15070045ff4635e595fa2906b8ebd33d9790a14f4cbfa9ba6590a1037977f7f4",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-enum.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/enum.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/enum.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_enum.py",
+          "sha256": "9e9f85eb4e80c1ce36725e246d045dd3944582636220294135a67436077f993d",
+          "cleaned_text_sha256": "9e9f85eb4e80c1ce36725e246d045dd3944582636220294135a67436077f993d",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-07",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-4300",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/4300.txt.utf-8",
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "author_death_year": 1941,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/4300",
+          "metadata_file": "raw/gutenberg_4300.metadata.html",
+          "metadata_sha256": "4ace730d201280b539efa553496b458be9e35a4d09356e1bfb94c155b66f5087",
+          "file": "raw/gutenberg_4300.txt",
+          "sha256": "e03094626f9528cf3fc287a49d6edbdbf47cd40483cb13ceb301e74e15ebbf9e",
+          "cleaned_text_sha256": "5c9b7714f2d831f78f28f20565023c133f43ad05de403c847990b1d913bdab82",
+          "cleaning": "content_between_gutenberg_start_end_markers"
+        },
+        {
+          "source_id": "cpython-Lib-ipaddress.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/ipaddress.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/ipaddress.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_ipaddress.py",
+          "sha256": "1a2597bf9d4f7cf0e2ba53a4c59921a478de5ceab8bdb41c91c3c88f83bc4632",
+          "cleaned_text_sha256": "1a2597bf9d4f7cf0e2ba53a4c59921a478de5ceab8bdb41c91c3c88f83bc4632",
+          "cleaning": "none"
+        }
+      ]
+    },
+    {
+      "block_id": "opt-final-08",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-2600",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/2600.txt.utf-8",
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "author_death_year": 1910,
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; full source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/2600",
+          "metadata_file": "raw/gutenberg_2600.metadata.html",
+          "metadata_sha256": "0a870de8a8af677bab8bb67cc77af465a6f7a884a30014847d47a4abfd882ac4",
+          "file": "raw/gutenberg_2600.txt",
+          "sha256": "2d5bb2ad5f422765e714617e21fa31bbaf8958aa79682c86fca6660fcc5d1b2b",
+          "cleaned_text_sha256": "709cc8758778b8d416a108b5899b8e10a893fd2af6e423b8504b59ac5b476b5f",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "translators": [
+            {
+              "name": "Aylmer Maude",
+              "death_year": 1938
+            },
+            {
+              "name": "Louise Maude",
+              "death_year": 1939
+            }
+          ]
+        },
+        {
+          "source_id": "cpython-Lib-_pydecimal.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/_pydecimal.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/_pydecimal.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib__pydecimal.py",
+          "sha256": "c7108f0dc0beedb245daede78c9be602a64d47d3fb988e166e0474aa5bf317ea",
+          "cleaned_text_sha256": "c7108f0dc0beedb245daede78c9be602a64d47d3fb988e166e0474aa5bf317ea",
+          "cleaning": "none"
+        }
+      ]
+    }
+  ]
+}
