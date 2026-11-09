@@ -1,0 +1,6640 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "descriptive_only": true,
+  "old": null,
+  "new": {
+    "summary_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/profile-summary.json",
+    "summary_sha256": "c8ed9908f1052ecb801e5caef4915fcbe45b9207ae14614740c60ebe52dfb9c4",
+    "manifest_checked": true,
+    "manifest_sha256": "b969b53123267980541fd5d5f7d40eca8d949496a0f5e5c5cf533a29900e9321",
+    "rows": [
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 0,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch128-DEFAULT-rank0.json",
+          "trace_sha256": "c84f780032b21ccd18fc2603867443f7a642302f7b7d489032439e66654ec22c",
+          "trace_bytes": 358433,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 167.937,
+              "us_per_forward": 20.992125
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.590999999999998,
+              "us_per_forward": 3.3238749999999997
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2316.864,
+              "us_per_forward": 289.608
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 184.833,
+              "us_per_forward": 23.104125
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 190.528,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 102.464,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 195.232,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 103.552,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 186.24,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 98.944,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 190.592,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 102.272,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 184.256,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 97.792,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 185.984,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 99.488,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 182.72,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 97.888,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 194.88,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 104.032,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "d8d37d3ba2c82b21ea8caa0935098bb53d8aaf22f64e9182b43cd1d9503dfa49",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              570,
+              454
+            ],
+            [
+              575,
+              449
+            ],
+            [
+              542,
+              482
+            ],
+            [
+              566,
+              458
+            ],
+            [
+              562,
+              462
+            ],
+            [
+              547,
+              477
+            ],
+            [
+              560,
+              464
+            ],
+            [
+              547,
+              477
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              65,
+              65
+            ],
+            [
+              66,
+              64
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              65,
+              66
+            ],
+            [
+              62,
+              63
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              62,
+              67
+            ],
+            [
+              66,
+              66
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4160,
+              4160
+            ],
+            [
+              4224,
+              4096
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              4160,
+              4224
+            ],
+            [
+              3968,
+              4032
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              3968,
+              4288
+            ],
+            [
+              4224,
+              4224
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            7.3322891027075405,
+            8.956218103679829
+          ],
+          "mean_active_physical_experts_by_rank": [
+            64.0,
+            65.125
+          ],
+          "mean_padded_rows_by_rank": [
+            4096.0,
+            4168.0
+          ],
+          "mean_peak_rank_assignments": 558.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/b871a1386610e0001afb351a7f60d347ae55e563a186fdce4405d4d87abd59fe.npz",
+          "sha256": "847b7e719ef70bf3f598e83535ab72bda0b67a735c0941c0ff60061b2d508bdc",
+          "bytes": 14348,
+          "indices_sha256": "f77d13d9007ef3fbc062078efbc989c6b21664ed1db6418554ddd70f7a442742"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 0,
+        "kernel_variant": "TUNED",
+        "candidate_id": "M64_N64_K64_W4_S3",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 64,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch128-TUNED-rank0.json",
+          "trace_sha256": "03919d11e9727a904bac84f1ed5b45ba1a73de37257846cbd4a213d5338b0fda",
+          "trace_bytes": 357307,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 168.51,
+              "us_per_forward": 21.06375
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.304999999999996,
+              "us_per_forward": 3.2881249999999995
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2283.8309999999997,
+              "us_per_forward": 285.47887499999996
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 141.281,
+              "us_per_forward": 17.660125
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 188.703,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 101.407,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 191.392,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 104.096,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 182.368,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 98.079,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 188.512,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 100.863,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 179.807,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 96.96,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 181.983,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 98.88,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 179.807,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 97.088,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 190.431,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 103.455,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "d8d37d3ba2c82b21ea8caa0935098bb53d8aaf22f64e9182b43cd1d9503dfa49",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              570,
+              454
+            ],
+            [
+              575,
+              449
+            ],
+            [
+              542,
+              482
+            ],
+            [
+              566,
+              458
+            ],
+            [
+              562,
+              462
+            ],
+            [
+              547,
+              477
+            ],
+            [
+              560,
+              464
+            ],
+            [
+              547,
+              477
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              65,
+              65
+            ],
+            [
+              66,
+              64
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              65,
+              66
+            ],
+            [
+              62,
+              63
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              62,
+              67
+            ],
+            [
+              66,
+              66
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4160,
+              4160
+            ],
+            [
+              4224,
+              4096
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              4160,
+              4224
+            ],
+            [
+              3968,
+              4032
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              3968,
+              4288
+            ],
+            [
+              4224,
+              4224
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            7.3322891027075405,
+            8.956218103679829
+          ],
+          "mean_active_physical_experts_by_rank": [
+            64.0,
+            65.125
+          ],
+          "mean_padded_rows_by_rank": [
+            4096.0,
+            4168.0
+          ],
+          "mean_peak_rank_assignments": 558.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/b871a1386610e0001afb351a7f60d347ae55e563a186fdce4405d4d87abd59fe.npz",
+          "sha256": "847b7e719ef70bf3f598e83535ab72bda0b67a735c0941c0ff60061b2d508bdc",
+          "bytes": 14348,
+          "indices_sha256": "f77d13d9007ef3fbc062078efbc989c6b21664ed1db6418554ddd70f7a442742"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 1,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch128-DEFAULT-rank1.json",
+          "trace_sha256": "88d436e219f1a7855f27d57ea1a47d65bd2e4591857b1e50d46d438580b4e723",
+          "trace_bytes": 358434,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 169.88699999999997,
+              "us_per_forward": 21.235874999999997
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.398999999999997,
+              "us_per_forward": 3.2998749999999997
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2365.517,
+              "us_per_forward": 295.689625
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 145.981,
+              "us_per_forward": 18.247625
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 192.702,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 102.176,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 188.958,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 99.999,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 193.279,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 102.207,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 195.807,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 103.391,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 186.431,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 98.88,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 191.678,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 101.663,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 205.918,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 104.895,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 193.63,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 103.903,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "d8d37d3ba2c82b21ea8caa0935098bb53d8aaf22f64e9182b43cd1d9503dfa49",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              570,
+              454
+            ],
+            [
+              575,
+              449
+            ],
+            [
+              542,
+              482
+            ],
+            [
+              566,
+              458
+            ],
+            [
+              562,
+              462
+            ],
+            [
+              547,
+              477
+            ],
+            [
+              560,
+              464
+            ],
+            [
+              547,
+              477
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              65,
+              65
+            ],
+            [
+              66,
+              64
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              65,
+              66
+            ],
+            [
+              62,
+              63
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              62,
+              67
+            ],
+            [
+              66,
+              66
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4160,
+              4160
+            ],
+            [
+              4224,
+              4096
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              4160,
+              4224
+            ],
+            [
+              3968,
+              4032
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              3968,
+              4288
+            ],
+            [
+              4224,
+              4224
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            7.3322891027075405,
+            8.956218103679829
+          ],
+          "mean_active_physical_experts_by_rank": [
+            64.0,
+            65.125
+          ],
+          "mean_padded_rows_by_rank": [
+            4096.0,
+            4168.0
+          ],
+          "mean_peak_rank_assignments": 558.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/b871a1386610e0001afb351a7f60d347ae55e563a186fdce4405d4d87abd59fe.npz",
+          "sha256": "847b7e719ef70bf3f598e83535ab72bda0b67a735c0941c0ff60061b2d508bdc",
+          "bytes": 14348,
+          "indices_sha256": "f77d13d9007ef3fbc062078efbc989c6b21664ed1db6418554ddd70f7a442742"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 1,
+        "kernel_variant": "TUNED",
+        "candidate_id": "M64_N64_K64_W4_S3",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 64,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch128-TUNED-rank1.json",
+          "trace_sha256": "8e68e7d5fa5d746d57e7acbead8debbbf2727ff3e89bf96ae6c7b0a4c1398883",
+          "trace_bytes": 357309,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 169.37899999999996,
+              "us_per_forward": 21.172374999999995
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.688,
+              "us_per_forward": 3.336
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2328.1440000000002,
+              "us_per_forward": 291.01800000000003
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 251.2,
+              "us_per_forward": 31.4
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 188.415,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 101.856,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 185.119,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 99.68,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 188.158,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 101.919,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 190.335,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 102.783,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 182.239,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 98.911,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 188.286,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 101.343,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 199.039,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 105.375,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 191.583,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 103.103,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "d8d37d3ba2c82b21ea8caa0935098bb53d8aaf22f64e9182b43cd1d9503dfa49",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              570,
+              454
+            ],
+            [
+              575,
+              449
+            ],
+            [
+              542,
+              482
+            ],
+            [
+              566,
+              458
+            ],
+            [
+              562,
+              462
+            ],
+            [
+              547,
+              477
+            ],
+            [
+              560,
+              464
+            ],
+            [
+              547,
+              477
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              65,
+              65
+            ],
+            [
+              66,
+              64
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              65,
+              66
+            ],
+            [
+              62,
+              63
+            ],
+            [
+              63,
+              65
+            ],
+            [
+              62,
+              67
+            ],
+            [
+              66,
+              66
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4160,
+              4160
+            ],
+            [
+              4224,
+              4096
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              4160,
+              4224
+            ],
+            [
+              3968,
+              4032
+            ],
+            [
+              4032,
+              4160
+            ],
+            [
+              3968,
+              4288
+            ],
+            [
+              4224,
+              4224
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            7.3322891027075405,
+            8.956218103679829
+          ],
+          "mean_active_physical_experts_by_rank": [
+            64.0,
+            65.125
+          ],
+          "mean_padded_rows_by_rank": [
+            4096.0,
+            4168.0
+          ],
+          "mean_peak_rank_assignments": 558.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/b871a1386610e0001afb351a7f60d347ae55e563a186fdce4405d4d87abd59fe.npz",
+          "sha256": "847b7e719ef70bf3f598e83535ab72bda0b67a735c0941c0ff60061b2d508bdc",
+          "bytes": 14348,
+          "indices_sha256": "f77d13d9007ef3fbc062078efbc989c6b21664ed1db6418554ddd70f7a442742"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 0,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch128-DEFAULT-rank0.json",
+          "trace_sha256": "29d2b7a8c2b4868b8739ade36c5e28fb9c5aefebf5f810eb74cbda7982dd61e0",
+          "trace_bytes": 358461,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 168.86500000000004,
+              "us_per_forward": 21.108125000000005
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.048,
+              "us_per_forward": 3.256
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2562.6180000000004,
+              "us_per_forward": 320.32725000000005
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 142.97599999999997,
+              "us_per_forward": 17.871999999999996
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 214.88,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.608,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 203.52,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 104.383,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.895,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.984,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 210.399,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 108.832,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 209.727,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 107.936,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 201.567,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 104.704,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 211.872,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 110.719,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.384,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 114.208,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "8d217fec7f76ec49c9f917ef3fcbb86ebefd04d671fc46645675ab8c788276d7",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              528,
+              496
+            ],
+            [
+              525,
+              499
+            ],
+            [
+              501,
+              523
+            ],
+            [
+              514,
+              510
+            ],
+            [
+              490,
+              534
+            ],
+            [
+              521,
+              503
+            ],
+            [
+              524,
+              500
+            ],
+            [
+              488,
+              536
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              72,
+              72
+            ],
+            [
+              67,
+              74
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              70,
+              72
+            ],
+            [
+              69,
+              72
+            ],
+            [
+              67,
+              73
+            ],
+            [
+              71,
+              74
+            ],
+            [
+              73,
+              73
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4608,
+              4608
+            ],
+            [
+              4288,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ],
+            [
+              4480,
+              4608
+            ],
+            [
+              4416,
+              4608
+            ],
+            [
+              4288,
+              4672
+            ],
+            [
+              4544,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            8.791982400391102,
+            9.098268714947574
+          ],
+          "mean_active_physical_experts_by_rank": [
+            70.25,
+            72.875
+          ],
+          "mean_padded_rows_by_rank": [
+            4496.0,
+            4664.0
+          ],
+          "mean_peak_rank_assignments": 525.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/3806453c8c0bf3c816f074e09341ac3397568cbbc46baa805bcca311a2116ff0.npz",
+          "sha256": "f5f4c53c39fb8ce9c68ec8b5325e07c9a40cc4d0660810655553ecbdb9f51381",
+          "bytes": 14301,
+          "indices_sha256": "6efed3e356ff96fa5fc2b443367e64715bda11c2d786ec5dbfef5e5473b5077e"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 0,
+        "kernel_variant": "TUNED",
+        "candidate_id": "M64_N64_K64_W4_S3",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 64,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch128-TUNED-rank0.json",
+          "trace_sha256": "2ab9c58b192b1e5f1c31ce75dc7be16fc5a457b1136bc6d5026ab62f24b4a7d4",
+          "trace_bytes": 358455,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 168.764,
+              "us_per_forward": 21.0955
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.368,
+              "us_per_forward": 3.296
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2524.437,
+              "us_per_forward": 315.554625
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 430.624,
+              "us_per_forward": 53.828
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 209.471,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.135,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 199.232,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 106.015,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 211.935,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.839,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 205.344,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 108.608,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 204.16,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 108.351,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 199.808,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 105.791,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 207.839,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 110.431,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.671,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.807,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "8d217fec7f76ec49c9f917ef3fcbb86ebefd04d671fc46645675ab8c788276d7",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              528,
+              496
+            ],
+            [
+              525,
+              499
+            ],
+            [
+              501,
+              523
+            ],
+            [
+              514,
+              510
+            ],
+            [
+              490,
+              534
+            ],
+            [
+              521,
+              503
+            ],
+            [
+              524,
+              500
+            ],
+            [
+              488,
+              536
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              72,
+              72
+            ],
+            [
+              67,
+              74
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              70,
+              72
+            ],
+            [
+              69,
+              72
+            ],
+            [
+              67,
+              73
+            ],
+            [
+              71,
+              74
+            ],
+            [
+              73,
+              73
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4608,
+              4608
+            ],
+            [
+              4288,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ],
+            [
+              4480,
+              4608
+            ],
+            [
+              4416,
+              4608
+            ],
+            [
+              4288,
+              4672
+            ],
+            [
+              4544,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            8.791982400391102,
+            9.098268714947574
+          ],
+          "mean_active_physical_experts_by_rank": [
+            70.25,
+            72.875
+          ],
+          "mean_padded_rows_by_rank": [
+            4496.0,
+            4664.0
+          ],
+          "mean_peak_rank_assignments": 525.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/3806453c8c0bf3c816f074e09341ac3397568cbbc46baa805bcca311a2116ff0.npz",
+          "sha256": "f5f4c53c39fb8ce9c68ec8b5325e07c9a40cc4d0660810655553ecbdb9f51381",
+          "bytes": 14301,
+          "indices_sha256": "6efed3e356ff96fa5fc2b443367e64715bda11c2d786ec5dbfef5e5473b5077e"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 1,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch128-DEFAULT-rank1.json",
+          "trace_sha256": "380b4ff21774ee1d45c5f1950c74fbc9c23e59737aac1d929ade860e06ff0aa6",
+          "trace_bytes": 358456,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 169.055,
+              "us_per_forward": 21.131875
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.208,
+              "us_per_forward": 3.276
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2652.0809999999997,
+              "us_per_forward": 331.51012499999996
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 388.41299999999995,
+              "us_per_forward": 48.551624999999994
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.063,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.607,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 221.567,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 115.455,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.927,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.952,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.871,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.831,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.446,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.223,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 218.879,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.919,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 221.087,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 114.368,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 216.511,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2088,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.375,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                2784,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "8d217fec7f76ec49c9f917ef3fcbb86ebefd04d671fc46645675ab8c788276d7",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              528,
+              496
+            ],
+            [
+              525,
+              499
+            ],
+            [
+              501,
+              523
+            ],
+            [
+              514,
+              510
+            ],
+            [
+              490,
+              534
+            ],
+            [
+              521,
+              503
+            ],
+            [
+              524,
+              500
+            ],
+            [
+              488,
+              536
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              72,
+              72
+            ],
+            [
+              67,
+              74
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              70,
+              72
+            ],
+            [
+              69,
+              72
+            ],
+            [
+              67,
+              73
+            ],
+            [
+              71,
+              74
+            ],
+            [
+              73,
+              73
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4608,
+              4608
+            ],
+            [
+              4288,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ],
+            [
+              4480,
+              4608
+            ],
+            [
+              4416,
+              4608
+            ],
+            [
+              4288,
+              4672
+            ],
+            [
+              4544,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            8.791982400391102,
+            9.098268714947574
+          ],
+          "mean_active_physical_experts_by_rank": [
+            70.25,
+            72.875
+          ],
+          "mean_padded_rows_by_rank": [
+            4496.0,
+            4664.0
+          ],
+          "mean_peak_rank_assignments": 525.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/3806453c8c0bf3c816f074e09341ac3397568cbbc46baa805bcca311a2116ff0.npz",
+          "sha256": "f5f4c53c39fb8ce9c68ec8b5325e07c9a40cc4d0660810655553ecbdb9f51381",
+          "bytes": 14301,
+          "indices_sha256": "6efed3e356ff96fa5fc2b443367e64715bda11c2d786ec5dbfef5e5473b5077e"
+        }
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 1,
+        "kernel_variant": "TUNED",
+        "candidate_id": "M64_N64_K64_W4_S3",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 64,
+          "BLOCK_SIZE_N": 64,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch128-TUNED-rank1.json",
+          "trace_sha256": "f4eea0994206b54d5c4e0b6ff45d100240e79c5b2dddd29dc4ffb61e3c510e54",
+          "trace_bytes": 358453,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 169.984,
+              "us_per_forward": 21.248
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 26.400999999999996,
+              "us_per_forward": 3.3001249999999995
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2602.031,
+              "us_per_forward": 325.253875
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 140.543,
+              "us_per_forward": 17.567875
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 210.239,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.391,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 215.582,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.887,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.958,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.248,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 211.262,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 111.616,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 210.591,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.32,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.318,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.312,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 214.014,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 113.983,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 212.479,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                4176,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 112.831,
+              "block": [
+                128,
+                1,
+                1
+              ],
+              "grid": [
+                5568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "8d217fec7f76ec49c9f917ef3fcbb86ebefd04d671fc46645675ab8c788276d7",
+          "block_m": 64,
+          "owner_assignments_per_step": [
+            [
+              528,
+              496
+            ],
+            [
+              525,
+              499
+            ],
+            [
+              501,
+              523
+            ],
+            [
+              514,
+              510
+            ],
+            [
+              490,
+              534
+            ],
+            [
+              521,
+              503
+            ],
+            [
+              524,
+              500
+            ],
+            [
+              488,
+              536
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              72,
+              72
+            ],
+            [
+              67,
+              74
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              70,
+              72
+            ],
+            [
+              69,
+              72
+            ],
+            [
+              67,
+              73
+            ],
+            [
+              71,
+              74
+            ],
+            [
+              73,
+              73
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              4608,
+              4608
+            ],
+            [
+              4288,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ],
+            [
+              4480,
+              4608
+            ],
+            [
+              4416,
+              4608
+            ],
+            [
+              4288,
+              4672
+            ],
+            [
+              4544,
+              4736
+            ],
+            [
+              4672,
+              4672
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            8.791982400391102,
+            9.098268714947574
+          ],
+          "mean_active_physical_experts_by_rank": [
+            70.25,
+            72.875
+          ],
+          "mean_padded_rows_by_rank": [
+            4496.0,
+            4664.0
+          ],
+          "mean_peak_rank_assignments": 525.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/3806453c8c0bf3c816f074e09341ac3397568cbbc46baa805bcca311a2116ff0.npz",
+          "sha256": "f5f4c53c39fb8ce9c68ec8b5325e07c9a40cc4d0660810655553ecbdb9f51381",
+          "bytes": 14301,
+          "indices_sha256": "6efed3e356ff96fa5fc2b443367e64715bda11c2d786ec5dbfef5e5473b5077e"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 0,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch1024-DEFAULT-rank0.json",
+          "trace_sha256": "cf62209ecd9568fb72a22a5e54feb7488b7207a78b811e7e531502d8f4e05773",
+          "trace_bytes": 397824,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 436.70000000000005,
+              "us_per_forward": 54.587500000000006
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 25.184999999999995,
+              "us_per_forward": 3.1481249999999994
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2967.178,
+              "us_per_forward": 370.89725
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 481.56600000000003,
+              "us_per_forward": 60.195750000000004
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 233.63,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.439,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 232.222,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.703,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 233.822,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.967,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 228.862,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 135.135,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 232.382,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.615,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 233.278,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.311,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.103,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.311,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 228.863,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 137.535,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "a2f713662df779f362fade9036a741106c1d0574856b472e7e9557ad29f8d5c7",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4418,
+              3774
+            ],
+            [
+              4454,
+              3738
+            ],
+            [
+              4413,
+              3779
+            ],
+            [
+              4424,
+              3768
+            ],
+            [
+              4394,
+              3798
+            ],
+            [
+              4392,
+              3800
+            ],
+            [
+              4473,
+              3719
+            ],
+            [
+              4428,
+              3764
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              72
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              70
+            ],
+            [
+              72,
+              73
+            ],
+            [
+              73,
+              70
+            ],
+            [
+              73,
+              71
+            ],
+            [
+              71,
+              70
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10752,
+              9984
+            ],
+            [
+              10496,
+              9856
+            ],
+            [
+              10752,
+              9984
+            ],
+            [
+              10368,
+              9472
+            ],
+            [
+              10624,
+              9856
+            ],
+            [
+              10624,
+              9600
+            ],
+            [
+              10880,
+              9728
+            ],
+            [
+              10624,
+              9600
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4047915018646173,
+            2.590577305905773
+          ],
+          "mean_active_physical_experts_by_rank": [
+            72.125,
+            71.5
+          ],
+          "mean_padded_rows_by_rank": [
+            10640.0,
+            9760.0
+          ],
+          "mean_peak_rank_assignments": 4424.5
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/849c2a3e4e84c69233624c631bfd4f1871264b3d80543bc1cf8dc0340b674990.npz",
+          "sha256": "d6b48927491ae136c7ec90d3e82b4ac940697aebe8307d91200b603980f14126",
+          "bytes": 104373,
+          "indices_sha256": "9d3a057971414e6b94d24db31dc219dbf2dc8e855e7740f0d7b3f37b30a8c60e"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 0,
+        "kernel_variant": "TUNED",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch1024-TUNED-rank0.json",
+          "trace_sha256": "6311d3e76b404877d9e65cad7d46432f5ed677900a6c20bbf19033bcf89752dd",
+          "trace_bytes": 358973,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 436.567,
+              "us_per_forward": 54.570875
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 24.895999999999997,
+              "us_per_forward": 3.1119999999999997
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2974.3869999999997,
+              "us_per_forward": 371.79837499999996
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 477.918,
+              "us_per_forward": 59.73975
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 234.047,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.919,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.52,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.448,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 233.568,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.56,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 228.672,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 135.712,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.326,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.199,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 234.59,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.567,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 230.975,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.111,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 229.758,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.415,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "a2f713662df779f362fade9036a741106c1d0574856b472e7e9557ad29f8d5c7",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4418,
+              3774
+            ],
+            [
+              4454,
+              3738
+            ],
+            [
+              4413,
+              3779
+            ],
+            [
+              4424,
+              3768
+            ],
+            [
+              4394,
+              3798
+            ],
+            [
+              4392,
+              3800
+            ],
+            [
+              4473,
+              3719
+            ],
+            [
+              4428,
+              3764
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              72
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              70
+            ],
+            [
+              72,
+              73
+            ],
+            [
+              73,
+              70
+            ],
+            [
+              73,
+              71
+            ],
+            [
+              71,
+              70
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10752,
+              9984
+            ],
+            [
+              10496,
+              9856
+            ],
+            [
+              10752,
+              9984
+            ],
+            [
+              10368,
+              9472
+            ],
+            [
+              10624,
+              9856
+            ],
+            [
+              10624,
+              9600
+            ],
+            [
+              10880,
+              9728
+            ],
+            [
+              10624,
+              9600
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4047915018646173,
+            2.590577305905773
+          ],
+          "mean_active_physical_experts_by_rank": [
+            72.125,
+            71.5
+          ],
+          "mean_padded_rows_by_rank": [
+            10640.0,
+            9760.0
+          ],
+          "mean_peak_rank_assignments": 4424.5
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/849c2a3e4e84c69233624c631bfd4f1871264b3d80543bc1cf8dc0340b674990.npz",
+          "sha256": "d6b48927491ae136c7ec90d3e82b4ac940697aebe8307d91200b603980f14126",
+          "bytes": 104373,
+          "indices_sha256": "9d3a057971414e6b94d24db31dc219dbf2dc8e855e7740f0d7b3f37b30a8c60e"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 1,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch1024-DEFAULT-rank1.json",
+          "trace_sha256": "daeae58ba778e1675dd7959bd86f4f6ab5231c066305d9aeb5134044988f7089",
+          "trace_bytes": 397821,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 446.85100000000006,
+              "us_per_forward": 55.85637500000001
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 24.895999999999997,
+              "us_per_forward": 3.1119999999999997
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2928.159,
+              "us_per_forward": 366.019875
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 501.633,
+              "us_per_forward": 62.704125
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 233.952,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.8,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.584,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 134.4,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.2,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.895,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 227.04,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 133.056,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.456,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.672,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 228.32,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 132.224,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 232.736,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 134.496,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 230.912,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 132.416,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "a2f713662df779f362fade9036a741106c1d0574856b472e7e9557ad29f8d5c7",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4418,
+              3774
+            ],
+            [
+              4454,
+              3738
+            ],
+            [
+              4413,
+              3779
+            ],
+            [
+              4424,
+              3768
+            ],
+            [
+              4394,
+              3798
+            ],
+            [
+              4392,
+              3800
+            ],
+            [
+              4473,
+              3719
+            ],
+            [
+              4428,
+              3764
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              72
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              70
+            ],
+            [
+              72,
+              73
+            ],
+            [
+              73,
+              70
+            ],
+            [
+              73,
+              71
+            ],
+            [
+              71,
+              70
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10752,
+              9984
+            ],
+            [
+              10496,
+              9856
+            ],
+            [
+              10752,
+              9984
+            ],
+            [
+              10368,
+              9472
+            ],
+            [
+              10624,
+              9856
+            ],
+            [
+              10624,
+              9600
+            ],
+            [
+              10880,
+              9728
+            ],
+            [
+              10624,
+              9600
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4047915018646173,
+            2.590577305905773
+          ],
+          "mean_active_physical_experts_by_rank": [
+            72.125,
+            71.5
+          ],
+          "mean_padded_rows_by_rank": [
+            10640.0,
+            9760.0
+          ],
+          "mean_peak_rank_assignments": 4424.5
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/849c2a3e4e84c69233624c631bfd4f1871264b3d80543bc1cf8dc0340b674990.npz",
+          "sha256": "d6b48927491ae136c7ec90d3e82b4ac940697aebe8307d91200b603980f14126",
+          "bytes": 104373,
+          "indices_sha256": "9d3a057971414e6b94d24db31dc219dbf2dc8e855e7740f0d7b3f37b30a8c60e"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 1,
+        "kernel_variant": "TUNED",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain0-batch1024-TUNED-rank1.json",
+          "trace_sha256": "5d8ef10bc734cc6e56697dea5b3d05ad2bd67cd30ff4d02967c1811927b3e247",
+          "trace_bytes": 358968,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 446.36500000000007,
+              "us_per_forward": 55.79562500000001
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 25.122,
+              "us_per_forward": 3.14025
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 2929.613,
+              "us_per_forward": 366.201625
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 541.085,
+              "us_per_forward": 67.635625
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 234.142,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.607,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 232.446,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.063,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.23,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.607,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 228.35,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 132.127,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.358,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 136.959,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 228.671,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 132.447,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 232.031,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 133.536,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 231.167,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 131.872,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "a2f713662df779f362fade9036a741106c1d0574856b472e7e9557ad29f8d5c7",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4418,
+              3774
+            ],
+            [
+              4454,
+              3738
+            ],
+            [
+              4413,
+              3779
+            ],
+            [
+              4424,
+              3768
+            ],
+            [
+              4394,
+              3798
+            ],
+            [
+              4392,
+              3800
+            ],
+            [
+              4473,
+              3719
+            ],
+            [
+              4428,
+              3764
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              72
+            ],
+            [
+              73,
+              73
+            ],
+            [
+              71,
+              70
+            ],
+            [
+              72,
+              73
+            ],
+            [
+              73,
+              70
+            ],
+            [
+              73,
+              71
+            ],
+            [
+              71,
+              70
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10752,
+              9984
+            ],
+            [
+              10496,
+              9856
+            ],
+            [
+              10752,
+              9984
+            ],
+            [
+              10368,
+              9472
+            ],
+            [
+              10624,
+              9856
+            ],
+            [
+              10624,
+              9600
+            ],
+            [
+              10880,
+              9728
+            ],
+            [
+              10624,
+              9600
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4047915018646173,
+            2.590577305905773
+          ],
+          "mean_active_physical_experts_by_rank": [
+            72.125,
+            71.5
+          ],
+          "mean_padded_rows_by_rank": [
+            10640.0,
+            9760.0
+          ],
+          "mean_peak_rank_assignments": 4424.5
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/849c2a3e4e84c69233624c631bfd4f1871264b3d80543bc1cf8dc0340b674990.npz",
+          "sha256": "d6b48927491ae136c7ec90d3e82b4ac940697aebe8307d91200b603980f14126",
+          "bytes": 104373,
+          "indices_sha256": "9d3a057971414e6b94d24db31dc219dbf2dc8e855e7740f0d7b3f37b30a8c60e"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 0,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch1024-DEFAULT-rank0.json",
+          "trace_sha256": "089473194099ff7501392658535eafd4c4fa826f4360b90615ff44ddec69c701",
+          "trace_bytes": 359522,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 439.8389999999999,
+              "us_per_forward": 54.979874999999986
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 25.216,
+              "us_per_forward": 3.152
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3012.2630000000004,
+              "us_per_forward": 376.53287500000005
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 515.905,
+              "us_per_forward": 64.488125
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.584,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.185,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.448,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.937,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.704,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.84,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.641,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.249,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.745,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.416,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.904,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.672,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.649,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.776,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.097,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.416,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "bc0e1b514b7ed34a414a7e20548b26e46a2285aa990acadea594f51d04b64590",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4135,
+              4057
+            ],
+            [
+              4119,
+              4073
+            ],
+            [
+              4131,
+              4061
+            ],
+            [
+              4111,
+              4081
+            ],
+            [
+              4174,
+              4018
+            ],
+            [
+              4114,
+              4078
+            ],
+            [
+              4092,
+              4100
+            ],
+            [
+              4113,
+              4079
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              9984
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4832519930886052,
+            2.4737149353243004
+          ],
+          "mean_active_physical_experts_by_rank": [
+            75.0,
+            76.375
+          ],
+          "mean_padded_rows_by_rank": [
+            10240.0,
+            10064.0
+          ],
+          "mean_peak_rank_assignments": 4124.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/f1e23e556df91573dbe818da561c37f3f5f55944996be472bfffb10270483967.npz",
+          "sha256": "478a4ce9aa48d1d7a75d7efc12c29bd2173b3788bd660ad2d06db523f4d27ea4",
+          "bytes": 103639,
+          "indices_sha256": "7071fe58162c9c976807079ee9eb72a8cdb7675fe2809be0a24ace784b7dd08a"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 0,
+        "kernel_variant": "TUNED",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch1024-TUNED-rank0.json",
+          "trace_sha256": "6d8a08300cf768a94733290f7e19873cfa27c2cd8083e4d5f16ffa1a6a69ed36",
+          "trace_bytes": 359521,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 439.5799999999998,
+              "us_per_forward": 54.94749999999998
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 25.087999999999997,
+              "us_per_forward": 3.1359999999999997
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3007.0309999999995,
+              "us_per_forward": 375.87887499999994
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 533.341,
+              "us_per_forward": 66.667625
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.32,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.575,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.351,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.839,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.615,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.648,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.519,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.416,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.615,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.16,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.776,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 139.52,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 236.415,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.063,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 235.135,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 140.064,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "bc0e1b514b7ed34a414a7e20548b26e46a2285aa990acadea594f51d04b64590",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4135,
+              4057
+            ],
+            [
+              4119,
+              4073
+            ],
+            [
+              4131,
+              4061
+            ],
+            [
+              4111,
+              4081
+            ],
+            [
+              4174,
+              4018
+            ],
+            [
+              4114,
+              4078
+            ],
+            [
+              4092,
+              4100
+            ],
+            [
+              4113,
+              4079
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              9984
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4832519930886052,
+            2.4737149353243004
+          ],
+          "mean_active_physical_experts_by_rank": [
+            75.0,
+            76.375
+          ],
+          "mean_padded_rows_by_rank": [
+            10240.0,
+            10064.0
+          ],
+          "mean_peak_rank_assignments": 4124.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/f1e23e556df91573dbe818da561c37f3f5f55944996be472bfffb10270483967.npz",
+          "sha256": "478a4ce9aa48d1d7a75d7efc12c29bd2173b3788bd660ad2d06db523f4d27ea4",
+          "bytes": 103639,
+          "indices_sha256": "7071fe58162c9c976807079ee9eb72a8cdb7675fe2809be0a24ace784b7dd08a"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 1,
+        "kernel_variant": "DEFAULT",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch1024-DEFAULT-rank1.json",
+          "trace_sha256": "7f8e7b70f435cd8445eb08069ea20ddea9e5d5fbd4da0e9416ffc764bc6f3ae4",
+          "trace_bytes": 359520,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 447.837,
+              "us_per_forward": 55.979625
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 24.896,
+              "us_per_forward": 3.112
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3066.3849999999998,
+              "us_per_forward": 383.29812499999997
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 476.895,
+              "us_per_forward": 59.611875
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 237.951,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.911,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.919,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.936,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.455,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.367,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 238.399,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.359,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.342,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.552,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.983,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.743,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.287,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.943,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.231,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.007,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "bc0e1b514b7ed34a414a7e20548b26e46a2285aa990acadea594f51d04b64590",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4135,
+              4057
+            ],
+            [
+              4119,
+              4073
+            ],
+            [
+              4131,
+              4061
+            ],
+            [
+              4111,
+              4081
+            ],
+            [
+              4174,
+              4018
+            ],
+            [
+              4114,
+              4078
+            ],
+            [
+              4092,
+              4100
+            ],
+            [
+              4113,
+              4079
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              9984
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4832519930886052,
+            2.4737149353243004
+          ],
+          "mean_active_physical_experts_by_rank": [
+            75.0,
+            76.375
+          ],
+          "mean_padded_rows_by_rank": [
+            10240.0,
+            10064.0
+          ],
+          "mean_peak_rank_assignments": 4124.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/f1e23e556df91573dbe818da561c37f3f5f55944996be472bfffb10270483967.npz",
+          "sha256": "478a4ce9aa48d1d7a75d7efc12c29bd2173b3788bd660ad2d06db523f4d27ea4",
+          "bytes": 103639,
+          "indices_sha256": "7071fe58162c9c976807079ee9eb72a8cdb7675fe2809be0a24ace784b7dd08a"
+        }
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 1,
+        "kernel_variant": "TUNED",
+        "candidate_id": "DEFAULT",
+        "resolved_kernel_config": {
+          "BLOCK_SIZE_M": 128,
+          "BLOCK_SIZE_N": 128,
+          "BLOCK_SIZE_K": 64,
+          "GROUP_SIZE_M": 1,
+          "SPLIT_K": 1,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        "raw_kernel_audit": {
+          "trace_file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/opt-pilot-01-domain1-batch1024-TUNED-rank1.json",
+          "trace_sha256": "07ffa7e6b39933b522a2d88780a25fba81e5ec224695b420166803843c890625",
+          "trace_bytes": 359515,
+          "expected_hash_verified": true,
+          "event_filter": "cat == kernel and ph == X",
+          "forwards": 8,
+          "kernel_groups": {
+            "other_kernels": {
+              "calls": 56,
+              "total_us": 447.1650000000001,
+              "us_per_forward": 55.89562500000001
+            },
+            "physical_mapping": {
+              "calls": 8,
+              "total_us": 25.055999999999997,
+              "us_per_forward": 3.1319999999999997
+            },
+            "fused_expert_gemm": {
+              "calls": 16,
+              "total_us": 3063.864,
+              "us_per_forward": 382.983
+            },
+            "nccl_allreduce": {
+              "calls": 8,
+              "total_us": 477.34200000000004,
+              "us_per_forward": 59.667750000000005
+            }
+          },
+          "gemm_launches": [
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.264,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.048,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.151,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 144.127,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.199,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.72,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 238.943,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 142.655,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.183,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.456,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 241.44,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.52,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 239.231,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 141.376,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 240.255,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                2676,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "fused_moe_kernel",
+              "duration_us": 143.296,
+              "block": [
+                256,
+                1,
+                1
+              ],
+              "grid": [
+                3568,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "physical_diagnostics": {
+          "physical_counts_sha256": "bc0e1b514b7ed34a414a7e20548b26e46a2285aa990acadea594f51d04b64590",
+          "block_m": 128,
+          "owner_assignments_per_step": [
+            [
+              4135,
+              4057
+            ],
+            [
+              4119,
+              4073
+            ],
+            [
+              4131,
+              4061
+            ],
+            [
+              4111,
+              4081
+            ],
+            [
+              4174,
+              4018
+            ],
+            [
+              4114,
+              4078
+            ],
+            [
+              4092,
+              4100
+            ],
+            [
+              4113,
+              4079
+            ]
+          ],
+          "active_physical_experts_per_rank_per_step": [
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              77
+            ],
+            [
+              75,
+              76
+            ],
+            [
+              75,
+              76
+            ]
+          ],
+          "local_padded_rows_per_step": [
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              10112
+            ],
+            [
+              10240,
+              9984
+            ],
+            [
+              10240,
+              9984
+            ]
+          ],
+          "padded_to_useful_rows_by_rank": [
+            2.4832519930886052,
+            2.4737149353243004
+          ],
+          "mean_active_physical_experts_by_rank": [
+            75.0,
+            76.375
+          ],
+          "mean_padded_rows_by_rank": [
+            10240.0,
+            10064.0
+          ],
+          "mean_peak_rank_assignments": 4124.625
+        },
+        "input_artifact": {
+          "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/optimization-results/validation/profile/tuning-inputs/f1e23e556df91573dbe818da561c37f3f5f55944996be472bfffb10270483967.npz",
+          "sha256": "478a4ce9aa48d1d7a75d7efc12c29bd2173b3788bd660ad2d06db523f4d27ea4",
+          "bytes": 103639,
+          "indices_sha256": "7071fe58162c9c976807079ee9eb72a8cdb7675fe2809be0a24ace784b7dd08a"
+        }
+      }
+    ],
+    "paired_rank_comparisons": [
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 0,
+        "selected_candidate": "M64_N64_K64_W4_S3",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 20.992125,
+            "tuned_us_per_forward": 21.06375,
+            "tuned_over_default": 1.003411993783383
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.3238749999999997,
+            "tuned_us_per_forward": 3.2881249999999995,
+            "tuned_over_default": 0.9892444812154488
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 289.608,
+            "tuned_us_per_forward": 285.47887499999996,
+            "tuned_over_default": 0.9857423655423881
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 23.104125,
+            "tuned_us_per_forward": 17.660125,
+            "tuned_over_default": 0.7643710809216969
+          }
+        },
+        "default_padded_rows_per_input": 4096.0,
+        "tuned_padded_rows_per_input": 4096.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 64.0
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 0,
+        "rank": 1,
+        "selected_candidate": "M64_N64_K64_W4_S3",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 21.235874999999997,
+            "tuned_us_per_forward": 21.172374999999995,
+            "tuned_over_default": 0.9970097770871226
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.2998749999999997,
+            "tuned_us_per_forward": 3.336,
+            "tuned_over_default": 1.0109473843706203
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 295.689625,
+            "tuned_us_per_forward": 291.01800000000003,
+            "tuned_over_default": 0.9842009167551957
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 18.247625,
+            "tuned_us_per_forward": 31.4,
+            "tuned_over_default": 1.7207718812722204
+          }
+        },
+        "default_padded_rows_per_input": 4168.0,
+        "tuned_padded_rows_per_input": 4168.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 65.125
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 0,
+        "selected_candidate": "M64_N64_K64_W4_S3",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 21.108125000000005,
+            "tuned_us_per_forward": 21.0955,
+            "tuned_over_default": 0.9994018890829951
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.256,
+            "tuned_us_per_forward": 3.296,
+            "tuned_over_default": 1.0122850122850122
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 320.32725000000005,
+            "tuned_us_per_forward": 315.554625,
+            "tuned_over_default": 0.9851007836517185
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 17.871999999999996,
+            "tuned_us_per_forward": 53.828,
+            "tuned_over_default": 3.0118621307072524
+          }
+        },
+        "default_padded_rows_per_input": 4496.0,
+        "tuned_padded_rows_per_input": 4496.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 70.25
+      },
+      {
+        "batch_tokens": 128,
+        "domain": 1,
+        "rank": 1,
+        "selected_candidate": "M64_N64_K64_W4_S3",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 21.131875,
+            "tuned_us_per_forward": 21.248,
+            "tuned_over_default": 1.0054952530241636
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.276,
+            "tuned_us_per_forward": 3.3001249999999995,
+            "tuned_over_default": 1.0073641636141635
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 331.51012499999996,
+            "tuned_us_per_forward": 325.253875,
+            "tuned_over_default": 0.9811280273867956
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 48.551624999999994,
+            "tuned_us_per_forward": 17.567875,
+            "tuned_over_default": 0.36183907335748294
+          }
+        },
+        "default_padded_rows_per_input": 4664.0,
+        "tuned_padded_rows_per_input": 4664.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 72.875
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 0,
+        "selected_candidate": "DEFAULT",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 54.587500000000006,
+            "tuned_us_per_forward": 54.570875,
+            "tuned_over_default": 0.9996954430959468
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.1481249999999994,
+            "tuned_us_per_forward": 3.1119999999999997,
+            "tuned_over_default": 0.9885249156243797
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 370.89725,
+            "tuned_us_per_forward": 371.79837499999996,
+            "tuned_over_default": 1.0024295812384696
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 60.195750000000004,
+            "tuned_us_per_forward": 59.73975,
+            "tuned_over_default": 0.9924247143693699
+          }
+        },
+        "default_padded_rows_per_input": 10640.0,
+        "tuned_padded_rows_per_input": 10640.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 72.125
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 0,
+        "rank": 1,
+        "selected_candidate": "DEFAULT",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 55.85637500000001,
+            "tuned_us_per_forward": 55.79562500000001,
+            "tuned_over_default": 0.9989123891408993
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.1119999999999997,
+            "tuned_us_per_forward": 3.14025,
+            "tuned_over_default": 1.009077763496144
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 366.019875,
+            "tuned_us_per_forward": 366.201625,
+            "tuned_over_default": 1.0004965577347404
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 62.704125,
+            "tuned_us_per_forward": 67.635625,
+            "tuned_over_default": 1.078647138445836
+          }
+        },
+        "default_padded_rows_per_input": 9760.0,
+        "tuned_padded_rows_per_input": 9760.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 71.5
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 0,
+        "selected_candidate": "DEFAULT",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 54.979874999999986,
+            "tuned_us_per_forward": 54.94749999999998,
+            "tuned_over_default": 0.9994111481701258
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.152,
+            "tuned_us_per_forward": 3.1359999999999997,
+            "tuned_over_default": 0.9949238578680202
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 376.53287500000005,
+            "tuned_us_per_forward": 375.87887499999994,
+            "tuned_over_default": 0.9982630998687695
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 64.488125,
+            "tuned_us_per_forward": 66.667625,
+            "tuned_over_default": 1.033796919975577
+          }
+        },
+        "default_padded_rows_per_input": 10240.0,
+        "tuned_padded_rows_per_input": 10240.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 75.0
+      },
+      {
+        "batch_tokens": 1024,
+        "domain": 1,
+        "rank": 1,
+        "selected_candidate": "DEFAULT",
+        "kernel_residence": {
+          "other_kernels": {
+            "default_us_per_forward": 55.979625,
+            "tuned_us_per_forward": 55.89562500000001,
+            "tuned_over_default": 0.9984994540424308
+          },
+          "physical_mapping": {
+            "default_us_per_forward": 3.112,
+            "tuned_us_per_forward": 3.1319999999999997,
+            "tuned_over_default": 1.0064267352185088
+          },
+          "fused_expert_gemm": {
+            "default_us_per_forward": 383.29812499999997,
+            "tuned_us_per_forward": 382.983,
+            "tuned_over_default": 0.9991778592707701
+          },
+          "nccl_allreduce": {
+            "default_us_per_forward": 59.611875,
+            "tuned_us_per_forward": 59.667750000000005,
+            "tuned_over_default": 1.000937313245054
+          }
+        },
+        "default_padded_rows_per_input": 10064.0,
+        "tuned_padded_rows_per_input": 10064.0,
+        "padded_rows_tuned_over_default": 1.0,
+        "active_experts_per_input": 76.375
+      }
+    ],
+    "checks": {
+      "trace_sha256": 16,
+      "input_artifact_sha256": 16,
+      "physical_count_conservation": 16,
+      "padding_recomputed": 16,
+      "actual_launch_warp_count": 256,
+      "same_state_variant_pairs": 8,
+      "nested_annotations_excluded": true
+    }
+  },
+  "limits": [
+    "Device kernel sums are residence times, not exclusive wall-time shares or a bandwidth measurement.",
+    "Padding is an integer tile-row proxy, not a measured instruction count or promised speedup.",
+    "Only new DEFAULT/TUNED runs share inputs/maps; old/new calibration datasets are not paired.",
+    "No confidence intervals, adaptive selection or policy recommendation is computed.",
+    "Output correctness is a recorded runtime attestation; this offline audit does not rerun expert weights."
+  ]
+}

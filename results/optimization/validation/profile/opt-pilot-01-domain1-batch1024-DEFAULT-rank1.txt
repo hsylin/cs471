@@ -1,0 +1,46 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             optimization_fixed_map_moe         0.00%       0.000us         0.00%       0.000us       0.000us       3.950ms        98.35%       3.950ms     493.722us             8  
+                                       fused_moe_kernel         0.00%       0.000us         0.00%       0.000us       0.000us       3.066ms        76.35%       3.066ms     191.649us            16  
+                                    vllm::fused_experts        29.21%       1.419ms        44.46%       2.160ms     270.025us       3.066ms        76.35%       3.490ms     436.270us             8  
+                                     record_param_comms         6.78%     329.200us         8.66%     420.736us      52.592us     476.895us        11.87%     476.895us      59.612us             8  
+ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...         0.00%       0.000us         0.00%       0.000us       0.000us     476.895us        11.87%     476.895us      59.612us             8  
+                                        nccl:all_reduce         0.00%       0.000us         0.00%       0.000us       0.000us     476.895us        11.87%     476.895us      59.612us             8  
+                                        _moe_C::moe_sum         0.79%      38.196us         1.32%      64.175us       8.022us     139.997us         3.49%     139.997us      17.500us             8  
+void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, in...         0.00%       0.000us         0.00%       0.000us       0.000us     139.997us         3.49%     139.997us      17.500us             8  
+                                       _C::silu_and_mul         0.95%      46.039us         1.54%      74.760us       9.345us     117.344us         2.92%     117.344us      14.668us             8  
+void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bf...         0.00%       0.000us         0.00%       0.000us       0.000us     117.344us         2.92%     117.344us      14.668us             8  
+                                            aten::fill_         2.58%     125.388us        12.75%     619.714us      25.821us     114.783us         2.86%     116.415us       4.851us            24  
+void at::native::vectorized_elementwise_kernel<8, at...         0.00%       0.000us         0.00%       0.000us       0.000us      90.720us         2.26%      90.720us      11.340us             8  
+                           _moe_C::moe_align_block_size         1.90%      92.237us         4.27%     207.419us      25.927us      75.713us         1.89%      75.713us       9.464us             8  
+void vllm::moe::moe_align_block_size_kernel<int>(int...         0.00%       0.000us         0.00%       0.000us       0.000us      47.873us         1.19%      47.873us       5.984us             8  
+void vllm::moe::count_and_sort_expert_tokens_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us      27.840us         0.69%      27.840us       3.480us             8  
+                        _eplb_map_and_record_i32_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      24.896us         0.62%      24.896us       3.112us             8  
+void at::native::vectorized_elementwise_kernel<8, at...         0.00%       0.000us         0.00%       0.000us       0.000us      12.416us         0.31%      12.416us       1.552us             8  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      11.647us         0.29%      11.647us       1.456us             8  
+                                Activity Buffer Request         3.76%     182.902us         3.76%     182.902us     182.902us       1.632us         0.04%       1.632us       1.632us             1  
+                             optimization_fixed_map_moe        19.22%     933.898us        90.86%       4.414ms     551.806us       0.000us         0.00%       3.993ms     499.094us             8  
+                                           aten::select         1.33%      64.450us         1.66%      80.707us       3.363us       0.000us         0.00%       0.000us       0.000us            24  
+                                       aten::as_strided         0.51%      24.920us         0.51%      24.920us       0.623us       0.000us         0.00%       0.000us       0.000us            40  
+                                            aten::zeros         0.39%      19.069us        11.48%     558.000us      69.750us       0.000us         0.00%      14.048us       1.756us             8  
+                                            aten::empty         3.71%     180.337us         3.71%     180.337us       2.818us       0.000us         0.00%       0.000us       0.000us            64  
+                                            aten::zero_         0.68%      33.249us        12.38%     601.666us      37.604us       0.000us         0.00%     104.768us       6.548us            16  
+                                       cudaLaunchKernel         9.24%     448.757us         9.24%     448.757us       8.014us       0.000us         0.00%       0.000us       0.000us            56  
+                                               aten::to         0.07%       3.323us         0.07%       3.323us       0.415us       0.000us         0.00%       0.000us       0.000us             8  
+                                       cuLaunchKernelEx         2.57%     124.846us         2.57%     124.846us       3.901us       0.000us         0.00%       0.000us       0.000us            32  
+                                          aten::reshape         0.25%      12.054us         0.66%      31.846us       3.981us       0.000us         0.00%       0.000us       0.000us             8  
+                                             aten::view         1.53%      74.566us         1.53%      74.566us       1.864us       0.000us         0.00%       0.000us       0.000us            40  
+                                            aten::slice         0.88%      42.555us         1.05%      51.218us       3.201us       0.000us         0.00%       0.000us       0.000us            16  
+                                       aten::empty_like         0.27%      12.980us         0.71%      34.282us       4.285us       0.000us         0.00%       0.000us       0.000us             8  
+                                    aten::empty_strided         0.44%      21.302us         0.44%      21.302us       2.663us       0.000us         0.00%       0.000us       0.000us             8  
+                                        aten::new_empty         0.28%      13.773us         0.67%      32.549us       4.069us       0.000us         0.00%       0.000us       0.000us             8  
+                                       c10d::allreduce_         2.59%     126.009us        11.25%     546.745us      68.343us       0.000us         0.00%     476.895us      59.612us             8  
+                                  cudaStreamIsCapturing         0.14%       7.012us         0.14%       7.012us       0.438us       0.000us         0.00%       0.000us       0.000us            16  
+                                        nccl:all_reduce         0.00%       0.000us             0     337.502us      42.188us       0.000us         0.00%       0.000us       0.000us             8  
+                            cudaStreamGetCaptureInfo_v2         0.13%       6.217us         0.13%       6.217us       0.389us       0.000us         0.00%       0.000us       0.000us            16  
+                                        cudaEventRecord         0.32%      15.613us         0.32%      15.613us       0.651us       0.000us         0.00%       0.000us       0.000us            24  
+                                    cudaStreamWaitEvent         0.20%       9.665us         0.20%       9.665us       0.604us       0.000us         0.00%       0.000us       0.000us            16  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 4.859ms
+Self CUDA time total: 4.016ms
