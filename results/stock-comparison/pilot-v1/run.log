@@ -1,0 +1,275 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 20:58:16.995652297 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_stockon32"}
+{"event": "initialization", "phase": "stock_ready_stockon32"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "prepare_content", "group": "stock-wildchat-pilot-01", "phase": "pilot"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+WARNING:vllm.model_executor.layers.fused_moe.fused_moe:Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+{"event": "stock_reference", "group": "stock-wildchat-pilot-01", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-01", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-01", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-01", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-01", "arm": "ours", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 3803770.6018066406, "record_id": "0b9f2353520eb391dd6e0bba427da57fe986c4e6e68c9379794d89cc4f384894"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "mean_response_ns": 44428669.15185547, "record_id": "127eba94b518b16b12ccdb9aae874df76445bc9f083859a94659fb18cddb01bf"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "ours", "mean_response_ns": 14624589.742919922, "record_id": "c7efdf60f8042a0008fda0720e4f4ae13e1516cfc8b11a5af199ecab3b4dfeac"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "mean_response_ns": 2635470.975341797, "record_id": "fc1a117fce1ef09509a000b12bcf8f169697ec7dda74927449e4a0f8a90528f9"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "ours", "mean_response_ns": 2590989.917236328, "record_id": "ee15f2f672bdc2fe7a4eed717913011a116686592cbb15a9e5e0e7b1b2e33995"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 2054012.4787597656, "record_id": "558cf60a86d4075161a14f8966d23f4b8a170eefd523b519a98be7f5ac9404b0"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "mean_response_ns": 2893966.2692871094, "record_id": "bac325be4668bda87d693889653818223c2854ae29e09ef8075ec5aa9b41a404"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 2274434.84375, "record_id": "256da8a230a09a2287839130ee11512ee79ede6aaf591c8b13e9fde5a48b0007"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "ours", "mean_response_ns": 2853918.104248047, "record_id": "ee4861c05719e9f578e363d27ff6321279d3c6dd1e4ae6b1a5879b3c838b72c0"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "ours", "mean_response_ns": 36113478.349609375, "record_id": "74e32da5bbfd6f74b68cb6111d99aeb2afae4d0a1176270e31db8745738abd1f"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockon32", "mean_response_ns": 58188183.54223633, "record_id": "884abf058d3ca875b857cf763e61118feaeacef01bc32c372bfb9a21ae0bdf07"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 5951534.134033203, "record_id": "3894ec91d36a966dbb8a22b8c97d8da8150a41c2588c6df5f77beff66d687c26"}
+{"event": "prepare_content", "group": "stock-mbpp-pilot-02", "phase": "pilot"}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-02", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-02", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-02", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-02", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-02", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "mean_response_ns": 1599763.302734375, "record_id": "ce705630333c3f171da84215ef227d4a4ec4d70f01f17851fa0664cfc933dc3e"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "ours", "mean_response_ns": 2035221.9111328125, "record_id": "4e64c900d63b5729818a889ee0b49a4fd2adaca4e27736ef52d70c0eb7351e2a"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "mean_response_ns": 2038840.3386230469, "record_id": "0075514d3a2aef2109a471f977962e4257ec103db78dc9e74c3025d11b2c10b7"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "mean_response_ns": 47127759.73803711, "record_id": "655cbc89045c2051934ab6dbb662e8e7d4973188322a9f1fe228156f767b1082"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "ours", "mean_response_ns": 39051847.462890625, "record_id": "f383076943c81adb8b9dc2bdc88d340424c7ee6eb5f0b70961b8c7a8ceea473d"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "mean_response_ns": 7706443.88671875, "record_id": "e7ec1da0d9813dfdbcfa2b98628a2f2ca403fdbcd3de8d97c36d1f586339de44"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "mean_response_ns": 1216286.7956542969, "record_id": "74c10a416e22de593a0962c356d96f68b5033a902992bbdb396bc5ebc81ad738"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "mean_response_ns": 1735532.5593261719, "record_id": "7279f78c3688528e7fbc9a895e6c4b2bfc13042adee33884c1bccc7353ec9db4"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "ours", "mean_response_ns": 1704481.6059570312, "record_id": "4eaec51e78a72118bf8f89fb452048f7a4776fe5c46277e96fd4f134c34723e4"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "ours", "mean_response_ns": 45562764.24243164, "record_id": "46bd45792d36919831facfdb660b15ea90c7b278b91815a316503dea71ec7388"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockoff", "mean_response_ns": 3325619.2978515625, "record_id": "5df75d8c5e7bd15d302e7ecfc018b539c0ce70c26b4269b41f86224d77994fcc"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-02", "arm": "stockon32", "mean_response_ns": 56229541.572753906, "record_id": "26e0811e5eb0dd620f076fbfbc0d622837f08d3fb0f7760558e53c6582e9b089"}
+{"event": "prepare_content", "group": "stock-gsm8k-pilot-02", "phase": "pilot"}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-02", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-02", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-02", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-02", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-02", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "mean_response_ns": 1918289.2358398438, "record_id": "845916bd5d8a5b4cbc6fe73e827f979e760171ae18070c451dde37bec5c20de4"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 1414777.1330566406, "record_id": "ccd3de3c946d681e40f7b588c6abcb9c96505bc068a924cabc05addefce55bae"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "ours", "mean_response_ns": 1889336.5571289062, "record_id": "20dbc721100d9394a33f09aafddad1b4945759fcd5fb0fc5349790082de44382"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "ours", "mean_response_ns": 15790708.463134766, "record_id": "4000108ab373a19ae2d2443e2cf967a61b11db56c62ad7b3dc57773d005b1084"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "mean_response_ns": 25342724.963623047, "record_id": "d3b67e83ca62878e0d0418a524cbaa07fb36cce9fcfbc4dce307bffbd457c1ab"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 4719235.745361328, "record_id": "74444a1722bbe950be914409f4d1db0c92335bef55a69cbf965032a7ab176656"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "mean_response_ns": 2408485.917236328, "record_id": "44c4565ecbd4c0dcc3bed2f80debda0047c7c0d92ad50c475ab9fb44e16f7dc1"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "ours", "mean_response_ns": 2370260.4296875, "record_id": "d819020c324be65c3199d9a6f6fce8cce977bc4fc6456bb1fad39538bc58d275"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 1901584.4487304688, "record_id": "6720cc4c0ffa63a16400c7dd8d37c214c67f8bf2a47fa767bdf8eeb07acffe0a"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockoff", "mean_response_ns": 3725718.668701172, "record_id": "f4abc89e44773415fb44d4f572f7cb83fee29f3cc89c9a2bdefb3f553e2707c0"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "stockon32", "mean_response_ns": 54207056.36645508, "record_id": "ab0f559c0c060735c8db8fddcf3fccc9470e6b119e446d04d76e65d7ef105089"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-02", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-02", "arm": "ours", "mean_response_ns": 31216517.208007812, "record_id": "165725f2cc09963410d6815d4d87379529bdf5ad3c5e293ba6cdfdf8cc7aa8e5"}
+{"event": "prepare_content", "group": "stock-wildchat-pilot-02", "phase": "pilot"}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-02", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-02", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-02", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-02", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-pilot-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-pilot-02", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "mean_response_ns": 63636188.57836914, "record_id": "1c51e19db50243a06f02fb0a66b7f0a6eb16c2c4f7f61195f80052970c529094"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 4961503.327636719, "record_id": "8b4c00c55ae76aa2bb3845b35dba98b57cd4c5053dee4a650a98d6a6dffd222a"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "ours", "mean_response_ns": 40062473.93066406, "record_id": "a6cc27f5ffa74ffb9f4723ae793f94451686cd3a0e9306c77525f8b894bf0691"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "ours", "mean_response_ns": 2082166.8383789062, "record_id": "059c927e3bb968f9404f4bb94a3f71ef6246eb80fce79c0cda52589e2edc0d2b"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "mean_response_ns": 2145615.5856933594, "record_id": "623f0a5595fcadaa2ae68db6ee5cfe3b9c521e21d29912efc2b2a60079c81f38"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 1664065.9680175781, "record_id": "729ce17a1655e964c9f03e1dc274657cf852080ce40cd092783b1ecdd8d4d5f5"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "ours", "mean_response_ns": 1936057.783203125, "record_id": "80385f5209061dbdabc29c14cc39471217fcf2ff38ea108066ec7596b8fe8d2f"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 1451159.9523925781, "record_id": "3aa3b84c80b1ff25a31f78464c7bc3608c27c3051fb08f38897ca5a75031f66f"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "mean_response_ns": 2171127.9216308594, "record_id": "c7fb6ce002ee9535b73c9ed218413aa2bd287e58994d6678956b93beaf5b4803"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 11367476.760742188, "record_id": "c9433d3c887156a542845ef87390bf5d349ab71e2fd57c8af665236ffc934d04"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "ours", "mean_response_ns": 41004861.939208984, "record_id": "199af24e69fad55ef18013dfa2961dd1e83aad8b5cdf0643b23e815a157462aa"}
+{"event": "trial_start", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-pilot-02", "arm": "stockon32", "mean_response_ns": 50538550.760009766, "record_id": "b0a146442d1d4bfbf35fc09794e9f33540162c27e4cace982bd8c9ecddc9405b"}
+{"event": "prepare_content", "group": "stock-mbpp-pilot-01", "phase": "pilot"}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-01", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-01", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-01", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-01", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-pilot-01", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "mean_response_ns": 37145274.3762207, "record_id": "d0269a8f42a66419ea4652e9291d3bbfacc6d270b5caeea0bee0e1a770415d24"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 4084916.8276367188, "record_id": "066fb082274923deeb9b226bbc4fa9f6602411481ef5f25b4b7b6a6d7ddabe1d"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "ours", "mean_response_ns": 13783272.204345703, "record_id": "b653d5d9f7b0c4c4cb1b31efc0bfdef92d659a4c9b428a2cbbc0715ecde6b08a"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 7469320.929931641, "record_id": "e198bdfec3482004573355df639713fb6bf731ccd7e1690be135ef14533b4995"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "ours", "mean_response_ns": 69548775.24804688, "record_id": "9db39e2bf36e16919c7cab12e5dcb9a7d7e7fd45d4927eead95e792ea2470020"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "mean_response_ns": 84225113.65234375, "record_id": "9e6e929d7d58b84e1f20148684975732085f99f98697e274232255e2c11d9e66"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "ours", "mean_response_ns": 2837590.3276367188, "record_id": "16a654d1872041e305a26bc677f78130fc953995bbd867eb7469c68ffc806c98"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "mean_response_ns": 2881399.0708007812, "record_id": "90163a686e4f2acdaaf2d6771942cd71bd90407244b213888508ed24a0e5b296"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 2267758.688232422, "record_id": "27a3d5f8d481187092f956ad46db3e7911a7c5201c55adda5e51318d35f8fa1b"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "ours", "mean_response_ns": 2131977.4282226562, "record_id": "d6e2a4220d4eca6bf0765f7995727589460e5f2bdcf23d9bc0479d581a12c4ef"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockoff", "mean_response_ns": 1581125.0517578125, "record_id": "cb8b512b89f92e28cb2d68145a9a6d39d1ebd047570266ee2725c8cf904fed2e"}
+{"event": "trial_start", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-pilot-01", "arm": "stockon32", "mean_response_ns": 2098096.0537109375, "record_id": "174835997b02b464ad1e85ee547925dcdd207e72c593bc036cc815527a20e310"}
+{"event": "prepare_content", "group": "stock-gsm8k-pilot-01", "phase": "pilot"}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-01", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-01", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-01", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-01", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-pilot-01", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 1824338.0451660156, "record_id": "2da3e5287e579765e13c49e80d83e66bb4067ebdc69ef777887ab4c637677baf"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "mean_response_ns": 2282521.7080078125, "record_id": "f58bf8160b559b454ca61b18c66e02d5f4051809e010ce10ec7e712712bab4c9"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "ours", "mean_response_ns": 2294844.7436523438, "record_id": "d6c658b584e702f25c7a65b75bdc33dd11c61939c274ada4298857085003a86c"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "mean_response_ns": 45912334.71142578, "record_id": "bb36fd2d25256a6eb8cf02e7ded973851e06ce736341f5a2ab6c4a99d746a21f"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "ours", "mean_response_ns": 19242154.93359375, "record_id": "e295470b069928729253877f54dfee1df3c3162836e4f6bfbc139c3f33da8835"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 3485819.917236328, "record_id": "d8ddf72a1df592b1de3bdd74ded7f37f505119ca0ed2610eb5b9a54f17431689"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "ours", "mean_response_ns": 49992744.279541016, "record_id": "6e7552512bc58474f260c50ee85124daf18e7d215b15c30a23269a29dc9deef9"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 8282527.884765625, "record_id": "6d8de7d15420f10482bea59ab484672f0e6d5855753060577ec441adaff4186d"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "mean_response_ns": 52152700.84082031, "record_id": "58ca754e365f9fbeb822b198ed5ee81ab9c44ab528fc4a6c70390ea09a60e076"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockoff", "mean_response_ns": 1592381.5891113281, "record_id": "0b663c09c99a86bdaae3962480f3a3407571a438de035ebde411088c74a40f83"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "ours", "mean_response_ns": 2052375.2736816406, "record_id": "b3aa0d780b7668948676d309b336733e92f88945c10e427ca81b57ed9972d80c"}
+{"event": "trial_start", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-pilot-01", "arm": "stockon32", "mean_response_ns": 2071063.3251953125, "record_id": "218d93db2da3bd3b520b8ab1c5f7b0c1f5d975800017c02394c945e360f7e45f"}

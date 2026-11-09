@@ -1,0 +1,101 @@
+{
+  "schema": "stock_fp32_defaults_source_audit_v1",
+  "read_only": true,
+  "gpu_job_launched": false,
+  "execution_sources_changed": false,
+  "cpu_only_process_observations": [
+    {
+      "stage": "torch imported",
+      "torch_version": "2.13.0+cu129",
+      "float32_matmul_precision": "highest",
+      "allow_tf32": false,
+      "cuda_initialized": false,
+      "fp32_precision": "none",
+      "NVIDIA_TF32_OVERRIDE": null,
+      "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": null
+    },
+    {
+      "stage": "vllm",
+      "torch_version": "2.13.0+cu129",
+      "float32_matmul_precision": "highest",
+      "allow_tf32": false,
+      "cuda_initialized": false,
+      "fp32_precision": "none",
+      "NVIDIA_TF32_OVERRIDE": null,
+      "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": null
+    },
+    {
+      "stage": "vllm.config",
+      "torch_version": "2.13.0+cu129",
+      "float32_matmul_precision": "highest",
+      "allow_tf32": false,
+      "cuda_initialized": false,
+      "fp32_precision": "none",
+      "NVIDIA_TF32_OVERRIDE": null,
+      "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": null
+    },
+    {
+      "stage": "vllm.model_executor.models.qwen3_moe",
+      "torch_version": "2.13.0+cu129",
+      "float32_matmul_precision": "highest",
+      "allow_tf32": false,
+      "cuda_initialized": false,
+      "fp32_precision": "none",
+      "NVIDIA_TF32_OVERRIDE": null,
+      "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": null
+    },
+    {
+      "stage": "vllm.distributed.eplb.eplb_state",
+      "torch_version": "2.13.0+cu129",
+      "float32_matmul_precision": "highest",
+      "allow_tf32": false,
+      "cuda_initialized": false,
+      "fp32_precision": "none",
+      "NVIDIA_TF32_OVERRIDE": null,
+      "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": null
+    }
+  ],
+  "installed_torch_source_sha256": {
+    "include/ATen/Context.h": "a105f5c34b3c8616ee838645b79003c9226dd06cfe7c3e2f580b31492d03ad63",
+    "__init__.py": "cf40c075c95864036e835795756d69b8cccfafa76f3bcde5eba9d06065ccd3d1"
+  },
+  "vllm_source_verification": [
+    {
+      "path": "v1/worker/gpu_worker.py",
+      "sha256": "43bd01925cd84f7d8a1d4a2ec30e289014a485fe4492a5343cbc893e8ed2f518",
+      "public_matches_installed": true,
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/v1/worker/gpu_worker.py"
+    },
+    {
+      "path": "envs.py",
+      "sha256": "1d7101800f67b803a700fbf7489292cf1f0022b570085166ad407e6b1513dc15",
+      "public_matches_installed": true,
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/envs.py"
+    },
+    {
+      "path": "model_executor/determinism/batch_invariant.py",
+      "sha256": "fd39330e48f8b209def7378b1b83fa009534617e8fc41230dc4f40a528309993",
+      "public_matches_installed": true,
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/model_executor/determinism/batch_invariant.py"
+    }
+  ],
+  "native_switches": [
+    {
+      "file": "v1/worker/gpu_worker.py",
+      "line": 201,
+      "behavior": "Worker constructor calls torch.set_float32_matmul_precision from VLLM_FLOAT32_MATMUL_PRECISION; this facade does not instantiate Worker."
+    },
+    {
+      "file": "envs.py",
+      "line": 623,
+      "behavior": "The worker precision environment default is highest."
+    },
+    {
+      "file": "model_executor/determinism/batch_invariant.py",
+      "line": 1174,
+      "behavior": "Enabled batch-invariance path sets CUDA matmul precision to IEEE, rather than enabling TF32."
+    }
+  ],
+  "scope_limit": "Completed GPU-run global precision flags were not recorded. CPU-only imports do not execute GPU-specific constructors or establish the inherited environment in the prior reserved-allocation worker. No independent GPU arithmetic or disassembly verification was performed.",
+  "conclusion": "No evidence of a TF32-enabled reference or a source-level precision bug. Defaults and tested imports agree with highest/TF32-disabled behavior. Report the reference as dense FP32-tensor arithmetic with audited defaults; do not claim directly attested per-run IEEE execution."
+}
