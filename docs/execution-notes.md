@@ -83,8 +83,10 @@ The unused continuous-collector final manifest is archived as
 `final-unexecuted-continuous.json`; no held-out run used it. Before freezing the
 final execution hash, a 28-run B4 replay compares the same pilot tapes with the
 valid warm-start pilot. Counts, TV, admission, candidate/committed maps, and
-payload accounting must match. This validation is not final performance
-evidence. No further performance optimization follows it.
+payload accounting must match. All 28 trajectories matched exactly. The report
+is `results/history-validation/comparison.json`; elapsed timings are deliberately
+not compared. This validation is not final performance evidence. No further
+performance optimization follows it.
 
 The pilot branch execution used seed 11, but its original analysis selector
 accidentally named final seed 1001. The frozen files and original report remain
@@ -94,6 +96,13 @@ analysis selectors both name seed 1001. The final eight pairs also use a
 predeclared balanced order: four allow-first and four skip-first, shuffled with
 order seed 471. The original seed-only shuffle gave all pilot strata the same
 order; this additional correction removes that diagnostic order confound.
+
+The final numerical checker additionally replays the complete configured token
+batch outside timing, then compares its first four outputs with the independent
+FP32 reference. Earlier checks reduced the inputs to four tokens before the
+native forward, which used a different kernel batch shape. The final tolerance
+remains atol 0.02 and rtol 0.03. This last change affects only untimed validation;
+the measured paths validated by the 28-trajectory comparison are unchanged.
 
 ## Reporting limits
 

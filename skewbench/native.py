@@ -503,14 +503,18 @@ class NativeLayer:
         return result
 
     def check_outputs(self, hidden, ids, combining_weights, atol=0.02, rtol=0.03):
-        # Prefix keeps the native replica hash's token indices unchanged.
+        # Use the measured batch shape for the untimed native replay. Taking a
+        # prefix before forward would validate a different M=4 kernel shape.
+        batch_tokens = hidden.shape[0]
+        actual = self.forward(hidden, ids, combining_weights, observe=False)[:4]
         hidden, ids, combining_weights = hidden[:4], ids[:4], combining_weights[:4]
-        actual = self.forward(hidden, ids, combining_weights, observe=False)
         expected = self.reference(hidden, ids, combining_weights)
         self.torch.testing.assert_close(actual.float(), expected, atol=atol, rtol=rtol)
         err = float((actual.float() - expected).abs().max().item())
         return {"correctness_max_abs_error": max(self.rt.gather_scalars(err)),
-                "correctness_atol": atol, "correctness_rtol": rtol}
+                "correctness_atol": atol, "correctness_rtol": rtol,
+                "correctness_forward_batch_tokens": batch_tokens,
+                "correctness_reference_tokens": len(hidden)}
 
     def force_migration(self, mapping):
         """Diagnostic only: native transfer and native commit for a specified map."""
