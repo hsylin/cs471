@@ -70,6 +70,11 @@ those checkouts because adding the online modules changes the measured source
 fingerprint. Use separate worktrees, never replace the frozen hashes to make a
 new checkout masquerade as an old one.
 
+The standalone bundle also includes the historical execution source at
+`results/resident/headroom-passed-v2/source-snapshot-0b9fbe1.tar.gz`.
+Extract it separately for that pilot; supply the two archived development banks
+from the main bundle as `--banks-dir`. The snapshot has no online modules.
+
 ## Clean CPU reconstruction
 
 The source-and-results tarball contains no `.git` directory. Extract it into a
@@ -245,6 +250,12 @@ copies are an extra budget, not the total expert count. The physical map stays
 `[0..127,0..31]`; in the online arm, both ranks choose the same global physical
 home per logical expert. No checkpoints, precision settings, kernels or
 thresholds are changed.
+
+The same-batch contract matters. With different router inputs at different
+source ranks, independent local selections would not guarantee the global
+active-copy optimum measured here. A serving integration would need an agreed
+assignment or demand exchange, and its coordination cost must be measured. This
+prototype supports only the frozen map, top-8 and the two declared batch sizes.
 
 The native source pin is vLLM
 `db9527a46873454610df6dbedf79a36d6bf1a7f6` (`0.31.0+cu129`). The full executed lock is
