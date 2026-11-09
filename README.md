@@ -1,5 +1,28 @@
 # SkewBench
 
+**Genuine stock-vLLM comparison: the current combined method loses to EPLB-off.**
+On the same reserved two H100s, 216 held-out trials over 576 new documents and
+fresh Azure arrival blocks compare the actual pinned vLLM layer with EPLB disabled,
+stock asynchronous EPLB with 32 replicas, and our unchanged-map shortcut plus
+resident dispatcher. At high load, our paired mean layer-job response is
+**6.37× as long as EPLB-off** (conditional 95% interval: **5.58–7.29×**); at lower
+load it is **27.0% higher**. It is descriptively 27.9% lower than EPLB-on at high
+load, but the primary claim against stockoff fails and the confirmatory secondary
+is not tested. Completed elapsed is 0.91% higher than stockoff at high load.
+All 216 records pass the prespecified numerical/state checks and independent execution,
+normal-commit and statistical audits. These are eager, fixed-layer FCFS results,
+not full-model serving measurements. Stockoff uses 128 physical experts; the other
+arms use 160, on the same GPUs and maximum replica allowance. Read the
+[results and limits](docs/stock-comparison/results.md),
+[frozen protocol](docs/stock-comparison/protocol-v1.md),
+[implementation audit](docs/stock-comparison/implementation-audit.md), and
+[reproduction guide](docs/stock-comparison/reproduction.md).
+
+**Historical baseline clarification.** “Native SKIP” in the earlier studies below
+means our forced-rejection, instrumented layer harness, not unmodified vLLM.
+Those conditional results and their raw records remain preserved; they do not
+establish superiority to stock vLLM with EPLB disabled.
+
 **New-content and external-arrival validation.** The frozen combined path lowers
 mean layer-job response latency by **7.8% beyond the unchanged-map shortcut**
 (conditional 95% interval: **6.8–8.8% lower**) and **47.5% versus native SKIP**

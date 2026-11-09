@@ -1,0 +1,9 @@
+# Final native lifecycle review
+
+PASS. The completed archive contains216 trials (72 per arm). A separate streaming pass checked every record’s source/configuration identity and both ranks’ final state, and recomputed all72 native-on record hashes. The final lifecycle report agrees with the raw events.
+
+All72 native-on trials launched at measured steps749 and3749, using750 and1000 actual observed inputs. All144 cycles changed the map, posted nonzero sender payload, and completed by the normal native commit path before the last output. They sent74,176,266,240 bytes in total across both sender ranks. No pending results, deferred boundaries, post-output commits or mixed-map observation windows occurred. Exact saved-route reconstruction in the formal audit matches both current windows and terminal physical history. Commit distances ranged45–125 measured steps; these are lifecycle intervals, not exclusive transfer times.
+
+All216 records attest checkpoint-consistent resident weights, legal inverse maps and cross-rank agreement. Actual inference-stream completion is recorded, and both ranks’ untimed native reduction probes select CustomAllreduce. The common unchanged native tile isM64/N128/K64/group1/split1/4warps/3stages. Selected executable files still match the frozen inventory; source provenance, environment lock and NV6 topology remain present.
+
+The result establishes that the tested native enabled comparator was active and performed real normal migrations. It was not an inactive startup baseline, forced SKIP imitation or discard-at-EOF implementation. There is no evidence of unpaid pending migration at the finite-input boundary. It does not establish exclusive migration cost, GPU overlap, NVLink bandwidth, independent GPU replication or causal explanation of any response-time difference. All such performance conclusions require the separate completed-study analysis and its stated scope.

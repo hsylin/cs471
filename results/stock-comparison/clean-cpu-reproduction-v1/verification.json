@@ -1,0 +1,187 @@
+{
+  "schema": "stock_clean_cpu_reproduction_v1",
+  "passed": true,
+  "source_archive_commit": "dfd419f7b4e62fdeec408581c572bf4d3a7a3065",
+  "source_manifest_sha256": "9c6d6a7e1e94f4be769d435fbf7652e0cbb86501637c046ae078a0ccef1015d4",
+  "frozen_source_files_verified": 62,
+  "final_plan_sha256": "96b7cce1bb268e038991f13740d426405708bf3962e76fcacfef7aad4bcaa46e",
+  "protocol_sha256": "54a796b09b22fc02bcb792baa28278a5a0c2db57a65f154fc8c4ab1ee0cae89e",
+  "complete_trial_counts": {
+    "calibration": 18,
+    "final": 216
+  },
+  "staged_artifact_methods": {
+    "hardlink": 140
+  },
+  "staged_artifact_manifest_sha256": "0aa1821595383cc4cfbd453d76c17870d84cb9405f3b0ce750e239e42fc32f65",
+  "artifact_files": 140,
+  "commands": [
+    {
+      "label": "calibration-analysis",
+      "argv": [
+        "$CPU_PYTHON",
+        "$CLEAN_SOURCE/scripts/analyze_stock_comparison.py",
+        "--plan",
+        "$REPRO_OUTPUT/data/calibration-final-v1/provenance/plan.json",
+        "--records",
+        "$REPRO_OUTPUT/data/calibration-final-v1",
+        "--output",
+        "$REPRO_OUTPUT/reports/calibration-analysis.json"
+      ],
+      "argv_sha256": "e1fd11b07249832e57ec673abd7e77c42ac0c418f655cb639f03c5665f42a4e0",
+      "working_directory": "$CLEAN_SOURCE",
+      "returncode": 0,
+      "elapsed_seconds": 0.47793329201522283,
+      "stdout_sha256": "e2fb3dce798760ed896dfa6c1d4e7ba774a242772bf96eb8e66bbb7c14677374",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "calibration-execution-audit",
+      "argv": [
+        "$CPU_PYTHON",
+        "$CLEAN_SOURCE/scripts/audit_stock_comparison_records.py",
+        "--plan",
+        "$REPRO_OUTPUT/data/calibration-final-v1/provenance/plan.json",
+        "--records",
+        "$REPRO_OUTPUT/data/calibration-final-v1",
+        "--inputs-dir",
+        "$REPRO_OUTPUT/data/calibration-final-v1/inputs",
+        "--repo-root",
+        "$CLEAN_SOURCE",
+        "--output",
+        "$REPRO_OUTPUT/reports/calibration-execution-audit.json"
+      ],
+      "argv_sha256": "2db0fe46902fce1d5fbda201e0180893afec64c6616699ea7c2c154caf01d003",
+      "working_directory": "$CLEAN_SOURCE",
+      "returncode": 0,
+      "elapsed_seconds": 1.7224809589970391,
+      "stdout_sha256": "d173cfeddc39ba86185d172174bd869dbd0ae8a8aa0127668a81a850a7e109d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "final-analysis",
+      "argv": [
+        "$CPU_PYTHON",
+        "$CLEAN_SOURCE/scripts/analyze_stock_comparison.py",
+        "--plan",
+        "$REPRO_OUTPUT/data/final-v1/provenance/plan.json",
+        "--records",
+        "$REPRO_OUTPUT/data/final-v1",
+        "--output",
+        "$REPRO_OUTPUT/reports/final-analysis.json"
+      ],
+      "argv_sha256": "f286fd7aa649392df1e9f6e94c5e938e4188edbe31bf64cdd47cbb1b59b08828",
+      "working_directory": "$CLEAN_SOURCE",
+      "returncode": 0,
+      "elapsed_seconds": 7.366691167000681,
+      "stdout_sha256": "cde20cabd11d50f2ce4dde7b7fe363647b526c8015e6dfc62572cdffe916018f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "final-execution-audit",
+      "argv": [
+        "$CPU_PYTHON",
+        "$CLEAN_SOURCE/scripts/audit_stock_comparison_records.py",
+        "--plan",
+        "$REPRO_OUTPUT/data/final-v1/provenance/plan.json",
+        "--records",
+        "$REPRO_OUTPUT/data/final-v1",
+        "--inputs-dir",
+        "$REPRO_OUTPUT/data/final-v1/inputs",
+        "--repo-root",
+        "$CLEAN_SOURCE",
+        "--output",
+        "$REPRO_OUTPUT/reports/final-execution-audit.json",
+        "--calibration",
+        "$REPRO_OUTPUT/data/calibration-final-v1"
+      ],
+      "argv_sha256": "41d27cffb27e695e5171b1949ec9d313803b657fce25d9991c12c2cdcad17682",
+      "working_directory": "$CLEAN_SOURCE",
+      "returncode": 0,
+      "elapsed_seconds": 9.532929457986029,
+      "stdout_sha256": "7b9b39599521f3809736b7903d8874c47e13c7edf9f2a05627a6c4689663e62f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "final-independent-statistics",
+      "argv": [
+        "$CPU_PYTHON",
+        "$REPRO_OUTPUT/auditors/verify_stock_final_statistics.py",
+        "--plan",
+        "$REPRO_OUTPUT/data/final-v1/provenance/plan.json",
+        "--records",
+        "$REPRO_OUTPUT/data/final-v1",
+        "--summary",
+        "$REPRO_OUTPUT/reports/final-analysis.json",
+        "--protocol",
+        "$CLEAN_SOURCE/docs/stock-comparison/protocol-v1.md",
+        "--output",
+        "$REPRO_OUTPUT/reports/final-statistics-audit.json"
+      ],
+      "argv_sha256": "70cc5dc4857389a214aacbec9ae59b8e4ba1e98c3fd0e3a09a67eab8a7eaab77",
+      "working_directory": "$CLEAN_SOURCE",
+      "returncode": 0,
+      "elapsed_seconds": 4.43390824997914,
+      "stdout_sha256": "bf484a6c75a18f0cca3a39486ef58e5c3a25f4313b8115e00f84813975183be4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "analysis_comparisons": {
+    "calibration": {
+      "passed": true,
+      "compared_scalar_fields": 961,
+      "maximum_absolute_float_difference": 0.0,
+      "maximum_relative_float_difference": 0.0,
+      "normalization": "Only top-level record_files path/compression metadata removed, after exact decompressed-byte digest multiset comparison. Other identities/counts exact; float tolerance2e-12 relative,2e-10 absolute."
+    },
+    "final": {
+      "passed": true,
+      "compared_scalar_fields": 53507,
+      "maximum_absolute_float_difference": 0.0,
+      "maximum_relative_float_difference": 0.0,
+      "normalization": "Only top-level record_files path/compression metadata removed, after exact decompressed-byte digest multiset comparison. Other identities/counts exact; float tolerance2e-12 relative,2e-10 absolute."
+    }
+  },
+  "independent_execution_audits": {
+    "calibration": {
+      "valid": true,
+      "expected_records": 18,
+      "observed_records": 18,
+      "raw_clock_records_checked": 18,
+      "groups_with_authentic_stock_routes": 18
+    },
+    "final": {
+      "valid": true,
+      "expected_records": 216,
+      "observed_records": 216,
+      "raw_clock_records_checked": 216,
+      "groups_with_authentic_stock_routes": 18
+    }
+  },
+  "independent_statistics": {
+    "passed": true,
+    "program_sha256": "f357fd7e81fbead99501c967d92f71e665d4a79b205253455c6190dc25157ce9",
+    "comparison": {
+      "passed": true,
+      "scalar_comparisons": 5710,
+      "numeric_comparisons": 4793,
+      "maximum_absolute_numeric_difference": 1.7763568394002505e-15
+    },
+    "draw_indices_sha256": "0b20e84dbe760e5c0cca1895574655c48e13bafe9d5625e026e9156fc4442ab8"
+  },
+  "output_sha256": {
+    "reports/calibration-analysis.json": "e88ada55f06092abfeae73ac00d82c0b5d8069e52bdd81cea7a654c6b0ef0105",
+    "reports/calibration-execution-audit.json": "db4394630421c633c4de5e439db76fa27c40b30c4acd4e45270a5bde946f4452",
+    "reports/final-analysis.json": "ea0cdab8774dd536e1b1dcdc9e0d638f1773aad4c2b4c9530680465df42d11eb",
+    "reports/final-execution-audit.json": "cd8644b5691de5cda6a3114378ed8d7c070ce223daa2f612ad71af7800eb7725",
+    "reports/final-statistics-audit.json": "73c6fb69cd512a3c1dba80da2e5637bf3d105c6d26f89a42c7003c593a5d6d3e"
+  },
+  "reproduction_harness_sha256": "1d58d72c87a0fb0e2532626c3fd3da9861ea0a4c246b40e7801cbed7f56a7468",
+  "provenance": "Source was independently extracted from pinned Git commit; final/calibration records and input artifacts were copied or hardlinked from the completed local archive, with byte hashes verified before and after. No independent data acquisition or GPU execution.",
+  "limitations": [
+    "Same-team CPU reconstruction, not external-laboratory replication.",
+    "Copied/hardlinked input evidence is shared with the original archive; independent arithmetic does not establish an independent physical measurement.",
+    "No new GPU timings, workload selection, parameter changes or statistical endpoint changes.",
+    "Final scientific interpretation remains conditional on the frozen workload, hardware and protocol."
+  ]
+}

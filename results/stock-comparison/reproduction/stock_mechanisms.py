@@ -192,7 +192,18 @@ def run(rows,inputs):
                     service_difference_at_ours64_positions_ns=int((sb[BOUNDARIES]-sa[BOUNDARIES]).sum()),
                     service_difference_at_other_positions_ns=int((sb[ordinary]-sa[ordinary]).sum()),
                     ours_boundary_service_share=b['boundary_service_share']))
+    evidence={}
+    for r in rows:
+        state=r['per_rank_state'][0]['end']
+        value=dict(arm=r['arm'],native_layer_class=state['native_layer_class'],native_experts_class=state['native_experts_class'],
+            stock_policy_unmodified=state['stock_policy_unmodified'],stock_router_unmodified=state['stock_router_unmodified'],
+            logical_router_computation_included=state['logical_router_computation_included'],resolved_kernel_config=state['resolved_kernel_config'],
+            communicator_class=state['communicator_class'],communicator=state['communicator'],
+            kernel_override_applied=state['kernel_override_applied'],
+            output_reduction_probe=r['runtime_metadata']['output_reduction_probe'])
+        evidence[digest(value)]=value
     return dict(schema='stock_descriptive_mechanisms_v1',phase=rows[0]['phase'],trials=trials,paired_cases=paired,structural=structural,
+        runtime_configuration_evidence=list(evidence.values()),
         definitions=dict(boundaries='Measured zero-based63,127,...,4095;64 positions. Ours plans at all64. Other arms are compared at identical job positions.',
             neighborhoods='Native launch or in-job commit at step c and c±1. A completion-tail commit is excluded from per-job commit neighborhoods. Neighborhood categories may overlap; do not sum them.',
             service='Coordinator finish−start, including native step, inference-stream completion and CPU dispatch/ACK; not exclusive kernel/selector time.',
@@ -234,7 +245,7 @@ def markdown_report(result):
         '| Structural measure | Mean ours/stockoff ratio of within-group means |','|---|---:|']
     for name in ('active_copies_sum','active_copies_maxrank','tokens_maxrank','nonempty_expert_tiles_M64_sum','nonempty_expert_tiles_M64_maxrank'):
         lines.append(f"| {name} | {statistics.mean(s['fixedmap_comparison'][name]['ratio_of_mean'] for s in result['structural']):.5f} |")
-    lines+=['',''+('Total active-copy and M64 tile counts match on every job in every group; any structural advantage lies in distribution across ranks.' if all(s['total_active_copies_equal_all_jobs'] and s['total_M64_tiles_equal_all_jobs'] for s in result['structural']) else 'See per-group structural data for count differences; no count-to-speedup conversion is made.'),'', 'Limitations:']
+    lines+=['',''+('Total active-copy and M64 tile counts match on every job in every group; their distribution across ranks can still differ.' if all(s['total_active_copies_equal_all_jobs'] and s['total_M64_tiles_equal_all_jobs'] for s in result['structural']) else 'See per-group structural data for count differences; no count-to-speedup conversion is made.'),'', 'Limitations:']
     lines+=['- '+x for x in result['limitations']]
     return '\n'.join(lines)+'\n'
 

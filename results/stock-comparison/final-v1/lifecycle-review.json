@@ -1,0 +1,64 @@
+{
+  "valid": true,
+  "source_checks": [
+    {
+      "file": "stock_comparison/native.py",
+      "sha256": "b92be6a02f5066cf00d578f28b1e4c33728d5fd84fba9a3d4c8b466e2d7a9e08",
+      "matches_plan": true
+    },
+    {
+      "file": "stock_comparison/runner.py",
+      "sha256": "4fa1e4fb28729f63a43ea4375446eb198c306fd10f1fda399ab2abccdee1cae0",
+      "matches_plan": true
+    },
+    {
+      "file": "stock_comparison/timing.py",
+      "sha256": "dfb1a62b332a039b0ef49a66581870fd4de35f45c3c344e6cf3692dfb779903b",
+      "matches_plan": true
+    },
+    {
+      "file": "scripts/run-stock-comparison-kuma.sh",
+      "sha256": "eee83916ac0dc3d4e5f2044f03e0e3c88e65c378bfd8a39b6deb46a83155589c",
+      "matches_plan": true
+    },
+    {
+      "file": "scripts/cluster-env.sh",
+      "sha256": "680b8dc5b09936449a039c25079d011f0ae8949a6bfa66576c2bbc896e321b56",
+      "matches_plan": true
+    }
+  ],
+  "formal_lifecycle_auditor_sha256": "ccd5015b2ab17682b41f6d1cf4ffe35a96ac1731c0555319f3973470e61604f8",
+  "all_actual_native_records_hash_checked": 72,
+  "all_actual_records_source_and_state_metadata_checked": 216,
+  "source_commit": "dfd419f7b4e62fdeec408581c572bf4d3a7a3065",
+  "native_cycles": 144,
+  "actual_sender_payload_bytes": 74176266240,
+  "all_cycles_changed_map": true,
+  "all_normal_commits_before_final_output": true,
+  "pending_states": 0,
+  "deferred_boundaries": 0,
+  "mixed_map_windows": 0,
+  "native_launch_steps": [
+    749,
+    3749
+  ],
+  "valid_window_sizes": [
+    750,
+    1000
+  ],
+  "commit_step_distance_range": [
+    45,
+    125
+  ],
+  "actual_common_reduction": "CustomAllreduce (ca_comm), both ranks agree",
+  "resolved_kernel_config": {
+    "BLOCK_SIZE_K": 64,
+    "BLOCK_SIZE_M": 64,
+    "BLOCK_SIZE_N": 128,
+    "GROUP_SIZE_M": 1,
+    "SPLIT_K": 1,
+    "num_stages": 3,
+    "num_warps": 4
+  },
+  "limits": "Recorded per-rank weight assertions plus independent saved-route reconstruction; not external GPU reproduction. ACK interval is not exclusive migration time or bandwidth. No statistical effect inferred by this lifecycle review."
+}

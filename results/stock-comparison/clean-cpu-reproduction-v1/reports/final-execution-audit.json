@@ -1,0 +1,94 @@
+{
+  "schema": "independent_stock_record_audit_v1",
+  "valid": true,
+  "expected_records": 216,
+  "observed_records": 216,
+  "raw_clock_records_checked": 216,
+  "groups_with_authentic_stock_routes": 18,
+  "rank_windows_reconstructed": 9504,
+  "rank_forced_skip_decisions": 9216,
+  "errors": [],
+  "missing": [],
+  "plan_sha256": "96b7cce1bb268e038991f13740d426405708bf3962e76fcacfef7aad4bcaa46e",
+  "limitations": [
+    "Authenticates saved native route tensors and reconstructs counts; does not independently rerun CUDA/router kernels.",
+    "Numerical correctness is all4112 batches against stockoff, sampled64tokens against FP32, and16 whole postflight batches; full-slot weight checks are native assertions.",
+    "Async controller tail is post-output extent, not exclusive controller cost; per-rank host-return timestamps may straddle rank0 observation end.",
+    "No new statistical inference or performance selection."
+  ],
+  "record_files": {
+    "stock-gsm8k-final-01.jsonl": {
+      "stored_sha256": "7be2e107686f80da0727f64413b685274272a0f611703fe02ca1260fe3655ed0",
+      "original_bytes_sha256": "7be2e107686f80da0727f64413b685274272a0f611703fe02ca1260fe3655ed0"
+    },
+    "stock-gsm8k-final-02.jsonl": {
+      "stored_sha256": "0cdcdcc13643d338a9fb5b0239da2d5b83ef09382e12634ce20e53a306542373",
+      "original_bytes_sha256": "0cdcdcc13643d338a9fb5b0239da2d5b83ef09382e12634ce20e53a306542373"
+    },
+    "stock-gsm8k-final-03.jsonl": {
+      "stored_sha256": "908ab0b6d2a1be85c1909436d0df3a981909cd01f91f9b67e57fbd47a592a780",
+      "original_bytes_sha256": "908ab0b6d2a1be85c1909436d0df3a981909cd01f91f9b67e57fbd47a592a780"
+    },
+    "stock-gsm8k-final-04.jsonl": {
+      "stored_sha256": "414aa3c71dd4f191bad9e113ef1c1e8feae51c4506f33fe995292b33ac23b00b",
+      "original_bytes_sha256": "414aa3c71dd4f191bad9e113ef1c1e8feae51c4506f33fe995292b33ac23b00b"
+    },
+    "stock-gsm8k-final-05.jsonl": {
+      "stored_sha256": "2deb0afcd83364f7d540f668a6f93a55087ee6c7d2f16725e324da9ec0ec1b3f",
+      "original_bytes_sha256": "2deb0afcd83364f7d540f668a6f93a55087ee6c7d2f16725e324da9ec0ec1b3f"
+    },
+    "stock-gsm8k-final-06.jsonl": {
+      "stored_sha256": "c7e192c52a2561434af93fd419b7e3ac675ace6e175a449993de828da13486f0",
+      "original_bytes_sha256": "c7e192c52a2561434af93fd419b7e3ac675ace6e175a449993de828da13486f0"
+    },
+    "stock-mbpp-final-01.jsonl": {
+      "stored_sha256": "0f20b4a45420a3a40a3e43555979987d1da37727ef2c132be32b7d70d5868b4f",
+      "original_bytes_sha256": "0f20b4a45420a3a40a3e43555979987d1da37727ef2c132be32b7d70d5868b4f"
+    },
+    "stock-mbpp-final-02.jsonl": {
+      "stored_sha256": "f1b7bdac14e93d5bd4a3c6dc3d137e5ec2940154e3a24c35a7472543e689922d",
+      "original_bytes_sha256": "f1b7bdac14e93d5bd4a3c6dc3d137e5ec2940154e3a24c35a7472543e689922d"
+    },
+    "stock-mbpp-final-03.jsonl": {
+      "stored_sha256": "315f30cd930f99b10b4c0c7773695d195efad4a993918fd50bb5d2ef18e28048",
+      "original_bytes_sha256": "315f30cd930f99b10b4c0c7773695d195efad4a993918fd50bb5d2ef18e28048"
+    },
+    "stock-mbpp-final-04.jsonl": {
+      "stored_sha256": "ee8b1e713a70dd40060bc891a4440fbbe17330810c1a3e2a9858e4cbd5db7184",
+      "original_bytes_sha256": "ee8b1e713a70dd40060bc891a4440fbbe17330810c1a3e2a9858e4cbd5db7184"
+    },
+    "stock-mbpp-final-05.jsonl": {
+      "stored_sha256": "b81389dc5952ef8633b7aa4d0ec38d6456a45678eb9179ea1a2858b5cb7ca422",
+      "original_bytes_sha256": "b81389dc5952ef8633b7aa4d0ec38d6456a45678eb9179ea1a2858b5cb7ca422"
+    },
+    "stock-mbpp-final-06.jsonl": {
+      "stored_sha256": "13ba4aa4b64e51505242574dbf6df70692ae3661278b68b3d4818880842b4228",
+      "original_bytes_sha256": "13ba4aa4b64e51505242574dbf6df70692ae3661278b68b3d4818880842b4228"
+    },
+    "stock-wildchat-final-01.jsonl": {
+      "stored_sha256": "9b40ffb8a07f584ca7c3605e1f099d5937879c5a8952c3a1f8f0c3232c8430ba",
+      "original_bytes_sha256": "9b40ffb8a07f584ca7c3605e1f099d5937879c5a8952c3a1f8f0c3232c8430ba"
+    },
+    "stock-wildchat-final-02.jsonl": {
+      "stored_sha256": "19438c50907c5030d2c3c63540238279b159af7643dcdfe8c48900789793d175",
+      "original_bytes_sha256": "19438c50907c5030d2c3c63540238279b159af7643dcdfe8c48900789793d175"
+    },
+    "stock-wildchat-final-03.jsonl": {
+      "stored_sha256": "81b002b1bacfa0cd3f2a687847004292098596ee87814b534efdfcd65d60e8ad",
+      "original_bytes_sha256": "81b002b1bacfa0cd3f2a687847004292098596ee87814b534efdfcd65d60e8ad"
+    },
+    "stock-wildchat-final-04.jsonl": {
+      "stored_sha256": "3f9798c5d8380f2daf0e3f144ddd1663f9fb952728986ba71772fa85e83fead2",
+      "original_bytes_sha256": "3f9798c5d8380f2daf0e3f144ddd1663f9fb952728986ba71772fa85e83fead2"
+    },
+    "stock-wildchat-final-05.jsonl": {
+      "stored_sha256": "7f9600605d8fc949231b11eb15c8dbdf7eabd3d16b82a3ef2c83ca8224a18e25",
+      "original_bytes_sha256": "7f9600605d8fc949231b11eb15c8dbdf7eabd3d16b82a3ef2c83ca8224a18e25"
+    },
+    "stock-wildchat-final-06.jsonl": {
+      "stored_sha256": "ce353a0f350ddcacef9917632f8df38dfbe6eaeb5d697c414173371194bab9af",
+      "original_bytes_sha256": "ce353a0f350ddcacef9917632f8df38dfbe6eaeb5d697c414173371194bab9af"
+    }
+  },
+  "auditor_sha256": "20d18bcbcb1358e2ee462b69b35a262daaf92f9543040a9db581c351de3b38b7"
+}

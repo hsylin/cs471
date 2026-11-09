@@ -1,0 +1,755 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 21:22:20.482985043 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_stockon32"}
+{"event": "initialization", "phase": "stock_ready_stockon32"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "prepare_content", "group": "stock-gsm8k-final-05", "phase": "final"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+WARNING:vllm.model_executor.layers.fused_moe.fused_moe:Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+{"event": "stock_reference", "group": "stock-gsm8k-final-05", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-05", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-05", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-05", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-05", "arm": "ours", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockon32", "mean_response_ns": 2165682.7927246094, "record_id": "072b618f059430cd5c59ec0d9869e3081c2599f493d187e9ac209a2fb8f62562"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 1317138.076171875, "record_id": "de48daad06ceff6155c39eeef67ac85c30ed5f1d140e0cdb81483297a51c8d40"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "ours", "mean_response_ns": 1946331.3994140625, "record_id": "53de757297c7976455cc9321df254c09cedf43b4305063fa37c7d569d3471c45"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockon32", "mean_response_ns": 2370444.1987304688, "record_id": "9161697e72da15877573dec4c92dab2595972c0bdc43abaa0fc4a1710fc0285b"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "ours", "mean_response_ns": 2298930.899658203, "record_id": "870965ec9ba3caa48b2e344c52387aa1ff5dfbc5e5aef78b60e854b30f45b23b"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 1859178.4809570312, "record_id": "df46244b4bd0050ce195470338eff9f62b9eae01ffc4e01df7ecb36e19ab6c74"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 3667735.7880859375, "record_id": "94536e70d76e4d00cd13f58ae66aadf1eda4ebcc2a735471e9ef4acb1ca73614"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockon32", "mean_response_ns": 33458069.41845703, "record_id": "7eedea3f349c41ec487559c2e723152c0aa0a6cc123a6e269a31156f4c7965e3"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "ours", "mean_response_ns": 18178792.244628906, "record_id": "90f06f780e82b39b7776639d4588c267a53272a6ab4c9348d5b80f0b5b175436"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "ours", "mean_response_ns": 43789309.67114258, "record_id": "e5b61d8ccd981d0f50cdc3c3bc716cb9e1b48d2fc8ff38bbc4994fa9279206ad"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockon32", "mean_response_ns": 58724288.78442383, "record_id": "29810dd2aaa7a7abb0d1f72a1211b6a10a381eebe39f3d6308c60ffbebaf8747"}
+{"event": "trial_start", "group": "stock-gsm8k-final-05", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-05", "arm": "stockoff", "mean_response_ns": 11642530.748046875, "record_id": "e9d0626af43dd47c83cd794ac15851ff1b2df4d225bb82b50dd6aa6404f28644"}
+{"event": "prepare_content", "group": "stock-mbpp-final-06", "phase": "final"}
+{"event": "stock_reference", "group": "stock-mbpp-final-06", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-06", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-06", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-06", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-06", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "ours", "mean_response_ns": 2108458.130859375, "record_id": "bb9b9b0cf531a0ceb68770ec961e590029b27f6167b11f735384ee0c3114574c"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockon32", "mean_response_ns": 2180127.5673828125, "record_id": "1bee40fc5fbcd7df235c84c0c50279ab405e127f2a07a20ec6324ad8e848f5cd"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockoff", "mean_response_ns": 1679752.0661621094, "record_id": "134acfbc8535203b7d0aaeaed2a627512679c8a5c9ff1b583d2294efccded7b1"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "ours", "mean_response_ns": 2197790.0466308594, "record_id": "217ba92cd014f5fe8a47a94b5ed960e605680121c3640260d6f691d19f18e1fe"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockoff", "mean_response_ns": 1670823.8884277344, "record_id": "3f58794d668919ab531705af9b74c6c97429fc982e883bde8a4fda347c9ea4a5"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockon32", "mean_response_ns": 2226582.8361816406, "record_id": "9dc1c0bb015f6e78573233ae9bf8bb465bf954ba96183da6bbd47c30bcd614fa"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockon32", "mean_response_ns": 73642100.03930664, "record_id": "97989598a0b7e4778674bdce05c2a2cf2561fa791d26f9b7d6c0552f12ffea04"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockoff", "mean_response_ns": 4526724.718994141, "record_id": "72416c1c7b60470daec50bbac9af41e3409b41d389da8e387dc4785fa3403a08"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "ours", "mean_response_ns": 63383256.446777344, "record_id": "2a4a9c1d4f6d16e879b06921cc2a163562daebc00a4c1d4ab7541dd69513d089"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockoff", "mean_response_ns": 12698099.132080078, "record_id": "dd1aab903ef6fec7da9bf583526f02be04ad660e818a06f7bbd2d0fb56f646a5"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "ours", "mean_response_ns": 37002854.80541992, "record_id": "a6dfd302a7f6a593421af70883c7e0f15d7b7aec48283b4ccb6ca1d6b4e25bb4"}
+{"event": "trial_start", "group": "stock-mbpp-final-06", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-06", "arm": "stockon32", "mean_response_ns": 38105625.611816406, "record_id": "fce52d1c00392ab6c3283332c071b343f1c985787183809aefa69209397ef09d"}
+{"event": "prepare_content", "group": "stock-wildchat-final-05", "phase": "final"}
+{"event": "stock_reference", "group": "stock-wildchat-final-05", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-05", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-05", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-05", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-05", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockon32", "mean_response_ns": 2784612.3823242188, "record_id": "2d87c2f81245b2d42400d0f422f5fbab88aa5da190813e2e0b6dccc21c0f597d"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "ours", "mean_response_ns": 2720983.2055664062, "record_id": "978cb0a6edc2c2dce87dcc4d4084943ab961299dd67d4d45a2cc624934340356"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 2122534.3520507812, "record_id": "30a153df55c5bb55152b2ae965f29a07b4ff05b540325b716f90c9df3c8fe51d"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "ours", "mean_response_ns": 45615704.099121094, "record_id": "d1b3ef554c0c8db29cbc9c19711c95f9ab14561c2b70eb5fc0e136bcccb9369e"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockon32", "mean_response_ns": 57937047.50366211, "record_id": "7aa16013218b0f1f40e38209e9d5886cb8ba5935f88a21e1b226c6b526edd1c2"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 6959415.626708984, "record_id": "3c9c9bcc97a8bc7f16985ea032956019101493db7557d89298679f244e8e0dbf"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 4554653.943115234, "record_id": "fb32fdda24c9cbcf7f93f2afd43e95d02f8ffd58bc74afbdc103f593cf566acf"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockon32", "mean_response_ns": 85011843.21118164, "record_id": "58ff14dccbc84a9365c1c1ac58f83666c7b70b1768d79b26334998b69b9a5a7e"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "ours", "mean_response_ns": 65187025.224121094, "record_id": "9a14a02964c07616ce8d1d6761ebd0f159c061b1da89eb5eb576db44ce271a1a"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockon32", "mean_response_ns": 2855963.840576172, "record_id": "4163cc7ce6c326494a52495b00c2bef374a8d85d371db58f6b3eef636a575522"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 2231983.3459472656, "record_id": "01c2d0f3e0ad74fcb2f486bb91628012a3a6d5df3534d64debef6ea68ced8e4c"}
+{"event": "trial_start", "group": "stock-wildchat-final-05", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-05", "arm": "ours", "mean_response_ns": 2794813.7001953125, "record_id": "59f36978879bb6fc94da3355ff11a23a26fc760e2e06b7f2e2a13f726381c7bd"}
+{"event": "prepare_content", "group": "stock-mbpp-final-03", "phase": "final"}
+{"event": "stock_reference", "group": "stock-mbpp-final-03", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-03", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-03", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-03", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-03", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockon32", "mean_response_ns": 33342990.536376953, "record_id": "3905a2372eeaff093a297ced3bd79b422b924bb3c496d8fb68a66507141f2ffe"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockoff", "mean_response_ns": 4311609.286621094, "record_id": "99d5237a866f1f50a264e067f5344b392b2065b95da38f2be2b85a9001021da6"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "ours", "mean_response_ns": 22538586.74169922, "record_id": "76bafcac98d54114939edea5a3f4f4901c92ed0abddb744963cc2eaec5c92897"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "ours", "mean_response_ns": 2610265.5471191406, "record_id": "ea2242a110fad595898463e816015e2a4c75bb4c0a37cad7429fbb2c9ecf7907"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockoff", "mean_response_ns": 2056645.9489746094, "record_id": "d42adb714cd87e566d87435767513ab2ad7828ed7006018567022e3393e0ca6c"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockon32", "mean_response_ns": 2591873.587890625, "record_id": "288b6c2f16273607b297a97995081cf858928a02685a6cd61f8cee70389b2086"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "ours", "mean_response_ns": 3153501.772705078, "record_id": "0afa7c19bde88273fd858ba305e9f12e82c2e89af4e6e6159c9b5f8dd1a51032"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockon32", "mean_response_ns": 3255601.510498047, "record_id": "f0cc41bd0f6c7e9e6558eef871628f7f7e8e08c0864bc08e60c78a00dde2707d"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockoff", "mean_response_ns": 2573868.6545410156, "record_id": "ccd31f73b0ecb1151f173b6a472d589fe90ea9a7e790c2d6c85a9117f3b4bd95"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockoff", "mean_response_ns": 4648604.767578125, "record_id": "1afe41343b292a65df527897a3fd4b031d69a35bf3f4d1cd6f8560a388c8d08a"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "ours", "mean_response_ns": 18831857.994873047, "record_id": "20b59c27fe89edfe5a4a7b54172ea648019a785926fd07ad3aff7b30cb8a6ec9"}
+{"event": "trial_start", "group": "stock-mbpp-final-03", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-03", "arm": "stockon32", "mean_response_ns": 24339633.012451172, "record_id": "75e6634c542118579503a89c7db817c373f3aa7f62006180abe51ed2b4e3b032"}
+{"event": "prepare_content", "group": "stock-mbpp-final-04", "phase": "final"}
+{"event": "stock_reference", "group": "stock-mbpp-final-04", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-04", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-04", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-04", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-04", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-04", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockon32", "mean_response_ns": 30458033.392822266, "record_id": "fc676768f5b4799b91dded91e4deebb92834ac8188e2bfdf0c3f23b953264dea"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "ours", "mean_response_ns": 32066242.68383789, "record_id": "dedd5d487edc48ddfa3347ec4d508e74248e6d84d88b105921f14da2fc762b84"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockoff", "mean_response_ns": 3995845.4221191406, "record_id": "84a4dc40043616796feca546783c6d44f451f0c8420f530895785893a404ee13"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockoff", "mean_response_ns": 2181459.7829589844, "record_id": "f7f47f95c4b2feb79420f717a7ada1a94a0a2e9e5dce39e9a5f4ee14d60ed919"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "ours", "mean_response_ns": 2720717.4252929688, "record_id": "dfda0a4eacc57ad222e9facaca80f96aabd3d6f3daaa83fadb6c9cf9a6e8a996"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockon32", "mean_response_ns": 2737489.3857421875, "record_id": "7f8dfda762dac4687901c77fdc7591c2409d51cf96feaaca44c2780c1780d778"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockoff", "mean_response_ns": 1687872.6279296875, "record_id": "2f0d641943fce082f8d570db5f92c2a915c67d39b36b16bc8e7c7569fea6a12b"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockon32", "mean_response_ns": 2111084.033203125, "record_id": "2978d2af78c4d2a4c68f507ea4929069b91d42c7701dc4990dd3917713f43c41"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "ours", "mean_response_ns": 2081785.1982421875, "record_id": "8d11ae94766d6e681ff2676e24a9f2c15beceb5a6703e7515645dba5a6aa4c85"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "ours", "mean_response_ns": 65079106.68457031, "record_id": "33b75a5bab68f1c478f31d3416b2eea05ae57e151c77e334f460b937f958f697"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockoff", "mean_response_ns": 5579543.880859375, "record_id": "060f501ee889e65e854ff4964886ba14b5641e3835706033b6d5070a6d27f9bf"}
+{"event": "trial_start", "group": "stock-mbpp-final-04", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-04", "arm": "stockon32", "mean_response_ns": 76301565.51342773, "record_id": "0aaad0952c0a78512424d4078c269c3ca62c5654c02ad31ae59e18a98e2449d1"}
+{"event": "prepare_content", "group": "stock-gsm8k-final-04", "phase": "final"}
+{"event": "stock_reference", "group": "stock-gsm8k-final-04", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-04", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-04", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-04", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-04", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-04", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 1827118.4204101562, "record_id": "22e055aafba34cff7e32624d191652542a712445183da811e53922140373fad9"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "ours", "mean_response_ns": 2284813.044189453, "record_id": "ccd7a2c4112f9e8cc752d7fcd6654c9b9e2a8307e894195731c62ac499573c0a"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockon32", "mean_response_ns": 2305372.9028320312, "record_id": "684628e9772b84392db959dc13d3ea1ac919f130ae7782168b4b2585a7eb4324"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "ours", "mean_response_ns": 17210714.963867188, "record_id": "91e3d6d61e6996533e612fbaf54f44742066ff5e26741a813776e07033bb992d"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 3418590.8493652344, "record_id": "085c3b2b0135e85ae66324c02cc278340ef065d9e07c6dc0c50d2c5dca7004ac"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockon32", "mean_response_ns": 22636370.912109375, "record_id": "58aad9e5e16733a180f8654c2b8257f98048dd6968e9301abbd68994c8e9d7b9"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockon32", "mean_response_ns": 47666338.373291016, "record_id": "c76177281b7ab39b9bdf33265d8190b0af911f316e8077332c4056b42db50413"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "ours", "mean_response_ns": 32881087.197265625, "record_id": "79eba5f8e7d60562fe27b205d813ba9b4ae91325ed407b781728a7536e06eece"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 5388964.732910156, "record_id": "30e2f5f66b7d82a07710ac3dc48b94a3cb13486ccb62294796840b20312e08c7"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockoff", "mean_response_ns": 2376463.7482910156, "record_id": "8bc935ef99a1add4c0b769f88a709a6b683b6f25c86925bb037315c6d9f4fb34"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "stockon32", "mean_response_ns": 3045459.293701172, "record_id": "baee53293b189ba0e4a3c0985285ea9463bad715ecbd48456e8340f033e4521f"}
+{"event": "trial_start", "group": "stock-gsm8k-final-04", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-04", "arm": "ours", "mean_response_ns": 2982637.030029297, "record_id": "34e5d77c8e597c89b9127c7d987ef0c9b836518d68dd6ae477851fe453d8da17"}
+{"event": "prepare_content", "group": "stock-mbpp-final-01", "phase": "final"}
+{"event": "stock_reference", "group": "stock-mbpp-final-01", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-01", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-01", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-01", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-01", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "ours", "mean_response_ns": 42113731.321777344, "record_id": "ceadb05a9ff4e6a3c76be426713ffe61c56b3204a49f6296756f697c9f65d71f"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 3993192.3435058594, "record_id": "ff82de2defdd52f2d67cbff4f11adce0fba700554934117e6a655fc62d50d71a"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockon32", "mean_response_ns": 41816828.908203125, "record_id": "cc6c053702f7335c3be6876c4fbb25ebb95f67835486ec96419e41d1108584a4"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 2285415.4052734375, "record_id": "0303bacc3d7415fdce55a46644780e3fa9ae34a04fdd74c4a8e2dc075287d2db"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockon32", "mean_response_ns": 2899774.6547851562, "record_id": "35e3621c89841dfc9cfae306f6704c56b153b3a3fab9e2b565fcd40d3a850040"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "ours", "mean_response_ns": 2932141.5932617188, "record_id": "5d2f96f83ba80a35c7f43254f828c022fc43b2074a6140946bf3d2058ffc86d6"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockon32", "mean_response_ns": 26608478.928222656, "record_id": "d7383e1a948c38fb574064280930916864116f1cf1f07612f0f27b17d3df61b3"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "ours", "mean_response_ns": 20627990.393554688, "record_id": "1de7ad1392fa42586682147578bea5990705a7fdc4c905571677f8c2df4ff679"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 5015632.920410156, "record_id": "a117f4e2976b88e5026fe3fe71496f195cded28a230eacaac543eae42b5da1a6"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockoff", "mean_response_ns": 2051378.1245117188, "record_id": "623a48296ef6ac14fb10ecc9c33ae204572dd56f758442ffb062a2fbb756169f"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "ours", "mean_response_ns": 2609956.3415527344, "record_id": "f81dc3d69ccfc1d60bf63eb93347549905a28dffa4fdd95f17ecf4fbe952049f"}
+{"event": "trial_start", "group": "stock-mbpp-final-01", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-01", "arm": "stockon32", "mean_response_ns": 2636976.5446777344, "record_id": "fdf9358121b293ed38247384eb59b0468658d607516f76c0b5993bb1b44e599e"}
+{"event": "prepare_content", "group": "stock-gsm8k-final-01", "phase": "final"}
+{"event": "stock_reference", "group": "stock-gsm8k-final-01", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-01", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-01", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-01", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-01", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockon32", "mean_response_ns": 36709977.268066406, "record_id": "677e8d547674ce4d619df78395471ac9fad2d628c36e4e8656069cceeff46fc2"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "ours", "mean_response_ns": 31108191.49633789, "record_id": "5143c818925c1bc95a84f744d4077087160c14921b21e2405f348d44154c2321"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 6094606.492675781, "record_id": "2e3db00dfb72affeab5d536d3d4bb6c5150639db4c9bc44af59744e24f3c1ab9"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "ours", "mean_response_ns": 14935059.669189453, "record_id": "af9e5035e51f52521a0305f74b30c97a14010634e7c5193ad8cdd55469a0df46"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 4361930.598388672, "record_id": "82c358e43465554171e7825a1f5e545118709f4f4a7686fbc9e6920877d7c785"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockon32", "mean_response_ns": 22108788.697509766, "record_id": "052ccd8bc653aba45d814839f1bd6983345e05c9f32655e20876b9b99052b0cf"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 2226116.618408203, "record_id": "fa1981d8c31d6f6f07ec3fef02d46f21873efee2b5ad592c249f2a401b00006c"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "ours", "mean_response_ns": 2741218.8967285156, "record_id": "e07186f11b878732221254675752b986e59d19c860e25c31b3949de398d625b5"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockon32", "mean_response_ns": 2762317.65234375, "record_id": "2e526523303d4a24281bfaa345a863e5f632a1d2d397389223a6e688c725e1a8"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockoff", "mean_response_ns": 1310275.974609375, "record_id": "1f7ebc23b78167ca8eb8fce9a1f695b8aa3cd7bac87ab158048d1038930be0cf"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "stockon32", "mean_response_ns": 1801329.107421875, "record_id": "8ea8118af1293b2c5b2d4951282acccc96701f4d1632fc0459a5278be64b5726"}
+{"event": "trial_start", "group": "stock-gsm8k-final-01", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-01", "arm": "ours", "mean_response_ns": 1699707.4289550781, "record_id": "412c8ed10db0370d7a1c74447838aa01d709d442113cb2bbf30253d0b98c8146"}
+{"event": "prepare_content", "group": "stock-wildchat-final-01", "phase": "final"}
+{"event": "stock_reference", "group": "stock-wildchat-final-01", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-01", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-01", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-01", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-01", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockon32", "mean_response_ns": 57992022.692871094, "record_id": "6746e37d4fd110a1b5508c7c5a3c577d961e0336b6f08f7435829fc6e26b8707"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "ours", "mean_response_ns": 36775332.43676758, "record_id": "197d9ed526781c2207e6f319ce790d429003a1860022c5a106aa40ca4d694a59"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 5738691.233154297, "record_id": "f6361f77db65cfae0be1f64c6ca12371d10a4b90b74f4b7c80c794e89397a2e2"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 2473530.8759765625, "record_id": "2c386bc81c459db813b24781bceebb150db725f4aedaf6d25cdc51af7f1ba60b"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "ours", "mean_response_ns": 3201979.6176757812, "record_id": "d46d59295081142d9dacdf4d715b8ba3821e669df34702077d21db367f5cf16f"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockon32", "mean_response_ns": 3262588.5427246094, "record_id": "3d09f80a06e1d5ab02eecb50c3ae2757fb1899193ed3fa8e2d887f9c99c8c34c"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 2220272.7124023438, "record_id": "52b0bc02e3fb802e6041b6a496081523bbc8a06ab4fc758aca80e9f5a1cda45f"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockon32", "mean_response_ns": 2931778.0546875, "record_id": "f644573b6c5ea78ec5266331533a69b451744bb5f6cb12edefd9dc712394b5b7"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "ours", "mean_response_ns": 2813838.155517578, "record_id": "8f3180e4e62f243a452af0ebe030249b89fbae575ab5db74d0be9262a77e8446"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "ours", "mean_response_ns": 17412064.112304688, "record_id": "d10f79a35e8c87f6bba076d3dfe857eb747d37a27fbda4fe7137fc5f7cdea26c"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 4501611.591308594, "record_id": "564a466a74901d51d29c15aadde941185a94552789b1849d7f209cc4daaab882"}
+{"event": "trial_start", "group": "stock-wildchat-final-01", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-01", "arm": "stockon32", "mean_response_ns": 50206161.24194336, "record_id": "aab9dce9eb8c34d2e69fa5b0eb38670aaa4de8e5793bd48802e8bb84773aeb1f"}
+{"event": "prepare_content", "group": "stock-wildchat-final-04", "phase": "final"}
+{"event": "stock_reference", "group": "stock-wildchat-final-04", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-04", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-04", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-04", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-04", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-04", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 2406248.8251953125, "record_id": "9ce29e250a6515e5dc2fadfbbff022c20e175530a5d9aaad02fdc6cdec97f30e"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockon32", "mean_response_ns": 3169377.6743164062, "record_id": "09b7cae36f325e2a51225840707eda28f19f11289bd16f9b4094ff4f5b793171"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "ours", "mean_response_ns": 3008829.432861328, "record_id": "1a6f35a0787c3d9d438063dab0414c573794337a276158529966707cdc01dae1"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "ours", "mean_response_ns": 14159564.001464844, "record_id": "90f9e365667f258fb0e9ecb31ff38d642a26b366668221c8ab908a5808a79ba8"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 3503504.0512695312, "record_id": "86f7a11b95ca05a8fecaa5cfbe5b9bed78e4de5fc432f1dd3fb7786368fa25a9"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockon32", "mean_response_ns": 17578845.69189453, "record_id": "886bdc0628c8a063366db1cf30acdc4ab34b2aaf3ee9d5275b0ce19124df1925"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 2081576.732421875, "record_id": "96dbc6ab434ca8d7c7d920e7a61125796a5d5dce713b58fc8376dfa13b981d7e"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "ours", "mean_response_ns": 2551382.8200683594, "record_id": "1e4ebdbeed67f66c984c00ce6655a48edc46562decb7dca51ac44e70b018d06f"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockon32", "mean_response_ns": 2634811.6108398438, "record_id": "a3ef791e0945ef00be861debfd63c18e132f4afec11cd5a32033cc6ad65ad276"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockon32", "mean_response_ns": 47410397.27368164, "record_id": "9fde1b7f069987ca43ae3864b0af5c6087cb689131cda561b5dd89307eaa9bd4"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "ours", "mean_response_ns": 24651806.91357422, "record_id": "eed4da59f8ccae5fcd5948a586cc3c3224c6a9402f253a0cbc788e4d449644e0"}
+{"event": "trial_start", "group": "stock-wildchat-final-04", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 4442530.506347656, "record_id": "ca98792433eb5f8fa11a162eacaa03b349c115165ebb446c69832bebb9c2b1fc"}
+{"event": "prepare_content", "group": "stock-wildchat-final-03", "phase": "final"}
+{"event": "stock_reference", "group": "stock-wildchat-final-03", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-03", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-03", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-03", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-03", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockon32", "mean_response_ns": 114093771.61401367, "record_id": "3f157768d654c94a3b5b31d8249eb8de17fc5d0503993cdfe95482da0d7a7811"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 4080002.104248047, "record_id": "38c523bf16af9fb780fe32c596bbf83a54983e114e107237e774ad781340c34c"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "ours", "mean_response_ns": 54348536.90258789, "record_id": "321e297a19214eb593d4116d274acd6c195e42cbf3acea2b28d427c60a308191"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "ours", "mean_response_ns": 3089585.2770996094, "record_id": "8355e992bf5de5677f7f5a95d8d76f9635903f62400dc1e7219f70441a85d4b2"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 2447110.4736328125, "record_id": "7b52aa140f356840bffd12c9099b41d92703e935eb0a3d89c2930fe24da8d066"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockon32", "mean_response_ns": 3171564.7946777344, "record_id": "db6e47bf00d059a34e1633306d5a3ee0aa116d6ff3fd52dddb9aca23a9cef0d5"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "ours", "mean_response_ns": 2068304.4467773438, "record_id": "395003e93dd1942ef192693b3b0baa704ab13d34eaa44b2a7e3f42d7fd1832ac"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockon32", "mean_response_ns": 2171344.4545898438, "record_id": "74b8573adc9679e1fa6b32f83b4ce28db1fe5ded18a184f61e8b370d0eab734a"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 1645417.978515625, "record_id": "1eb556b037983898e47d63cd49b0c4fc6894e23144217990367f00bc93407ca1"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 5086804.71484375, "record_id": "85cf10be719aa71c83a58a2f57aeb5cf6a5441d5cd3c3f63cd0db75b6808f644"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "ours", "mean_response_ns": 41257049.86987305, "record_id": "4c9b87d4b0876941f356d17e4cac72d438dd00a835c962aebe59dcb44a854228"}
+{"event": "trial_start", "group": "stock-wildchat-final-03", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-03", "arm": "stockon32", "mean_response_ns": 72457956.84082031, "record_id": "03735bffa93e8579b0d02b1ec9aa10c9c594c23fd3d4a1605633efe0777b6137"}
+{"event": "prepare_content", "group": "stock-wildchat-final-02", "phase": "final"}
+{"event": "stock_reference", "group": "stock-wildchat-final-02", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-02", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-02", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-02", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-02", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockon32", "mean_response_ns": 2977169.1474609375, "record_id": "2434040b73493e48233b17fccbb858addd6ddd450ddae07e18ef6848c2dca218"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "ours", "mean_response_ns": 2835553.8110351562, "record_id": "cbe5e01573ff48d6574f6d31b1e6acf9b88adb01ea81907355defa22b9619d2e"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 2228551.05859375, "record_id": "c2f98dddce7e75009dbf0bcc39fd25e01e7157ec15d9b59108403353045bdd3e"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "ours", "mean_response_ns": 30331636.891845703, "record_id": "34b62d9ee4d109dc5e9ebcba8dfdb2e68c2f37e58124f14cb03f28695db9c58c"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockon32", "mean_response_ns": 39286079.52807617, "record_id": "26243895d3195f0d603f77bd616a0a0ea2df376465ba22741ffc43741872cfcc"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 6049474.125244141, "record_id": "6552735713428c46d7c32784e6dbe3033957654d23a21ff428ed98b069a1b9ca"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockon32", "mean_response_ns": 1853902.2888183594, "record_id": "936de9ac519505a787f0f976ce66d86a8d60f2731324f35a194a92c4b8b07f9f"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 1263886.5478515625, "record_id": "16bbeaa00ace9a8c560ee8b2631ef3d45d037fa89f95671a85bba2e46300fe05"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "ours", "mean_response_ns": 1775660.0324707031, "record_id": "c74bf5bdc387c92043d194c9980f9eaa6f281fd2e1a54f13aac18335f32fa4c3"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 4470310.0400390625, "record_id": "71310e73dcfb8975864ac1dc7d1312839bd3a908e81f16ab2b1081bb668ef9f7"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "stockon32", "mean_response_ns": 34675110.48022461, "record_id": "b684a9f18e99e4b126a24df99843a8926437282d6d8d6624f8beccc3c44a5aa3"}
+{"event": "trial_start", "group": "stock-wildchat-final-02", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-02", "arm": "ours", "mean_response_ns": 26019061.903808594, "record_id": "7627af31f91b9954a4024c628b68aca0a42df039a5543d9ed7be198af0e758d8"}
+{"event": "prepare_content", "group": "stock-gsm8k-final-06", "phase": "final"}
+{"event": "stock_reference", "group": "stock-gsm8k-final-06", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-06", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-06", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-06", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-06", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockon32", "mean_response_ns": 113080408.43261719, "record_id": "22b97bd735ad43c0850747afca0541c71f732ba73ee91c4c4b4b2698b8e4fb83"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 16514144.597167969, "record_id": "196ea1e8cbf017a81b394b8a8b2c59a22ca57f8513f1dd32f68e98904b2ab311"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "ours", "mean_response_ns": 96180026.3034668, "record_id": "5fa1b532216d24490e04112f7bbf0f9cf381428fb68dffb0a89ea08bca6d9ed9"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "ours", "mean_response_ns": 2252406.9775390625, "record_id": "00fdcc675652afad3c1d3ff0a5c3a445ac721d5c594bba374601daf7880c943b"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockon32", "mean_response_ns": 2231703.581298828, "record_id": "27f236cfc6d060c61d1dab3b45b257bc1d8c148a06551c56d0d8d576c166778c"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 1766854.4074707031, "record_id": "6d7eb925dd850b00a361aca1c8f334ce8b1568ab323bb847e35fc510d670c408"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 4529340.04296875, "record_id": "8e035b72825144176b9d4dd83e0c0a6659a5c2f915093fbd8406ec1ebb39c2bc"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "ours", "mean_response_ns": 22862850.283935547, "record_id": "ae3ddf2c38f538c152804b8b152245b05659e7bc5af24718639ac2640a7b0713"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockon32", "mean_response_ns": 23735741.963623047, "record_id": "cb52ddf49fdb7cf050decb098f51afed9b930a712f27db1ba6ca4cad2e938fae"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "ours", "mean_response_ns": 2916312.8579101562, "record_id": "2f1c0e24de46337a4cb336d41c426910bbee11336085e83d416df84598a8fb07"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockoff", "mean_response_ns": 2364760.3205566406, "record_id": "2154707ca7b75cc407a4e5c7812169f8cdd3c87321c9a51eae4f1f74fb090a8b"}
+{"event": "trial_start", "group": "stock-gsm8k-final-06", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-06", "arm": "stockon32", "mean_response_ns": 2984302.5407714844, "record_id": "6971fa53b3180c08e05beea9a8448550ce043d70cf6606f3abb71195807ca46e"}
+{"event": "prepare_content", "group": "stock-gsm8k-final-03", "phase": "final"}
+{"event": "stock_reference", "group": "stock-gsm8k-final-03", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-03", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-03", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-03", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-03", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 4897712.736328125, "record_id": "f44abec0582f0a0965a4702609be998fe2425cd844fe05e6cd86cdca87b26443"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "ours", "mean_response_ns": 27579751.365966797, "record_id": "3d352c9ed62819b03acab1bb1ea462b57a7e153251cc547b89145588caa3ef00"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockon32", "mean_response_ns": 56195816.747802734, "record_id": "e5d2aefa637031355a776acbe160a98c0b2d6ec2ef03db765efcf675d49651c5"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockon32", "mean_response_ns": 118929154.28881836, "record_id": "9613dc5e32b94e33854af7fe4384d6b389ea8c9b747d2a8239e98a5b1b03c3ff"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 5766507.443847656, "record_id": "2071646bef44aa75462fbf297e8c98f741931e5b5c81cf4ea861700303930dcd"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "ours", "mean_response_ns": 84405469.01879883, "record_id": "4ddc91f802e68ee96bd872ba0835ebb566c60f8d88e343931ec59b3b78026c19"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "ours", "mean_response_ns": 3065627.5341796875, "record_id": "019e7cea1942462e1e50639b43da69e6fab322a4fb3a4c2f0c7e0c9d0db60ace"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 2416661.770263672, "record_id": "48a5f3bc948cb6341d1f2f2a5cbe0f8cd91aa9fc8d6e3c29e3eef40b5de088a6"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockon32", "mean_response_ns": 3141129.550048828, "record_id": "53d19e11149f40e6cdc6878433230a511681e9a3c9c736e483a5e1725830088a"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "ours", "mean_response_ns": 2727472.7338867188, "record_id": "99af90a64478ebaecdffa00e5c895f42a7246759ca2d9b89c16d5063112bb78c"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockon32", "mean_response_ns": 2785527.824951172, "record_id": "d14c59670ffc83ee15a3930cabf4619f2ee5db9bab3152ab8f1865d0a1ab02c1"}
+{"event": "trial_start", "group": "stock-gsm8k-final-03", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-03", "arm": "stockoff", "mean_response_ns": 2213186.6713867188, "record_id": "b4b2b75a6c03e95f4f19a48d8ff4cc1e5135133122162f0e8aebae23985ada98"}
+{"event": "prepare_content", "group": "stock-mbpp-final-02", "phase": "final"}
+{"event": "stock_reference", "group": "stock-mbpp-final-02", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-02", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-02", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-02", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-02", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockon32", "mean_response_ns": 2870042.766845703, "record_id": "1e03b8045f38e9e2df9083581ccf8257a999739352be617bd4b25aa61d39c326"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockoff", "mean_response_ns": 2299836.9150390625, "record_id": "4b0fa26fdcd22ad385c9cbdfecb2941bcf9429b07c804938956c8e5fe21f62c3"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "ours", "mean_response_ns": 2810194.8435058594, "record_id": "dd3925f23ec83ba63a93f4de9aff43bc63d2c9d6ab610604d3ca060b21289b38"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "ours", "mean_response_ns": 27459042.33935547, "record_id": "a9618059956d0bab918edc1d87635f9bc58950ebf48894fe990dfb93b04dc154"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockon32", "mean_response_ns": 30861612.325927734, "record_id": "534098fcfdf86f12e4d053d62af13077d4f84ecd6e483a1d8c732549242b7372"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockoff", "mean_response_ns": 6089755.2666015625, "record_id": "48aed34055509369bbf18dd20906c3a199178d00cf7242428d045ab83b62d425"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockoff", "mean_response_ns": 5477540.805419922, "record_id": "9465a594a0b89f686178d5cc20966459d006b6abc0d9a05457bc9d773f6b6e17"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockon32", "mean_response_ns": 83017406.27148438, "record_id": "e3f5216b23f71f006b330aec2829ddac6ef8912311078bc4a4f18b5f22430099"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "ours", "mean_response_ns": 68561018.41772461, "record_id": "04488315a37b207973c19bb15801a9bf845b0f1d9726d290677b062c799121d8"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockon32", "mean_response_ns": 2917590.2666015625, "record_id": "37b5a8786574839f993f7b02915e216e098ee1dfd6fc37f3ea681f034c928dc6"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "ours", "mean_response_ns": 2928627.9819335938, "record_id": "db7da5037e102bd7b37db7db2378ed14f5d6cc9f310d9758b012001dd7d60e23"}
+{"event": "trial_start", "group": "stock-mbpp-final-02", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-02", "arm": "stockoff", "mean_response_ns": 2261338.6870117188, "record_id": "26b5b523327f79cd8290dfa213d1d3af9eac58c3489b72083ac2867203614bd2"}
+{"event": "prepare_content", "group": "stock-wildchat-final-06", "phase": "final"}
+{"event": "stock_reference", "group": "stock-wildchat-final-06", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-06", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-06", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-06", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-wildchat-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-wildchat-final-06", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockon32", "mean_response_ns": 56877961.196777344, "record_id": "b812556fd2f15953bda6ce1a58f99a5182a623fda87260faf2571aba5b948631"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 4409217.0791015625, "record_id": "49b03a7666690cbbc3e01feda5166fee659c9e3c3b5ed17f86f60c14b7ffde3c"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "ours", "mean_response_ns": 32521355.622802734, "record_id": "ceb35f944b075c9795321c1b6107a209ce22f16efefc1b45c3cfa60f0a2a8f7a"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "ours", "mean_response_ns": 2396878.9279785156, "record_id": "f80f22a02eb2bbda04bbcc194ca89db9321ac68d1a41813373dc8a30f0434ac3"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockon32", "mean_response_ns": 2436121.7543945312, "record_id": "2e0fec04fb11796432d83bbe4ab14b3f1caf4a10cbbf01ac671d237b8002fd12"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 1908995.0620117188, "record_id": "ad7d79e421b75f5df8044c165fb80134344571f6546b8e399a16671a3fb04b05"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "ours", "mean_response_ns": 3026474.734375, "record_id": "231be402350608ebdfb04028d2b0d6d96761c943aa9613b009a02b58f9b59a85"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 2444261.4853515625, "record_id": "7328ba08024e1ec2f85dcd4eec8b330b3c53bb74013cf826f8dd115ac8672648"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockon32", "mean_response_ns": 3099386.6069335938, "record_id": "0b0cb728330adeb744ccde69d5e2c35b7e341f5c24f622c67d7737f4041435fc"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 4368814.650634766, "record_id": "4cbdc19b3dbe4cd2976a7b2e90ea978d9e8d8544af7e3913b9696c388c05ca6d"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "ours", "mean_response_ns": 50850121.3359375, "record_id": "9651db0120812853c34c83ac847d212319018951e073160bb53c866a3dde27d1"}
+{"event": "trial_start", "group": "stock-wildchat-final-06", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-wildchat-final-06", "arm": "stockon32", "mean_response_ns": 76100420.0559082, "record_id": "eb549edb73d801ea3900c2f237f453851d3de945f28c49c45ba164e724b475fc"}
+{"event": "prepare_content", "group": "stock-mbpp-final-05", "phase": "final"}
+{"event": "stock_reference", "group": "stock-mbpp-final-05", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-05", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-05", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-05", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-mbpp-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-mbpp-final-05", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "ours", "mean_response_ns": 21253579.37109375, "record_id": "b202a56838b5d498f97daecf615989e57e05eeb121fc07d3c5736dd3739b556c"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockon32", "mean_response_ns": 36075318.705078125, "record_id": "529bb38d1c5c409da30c8ec5b4b73b6fdb1ae4e24c861a7f71621705f45b9262"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockoff", "mean_response_ns": 5101687.398925781, "record_id": "af2d58b476c8b6f86392554838bb1cf42b578a24f78df243ded4394ab7204304"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockon32", "mean_response_ns": 1753262.9768066406, "record_id": "f9401f489083541d05d260f385fc59e2825e7a38139776ba8cd2d4e1e49221a4"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockoff", "mean_response_ns": 1306191.140625, "record_id": "bb700621463bc1cff59f64b0ebbaa40fbce226dd4f2bd98e295937fa3c1fc5e3"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "ours", "mean_response_ns": 1770974.408203125, "record_id": "985cd2a2b2cb41bdc37e16e7f46cce3034d69853a0396b9c21a287a567f96238"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockoff", "mean_response_ns": 6488331.776123047, "record_id": "0eb16d2e59ce027a952504230e138755316fd91ebbb7236f95002173742093a1"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockon32", "mean_response_ns": 44226477.1652832, "record_id": "9cbfe07c2cf99a06cd1923dc403403ca31725b552529598ed78cae64c3d1293f"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "ours", "mean_response_ns": 35957823.174316406, "record_id": "ac14f6856fce3ef5ebaa3c557605b48c95f11553410d52cf09a2d6cfc31a0dce"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockon32", "mean_response_ns": 3420550.9821777344, "record_id": "0b1ef284262a85dbae79b1138a9979e2ed96a6d4a7020ca3b44891712d42bd10"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "ours", "mean_response_ns": 3389456.219482422, "record_id": "0669c85aa3b8b6cbcd97759ed5125244e5ece5233f806b1abf7b0199bb7a0e0f"}
+{"event": "trial_start", "group": "stock-mbpp-final-05", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-mbpp-final-05", "arm": "stockoff", "mean_response_ns": 2678025.4311523438, "record_id": "6eb68c9426952ce2330d7c3d0cb440eec71a2c729f5887c6a2d5efe57acbde73"}
+{"event": "prepare_content", "group": "stock-gsm8k-final-02", "phase": "final"}
+{"event": "stock_reference", "group": "stock-gsm8k-final-02", "input": 0, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-02", "input": 1024, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-02", "input": 2048, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-02", "input": 3072, "total": 4112}
+{"event": "stock_reference", "group": "stock-gsm8k-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "stockon32", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "stockon32", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "stockon32", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "stockon32", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "stockon32", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "ours", "input": 0, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "ours", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "ours", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "ours", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "stock-gsm8k-final-02", "arm": "ours", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockoff", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 4386508.451416016, "record_id": "4da0a9c4891013f9834d7a0b5ecbc05b37946eebb532b09212a6c6b5a09a1ad7"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockon32", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockon32", "mean_response_ns": 28731414.69140625, "record_id": "16a263249a5adaf316159042cb5eacbe8366aa8f745006ad32fc927386041684"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "ours", "rho": 0.85, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "ours", "mean_response_ns": 22507578.33544922, "record_id": "93fb98afea2e5f0f28c2721466d288941b467efdf7de03865ec745bab3a1c67d"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockon32", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockon32", "mean_response_ns": 3133101.26171875, "record_id": "13e9170f5232df616d50802454bc3b31af3211a9c57c88c5c56e126e9333364d"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "ours", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "ours", "mean_response_ns": 3050789.4267578125, "record_id": "ca5802cc7060b6a7f1212ef44e0d85292008a41a9a8653f5285c4436cadeb133"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockoff", "rho": 0.5, "arrival": "conversation"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 2446639.319091797, "record_id": "148920cd8959cbe59a3e4f0e41d7530e39ea34160b03af98fe483b9521d39876"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockon32", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockon32", "mean_response_ns": 1814627.5202636719, "record_id": "926040c126589edbafa601505bc9b0059145cb2f2ea8025a754e0a04b842415a"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockoff", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 1424487.6333007812, "record_id": "c25085e2c5c69d90511d4f89ee76de35fd6c9d0d06e23021899ae2a374fea9b0"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "ours", "rho": 0.5, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "ours", "mean_response_ns": 1787088.939453125, "record_id": "5d4afcec755edd9910fcdf889d1f6c558ad5798184d907efe7d6596d05134c13"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "ours", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "ours", "mean_response_ns": 47524465.53051758, "record_id": "94c249ce14a98e925b1245a40b7cda6d18b984878b5a881a27dde565167e5bf0"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockon32", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockon32", "mean_response_ns": 59580396.411621094, "record_id": "abe00f24c500d45b2ddd155d3b53a27e8652f184babe133c0d9792b7bcf9901c"}
+{"event": "trial_start", "group": "stock-gsm8k-final-02", "arm": "stockoff", "rho": 0.85, "arrival": "code"}
+{"event": "trial_complete", "group": "stock-gsm8k-final-02", "arm": "stockoff", "mean_response_ns": 4218534.089111328, "record_id": "46c43bf44a0a0aaca00dffa8ea1f4bcec24f6b81005486b176292206a8844253"}
