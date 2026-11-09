@@ -1,0 +1,301 @@
+{
+  "schema": "qwen_public_source_blocks_v1",
+  "study_id": "resident_dispatch_v1",
+  "retrieved_on": "2026-11-09",
+  "cpython_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+  "cpython_license_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+  "excluded_source_manifests": [
+    {
+      "path": "followup/corpus/sources.json",
+      "sha256": "517b0bce79080c9d959d55200bb49e2d9cb1172c2d183699d26e010384f0d080"
+    },
+    {
+      "path": "optimization/corpus/sources.json",
+      "sha256": "421ac030ba4d93d7eeb1b6f2f2af68cd6dc998c5f2c7be62fabdc6e58c7e5f4e"
+    }
+  ],
+  "selection_rule": "First 2048 tokenizer tokens of each cleaned document; no chat template. Sixteen new document IDs, URLs, raw contents and cleaned contents disjoint from all forty prior sources. Eight final pairs fixed before capture or demand/performance inspection. Blocks are a finite hand-selected corpus; source-disjointness does not imply random production sessions or independence across shared authors/project.",
+  "blocks": [
+    {
+      "block_id": "rd-final-01",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-158",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/158.txt.utf-8",
+          "title": "Emma",
+          "author": "Jane Austen",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/158",
+          "metadata_file": "raw/gutenberg_158.metadata.html",
+          "metadata_sha256": "7319f7dd8e066108e462d0e985a0870397673d4c3ed6af132f91399bab85c319",
+          "file": "raw/gutenberg_158.txt",
+          "sha256": "532b122b4e6a76cc556d6fdcd729b5892f5c4ce4a1b7060b9f832adfad8680dc",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1817,
+          "cleaned_text_sha256": "d0153981996f9dae46463d63110cbf9937ce92f7835a21434c8bd11b9444fe3e"
+        },
+        {
+          "source_id": "cpython-Lib-tokenize.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/tokenize.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/tokenize.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_tokenize.py",
+          "sha256": "601b53c9ae77e96fe2a9e10deb273aac64270635cc02e0d46d0976b91f890848",
+          "cleaning": "none",
+          "cleaned_text_sha256": "601b53c9ae77e96fe2a9e10deb273aac64270635cc02e0d46d0976b91f890848"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-02",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-1400",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+          "title": "Great Expectations",
+          "author": "Charles Dickens",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/1400",
+          "metadata_file": "raw/gutenberg_1400.metadata.html",
+          "metadata_sha256": "a5ed0495bd259a42fafdbce09464bc1a6ed6b67ff6c2c5c4e663c98fd7ce0a43",
+          "file": "raw/gutenberg_1400.txt",
+          "sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1870,
+          "cleaned_text_sha256": "c6196113039a054e075999518fd4f081838335b58cc0371f04b99080de03e7fe"
+        },
+        {
+          "source_id": "cpython-Lib-inspect.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/inspect.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/inspect.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_inspect.py",
+          "sha256": "2cc3b3e41032cd523110607a7d7cad966106e58d0a4dc5869b20185a097213ad",
+          "cleaning": "none",
+          "cleaned_text_sha256": "2cc3b3e41032cd523110607a7d7cad966106e58d0a4dc5869b20185a097213ad"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-03",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-74",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/74.txt.utf-8",
+          "title": "The Adventures of Tom Sawyer, Complete",
+          "author": "Mark Twain",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/74",
+          "metadata_file": "raw/gutenberg_74.metadata.html",
+          "metadata_sha256": "85825c09fee08711308b059d0adb62c38e401247e488d5a81586305ba5c13e32",
+          "file": "raw/gutenberg_74.txt",
+          "sha256": "74d77384b123a6360db9ab58463cff8b38df8525fbdc6000c81ee388e1f3cf10",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1910,
+          "cleaned_text_sha256": "02cf604599664a5fb5853d144b3488ff8df4953bf66f63b1aa8bf948ad07528a"
+        },
+        {
+          "source_id": "cpython-Lib-ast.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/ast.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/ast.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_ast.py",
+          "sha256": "0bc493501788e16842d082da908f8348e1e5d6112bb2c04f5ece6f69738a24a9",
+          "cleaning": "none",
+          "cleaned_text_sha256": "0bc493501788e16842d082da908f8348e1e5d6112bb2c04f5ece6f69738a24a9"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-04",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-120",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/120.txt.utf-8",
+          "title": "Treasure Island",
+          "author": "Robert Louis Stevenson",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/120",
+          "metadata_file": "raw/gutenberg_120.metadata.html",
+          "metadata_sha256": "0a03147b9713d1b02ca01684e98a06f70c1bfba834e7639dd17515fb64d1bcb7",
+          "file": "raw/gutenberg_120.txt",
+          "sha256": "5bc08275eacea8640b1aa185c645283bb8c564d7b23df6b03437d229b4fc6ebd",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1894,
+          "cleaned_text_sha256": "ce5b10ab3756b36db3a037c8c412e5835e4095cd1059ddf02ea4a3c2add776bc"
+        },
+        {
+          "source_id": "cpython-Lib-dis.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/dis.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/dis.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_dis.py",
+          "sha256": "2240e90b0c38ede6345350ec32785e0f61154a78b033beb997cde8a1b7cdedda",
+          "cleaning": "none",
+          "cleaned_text_sha256": "2240e90b0c38ede6345350ec32785e0f61154a78b033beb997cde8a1b7cdedda"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-05",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-55",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+          "title": "The Wonderful Wizard of Oz",
+          "author": "L. Frank Baum",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/55",
+          "metadata_file": "raw/gutenberg_55.metadata.html",
+          "metadata_sha256": "bacfeeff2c882cbdfdb5e41a0832ffc2c4cc0a1869e3c73920bb01296492cc5f",
+          "file": "raw/gutenberg_55.txt",
+          "sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1919,
+          "cleaned_text_sha256": "1df8451ba292b654421a741fac7c0af11a1a7f58d86fb7be9b333ce229b683ee"
+        },
+        {
+          "source_id": "cpython-Lib-subprocess.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/subprocess.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/subprocess.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_subprocess.py",
+          "sha256": "2ff641d58f8696496e8718538cd96cd7afcd503ae271fb23da22422b3aee9fc7",
+          "cleaning": "none",
+          "cleaned_text_sha256": "2ff641d58f8696496e8718538cd96cd7afcd503ae271fb23da22422b3aee9fc7"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-06",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-1727",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/1727.txt.utf-8",
+          "title": "The Odyssey (Samuel Butler prose translation)",
+          "author": "Homer",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/1727",
+          "metadata_file": "raw/gutenberg_1727.metadata.html",
+          "metadata_sha256": "6e66b4f3c8ec481af15359138b26de8c5f370502c9265e5702d628d42924b488",
+          "file": "raw/gutenberg_1727.txt",
+          "sha256": "b167ce5e348bf805dfe4355dff2eae5c2e522b11cce003a6f98bb65a753bbc69",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "translator": "Samuel Butler",
+          "translator_death_year": 1902,
+          "cleaned_text_sha256": "ca2d3a15e603babb5bb7d40c33b6c449c92c98c5293d598c79812f32d096887e"
+        },
+        {
+          "source_id": "cpython-Lib-zipfile-__init__.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/zipfile/__init__.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/zipfile/__init__.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_zipfile___init__.py",
+          "sha256": "c5571018f39de8b02191e16e5a030d115c82d366d5042390d46278817606c86c",
+          "cleaning": "none",
+          "cleaned_text_sha256": "c5571018f39de8b02191e16e5a030d115c82d366d5042390d46278817606c86c"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-07",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-36",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/36.txt.utf-8",
+          "title": "The War of the Worlds",
+          "author": "H. G. Wells",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/36",
+          "metadata_file": "raw/gutenberg_36.metadata.html",
+          "metadata_sha256": "e1599a48db52865ef2b1279ae052f40774c2bbfe762335ebb70a9d8c4c87f572",
+          "file": "raw/gutenberg_36.txt",
+          "sha256": "8417469e3ab664749f7b36ebb85799075818207b0380b54c27d07d592a44117d",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1946,
+          "cleaned_text_sha256": "ffcae851be1ef46a60135eebda1e8fca70d9e4de0803a9d3550b5f9c8f829128"
+        },
+        {
+          "source_id": "cpython-Lib-tarfile.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/tarfile.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/tarfile.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_tarfile.py",
+          "sha256": "b29d6a0b0e9d9554db1eca916752c4eb34121dba9b852f39a77da8909144a576",
+          "cleaning": "none",
+          "cleaned_text_sha256": "b29d6a0b0e9d9554db1eca916752c4eb34121dba9b852f39a77da8909144a576"
+        }
+      ]
+    },
+    {
+      "block_id": "rd-final-08",
+      "split": "final",
+      "sources": [
+        {
+          "source_id": "gutenberg-1952",
+          "domain": "prose",
+          "url": "https://www.gutenberg.org/ebooks/1952.txt.utf-8",
+          "title": "The Yellow Wallpaper",
+          "author": "Charlotte Perkins Gilman",
+          "license": "Public-domain literary work; Project Gutenberg catalog states public domain in the USA; complete source notice retained",
+          "license_url": "https://www.gutenberg.org/ebooks/1952",
+          "metadata_file": "raw/gutenberg_1952.metadata.html",
+          "metadata_sha256": "abf9bd2b129197ae27a63a30f575f877a4f6837a9a05c7a198b2ab1da23cf164",
+          "file": "raw/gutenberg_1952.txt",
+          "sha256": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
+          "cleaning": "content_between_gutenberg_start_end_markers",
+          "author_death_year": 1935,
+          "cleaned_text_sha256": "00b4236dc9b2b4215ace0af20da168e77cba5e9ba826c079b4714fb13abe2d49"
+        },
+        {
+          "source_id": "cpython-Lib-uuid.py",
+          "domain": "code",
+          "url": "https://github.com/python/cpython/blob/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/uuid.py",
+          "download_url": "https://raw.githubusercontent.com/python/cpython/0fb18b02c8ad56299d6a2910be0bab8ad601ef24/Lib/uuid.py",
+          "source_revision": "0fb18b02c8ad56299d6a2910be0bab8ad601ef24",
+          "license": "Python Software Foundation License Version 2 plus notices in archived CPython LICENSE",
+          "license_file": "raw/cpython_LICENSE",
+          "file": "raw/cpython_Lib_uuid.py",
+          "sha256": "fe357bff7241e9fd6f86ee81567fd20aeec2e17460428ea9b7924bebf57301fc",
+          "cleaning": "none",
+          "cleaned_text_sha256": "fe357bff7241e9fd6f86ee81567fd20aeec2e17460428ea9b7924bebf57301fc"
+        }
+      ]
+    }
+  ]
+}
