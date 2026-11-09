@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "command": "PYTHON=<analysis-python> bash scripts/reproduce-reports.sh <fresh-output-directory>",
+  "checks": {
+    "summary.json": true,
+    "branch-summary.json": true,
+    "records-final.jsonl": true,
+    "branches.jsonl": true,
+    "diagnostics_equal_except_paths": true
+  },
+  "scope": "CPU reproduction of archived observations, not independent GPU experiment"
+}

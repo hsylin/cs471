@@ -6,6 +6,18 @@ study uses one distributed MoE layer, one hardware configuration, and one fixed
 replica budget. Performance claims require completed GPU runs; CPU unit tests
 and smoke runs are not performance evidence.
 
+The completed held-out study contains **1,400 valid policy runs and eight
+same-state decision pairs** on two H100 GPUs. The TV gate did not meet the frozen
+5% useful-gain criterion: burst B4/B3 was 1.0040 (95% CI 0.9990–1.0098), and B4/B5
+was 1.0116 (1.0094–1.0136). Stable B4/B3 passed the 2% regression margin despite
+about 1.15% extra elapsed time. All eight forced migrations lost time over their
+128-step replay horizons. This is a bounded negative result, with a complete
+experiment and passing correctness checks.
+
+Read the [final evaluation](docs/final-evaluation.md),
+[raw-data index](results/README.md), and
+[frozen analysis](results/final/analysis/summary.json).
+
 ## Scope
 
 - vLLM v0.31.0, source commit `db9527a46873454610df6dbedf79a36d6bf1a7f6`.
@@ -33,7 +45,7 @@ checks cannot enter the performance analysis. The primary useful-gain endpoint
 is the prespecified short-hotspot regime; persistent changes and window-phase
 tests characterize limitations. Stable skew tests regression.
 
-The suggested acceptance margins are a 5% useful elapsed-time improvement over
+The frozen acceptance margins are a 5% useful elapsed-time improvement over
 both B3 and B5 on the target regime and at most 2% stable-workload regression
 against B3. These are design choices, not expected outcomes. Analysis uses paired
 log runtime ratios and resamples independent trace-seed blocks. Technical repeats
@@ -142,4 +154,105 @@ python -m skewbench.analysis cooldown-select \
 ```
 
 The code must not consume held-out final records to select the cooldown or
-thresholds. Final results and their exact commands are added after execution.
+thresholds.
+
+## Reproduce the final reports
+
+With Python 3.10 or newer, NumPy, and Matplotlib installed, the archived JSONL
+records can regenerate the tables, confidence intervals, branch summaries, and
+figures locally without GPUs, vLLM, model weights, or network access. Install the
+small analysis package beforehand if needed (`python -m pip install -e .`).
+Scikit-learn is not required.
+
+```bash
+bash scripts/reproduce-reports.sh ../skewbench-final-reproduction
+```
+
+The wrapper reads `results/final/records-final.jsonl.gz`,
+`results/final/branches.jsonl.gz`, and `configs/frozen/final.json`. It decompresses
+the records into the new output directory, runs the current primary and branch
+analyzers, then runs the descriptive diagnostic report. Any existing output path
+is refused, including an empty directory. If a command fails, partial outputs
+remain available for inspection; use another new directory for the next attempt.
+Set `PYTHON=/path/to/python` when using a particular analysis environment.
+
+The main outputs are `analysis/summary.json`, `analysis/cells.csv`,
+`analysis/methods.csv`, `analysis/runtime-ratios.png`, the compact
+`analysis/primary-runtime-ratios.png` and PDF, `analysis/branch-summary.json`,
+`analysis/branches.csv`, and `diagnostics/diagnostic-summary.json` with PNG/PDF figures. These commands
+recompute the archived observations; they do not collect independent GPU data.
+
+An independent arithmetic implementation checks the declared paired estimates
+and seed-block bootstrap against the generated summary without importing the
+main analyzer:
+
+```bash
+python scripts/verify_final_ratios.py \
+  --manifest configs/frozen/final.json \
+  --records ../skewbench-final-reproduction/records-final.jsonl \
+  --report ../skewbench-final-reproduction/analysis/summary.json \
+  --output ../skewbench-final-reproduction/ratio-audit.json
+```
+
+The separate branch/full-policy correspondence audit requires the original raw
+NPZ input tapes, which remain outside Git. Supply their containing directory;
+the script checks their recorded hashes, exact input arrays and logical windows,
+the matching B3 proposal states, and the prespecified branch order:
+
+```bash
+python scripts/verify_final_branch_correspondence.py \
+  --manifest configs/frozen/final.json \
+  --records ../skewbench-final-reproduction/records-final.jsonl \
+  --branches ../skewbench-final-reproduction/branches.jsonl \
+  --trace-dir /path/to/original/raw-traces \
+  > ../skewbench-final-reproduction/branch-correspondence-audit.json
+```
+
+Run these audit scripts without Python's `-O` flag; they use assertions. Raw-tape
+correspondence does not independently rerun numerical or GPU weight checks;
+those remain recorded runtime attestations.
+
+## Rerun the final GPU experiment
+
+The original frozen execution checkout is
+`b4a837dea77409c693731c71b9dd8c43ae244c21` (`b4a837d`). The measured package and
+native-source pin retain harness SHA-256
+`894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb`;
+later report scripts and documentation do not change that measured-package hash.
+Use `configs/frozen/final.json` as committed, rather than regenerating a manifest.
+The full executed Python environment lock is
+[`results/provenance/environment-lock.txt`](results/provenance/environment-lock.txt),
+with wheel provenance in
+[`results/provenance/package-provenance.json`](results/provenance/package-provenance.json).
+The lock, pinned CUDA wheel, driver, and recorded GPU topology are part of GPU
+reproduction; the lightweight CPU analysis dependencies are not a replacement.
+In a fresh replication environment, synchronize the installed packages to that
+lock after bootstrap (set `SKB_ROOT` to your own project directory):
+
+```bash
+uv pip sync --python "$SKB_ROOT/venv/bin/python" \
+  --extra-index-url https://download.pytorch.org/whl/cu129 \
+  --index-strategy unsafe-best-match results/provenance/environment-lock.txt
+```
+
+After the cluster and pretrained-layer setup above, run from the repository root
+on Kuma using a fresh result directory:
+
+```bash
+source scripts/cluster-env.sh
+mkdir -p logs
+final_rerun_directory="$SKB_ROOT/results/final-independent-rerun"
+if [ ! -e "$final_rerun_directory" ] && [ ! -L "$final_rerun_directory" ]; then
+  sbatch scripts/run-final-kuma.sh "$final_rerun_directory" \
+    configs/frozen/final.json
+else
+  echo "Choose a new output directory: $final_rerun_directory" >&2
+fi
+```
+
+The job uses one two-GPU allocation, runs the correctness preflight, the frozen
+matrix and eight paired branch states, then generates reports. Choose a different
+directory for each repetition and preserve its environment and hardware logs.
+The runner checks the measured-package and installed native-source hashes against
+the frozen configuration. A new hardware allocation collects independent timings;
+it does not guarantee identical timings or conclusions.

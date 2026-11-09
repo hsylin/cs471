@@ -1,0 +1,188 @@
+{
+  "status": "verified",
+  "pairs": 8,
+  "fixed_horizon": 128,
+  "allow_first": 4,
+  "skip_first": 4,
+  "rows": [
+    {
+      "state": [
+        "stationary",
+        "core",
+        128,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "allow",
+        "skip"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "stationary",
+        "core",
+        1024,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "allow",
+        "skip"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "burst",
+        "core",
+        128,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "skip",
+        "allow"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "burst",
+        "core",
+        1024,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "allow",
+        "skip"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "persistent",
+        "core",
+        128,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "skip",
+        "allow"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "persistent",
+        "core",
+        1024,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "allow",
+        "skip"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "periodic",
+        "core",
+        128,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "skip",
+        "allow"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    },
+    {
+      "state": [
+        "periodic",
+        "core",
+        1024,
+        1001,
+        0,
+        63
+      ],
+      "branch_order": [
+        "skip",
+        "allow"
+      ],
+      "full_B3_snapshot_matches": true,
+      "raw_prefix_and_future_routes_match": true,
+      "hidden_inputs_match": true,
+      "exact_previous_window_verified": true,
+      "tape_fingerprints_identical": true
+    }
+  ],
+  "identical_history_different_future": [
+    {
+      "batch_tokens": 128,
+      "seed": 1001,
+      "decision_step": 63,
+      "identical_past_routes_weights_windows_source_and_candidate": true,
+      "identical_gate_decision": true,
+      "same_future_steps_before_divergence": 8,
+      "first_different_future_measured_step": 72,
+      "burst_payback_ms": -4.700604826211929,
+      "persistent_payback_ms": -9.792993078008294,
+      "interpretation": "The past observations do not distinguish these different futures. Payback signs are measured, not assumed or required by this check."
+    },
+    {
+      "batch_tokens": 1024,
+      "seed": 1001,
+      "decision_step": 63,
+      "identical_past_routes_weights_windows_source_and_candidate": true,
+      "identical_gate_decision": true,
+      "same_future_steps_before_divergence": 8,
+      "first_different_future_measured_step": 72,
+      "burst_payback_ms": -6.815681932494044,
+      "persistent_payback_ms": -3.500770078971982,
+      "interpretation": "The past observations do not distinguish these different futures. Payback signs are measured, not assumed or required by this check."
+    }
+  ],
+  "scope": "Raw replay arrays and actual full-policy B3 proposal states checked; numerical/weight equality passes remain recorded runtime attestations."
+}
