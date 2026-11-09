@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "scope": "Supplementary company/project sources and excluded literature; never added to the 50 conference-paper matrix",
+  "conference_papers_added": 0,
+  "conference_matrix_count": 50,
+  "primary_nonpaper_sources": [
+    {
+      "id": "nvidia_wide_ep",
+      "title": "Scaling Large MoE Models with Wide Expert Parallelism on NVL72 Rack Scale Systems",
+      "publisher": "NVIDIA Technical Blog",
+      "publication_date": "2025-10-20",
+      "source_type": "company technical article",
+      "url": "https://developer.nvidia.com/blog/scaling-large-moe-models-with-wide-expert-parallelism-on-nvl72-rack-scale-systems/",
+      "raw_file": "nvidia-wide-ep.html",
+      "supported_claim": "Describes expert-weight pressure, communication and online placement in rack-scale execution; reports EP32 versus EP8 up to 1.8x per-GPU throughput at fixed user token rate.",
+      "evidence_boundary": "GB200 NVL72, disaggregation and MTP; author-reported systems comparison, not a two-H100 isolated-dispatch effect.",
+      "supporting_sections": [
+        "Memory and compute challenges",
+        "Load balancing wide experts",
+        "Figure 5"
+      ],
+      "excluded_content": "AI-generated summary and related-post teasers",
+      "conference_count_eligible": false,
+      "primary_text_read": true,
+      "artifact_executed": false,
+      "raw_source_sha256": "00d87deb7bd3a6dcbf6c7af6acdf12ac8dd00b402a10572f90419046e1947b21",
+      "raw_source_bytes": 284375,
+      "retrieval_status": "full primary source present; curl recheck HTTP 200",
+      "retrieval_date": "2026-11-09",
+      "verification_raw_sha256": "716942d097a28b5244ff06fd53abc994e0edd68e0c134ee855aa0798800c96a2",
+      "verification_matches_cached_bytes": false,
+      "raw_path_relative_workspace": "work/review-generalization/supplementary/nvidia-wide-ep.html",
+      "extracted_text_sha256": "88763bd1ea4f9fd43537da5cfe7e635b08ddf79ac0b36c4e7b32c36e6ca4cf3e",
+      "normalized_visible_text_recheck": {
+        "method": "HTMLParser excluding script/style; whitespace normalization",
+        "identical": true,
+        "visible_text_sha256": [
+          "b332f89e23974513a5f94bdf37d9e6864f8f21deb4874c94c421f43b63f7c729",
+          "b332f89e23974513a5f94bdf37d9e6864f8f21deb4874c94c421f43b63f7c729"
+        ]
+      }
+    },
+    {
+      "id": "vllm_large_scale",
+      "title": "vLLM Large Scale Serving: DeepSeek @ 2.2k tok/s/H200 with Wide-EP",
+      "publisher": "vLLM Team",
+      "publication_date": "2025-12-17",
+      "source_type": "project technical article",
+      "url": "https://vllm.ai/blog/2025-12-17-large-scale-serving",
+      "raw_file": "vllm-wide-ep.html",
+      "supported_claim": "Describes communication overlap, DeepEP integration and sliding-window EPLB; reports multi-node H200 throughput for a stack of optimizations.",
+      "evidence_boundary": "The reported 2.2k tokens/s/H200 does not isolate replica dispatch or no-op suppression.",
+      "supporting_sections": [
+        "Results",
+        "Dual-batch Overlap",
+        "Expert Parallel Load Balancing"
+      ],
+      "conference_count_eligible": false,
+      "primary_text_read": true,
+      "artifact_executed": false,
+      "raw_source_sha256": "9a02ffaa4e25831d94b39e2b48426319d84f7fd281db1ae966c7bbcee52fbc6e",
+      "raw_source_bytes": 115683,
+      "retrieval_status": "full primary source present; curl recheck HTTP 200",
+      "retrieval_date": "2026-11-09",
+      "verification_raw_sha256": "9a02ffaa4e25831d94b39e2b48426319d84f7fd281db1ae966c7bbcee52fbc6e",
+      "verification_matches_cached_bytes": true,
+      "raw_path_relative_workspace": "work/review-generalization/supplementary/vllm-wide-ep.html",
+      "extracted_text_sha256": "c5c5458ff79d41e5d391ac90f0b9b4377c86ab336eec5425b38a0afcb1922cb9"
+    },
+    {
+      "id": "deepep_pinned",
+      "title": "DeepEP README",
+      "publisher": "deepseek-ai",
+      "source_type": "open-source repository documentation",
+      "url": "https://github.com/deepseek-ai/DeepEP/blob/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/README.md",
+      "raw_url": "https://raw.githubusercontent.com/deepseek-ai/DeepEP/f6aa38fe06cd4a0489e7730365d4e0114970a2f3/README.md",
+      "raw_file": "deepep-readme.md",
+      "commit": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+      "supported_claim": "Dispatch/combine transport plus expert-weight exchange; caller supplies replication and token rerouting.",
+      "evidence_boundary": "Hopper support is documented; compatibility with this frozen environment and layer path was not executed.",
+      "supporting_sections": [
+        "Requirements",
+        "Deferred epilogues",
+        "Expert load balancing",
+        "Test profiling"
+      ],
+      "license": "MIT according to README; no separate license-file audit in this supplementary pass",
+      "conference_count_eligible": false,
+      "primary_text_read": true,
+      "artifact_executed": false,
+      "raw_source_sha256": "86415f7fc11381dceb14c112b6c602103d975936444601666ab1fcfd65e8fceb",
+      "raw_source_bytes": 32914,
+      "retrieval_status": "full primary source present; curl recheck HTTP 200",
+      "retrieval_date": "2026-11-09",
+      "verification_raw_sha256": "86415f7fc11381dceb14c112b6c602103d975936444601666ab1fcfd65e8fceb",
+      "verification_matches_cached_bytes": true,
+      "raw_path_relative_workspace": "work/review-generalization/supplementary/deepep-readme.md"
+    }
+  ],
+  "supplementary_literature_count": 8,
+  "preprint_count": 4,
+  "conference_fulltext_incomplete_count": 4,
+  "classification_note": "The eight existing supplementary MoE records are not eight preprints: four are preprints and four are verified conference identities excluded because full method/evaluation text was not retrieved.",
+  "supplementary_literature": [
+    {
+      "id": "metro",
+      "title": "Efficient MoE Serving in the Memory-Bound Regime: Balance Activated Experts, Not Tokens",
+      "year": 2025,
+      "status": "preprint; conference publication not verified",
+      "conference_count_eligible": false,
+      "paper_url": "https://arxiv.org/abs/2512.09277v1",
+      "methods_read": true,
+      "eval_read": true,
+      "reading_basis": "Earlier full-text audit in work/final-literature-audit.md; arXiv status refreshed2026-11-09",
+      "mechanism": "Activated-expert-aware physical dispatch plus a global top-k allGather transport; changes more than expert placement.",
+      "relevance": "Direct novelty overlap for resident activation minimization; do not describe it as placement-only.",
+      "artifact_availability": "Real8A100vLLM evaluation plus proprietary8–16B200 simulator; complete artifact not independently reproduced."
+    },
+    {
+      "id": "gimbal",
+      "title": "Coordinated Scheduling for MoE LLM Serving",
+      "year": 2026,
+      "status": "preprint; conference publication not verified",
+      "conference_count_eligible": false,
+      "paper_url": "https://arxiv.org/abs/2606.15177v1",
+      "methods_read": true,
+      "eval_read": true,
+      "reading_basis": "Earlier full-text audit; status refreshed2026-11-09",
+      "mechanism": "Cross-level request scheduling and source-aware placement with migration-stability terms.",
+      "relevance": "A stability gate is not novel merely because it considers temporal change; broader front-end/back-end coupling differs from the current one-inflight layer.",
+      "artifact_availability": "Full system/artifact independently reproducible status not verified."
+    },
+    {
+      "id": "tempo",
+      "title": "TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes",
+      "year": 2026,
+      "status": "preprint v2; conference publication not verified",
+      "conference_count_eligible": false,
+      "paper_url": "https://arxiv.org/abs/2608.13057v2",
+      "methods_read": true,
+      "eval_read": true,
+      "reading_basis": "Earlier full-text audit including negative cases/appendix; status refreshed2026-11-09",
+      "mechanism": "Profile-based fixed-charge makespan model combining activated replicas and tile-rounded compute; off-critical-path planning and integrated dispatch/count collection.",
+      "relevance": "Strongest direct warning against universal token or expert-count proxies; small BF16 configurations and communication-dominated deployment show little/no adaptive gain.",
+      "artifact_availability": "Claimed https://github.com/jeshxxx/TEMPO returned404 in prior artifact check; appendix hardware anonymized. Results not independently replicated."
+    },
+    {
+      "id": "freebalance",
+      "title": "FreeBalance: Pre-Routing Online Moe Load Balancing via Residual Workload Prediction",
+      "year": 2026,
+      "status": "preprint v1; conference publication not verified",
+      "conference_count_eligible": false,
+      "paper_url": "https://arxiv.org/abs/2608.14205v1",
+      "methods_read": true,
+      "eval_read": true,
+      "reading_basis": "Earlier full-text audit; status refreshed2026-11-09",
+      "mechanism": "Residual-representation workload prediction before routing; migration swap count constrained by available overlap/cost.",
+      "relevance": "Already explicitly cost/overlap constrained; predictive migration requires preceding-layer computation absent from isolated layer replay.",
+      "artifact_availability": "Complete public code/data artifact not verified."
+    },
+    {
+      "id": "libra",
+      "title": "Libra: Effective yet Efficient Load Balancing for Large-scale MoE Inference",
+      "year": 2026,
+      "venue": "ICLR",
+      "status": "conference verified; full-paper retrieval blocked",
+      "conference_count_eligible": false,
+      "proceedings_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9ff1ac9a659085fed0735362cafe5e53-Abstract-Conference.html",
+      "methods_read": false,
+      "eval_read": false,
+      "artifact_methods_read": true,
+      "artifact_url": "https://github.com/SNU-ARC/Libra",
+      "artifact_availability": "README and tree read ata5a45febf1d3e948180fa186577907437d96d13d; public SGLang fork submodules and reproduction instructions. Paper PDF denied/timeouts; not counted as one of18 fully read papers.",
+      "mechanism": "Artifact describes speculative next-layer gating, locality-aware replication, CPU expert sharding and two-phase execution/communication overlap.",
+      "relevance": "Important close overlap, but this inventory does not promote README claims into paper-method/evaluation extraction.",
+      "artifact_commit": "a5a45febf1d3e948180fa186577907437d96d13d"
+    },
+    {
+      "id": "toward_efficient",
+      "title": "Toward Efficient Inference for Mixture of Experts",
+      "year": 2024,
+      "venue": "NeurIPS",
+      "status": "conference verified; final full text retrieval failed",
+      "conference_count_eligible": false,
+      "proceedings_url": "https://papers.nips.cc/paper_files/paper/2024/hash/98bf3b8505c611ac21055dd9d355c66e-Abstract-Conference.html",
+      "doi": "10.52202/079017-2670",
+      "methods_read": false,
+      "eval_read": false,
+      "artifact_url": "https://github.com/hyhuang00/moe_inference",
+      "artifact_availability": "At40d3403ae42f23833040d0dddd4139bc98a5ca0e repository contains a placeholderREADME awaiting release. Older2023arXiv version has a different title/authorship and is not substituted for the final paper.",
+      "artifact_commit": "40d3403ae42f23833040d0dddd4139bc98a5ca0e"
+    },
+    {
+      "id": "fastermoe",
+      "title": "FasterMoE: Modeling and Optimizing Training of Large-Scale Dynamic Pre-Trained Models",
+      "year": 2022,
+      "venue": "PPoPP",
+      "status": "conference verified; full text access blocked",
+      "conference_count_eligible": false,
+      "doi": "10.1145/3503221.3508418",
+      "proceedings_url": "https://doi.org/10.1145/3503221.3508418",
+      "methods_read": false,
+      "eval_read": false,
+      "artifact_url": "https://github.com/thu-pacman/FasterMoE",
+      "artifact_availability": "Author technical description and actual README/tree read atde4d5ac7547978bad56fed716d1a78203e9b64d7; available artifact badges/archive. No full-text evaluation extraction claimed.",
+      "relevance": "Citation-walk anchor for shadow expert replication and communication scheduling, not counted toward fulltext18.",
+      "artifact_commit": "de4d5ac7547978bad56fed716d1a78203e9b64d7"
+    },
+    {
+      "id": "schemoe",
+      "title": "ScheMoE: An Extensible Mixture-of-Experts Distributed Training System with Tasks Scheduling",
+      "year": 2024,
+      "venue": "EuroSys",
+      "status": "conference verified; full text access blocked",
+      "conference_count_eligible": false,
+      "doi": "10.1145/3627703.3650083",
+      "proceedings_url": "https://doi.org/10.1145/3627703.3650083",
+      "methods_read": false,
+      "eval_read": false,
+      "artifact_url": "https://github.com/Fragile-azalea/ScheMoE",
+      "artifact_availability": "README/tree read at56711d8df721123c6f42de2d4bb83f217394e64a; full evaluation not inspected; excluded from count.",
+      "artifact_commit": "56711d8df721123c6f42de2d4bb83f217394e64a"
+    }
+  ],
+  "independent_targeted_audit": {
+    "papers": 8,
+    "scope": "Independent extraction check by a second same-team agent against cached primary text; not 50 independently audited papers and not experimental reproduction",
+    "markdown": "docs/generalization/independent-cross-paper-audit.md",
+    "json": "docs/generalization/independent-cross-paper-audit.json",
+    "markdown_sha256": "c6cbcecd2cf4663a23efeb8ea1eefe5137aa4fea798d04b9f54ff11ed087e9d1",
+    "json_sha256": "bd3d5780f1c1708ebae0b2df4a95155bc89e63f3c726d14293f7e97e1cdf33ac"
+  },
+  "retrieval_log": {
+    "path_relative_workspace": "work/review-generalization/supplementary/retrieval.json",
+    "sha256": "27164fa3437851ea4e0a5b7c61d08224ca83c6bfcfe81d69b9fccfe6f0b8104e",
+    "correction": "Retains initial urllib certificate failures as failed attempts; marks source retrieval successful only after file/content checks and HTTP-200 curl rechecks."
+  },
+  "reproducibility": "No package installation, serving reproduction, source execution or GPU run was performed for these sources.",
+  "style_pass": {
+    "supplementary-sources.md": {
+      "words": 573,
+      "style_pass": {
+        "ok": true,
+        "issues": []
+      }
+    },
+    "literature-integrated-draft.md": {
+      "words": 1100,
+      "style_pass": {
+        "ok": true,
+        "issues": []
+      }
+    }
+  }
+}

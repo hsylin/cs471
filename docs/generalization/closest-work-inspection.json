@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "inspection_date": "2026-11-09",
+  "count": 10,
+  "conference_entries": 6,
+  "supplementary_preprints": 4,
+  "changes_conference_total": false,
+  "scope": "Same pinned Qwen layer0, B128, BF16, two H100s, fixed residency and32extra slots; no new kernel/model/layer/transport.",
+  "inspections": [
+    {
+      "id": "metro",
+      "title": "Efficient MoE Serving in the Memory-Bound Regime: Balance Activated Experts, Not Tokens",
+      "status": "preprint; conference publication not verified",
+      "paper_url": "https://arxiv.org/abs/2512.09277v1",
+      "proceedings_url": null,
+      "counted_in_existing_conference_inventory": false,
+      "fulltext_path": "work/metro-text.txt",
+      "fulltext_sha256": "3e7f9bf9ea93221c6016a2c0ab034e68f1bbf9fb6ea7bde47bec0b11d3dc9092",
+      "inspected_sections": [
+        "IV-A fixed residency",
+        "IV-B restricted matching",
+        "IV-C Algorithm1 and allGather",
+        "V single-SM CUDA/CUDA Graphs",
+        "VI-A–C real hardware versus simulation"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [],
+      "code_inspection": "manuscript implementation detail only; no runnable artifact verified",
+      "exact_overlap": "One-copy resident physical dispatch to minimize worst-rank active experts is direct overlap.",
+      "adapt_or_evaluate": "Reuse residency eligibility, exact route conservation, charged dispatch/communication separation.",
+      "limits_and_nonclaims": "No public executable artifact verified; replicated global input omits the cost of obtaining METRO global top-k; no claim of full-system reproduction."
+    },
+    {
+      "id": "tempo",
+      "title": "TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes",
+      "status": "preprint v2; conference publication not verified",
+      "paper_url": "https://arxiv.org/abs/2608.13057v2",
+      "proceedings_url": null,
+      "counted_in_existing_conference_inventory": false,
+      "fulltext_path": "work/tempo-text.txt",
+      "fulltext_sha256": "b118dc6ad66904f21285b1e3ab3b1ce99eb9bc5ed9364ecd3c32f85832a19129",
+      "inspected_sections": [
+        "3–4 cost/calibration/integration",
+        "5.8–5.12 negative regimes and matched no-op/token-LP controls",
+        "Appendix B calibrated sets",
+        "Appendix C communication features",
+        "Appendix D seven SGLang patch points"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [],
+      "code_inspection": "manuscript implementation detail only; no runnable artifact verified",
+      "exact_overlap": "Nonlinear activation/token/tile cost and adaptation-path overhead directly overlap the causal question.",
+      "adapt_or_evaluate": "Reuse same-path no-op and objective-only controls, rank completion, negative cases, pipeline calibration rather than GEMM-only fitting.",
+      "limits_and_nonclaims": "Repository link previously404; anonymous hardware/artifact limits independent checking. Refresh period effect is not migration cooldown validation."
+    },
+    {
+      "id": "megascale",
+      "title": "MegaScale-Infer: Efficient Mixture-of-Experts Model Serving with Disaggregated Expert Parallelism",
+      "status": "conference_paper",
+      "paper_url": "https://arxiv.org/pdf/2504.02263",
+      "proceedings_url": "https://doi.org/10.1145/3718958.3750506",
+      "counted_in_existing_conference_inventory": true,
+      "fulltext_path": "work/review-generalization/moe/megascale.txt",
+      "fulltext_sha256": "4aab45e7c4ea01f092e4d8acadb7cc24207305ca7190c105059a975b896411b5",
+      "inspected_sections": [
+        "6 fused gate/top-k/count/scatter and floor-cost placement",
+        "7/Table4 BF16 shapes/trace",
+        "7 serving throughput under TBT target"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [],
+      "code_inspection": "manuscript implementation detail only; no runnable artifact verified",
+      "exact_overlap": "Cold-expert floor cost anticipates nonlinearity; allocation fractions are not binary activated-replica fixed charges.",
+      "adapt_or_evaluate": "Reuse explicit latency/capacity objective and distinguish batch latency from serving throughput.",
+      "limits_and_nonclaims": "Disaggregated attention/FFN and M2N transport, larger expert shapes and private trace are outside this fixed-layer study; complete artifact not verified."
+    },
+    {
+      "id": "gimbal",
+      "title": "Coordinated Scheduling for MoE LLM Serving",
+      "status": "preprint; conference publication not verified",
+      "paper_url": "https://arxiv.org/abs/2606.15177v1",
+      "proceedings_url": null,
+      "counted_in_existing_conference_inventory": false,
+      "fulltext_path": "work/gimbal-text.txt",
+      "fulltext_sha256": "4d99926a731a556f584c216641243121df7604b35ac466ca42d5fc1e11224cf4",
+      "inspected_sections": [
+        "4 DP scheduling and local SJF/aging",
+        "5.2 movement penalty",
+        "5.3 source-aware heuristic/ties",
+        "6 MINLP score calibration",
+        "7.2 calibration ablation"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [],
+      "code_inspection": "manuscript implementation detail only; no runnable artifact verified",
+      "exact_overlap": "Avoiding unnecessary movement and stability cost are prior art, but not adjacent-window TV.",
+      "adapt_or_evaluate": "Reuse no-change/movement accounting and explicit calibration/evaluation boundaries.",
+      "limits_and_nonclaims": "No inspected code; source-DP traffic structure cannot be claimed for replicated global input. Whole-system scheduler gains cannot isolate placement admission."
+    },
+    {
+      "id": "freebalance",
+      "title": "FreeBalance: Pre-Routing Online Moe Load Balancing via Residual Workload Prediction",
+      "status": "preprint v1; conference publication not verified",
+      "paper_url": "https://arxiv.org/abs/2608.14205v1",
+      "proceedings_url": null,
+      "counted_in_existing_conference_inventory": false,
+      "fulltext_path": "work/freebalance-text.txt",
+      "fulltext_sha256": "98e3904a44770bcc0419fed171efd84e7a3b3e8b5ec988f0357a0930c184209f",
+      "inspected_sections": [
+        "Algorithm1",
+        "3.3/Eqs8–10 benefit, transfer cost, per-link/rank budget",
+        "4.3 fixed-swap comparison"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [],
+      "code_inspection": "manuscript implementation detail only; no runnable artifact verified",
+      "exact_overlap": "Positive-benefit, budget-constrained deterministic migration admission already exists.",
+      "adapt_or_evaluate": "Reuse rank agreement, conflict-free state updates and charged rather than proxy benefit.",
+      "limits_and_nonclaims": "Predicts current upcoming-layer load from residuals; no future temporal stability predictor. Layer-plan95% statistic is not a per-swap success rate; no attention overlap in current timed layer."
+    },
+    {
+      "id": "smartmoe",
+      "title": "SmartMoE: Efficiently Training Sparsely-Activated Models through Combining Offline and Online Parallelization",
+      "status": "conference_paper",
+      "paper_url": "https://www.usenix.org/system/files/atc23-zhai.pdf",
+      "proceedings_url": "https://www.usenix.org/conference/atc23/presentation/zhai",
+      "counted_in_existing_conference_inventory": true,
+      "fulltext_path": "work/review-generalization/moe/smartmoe.txt",
+      "fulltext_sha256": "1be30f5084fe3fe3dc09c74302eee185f7c5bfb5f23e0ef6289c603557f7a8a1",
+      "inspected_sections": [
+        "6.2 threshold/tie/cadence",
+        "7.4 overhead/staleness",
+        "mapping.py greedy_gen_mapping_from_history",
+        "fig12.py static/dynamic log extraction"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [
+        {
+          "repo": "thu-pacman/SmartMoE-AE",
+          "commit": "e19b3a994db5f7614778fd02c48f602ba9d9ac6e",
+          "source_path": "src/fastmoe/fmoe/smartmoe/mapping.py",
+          "url": "https://raw.githubusercontent.com/thu-pacman/SmartMoE-AE/e19b3a994db5f7614778fd02c48f602ba9d9ac6e/src/fastmoe/fmoe/smartmoe/mapping.py",
+          "local_file": "work/review-generalization/moe/closest-code/thu-pacman_SmartMoE-AE__src_fastmoe_fmoe_smartmoe_mapping.py",
+          "sha256": "a02c0f8efc8cf5bda41482cc0ae10b181c6185d732678c9867256a7ee10296d3",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        },
+        {
+          "repo": "thu-pacman/SmartMoE-AE",
+          "commit": "e19b3a994db5f7614778fd02c48f602ba9d9ac6e",
+          "source_path": "src/fastmoe/fmoe/megatron/balance.py",
+          "url": "https://raw.githubusercontent.com/thu-pacman/SmartMoE-AE/e19b3a994db5f7614778fd02c48f602ba9d9ac6e/src/fastmoe/fmoe/megatron/balance.py",
+          "local_file": "work/review-generalization/moe/closest-code/thu-pacman_SmartMoE-AE__src_fastmoe_fmoe_megatron_balance.py",
+          "sha256": "a095f4f7239c56cd132df8519db9a22112b9d18c4fffff7d0ecd15f0e872cc5f",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        },
+        {
+          "repo": "thu-pacman/SmartMoE-AE",
+          "commit": "e19b3a994db5f7614778fd02c48f602ba9d9ac6e",
+          "source_path": "plotting/from_logs/fig12.py",
+          "url": "https://raw.githubusercontent.com/thu-pacman/SmartMoE-AE/e19b3a994db5f7614778fd02c48f602ba9d9ac6e/plotting/from_logs/fig12.py",
+          "local_file": "work/review-generalization/moe/closest-code/thu-pacman_SmartMoE-AE__plotting_from_logs_fig12.py",
+          "sha256": "6b15e4608cd1b2338a64759e91dad0f100ce0c595d586c60910d1186decfea62",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        }
+      ],
+      "code_inspection": "actual pinned source and tests/plot extraction read; not executed",
+      "exact_overlap": "Thresholded historical-load re-layout and old-owner tie preference are established.",
+      "adapt_or_evaluate": "Reuse fixed-planner no-change branch and complete timing with unchanged mapping control.",
+      "limits_and_nonclaims": "Inspected code uses cur_max>new_max*1.0, not an exposed positive margin or TV rule; plotting one static/dynamic log is not workload-level uncertainty."
+    },
+    {
+      "id": "tutel",
+      "title": "Tutel: Adaptive Mixture-of-Experts at Scale",
+      "status": "conference_paper",
+      "paper_url": "https://arxiv.org/pdf/2206.03382",
+      "proceedings_url": "https://proceedings.mlsys.org/paper_files/paper/2023/hash/5616d34cf8ff73942cfd5aa922842556-Abstract-mlsys2023.html",
+      "counted_in_existing_conference_inventory": true,
+      "fulltext_path": "work/review-generalization/moe/tutel.txt",
+      "fulltext_sha256": "c6050f0d42332a852879b6bb21aa2d9b90a921deea7021f8e73c697aeaddcbe4",
+      "inspected_sections": [
+        "3–4 shared layout/adaptation",
+        "Appendix A all-to-all",
+        "Appendix B fast encode/decode",
+        "Appendix C.2 expert/top-k/capacity quality",
+        "MOELayer.forward",
+        "HelloworldCaller.run tests"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [
+        {
+          "repo": "microsoft/tutel",
+          "commit": "f6610fd55b6b694ad9f033306b87cf37468f87c3",
+          "source_path": "tutel/impls/moe_layer.py",
+          "url": "https://raw.githubusercontent.com/microsoft/tutel/f6610fd55b6b694ad9f033306b87cf37468f87c3/tutel/impls/moe_layer.py",
+          "local_file": "work/review-generalization/moe/closest-code/microsoft_tutel__tutel_impls_moe_layer.py",
+          "sha256": "62b750ea5d248b143b1b65fb0946017ccfb52dee952c1e3cb0e272166f14da3f",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        },
+        {
+          "repo": "microsoft/tutel",
+          "commit": "f6610fd55b6b694ad9f033306b87cf37468f87c3",
+          "source_path": "tests/test_tutel.py",
+          "url": "https://raw.githubusercontent.com/microsoft/tutel/f6610fd55b6b694ad9f033306b87cf37468f87c3/tests/test_tutel.py",
+          "local_file": "work/review-generalization/moe/closest-code/microsoft_tutel__tests_test_tutel.py",
+          "sha256": "937b2e1a460c7a0d5b2866408fc32e90ddf1f0123c96c4ff13f1e1c090df7be8",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        }
+      ],
+      "code_inspection": "actual pinned source and tests/plot extraction read; not executed",
+      "exact_overlap": "Avoids conversion overhead using layout-compatible execution modes; related to eliminating unnecessary work.",
+      "adapt_or_evaluate": "Reuse explicit layout/parallelism identities and include preprocessing in timing.",
+      "limits_and_nonclaims": "Current forward computes its own gate/capacity; SKIP_MOE bypasses experts and is not the native SKIP control. Rounded-loss tests do not validate current full-batch equivalence."
+    },
+    {
+      "id": "lina",
+      "title": "Accelerating Distributed MoE Training and Inference with Lina",
+      "status": "conference_paper",
+      "paper_url": "https://www.usenix.org/system/files/atc23-li-jiamin.pdf",
+      "proceedings_url": "https://www.usenix.org/conference/atc23/presentation/li-jiamin",
+      "counted_in_existing_conference_inventory": true,
+      "fulltext_path": "work/review-generalization/moe/lina.txt",
+      "fulltext_sha256": "0ef44225a272ff977fc1c097d99454ad1f97c445b5d6ed6d1f40f0408fc76848",
+      "inspected_sections": [
+        "5–6 predicted path/replication/prefetch",
+        "7.1 profiled versus unprofiled timing",
+        "7.3/Figs16–19 ablations",
+        "Table6 tasks"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [],
+      "code_inspection": "manuscript implementation detail only; no runnable artifact verified",
+      "exact_overlap": "Expert-aware scheduling/replication is established, but prediction/offload differs from permanent residency.",
+      "adapt_or_evaluate": "Reuse separate profiler process/measurement and exact nonideal routing control.",
+      "limits_and_nonclaims": "No dedicated public code verified; ideal balanced gate changes routing; no reproduction of full-model latency or prediction benefits."
+    },
+    {
+      "id": "sonicmoe",
+      "title": "SonicMoE: Accelerating MoE with IO and Tile-aware Optimizations",
+      "status": "conference_paper",
+      "paper_url": "https://arxiv.org/pdf/2512.14080",
+      "proceedings_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6ed5bf446f59e2c6646d23058c86424b-Abstract-Conference.html",
+      "counted_in_existing_conference_inventory": true,
+      "fulltext_path": "work/review-generalization/moe/sonicmoe.txt",
+      "fulltext_sha256": "ffdcecadecc7a8151d761d1bb06b1f1302e4ad1ac6dd5706fa3d96a6798d9a8f",
+      "inspected_sections": [
+        "3–4 IO/compute",
+        "5 token rounding",
+        "Appendix B kernel comparisons",
+        "Appendix C gradients",
+        "F–I performance/quality",
+        "functional.__init__.moe_general_routing_inputs"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [
+        {
+          "repo": "Dao-AILab/sonic-moe",
+          "commit": "7396f3e604827d8186c2e16e64b28ee33d3defd0",
+          "source_path": "sonicmoe/functional/__init__.py",
+          "url": "https://raw.githubusercontent.com/Dao-AILab/sonic-moe/7396f3e604827d8186c2e16e64b28ee33d3defd0/sonicmoe/functional/__init__.py",
+          "local_file": "work/review-generalization/moe/closest-code/sonicmoe_functional_init.py",
+          "sha256": "af41a42d8fe5722615a4a1f2ce4157c992ef1fff4aaadc7fc9adec9097800a35",
+          "status": "retrieved",
+          "date": "2026-11-09"
+        }
+      ],
+      "code_inspection": "actual pinned source and tests/plot extraction read; not executed",
+      "exact_overlap": "Expert compute IO/tile optimization already exists; token rounding is a separate routing change.",
+      "adapt_or_evaluate": "Future adapter would need explicit sorted token/expert indices, scores and verified weight layouts; current study does not change backend.",
+      "limits_and_nonclaims": "Training/large-token or Blackwell results do not establish B128 Hopper benefit; external-routing API is plausibility, not tested distributed replica compatibility."
+    },
+    {
+      "id": "megablocks",
+      "title": "MegaBlocks: Efficient Sparse Training with Mixture-of-Experts",
+      "status": "conference_paper",
+      "paper_url": "https://arxiv.org/pdf/2211.15841",
+      "proceedings_url": "https://proceedings.mlsys.org/paper_files/paper/2023/hash/5a54f79333768effe7e8927bcccffe40-Abstract-mlsys2023.html",
+      "counted_in_existing_conference_inventory": true,
+      "fulltext_path": "work/review-generalization/moe/megablocks.txt",
+      "fulltext_sha256": "5e3a78c69aaae611cd2f363d8f8568eb7683e4be317ff154df379e6cfe6a86bf",
+      "inspected_sections": [
+        "5 sparse metadata/kernels",
+        "6.1–6.2 full training/loss controls",
+        "6.3 isolated kernels excludes metadata;100executions",
+        "dmoe.py sparse/grouped paths",
+        "dmoe_test.py BF16 forward references"
+      ],
+      "methods_read": true,
+      "evaluation_read": true,
+      "source_files_read": [
+        {
+          "repo": "databricks/megablocks",
+          "commit": "952db33d6eac334d22c61e47a0d5d41446298784",
+          "source_path": "megablocks/layers/dmoe.py",
+          "url": "https://raw.githubusercontent.com/databricks/megablocks/952db33d6eac334d22c61e47a0d5d41446298784/megablocks/layers/dmoe.py",
+          "local_file": "work/review-generalization/moe/closest-code/databricks_megablocks__megablocks_layers_dmoe.py",
+          "sha256": "d9805dd088fcd252c098bc2853e4f2654c3493b6194440d4e0d3d465185bba9f",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        },
+        {
+          "repo": "databricks/megablocks",
+          "commit": "952db33d6eac334d22c61e47a0d5d41446298784",
+          "source_path": "megablocks/layers/mlp.py",
+          "url": "https://raw.githubusercontent.com/databricks/megablocks/952db33d6eac334d22c61e47a0d5d41446298784/megablocks/layers/mlp.py",
+          "local_file": "work/review-generalization/moe/closest-code/databricks_megablocks__megablocks_layers_mlp.py",
+          "sha256": "b46e047490553357da6cda4038dce92aee27ed55782e00864f380ac7993cd0ec",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        },
+        {
+          "repo": "databricks/megablocks",
+          "commit": "952db33d6eac334d22c61e47a0d5d41446298784",
+          "source_path": "tests/layers/dmoe_test.py",
+          "url": "https://raw.githubusercontent.com/databricks/megablocks/952db33d6eac334d22c61e47a0d5d41446298784/tests/layers/dmoe_test.py",
+          "local_file": "work/review-generalization/moe/closest-code/databricks_megablocks__tests_layers_dmoe_test.py",
+          "sha256": "eef81e38678fb62179a3cd5e7f59fc26f0bb3388f091fde902b652553e3370eb",
+          "date": "2026-11-09",
+          "status": "retrieved"
+        }
+      ],
+      "code_inspection": "actual pinned source and tests/plot extraction read; not executed",
+      "exact_overlap": "Block-sparse versus grouped expert execution and padding costs are established.",
+      "adapt_or_evaluate": "Reuse separation of gather/metadata/compute/scatter with complete charged timing.",
+      "limits_and_nonclaims": "No appendices in retrieved manuscript. Isolated kernel throughput excludes metadata and cannot substitute for inference completion; modern grouped path differs from original sparse algorithm."
+    }
+  ],
+  "appendix_sha256": "b39e4065761c9ee9da3b345607926414860076624367f42258f3ea320fb5c46c",
+  "corrections": [
+    {
+      "id": "megablocks",
+      "correction": "Removed nonexistent appendix references and incorrect metadata-inclusion statement in literature-moe.json. §6.3 explicitly excludes sparse metadata from isolated kernel timing; no archival DOI asserted."
+    },
+    {
+      "id": "lina",
+      "correction": "§7.1 enables hierarchical all-to-all for Lina and DeepSpeed. Tutel is separately compared; the paper does not include Tutel in that enablement statement. Corrected literature-moe.json baseline field."
+    }
+  ],
+  "no_gpu_runs": true,
+  "independent_reproduction_claimed": false
+}

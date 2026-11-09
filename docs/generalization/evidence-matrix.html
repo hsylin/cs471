@@ -1,0 +1,1462 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>cs471: 50-paper evidence matrix</title><style>body{font:16px/1.5 system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#111;background:white}input,select{font:inherit;padding:.5rem;margin-right:.5rem;max-width:85%}details{border:1px solid #bbb;padding:.8rem;margin:.7rem 0}summary{cursor:pointer;font-weight:650}table{border-collapse:collapse;width:100%;margin-top:1rem}th,td{border:1px solid #ccc;padding:.5rem;text-align:left;vertical-align:top}th{width:23%;background:#f3f3f3}td{white-space:pre-wrap;overflow-wrap:anywhere}.meta{font-size:.9rem;color:#444}.hidden{display:none}@media print{input,select,button{display:none}details{break-inside:avoid}}</style><h1>Evidence for the next cs471 experiment</h1><p>50 conference papers. Publication identity and retrieved manuscript version are separate fields. Supplementary preprints, inaccessible candidates and company articles are excluded from this count. The matrix records reported evidence; it does not treat paper speedups as replications of our experiment.</p><label>Search <input id="query" type="search" placeholder="routing, padding, arrivals, title…"></label><label>Area <select id="area"><option value="">All</option><option>moe</option><option>serving</option><option>architecture</option></select></label><p id="count">50 papers</p>
+<details data-area="moe"><summary>01. DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training to Power Next-Generation AI Scale (2022)</summary><p class="meta">ICML (PMLR 162) · conference_paper<br><a href="https://proceedings.mlr.press/v162/rajbhandari22a.html">Proceedings / publisher</a> · <a href="https://proceedings.mlr.press/v162/rajbhandari22a/rajbhandari22a.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Multidimensional parallelism and specialized kernels can exploit aggregate memory bandwidth for low-latency MoE inference; architecture compression is a separate hypothesis.</td></tr>
+<tr><th>Mechanism</th><td>Expert/tensor/data parallelism, expert slicing, hierarchical all-to-all, coordinated communication and sparse gating kernels. PR-MoE and mixture-of-students also change architecture/model size and must be separated from the execution-only path.</td></tr>
+<tr><th>Model and hardware</th><td>52B standard MoE (1.3B base, 128 experts), larger 1T/2T inference configurations; NVIDIA A100 Azure clusters. Standard 52B scaling uses 8–64 GPUs; larger comparisons reach hundreds.</td></tr>
+<tr><th>Data and trace construction</th><td>Training/quality experiments include pretrained language-model data and zero-shot tasks. Inference scaling uses configured model/batch shapes; natural request-arrival trace construction is not reported in §5.2.</td></tr>
+<tr><th>Baselines</th><td>PyTorch MoE; dense models and PR-MoE/MoS variants in separate quality/cost comparisons.</td></tr>
+<tr><th>Controlled variables</th><td>Standard-MoE execution comparison holds model fixed; architecture/distillation gains are separately plotted. GPU counts differ in some cost-equivalent dense comparisons.</td></tr>
+<tr><th>Experimental unit</th><td>Configured model/parallelism/GPU-count benchmark, not an independently sampled serving session.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Inference latency and tokens/s; system/kernel optimizations. Open-loop queueing, request-tail latency and timing-repetition protocol not specified in read §5.2.</td></tr>
+<tr><th>Reported results</th><td>§5.2/Fig.7 reports up to 7.3× latency/throughput improvement for trillion-parameter models; this combines multiple system changes and is not a replica-dispatch-only gain.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Scaling and standard versus PR-MoE/MoS comparisons; Appendix C configurations.</td></tr>
+<tr><th>Limitations</th><td>Different model scale, network and communication collectives; exact serving arrival process absent. Quality-equivalent dense comparisons do not imply identical arithmetic.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public project named by paper; historical paper configuration not independently executed or fully audited in this review.<br><a href="https://github.com/microsoft/DeepSpeed">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://proceedings.mlr.press/v162/rajbhandari22a/rajbhandari22a.pdf">§5.1/Figs.5–6 mechanism</a><br><a href="https://proceedings.mlr.press/v162/rajbhandari22a/rajbhandari22a.pdf">§5.2/Figs.7–11 inference</a><br><a href="https://proceedings.mlr.press/v162/rajbhandari22a/rajbhandari22a.pdf">Appendix C/Table6 configurations</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§5.1/Figs.5–6 mechanism&quot;,
+    &quot;§5.2/Figs.7–11 inference&quot;,
+    &quot;Appendix C/Table6 configurations&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Foundational execution/communication baseline. Replicated input plus output allreduce omits the token all-to-all being optimized here.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>ba5c655506950b3bd52c61e35f971c94275a9d4d24c8162121d580df1d627ad4</td></tr>
+</table></details>
+<details data-area="moe"><summary>02. Tutel: Adaptive Mixture-of-Experts at Scale (2023)</summary><p class="meta">MLSys · conference_paper<br><a href="https://proceedings.mlsys.org/paper_files/paper/2023/hash/5616d34cf8ff73942cfd5aa922842556-Abstract-mlsys2023.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2206.03382">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Preserving parameter layout across parallel/pipeline modes permits low-overhead runtime adaptation to MoE workload variation.</td></tr>
+<tr><th>Mechanism</th><td>Identical tensor layout across expert/data parallel modes, dynamic pipelining, fast encode/decode and hierarchical all-to-all.</td></tr>
+<tr><th>Model and hardware</th><td>Up to 2,048 A100 SXM 80GB GPUs (8 per Azure VM, 1,600-Gbps aggregate interconnect); single-layer grids and SwinV2-MoE.</td></tr>
+<tr><th>Data and trace construction</th><td>243 single-layer configurations and capacity-factor variation as a workload proxy; ImageNet and COCO for vision-model training/inference quality. These are not natural request-arrival traces.</td></tr>
+<tr><th>Baselines</th><td>Fairseq MoE and static parallel/pipeline alternatives; framework versions and parallelism are specified.</td></tr>
+<tr><th>Controlled variables</th><td>Matched parallelism for direct comparisons, then incremental optimizations; capacity and pipeline modes varied explicitly.</td></tr>
+<tr><th>Experimental unit</th><td>Layer configuration or model/device-count experiment; repeated iterations within a configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Layer step latency/throughput, end-to-end model training and inference throughput, memory and accuracy.</td></tr>
+<tr><th>Reported results</th><td>Paper reports 4.96× speedup at 16 GPUs and 5.75× at 2,048 GPUs for layer benchmarks; SwinV2-MoE training/inference improvements are 1.55×/2.11×. Different denominators must not be pooled.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Feature-addition Fig.14; adaptive versus static modes; Appendix B kernels and Appendix C capacity/top-k/expert variations.</td></tr>
+<tr><th>Limitations</th><td>Scale and training/vision workloads differ; capacity-factor stress does not reproduce measured LLM temporal routing. Current repository has evolved since paper.</td></tr>
+<tr><th>Artifact and inspection</th><td>README and source tree inspected at f6610fd55b6b694ad9f033306b87cf37468f87c3; public implementation, no reproduction run.<br><a href="https://github.com/microsoft/tutel">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2206.03382">§3–4 adaptation and implementation</a><br><a href="https://arxiv.org/pdf/2206.03382">§5 evaluation/Fig.14</a><br><a href="https://arxiv.org/pdf/2206.03382">Appendices B–C</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author arXiv full text corresponding to verified MLSys publication&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–4 adaptation and implementation&quot;,
+    &quot;§5 evaluation/Fig.14&quot;,
+    &quot;Appendices B–C&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Useful for separating matched execution controls from adaptivity claims and for exposing communication costs absent from the present allreduce harness.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv full text corresponding to verified MLSys publication</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>2a0b21dca9b19a3499e58728667a81690b633b3de6f7e8fea5fc53d61a60a3e9</td></tr>
+</table></details>
+<details data-area="moe"><summary>03. MegaBlocks: Efficient Sparse Training with Mixture-of-Experts (2023)</summary><p class="meta">MLSys · conference_paper<br><a href="https://proceedings.mlsys.org/paper_files/paper/2023/hash/5a54f79333768effe7e8927bcccffe40-Abstract-mlsys2023.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2211.15841">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Block-sparse execution can retain every routed token without the large padding cost of batched GEMM.</td></tr>
+<tr><th>Mechanism</th><td>Reformulates MoE as block-sparse matrix products with custom sparse formats and kernels; rounds per-expert token count to a block of 128 rather than padding every expert to a common maximum.</td></tr>
+<tr><th>Model and hardware</th><td>GPT-style XS–Medium models, 64 experts and top-1 routing; 8 A100 SXM4 80GB GPUs, CUDA11.5/CUTLASS2.5.</td></tr>
+<tr><th>Data and trace construction</th><td>The Pile training and validation; layer microbenchmarks with training-sized expert token groups. Paper expects thousands of tokens/expert, unlike B128 inference.</td></tr>
+<tr><th>Baselines</th><td>Tutel integrated into the same Megatron framework and dense Megatron models.</td></tr>
+<tr><th>Controlled variables</th><td>Dropless and token-dropping Tutel comparisons distinguished; common global batch512 while memory capacity permits different microbatch sizes; validation loss accompanies speed.</td></tr>
+<tr><th>Experimental unit</th><td>Model/configuration training run or layer microbenchmark, not arrival-seed block.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Full training wall time and validation loss; §6.3 microbenchmark averages100 kernel executions but EXCLUDES sparse-metadata construction, arguing amortization across six operations. Do not use that microbenchmark as all-overhead latency.</td></tr>
+<tr><th>Reported results</th><td>Up to 40% over the best Tutel configurations and 1.8–2.4× relative to dense models at comparable validation loss. Dropless-only comparisons have larger gains and are a different claim.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>§6.1 dropless versus capacity-padded training; §6.2 loss-equivalent token-dropping comparisons; §6.3 uniform-routing kernel benchmark and tile-order/cache sensitivity. The retrieved manuscript has no appendices.</td></tr>
+<tr><th>Limitations</th><td>Training and large token groups; padding-count reductions alone do not establish latency. Architecture/model-quality comparisons differ from exact-layer route preservation.</td></tr>
+<tr><th>Artifact and inspection</th><td>Current README and source tree inspected at952db33d6eac334d22c61e47a0d5d41446298784; dmoe.py and BF16 forward tests subsequently inspected. Public code, no reproduction run; no archival DOI asserted.<br><a href="https://github.com/databricks/megablocks">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2211.15841">§4–5 sparse formulation/kernels</a><br><a href="https://arxiv.org/pdf/2211.15841">§6.1–6.2/Figs.7–8 end-to-end training</a><br><a href="https://arxiv.org/pdf/2211.15841">§6.3/Fig.9 kernel timing and metadata exclusion</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author arXiv full text corresponding to MLSys proceedings&quot;,
+  &quot;locators&quot;: [
+    &quot;§4–5 sparse formulation/kernels&quot;,
+    &quot;§6.1–6.2/Figs.7–8 end-to-end training&quot;,
+    &quot;§6.3/Fig.9 kernel timing and metadata exclusion&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Strong precedent for measuring grouped expert execution, but its 128-token blocks and training groups do not establish a benefit for the current small BF16 experts.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv full text corresponding to MLSys proceedings</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>70f79f9ee4fb2f3b46ebd071613a55b3124a2a665c49ae79415b3657797db045</td></tr>
+</table></details>
+<details data-area="moe"><summary>04. SmartMoE: Efficiently Training Sparsely-Activated Models through Combining Offline and Online Parallelization (2023)</summary><p class="meta">USENIX ATC · conference_paper<br><a href="https://www.usenix.org/conference/atc23/presentation/zhai">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/atc23-zhai.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>An offline pool of good hybrid parallel configurations plus online expert remapping can adapt to changing expert popularity at lower search cost.</td></tr>
+<tr><th>Mechanism</th><td>Cost-model-guided hybrid DP/TP/PP/EP search and online remapping. §6.2 uses a predicted-load improvement threshold, prefers mappings near the current placement in ties, and tunes search frequency empirically.</td></tr>
+<tr><th>Model and hardware</th><td>32 V100 PCIe/50-Gbps, 64 V100 SXM/100-Gbps and 32 A100 SXM/200-Gbps clusters; GPT-MoE 4.5–14B and Swin-MoE.</td></tr>
+<tr><th>Data and trace construction</th><td>Actual model-training routing traces and capacity factors1.2/2.4/4.8/infinite. Exact source dataset names for all system sweeps were not established in this extraction.</td></tr>
+<tr><th>Baselines</th><td>DeepSpeed-MoE, Tutel, manually tuned FasterMoE, and an Alpa strategy reimplementation in PyTorch (not the JAX system itself).</td></tr>
+<tr><th>Controlled variables</th><td>Training iteration includes forward/backward/gradient synchronization/optimizer and dense layers; separate offline/online controls; weak scaling changes total model size.</td></tr>
+<tr><th>Experimental unit</th><td>Model/hardware/configuration training experiment; source-token traces, not open-loop serving sessions.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Full training iteration time and throughput, memory, model search overhead and cost prediction.</td></tr>
+<tr><th>Reported results</th><td>Up to 1.88× over FasterMoE; reported average speedups depend on cluster/model (e.g.1.53× A100 and1.17× V100-SXM GPT workloads).</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Offline versus online components, cost-model accuracy and search interval; §7.4 reports the trade-off between adjustment cost and stale mappings.</td></tr>
+<tr><th>Limitations</th><td>Training, mutable placement and different parallelism. Thresholded rebalancing and stability/cost concerns already exist; a new threshold alone has little novelty.</td></tr>
+<tr><th>Artifact and inspection</th><td>README/source tree inspected at e19b3a994db5f7614778fd02c48f602ba9d9ac6e; available artifact, not executed.<br><a href="https://github.com/thu-pacman/SmartMoE-AE">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/atc23-zhai.pdf">§4–6 method</a><br><a href="https://www.usenix.org/system/files/atc23-zhai.pdf">§6.2 admission/search heuristic</a><br><a href="https://www.usenix.org/system/files/atc23-zhai.pdf">§7.1 setup</a><br><a href="https://www.usenix.org/system/files/atc23-zhai.pdf">§7.4 online frequency</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§4–6 method&quot;,
+    &quot;§6.2 admission/search heuristic&quot;,
+    &quot;§7.1 setup&quot;,
+    &quot;§7.4 online frequency&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Direct prior art for proposed reconfiguration gates; also motivates charging planner/commit overhead and identifying whether mappings actually change.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>3efee0cce50742c8f471404cf26255fd61cfdb1fd8847642da1a854dd04a7843</td></tr>
+</table></details>
+<details data-area="moe"><summary>05. Accelerating Distributed MoE Training and Inference with Lina (2023)</summary><p class="meta">USENIX ATC · conference_paper<br><a href="https://www.usenix.org/conference/atc23/presentation/li-jiamin">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/atc23-li-jiamin.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Coordinating communication priorities and using expert popularity/prediction can mitigate contention and imbalance in distributed MoE.</td></tr>
+<tr><th>Mechanism</th><td>Training communication scheduling; inference expert-selection path estimation, hot-expert replication/cold packing and pipelined CPU–GPU expert loading. Prediction mismatch requires a correction before dependent compute.</td></tr>
+<tr><th>Model and hardware</th><td>4 nodes×4 A10040GB, 100-Gbps InfiniBand; Transformer-XL, GPT2 and BERT-related MoE models, 2–16 experts; inference top-1 versus training top-2.</td></tr>
+<tr><th>Data and trace construction</th><td>Enwik8 text generation and WMT English–German for inference; additional training/model tasks in §7.1/Table6.</td></tr>
+<tr><th>Baselines</th><td>Vanilla DeepSpeed and a separate Tutel comparison. §7.1 explicitly enables hierarchical all-to-all for Lina and DeepSpeed; it does not state this for Tutel. An ideal balanced-gate reference changes logical routing and is identified as an idealization.</td></tr>
+<tr><th>Controlled variables</th><td>Token dropping disabled; 10 warmup/50 measured training iterations. Five inference executions split into two unprofiled timings and three profiler runs to prevent profiler perturbation of the latency result.</td></tr>
+<tr><th>Experimental unit</th><td>Model/test-set batch benchmark; individual test-set batches are not independently randomized systems.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>End-to-end batch median/p95 inference latency; training iteration time and profiler breakdown in separate runs.</td></tr>
+<tr><th>Reported results</th><td>§7.3 reports median improvements of1.54× and1.45× for Transformer-XL with4/16experts;16expert p95 improvements1.82× (TXL) and1.68× (BERT).</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>No prediction, no fine tuning, expert-path length1/3/6 and tasks; training communication components.</td></tr>
+<tr><th>Limitations</th><td>Inference includes offloading/prefetch and model-specific path prediction, unlike permanently resident experts. Ideal-gate references are not exact-routing controls.</td></tr>
+<tr><th>Artifact and inspection</th><td>No dedicated downloadable Lina implementation verified in this review; cited upstream DeepSpeed/Tutel are not substitutes for its artifact.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/atc23-li-jiamin.pdf">§5–6 inference method</a><br><a href="https://www.usenix.org/system/files/atc23-li-jiamin.pdf">§7.1 setup/timing</a><br><a href="https://www.usenix.org/system/files/atc23-li-jiamin.pdf">§7.3/Figs.16–19</a><br><a href="https://www.usenix.org/system/files/atc23-li-jiamin.pdf">Table6</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§5–6 inference method&quot;,
+    &quot;§7.1 setup/timing&quot;,
+    &quot;§7.3/Figs.16–19&quot;,
+    &quot;Table6&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Transfers the discipline of separating profiled diagnosis from unprofiled completion time; exact-route replicated-input comparisons cannot claim its distributed-serving scope.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>6275fa741b6960b6004ee8500217a2282c71cddb8769d4850a215060c0862103</td></tr>
+</table></details>
+<details data-area="moe"><summary>06. Fiddler: CPU-GPU Orchestration for Fast Inference of Mixture-of-Experts Models (2025)</summary><p class="meta">ICLR · conference_paper<br><a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/8cd1ce03ea58b3d7dfd809e4d42f08ea-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2402.07033">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>For sparse decode, computing cold experts on the CPU can be cheaper than repeatedly transferring full expert weights to the GPU.</td></tr>
+<tr><th>Mechanism</th><td>Offline hot-expert placement and CPU/GPU execution selection from measured cost; custom CPU BF16 computation and transfer overlap.</td></tr>
+<tr><th>Model and hardware</th><td>Uncompressed16-bit Mixtral8×7B;24GB Quadro RTX6000+Xeon6126 and49GB RTX6000Ada+Xeon8480+; appendix Phi3.5-MoE.</td></tr>
+<tr><th>Data and trace construction</th><td>ShareGPT conversations for calibration/evaluation; Appendix D repeats with LMSYS. Input/output length sweeps and beam-search widths are constructed workloads.</td></tr>
+<tr><th>Baselines</th><td>DeepSpeed-MIIv0.2.3/ZeRO offload, Mixtral-Offloading modified to unquantized16-bit, tuned llama.cpp b2956.</td></tr>
+<tr><th>Controlled variables</th><td>Same weight precision; best disclosed baseline offload configuration; hardware platforms separated. CPU instruction support and GPU-resident expert fractions differ by platform.</td></tr>
+<tr><th>Experimental unit</th><td>Prompt/configuration single-request generation experiment; not production request stream.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Prefill and decoding tokens/s, TTFT and inter-token latency; input32–4096/output64–512 and beam4/8/12/16.</td></tr>
+<tr><th>Reported results</th><td>Reported average1.26× over the best baseline in decoding; much larger beam-search comparisons use different regimes. Appendix F separately reports TTFT1.13× and ITL1.43×.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>CPU/GPU offload choices, long prefill, beam widths, second dataset and second model.</td></tr>
+<tr><th>Limitations</th><td>Capacity-constrained offloading, not all-resident two-H100 execution. Single-request throughput cannot establish queueing-tail generalization.</td></tr>
+<tr><th>Artifact and inspection</th><td>README/source tree inspected at 227715bfd6e8c731b29548eab01d9919c4fe9564; public implementation, no execution.<br><a href="https://github.com/efeslab/fiddler">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2402.07033">§3 design</a><br><a href="https://arxiv.org/pdf/2402.07033">§4 evaluation</a><br><a href="https://arxiv.org/pdf/2402.07033">Appendices D/E/F</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author arXiv version with ICLR2025 header and appendices&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 design&quot;,
+    &quot;§4 evaluation&quot;,
+    &quot;Appendices D/E/F&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Supports measuring transfer versus compute costs and calibrating on independent prompts; its CPU execution mechanism does not apply directly to current resident replicas.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv version with ICLR2025 header and appendices</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>40c1502e197c29470a92566716fea8642b0eed38139da24e2c4ecfbdd32674c9</td></tr>
+</table></details>
+<details data-area="moe"><summary>07. MoE-Lightning: High-Throughput MoE Inference on Memory-constrained GPUs (2025)</summary><p class="meta">ASPLOS, Volume1 · conference_paper<br><a href="https://doi.org/10.1145/3669940.3707267">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2411.11217">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Offloading choices should follow the CPU/GPU/interconnect bottleneck jointly rather than minimizing weight transfers alone.</td></tr>
+<tr><th>Mechanism</th><td>Hierarchical roofline model and CGOPipe paged-weight CPU/GPU/I/O pipeline; policy selects microbatching, attention placement and GPU weight residency.</td></tr>
+<tr><th>Model and hardware</th><td>Mixtral8×7B on single T4/L4;8×22B and DBRX on2–4 T4;24/32CPUcores and192/416GB host memory.</td></tr>
+<tr><th>Data and trace construction</th><td>MT-Bench80prompts replicated for offline batching; HELM synthetic-reasoning/summarization workloads; output lengths32/64/128/256.</td></tr>
+<tr><th>Baselines</th><td>FlexGen with CPU-attention option and DeepSpeed ZeRO-Inference0.14.3.</td></tr>
+<tr><th>Controlled variables</th><td>A padded MoE-Lightning variant matches FlexGen padding; maximal feasible batch sizes differ between systems, explicitly part of the throughput objective.</td></tr>
+<tr><th>Experimental unit</th><td>Offline batch/model/hardware configuration, not arrival-seed trial.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Tokens divided by full prefill+decode elapsed time, memory and policy efficiency. No open-loop queueing claim.</td></tr>
+<tr><th>Reported results</th><td>Up to10.3× against the best baseline in the broad throughput setup; padding-matched comparison is smaller (up to3.5× versus FlexGen).</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>CPU attention/FFN/KV choices, policy selection and hardware bottleneck regimes.</td></tr>
+<tr><th>Limitations</th><td>Host-offloading and batch-capacity gains do not transfer to fixed-budget fully resident experts; replicated prompts are not independent workload samples.</td></tr>
+<tr><th>Artifact and inspection</th><td>No repository was independently inspected for this paper in the present review; do not infer reproducibility from the manuscript alone.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2411.11217">§3 roofline</a><br><a href="https://arxiv.org/pdf/2411.11217">§4 CGOPipe</a><br><a href="https://arxiv.org/pdf/2411.11217">§5/Tables2–3 evaluation</a><br><a href="https://arxiv.org/pdf/2411.11217">§6 ablations</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author arXiv manuscript; conference identity/DOI verified separately&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 roofline&quot;,
+    &quot;§4 CGOPipe&quot;,
+    &quot;§5/Tables2–3 evaluation&quot;,
+    &quot;§6 ablations&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Strong model for declaring the bottleneck and reporting matched-capacity controls, but a different optimization problem from resident-copy dispatch.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv manuscript; conference identity/DOI verified separately</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>8fee924ef89fed055c0aebbac931a2ef06a9c09acaf30e0efcab814349d44bc5</td></tr>
+</table></details>
+<details data-area="moe"><summary>08. Pre-gated MoE: An Algorithm-System Co-Design for Fast and Scalable Mixture-of-Expert Inference (2024)</summary><p class="meta">ISCA · conference_paper<br><a href="https://doi.org/10.1109/ISCA59077.2024.00078">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2308.12066">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Predicting expert use one layer early permits weight prefetch that improves memory-constrained inference without unacceptable quality loss.</td></tr>
+<tr><th>Mechanism</th><td>Changes gating architecture to look ahead, fine-tunes from Switch checkpoints, overlaps CPU–GPU expert fetch with earlier computation.</td></tr>
+<tr><th>Model and hardware</th><td>Single A10080GB, AMD64-core host with1.8TB RAM, PCIe4; SwitchBase8/64/128/256experts andSwitchLarge128.</td></tr>
+<tr><th>Data and trace construction</th><td>XSum, closed-book WebQuestions and SQuAD downstream tasks; controlled inference workloads and microbatch sensitivity.</td></tr>
+<tr><th>Baselines</th><td>MoE on-demand loading, prefetch-all and GPU-only reference implemented using FasterTransformer.</td></tr>
+<tr><th>Controlled variables</th><td>Same2,048 fine-tuning steps/hyperparameters across variants; quality ROUGE/EM/F1 checked. GPU-only reference may require weights to fit.</td></tr>
+<tr><th>Experimental unit</th><td>Model/task/configuration; no independently sampled serving-arrival units.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>MoE-block latency, end-to-end inference throughput, peak memory and task quality.</td></tr>
+<tr><th>Reported results</th><td>Fig.10 reports average1.7× block-latency improvement over on-demand loading, while remaining19% slower than GPU-only across SwitchBase configurations.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Expert capacity/count, lookahead, microbatch size and quality comparisons; artifact appendix.</td></tr>
+<tr><th>Limitations</th><td>Logical routing/model is changed and retrained; cannot serve as an exact-routing speedup proof. CPU–GPU offload absent in current study.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact appendix includes scripts and Zenodo DOI10.5281/zenodo.10976343; repository retrieval recorded separately; no run. Actual repository README inspected at 6b0a6660ea792a7a9e128c592fa4641d11228dc8.<br><a href="https://github.com/ranggihwang/Pregated_MoE">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2308.12066">§III–IV co-design</a><br><a href="https://arxiv.org/pdf/2308.12066">§V setup</a><br><a href="https://arxiv.org/pdf/2308.12066">§VI/Figs.10–11</a><br><a href="https://arxiv.org/pdf/2308.12066">Artifact appendix</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author arXiv full text with artifact appendix; ISCA DOI verified&quot;,
+  &quot;locators&quot;: [
+    &quot;§III–IV co-design&quot;,
+    &quot;§V setup&quot;,
+    &quot;§VI/Figs.10–11&quot;,
+    &quot;Artifact appendix&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Illustrates need to separate algorithmic changes requiring quality evaluation from physical-copy reassignment that preserves experts and combining weights.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv full text with artifact appendix; ISCA DOI verified</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>d7d307b91d79576d46b5514c87f0daab9a33c279b0e200ea521f367d336fadae</td></tr>
+</table></details>
+<details data-area="moe"><summary>09. FlashMoE: Fast Distributed MoE in a Single Kernel (2025)</summary><p class="meta">NeurIPS38 · conference_paper<br><a href="https://papers.nips.cc/paper_files/paper/2025/file/918d938bd209e5b56072777366f8a211-Paper-Conference.pdf">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2506.04667v3">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Device-side persistent scheduling can avoid CPU launch bottlenecks and overlap distributed MoE data movement at finer granularity.</td></tr>
+<tr><th>Mechanism</th><td>Single persistent GPU kernel combines dispatch, expert computation and combine with NVSHMEM communication and locality-aware dependency scheduling.</td></tr>
+<tr><th>Model and hardware</th><td>8 H10080GB over NVLink; main layer shapes hidden/intermediate2048,top2,up to128experts and16Ktokens; additional A100/V100 diagnostics.</td></tr>
+<tr><th>Data and trace construction</th><td>MoE-layer shape/configuration workloads; not a complete serving request trace. Appendix workload construction must not be treated as full Qwen serving.</td></tr>
+<tr><th>Baselines</th><td>COMET, FasterMoE, Megatron-CUTLASS and Megatron-TransformerEngine.</td></tr>
+<tr><th>Controlled variables</th><td>32 warmups then average32timed executions. Paper uses FP32 for FlashMoE and FP16 for other systems, an explicit precision mismatch. COMET8GPU case excluded by authors for anomalously poor performance.</td></tr>
+<tr><th>Experimental unit</th><td>Single-layer configuration/microbenchmark; repeated kernel calls are technical repeats.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>MoE forward latency, throughput, SM activity, overlap and scaling. SM activity and concurrent GPU durations are not exclusive fractions of wall time.</td></tr>
+<tr><th>Reported results</th><td>Reported maxima:6× latency improvement,5.7× throughput and9× SM-activity improvement. They are layer/microbenchmark results under the stated controls, not general serving response gains.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Appendix A timing/setup; appendices G/H implementation/limitations; hardware/scale and straggler diagnostics.</td></tr>
+<tr><th>Limitations</th><td>Transport, scheduling and compute change together; precision mismatch limits causal isolation. Persistent NVSHMEM path is not a drop-in replacement for output-allreduce harness.</td></tr>
+<tr><th>Artifact and inspection</th><td>README and source tree inspected at9cc0c32443d2a2da6825a68af5ef83060329483b; public CUDA/NVSHMEM code, not executed.<br><a href="https://github.com/osayamenja/FlashMoE">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2506.04667v3">§3 persistent method</a><br><a href="https://arxiv.org/pdf/2506.04667v3">§4 evaluation</a><br><a href="https://arxiv.org/pdf/2506.04667v3">Appendices A/G/H</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;arXivv3; verified NeurIPS proceedings identity. Erroneous initial ID2506.04556 was rejected and excluded.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 persistent method&quot;,
+    &quot;§4 evaluation&quot;,
+    &quot;Appendices A/G/H&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Closest conference evidence for host-scheduling overhead, but a direct comparison must align precision, token groups and communication path.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>arXivv3; verified NeurIPS proceedings identity. Erroneous initial ID2506.04556 was rejected and excluded.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>5936a399197ff141bcb5c428e04d8a8032125c6e438247a1d0e4094cbb9b7bfc</td></tr>
+</table></details>
+<details data-area="moe"><summary>10. Occult: Optimizing Collaborative Communications across Experts for Accelerated Parallel MoE Training and Inference (2025)</summary><p class="meta">ICML (PMLR267) · conference_paper<br><a href="https://proceedings.mlr.press/v267/luo25f.html">Proceedings / publisher</a> · <a href="https://raw.githubusercontent.com/mlresearch/v267/main/assets/luo25f/luo25f.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Expert coactivation structure can reduce redundant inter-device communication, with optional routing pruning providing further gains.</td></tr>
+<tr><th>Mechanism</th><td>Collaborative token communication and coactivation-aware expert placement; separate collaboration-pruning mode restricts selected devices and fine-tunes routing.</td></tr>
+<tr><th>Model and hardware</th><td>PCIe-connected NVIDIA A6000 48GB; OLMoE1B-7B, Qwen1.5-MoEA2.7B and DeepSeek-MoE.</td></tr>
+<tr><th>Data and trace construction</th><td>Alpaca fine-tuning; Winogrande,WSC,PIQA,RACE,MathQA,RTE and appendix tasks; constructed large-prefill and generation workloads.</td></tr>
+<tr><th>Baselines</th><td>Tutel, MegaBlocks block-sparse/grouped-GEMM, FSDP and DeepSpeed; vLLM/HuggingFace explicitly described as reference systems rather than isolated equivalent baselines.</td></tr>
+<tr><th>Controlled variables</th><td>No-pruning physical optimizations separated from pruning; task-quality evaluation and frozen non-MoE parameters in fine-tuning.</td></tr>
+<tr><th>Experimental unit</th><td>Model/pruning/task/configuration; training iteration averages and inference batches.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Accuracy/F1/EM, training step time (1,000iteration averages), prefill and generation latency. Paper notes limited gains in small-batch decoding.</td></tr>
+<tr><th>Reported results</th><td>§4.3 reports large prefill speedups, e.g.1.70× versus MegaBlocks and1.86× versus vLLM for OLMoE with2-device pruning; these are not exact-routing gains.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Placement versus communication and pruning choices, device counts, routing-score versus similarity pruning; Appendix B additional quality tasks.</td></tr>
+<tr><th>Limitations</th><td>Optional pruning changes the logical experts; large-prefill communication gains do not establish small-batch resident-replica gains.</td></tr>
+<tr><th>Artifact and inspection</th><td>README/source tree inspected at2168edbb1db19bbf1009ef84f0d6d9d0a28db967; available, not reproduced.<br><a href="https://github.com/UNITES-Lab/Occult">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://raw.githubusercontent.com/mlresearch/v267/main/assets/luo25f/luo25f.pdf">§3.1–3.3 methods</a><br><a href="https://raw.githubusercontent.com/mlresearch/v267/main/assets/luo25f/luo25f.pdf">§4.1–4.3/Figs.7–9</a><br><a href="https://raw.githubusercontent.com/mlresearch/v267/main/assets/luo25f/luo25f.pdf">Appendix B</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Proceedings PDF from PMLR repository&quot;,
+  &quot;locators&quot;: [
+    &quot;§3.1–3.3 methods&quot;,
+    &quot;§4.1–4.3/Figs.7–9&quot;,
+    &quot;Appendix B&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Useful matched-logical-routing boundary: only the unpruned physical path is eligible for an exact arithmetic comparison with the current dispatcher.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Proceedings PDF from PMLR repository</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>5b7cfdb82806707d080982b186caddf272159601c2b8bc85eab03ba326991f30</td></tr>
+</table></details>
+<details data-area="moe"><summary>11. LocMoE: A Low-Overhead MoE for Large Language Model Training (2024)</summary><p class="meta">IJCAI · conference_paper<br><a href="https://www.ijcai.org/proceedings/2024/0705">Proceedings / publisher</a> · <a href="https://www.ijcai.org/proceedings/2024/0705.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Routing geometry and locality constraints can reduce MoE communication without sacrificing language-model quality.</td></tr>
+<tr><th>Mechanism</th><td>Orthogonal/discriminative routing analysis, locality regularization, capacity bound and groupwise communication/compute overlap.</td></tr>
+<tr><th>Model and hardware</th><td>64/128/256 Ascend910A NPUs; PanGu-Σ-derived Chinese/English telecom models,16experts.</td></tr>
+<tr><th>Data and trace construction</th><td>Proprietary telecom iCase, wiki and MML documents; downstream business/NLP tasks, described in appendices.</td></tr>
+<tr><th>Baselines</th><td>HashMoE and SwitchMoE implemented in common MindSpore environment.</td></tr>
+<tr><th>Controlled variables</th><td>Quality/perplexity and communication breakdown accompany throughput; model/device topology varied.</td></tr>
+<tr><th>Experimental unit</th><td>Training model/epoch/device-count configuration and task evaluation, not a serving workload block.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Mean training step time, throughput, communication/computation overlap, validation perplexity and downstream task quality.</td></tr>
+<tr><th>Reported results</th><td>1.15–1.29× throughput improvements in64NPU settings; locality benefits decline at256NPUs when local experts are absent and HashMoE can win.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Routing/locality/capacity and scale sensitivities; appendices B–E data/quality.</td></tr>
+<tr><th>Limitations</th><td>Different accelerator and altered logical routing/training objective; proprietary data and no serving-arrival protocol.</td></tr>
+<tr><th>Artifact and inspection</th><td>No public implementation/data artifact verified in the read primary sources.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.ijcai.org/proceedings/2024/0705.pdf">§3 method</a><br><a href="https://www.ijcai.org/proceedings/2024/0705.pdf">§4 evaluation</a><br><a href="https://www.ijcai.org/proceedings/2024/0705.pdf">Appendices B–E</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 method&quot;,
+    &quot;§4 evaluation&quot;,
+    &quot;Appendices B–E&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Useful negative-case precedent: locality helps only when compatible replicas exist; current fixed-residency controls should explicitly vary duplication opportunities.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>b3b12bfac16de3056fbd4e9167381f523986cd99731b30d3e7fb75b347b1761a</td></tr>
+</table></details>
+<details data-area="moe"><summary>12. Janus: A Unified Distributed Training Framework for Sparse Mixture-of-Experts Models (2023)</summary><p class="meta">ACM SIGCOMM · conference_paper<br><a href="https://doi.org/10.1145/3603269.3604869">Proceedings / publisher</a> · <a href="https://ymjiang.github.io/files/sigcomm2023_janus.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Moving experts to data can avoid excessive expert-parallel token traffic when fine-grained prefetch and sharing exploit topology.</td></tr>
+<tr><th>Mechanism</th><td>Data-centric training, asynchronous expert fetch, topology-aware hierarchical expert sharing and prefetch; fundamentally changes where weights/activations move.</td></tr>
+<tr><th>Model and hardware</th><td>4nodes×8A10080GB,NVLink/NVSwitch,200GbpsNIC and500GBhost memory; MoE BERT,GPT andTransformer-XL.</td></tr>
+<tr><th>Data and trace construction</th><td>Configured training models and batch/sequence sweeps; source dataset names not established in read system-evaluation paragraphs.</td></tr>
+<tr><th>Baselines</th><td>Expert-centric implementation and Tutel.</td></tr>
+<tr><th>Controlled variables</th><td>Component addition separates data-centric placement, sharing and prefetch; batch/sequence sensitivity varied.</td></tr>
+<tr><th>Experimental unit</th><td>Training model/configuration/device-count benchmark; iteration averages.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Full training iteration time and communication traffic, not serving response time.</td></tr>
+<tr><th>Reported results</th><td>Fig.14 reports1.28×/1.48×/1.52× improvements over Tutel for the tested models; abstract maximum2.06× concerns other configurations.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Fig.12 component analysis and batch/sequence/hardware sensitivities.</td></tr>
+<tr><th>Limitations</th><td>Migrating/fetching experts and training dependencies differ from fixed resident inference; traffic reductions need not translate into identical critical-path reductions.</td></tr>
+<tr><th>Artifact and inspection</th><td>No primary public repository verified for this paper during review.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://ymjiang.github.io/files/sigcomm2023_janus.pdf">§3 data-centric approach</a><br><a href="https://ymjiang.github.io/files/sigcomm2023_janus.pdf">§4–6 scheduling/sharing/prefetch</a><br><a href="https://ymjiang.github.io/files/sigcomm2023_janus.pdf">§7/Figs.12–14</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author-hosted SIGCOMM paper; publisher DOI verified&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 data-centric approach&quot;,
+    &quot;§4–6 scheduling/sharing/prefetch&quot;,
+    &quot;§7/Figs.12–14&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Shows why a generalization experiment must retain the same transport path or explicitly treat a new transport implementation as a second intervention.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author-hosted SIGCOMM paper; publisher DOI verified</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>71448f3ade69a01bd2a973900404eef20de4caa78e3a3b95766c0ba9247e65c2</td></tr>
+</table></details>
+<details data-area="moe"><summary>13. SonicMoE: Accelerating MoE with IO and Tile-aware Optimizations (2026)</summary><p class="meta">ICLR · conference_paper<br><a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/6ed5bf446f59e2c6646d23058c86424b-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2512.14080">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Activation-IO reduction and tile-aware work organization can improve MoE execution, while optional token rounding reduces training padding.</td></tr>
+<tr><th>Mechanism</th><td>Activation-cache reformulation, gather fusion and TMA/ping-pong pipelines; token-rounding routing is a separate semantics-changing optimization.</td></tr>
+<tr><th>Model and hardware</th><td>H100/Hopper BF16 kernels; retrieved extended manuscript also evaluates B300. Layers/models1.4B–120B with large token groups;7B training on64H100.</td></tr>
+<tr><th>Data and trace construction</th><td>Layer shape sweeps often32K–131Ktokens; FineWeb-Edu training/quality. Not B128/B1024 fixed-service jobs.</td></tr>
+<tr><th>Baselines</th><td>ScatterMoE, MoMoE, MegaBlocks, DeepGEMM and cuBLAS kernel references; available comparisons differ across manuscript revisions.</td></tr>
+<tr><th>Controlled variables</th><td>IO-only versus token-rounding ablations; task-loss comparisons for altered routing. Conference abstract and later manuscript numerical results are not interchangeable.</td></tr>
+<tr><th>Experimental unit</th><td>Kernel/model/configuration benchmark or training run, not independent arrival stream.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Forward/backward latency, memory, TFLOPS and full-model training throughput/quality.</td></tr>
+<tr><th>Reported results</th><td>ICLR proceedings summary reports1.86× over ScatterMoE for its7B configuration. Extended manuscript includes additional baselines/hardware; those results are not counted as separate replications.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Activation IO versus rounding; appendices F–I, model/shape tables and training convergence.</td></tr>
+<tr><th>Limitations</th><td>Training-oriented and far larger token groups; token rounding is incompatible with exact routing. Current CUDA/PyTorch requirements differ from frozen cs471 environment.</td></tr>
+<tr><th>Artifact and inspection</th><td>README/tree inspected at7396f3e604827d8186c2e16e64b28ee33d3defd0; public Hopper/Blackwell implementation, compatibility not established by running.<br><a href="https://github.com/Dao-AILab/sonic-moe">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2512.14080">§3–5 methods</a><br><a href="https://arxiv.org/pdf/2512.14080">§6 evaluation</a><br><a href="https://arxiv.org/pdf/2512.14080">Appendices F–I/Table9</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Current extended author manuscript plus separately verified ICLR2026 proceedings; revision-dependent results labeled&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–5 methods&quot;,
+    &quot;§6 evaluation&quot;,
+    &quot;Appendices F–I/Table9&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>A plausible alternative compute backend only after exact-weight/expert/precision equivalence is checked; a paper speedup does not establish a drop-in gain for small experts.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Current extended author manuscript plus separately verified ICLR2026 proceedings; revision-dependent results labeled</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>cc15d856b60ff73ee51bc230b5a0a421a36ee6b05282892f0997e0b9511e97fe</td></tr>
+</table></details>
+<details data-area="moe"><summary>14. LAER-MoE: Load-Adaptive Expert Re-layout for Efficient Mixture-of-Experts Training (2026)</summary><p class="meta">ASPLOS, Volume2 · conference_paper<br><a href="https://doi.org/10.1145/3779212.3790180">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2602.11686">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Integrating load-adaptive expert replication/re-layout with sharded training communication can reduce imbalance without a separate heavyweight movement phase.</td></tr>
+<tr><th>Mechanism</th><td>Fully-sharded expert parallelism, all-to-all expert restoration/re-sharding, and planner-driven replica/assignment changes.</td></tr>
+<tr><th>Model and hardware</th><td>4nodes×8A10080GB,300GB/sNVLink and800GbpsIB; Mixtral8×7B, reduced-layer8×22B and converted Qwen8×7B; e8k2/e16k4 controlled configurations.</td></tr>
+<tr><th>Data and trace construction</th><td>WikiText103 and C4 in artifact appendix; actual training/router loads plus auxiliary-loss sensitivity.</td></tr>
+<tr><th>Baselines</th><td>Best manually tuned Megatron parallelism; common FSDP+EP baseline with communication optimizations; reimplemented FlexMoE because original implementation unavailable.</td></tr>
+<tr><th>Controlled variables</th><td>20warmup/50timed training iterations; common communication optimization baseline isolates load balancing. Convergence verified by loss tolerance, not bitwise equality.</td></tr>
+<tr><th>Experimental unit</th><td>Model/parallelism/training configuration; technical iteration average.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Full training throughput, iteration breakdown, communication and convergence.</td></tr>
+<tr><th>Reported results</th><td>Up to1.69× over Megatron and1.50× over FSDP+EP; mean1.20× over reimplemented FlexMoE.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>No even placement, no priority queue, no communication optimization; auxiliary balancing loss0/1e−4.</td></tr>
+<tr><th>Limitations</th><td>Training re-sharding provides a movement opportunity absent in resident inference; optimizer/gradient semantics differ. Reduced-depth models are not full original checkpoints.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact appendix has commands, datasets/checkpoints and Zenodo10.5281/zenodo.18298795; repository README retrieval recorded separately; not run. Actual repository README inspected at 72db5b79c00b4e6cf523a0d0c0a23cd44defc3df.<br><a href="https://github.com/Fizzmy/LAER-MoE-AE">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2602.11686">§3–4 design</a><br><a href="https://arxiv.org/pdf/2602.11686">§5 evaluation</a><br><a href="https://arxiv.org/pdf/2602.11686">Artifact Appendix A</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author manuscript with ASPLOS2026 header and artifact appendix; publisher DOI verified&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–4 design&quot;,
+    &quot;§5 evaluation&quot;,
+    &quot;Artifact Appendix A&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Useful matched-baseline and charged-movement control; cannot infer that inference replica migration is free from a training re-layout result.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author manuscript with ASPLOS2026 header and artifact appendix; publisher DOI verified</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>c3241e7e32644d6924b1b482a2091965b51ff1b71ca02a6c5ee2e9ed6a409d77</td></tr>
+</table></details>
+<details data-area="moe"><summary>15. MegaScale-Infer: Efficient Mixture-of-Experts Model Serving with Disaggregated Expert Parallelism (2025)</summary><p class="meta">ACM SIGCOMM · conference_paper<br><a href="https://doi.org/10.1145/3718958.3750506">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2504.02263">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Attention/FFN disaggregation, efficient many-to-many transport and compute-aware expert balancing can improve MoE serving cost at a latency objective.</td></tr>
+<tr><th>Mechanism</th><td>Different parallelism/hardware for attention and FFNs; ping-pong microbatches; CPU-proxy/GDRCopy RDMA; §6 floor-cost expert model C_j=sum_i x_ij max(a_i,K) and greedy replica placement from traffic.</td></tr>
+<tr><th>Model and hardware</th><td>Homogeneous8nodes×8Ampere80GB,400GB/sNVLink and8×200GbpsNICs; heterogeneousH20/L40S. BF16Mixtral8×22B,DBRX and317B scaled MoE.</td></tr>
+<tr><th>Data and trace construction</th><td>Private production request trace with median input571/output159; configured microbatch and shape sweeps.</td></tr>
+<tr><th>Baselines</th><td>vLLM and TensorRT-LLM; component and deployment variants.</td></tr>
+<tr><th>Controlled variables</th><td>Decode and prefill measured separately across systems, with end-to-end throughput also reported; throughput optimized under TBT150ms constraint. Disaggregation can increase individual microbatch latency.</td></tr>
+<tr><th>Experimental unit</th><td>Model/deployment/workload configuration; private trace replay, not independent public source blocks.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Per-GPU/cost throughput, time between tokens, prefill/decode latency and M2N median/tail latency.</td></tr>
+<tr><th>Reported results</th><td>Up to1.90× per-GPU serving throughput versus TensorRT-LLM within the paper’s latency constraints; multi-component system result.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Disaggregation, M2N transport, pipeline and heterogeneous deployment; workload/scale sensitivities.</td></tr>
+<tr><th>Limitations</th><td>Private workload and substantial transport/architecture changes. Floor cost already recognizes activated-expert overhead; the current generic insight is not novel.</td></tr>
+<tr><th>Artifact and inspection</th><td>Paper references constituent public communication libraries, but a complete system plus private request trace was not verified as available.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2504.02263">§3–5 architecture/transport</a><br><a href="https://arxiv.org/pdf/2504.02263">§6 compute-aware balancing</a><br><a href="https://arxiv.org/pdf/2504.02263">§7 setup/evaluation</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author manuscript titled Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism; conference title and DOI separately verified&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–5 architecture/transport&quot;,
+    &quot;§6 compute-aware balancing&quot;,
+    &quot;§7 setup/evaluation&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Closest conference precedent for nonlinear expert cost and serving-level controls; present allreduce layer omits its attention, transport and scheduling costs.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author manuscript titled Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism; conference title and DOI separately verified</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>77ddd00732edb5728059243282cd2d80fe916fe28dca45818513ff08865a0f26</td></tr>
+</table></details>
+<details data-area="moe"><summary>16. GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding (2021)</summary><p class="meta">ICLR · conference_paper<br><a href="https://openreview.net/forum?id=qrwe7XHTmYb">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2006.16668">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Conditional expert computation plus automatic SPMD sharding can scale model capacity more cheaply than dense computation.</td></tr>
+<tr><th>Mechanism</th><td>Groupwise top-2 routing with capacity constraints, auxiliary load balance and probabilistic second expert; XLA/SPMD tensor-sharding annotations and distributed expert execution.</td></tr>
+<tr><th>Model and hardware</th><td>37.5–600B multilingual Transformers,12/36layers,128/512/2048TPUv3 cores.</td></tr>
+<tr><th>Data and trace construction</th><td>In-house25B parallel examples across100languages,13B intoEnglish;1Ttraining tokens. Proprietary multilingual quality/test sets.</td></tr>
+<tr><th>Baselines</th><td>Bilingual models and dense96-layer GPipe; model/depth/expert scaling variants.</td></tr>
+<tr><th>Controlled variables</th><td>BLEU and training cost evaluated together; scaling changes model capacity. Main successful large runs useFP32; BF16trillion-model instability is disclosed.</td></tr>
+<tr><th>Experimental unit</th><td>Training model/scale/language configuration, not serving arrival unit.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Training step time, memory/scaling, BLEU and total training cost.</td></tr>
+<tr><th>Reported results</th><td>600B model trained in4days on2048TPUv3 cores; scaling16×parameters costs roughly3.6× in the cited comparisons.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Depth and expert-count trade-offs, memory/communication scaling and multilingual quality.</td></tr>
+<tr><th>Limitations</th><td>Training, private corpus and TPU architecture; logical routing changes and token capacity differ from exact fixed checkpoint inference.</td></tr>
+<tr><th>Artifact and inspection</th><td>No complete model/data/system reproduction artifact verified here; compiler concepts and author publication are public.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2006.16668">§2 routing</a><br><a href="https://arxiv.org/pdf/2006.16668">§3 SPMD</a><br><a href="https://arxiv.org/pdf/2006.16668">§4–5 quality/scaling</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author manuscript with accepted ICLR identity verified from OpenReview/Google Research&quot;,
+  &quot;locators&quot;: [
+    &quot;§2 routing&quot;,
+    &quot;§3 SPMD&quot;,
+    &quot;§4–5 quality/scaling&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Foundational definition of logical routing/capacity and why dropping/altering tokens must not be hidden within a systems speedup.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author manuscript with accepted ICLR identity verified from OpenReview/Google Research</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>4078d81e9ef6db2e3a982e56d3d8816766d8d49f350e02f7410501ca496ad54e</td></tr>
+</table></details>
+<details data-area="moe"><summary>17. Lancet: Accelerating Mixture-of-Experts Training via Whole Graph Computation-Communication Overlapping (2024)</summary><p class="meta">MLSys · conference_paper<br><a href="https://proceedings.mlsys.org/paper_files/paper/2024/hash/339caf45a6fa281cae8adc6465343464-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2404.19429">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Whole-graph dependency-aware scheduling can overlap communication beyond the expert layer while preserving routing semantics.</td></tr>
+<tr><th>Mechanism</th><td>Compiler schedules weight gradients and dynamically selects operator partitions using cached operation/communication profiles. Capacity information passes between partitions to preserve exact token-to-expert mapping and dropping; irregular all-to-all sends only actual tokens.</td></tr>
+<tr><th>Model and hardware</th><td>8nodes each of A10080GB p4de or V100 p3dn;64GPUs maximum; GPT2-S/L MoE with2experts/GPU.</td></tr>
+<tr><th>Data and trace construction</th><td>WikiText input, sequence512; largest stated fitting batch per model/hardware; Switch and batch-prioritized gates.</td></tr>
+<tr><th>Baselines</th><td>DeepSpeed0.5.8,Tutel0.3 with best overlap degree1/2/4/8, and common RAF compiler without Lancet to control framework differences.</td></tr>
+<tr><th>Controlled variables</th><td>Same RAF baseline isolates compilation/scheduling; both gate types constrain legal partitioning; weak scaling keeps local batch fixed.</td></tr>
+<tr><th>Experimental unit</th><td>Model/gate/GPU-count training configuration; timing repetition/independent-run uncertainty not reported in read §7.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Full training iteration time/throughput, overlapped/non-overlapped operation durations, cost prediction and optimization time.</td></tr>
+<tr><th>Reported results</th><td>Up to1.30× with Switch gating on V100; mean1.17×A100 and1.22×V100 for that setting. Computation time can increase due to partition overhead while wall time decreases.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Gate types and hardware; cost prediction error3.83%; optimizer time; overlap/dependency analysis.</td></tr>
+<tr><th>Limitations</th><td>Training backward work supplies overlap absent in layer inference; summed overlap components must not be treated as additive wall-time shares.</td></tr>
+<tr><th>Artifact and inspection</th><td>Uses open RAF/TVM but a dedicated Lancet repository was not verified in this bounded review.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2404.19429">§2 capacity-preserving partitioning</a><br><a href="https://arxiv.org/pdf/2404.19429">§3–6 compiler/cost model</a><br><a href="https://arxiv.org/pdf/2404.19429">§7.1–7.3/Figs.11–15</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author manuscript corresponding to MLSys2024 publication&quot;,
+  &quot;locators&quot;: [
+    &quot;§2 capacity-preserving partitioning&quot;,
+    &quot;§3–6 compiler/cost model&quot;,
+    &quot;§7.1–7.3/Figs.11–15&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Strong exact-routing precedent and common-framework control; timing benefit can coexist with more total work, so active/padded counts are mechanism proxies, not latency proof.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author manuscript corresponding to MLSys2024 publication</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>e89160348f69220840de2a82bed9dd41f04ed83def80a2b4d1ee187bef4d7a88</td></tr>
+</table></details>
+<details data-area="moe"><summary>18. COMET: Fine-grained Computation-communication Overlapping for Mixture-of-Experts (2025)</summary><p class="meta">MLSys · conference_paper<br><a href="https://proceedings.mlsys.org/paper_files/paper/2025/hash/e27ea0cd50b798ff8942caf9203f0992-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2502.19811">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Tile-granular dependency resolution and calibrated resource allocation can hide communication and host scheduling overhead without sacrificing grouped-GEMM efficiency.</td></tr>
+<tr><th>Mechanism</th><td>Splits shared tensors along independent dimensions, schedules local-ready tiles first, horizontally fuses communication/compute, and profiles a fixed configuration-specific resource split before deployment.</td></tr>
+<tr><th>Model and hardware</th><td>8H80080GBNVLink and8L20PCIe; Mixtral8×7B,Qwen2-MoE,Phi3.5-MoE;CUDA12.3,NVSHMEM2.11,PyTorch2.4.</td></tr>
+<tr><th>Data and trace construction</th><td>Input token-length/model/parallelism sweeps; synthetic imbalance varied by token-distribution standard deviation with a production-training reference std0.032. Natural serving arrival trace not provided.</td></tr>
+<tr><th>Baselines</th><td>Common Megatron-LM6dbe4c with CUTLASS,TransformerEngine,Tutel andFasterMoE; FasterMoE limited to expert parallelism.</td></tr>
+<tr><th>Controlled variables</th><td>Attention implementation identical across end-to-end comparisons; separate single-layer and whole-model results; NVSHMEM memory overhead reported.</td></tr>
+<tr><th>Experimental unit</th><td>Layer/model/shape/parallelism benchmark; independent-run CI and repetition count not identified in read §5.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>MoE/full-model latency, communication overlap, host overhead and memory; local indexing/dispatch counted as computation rather than GPU–GPU communication.</td></tr>
+<tr><th>Reported results</th><td>§5.2 average full-model latency reductions31.8% versusTutel and34.1% versusMegatron-CUTLASS; layer speedups1.28–2.37×. They include changed communication and scheduling.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.</td></tr>
+<tr><th>Ablations</th><td>Token length, expert/top-k, parallelism, imbalance, NVLink versusPCIe and memory overhead; offline resource-split profiling.</td></tr>
+<tr><th>Limitations</th><td>Most groups are much larger than current small-layer inference; communication fusion changes the intervention. Production trace is only a distribution reference.</td></tr>
+<tr><th>Artifact and inspection</th><td>Paper-linked public Flux repository; README retrieval/commit recorded separately. Whole artifact not executed. Actual repository README inspected at 19831ca2d820e3e782ed1d15d8b52d0898b78b26.<br><a href="https://github.com/bytedance/flux">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2502.19811">§3.1 shared-tensor dependency method</a><br><a href="https://arxiv.org/pdf/2502.19811">§3.2 resource split</a><br><a href="https://arxiv.org/pdf/2502.19811">§5.1–5.5/Figs.9–14</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author manuscript corresponding to MLSys2025 proceedings&quot;,
+  &quot;locators&quot;: [
+    &quot;§3.1 shared-tensor dependency method&quot;,
+    &quot;§3.2 resource split&quot;,
+    &quot;§5.1–5.5/Figs.9–14&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Most useful matched-framework control and direct warning that host dispatch overhead can dominate small expert groups; current output-allreduce does not test its full communication mechanism.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author manuscript corresponding to MLSys2025 proceedings</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>7658333b15614270d63af72d3aceb81b86e628a8962e956cdaac9c03b434c957</td></tr>
+</table></details>
+<details data-area="serving"><summary>19. Orca: A Distributed Serving System for Transformer-Based Generative Models (2022)</summary><p class="meta">OSDI 2022 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi22/presentation/yu">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi22-yu.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Iteration-level scheduling can avoid waiting for whole requests to finish.</td></tr>
+<tr><th>Mechanism</th><td>Continuous iteration scheduling and selective batching: batch non-attention operators while handling attention separately.</td></tr>
+<tr><th>Model and hardware</th><td>GPT-shaped 13B–341B FP16; up to 32 A100 40GB across four Azure VMs.</td></tr>
+<tr><th>Data and trace construction</th><td>Synthetic uniform input/output lengths and Poisson arrivals; no trained checkpoint or semantic prompts; EOS disabled.</td></tr>
+<tr><th>Baselines</th><td>FasterTransformer with a custom dynamic-batching scheduler.</td></tr>
+<tr><th>Controlled variables</th><td>Engine-only and end-to-end comparisons; batch/microbatch tuning; equal-length engine inputs separate scheduling effects.</td></tr>
+<tr><th>Experimental unit</th><td>Arrival-rate workload and model/parallelism configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Median end-to-end latency per generated token versus offered rate; engine latency.</td></tr>
+<tr><th>Reported results</th><td>Reports up to 36.9× throughput at comparable latency in its evaluated configurations.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Engine-only selective batching; distributed scaling; scheduler versus kernel contribution.</td></tr>
+<tr><th>Limitations</th><td>Synthetic lengths and dummy-weight workload cannot establish content-dependent MoE routing generality.</td></tr>
+<tr><th>Artifact and inspection</th><td>No public implementation inspected; later papers reimplement Orca.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi22-yu.pdf">§§3–4 methods; §6 evaluation, PDF pp.11–15; engine and end-to-end figures.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§§3–4 methods; §6 evaluation, PDF pp.11–15; engine and end-to-end figures.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Keep engine microbenchmarks distinct from charged queue-response measurements.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>b8038438ad8ff99bb131c1a6e16f7df10cf2f962aeb1bf4f1c00cc37e70658ca</td></tr>
+</table></details>
+<details data-area="serving"><summary>20. Efficient Memory Management for Large Language Model Serving with PagedAttention (2023)</summary><p class="meta">SOSP 2023 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://doi.org/10.1145/3600006.3613165">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2309.06180">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Paging KV storage permits larger effective batches and sharing without contiguous reservations.</td></tr>
+<tr><th>Mechanism</th><td>Block table KV addressing, on-demand pages and copy-on-write sharing.</td></tr>
+<tr><th>Model and hardware</th><td>OPT 13/66/175B and LLaMA13B; Google Cloud A100, 1/4/8 GPUs.</td></tr>
+<tr><th>Data and trace construction</th><td>ShareGPT/Alpaca request lengths, newly generated Poisson timestamps; one-hour traces except 175B fifteen minutes.</td></tr>
+<tr><th>Baselines</th><td>FasterTransformer custom batching; reimplemented Orca Max/Pow2/Oracle allocation.</td></tr>
+<tr><th>Controlled variables</th><td>Matched request lengths, model and devices; explicit oracle output-length reservation baseline.</td></tr>
+<tr><th>Experimental unit</th><td>Model/workload/request-rate run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Mean normalized request latency (end-to-end divided by output length), capacity and KV memory.</td></tr>
+<tr><th>Reported results</th><td>ShareGPT capacity 1.7–2.7× Orca-Oracle; attention kernel itself is 20–26% slower in the reported microbenchmark.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Block size, preemption/recomputation, prefix sharing and beam search.</td></tr>
+<tr><th>Limitations</th><td>Kernel slowdown can coexist with system speedup; full-model KV gains do not predict fixed-layer gains.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact identity from paper; current repository not reproduced for this review.<br><a href="https://github.com/vllm-project/vllm">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2309.06180">§6.1–6.5 evaluation, PDF pp.10–12; §7 ablations, pp.12–13.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author PDF retrieved from arXiv; proceedings metadata separately checked; hash pins read version.&quot;,
+  &quot;locators&quot;: [
+    &quot;§6.1–6.5 evaluation, PDF pp.10–12; §7 ablations, pp.12–13.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Measure the critical path and queueing rather than equating largest-kernel timing with system benefit.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author PDF retrieved from arXiv; proceedings metadata separately checked; hash pins read version.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e</td></tr>
+</table></details>
+<details data-area="serving"><summary>21. Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve (2024)</summary><p class="meta">OSDI 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi24/presentation/agrawal">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi24-agrawal.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Chunked prefills plus hybrid decode batches can reduce decode stalls without losing all prefill efficiency.</td></tr>
+<tr><th>Mechanism</th><td>Profiled token budget, chunked prefill, stall-free batching, pipeline scheduling.</td></tr>
+<tr><th>Model and hardware</th><td>Mistral7B/A100; Yi34B/2 A100; Llama2-70B/8 A40; Falcon180B/8 A100 across two nodes.</td></tr>
+<tr><th>Data and trace construction</th><td>ShareGPT and arXiv summarization lengths; Poisson arrivals; long-sequence filtering.</td></tr>
+<tr><th>Baselines</th><td>vLLM/Orca-style batching; varied maximum batch sizes.</td></tr>
+<tr><th>Controlled variables</th><td>Token budgets calibrated to strict/relaxed TBT targets; shared workload/model/hardware.</td></tr>
+<tr><th>Experimental unit</th><td>Workload and arrival-rate run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>p50 TTFT, p99 time-between-tokens, capacity subject to queue and TBT constraints.</td></tr>
+<tr><th>Reported results</th><td>Yi34B on ShareGPT under the strict SLO supports up to 3.7× capacity versus vLLM; a 512-token prefill chunk adds about 25% cost versus unchunked Yi34B prefill in the reported comparison.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Chunking alone, hybrid batching alone, both; token budget and pipeline effects.</td></tr>
+<tr><th>Limitations</th><td>Thresholds follow measured SLO profiles, not universal constants; Poisson timestamps are not production replay.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact linked by paper; no reproduction here.<br><a href="https://github.com/microsoft/sarathi-serve">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi24-agrawal.pdf">§4.1–4.4 methods; §5, Tables1–4, Figs10–14, proceedings pp.126–129.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§4.1–4.4 methods; §5, Tables1–4, Figs10–14, proceedings pp.126–129.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Justify parameters on held-out development profiles and retain charged overhead.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>2416e51f584230107739783e5995d3dea3efad93f189e2c3119434d62a31412c</td></tr>
+</table></details>
+<details data-area="serving"><summary>22. DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving (2024)</summary><p class="meta">OSDI 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi24-zhong-yinmin.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Separating prefill and decode resource pools can improve SLO-constrained useful throughput.</td></tr>
+<tr><th>Mechanism</th><td>Independent phase parallelism, placement, profiled queue/load control and KV transfer.</td></tr>
+<tr><th>Model and hardware</th><td>OPT13/66/175B; 32 A10080 across four nodes; 25Gbps cross-node links.</td></tr>
+<tr><th>Data and trace construction</th><td>ShareGPT, HumanEval and LongBench; capped inputs; Poisson arrivals.</td></tr>
+<tr><th>Baselines</th><td>vLLM and DeepSpeed-MII; unsupported MII175B configuration explicitly excluded.</td></tr>
+<tr><th>Controlled variables</th><td>Common request stream/model, application-specific TTFT/TPOT targets and GPU normalization.</td></tr>
+<tr><th>Experimental unit</th><td>Application/model/rate run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Per-GPU goodput and 90% SLO attainment; appendix includes 99%; latency breakdown.</td></tr>
+<tr><th>Reported results</th><td>Reports up to 4.6× per-GPU goodput versus vLLM in selected chat configurations.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Placement and bandwidth, parallelism, interference; some large placement results are simulated.</td></tr>
+<tr><th>Limitations</th><td>Full TTFT/TPOT results do not transfer to a preassembled single-layer job response metric.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact linked by paper; no execution.<br><a href="https://github.com/LLMServe/DistServe">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi24-zhong-yinmin.pdf">§4 placement/runtime; §6.1–6.5, Table1/Figs8–11; appendix stricter attainment.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§4 placement/runtime; §6.1–6.5, Table1/Figs8–11; appendix stricter attainment.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Explicitly name response boundary and account for transfer/control time.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>bb03e59d6ec6550015901f3f78d7e68f5a07cad8ccacb12f72835a8b667341c1</td></tr>
+</table></details>
+<details data-area="serving"><summary>23. Splitwise: Efficient Generative LLM Inference Using Phase Splitting (2024)</summary><p class="meta">ISCA 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://doi.org/10.1109/ISCA59077.2024.00019">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2311.18677">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Phase separation can exploit different prompt/token compute requirements and hardware economics.</td></tr>
+<tr><th>Mechanism</th><td>Prompt/token pools with overlapped layer-wise KV transfers and cluster sizing simulation.</td></tr>
+<tr><th>Model and hardware</th><td>BLOOM176B/Llama2-70B; A100/H100 DGX eight-GPU machines; 200/400Gbps links.</td></tr>
+<tr><th>Data and trace construction</th><td>Azure code/conversation traces provide timestamps and token lengths, not prompt text. Capacity simulation resamples Poisson arrivals from length distributions.</td></tr>
+<tr><th>Baselines</th><td>Continuous-batching mixed-phase vLLM; homogeneous and heterogeneous cluster designs.</td></tr>
+<tr><th>Controlled variables</th><td>Profiled hardware models; 80/20 performance-model split; transfer prototype versus no-transfer control.</td></tr>
+<tr><th>Experimental unit</th><td>Two-machine prototype run and simulated cluster/workload configuration, separately.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>TTFT/TBT/end-to-end p50/p90/p99 SLOs, throughput/cost; overlap-sensitive transfer delay.</td></tr>
+<tr><th>Reported results</th><td>Cluster-design headline: 1.4× throughput at 20% lower cost; not a measured two-GPU result.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>KV transfer overlap/serialization; hardware mixes and cluster constraints; simulator validation.</td></tr>
+<tr><th>Limitations</th><td>Scale-out claims use simulation. Content omission is consequential for MoE routes.</td></tr>
+<tr><th>Artifact and inspection</th><td>Zenodo artifact description and simulator README inspected; archive download blocked. Azure dataset metadata inspected.<br><a href="https://zenodo.org/records/11003049">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2311.18677">§§III–VI; methodology/profile validation, cluster results; artifact DOI landing.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author PDF; official ISCA author-hosted final PDF also read via web. Conference DOI distinguished from later IEEE Micro article.&quot;,
+  &quot;locators&quot;: [
+    &quot;§§III–VI; methodology/profile validation, cluster results; artifact DOI landing.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Preserve original timestamps if testing production burst patterns; do not call Poisson resampling raw replay.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author PDF; official ISCA author-hosted final PDF also read via web. Conference DOI distinguished from later IEEE Micro article.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>c7baf19039f7b760c5d83fb61324ec4ffdf384e8a047bd46f2c4e2ad85e3531d</td></tr>
+</table></details>
+<details data-area="serving"><summary>24. Parrot: Efficient Serving of LLM-based Applications with Semantic Variable (2024)</summary><p class="meta">OSDI 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi24/presentation/lin-chaofan">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi24-lin-chaofan.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Application dependency information enables better scheduling and shared-prefix reuse.</td></tr>
+<tr><th>Mechanism</th><td>Semantic variables expose request dependencies; application-aware placement and batching.</td></tr>
+<tr><th>Model and hardware</th><td>Llama7/13B; A10080 or four A6000 48GB.</td></tr>
+<tr><th>Data and trace construction</th><td>ArXiv summaries, agent/application tasks, ShareGPT; some responses forced to recorded GPT4-like lengths; added network-delay scenarios.</td></tr>
+<tr><th>Baselines</th><td>LangChain/FastChat with HuggingFace or vLLM engines and least-queue placement.</td></tr>
+<tr><th>Controlled variables</th><td>Same application structures and engine token budget; distinguish optimizations applicable to each task.</td></tr>
+<tr><th>Experimental unit</th><td>Application execution, rather than individual model invocation.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Application end-to-end latency, token latency and capacity.</td></tr>
+<tr><th>Reported results</th><td>Chain summarization example improves 1.38× over vLLM configuration; benefits vary by dependency structure.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Chunk/output length, background traffic, concurrency, application-level scheduling.</td></tr>
+<tr><th>Limitations</th><td>Application dependency and prefix reuse are absent from a fixed-layer replay; some inputs/response lengths are constructed.</td></tr>
+<tr><th>Artifact and inspection</th><td>Paper implementation described; repository not inspected in this extraction.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi24-lin-chaofan.pdf">§§4–5 methods; §8.1–8.6, Table2/Figs10–13.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§§4–5 methods; §8.1–8.6, Table2/Figs10–13.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Define the experimental unit honestly; layer job latency is not application completion time.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>ce334df62516ea037233b77650cd5303c6ae254e0cf7c267f86a92f69f2386ff</td></tr>
+</table></details>
+<details data-area="serving"><summary>25. AlpaServe: Statistical Multiplexing with Model Parallelism for Deep Learning Serving (2023)</summary><p class="meta">OSDI 2023 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi23/presentation/li-zhouhan">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2302.11665">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Model parallelism can improve burst tolerance through statistical multiplexing despite communication cost.</td></tr>
+<tr><th>Mechanism</th><td>Simulator-guided model placement and parallelism using workload history.</td></tr>
+<tr><th>Model and hardware</th><td>BERT1.3–104B and GShard MoE one-forward workloads; 64 V10016 on eight AWS nodes.</td></tr>
+<tr><th>Data and trace construction</th><td>Azure Functions 2019/2021 proxy traces assigned to models; window-fitted Gamma resampling and rate/CV scaling.</td></tr>
+<tr><th>Baselines</th><td>Selective replication; Clockwork++ with optimistic zero-cost swapping.</td></tr>
+<tr><th>Controlled variables</th><td>Shared resource budget; simulator checked against physical testbed.</td></tr>
+<tr><th>Experimental unit</th><td>Placement/workload configuration; selected dynamic traces repeated three times.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>99% SLO attainment versus devices, load and burstiness.</td></tr>
+<tr><th>Reported results</th><td>Reports separate improvements up to 2.3× device efficiency, 10× arrival rate or 6× CV tolerance.</td></tr>
+<tr><th>Uncertainty</th><td>Most results simulated; §6.4/Fig14 averages three repetitions of the changing-traffic experiment using two randomly sliced one-hour MAF1 traces as assumed and actual traffic. Table2 simulator/testbed SLO-attainment discrepancies are below 2 percentage points, not necessarily below 2% relative error; no population CI.</td></tr>
+<tr><th>Ablations</th><td>Placement heuristics, model parallelism and shifting arrival patterns.</td></tr>
+<tr><th>Limitations</th><td>Non-autoregressive serving and function-trace proxies, not measured generative LLM request traffic.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact identity from paper; not executed.<br><a href="https://github.com/alpa-projects/mms">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2302.11665">§3 queueing analysis; §4.2–4.3 algorithms/runtime; §6 and Table2 simulator validation; §6.4/Fig14 changing-traffic repetitions.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author PDF; USENIX conference identity separately checked; not asserted byte-identical to proceedings.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 queueing analysis; §4.2–4.3 algorithms/runtime; §6 and Table2 simulator validation; §6.4/Fig14 changing-traffic repetitions.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Unchanged average load can conceal burst changes; simulated and real measurements must remain separate.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author PDF; USENIX conference identity separately checked; not asserted byte-identical to proceedings.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>1365206e0d765f846677424d1f4580ca89e1eea98413892a1e529d2fd8fba496</td></tr>
+</table></details>
+<details data-area="serving"><summary>26. Serving DNNs like Clockwork: Performance Predictability from the Bottom Up (2020)</summary><p class="meta">OSDI 2020 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi20/presentation/gujarati">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi20-gujarati.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Controlling execution and admission can make DNN service latency predictable.</td></tr>
+<tr><th>Mechanism</th><td>Central schedules explicit load/input/execute/output actions; serialized GPU execution and deadline-aware admission.</td></tr>
+<tr><th>Model and hardware</th><td>61 DNN models; twelve servers with two V10032 each; TVM0.7.</td></tr>
+<tr><th>Data and trace construction</th><td>Synthetic closed-loop comparison and open-loop Poisson experiments; Azure Functions workload proxy.</td></tr>
+<tr><th>Baselines</th><td>TensorFlow Serving and related serving systems; INFaaS hardware differs and comparison is qualified.</td></tr>
+<tr><th>Controlled variables</th><td>Explicit accepted/rejected workload accounting; separate worker-scalability emulation.</td></tr>
+<tr><th>Experimental unit</th><td>Serving workload/run; scalability emulation distinct from GPU experiment.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Deadline goodput, workload satisfaction, latency; rejected requests excluded from goodput and counted separately.</td></tr>
+<tr><th>Reported results</th><td>Strong predictability under controlled execution; reported large-scale emulation is not equivalent to GPU throughput.</td></tr>
+<tr><th>Uncertainty</th><td>Scalability experiments report three-repeat medians; no general independent-workload confidence interval identified.</td></tr>
+<tr><th>Ablations</th><td>Admission, model-loading effects, number of models and controller scale.</td></tr>
+<tr><th>Limitations</th><td>Closed-loop clients and emulated workers support different claims from open-loop request latency.</td></tr>
+<tr><th>Artifact and inspection</th><td>Appendix A artifact instructions read; artifact not executed.<br><a href="https://gitlab.mpi-sws.org/cld/ml/clockwork">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi20-gujarati.pdf">§4 control architecture; §6.1–6.6 evaluation; AppendixA.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§4 control architecture; §6.1–6.6 evaluation; AppendixA.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Publish offered/completed/rejected counts and preserve arrival times independently of completion.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>31e12ad02b25dfc0296bbaa577c4dd46cee8bf3ae4e4db51aaa5d557a794abfb</td></tr>
+</table></details>
+<details data-area="serving"><summary>27. InferLine: Latency-Aware Provisioning and Scaling for Prediction Serving Pipelines (2020)</summary><p class="meta">SoCC 2020 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://doi.org/10.1145/3419111.3421285">Proceedings / publisher</a> · <a href="https://par.nsf.gov/servlets/purl/10245792">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Per-stage provisioning and rapid tuning can meet pipeline latency targets at lower cost.</td></tr>
+<tr><th>Mechanism</th><td>Profiling, discrete-event latency estimator, combinatorial planner and network-calculus tuner.</td></tr>
+<tr><th>Model and hardware</th><td>Four ML pipelines; up to sixteen AWS p2.8xlarge nodes, 128 K80 GPUs.</td></tr>
+<tr><th>Data and trace construction</th><td>Gamma arrivals; one generated trace reused across systems, separate profiling/test traces. AutoScale minute-rate curves rescaled and Gamma-filled, first25% planning/remaining75% test.</td></tr>
+<tr><th>Baselines</th><td>Coarse-grained mean/peak pipeline provisioning, same underlying Clipper or TensorFlow Serving runtime.</td></tr>
+<tr><th>Controlled variables</th><td>Centralized batching added to both runtimes; shared trace and comparable cost model.</td></tr>
+<tr><th>Experimental unit</th><td>Pipeline/workload trace run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>End-to-end SLO misses and provisioned cost; p95/p99 estimator validation.</td></tr>
+<tr><th>Reported results</th><td>Reports selected-case improvements up to 7.6× cost and 34.5× fewer SLO misses.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Planner versus tuner, estimator fidelity, changes in rate/CV, alternate runtime.</td></tr>
+<tr><th>Limitations</th><td>§9 assumes input-independent model time and ordered hardware speed; both can fail for content-sensitive MoE.</td></tr>
+<tr><th>Artifact and inspection</th><td>Full conference paper read; public code not located/verified.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://par.nsf.gov/servlets/purl/10245792">§§3–5 methods; §6 pp484–485 workload; §7 Figs7–14; §9 limitations.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;NSF-hosted conference PDF with SoCC DOI, pages477–491; replaced earlier author preprint for extraction.&quot;,
+  &quot;locators&quot;: [
+    &quot;§§3–5 methods; §6 pp484–485 workload; §7 Figs7–14; §9 limitations.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Nearest precedent for paired calendars and untouched test draws; synthetic interpolation must be disclosed.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>NSF-hosted conference PDF with SoCC DOI, pages477–491; replaced earlier author preprint for extraction.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>9875b17bb8d7cebe2d8f8a502fa446f133832a58ce7566afa75e899fd8620d47</td></tr>
+</table></details>
+<details data-area="serving"><summary>28. INFaaS: Automated Model-less Inference Serving (2021)</summary><p class="meta">USENIX ATC 2021 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/atc21/presentation/romero">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/atc21-romero.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Automated variant choice and resource scaling can satisfy heterogeneous accuracy/latency needs economically.</td></tr>
+<tr><th>Mechanism</th><td>Profiled variant selection, horizontal/vertical scaling and sharing.</td></tr>
+<tr><th>Model and hardware</th><td>175 variants, 22 architectures; AWS V100, Inferentia and CPU instances; ImageNet/GNMT tasks.</td></tr>
+<tr><th>Data and trace construction</th><td>Poisson workloads and a day sampled from Twitter timestamps; Zipf model popularity, batch1 requests.</td></tr>
+<tr><th>Baselines</th><td>Clipper+/SM+ reimplemented within common INFaaS infrastructure and validated against originals.</td></tr>
+<tr><th>Controlled variables</th><td>Same RPC/container runtime for primary policy comparisons.</td></tr>
+<tr><th>Experimental unit</th><td>Workload/configuration run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Throughput, cost, SLO misses and resource utilization.</td></tr>
+<tr><th>Reported results</th><td>In selected Twitter-derived experiments reports 1.3× throughput and 1.23× cost reduction.</td></tr>
+<tr><th>Uncertainty</th><td>Quartile whiskers over four-second intervals describe within-trace variation, not independent-run uncertainty.</td></tr>
+<tr><th>Ablations</th><td>Variant selection, scaling, sharing and decision overhead.</td></tr>
+<tr><th>Limitations</th><td>Twitter activity is a proxy arrival trace, not production inference; heterogeneous hardware/accuracy controls exceed present scope.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact linked by paper; not reproduced.<br><a href="https://github.com/stanford-mast/INFaaS">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/atc21-romero.pdf">§4 design; evaluation setup and real-trace experiment, ATC pp397–411.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF&quot;,
+  &quot;locators&quot;: [
+    &quot;§4 design; evaluation setup and real-trace experiment, ATC pp397–411.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Keep implementation path common when testing policy differences; label proxy traces.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>f92042f14b1a5ffab09333eb6a1b5ad122911742cb1adcbe56e28d366d84f619</td></tr>
+</table></details>
+<details data-area="serving"><summary>29. Llumnix: Dynamic Scheduling for Large Language Model Serving (2024)</summary><p class="meta">OSDI 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi24/presentation/sun-biao">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2406.03243">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Live request rescheduling can reduce queue/memory imbalance and isolate priority classes.</td></tr>
+<tr><th>Mechanism</th><td>KV live migration, destination preallocation and unified freeness-based scheduling.</td></tr>
+<tr><th>Model and hardware</th><td>Llama7/30B FP16; sixteen A10 24GB across four Alibaba VMs.</td></tr>
+<tr><th>Data and trace construction</th><td>10,000-request runs; ShareGPT/BurstGPT lengths plus synthetic length families; Poisson/Gamma arrival generation.</td></tr>
+<tr><th>Baselines</th><td>Round robin, INFaaS++ and priority-agnostic Llumnix, all common vLLM engine.</td></tr>
+<tr><th>Controlled variables</th><td>Matched engine/model/requests; migration cost and ongoing-request impact measured separately.</td></tr>
+<tr><th>Experimental unit</th><td>Trace/rate/priority run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Mean/p99 end-to-end, prefill/decode latency; cost and migration downtime.</td></tr>
+<tr><th>Reported results</th><td>Selected real-length workloads show up to2× mean/2.9× p99 end-to-end improvement; migration downtime20–30ms.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Live-migration phases, priority, autoscaling, workload burstiness.</td></tr>
+<tr><th>Limitations</th><td>Overlap reduces visible stall without eliminating work; original BurstGPT timestamps are not necessarily replayed.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact identity from paper; no execution.<br><a href="https://github.com/AlibabaPAI/llumnix">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2406.03243">§4.2 migration, §4.4 scheduling; §6 evaluation and migration breakdown.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author PDF; USENIX conference identity confirmed separately; primary PDF retrieval blocked.&quot;,
+  &quot;locators&quot;: [
+    &quot;§4.2 migration, §4.4 scheduling; §6 evaluation and migration breakdown.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Report charged migration and exposed critical-path time separately; byte counts alone are inadequate.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author PDF; USENIX conference identity confirmed separately; primary PDF retrieval blocked.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>c76d726aced3e5d24920b10259938922d37ebcb3b8d80b89d9bb9550e4bdf97a</td></tr>
+</table></details>
+<details data-area="serving"><summary>30. SGLang: Efficient Execution of Structured Language Model Programs (2024)</summary><p class="meta">NeurIPS 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/724be4472168f31ba1c9ac630f15dec8-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2312.07104">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Structured programs reveal reuse and constraints that generic request APIs cannot exploit.</td></tr>
+<tr><th>Mechanism</th><td>RadixAttention caching, cache-aware scheduling, compressed finite-state decoding and API speculation.</td></tr>
+<tr><th>Model and hardware</th><td>Llama7–70B, Mixtral, multimodal models; A10G/A100 and API workloads.</td></tr>
+<tr><th>Data and trace construction</th><td>Eleven tasks including MMLU, agents, reasoning, JSON/RAG and constructed multi-turn lengths.</td></tr>
+<tr><th>Baselines</th><td>vLLM0.2.5, Guidance0.1.8, LMQL0.7.3 and framework-specific implementations.</td></tr>
+<tr><th>Controlled variables</th><td>Output-changing optimizations disabled by default; same task definitions.</td></tr>
+<tr><th>Experimental unit</th><td>Program/task batch or single program.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Saturated programs/second and isolated program latency; not primarily open-loop queueing.</td></tr>
+<tr><th>Reported results</th><td>Up to6.4× throughput/3.7× latency headline; little benefit for long-output multi-turn tasks.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Cache, scheduling and frontend components; short/long output regimes.</td></tr>
+<tr><th>Limitations</th><td>Old-version controls and cache-heavy programs limit transfer; production cache-hit statistics are observational.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact linked by proceedings; current code not reproduced.<br><a href="https://github.com/sgl-project/sglang">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2312.07104">§§3–5 methods; §6/Fig8 and AppendixC evaluation.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author PDF; official proceedings title and DOI confirmed; hash pins read revision.&quot;,
+  &quot;locators&quot;: [
+    &quot;§§3–5 methods; §6/Fig8 and AppendixC evaluation.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>New semantic prompt families are needed when routing depends on text; throughput saturation is a different estimand.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author PDF; official proceedings title and DOI confirmed; hash pins read revision.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57</td></tr>
+</table></details>
+<details data-area="serving"><summary>31. MuxServe: Flexible Spatial-Temporal Multiplexing for Multiple LLM Serving (2024)</summary><p class="meta">ICML 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://proceedings.mlr.press/v235/duan24a.html">Proceedings / publisher</a> · <a href="https://raw.githubusercontent.com/mlresearch/v235/main/assets/duan24a/duan24a.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Joint spatial and temporal sharing can improve multi-model serving utilization.</td></tr>
+<tr><th>Mechanism</th><td>LLM-unit placement, unified KV management and adaptive batch scheduling.</td></tr>
+<tr><th>Model and hardware</th><td>Llama7/13/30/65B; four eight-A10080 nodes with NVLink/200Gbps links.</td></tr>
+<tr><th>Data and trace construction</th><td>Synthetic power-law popularity plus Poisson ShareGPT requests; ChatLMSYS trace rescaled for sixteen models.</td></tr>
+<tr><th>Baselines</th><td>Spatial vLLM and temporal AlpaServe-style controls using common placement/KV infrastructure.</td></tr>
+<tr><th>Controlled variables</th><td>Resource budget and workloads fixed across systems.</td></tr>
+<tr><th>Experimental unit</th><td>Multi-model workload/placement run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Arrival-rate-weighted throughput, SLO attainment, appendix p99 latency.</td></tr>
+<tr><th>Reported results</th><td>Real-trace throughput1.38×/1.46× spatial/temporal controls; synthetic maximum1.8×.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Placement heuristic, scheduling versus FCFS/RR, resource-management components.</td></tr>
+<tr><th>Limitations</th><td>Multi-model contention differs from one fixed MoE layer; rescaled traces are transformed evidence.</td></tr>
+<tr><th>Artifact and inspection</th><td>PMLR code link verified; no artifact execution.<br><a href="https://github.com/hao-ai-lab/MuxServe">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://raw.githubusercontent.com/mlresearch/v235/main/assets/duan24a/duan24a.pdf">§3 methods; §4 evaluation, real-workload experiment; appendices.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;PMLR-linked proceedings PDF, vol235 pp11905–11917.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 methods; §4 evaluation, real-workload experiment; appendices.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Retain heterogeneity breakdowns; aggregate weighted throughput can hide regressions.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>PMLR-linked proceedings PDF, vol235 pp11905–11917.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>6e659ceddfd220040bca50928d6cd04dd851f0d9873537a9fe537a629245a744</td></tr>
+</table></details>
+<details data-area="serving"><summary>32. FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU (2023)</summary><p class="meta">ICML 2023 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://proceedings.mlr.press/v202/sheng23a.html">Proceedings / publisher</a> · <a href="https://proceedings.mlr.press/v202/sheng23a/sheng23a.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Bulk scheduling and offload policy can make large-model throughput practical on a small GPU.</td></tr>
+<tr><th>Mechanism</th><td>IO-aware blocked schedule, LP memory placement, CPU computation/overlap and optional compression.</td></tr>
+<tr><th>Model and hardware</th><td>OPT6.7–175B; T4 16GB,208GB host memory,SSD; additional hardware appendix.</td></tr>
+<tr><th>Data and trace construction</th><td>Fixed padded prompt lengths and short outputs; dummy weights for performance, real weights for accuracy.</td></tr>
+<tr><th>Baselines</th><td>Accelerate, DeepSpeed ZeRO-Inference and Petals; precision/device differences disclosed.</td></tr>
+<tr><th>Controlled variables</th><td>FP16 versus quantized results separated; prefill-inclusive versus decode-only metrics distinguished.</td></tr>
+<tr><th>Experimental unit</th><td>Offline batch/configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Generated tokens per wall time, memory/offload, accuracy on language benchmarks.</td></tr>
+<tr><th>Reported results</th><td>OPT175B at512 input tokens:0.69token/s FP16 and1.12 with4-bit, versus reported0.01 baseline.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Placement, overlap, CPU/disk and quantization; runtime breakdown disables overlap.</td></tr>
+<tr><th>Limitations</th><td>Offline huge batches, some projected output throughput and dummy weights cannot establish low-latency online response.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact identified in paper; not executed.<br><a href="https://github.com/FMInference/FlexGen">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://proceedings.mlr.press/v202/sheng23a/sheng23a.pdf">§§4–5 methods; §6 evaluation; AppendixA4 policy/hardware breakdown.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;PMLR proceedings PDF, vol202 pp31094–31116.&quot;,
+  &quot;locators&quot;: [
+    &quot;§§4–5 methods; §6 evaluation; AppendixA4 policy/hardware breakdown.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Do not add overlapping component times or project completed-response improvements from an offline kernel result.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>PMLR proceedings PDF, vol202 pp31094–31116.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>7cd9673c37640011d38ef4b8595f5e1e09a85b1f803a3734f19c97ca66c75b9e</td></tr>
+</table></details>
+<details data-area="serving"><summary>33. BurstGPT: A Real-World Workload Dataset to Optimize LLM Serving Systems (2025)</summary><p class="meta">KDD 2025, Datasets and Benchmarks Track · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://kdd.org/kdd2025/datasets-and-benchmarks-track-papers-2/">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2401.17644">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Real inference traffic characteristics can change serving conclusions compared with function-trace proxies.</td></tr>
+<tr><th>Mechanism</th><td>API/conversation trace collection, analysis and workload-replay/generation tools.</td></tr>
+<tr><th>Model and hardware</th><td>Azure OpenAI provider with3000 users; demonstration Llama2-7/13B on A6000/A800 and vLLM.</td></tr>
+<tr><th>Data and trace construction</th><td>Conference metadata reports213days/10.31million requests. Prompt contents absent; demo selects ShareGPT prompts by length. Current release totals differ from paper version.</td></tr>
+<tr><th>Baselines</th><td>BurstGPT versus MAF2 at matched mean rate; scheduler-policy and workload-parameter variants.</td></tr>
+<tr><th>Controlled variables</th><td>Matched mean RPS comparison; separate API/conversation classes.</td></tr>
+<tr><th>Experimental unit</th><td>Trace interval/configuration; individual requests for latency distributions.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Token latency, response jitter, throughput and failures; archived elapsed time is full response, not TTFT.</td></tr>
+<tr><th>Reported results</th><td>Demonstrates that matching mean arrival rate does not match burst structure or scheduler rankings.</td></tr>
+<tr><th>Uncertainty</th><td>Standard deviation/jitter is workload variation; no independent-run CI identified.</td></tr>
+<tr><th>Ablations</th><td>Arrival shape/rate, length distributions, scheduling and memory capacity.</td></tr>
+<tr><th>Limitations</th><td>Current replay example has a timestamp-delta scheduling defect; this is not evidence the paper experiments used that revision.</td></tr>
+<tr><th>Artifact and inspection</th><td>README/release schema and example workload.py/runner.py read; defect and version separation recorded in artifact audit.<br><a href="https://github.com/HPMLL/BurstGPT">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2401.17644">§3 characterization; §4 workload construction; §5 comparisons, Fig15 parameter interpretation checked critically.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Latest retrieved author PDF has placeholder Conference17 header; KDD identity independently confirmed. Exact camera-ready equivalence is not established.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 characterization; §4 workload construction; §5 comparisons, Fig15 parameter interpretation checked critically.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Use pinned raw timestamps and an independently checked absolute-clock replayer; disclose failed-request filtering.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Latest retrieved author PDF has placeholder Conference17 header; KDD identity independently confirmed. Exact camera-ready equivalence is not established.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>4ead426df5fad6724256a31cd731dd9d30c114cf8bde0bed897a9387793a8262</td></tr>
+</table></details>
+<details data-area="serving"><summary>34. Fairness in Serving Large Language Models (2024)</summary><p class="meta">OSDI 2024 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://www.usenix.org/conference/osdi24/presentation/sheng">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi24-sheng.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Token-cost virtual accounting can provide service fairness under variable request sizes.</td></tr>
+<tr><th>Mechanism</th><td>Virtual token counter with counter lifting, work-conserving scheduling and optional length prediction.</td></tr>
+<tr><th>Model and hardware</th><td>Llama2-7B A10G24;13B A10080 ablation; S-LoRA/LightLLM runtime.</td></tr>
+<tr><th>Data and trace construction</th><td>Synthetic client phases and Chatbot Arena timestamps; LLM identity mapped to27 clients; ten-minute rescaled trace.</td></tr>
+<tr><th>Baselines</th><td>FCFS, request-rate limits, least-counter-first, predicted and oracle length variants.</td></tr>
+<tr><th>Controlled variables</th><td>Common inference runtime and token-cost weights.</td></tr>
+<tr><th>Experimental unit</th><td>Client workload/trace run; fairness theorem separate from empirical performance.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Client service disparity, tokens/second and per-client response latency.</td></tr>
+<tr><th>Reported results</th><td>Example throughput about779token/s versus340 under restrictive RPM5; demonstrates fairness/throughput tradeoff.</td></tr>
+<tr><th>Uncertainty</th><td>No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Counter lift, length prediction, memory capacity and model size.</td></tr>
+<tr><th>Limitations</th><td>Client identity is constructed in trace mapping; theoretical service bound is not a response-time CI.</td></tr>
+<tr><th>Artifact and inspection</th><td>Artifact linked by paper; no execution.<br><a href="https://github.com/Ying1123/VTC-artifact">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi24-sheng.pdf">§3 cost model; §4 algorithm/bounds; evaluation and memory-capacity ablations.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;USENIX proceedings PDF, pp965–988.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3 cost model; §4 algorithm/bounds; evaluation and memory-capacity ablations.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Aggregate gains require prespecified subgroup protection; retain B128 regression guard.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>USENIX proceedings PDF, pp965–988.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>72efdc5c9cdddf728b6c61ac00cb8907dcdf56b8edff54d4012f1228530d0a72</td></tr>
+</table></details>
+<details data-area="serving"><summary>35. DynamoLLM: Designing LLM Inference Clusters for Performance and Energy Efficiency (2025)</summary><p class="meta">HPCA 2025 · peer-reviewed conference paper; proceedings identity confirmed<br><a href="https://doi.org/10.1109/HPCA61900.2025.00102">Proceedings / publisher</a> · <a href="https://iacoma.cs.uiuc.edu/iacoma-papers/hpca25_2.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Joint configuration of request pools, parallelism and frequency can reduce energy while meeting latency targets.</td></tr>
+<tr><th>Mechanism</th><td>Empirical energy/performance profiles, hierarchical controllers and MILP configuration.</td></tr>
+<tr><th>Model and hardware</th><td>Llama2-70B main results, eight-H100 servers; up to96H100 in one-hour physical experiment.</td></tr>
+<tr><th>Data and trace construction</th><td>Azure coding/conversation production traces; one-hour and day-long physical runs; week-long large-scale simulation; Poisson sensitivity.</td></tr>
+<tr><th>Baselines</th><td>SinglePool, MultiPool, and scaling instance/parallelism/frequency individually.</td></tr>
+<tr><th>Controlled variables</th><td>Common latency objectives and traces; profiles validated; measured and simulated scale separated.</td></tr>
+<tr><th>Experimental unit</th><td>Trace/configuration cluster run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Energy, TTFT/TBT quantiles, power and cost; operational carbon modeled from energy/grid traces.</td></tr>
+<tr><th>Reported results</th><td>Versus SinglePool, the physical one-hour/day runs save 35%/42% energy; the simulated week saves 47%/56% for conversation/code, respectively.</td></tr>
+<tr><th>Uncertainty</th><td>§III.A energy characterization runs each experiment for 30 seconds, repeats five times and reports the mean. These repetitions are distinct from §V long cluster runs. No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.</td></tr>
+<tr><th>Ablations</th><td>Individual configuration knobs, prediction errors, load and number of pools.</td></tr>
+<tr><th>Limitations</th><td>Energy gains do not imply layer latency gains; public traces omit contents and cannot specify MoE routing.</td></tr>
+<tr><th>Artifact and inspection</th><td>Official schema, license, release links and provenance read; traces assigned to parent for raw-date verification.<br><a href="https://github.com/Azure/AzurePublicDataset/blob/215becdacba1ce682c7368642ce97d5a332de7a6/AzureLLMInferenceDataset2024.md">Artifact source</a></td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://iacoma.cs.uiuc.edu/iacoma-papers/hpca25_2.pdf">§IV profiling/controller; §V.A–F, Figs7–17; physical §V.B/D versus simulated §V.E.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {
+    &quot;methods_read&quot;: true,
+    &quot;evaluation_read&quot;: true
+  },
+  &quot;fulltext_version&quot;: &quot;Author-hosted HPCA proceedings PDF, pp1348–1362; Crossref confirms conference identity.&quot;,
+  &quot;locators&quot;: [
+    &quot;§IV profiling/controller; §V.A–F, Figs7–17; physical §V.B/D versus simulated §V.E.&quot;
+  ]
+}</td></tr>
+<tr><th>Applicability</th><td>Primary provenance for day-disjoint Azure2024 arrival windows; preserve raw contents absence.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author-hosted HPCA proceedings PDF, pp1348–1362; Crossref confirms conference identity.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>aa5d8464aac2f6a973acc2c89ead9b76e673f91e98f41023f96f256dd7fce586</td></tr>
+</table></details>
+<details data-area="architecture"><summary>36. FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (2022)</summary><p class="meta">NeurIPS 35 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://proceedings.neurips.cc/paper/2022/hash/67d57c32e20fd0a7a302cb81d36e40d5-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2205.14135v2">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Reducing HBM traffic can accelerate exact attention even with recomputation.</td></tr>
+<tr><th>Mechanism</th><td>SRAM tiling, online softmax normalization, fused operations, backward recomputation.</td></tr>
+<tr><th>Model and hardware</th><td>BERT-large/GPT-2/LRA; A100; BERT 8×A100-80GB.</td></tr>
+<tr><th>Data and trace construction</th><td>Wikipedia BERT; OpenWebText GPT-2 with shared 0.5% validation split; synthetic shape benchmarks.</td></tr>
+<tr><th>Baselines</th><td>NVIDIA MLPerf1.1 BERT, HuggingFace, Megatron, exact and approximate attention.</td></tr>
+<tr><th>Controlled variables</th><td>BERT reference recipe, target accuracy, validation examples; GPT-2 optimizer and training steps.</td></tr>
+<tr><th>Experimental unit</th><td>Training run and attention shape.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Wall time to 72% masked-language accuracy; training throughput; attention runtime/memory.</td></tr>
+<tr><th>Reported results</th><td>BERT training 15% faster; GPT-2 up to 3× versus HuggingFace, 1.8× versus Megatron.</td></tr>
+<tr><th>Uncertainty</th><td>BERT Table1 averages 10 runs with dispersion; no common CI across all speed claims.</td></tr>
+<tr><th>Ablations</th><td>Fig2 HBM-access and block-size experiments; exact versus block-sparse extension.</td></tr>
+<tr><th>Limitations</th><td>Attention/training evidence; sparse extension changes attention pattern. Not direct evidence about our expert GEMMs.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public code linked in paper: https://github.com/HazyResearch/flash-attention ; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2205.14135v2">§3.1 Algorithm1;§4.1/Table1;AppendixE.1–E.2;PDFpp4–7, 26.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v2, 2022-06-23; proceedings identity separately checked.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3.1 Algorithm1;§4.1/Table1;AppendixE.1–E.2;PDFpp4–7, 26.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read tiling/recomputation derivation and shared BERT target/split recipe, not only headline speedups.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Distinguish useful FLOPs, executed work and memory traffic; validate mathematical equivalence and end-to-end benefit separately.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v2, 2022-06-23; proceedings identity separately checked.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4</td></tr>
+</table></details>
+<details data-area="architecture"><summary>37. FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning (2024)</summary><p class="meta">ICLR 2024 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/98ed250b203d1ac6b24bbcf263e3d4a7-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2307.08691v1">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>IO efficiency alone leaves occupancy and inter-warp communication bottlenecks.</td></tr>
+<tr><th>Mechanism</th><td>Fewer non-matmul FLOPs; parallelize sequence blocks; split-Q warp work to avoid shared-memory reductions.</td></tr>
+<tr><th>Model and hardware</th><td>Attention and GPT-style1.3B/2.7B; A100-80GB SXM4; 8GPU training.</td></tr>
+<tr><th>Data and trace construction</th><td>Sequence512–16384, total16K tokens, hidden2048, head64/128, causal/noncausal; training sequence2K/8K.</td></tr>
+<tr><th>Baselines</th><td>PyTorch, FlashAttention, xformers CUTLASS, Triton implementation.</td></tr>
+<tr><th>Controlled variables</th><td>Shared shapes, mask and precision; four block-size choices tuned per head dimension.</td></tr>
+<tr><th>Experimental unit</th><td>Attention configuration and model training configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Forward/backward runtime; formula-based TFLOPs/s; end-to-end training throughput.</td></tr>
+<tr><th>Reported results</th><td>Attention1.7–3× versus FlashAttention; training up to 1.3× versus FlashAttention.</td></tr>
+<tr><th>Uncertainty</th><td>Evaluation reports point performance; timing-run CI not identified in inspected sections.</td></tr>
+<tr><th>Ablations</th><td>Work-partition reasoning and shape sweeps; no exhaustive factorial ablation identified.</td></tr>
+<tr><th>Limitations</th><td>A100 training focus; model-FLOPs formula counts causal attention differently from kernel FLOPs, explicitly acknowledged.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public flash-attention repository; artifact not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2307.08691v1">§3.2–3.3, §4.1–4.2;PDFpp8–11;Figs3–7/Table1.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v1, 2023-07-17; ICLR2024 proceedings separately confirmed; no DOI established.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3.2–3.3, §4.1–4.2;PDFpp8–11;Figs3–7/Table1.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read register-spilling/block-size tradeoff and constant-total-token benchmark; noted FLOP-accounting caveat.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Small tiles can worsen occupancy/overhead; preserve shape and dtype when comparing resident-dispatch kernels.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v1, 2023-07-17; ICLR2024 proceedings separately confirmed; no DOI established.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868</td></tr>
+</table></details>
+<details data-area="architecture"><summary>38. FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision (2024)</summary><p class="meta">NeurIPS 37 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://proceedings.neurips.cc/paper/2024/hash/7ede97c3e082c6df10a8d6103a2eebd2-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2407.08608v2">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Hopper-specific asynchronous execution can expose more useful compute overlap.</td></tr>
+<tr><th>Mechanism</th><td>TMA/WGMMA producer-consumer warp specialization; GEMM-softmax pipeline; separate FP8 quantization path.</td></tr>
+<tr><th>Model and hardware</th><td>Attention; H100-80GB SXM5 700W, fixed1830MHz.</td></tr>
+<tr><th>Data and trace construction</th><td>Synthetic attention shapes, hidden2048, head64/128/256; long sequences adjusted to multiples132 to avoid wave quantization.</td></tr>
+<tr><th>Baselines</th><td>PyTorch, FA2, Hopper Triton, cuDNN.</td></tr>
+<tr><th>Controlled variables</th><td>Shape/mask/input precision; explicit clock and library versions.</td></tr>
+<tr><th>Experimental unit</th><td>Kernel shape/configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Mean of100 timing repetitions; TFLOPs/s; FP8/FP16 RMSE.</td></tr>
+<tr><th>Reported results</th><td>FP16 up to 740TFLOPs/s; 1.5–2× forward speed versus FA2; ablation3.538ms versus4.021/4.105ms.</td></tr>
+<tr><th>Uncertainty</th><td>100-run means; confidence intervals not identified.</td></tr>
+<tr><th>Ablations</th><td>Table2 removes pipelining or warp specialization; Table3 numerical-error treatments.</td></tr>
+<tr><th>Limitations</th><td>No full serving response experiment; FP8 is not an exact BF16 replacement; adjusted lengths favor wave utilization.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public flash-attention code; uses CUTLASS primitives; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2407.08608v2">§3.1–3.3;§4/Table2;AppendixC.1;PDFpp4–9, 11, 21.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v2, 2024-07-12; NeurIPS proceedings separately confirmed.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3.1–3.3;§4/Table2;AppendixC.1;PDFpp4–9, 11, 21.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read asynchronous mechanism, measured ablations, clock/repetition protocol and132-SM shape adjustment.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Hardware-aware ablations are stronger than identifying the longest kernel; preserve naturally captured shapes and BF16 semantics.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v2, 2024-07-12; NeurIPS proceedings separately confirmed.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb</td></tr>
+</table></details>
+<details data-area="architecture"><summary>39. TensorIR: An Abstraction for Automatic Tensorized Program Optimization (2023)</summary><p class="meta">ASPLOS 2023 Volume2 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://sigplan-www.sigplan.hosting.acm.org/OpenTOC/asplos23-2.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2207.04296v2">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Tensor-intrinsic semantics should be explicit in the compiler search representation.</td></tr>
+<tr><th>Mechanism</th><td>TensorIR blocks, blockized computation, tensorization validation and joint memory/loop schedule search.</td></tr>
+<tr><th>Model and hardware</th><td>RTX3080 FP16 inputs/accumulators; Graviton2 int8 sdot; ResNet50, MobileNetV2, BERT-large, ViT.</td></tr>
+<tr><th>Data and trace construction</th><td>Operator families and model-derived shapes; GPU batches1/16; workload rather than arrival traces.</td></tr>
+<tr><th>Baselines</th><td>TVM auto-scheduler, AMOS, CUTLASS2.9, TensorRT, PyTorch; ArmComputeLib.</td></tr>
+<tr><th>Controlled variables</th><td>Hardware, operator shapes, batch, precision; compiler/library versions recorded.</td></tr>
+<tr><th>Experimental unit</th><td>Operator shape and end-to-end model configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Normalized throughput; tuning wall minutes.</td></tr>
+<tr><th>Reported results</th><td>Up to7.5× versus compiler operator baselines; GPU models1.2–8.8× versus PyTorch/TVM/AMOS; some vendor cases remain faster.</td></tr>
+<tr><th>Uncertainty</th><td>Run-level CI not identified in§5.</td></tr>
+<tr><th>Ablations</th><td>Vendor/compiler comparisons; transfer to different instruction family; tuning-cost table.</td></tr>
+<tr><th>Limitations</th><td>Search costs145–261minutes for listed models; no online arrival or dynamic routing claim.</td></tr>
+<tr><th>Artifact and inspection</th><td>Implemented in Apache TVM; public source; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2207.04296v2">§3–4 block/schedule methods;§5.1–5.3;Figs10–14/Table1;PDFpp10–11.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v2, 2022-10-27; proceedings pp804–817 separately confirmed.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–4 block/schedule methods;§5.1–5.3;Figs10–14/Table1;PDFpp10–11.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read exact RTX3080 precision/baseline versions and model/tuning-time results; retained vendor-performance shortfalls.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Keep kernel selection separate from held-out policy evaluation; attest resolved configuration and count tuning cost explicitly.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v2, 2022-10-27; proceedings pp804–817 separately confirmed.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>426f317bda0caea5f6d46a441c14acad6f59cd31ab94622f33c0dfbf1ad5ce43</td></tr>
+</table></details>
+<details data-area="architecture"><summary>40. Ansor: Generating High-Performance Tensor Programs for Deep Learning (2020)</summary><p class="meta">OSDI 2020 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://www.usenix.org/conference/osdi20/presentation/zheng">Proceedings / publisher</a> · <a href="https://danyangzhuo.com/papers/OSDI20-Ansor.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Broad structured search and bottleneck-aware tuning allocation outperform fixed templates.</td></tr>
+<tr><th>Mechanism</th><td>Sketch generation, evolutionary fine-tuning, learned cost model and gradient-based task scheduler.</td></tr>
+<tr><th>Model and hardware</th><td>Intel Platinum8124M, V100, Cortex-A53; FP32; ResNet50, MobileNetV2, 3D-ResNet, DCGAN, BERT.</td></tr>
+<tr><th>Data and trace construction</th><td>Ten operator families×four shapes×two batches; model subgraphs; no request trace.</td></tr>
+<tr><th>Baselines</th><td>Halide, AutoTVM, FlexTensor, framework/vendor libraries.</td></tr>
+<tr><th>Controlled variables</th><td>Up to1000 measured candidates per operator; common shape/precision; explicit CPU AVX controls.</td></tr>
+<tr><th>Experimental unit</th><td>Operator shape or network; repeated search run for search ablations.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Inference runtime/throughput; search measurements and wall seconds.</td></tr>
+<tr><th>Reported results</th><td>Network improvements up to 3.8×Intel, 2.6×ARM, 1.7×NVIDIA.</td></tr>
+<tr><th>Uncertainty</th><td>Fig7 median 5 search runs; Fig6 error bars are across four shapes, not repeated-run confidence intervals.</td></tr>
+<tr><th>Ablations</th><td>Limited search space, no fine-tuning, no task scheduler, beam-search alternatives.</td></tr>
+<tr><th>Limitations</th><td>Search-selected distributions and hardware-dependent budgets; no production latency distribution.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public TVM auto-scheduler implementation; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://danyangzhuo.com/papers/OSDI20-Ansor.pdf">§4–6;§7.1–7.5;Figs6–11/Table3;PDFpp6–14.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Conference author PDF; no DOI established; USENIX proceedings pp863–879.&quot;,
+  &quot;locators&quot;: [
+    &quot;§4–6;§7.1–7.5;Figs6–11/Table3;PDFpp6–14.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read equal1000-trial budget, shape-error-bar definition, and measurement-count versus wall-time distinction.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Predeclare finite tuning budget; avoid treating repeated tuning candidates or shapes as independent demand samples.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Conference author PDF; no DOI established; USENIX proceedings pp863–879.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>73ef4169ed3856f016195bc28a7819e7040274e0af8fb90df2e92a964ea04232</td></tr>
+</table></details>
+<details data-area="architecture"><summary>41. TVM: An Automated End-to-End Optimizing Compiler for Deep Learning (2018)</summary><p class="meta">OSDI 2018 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://www.usenix.org/conference/osdi18/presentation/chen">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi18-chen.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Joint graph and operator scheduling can outperform fixed kernel libraries across hardware.</td></tr>
+<tr><th>Mechanism</th><td>Graph fusion/layout transformations; tensorized schedules; latency hiding; learned cost-model search.</td></tr>
+<tr><th>Model and hardware</th><td>TitanX, embeddedGPU/CPU, FPGA SoC; ResNet18, MobileNet, LSTM-LM, DQN, DCGAN.</td></tr>
+<tr><th>Data and trace construction</th><td>Model-derived operator shapes and full-network inference; no arrival process.</td></tr>
+<tr><th>Baselines</th><td>MXNet1.1, TensorFlow1.7, XLA, cuDNN7/cuBLAS8-backed execution.</td></tr>
+<tr><th>Controlled variables</th><td>Common models/backends; fused versus unfused TVM operators.</td></tr>
+<tr><th>Experimental unit</th><td>Operator/model/backend configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Kernel and end-to-end inference latency; search effectiveness.</td></tr>
+<tr><th>Reported results</th><td>TitanX end-to-end1.6–3.8× versus listed frameworks; fusion examples1.2–2×.</td></tr>
+<tr><th>Uncertainty</th><td>Timing CI/repetition policy not identified in inspected§6.</td></tr>
+<tr><th>Ablations</th><td>Fig4 fusion, Fig10 latency hiding, Fig12 learned model; graph-optimization-disabled baseline.</td></tr>
+<tr><th>Limitations</th><td>Static inference graphs; old hardware/libraries; fastest operator does not alone determine system response.</td></tr>
+<tr><th>Artifact and inspection</th><td>Apache TVM public project; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi18-chen.pdf">§3–5;§6.1;Figs4, 10, 12, 14;PDFpp5, 11.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Official USENIX fulltext; no DOI established.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–5;§6.1;Figs4, 10, 12, 14;PDFpp5, 11.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read layout-conversion necessity and graph-disabled end-to-end comparison.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Attribute combined gains with component controls; charge extra data movement and host work that kernels introduce.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Official USENIX fulltext; no DOI established.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>0ddc28deb2d66ce460d019588ea326ce59bb08290dad09bc2f6ca372b64333c6</td></tr>
+</table></details>
+<details data-area="architecture"><summary>42. SparseTIR: Composable Abstractions for Sparse Compilation in Deep Learning (2023)</summary><p class="meta">ASPLOS 2023 Volume3 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://sigplan-www.sigplan.hosting.acm.org/OpenTOC/asplos23-3.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2207.04606v4">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Composable sparse formats and schedules enable better balance, locality and tensorization.</td></tr>
+<tr><th>Mechanism</th><td>Format decomposition plus multi-stage sparse IR; hybrid row buckets and column partitioning.</td></tr>
+<tr><th>Model and hardware</th><td>V100/RTX3070; GNNs, pruned transformers, sparse attention, MinkowskiNet.</td></tr>
+<tr><th>Data and trace construction</th><td>Cora, Citeseer, Pubmed, PPI, OGB, Reddit; SemanticKITTI operators; fixed attention4096²/head64.</td></tr>
+<tr><th>Baselines</th><td>cuSPARSE, Sputnik, dgSPARSE, TACO, Triton, DGL, Graphiler, TorchSparse.</td></tr>
+<tr><th>Controlled variables</th><td>Same matrix/shapes; feature sizes32–512; explicit FP16 sparse-attention comparisons.</td></tr>
+<tr><th>Experimental unit</th><td>Dataset/operator shape and model execution.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Geometric-mean operator speedup; model latency/memory; cache-hit rates; padding.</td></tr>
+<tr><th>Reported results</th><td>SpMM 1.20–2.34× versus cuSPARSE; hybrid versus naive RGCN adds padding yet improves 2–4.4× via balance; sparse-convolution range includes 0.56× versus TorchSparse.</td></tr>
+<tr><th>Uncertainty</th><td>Cross-shape geometric means; run CIs not identified.</td></tr>
+<tr><th>Ablations</th><td>Hybrid/no-hybrid formats; naive/hybrid/hybrid+TensorCore; column partitions.</td></tr>
+<tr><th>Limitations</th><td>Format-conversion amortization and graph structure matter; lower padding is not a latency bound.</td></tr>
+<tr><th>Artifact and inspection</th><td>Evaluated artifact https://zenodo.org/records/7643745 ; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2207.04606v4">§3, §4.2–4.4;Figs12–23/Table2;PDFpp8–11.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v4, 2023-02-21 with ASPLOS headers; earlier arXiv results differ; no byte-identity claim with publisher PDF.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3, §4.2–4.4;Figs12–23/Table2;PDFpp8–11.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read exact bucket construction and RGCN explanation that additional padded FLOPs can run faster.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Report counted work as a proxy, preserve critical-rank timing, and include a token-balanced control for consolidation.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v4, 2023-02-21 with ASPLOS headers; earlier arXiv results differ; no byte-identity claim with publisher PDF.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>8d9c60bd44d8ca8f624d6a628aaef454200eb0b6dd27f2ff903fceda41dd533b</td></tr>
+</table></details>
+<details data-area="architecture"><summary>43. Sparse GPU Kernels for Deep Learning (2020)</summary><p class="meta">SC 2020 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://doi.org/10.1109/SC41405.2020.00021">Proceedings / publisher</a> · <a href="https://people.eecs.berkeley.edu/~matei/papers/2020/sc_sparse_gpu.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Deep-learning sparsity differs from scientific sparse matrices and needs specialized kernels.</td></tr>
+<tr><th>Mechanism</th><td>Subwarp tiling, row swizzling, reverse-offset memory alignment and vector loads for SpMM/SDDMM.</td></tr>
+<tr><th>Model and hardware</th><td>V100 CUDA10.1; sparse Transformer and MobileNet; FP32 plus mixed-precision variants.</td></tr>
+<tr><th>Data and trace construction</th><td>Thousands of model-derived sparse matrices; RNN cases; ImageNet-64×64 image Transformer and ImageNet MobileNet.</td></tr>
+<tr><th>Baselines</th><td>cuSPARSE, ASpT, merge-based kernels, dense model kernels.</td></tr>
+<tr><th>Controlled variables</th><td>Matrix shapes/sparsity/batch and hardware; transposition included where required.</td></tr>
+<tr><th>Experimental unit</th><td>Sparse matrix problem and model/accuracy operating point.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Kernel throughput, model speed/memory and quality.</td></tr>
+<tr><th>Reported results</th><td>RNN SDDMM reaches 92% of ASpT throughput with lower memory; SpMM gains reported but 1.56/1.59 baseline labels conflict between caption and prose, so not transcribed.</td></tr>
+<tr><th>Uncertainty</th><td>Geometric means across problems; repeated-run CI not identified.</td></tr>
+<tr><th>Ablations</th><td>Scalar/vector operations, tiling, row swizzle; kernel selection effects.</td></tr>
+<tr><th>Limitations</th><td>Small cases can be occupancy-limited; four MobileNet convolutions use an oracle dense/sparse selector.</td></tr>
+<tr><th>Artifact and inspection</th><td>https://github.com/google-research/sputnik public source; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://people.eecs.berkeley.edu/~matei/papers/2020/sc_sparse_gpu.pdf">§III–V;§VII kernel/application evaluation;Figs8–10;PDFpp7–10.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Conference author PDF with SC2020 identification.&quot;,
+  &quot;locators&quot;: [
+    &quot;§III–V;§VII kernel/application evaluation;Figs8–10;PDFpp7–10.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read no-transpose versus shared-memory tradeoff and negative SDDMM result, not only peak speedup.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Demand-specific shape distribution and online selection overhead must be tested; oracle headroom must remain separate.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Conference author PDF with SC2020 identification.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>6dddc1a709b0aca0942c370167296c9c41e28e0361a78908a35ff0117b35d7bc</td></tr>
+</table></details>
+<details data-area="architecture"><summary>44. PIT: Optimization of Dynamic Sparse Deep Learning Models via Permutation Invariant Transformation (2023)</summary><p class="meta">SOSP 2023 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://doi.org/10.1145/3600006.3613139">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2301.10936v2">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Dynamic sparsity can be accelerated without expensive ordered sparse-format conversion.</td></tr>
+<tr><th>Mechanism</th><td>Permutation-invariant axes; micro-tile SRead/SWrite; unordered online indexes; profiled tile search.</td></tr>
+<tr><th>Model and hardware</th><td>A100/V100; BERT, OPT, Longformer, MuseFormer and MoE examples.</td></tr>
+<tr><th>Data and trace construction</th><td>GLUE, Alpaca, ArXiv, LMD, ImageNet; synthetic4096³ sparse-matmul sweeps.</td></tr>
+<tr><th>Baselines</th><td>PyTorch/PyTorch-S, cuSPARSE, Sputnik, Triton, SparTA; model-specific optimized libraries.</td></tr>
+<tr><th>Controlled variables</th><td>Same sparse patterns/shapes/precision; separate conversion cost; static kernel versus dynamic end-to-end.</td></tr>
+<tr><th>Experimental unit</th><td>Model/dataset/batch or sparse matrix configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>End-to-end latency/memory, index-construction time, tile-search time.</td></tr>
+<tr><th>Reported results</th><td>BERT conversion0.7–1.1% of end-to-end; tile search30–100µs; baseline conversion can erase sparse-compute gain.</td></tr>
+<tr><th>Uncertainty</th><td>Run CI not identified in inspected evaluation.</td></tr>
+<tr><th>Ablations</th><td>Without activation/MoE optimization; conversion shown separately; tile granularities and pattern-reuse study.</td></tr>
+<tr><th>Limitations</th><td>Static microbench Fig16 explicitly excludes conversion/compilation; paper-wide speedup is not one common treatment.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public SparTA/PIT artifact; https://sysartifacts.github.io/sosp2023/summaries/pit ; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2301.10936v2">§3.2–3.4, §5.1, §5.3–5.6;Table3/Figs16–20;PDFpp7–13.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v2, 2023-10-08 with SOSP2023 headers.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3.2–3.4, §5.1, §5.3–5.6;Table3/Figs16–20;PDFpp7–13.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read atomic index construction, zero-copy gather/scatter and distinction between conversion-free microbenchmark and charged model results.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Charge histogram/selection/mapping every batch; logical equivalence does not imply equal physical work or free reorganization.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v2, 2023-10-08 with SOSP2023 headers.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>df299c342153b1a14c41977eae64b2992c9649c4d3b39d7218c5211a2f44757b</td></tr>
+</table></details>
+<details data-area="architecture"><summary>45. SparTA: Deep-Learning Model Sparsity via Tensor-with-Sparsity-Attribute (2022)</summary><p class="meta">OSDI 2022 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://www.usenix.org/conference/osdi22/presentation/zheng-ningxin">Proceedings / publisher</a> · <a href="https://www.usenix.org/system/files/osdi22-zheng-ningxin.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Propagating fine-grained sparsity through compilation improves more than isolated sparse kernels.</td></tr>
+<tr><th>Mechanism</th><td>Compile-time TeSA attributes; propagation; weighted block cover; execution-plan transformation and code specialization.</td></tr>
+<tr><th>Model and hardware</th><td>BERT, MobileNet, HuBERT; RTX2080Ti, RadeonVII, XeonSilver4210.</td></tr>
+<tr><th>Data and trace construction</th><td>Pruned/quantized models; BERT QQP, MobileNet ImageNet-Dogs, HuBERT SUPERB; table reports accuracy changes for each sparsity recipe.</td></tr>
+<tr><th>Baselines</th><td>PyTorchJIT, TensorRT, TVM, Rammer and sparse-library-enhanced variants; seven solutions.</td></tr>
+<tr><th>Controlled variables</th><td>Same sparsified model; TVM1000trials/task; batch sweeps8–64; dtype/pattern distinguished.</td></tr>
+<tr><th>Experimental unit</th><td>Model/sparsity/hardware/batch configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Inference latency, memory, accuracy and propagated sparsity.</td></tr>
+<tr><th>Reported results</th><td>Structured models3.7×/2.9×/2.4× versus TensorRT on RTX2080Ti; accuracy loss varies by pruning recipe.</td></tr>
+<tr><th>Uncertainty</th><td>Repeated-run uncertainty not identified in inspected§5.</td></tr>
+<tr><th>Ablations</th><td>Propagation, execution-plan transformation, kernel specialization; sparsity-pattern and batch sweeps.</td></tr>
+<tr><th>Limitations</th><td>Static weight sparsity; pruning changes quality; headline averages exclude failed TVM tuning cases; not an exact-routing intervention.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public artifact/code https://github.com/microsoft/SparTA ; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.usenix.org/system/files/osdi22-zheng-ningxin.pdf">§3–5;Table3/Figs8–16;PDFpp9–13.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Official USENIX fulltext; no DOI established.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3–5;Table3/Figs8–16;PDFpp9–13.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read13-block-size cost profiling and explicit warning that very sparse kernels may not saturate cores.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Preserve checkpoint/output contract; distinguish algebraic exactness from model-changing sparsification and actual saturation from work proxies.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Official USENIX fulltext; no DOI established.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>dee06b8df674fcc7c3f9114c8d95ef6fb027d69fc5e9b6d190847b307bef2dd8</td></tr>
+</table></details>
+<details data-area="architecture"><summary>46. DeepSpeed Inference: Enabling Efficient Inference of Transformer Models at Unprecedented Scale (2022)</summary><p class="meta">SC 2022 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://doi.org/10.1109/SC41404.2022.00051">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2207.00032v1">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Different latency/throughput/resource regimes require coordinated kernels, parallelism and memory scheduling.</td></tr>
+<tr><th>Mechanism</th><td>DeepFusion, small-batch GEMMs, tensor/pipeline scheduling, communication and offload; focus here on dense/runtime evidence.</td></tr>
+<tr><th>Model and hardware</th><td>GPT1.5B–530B; A100 cluster up to 256GPUs; A6000 and V100 offload systems.</td></tr>
+<tr><th>Data and trace construction</th><td>Latency:prompt128, generate8tokens; throughput:prompt512, generate50; prompt corpus unspecified in inspected methodology.</td></tr>
+<tr><th>Baselines</th><td>FasterTransformer FP16, PyTorch; dense same-tensor-parallelism comparison.</td></tr>
+<tr><th>Controlled variables</th><td>Dense Fig6 identical tensor parallelism; precision comparisons separated.</td></tr>
+<tr><th>Experimental unit</th><td>Model, batch, parallelism, hardware configuration.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Batch output-generation latency, tokens/s, TFLOPs/GPU; not open-loop response.</td></tr>
+<tr><th>Reported results</th><td>Small-batch FP16 dense speedup up to 1.55×; 175B throughput1.51× versus best FT configuration.</td></tr>
+<tr><th>Uncertainty</th><td>Repeated-run CI not identified in§VII.</td></tr>
+<tr><th>Ablations</th><td>DeepFusion/customGEMM breakdown; scheduling/memory/communication contributions.</td></tr>
+<tr><th>Limitations</th><td>Several combined mechanisms and precision paths; synthetic lengths do not establish real arrival robustness.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public DeepSpeed project https://github.com/deepspeedai/DeepSpeed ; not rerun.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2207.00032v1">§III–IV;§VII-A–E;TablesI–II/Figs6, 8, 10;PDFpp9–11.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v1, 2022-06-30; SC2022 identity separately verified.&quot;,
+  &quot;locators&quot;: [
+    &quot;§III–IV;§VII-A–E;TablesI–II/Figs6, 8, 10;PDFpp9–11.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read exact prompt/output lengths, testbeds and equal-TP comparison separating kernel from parallelism.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Separate single-layer service from user response and distinguish communication/control savings from GEMM improvements.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v1, 2022-06-30; SC2022 identity separately verified.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>87b6df99f5667ae8a68cd1e050fdd9b37ff463f71076bc37c7f71d8df949182e</td></tr>
+</table></details>
+<details data-area="architecture"><summary>47. MLPerf Inference Benchmark (2020)</summary><p class="meta">ISCA 2020 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://ieeexplore.ieee.org/document/9138989/">Proceedings / publisher</a> · <a href="https://www.cs.toronto.edu/ecosystem/papers/ISCA_20/MLPerf%20Inference.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Comparable inference measurements require specified quality, scenario, load generation and auditing.</td></tr>
+<tr><th>Mechanism</th><td>Fixed LoadGen/datasets/accuracy checks, closed/open divisions and scenario-specific constraints.</td></tr>
+<tr><th>Model and hardware</th><td>ResNet50, MobileNet, SSD, GNMT across heterogeneous submitted systems.</td></tr>
+<tr><th>Data and trace construction</th><td>ImageNet, COCO, WMT16; single-stream closed-loop, Poisson server, multistream and offline.</td></tr>
+<tr><th>Baselines</th><td>Cross-system submissions under common rules; not one algorithmic baseline.</td></tr>
+<tr><th>Controlled variables</th><td>Reference weights/quality floor; fixed load generator and query sample IDs; prohibited caching.</td></tr>
+<tr><th>Experimental unit</th><td>System×task×scenario submission/run.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Server QPS under tail constraint; single-stream p90; offline throughput; minimum 60seconds.</td></tr>
+<tr><th>Reported results</th><td>More than600measurements from14organizations/30systems demonstrate coverage; no universal fastest system.</td></tr>
+<tr><th>Uncertainty</th><td>TableIV derives tail-sample counts; vision server270336queries; five server runs, report minimum.</td></tr>
+<tr><th>Ablations</th><td>Accuracy/caching audit tests; scenario and system comparisons rather than algorithm ablations.</td></tr>
+<tr><th>Limitations</th><td>v0.5 design; chosen Poisson arrivals and quality rules are scope decisions, not proof of all production realism.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public code and submission logs https://github.com/mlcommons/inference ; paper-era version matters.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://www.cs.toronto.edu/ecosystem/papers/ISCA_20/MLPerf%20Inference.pdf">§III-C–D, §IV–V;TablesII–V;PDFpp5–9.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Conference author PDF; ISCA pp446–459.&quot;,
+  &quot;locators&quot;: [
+    &quot;§III-C–D, §IV–V;TablesII–V;PDFpp5–9.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read query-generation table, 99%confidence sample requirements, 60second floor and no-cache verification.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Use immutable open-loop arrivals, clearly bounded queue endpoints and raw completion logs; do not claim MLPerf compliance for256-job cells.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Conference author PDF; ISCA pp446–459.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>faf6c3346384957517d66e18714d5fc10b09ffeb3f93e334a852a4cf36c92f88</td></tr>
+</table></details>
+<details data-area="architecture"><summary>48. WildChat: 1M ChatGPT Interaction Logs in the Wild (2024)</summary><p class="meta">ICLR 2024 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/9421261e06f1a63a352b068f1ac90609-Abstract-Conference.html">Proceedings / publisher</a> · <a href="https://arxiv.org/pdf/2405.01470v1">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Opt-in real conversations provide broader behavior than curated instruction sets.</td></tr>
+<tr><th>Mechanism</th><td>Free GPT3.5/GPT4 service; consent, conversation reconstruction, PII removal and aggregate behavioral analysis.</td></tr>
+<tr><th>Model and hardware</th><td>Collection via APIs; WildLlama Llama2-7B fine-tuning on4×A100-80GB.</td></tr>
+<tr><th>Data and trace construction</th><td>April2023–May2024 service logs; roughly1M multilingual conversations; selection and anonymity constraints.</td></tr>
+<tr><th>Baselines</th><td>Alpaca, Dolly, OpenAssistant, ShareGPT, LMSYS for statistics; Vicuna/Llama2Chat for MT-bench.</td></tr>
+<tr><th>Controlled variables</th><td>Llama2 base; Vicuna recipe; max2048tokens, three epochs for fine-tuning comparison.</td></tr>
+<tr><th>Experimental unit</th><td>Conversation/user proxy for corpus analysis; prompt/model for judged quality.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Language, length, category, toxicity distributions; GPT4-judged MT-bench; no serving-timing benchmark.</td></tr>
+<tr><th>Reported results</th><td>Table1 substantial length dispersion; WildLlama MT-bench6.35 versus 6.13Vicuna/6.26Llama2Chat.</td></tr>
+<tr><th>Uncertainty</th><td>Descriptive dispersion; judged scores lack CIs in inspected table; hashedIP not unique-person ground truth.</td></tr>
+<tr><th>Ablations</th><td>Corpus/domain and judge-category comparisons; no randomized collection experiment.</td></tr>
+<tr><th>Limitations</th><td>Self-selection, free-service bias, PII/filter error; current release license and filtering differ from paper-era AI2ImpACT.</td></tr>
+<tr><th>Artifact and inspection</th><td>Public dataset https://huggingface.co/datasets/allenai/WildChat-1M ; pin exact filtered release separately.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://arxiv.org/pdf/2405.01470v1">§2–3/Table1;§5/Table9;PDFpp2–3, 8.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Author arXiv v1, 2024-05-02 explicitly marked ICLR2024; no DOI established.&quot;,
+  &quot;locators&quot;: [
+    &quot;§2–3/Table1;§5/Table9;PDFpp2–3, 8.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read linking/anonymization pipeline and2048token splitting; noticed release-count differences within version, so avoid exact population total.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Use disjoint conversation-derived content blocks and report filters; timestamps are not automatically valid arrival traces for a replayed one-layer workload.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Author arXiv v1, 2024-05-02 explicitly marked ICLR2024; no DOI established.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>932316edcaf09c144358c0c0bf6ad48a82f315c189e944c4afa0f90835bcf85e</td></tr>
+</table></details>
+<details data-area="architecture"><summary>49. Producing Wrong Data Without Doing Anything Obviously Wrong! (2009)</summary><p class="meta">ASPLOS 2009 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://sape.inf.usi.ch/publications/asplos09.html">Proceedings / publisher</a> · <a href="https://cs.uwaterloo.ca/~brecht/courses/Perf-Eval-Shared/readings/producing-wrong-data-asplos-2009.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Seemingly irrelevant setup choices can bias optimization comparisons.</td></tr>
+<tr><th>Mechanism</th><td>Manipulate link order/environment layout; randomize setups; use causal hardware experiments.</td></tr>
+<tr><th>Model and hardware</th><td>SPEC CPU2006 C programs; Core2/Pentium4/m5O3CPU; gcc/IntelC.</td></tr>
+<tr><th>Data and trace construction</th><td>SPEC train inputs; varied link orders/environment sizes; benchmark-suite diversity examined.</td></tr>
+<tr><th>Baselines</th><td>O2 versus O3 under each controlled setup.</td></tr>
+<tr><th>Controlled variables</th><td>Program/input/compiler; instrumentation viaLD_PRELOAD preserves static layout.</td></tr>
+<tr><th>Experimental unit</th><td>Setup×benchmark, with repeated executions inside setup.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Execution cycles/time; PAPI events; compiler speedup.</td></tr>
+<tr><th>Reported results</th><td>Setup changes can reverse O2/O3 conclusions; benchmark diversity alone does not reliably remove bias.</td></tr>
+<tr><th>Uncertainty</th><td>Means of five runs and95%CIs in key figures; repetitions do not cure systematic bias.</td></tr>
+<tr><th>Ablations</th><td>Link order versus environment size; architectures/compilers; causal intervention on implicated mechanisms.</td></tr>
+<tr><th>Limitations</th><td>CPU/compiler study, not evidence that the identical sources dominate H100 inference.</td></tr>
+<tr><th>Artifact and inspection</th><td>Author-hosted paper; executable archival artifact not established in this review.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://cs.uwaterloo.ca/~brecht/courses/Perf-Eval-Shared/readings/producing-wrong-data-asplos-2009.pdf">§3, §4–7;Figs1–5;PDFpp2–5, 9–10.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Conference author PDF; conference DOI distinguished from SIGPLAN reprint.&quot;,
+  &quot;locators&quot;: [
+    &quot;§3, §4–7;Figs1–5;PDFpp2–5, 9–10.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read instrumentation, train-input rationale and distinction between setup randomization and causal attribution.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Counterbalance arm order and retain allocation/setup identity; separate independent blocks from repeated jobs and preserve failures.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Conference author PDF; conference DOI distinguished from SIGPLAN reprint.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>a630a6a2dd7569d81afb0c3e471eaebc8e36f7b316fcfa471d86e68939bb0a3c</td></tr>
+</table></details>
+<details data-area="architecture"><summary>50. Rigorous Benchmarking in Reasonable Time (2013)</summary><p class="meta">ISMM 2013 · peer-reviewed conference paper; proceedings confirmed<br><a href="https://kar.kent.ac.uk/33611/">Proceedings / publisher</a> · <a href="https://kar.kent.ac.uk/33611/45/p63-kaliber.pdf">Retrieved paper</a></p><table>
+<tr><th>Hypothesis</th><td>Repetition should target the hierarchy level contributing uncertainty.</td></tr>
+<tr><th>Mechanism</th><td>Pilot variance components, initialization/independence checks, cost-aware replication and effect-size confidence intervals.</td></tr>
+<tr><th>Model and hardware</th><td>DaCapo/OpenJDK and SPECCPU2006; five x86 platforms in Table1.</td></tr>
+<tr><th>Data and trace construction</th><td>DaCapo small/large and SPEC train/reference; repeated builds, executions, iterations.</td></tr>
+<tr><th>Baselines</th><td>Common warmup/repetition heuristics and fixed repetition allocation.</td></tr>
+<tr><th>Controlled variables</th><td>Benchmark/platform/VM settings; distinguish randomized factors at each nesting level.</td></tr>
+<tr><th>Experimental unit</th><td>Highest independently repeated build/execution; iterations nested beneath.</td></tr>
+<tr><th>Metrics and timing boundary</th><td>Steady-state execution time; ratio-of-means interval; experiment-time budget.</td></tr>
+<tr><th>Reported results</th><td>Optimal iteration counts differ sharply; lusearch example favors one live iteration because between-execution variation dominates.</td></tr>
+<tr><th>Uncertainty</th><td>Nested variance estimator, Student-t mean interval and Fieller ratio interval; independence assumptions explicit.</td></tr>
+<tr><th>Ablations</th><td>Repetition-level comparisons and warmup heuristics across platforms.</td></tr>
+<tr><th>Limitations</th><td>Asymptotic assumptions and manually inspected steady state; does not automatically validate an eight-block bootstrap.</td></tr>
+<tr><th>Artifact and inspection</th><td>Corrected manuscript and methodology; interactiveR script described, runnable archive not established.</td></tr>
+<tr><th>Methods / table / figure anchors</th><td><a href="https://kar.kent.ac.uk/33611/45/p63-kaliber.pdf">§6–10;Tables1–5;PDFpp5–10 including cover.</a></td></tr>
+<tr><th>Methods / evaluation reading basis</th><td>{
+  &quot;declarations&quot;: {},
+  &quot;fulltext_version&quot;: &quot;Kent author accepted manuscript; repository notes corrections to conference version; PDF includes repository cover.&quot;,
+  &quot;locators&quot;: [
+    &quot;§6–10;Tables1–5;PDFpp5–10 including cover.&quot;
+  ],
+  &quot;narrative&quot;: &quot;Read300-iteration pilot diagnostics, 30execution×40iteration study, optimal-count equation andFieller construction.&quot;
+}</td></tr>
+<tr><th>Applicability</th><td>Treat new content/arrival blocks as replication units; average technical repeats within blocks and state the limited population of inference.</td></tr>
+<tr><th>Retrieved fulltext version</th><td>Kent author accepted manuscript; repository notes corrections to conference version; PDF includes repository cover.</td></tr>
+<tr><th>Retrieved fulltext SHA-256</th><td>b50fb85079cbaea9524eb202393a60807dd3fc270d91eb80de5dba0faf02dbab</td></tr>
+</table></details>
+<script>const q=document.querySelector('#query'),a=document.querySelector('#area'),rows=[...document.querySelectorAll('details')];function filter(){let n=0;for(const r of rows){const show=(!a.value||r.dataset.area===a.value)&&r.textContent.toLowerCase().includes(q.value.toLowerCase());r.classList.toggle('hidden',!show);if(show)n++;}document.querySelector('#count').textContent=n+' of 50 papers';}q.addEventListener('input',filter);a.addEventListener('change',filter);</script></html>
