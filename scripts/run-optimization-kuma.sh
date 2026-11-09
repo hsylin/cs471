@@ -31,6 +31,17 @@ if [ "$mode" = capture ]; then
 fi
 manifest="$1"; banks_directory="$2"; shift 2
 cp "$manifest" "$output_directory/provenance/executed-manifest.json"
+if [ "$mode" = validation-profile ]; then
+  # Separate torchrun processes keep profiler instrumentation out of the
+  # validation timings while reusing one allocation and its warmed file cache.
+  torchrun --standalone --nproc-per-node=2 -m optimization.runner \
+    --manifest "$manifest" --banks-dir "$banks_directory" \
+    --weights-dir "$SKB_ROOT/models/qwen3-layer0" --output "$output_directory/records.jsonl" "$@"
+  exec torchrun --standalone --nproc-per-node=2 -m optimization.runner \
+    --manifest "$manifest" --banks-dir "$banks_directory" \
+    --weights-dir "$SKB_ROOT/models/qwen3-layer0" --output "$output_directory/profile-unused-records.jsonl" \
+    --profile-dir "$output_directory/profile"
+fi
 exec torchrun --standalone --nproc-per-node=2 -m optimization.runner \
   --manifest "$manifest" --banks-dir "$banks_directory" \
   --weights-dir "$SKB_ROOT/models/qwen3-layer0" --output "$output_directory/records.jsonl" "$@"
