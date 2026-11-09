@@ -53,12 +53,15 @@ def test_guard_family_and_whole_bundle_draws_match_independent_oracle():
         p['log_ratios']['response_mean_ns'] += (i-2.5)*.02+di*.01
     out=infer_endpoints(pairs,groups,bootstrap_samples=800,bootstrap_seed=19)
     rng=np.random.default_rng(19)
-    blocks=[]
+    blocks=[];draw_bytes=[]
     for di,d in enumerate(DATASETS):
         values=np.log(.9)+(np.arange(6)-2.5)*.02+di*.01
         idx=rng.integers(0,6,size=(800,6))
+        draw_bytes.append(np.asarray(idx,dtype='<i8').tobytes(order='C'))
         blocks.append(values[idx].mean(axis=1))
     expected=np.exp(np.mean(blocks,axis=0))
+    import hashlib
+    assert out['bootstrap']['draw_indices_sha256']==hashlib.sha256(b''.join(draw_bytes)).hexdigest()
     assert out['primary']['ci95']==pytest.approx(np.quantile(expected,[.025,.975],method='linear'))
     assert len(out['guards'])==7
     assert all(g['one_sided_confidence_level']==pytest.approx(1-.05/7) for g in out['guards'])

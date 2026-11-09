@@ -90,7 +90,7 @@ def main():
           'hardware':{'hostname':HARDWARE_HOST,'gpu_uuids':GPU_UUIDS,'allocation_id':'4872248'},
           'physical_to_logical_map':list(range(128))+list(range(32)),
           'execution_source_sha256':execution,'execution_source_files':files,
-          'protocol_files':{x:file_hash(ROOT/x) for x in ['docs/generalization/protocol-v1.md','docs/generalization/protocol-v2.md']},
+          'protocol_files':{x:file_hash(ROOT/x) for x in ['docs/generalization/protocol-v1.md','docs/generalization/protocol-v2.md','docs/generalization/protocol-v3.md']},
           'inference_sha256':file_hash(ROOT/'generalization/inference.py'),'analysis_sha256':file_hash(ROOT/'generalization/analysis.py'),
           'allocation_decision':selection,'cases':[], 'interval_scope':'conditional on selected external trace material; content-bundle bootstrap; date deletion is sensitivity only'}
     if args.phase!='calibration':
@@ -125,9 +125,14 @@ def main():
                 cal.update(name=block['id']+'/'+kind,pattern=block['trace'],rho=float(Fraction(c['calibration_elapsed_ns'],horizon)),rate_kind=kind,
                            source_date_utc=block['source_date_utc'],source_rows_sha256=block['source_rows_sha256'])
                 cal['sha256']=canonical_hash(cal);validate_calendar(cal)
-                order=list(permutations[(2*i+ri)%6])
+                order=[]
                 plan['cases'].append({'block_id':a['content_group_id'],'dataset':a['dataset'],'source_block':block,'calendar':cal,'arm_order':order})
-        random.Random(plan['order_seed']).shuffle(plan['cases'])
+        for ri,kind in enumerate(['calibrated','common']):
+            selected=[case for case in plan['cases'] if case['calendar']['rate_kind']==kind]
+            random.Random(plan['order_seed']+ri).shuffle(selected)
+            if len(selected)%6:raise ValueError('Each rate requires a multiple of six paired cases')
+            for order_index,case in enumerate(selected):case['arm_order']=list(permutations[order_index%6])
+        random.Random(plan['order_seed']+2).shuffle(plan['cases'])
     plan['freeze']={'sha256':manifest_hash(plan),'stage':'before execution of this plan'}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(plan,indent=2)+'\n')
     print(json.dumps({'phase':plan['phase'],'groups':len(groups),'cases':len(plan['cases']),'trials':len(groups) if args.phase=='calibration' else 3*len(plan['cases']),'sha256':plan['freeze']['sha256']}))

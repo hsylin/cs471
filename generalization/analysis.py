@@ -64,6 +64,11 @@ def _plan(plan):
         orders=Counter(tuple(c['arm_order']) for c in cases.values())
         required={p:len(cases)//6 for p in itertools.permutations(ARMS)}
         if len(cases)%6 or orders!=Counter(required):raise ValueError('Exact balance of all six arm permutations required')
+        for rate in ('calibrated','common'):
+            rate_orders=Counter(tuple(c['arm_order']) for key,c in cases.items() if key[2]==rate)
+            rate_count=sum(rate_orders.values())
+            if rate_count%6 or rate_orders!=Counter({p:rate_count//6 for p in itertools.permutations(ARMS)}):
+                raise ValueError('Exact six-permutation balance required within each rate kind')
         expected={(*k,a) for k in cases for a in ARMS}
     return ph,groups,banks,cases,expected
 
@@ -160,6 +165,7 @@ def analyze(plan,records):
             'observed_window_spans':row['observed_window_spans']})
     missing=sorted(expected-set(index),key=str)
     pairs=[];positions={arm:[0,0,0] for arm in ARMS}
+    rate_positions={rate:{arm:[0,0,0] for arm in ARMS} for rate in ('calibrated','common')}
     if phase!='calibration':
         for key,case in sorted(cases.items()):
             keys={a:(*key,a) for a in ARMS}
@@ -172,7 +178,8 @@ def analyze(plan,records):
             if len({canonical_hash(terminals[k]) for k in keys.values()})!=1:errors.append(dict(key=list(key),issues=['triplet_terminal_logical']))
             if actual_orders[key]!=case['arm_order']:errors.append(dict(key=list(key),issues=['actual_arm_order']))
             else:
-                for pos,arm in enumerate(case['arm_order']):positions[arm][pos]+=1
+                for pos,arm in enumerate(case['arm_order']):
+                    positions[arm][pos]+=1;rate_positions[key[2]][arm][pos]+=1
             for contrast,(control,treatment) in CONTRASTS.items():
                 a,b=flat[keys[control]],flat[keys[treatment]]
                 logs={m:math.log(b[m])-math.log(a[m]) for m in a if a[m]>0 and b[m]>0}
@@ -193,7 +200,7 @@ def analyze(plan,records):
     result=dict(analysis_schema_version=1,phase=phase,valid=valid,expected_records=len(expected),observed_records=len(records),valid_records=len(flat),
         matched_triplets=len(pairs)//3,matched_pairs=len(pairs),pairs_per_contrast=dict(Counter(p['contrast'] for p in pairs)),
         plan_sha256=ph,execution_source_sha256=plan['execution_source_sha256'],missing_keys=[list(k) for k in missing],errors=errors,
-        trial_summaries=summaries,paired_cases=pairs,arm_position_counts=positions,confirmatory=None,allocation_decision=None,
+        trial_summaries=summaries,paired_cases=pairs,arm_position_counts=positions,arm_position_counts_by_rate=rate_positions,confirmatory=None,allocation_decision=None,
         scope='Content-bundle inference conditional on the selected external trace material and one physical allocation; not production-arrival or full-model inference.',
         limitations=['Raw counters are checked for conservation and paired identities. Independent authenticated-bank/oracle audit is still required.',
             'Full-batch preflight covers272 unique inputs; postflight covers two endpoints; FP32 checks sample16 positions at each endpoint.',

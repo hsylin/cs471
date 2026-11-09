@@ -235,5 +235,7 @@ def infer_endpoints(pairs, groups, *, bootstrap_samples=BOOTSTRAP_SAMPLES, boots
         acceptance='pass' if gate and secondary['passes'] else 'not_established',
         content_groups=3*n,paired_comparisons=len(index),treatment_trials=3*n*2*2*3,
         bootstrap=dict(samples=bootstrap_samples,seed=bootstrap_seed,rng='numpy.random.default_rng/PCG64',
+            draw_indices_sha256=hashlib.sha256(b''.join(np.asarray(draws[d],dtype='<i8').tobytes(order='C') for d in DATASETS)).hexdigest(),
+            draw_indices_encoding='Concatenate each complete [samples,n] draw table as little-endian signed int64 C-order bytes, in DATASETS order; no header.',
             strata=list(DATASETS),groups_per_stratum=n,unit='entire content bundle with two types and two rates',
             quantile_method='linear',scope='content-bundle resampling conditional on selected external trace material; does not estimate production-arrival/calendar-day or hardware-population uncertainty'))

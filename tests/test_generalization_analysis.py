@@ -31,6 +31,10 @@ def fixture(phase='pilot'):
                     name=b['id']+'/'+r,source_date_utc=b['source_date_utc'],source_rows_sha256=b['source_rows_sha256'])
                 c['sha256']=canonical_hash(c)
                 plan['cases'].append(dict(block_id=g['id'],dataset=g['dataset'],source_block=b,calendar=c,arm_order=list(list(itertools.permutations(ARMS))[len(plan['cases'])%6])))
+    # The fixture balances all six orders separately within each rate.
+    for rate in ('calibrated','common'):
+        selected=[case for case in plan['cases'] if case['calendar']['rate_kind']==rate]
+        for i,case in enumerate(selected):case['arm_order']=list(list(itertools.permutations(ARMS))[i%6])
     plan['freeze']={'sha256':canonical_hash(plan)}
     counts=np.zeros((16,160),dtype=np.int64);counts[:,:128]=8
     rows=[]
@@ -135,3 +139,23 @@ def test_unbalanced_plan_rejected_even_if_rows_match_declared_orders():
         row['arm_order']=list(ARMS);row['config_hash']=plan['freeze']['sha256']
     with pytest.raises(ValueError,match='six arm permutations'):
         analyze(plan,rows)
+
+
+def test_global_balance_cannot_hide_rate_specific_order_confounding():
+    plan,rows=fixture()
+    permutations=list(itertools.permutations(ARMS))
+    # Former global cycling scheme: calibrated sees even permutations only,
+    # common sees odd permutations only, although aggregate counts balance.
+    for i,case in enumerate(plan['cases']):case['arm_order']=list(permutations[i%6])
+    from collections import Counter
+    assert len(set(Counter(tuple(c['arm_order']) for c in plan['cases']).values()))==1
+    plan['freeze']['sha256']=canonical_hash({k:v for k,v in plan.items() if k!='freeze'})
+    with pytest.raises(ValueError,match='within each rate kind'):
+        analyze(plan,rows)
+
+
+def test_actual_order_positions_are_balanced_within_each_rate():
+    plan,rows=fixture();result=analyze(plan,rows)
+    assert result['valid'],result['errors']
+    for rate,arms in result['arm_position_counts_by_rate'].items():
+        assert all(counts==[4,4,4] for counts in arms.values())
