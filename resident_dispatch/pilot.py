@@ -132,24 +132,57 @@ def run_arm(rt, weights, manifest, cell, group, arm, order):
         if adapter is not None: adapter.raw_index = raw
     tensors = cell['tensors']
     preflight = numerical_check(rt, layer, tensors, cell['references'], list(range(48)), select)
+    setup_start = time.perf_counter()
+    steps = manifest['pilot']['measured_steps']
+    if steps != 256: raise ValueError('Frozen pilot requires32 inputs repeated eight times')
+    events = [(torch.cuda.Event(enable_timing=True),torch.cuda.Event(enable_timing=True)) for _ in range(steps)]
+    # Event objects initialize their CUDA handles only at first record. Keep all
+    # instrumentation setup outside the steady-state primary timer, for every arm.
+    for start_event, end_event in events:
+        start_event.record()
+        end_event.record()
+    rt.sync()
     layer.warming_up = True
     for raw in range(16):
         select(raw)
         layer.forward(*(t[raw] for t in tensors), observe=True)
         layer.step(raw)
     layer.warming_up = False
+    # Exercise the entire unchanged SKIP path, including the CPU planner and
+    # synchronous no-op rearrangement. This is common setup, not timed evidence.
+    if layer.state.expert_rearrangement_step != 0:
+        raise AssertionError('Sixteen conditioning inputs must finish the native initial period')
+    for conditioning_step in range(64):
+        raw = 16 + conditioning_step % 32
+        select(raw)
+        layer.forward(*(t[raw] for t in tensors), observe=True)
+        layer.step(conditioning_step)
+    layer.close()
+    if len(layer.decisions) != 1 or layer.decisions[0]['allowed']:
+        raise AssertionError('Full-path conditioning did not execute exactly one SKIP planner call')
+    layer.assert_maps_and_weights()
+    if (not np.array_equal(layer.map_snapshot(), cell['mapping']) or
+            layer.counter.sent_bytes or layer.counter.sent_messages):
+        raise AssertionError('Conditioning changed the fixed resident state')
     layer.state.expert_rearrangement_step = 0
     layer.state.expert_load_window_step = 0
     layer.native_valid_steps = 0
     layer.ms.expert_load_window.zero_()
     layer.ms.expert_load_pass.zero_()
+    layer.observation_steps = 0
+    layer.logical_ring.zero_()
+    layer.logical_ring_timestamps.fill(-1)
+    layer.histogram_capture_count = layer.previous_window_timestamp_checks = 0
     layer.state._update_layer_should_record(log_stats=False)
     layer.planner_seconds = layer.controller_seconds = 0.
     layer.decisions.clear()
+    layer.last_accepted_step = None
+    layer.end_of_input = False
+    layer.terminal_proposals_suppressed = 0
     layer.counter.sent_bytes = layer.counter.sent_messages = 0
-    steps = manifest['pilot']['measured_steps']
-    if steps != 256: raise ValueError('Frozen pilot requires32 inputs repeated eight times')
-    events = [(torch.cuda.Event(enable_timing=True),torch.cuda.Event(enable_timing=True)) for _ in range(steps)]
+    gc.collect()  # GC remains enabled; any collection during measurement is charged.
+    rt.sync()
+    setup_seconds = max(rt.gather_scalars(time.perf_counter() - setup_start))
     rt.sync(); rt.barrier(); rt.sync()
     timestamp = time.time()
     started = time.perf_counter()
@@ -196,6 +229,11 @@ def run_arm(rt, weights, manifest, cell, group, arm, order):
         'measurement_kind':'cyclic_fixed_placement_dispatch_headroom',
         'elapsed_seconds':max(rank_elapsed),'per_rank_elapsed_seconds':rank_elapsed,
         'step_seconds_by_rank':rank_steps,'steps_completed':steps,
+        'measurement_setup_revision':2,'timing_events_initialized_before_timer':True,
+        'full_policy_conditioning_steps':64,'full_policy_conditioning_calls':1,
+        'conditioning_raw_indices':[16 + i % 32 for i in range(64)],
+        'instrumentation_and_conditioning_seconds_excluded':setup_seconds,
+        'gc_enabled_during_measurement':gc.isenabled(),
         'measurement_start_unix_seconds':timestamp,'arm_order':order,'arm_position':order.index(arm),
         'timing_scope':manifest['execution']['timing_scope'],
         'assignment_selection_cost_included':arm in ('native','native_aa'),
@@ -236,7 +274,8 @@ def main():
             manifest['policy']['rebalance_interval'] != 64 or
             manifest['pilot'] != dict(unique_conditioning_inputs=16,
                 unique_measured_inputs=32, cycles=8, measured_steps=256,
-                offline_selection_excluded=True)):
+                offline_selection_excluded=True, measurement_setup_revision=2,
+                full_policy_conditioning_steps=64, maximum_calibration_revisions=1)):
         raise ValueError('Pilot geometry differs from its frozen execution contract')
     if args.output.exists(): raise FileExistsError('No output overwrite or partial-group splice')
     args.output.parent.mkdir(parents=True,exist_ok=True)

@@ -28,6 +28,31 @@ Native EPLB reconstructs logical loads from recorded physical loads. Moving an i
 
 ## Pilot advance and stop rules
 
+### Single calibration revision
+
+The original clean attempt (allocation4869036, headroom-v2) completed all80 rows
+but failed the A/A band in one cell: 0.98832085. It remains a complete failed
+calibration attempt, with no selected candidate. A first-trial ordinary-step
+stall motivated one setup-hardening revision; its cause is not established.
+No rows are removed and this attempt is not pooled with its replacement.
+
+Before the revised timer, record every start/end CUDA event once and synchronize
+to initialize their handles. After the16 original conditioning inputs, execute
+64 additional forwards/SKIP.step calls with `warming_up=False`, cycling raw input
+indices16..47 twice. This must execute one real native planner/no-op rearrangement,
+preserve maps/weights and send zero bytes. Reset counters, windows/pass buffers,
+history validity, decisions, timing totals and EOF suppression afterward. Run
+`gc.collect()` before the common sync/barrier boundary in every arm; leave GC
+enabled during measurement. Record excluded setup time and the conditioning
+schedule. The80 rows, assignments, inputs, order, gates and256-step timer remain
+unchanged. This establishes a revised steady-state contract, not a causal test
+of event initialization, planner startup or GC separately.
+
+This is the single allowed calibration revision. If its A/A screen fails,
+stop performance selection and do not repeatedly rerun until it passes. Freeze
+the revised manifest and execution hash before timing. Confirmation data remain
+unused. A passing revision cannot retrospectively validate the original attempt.
+
 These are conservative development screens, not confidence statements from two source blocks. The 1% margins and selector reserve are reviewer choices fixed before pilot timing, not empirical guarantees or literature standards.
 
 For each arm, first average its paired log runtime ratios to native over the two repetitions of each source-block/domain/batch cell and exponentiate. Give the four domain/batch cells equal weight in each block's geometric aggregate. Do not treat ranks, cyclic iterations, sampled tokens or repeated timings as independent source blocks.
