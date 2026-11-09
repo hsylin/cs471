@@ -38,7 +38,8 @@ def diagnostic_row(route_fixture,captured,name):
     seq=v.sequence(name);row.update(condition=name+'_combined',sequence_name=name,dispatch_mode='online',measured_raw_indices=seq,
         unique_measured_job_combinations=len(set(seq)),raw_job_frequency={str(k):n for k,n in Counter(seq).items()},
         executed_logical_routing_sha256=v.v.array_hash(state['logical'][seq]),
-        executed_combining_weights_sha256=v.v.array_hash(captured[1]['combining_weights'][state['indices']][seq]),
+        executed_combining_weights_sha256=v.v.array_hash(captured[1]['combining_weights'][state['indices']][seq],np.float32),
+        executed_combining_weights_encoding=v.WEIGHT_ENCODING,
         assignment_metrics=[state['diagnostics']['online'][i] for i in seq],terminal_physical_window=state['counts']['online'][seq[-16:]].tolist())
     for d in row['decision_log']:
         raw=seq[d['step']-15:d['step']+1];co=state['counts']['online'][raw]
@@ -62,3 +63,17 @@ def test_same_frequency_wrong_phase_cannot_relabel_routes(route_fixture,captured
 def test_cycle_terminal_cannot_use_main_endpoint(route_fixture,captured):
     args=diagnostic_row(route_fixture,captured,'cycle16');args[0]['terminal_physical_window']=args[1]['counts']['online'][-16:].tolist()
     with pytest.raises(AssertionError,match='terminal cycle'):v.check_routes(*args)
+
+
+def test_lossy_frozen_digest_is_not_mistaken_for_float_identity():
+    a=np.full((2,8),.125,np.float32);b=a.copy();b[0,0]=.25
+    recorded=v.v.array_hash(a,np.int64)
+    assert recorded==v.v.array_hash(b,np.int64)
+    for values in (a,b):
+        with pytest.raises(AssertionError,match='float32 bytes'):
+            v.check_weight_digest(recorded,values,v.WEIGHT_ENCODING)
+    x=v.check_weight_digest(v.v.array_hash(a,np.float32),a,v.WEIGHT_ENCODING)
+    y=v.check_weight_digest(v.v.array_hash(b,np.float32),b,v.WEIGHT_ENCODING)
+    assert x['executed_float32_sha256']!=y['executed_float32_sha256']
+    with pytest.raises(AssertionError,match='encoding'):
+        v.check_weight_digest(x['executed_float32_sha256'],a,None)

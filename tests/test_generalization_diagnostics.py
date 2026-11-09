@@ -79,7 +79,8 @@ def diagnostic_fixture():
                 measured_raw_indices=seq,unique_measured_job_combinations=len(set(seq)),raw_job_frequency={str(i):seq.count(i) for i in sorted(set(seq))},
                 online_selection_cost_included=mode=='online',precomputed_selection_cost_excluded=mode.startswith('pre_'),precomputed_adapter_cost_included=mode.startswith('pre_'),
                 mapper_calls_measured=0 if mode=='native' else 256,precomputed_gpu_adapter_checks=544,postflight_reference_raw_indices=[16,271],
-                executed_logical_routing_sha256=state['content_group_id']+seq_name,executed_combining_weights_sha256='weights-'+seq_name)
+                executed_logical_routing_sha256=state['content_group_id']+seq_name,executed_combining_weights_sha256=canonical_hash('weights-'+seq_name),
+                executed_combining_weights_encoding='little-endian float32; C-order; no header',instrumentation_revision=2)
             row['assignment_metrics']=[dict(per_rank_tokens=[512,512],per_rank_active_copies=[64,64],per_rank_m_tiles=[64,64],per_rank_padded_rows=[1024,1024]) for _ in range(256)]
             row['record_id']=canonical_hash({k:row[k] for k in ('diagnostic_config_hash','phase','content_group_id','condition')})
             rows.append(row)
@@ -107,3 +108,26 @@ def test_descriptive_audit_rejects_changed_execution(monkeypatch,mutation):
     elif mutation=='omit_adapter':rows[6]['precomputed_adapter_cost_included']=False
     elif mutation=='order':rows[0],rows[1]=rows[1],rows[0]
     assert not analysis.analyze(plan,rows)['valid']
+
+
+def test_float_weight_identity_preserves_subunit_values_and_normalizes_encoding():
+    import hashlib,struct
+    from generalization_diagnostics.runner import floating_weight_hash
+    a=np.array([[.2,.8],[.3,.7]],dtype=np.float32)
+    b=np.array([[.1,.9],[.4,.6]],dtype=np.float32)
+    # The superseded integer encoding loses every value in both valid examples.
+    assert np.array_equal(a.astype(np.int64),b.astype(np.int64))
+    assert floating_weight_hash(a)!=floating_weight_hash(b)
+    assert floating_weight_hash(a)==hashlib.sha256(struct.pack('<4f',.2,.8,.3,.7)).hexdigest()
+    assert floating_weight_hash(a)==floating_weight_hash(np.asfortranarray(a))
+    assert floating_weight_hash(a)==floating_weight_hash(a.astype('>f4'))
+    with pytest.raises(ValueError):floating_weight_hash(np.array([float('nan')]))
+
+
+def test_old_diagnostic_weight_encoding_is_ineligible(monkeypatch):
+    from generalization_diagnostics import analysis
+    pilot,plan,rows=diagnostic_fixture();monkeypatch.setattr(analysis,'validate',lambda _: (pilot,{}))
+    for row in rows:
+        row.pop('executed_combining_weights_encoding');row.pop('instrumentation_revision')
+    out=analysis.analyze(plan,rows)
+    assert not out['valid'] and out['valid_records']==0

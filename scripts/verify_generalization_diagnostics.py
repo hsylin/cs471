@@ -75,10 +75,13 @@ def offline_artifact(row,c,roots):
 def check_routes(row,c,base,bank_weights):
     seq_name,mode=CONDITIONS[row['condition']];seq=sequence(seq_name)
     arm='online' if mode in ('online','pre_online') else 'native'
+    weights=bank_weights[c['indices']][seq]
+    weight_identity=check_weight_digest(row['executed_combining_weights_sha256'],weights,
+        row.get('executed_combining_weights_encoding'))
     compare(row,dict(sequence_name=seq_name,dispatch_mode=mode,measured_raw_indices=seq,
         unique_measured_job_combinations=len(set(seq)),raw_job_frequency={str(k):n for k,n in Counter(seq).items()},
         logical_routing_sha256=v.array_hash(c['logical']),executed_logical_routing_sha256=v.array_hash(c['logical'][seq]),
-        executed_combining_weights_sha256=v.array_hash(bank_weights[c['indices']][seq]),assignment_sha256=c['hashes'][arm],
+        assignment_sha256=c['hashes'][arm],
         assignment_metrics=[c['diagnostics'][arm][i] for i in seq],resolved_kernel_config=base['default_configs']['128'],
         **c['provenance']),'Actual diagnostic sequence and route identity')
     compare([d['step'] for d in row['decision_log']],[63,127,191],'Diagnostic proposal cadence')
@@ -98,6 +101,20 @@ def check_routes(row,c,base,bank_weights):
     v.fix.numerical(row['preflight_correctness'],272);v.fix.numerical(row,2)
     hashes=row['source_weight_rank_sha256']
     require(len(hashes)==2 and all(v.sha(h) for h in hashes) and hashlib.sha256(json.dumps(hashes).encode()).hexdigest()==row['source_weights_sha256'],'Resident weight attestation digest')
+    return weight_identity
+
+
+WEIGHT_ENCODING='little-endian float32; C-order; no header'
+
+
+def check_weight_digest(recorded,weights,encoding):
+    """Require the actual float representation; v1's integer digest must fail."""
+    require(weights.dtype==np.float32 and np.isfinite(weights).all(),'Float32 source weights')
+    expected=hashlib.sha256(np.ascontiguousarray(weights,dtype='<f4').tobytes(order='C')).hexdigest()
+    require(recorded==expected,'Executed combining weights must hash float32 bytes')
+    require(encoding==WEIGHT_ENCODING,'Explicit combining-weight byte encoding')
+    return dict(executed_float32_sha256=recorded,encoding=encoding,shape=list(weights.shape),
+        scope='Recorded executed float bytes match authenticated bank and index reconstruction; GPU digest is a recorded attestation, not an independent GPU rerun.')
 
 
 def audit(plan,rows,capture_root,roots,summary=None):
@@ -115,7 +132,7 @@ def audit(plan,rows,capture_root,roots,summary=None):
         comparison_pairs={k:COMPARISONS[k] for k in PAIRS},
         sequence_definitions={k:sequence(k) for k in ('main','cycle0','cycle16')}),'Fixed diagnostic design')
     require([(r['content_group_id'],r['condition']) for r in rows]==[(s['content_group_id'],c) for s in expected_states for c in s['condition_order']],'Complete24-condition execution order')
-    artifacts=[];computed={};trials=[]
+    artifacts=[];computed={};trials=[];weight_identities=[]
     blocks={b['block_id']:b for b in public['blocks']}
     for state in expected_states:
         gid=state['content_group_id'];members=[r for r in rows if r['content_group_id']==gid]
@@ -146,7 +163,9 @@ def audit(plan,rows,capture_root,roots,summary=None):
             clock=row['arrival_clock_contract'];require(clock['monotonic'] is True and clock['adjustable'] is False and 'CLOCK_MONOTONIC' in clock['implementation'],'Monotonic source clocks')
             for key in ('per_rank_input_preparation_ns_excluded','per_rank_conditioning_setup_ns_excluded','precomputed_preparation_ns_excluded'):
                 require(len(row[key])==2 and all(isinstance(x,(float,int)) and np.isfinite(x) and x>0 for x in row[key]),'Recorded excluded setup '+key)
-            v.fix.guard_counts(dict(row,arm='fast'));check_routes(row,c,base,bank['combining_weights'])
+            v.fix.guard_counts(dict(row,arm='fast'))
+            weight_identities.append(dict(content_group_id=gid,condition=row['condition'],
+                **check_routes(row,c,base,bank['combining_weights'])))
             require(row['record_id']==digest({k:row[k] for k in ('diagnostic_config_hash','phase','content_group_id','condition')}),'Diagnostic record identity')
             m=v.old.timing_metrics(row);compare(row['queue_metrics'],m,'Raw-clock metrics');compare(row['observed_window_spans'],v.fix.spans(row),'Window clock spans')
             flat=v.fix.flat(row,m);service=m['vectors_ns']['service'];flat.update(ordinary_step_service_mean_ns=statistics.mean(x for i,x in enumerate(service) if i not in (63,127,191,255)),nonterminal_boundary_service_mean_ns=statistics.mean(service[i] for i in (63,127,191)),terminal_service_ns=service[255])
@@ -171,7 +190,8 @@ def audit(plan,rows,capture_root,roots,summary=None):
             a=computed[pair['content_group_id'],pair['control_condition']];b=computed[pair['content_group_id'],pair['treatment_condition']]
             compare(pair,dict(control=a,treatment=b,ratios={k:b[k]/a[k] if a[k]>0 else None for k in a},differences={k:b[k]-a[k] for k in a}),'Independent descriptive paired arithmetic')
     return dict(schema_version=1,passed=True,trials=24,development_states=3,reconstructed_assignments=1632,
-        measured_jobs=6144,diagnostic_plan_sha256=plan['freeze']['sha256'],artifacts=artifacts,confidence_intervals=None,acceptance=None,
+        measured_jobs=6144,diagnostic_plan_sha256=plan['freeze']['sha256'],artifacts=artifacts,
+        combining_weight_identity=weight_identities,confidence_intervals=None,acceptance=None,
         limitations=['GPU arithmetic and weight integrity are recorded attestations, not independently rerun.',
             'Postflight checks raw16/271, the main-reference endpoints; cycle terminal inputs differ.',
             'No exclusive selector/launch/cache attribution; no production or final-data inference.'])

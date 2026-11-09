@@ -28,7 +28,7 @@ def source_identity():
     files.update(execution_fingerprint()[1])
     names=['generalization_diagnostics/'+x for x in ('__init__.py','plan.py','runner.py','analysis.py')]
     names+=['scripts/freeze_generalization_diagnostics.py','scripts/run-generalization-diagnostics-kuma.sh',
-        'docs/generalization/diagnostic-protocol-v1.md','generalization/analysis.py','generalization/inference.py']
+        'docs/generalization/diagnostic-protocol-v1.md','docs/generalization/diagnostic-protocol-v2.md','generalization/analysis.py','generalization/inference.py']
     files.update({name:sha(ROOT/name) for name in names})
     return canonical_hash(files),files
 
@@ -61,7 +61,7 @@ def build(pilot_path):
         states.append(dict(content_group_id=g['id'],dataset=g['dataset'],source_case=source[0],condition_order=conditions))
     random.Random(SEED+1).shuffle(states)
     execution,files=source_identity()
-    result=dict(generalization_diagnostic_schema_version=1,phase='diagnostic',seed=SEED,
+    result=dict(generalization_diagnostic_schema_version=1,instrumentation_revision=2,phase='diagnostic',seed=SEED,
         pilot_plan={'path':str(pilot_path.relative_to(ROOT)),'sha256':pilot['freeze']['sha256'],'file_sha256':sha(pilot_path)},
         main_execution_source_sha256=pilot['execution_source_sha256'],diagnostic_source_sha256=execution,
         diagnostic_source_files=files,hardware=pilot['hardware'],batch_tokens=128,physical_to_logical_map=pilot['physical_to_logical_map'],

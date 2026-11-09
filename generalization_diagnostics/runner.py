@@ -25,6 +25,15 @@ from skewbench.runner import finalize_decision_log
 from arrival_fix.common import canonical_gpu_uuid
 
 
+WEIGHT_ENCODING='little-endian float32; C-order; no header'
+
+def floating_weight_hash(values):
+    """Lossless identity of the executed float32 weights, after timing."""
+    weights=np.ascontiguousarray(values,dtype='<f4')
+    if not np.isfinite(weights).all():raise ValueError('Nonfinite combining weights')
+    return hashlib.sha256(weights.tobytes(order='C')).hexdigest()
+
+
 class IndexedPrecomputedMapper:
     """Pointer lookup and the common copy/record adapter are fully charged.
 
@@ -126,7 +135,8 @@ def trial(rt,weights,base,pilot,plan,cell,offline,state,condition):
             **{k:cell[k] for k in ('capture_sha256','replay_sha256','source_prompt_ids','source_weights_sha256','source_weight_rank_sha256','resolved_kernel_config')},
             'logical_routing_sha256':array_hash(cell['logical']),
             'executed_logical_routing_sha256':array_hash(cell['logical'][sequence]),
-            'executed_combining_weights_sha256':array_hash(cell['tensors'][2][sequence].cpu().numpy()),
+            'executed_combining_weights_sha256':floating_weight_hash(cell['tensors'][2][sequence].cpu().numpy()),
+            'executed_combining_weights_encoding':WEIGHT_ENCODING,'instrumentation_revision':2,
             'assignment_sha256':cell['route_hashes'][dispatch],'assignment_artifact':cell['artifact'],'offline_assignment_artifact':offline['artifact'],
             'assignment_metrics':[cell['diagnostics'][dispatch][i] for i in sequence],
             'decision_log':decisions,'decision_trajectory_sha256':canonical_hash([{k:d[k] for k in ('step','current_counts','current_map','proposed_map','committed_map')} for d in decisions]),

@@ -371,6 +371,48 @@
         "path": "configs/generalization-pilot-v2.json",
         "sha256": "d1b78c675e98ba5ff62477fee6bab88895ab77d035d67abc0d7ecada8d0cea8b"
       }
+    },
+    {
+      "id": "generalization-final-v1",
+      "source_commit": "9263d53",
+      "status": "complete_final_independent_audits_pass",
+      "treatment_trials": 216,
+      "content_groups": 18,
+      "scheduled_jobs": 55296,
+      "plan": {
+        "path": "configs/generalization-final-v1.json",
+        "sha256": "98ec2de3f8a7d62cb18d92d5bfff33d6c3c723b94cecdb504fe0301c10327325"
+      },
+      "records": {
+        "path": "results/generalization/generalization-final-v1/records.jsonl.gz",
+        "sha256": "ee326a1a5c41c64eafc2d8a2e80c149539726e1325d3d00e67afb28c96def17d"
+      },
+      "records_jsonl_payload_sha256": "a31392bf2dc9fd24f5b9f8c0556e4382f07872e8617451a9223cb41d62e6b0f8",
+      "summary": {
+        "path": "results/generalization/generalization-final-v1/summary.json",
+        "sha256": "bd7fc037414423a180596308a0692f842ff3a9fb4592414188eaea0180d2bbb5"
+      },
+      "independent_execution_audit": {
+        "path": "results/generalization/generalization-final-v1/independent-execution-audit.json",
+        "sha256": "7b161c6be924bbf9e5a82100311d2307bb142697fefe3a00eea23668a45b6298"
+      },
+      "independent_statistics_audit": {
+        "path": "results/generalization/generalization-final-v1/independent-statistics-audit.json",
+        "sha256": "fddef3da2639347ab2cdd279f52a485df318fe917432e1f6ab5b42e968dcbd60"
+      }
+    },
+    {
+      "id": "generalization-diagnostics-v1-launch-1",
+      "status": "execve_failure_before_shell_or_torchrun",
+      "treatment_trials": 0,
+      "diagnostic_trials": 0,
+      "reason": "Launcher mode0644; Slurm execve returned permission denied before shell/torchrun. Commit2144233 changed executable mode only; no source bytes or timing protocol changed.",
+      "log": {
+        "path": "results/generalization/capture-attempts/generalization-diagnostics-v1-launch-failure.log",
+        "sha256": "7d055cdfb2a0e5af468d4cda7995e511e647c7295f4e907fd33e24ae39abb821"
+      },
+      "mode_correction_commit": "2144233110f2867a93bda84b29ad2da9af5a903c",
+      "launcher_sha256_before_and_after": "50f4332cc1ea7560ec9c8faa9d93d57f2ffd315b57138697687f0e3368e165d4"
     }
   ]
 }

@@ -36,7 +36,9 @@ def analyze(plan,records):
         index[key]=row;state=state_info[key[0]];seq_name,mode=CONDITIONS[key[1]];seq=sequence_for(seq_name)
         cal=state['source_case']['calendar'];block=state['source_case']['source_block'];issues=[]
         bank=next(b for b in pilot['banks'] if b['block_id']==key[0])
-        checks=dict(generalization_diagnostic_schema_version=1,phase='diagnostic',status='complete',evidence_eligible=False,
+        checks=dict(generalization_diagnostic_schema_version=1,instrumentation_revision=2,
+            executed_combining_weights_encoding='little-endian float32; C-order; no header',
+            phase='diagnostic',status='complete',evidence_eligible=False,
             diagnostic_only=True,diagnostic_config_hash=manifest_hash(plan),diagnostic_source_sha256=plan['diagnostic_source_sha256'],
             main_execution_source_sha256=pilot['execution_source_sha256'],pilot_plan_sha256=pilot['freeze']['sha256'],
             block_id=key[0],dataset=state['dataset'],regime='newcontent',batch_tokens=128,policy='SKIP',
@@ -53,6 +55,8 @@ def analyze(plan,records):
             precomputed_gpu_adapter_checks=544,full_unique_preflight_gpu_routes_checked=272,postflight_reference_raw_indices=[16,271],
             measurement_setup_revision=2,gc_enabled_during_measurement=True)
         issues += [k for k,v in checks.items() if row.get(k)!=v]
+        weight_digest=row.get('executed_combining_weights_sha256','')
+        if not isinstance(weight_digest,str) or len(weight_digest)!=64 or any(c not in '0123456789abcdef' for c in weight_digest):issues.append('float_weight_digest_format')
         for obj,n in [(row,2),(row.get('preflight_correctness',{}),272)]:
             if any(obj.get(k)!=v for k,v in dict(correctness_pass=True,correctness_atol=.02,correctness_rtol=.03,full_batch_inputs_checked=n).items()):issues.append('numerical_scope')
             for metric in ('correctness_max_abs_error','full_batch_max_abs_difference'):
@@ -114,7 +118,7 @@ def analyze(plan,records):
     return dict(schema='generalization_diagnostic_summary_v1',valid=not errors and not missing,expected_records=24,observed_records=len(records),
         valid_records=len(flat),errors=errors,missing_keys=missing,trial_summaries=trials,paired_cases=pairs,
         condition_position_counts=positions,pair_precedence=precedence,diagnostic_config_hash=manifest_hash(plan),
-        diagnostic_source_sha256=plan['diagnostic_source_sha256'],confidence_intervals=None,acceptance=None,
+        diagnostic_source_sha256=plan['diagnostic_source_sha256'],confidence_intervals=None,acceptance=None,instrumentation_revision=2,
         scope='Three development states, descriptive sensitivity only; no tuning or production-population inference.',
         limitations=['Main-versus-cycle changes input coverage and repetition; phase changes also alter input-to-arrival alignment.',
             'Offline replay removes construction cost but charges the adapter; online/offline difference is not exclusive GPU selector time.',
