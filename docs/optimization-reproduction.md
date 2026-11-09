@@ -142,6 +142,17 @@ the final resampling units. Technical repeats and related regime/batch cells
 are correlated. Cell-level claims use the report's adjusted intervals; the
 finite hand-selected corpus is not a random production-traffic sample.
 
+Reconstruct the exact observed routing windows, physical replica assignments,
+complete mapping chains and sender payloads from the archived arrays:
+
+```bash
+.venv-analysis/bin/python scripts/audit_optimization_routing.py \
+  --manifest configs/optimization-final-frozen-v1.json \
+  --records results/optimization/final/records.jsonl.gz \
+  --capture-dir results/optimization/capture \
+  --output work/optimization-reproduction-new/independent-routing.json
+```
+
 Recompute the mechanism diagnostics from the sixteen raw selected-profile
 traces and their exact saved input-index files:
 

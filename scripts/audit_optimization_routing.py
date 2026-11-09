@@ -262,9 +262,9 @@ def audit(manifest_path, records_path, capture_dir):
             'atol': .02, 'rtol': .03},
         'allocations': sorted({r['allocation_id'] for r in rows}), 'hostnames': sorted({r['hostname'] for r in rows}),
         'performance_values_analyzed': False,
-        'limits': ['Exact raw routing reconstruction covers every logged decision window: seven16-step windows per run. It does not add an observation record for the suppressed terminal window or unmonitored intervals.',
+        'limits': ['Exact raw routing reconstruction covers every logged decision window: seven 16-step windows per run. It does not add an observation record for the suppressed terminal window or unmonitored intervals.',
             'Map/weight identities and completed GPU numerical checks are execution attestations; this CPU audit does not rerun expert GEMMs or independently inspect GPU weight tensors.',
-            'Numerical checks use full native batches versus DEFAULT plus16 FP32 reference tokens at each of two raw endpoints, before and after timing. They do not check every measured output.',
+            'Numerical checks use full native batches versus DEFAULT plus 16 FP32 reference tokens at each of two raw endpoints, before and after timing. They do not check every measured output.',
             'The trace is constructed repeated-prefill replay on the named replicated-input/allreduce path, not production serving traffic. No performance ratios are computed by this auditor.']}
 
 
@@ -280,8 +280,8 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2)+'\n')
     lines = [f"Independent optimization routing audit: {result['status']}.", '',
-        f"Verified {result['records']} runs in {result['matched_quartets']} matched quartets. Reconstructed all {result['actual_logged_windows_checked']} logged windows from actual captured logical IDs, including {result['physical_counter_entries_checked']:,} nonnegative physical counter entries. Checked {result['complete_map_arrays_checked']:,} complete160-slot maps, each retaining all128 logical experts.", '',
-        'Current logical counts, exact token-index replica assignments, physical-to-logical conservation, accepted map chains, native sender bytes, and cross-kernel/repetition trajectories agree. Each run suppresses the step511 terminal proposal. No elapsed-time values were analyzed.', '',
+        f"Verified {result['records']} runs in {result['matched_quartets']} matched quartets. Reconstructed all {result['actual_logged_windows_checked']} logged windows from actual captured logical IDs, including {result['physical_counter_entries_checked']:,} nonnegative physical counter entries. Checked {result['complete_map_arrays_checked']:,} complete maps of 160 slots, each retaining all 128 logical experts.", '',
+        'Current logical counts, exact token-index replica assignments, physical-to-logical conservation, accepted map chains, native sender bytes, and cross-kernel/repetition trajectories agree. Each run suppresses the step 511 terminal proposal. No elapsed-time values were analyzed.', '',
         '| Kernel | Policy | Runs | Accepted decisions | Rejected decisions | Sender bytes |',
         '|---|---|---:|---:|---:|---:|']
     for row in result['policy_summaries']:
