@@ -28,7 +28,10 @@ mkdir -p "$output_directory/provenance"
 cp "$manifest" "$output_directory/provenance/executed-manifest.json"
 nvidia-smi -q > "$output_directory/provenance/nvidia-smi.txt"
 nvidia-smi topo -m > "$output_directory/provenance/topology.txt"
-python -m pip freeze > "$output_directory/provenance/environment-lock.txt"
+python - <<'PY' > "$output_directory/provenance/environment-lock.txt"
+import importlib.metadata as m
+print('\n'.join(sorted(f"{d.metadata['Name']}=={d.version}" for d in m.distributions() if d.metadata['Name'])))
+PY
 scontrol show job "$SLURM_JOB_ID" > "$output_directory/provenance/slurm-job.txt"
 if [ -f SOURCE_COMMIT ]; then
   cp SOURCE_COMMIT "$output_directory/provenance/source-commit.txt"

@@ -23,6 +23,9 @@ fi
 mkdir -p "$2"
 nvidia-smi -q > "$2/nvidia-smi.txt"
 nvidia-smi topo -m > "$2/topology.txt"
-python -m pip freeze > "$2/environment-lock.txt"
+python - <<'PY' > "$2/environment-lock.txt"
+import importlib.metadata as m
+print('\n'.join(sorted(f"{d.metadata['Name']}=={d.version}" for d in m.distributions() if d.metadata['Name'])))
+PY
 exec torchrun --standalone --nproc-per-node=2 -m followup.profile_layer \
   --bank "$1" --weights-dir "$SKB_ROOT/models/qwen3-layer0" --output-dir "$2"

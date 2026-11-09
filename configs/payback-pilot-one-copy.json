@@ -1,0 +1,182 @@
+{
+  "payback_schema_version": 1,
+  "schema_version": 1,
+  "name": "payback-pilot-one_copy",
+  "split": "pilot",
+  "environment": {
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "model_id": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "layer_id": 0,
+    "hardware": "2 x NVIDIA H100 94 GB, same node, NV6 interconnect",
+    "gpu_name_contains": "H100",
+    "world_size": 2,
+    "dtype": "bfloat16",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "weights_source": "pretrained_checkpoint_layer",
+    "input_source": "Real teacher-forced causal-prefill hidden/router/weights; constructed replay of disjoint source-document blocks",
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "UNSET_AFTER_CAPTURE_AND_SMOKE"
+  },
+  "matrix": {
+    "arms": [
+      "KEEP",
+      "PREINSTALLED",
+      "CHARGED"
+    ],
+    "regimes": [
+      "stable",
+      "transient",
+      "persistent",
+      "switching"
+    ],
+    "batch_tokens": [
+      128,
+      1024
+    ],
+    "horizons": [
+      128,
+      512
+    ],
+    "block_ids": [
+      "pilot-01",
+      "pilot-02"
+    ],
+    "candidate_ids": [
+      "one_copy"
+    ],
+    "repetitions": 3
+  },
+  "replay": {
+    "window_steps": 16,
+    "rebalance_interval": 64,
+    "decision_step": 127,
+    "observation_warmup_steps": 32,
+    "prefix_policy": "B3",
+    "prefix_commit_steps": [
+      63
+    ],
+    "raw_steps": 672,
+    "cases": [
+      {
+        "regime": "stable",
+        "phase_steps": 120,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "transient",
+        "phase_steps": 120,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "persistent",
+        "phase_steps": 120,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      },
+      {
+        "regime": "switching",
+        "phase_steps": 112,
+        "hotspot_lifetime_steps": 16,
+        "repeat_steps": 1024
+      }
+    ],
+    "description": "Phases count measured engine steps after32 untimed observation inputs; common prefix B3 commit63, snapshot after127.",
+    "repeat_steps": 1024
+  },
+  "execution": {
+    "conditioning_steps": 2,
+    "order_seed": 471,
+    "timing_contract": "Common candidate formation and prefix excluded; charge candidate transfer/commit only in CHARGED. No future updates.",
+    "planner_cost": "excluded_common_sunk_before_snapshot"
+  },
+  "policy": {
+    "epsilon": 0.02,
+    "tau": 0.1,
+    "cooldown_steps": 256,
+    "replica_budget": 32
+  },
+  "candidate_definitions": {
+    "native": "Unchanged native planner output using observation prefix only",
+    "one_copy": "Exactly one replica-slot change chosen by current-window peak-load reduction; deterministic recorded tie rule; no future information"
+  },
+  "analysis": {
+    "primary_horizon": 512,
+    "useful_gain_ratio": 0.95,
+    "stable_ratio_limit": 1.02,
+    "minimum_independent_blocks": 8,
+    "bootstrap_samples": 20000,
+    "bootstrap_seed": 471,
+    "independent_unit": "Fixed source-document pair, under a finite-corpus block-resampling assumption",
+    "pilot_minimum_payback_seconds": 0.001,
+    "pilot_required_distinct_blocks": 2,
+    "pilot_positive_repetitions": 2,
+    "interval_scope": "Describes variation across the hand-selected corpus; disjoint documents do not establish production-population independence."
+  },
+  "design": {
+    "pilot_initial_repetitions": [
+      0
+    ],
+    "pilot_confirmation_repetitions": [
+      1,
+      2
+    ],
+    "pilot_confirmation_regimes": [
+      "transient",
+      "persistent",
+      "switching"
+    ],
+    "pilot_confirmation_horizons": [
+      512
+    ],
+    "pilot_max_arm_runs_per_candidate": 168,
+    "pilot_confirmation_trigger": "At least two changing H512 states from distinct blocks have at least 1 ms charged payback in repetition 0; confirm all twelve changing H512 states.",
+    "pilot_robust_gate": "Mean payback at least 1 ms and at least two of three repetitions positive, in at least two states from distinct blocks.",
+    "optional_one_copy_trigger": "Native robust pilot gate fails; no other candidate families.",
+    "final_candidates_fixed": [
+      "native",
+      "one_copy"
+    ],
+    "final_arm_runs": 1536,
+    "final_policy_selection_permitted": false
+  },
+  "required_record_metadata": {
+    "dispatch_backend": "replicated_input_allreduce",
+    "eplb_mode": "synchronous",
+    "dtype": "bfloat16",
+    "world_size": 2,
+    "native_vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "source_restore_verified": true,
+    "candidate_weights_verified": true,
+    "legacy_harness_sha256": "894bf6474c57655c15d41709ffdb9e84f9e9e16aaece6d7de6a4fc88c94594cb",
+    "followup_sha256": "UNSET_AFTER_CAPTURE_AND_SMOKE",
+    "commit_completed": true,
+    "expected_arm_weights_verified": true
+  },
+  "blocks": [
+    {
+      "block_id": "pilot-01",
+      "source_document_ids": [
+        "gutenberg-11",
+        "cpython-Lib-heapq.py"
+      ]
+    },
+    {
+      "block_id": "pilot-02",
+      "source_document_ids": [
+        "gutenberg-84",
+        "cpython-Lib-statistics.py"
+      ]
+    }
+  ],
+  "tapes": [],
+  "source_manifest": {
+    "path": "../followup/corpus/sources.json",
+    "sha256": "517b0bce79080c9d959d55200bb49e2d9cb1172c2d183699d26e010384f0d080"
+  }
+}
