@@ -1,0 +1,208 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "warm_native_weight_transport"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 12:35:37.318321684 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "native_weight_transport_warm", "process_transport_warmup": {"completed": true, "migration_count": 2, "sent_bytes": 1811939328, "sent_bytes_by_rank": [905969664, 905969664], "forward_sent_bytes_by_rank": [452984832, 452984832], "rollback_sent_bytes_by_rank": [452984832, 452984832], "sent_messages": 192, "elapsed_seconds_slowest_rank": 0.9175661648623645, "replica_budget_extra": 32, "world_size": 2, "shared_native_eplb_process_group_verified": true, "original_map_and_weights_restored": true, "scope": "one process-local cyclic cross-rank native migration and rollback on a throwaway layer; same persistent EPLB device group as all measured methods; excluded from primary and branch timing"}}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "run_complete", "record_id": "8577c7d7096107416596793706ed9f5bdb813db836c79dcff946e3d93abb3d8e", "elapsed_seconds": 0.24089733487926424}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "527a59ef5535cb63661a176e844d3459289185cef4dcb5d701a8406f1af659ac", "elapsed_seconds": 0.2538315320853144}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c2f6cdc0c37e2580f300c10466f6d75f743c7504935b06c3bdb64b1079894e9a", "elapsed_seconds": 0.24204600602388382}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "e89b7e6a608ef6de0d6ee211d1f29cad586543681ac2835291ded9a0544abddf", "elapsed_seconds": 0.2522540120407939}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "0fe5f15fb9a194cd0e0c5edfa943f1f145fd65df215b033bb773e282be4511ba", "elapsed_seconds": 0.3259200949687511}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ef501dfbaa24c6b7d59aa020c68ffce848c571c88bfc74164b2d3d8af3848eaa", "elapsed_seconds": 0.3250948858913034}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "98fb2e650e3650870b9ffe7fe18a96cd0131f46df27139f7f339291a4675b796", "elapsed_seconds": 0.32584425201639533}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "20d7957235331a99754d10c83ae42651b211534c3de7a291c813c797045ea832", "elapsed_seconds": 0.31990969204343855}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0f3fd5f720ccde7a844870349f610b7a4934cf5d346bbb734150a00896659bea", "elapsed_seconds": 0.24209906393662095}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "cfd7d7b9e47f73cf389e26f4c65f421c6d592f1a719b7f3961fb10189ec407d0", "elapsed_seconds": 0.2530565659981221}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "785f5375b1802e7e8a58e7a469f0375043c21f89ff9df260dbacd7aed1c9545e", "elapsed_seconds": 0.24163959990255535}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "2b25dd98b197a4ba227aae3987ce7edbcad933eb0ef281f9f41757cacbf9331e", "elapsed_seconds": 0.2570507461205125}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "d6e38d5dcabde9f9e7fe19db305df7582a7504b4a64eca6999b187394738dbe5", "elapsed_seconds": 0.3261315890122205}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "47438a19d0b63c450331fd9d316f6d024081e873dbe8f64ae029e6aed82681e6", "elapsed_seconds": 0.3252434569876641}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "67ae793daeb786315c5907a0543c337900772f04bf6ddeecc55b7d3657767cc5", "elapsed_seconds": 0.32619884912855923}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "424ea685c53969a1fb0d134ae4c8c7b334cd4cbb2f161fecd927d85e872ad88d", "elapsed_seconds": 0.3198498918209225}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "a505c7c4fc6031e4c214b2218bf1264ff07372ab8b64fc30d3125b7b2d27546c", "elapsed_seconds": 0.258306945906952}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0e64671e03e37546707f83fc5d89197ef076a5e7ef389ef6a51487558459db33", "elapsed_seconds": 0.25299094803631306}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "8279f17b280815326f35fe9c4195685c70cebb1713d898be7c9cdb5a6410e4b9", "elapsed_seconds": 0.25644749705679715}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b6da3c5252c576f5917d5a94379e176c013250e61a97b8b9503df85397f81f3b", "elapsed_seconds": 0.2554320339113474}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "6dd70b8fed963265332d18f3cf3d95f4d636f0d5cec596815a3cee5ecdf28b5b", "elapsed_seconds": 0.32441319921053946}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "901cb34351400d903c3a76a5c21e15960c1155cc840a0a94dca2f54ea805a409", "elapsed_seconds": 0.32880767504684627}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9d2dab327a5ecfebd8997da1ad043438c727bb4f1158d73738b37b09f5028a9d", "elapsed_seconds": 0.32411488401703537}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "c2f355757d88def7b32e9be194f1204632c0880ad191172a65f4293770bc0f6c", "elapsed_seconds": 0.32874854700639844}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "73e74c138ce26a8e09dc8217e61acef9dc45845ef2dda7042c4111721bd9831a", "elapsed_seconds": 0.2558575668372214}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d10afd3e55deea0f82d04b2cd0dfbb9f0dfa9cfac5805c5448ef0d90ca3777f5", "elapsed_seconds": 0.24647550098598003}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "0c8b3ef37e598b9b34b229e34c90364a1924f2a7dc108a8208db50a72404fd56", "elapsed_seconds": 0.25359503692016006}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3dc1dee8484b20be7c76da8e73f2483d49447bdbf18d4f16b305eae6b0156e4d", "elapsed_seconds": 0.24805130809545517}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2ef1b81f36c0309eca21905d9815de3fae64722c5ecc52a68756aca25cd836c6", "elapsed_seconds": 0.322241242043674}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "18a336814c87a6afccc2b513c4f4e1f96a48fafa5bda61a6555a0799cd4fce21", "elapsed_seconds": 0.333055631024763}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2ff646a7e05bccf2375838c20eb2db145823cc12c78fc78e04920b95bf3cd640", "elapsed_seconds": 0.32223321008495986}
+{"event": "run_start", "block_id": "opt-pilot-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "77f0719cb3750f7487fc60a942edf8f7308371b482aeb647787cc90698a94de0", "elapsed_seconds": 0.3273999560624361}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "74890efd959e1aff93e72e49a84a47f8a8df8ec026600c2d8189a1bbb5d1df4f", "elapsed_seconds": 0.23668646905571222}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f5b4f90ffc9625fc33d9e91428f88e8a00b78913d5e6b6207c27f5b8b89c88d6", "elapsed_seconds": 0.24965705000795424}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ccd8b24fa0432c2d019a3885c3512ef9ad83096ce0fe2c5b5f75b739bd31cd58", "elapsed_seconds": 0.23718033405020833}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f991d515a14f7838bbb63218c6f5706305cb2ef20141b0d91a9cb074c155d86f", "elapsed_seconds": 0.2493144089821726}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d68687d7f57b99c3091691ab5a565c903820a401a3906b46e28bddfed8c37610", "elapsed_seconds": 0.31488262000493705}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "7e04144b3860bb9b1a9f13de401d93d53f7f2e277d03b76dd829b8e707625a55", "elapsed_seconds": 0.32215560390613973}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "fe5e643c76ab6e3f5f4aa94d7e64e71f2c4b11efb0f60f8ea0194f0a954fe8d5", "elapsed_seconds": 0.3143260800279677}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "cccbcb48d63594b55c5ae66dac300154f2fa05dd6a4b8ad79e7775b2d206cb65", "elapsed_seconds": 0.32221732498146594}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "173f3d6579b5f6410dcbdda3b13de837117c2a4e7937ddbe58926b7c222891ac", "elapsed_seconds": 0.23479084391146898}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "556334968f10603fcb643de9f8a537bc2a8becba71005ebbe91dee6c14918987", "elapsed_seconds": 0.25083162914961576}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "f9a6d3fbc0d724229976cfb12102931bcd5636ed7020ccab8007c8a56a163e0d", "elapsed_seconds": 0.23658707994036376}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "4adcd070a0cd7ba698925d34d8e5005456739311c16914ad817db6a1360f3caa", "elapsed_seconds": 0.24938406283035874}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "3120e20158af342900a34d377c771eb3ffcc1f21ff8b9e009b8ffc2ca349fc57", "elapsed_seconds": 0.3263815480750054}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "35a3e2ab91889589a553d40fbc674178f1305f6b3ce7745bf9ca50fe4dec3399", "elapsed_seconds": 0.31468921108171344}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "87448c45a96549f5ff5b3a1c4104e0935d68ca419b7a1dc42ccf48837146781f", "elapsed_seconds": 0.32605619286186993}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "10295e37e1b83574cf50982745eaf16846c2df537717502764ff7fff24197b46", "elapsed_seconds": 0.3147006679791957}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "04e3bc1c82e1931ab224c3a12748a1a9864f8faaacec353db8a093dfb84c1b56", "elapsed_seconds": 0.26183476811274886}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "144b34940ccd004c679e92028d716623fce4cc6b84980943f4911b79f79df7d3", "elapsed_seconds": 0.2518492629751563}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "54d9a5591e74fb0c9e1cf98b2c2fdaa2f4b4cb130c76bc39f52b8c5459bbf304", "elapsed_seconds": 0.2623095950111747}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d317d26bab78a75c8d24c25a6a96fe844db9d06c5d2bd9d3e17c352b8f6c2db5", "elapsed_seconds": 0.2506919598672539}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "19e6b1c353b663cab3e03971967e02e59f35d7a9265451d87499e102b3c0b50e", "elapsed_seconds": 0.33412825618870556}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "cd557685b81990e3b75ea339ff91a13002981be22d53bba3a79df7659bea6cbf", "elapsed_seconds": 0.32351488596759737}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6fb98cd97a589e56273075887b20dd46f3bb62b4a6983dcf339e7d180253560e", "elapsed_seconds": 0.33428908605128527}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8d28c8f67550ae153aa5287711ac8f81250987ba285ae42432ba0ed2b9f01a81", "elapsed_seconds": 0.32364664203487337}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "31b301ce43b1db26e37d6b223b4502f9d5f092c5d66d9bf1b1545ed0c3c62542", "elapsed_seconds": 0.252752629108727}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "daadd414aa1fc262abd15ad05ffad98e33c3eb00536b7f12aa9c170791ccc464", "elapsed_seconds": 0.24432256096042693}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "64e8f2f0e600441951287112d1fedc41e9b70cabcccbcd20fb76dcfd218b816f", "elapsed_seconds": 0.24996395502239466}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "536d599bb0b794c38ed5d6778cf2b1651f3ae0e43f4e39f602116880343f4dfc", "elapsed_seconds": 0.2437019469216466}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "60728274f87fddd47aede785fde06abdc6188b967a862d866460080624073060", "elapsed_seconds": 0.3193887588568032}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "362a1983709ca3c225321f825ac747a6a3c52985171659dbaf5482f4205c8291", "elapsed_seconds": 0.3253829882014543}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8ff0dcf0621287dd89af81327413582eb2abeca16eacc6ad4fa01ac114dacd55", "elapsed_seconds": 0.31923570088110864}
+{"event": "run_start", "block_id": "opt-pilot-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "1e28be7fa2430394c0541c3dff656bb3989924515a9bfc258a2b1d14e1c15138", "elapsed_seconds": 0.32537852111272514}
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 12:37:41.085160785 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+USDT:2026-11-09 12:37:44 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:44 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:44 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stopUSDT:2026-11-09 12:37:44 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+USDT:2026-11-09 12:37:44 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:44 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:44 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stopUSDT:2026-11-09 12:37:44 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+
+USDT:2026-11-09 12:37:44 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:44 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:44 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stopUSDT:2026-11-09 12:37:44 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+
+USDT:2026-11-09 12:37:45 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:45 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:45 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-11-09 12:37:45 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-11-09 12:37:46 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:46 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:46 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stopUSDT:2026-11-09 12:37:46 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+
+USDT:2026-11-09 12:37:47 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:47 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:47 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-11-09 12:37:47 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-11-09 12:37:47 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:47 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:47 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stopUSDT:2026-11-09 12:37:47 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+
+USDT:2026-11-09 12:37:49 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:49 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:49 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-11-09 12:37:49 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-11-09 12:37:49 1573740:1573740 SyncActivityProfilerHandler.cpp:52] profiler_startUSDT:2026-11-09 12:37:49 1573739:1573739 SyncActivityProfilerHandler.cpp:52] profiler_start
+
+USDT:2026-11-09 12:37:49 1573740:1573740 SyncActivityProfilerHandler.cpp:59] profiler_stopUSDT:2026-11-09 12:37:49 1573739:1573739 SyncActivityProfilerHandler.cpp:59] profiler_stop
+

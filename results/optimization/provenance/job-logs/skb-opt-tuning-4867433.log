@@ -1,0 +1,405 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 12:25:55.378822874 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 0}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "tuning_complete", "record_id": "19d525f1c4fc48f190e19bdf19653c676f5b57d42e9e946338eeaf703cc1222f", "elapsed_seconds": 0.011430282145738602}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "278ca48bce938b33f84f23441709537124deeb60e8fa277ec7290ed373dd4586", "elapsed_seconds": 0.011597542092204094}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "7a48168514ee4b36edbea56c60f818f0a4e581377ed68156a1fef587fb547dc1", "elapsed_seconds": 0.011883666971698403}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "fc98b00783b911924e422507ff8ac0d88ca64ad1f339ffbdfa4fb4d22529b4c7", "elapsed_seconds": 0.011435781139880419}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "ee35354adfc7ed958c571e1ab165bc3a0e26257558f0b6052b2d229a6bbb272a", "elapsed_seconds": 0.011512243887409568}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "6fb4d7325a6a6a7f51da5c3e348a74842a436cc39faeb9ad98b182e66ef5562f", "elapsed_seconds": 0.011279738042503595}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "05f2fe2d013a5131a68a258e07c03f0de0fafdbe4a126944cf48a85e27f5c9ef", "elapsed_seconds": 0.011407657992094755}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "660dac87d44dd04409f95f8ad39bfc07b3e12b955bafd0660c4e6f6c6105271c", "elapsed_seconds": 0.011612142901867628}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "ade4c8ad285cf216a7cea9f62d342943294e584ae68b5401e6905c2d19edb42f", "elapsed_seconds": 0.011408199090510607}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "8c38e6666f8e847920760f7b1eb909a130b751732943d938413cd9a259be357f", "elapsed_seconds": 0.011400026967749}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "3293ec113ac42db7a9c3e9d38fd2c11f93ca16214cc3b2fac714eea8fc48462f", "elapsed_seconds": 0.011883386876434088}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "daa48d345fff531d4cef38675b276aa019d53aa7645390d94081582b77c8701b", "elapsed_seconds": 0.01138041797094047}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "5493f4575831c48e1645ecc5d9f55fc566975cdca89b723a85ff00beddf27408", "elapsed_seconds": 0.011509991018101573}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "70078509361903dac6ab35920056a26f59395ec1a311d567477c21ad46bdad4d", "elapsed_seconds": 0.0112897630315274}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "b5c54a8f5dc9ff0afb1cba0ec3e46516d0a166855f50bb8cee53bfcc48adecaa", "elapsed_seconds": 0.011401718948036432}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "41cb97583fd4cb8fb6d07fc1adbf279ddbecd1c99875e8507af8d13e51a9361c", "elapsed_seconds": 0.01178315794095397}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "c64ffdd962ff967316374af078ee31a670a285b20b06288a003f5364e41e740b", "elapsed_seconds": 0.01187159982509911}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "d74a52e5b1057ca420a71e59bc35d29ff77dee3c61fe6be21b488c16e3beb323", "elapsed_seconds": 0.011385265039280057}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "3a6f060ec99d6ee58f71960cc2630c55f23e9fa16547f1fac5927515f787c339", "elapsed_seconds": 0.011515389196574688}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "7b7b3cc03413dd9bfd16b25bd2118e6de4464ad45ff478d73ff1737451b59649", "elapsed_seconds": 0.011288960929960012}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "d4f218eed8d4c2eeeeaf5baf9061b3d9e4cb3b7f043458a4e6dd5dbbdde04cdf", "elapsed_seconds": 0.011417543049901724}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "ae2f35b8e11823099e9f5250d56bf39920411add338b5f2b18df29cd0d89b55d", "elapsed_seconds": 0.011619154131039977}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "572113809364fe0fb2d1d10a2fe25f5eacc770c25bb14296056466d4009e0b8d", "elapsed_seconds": 0.01141796400770545}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "52ddee76bd9d88e6d47a8028c997d51704207f8a5e0137e305438a10e60314c7", "elapsed_seconds": 0.011390863917768002}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "026983b08fa9b6b0010ca14f4f022290e9b83605526f23d6b2d1efe5b7594bfa", "elapsed_seconds": 0.016370584024116397}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "f5be0d63e474650ad535fe818e4684bd18dc9a3ba08c34d6fb0eae7d7ba4335d", "elapsed_seconds": 0.016689497977495193}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "c25469a23b3f6819d875f727b6f6f3a90b0e6089ac5d3536085a6c8af149d7c2", "elapsed_seconds": 0.016407569171860814}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "0c399f9ca609ddd63800d959d8951120788d595a6f26a1a5382cecf4746c40bb", "elapsed_seconds": 0.01836657803505659}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "15cb7736bdc9bda8c892dd7211fd914f48ea90995ea27e4b09e3ef5d8b9e1d2c", "elapsed_seconds": 0.017895637080073357}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "1b4d0d5e6837c65576165b5acff0cdbee188b28b73870b1cd270669ebd194be8", "elapsed_seconds": 0.016813083086162806}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "e4290ff8e64227f941aea141246df932fd69155ea917e9b717207d16337152be", "elapsed_seconds": 0.01667102100327611}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "5a4e282c72d1b5507be71a50df9a16122903eea30a4df84de255a70feb591338", "elapsed_seconds": 0.016317173838615417}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0cd86d0cfb63b58baf0d2de5a12eb40d8f100a04211d01323fb2d9e03590ed5f", "elapsed_seconds": 0.01631365902721882}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0854b91ffb2c40125f12eead3fd52419d36e7ae007c25fe6e19098f5c6d15c84", "elapsed_seconds": 0.01637080404907465}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0d4a04957520c563d1307bced1e49d24447fd1be800fbd441098e09cfc058e6f", "elapsed_seconds": 0.01672818697988987}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "60165ed9111c377e84fc1f7456b43a27499975de491bab394da83a235fa40c90", "elapsed_seconds": 0.01642415300011635}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "757de5b9450a60e386f707749d18723880533b54651f7205e6485347ab225401", "elapsed_seconds": 0.018340799026191235}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "d67330739bfc9c0233bacd75e0c7fb7682ec34e1dabe49993cac65442b9ba21d", "elapsed_seconds": 0.01790026295930147}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "2f91b92e62bce4a892da916f3fe98e800ef8455be1748f813fbd707a7b735613", "elapsed_seconds": 0.01679252297617495}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "8ffc6dcdb0cc609e3937dd87d45381c20e3bbc13e7cf9a4db6b302c7b8d70247", "elapsed_seconds": 0.016627937089651823}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "de9bc202ed94143170121114d51286e0e202fdc57885445a3bd5940f423a794b", "elapsed_seconds": 0.01663543819449842}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "8ba37fc9e8a8b8d8241b2fab2ecb9afb0c1b2393dfc1d046745e92f7bb1157de", "elapsed_seconds": 0.016308791004121304}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "bf9081f67eae258c7fa8ec8d3a852f0040dfaf174b7d3524b1c67a497130b5bd", "elapsed_seconds": 0.016367929987609386}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "f49a4f151e8090a5c32ea16964fba912b91c949845b80820212a0fb1e417663c", "elapsed_seconds": 0.016709488816559315}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "ed54b959ce2a181c6ce9c931b1c3f73942d5b746fe8de547deba2c9aa19b9125", "elapsed_seconds": 0.016365906922146678}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "a1b6880bbca36189bd1f0ae8607aa01d5b78e52deb30eda78b73c85c9b3e6cf4", "elapsed_seconds": 0.018278487026691437}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "39e7b41651e86335e64be8f96b7f7716c8e98fdadbf22b56beda9eb625315083", "elapsed_seconds": 0.017867153976112604}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "297640fa72a1be20e5c1b430f941287fa0761e9e3b4d165ea0f0e88d8c23743f", "elapsed_seconds": 0.016819582087919116}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "52006dd329a0d148adb3eeace22bca6acbb58db862e687e073efa42324fc3d00", "elapsed_seconds": 0.012486937223002315}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "a9c8462fe8384fb02fc6b732ae93e91728e2c650f3c49d4a332ad9c8dfef67ed", "elapsed_seconds": 0.012669839197769761}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "fc0f1607c8894109c31c09bc078b82a9fdf8e7d9a65ca303fff271f298d8914a", "elapsed_seconds": 0.012873322935774922}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "5ed9a44e7b7646e1f30be5e8800c2ba5140550341542e96ad31005a1e0762e9d", "elapsed_seconds": 0.012690861010923982}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "5afd3fdcbd490b8bf1f5a89c5630eb4995819ffd127ce2428e27cf4e7778f251", "elapsed_seconds": 0.01253176387399435}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "56a3978d6d27accfcec77b11c91a0a411608c86b1fe5892d285388330fcdf124", "elapsed_seconds": 0.012853082036599517}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "fc67f99d82a2a5ff6be9ceea216d0a985a5870c4ff9603b7cd310c933dd86272", "elapsed_seconds": 0.012497252086177468}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "a3f08f14a04690f9d1a45b3fe44ad5f2a3a23012c4c624f48279e58a9f929cea", "elapsed_seconds": 0.012709097005426884}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "716740d72c6fe16a314d421564ff72611cc7fd27273d19660a997045a7ceddda", "elapsed_seconds": 0.012875947169959545}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "f2367cba8a74f718f469cd55c5b0ca3a93cfb68aa4827648ff4cb5b3ce39b0ec", "elapsed_seconds": 0.012671521864831448}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "2b9f85a76cacf34061e76688ea009cad1dce72e4bd794758cdb4c89fd23678f1", "elapsed_seconds": 0.012516760965809226}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "62e617ef78f88f6373bff38e63b140a31645f50fae1c2065395e0aa4f0676ebf", "elapsed_seconds": 0.012854944914579391}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "74e5c535222a712d1ea1d2cb85516159ecbfb95e691ca63af9d6817afce17ac5", "elapsed_seconds": 0.012498983880504966}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "b4b9dc0d785737eaff7da71b699408c3f656a2493dbfc2c4d3dd78f4f5f676b9", "elapsed_seconds": 0.012697319965809584}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "176b0297922c856fc4c3a12110a62592d0396f14d354fc47195df2398b46a55e", "elapsed_seconds": 0.012458174023777246}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "9db9a7f661b046a9f6602584e2359c93ca3f867e18c5a96b77cc01f02b7e3898", "elapsed_seconds": 0.012681527063250542}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "31405fc4798ddabe62b9f852f71de9a4f4e3e5f0f6eee50f22a358b062078ef5", "elapsed_seconds": 0.012676720041781664}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "e5e2778c69191462eb4ef684818e176b2764ceffa493b207fc5be044cc9455e3", "elapsed_seconds": 0.01255205413326621}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "7efc835c577356aefdf3dfaf5fffcffd2971c25161a0dccef7b32f9e56c1dc77", "elapsed_seconds": 0.012864489108324051}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "dc938a74a33c1612a74d0de58e3723e746c3819d49b035846741e29fca440806", "elapsed_seconds": 0.012496250914409757}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "7d97dfdd71d6e26947ba3e15d22e5fcc52bdd20dec3ebf1756cf14a1d3fededb", "elapsed_seconds": 0.012680716114118695}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "2227cfcac8b07cb4c0cac81793f450a34863e14ed530924e2d263ba138f2bd9c", "elapsed_seconds": 0.012461950071156025}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "f12fc99bf410bb1319de947a5a07dbfef00402e505c3af1449766619b8e8561b", "elapsed_seconds": 0.012713174102827907}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "750af692d86b1d87fd632f72474fc4e4b5dc51a567392abbc54ed49456a4d4cd", "elapsed_seconds": 0.01287497510202229}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "75528af2e7b66a0ddc5ec11be2c94b1e311066a618186336e729692659f25668", "elapsed_seconds": 0.016883127856999636}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "df28a8f37b9ee196553ab1fb4d77bb5b51ec0aa6544471ac12597774e69090c0", "elapsed_seconds": 0.01704311603680253}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "a64ae939ce9d3d61bf1185bdf6751386c5d78e92e53e111d866e1c7b11917293", "elapsed_seconds": 0.0168182710185647}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "b14a41992b369c1e1dfecd6841e2925b9e345c74909475188570627cd7217fe1", "elapsed_seconds": 0.018015944864600897}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "7b462ef88d3dbb4940e67bd5b9f69bde5b96c34db1221fafb9c332a2da353184", "elapsed_seconds": 0.017786493990570307}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "3ea7cfdf7266510319d0b0c5a8713abfc324771ec67dbc888e18fd6c7616f3e6", "elapsed_seconds": 0.017180319875478745}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "58e9b7dc0e03e7a0771f28df7ca77246f8364e31ede62508d522994f0e76dbdb", "elapsed_seconds": 0.017028604168444872}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "8c56c7fdbfae4c985c778a6e16ef8a114cbc0a09b95b791e569597931f138b09", "elapsed_seconds": 0.016827865038067102}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0037304e8d1f66961eaf3ca8d6fce54dcdd47f32dd6a27184a3809d59f843598", "elapsed_seconds": 0.01778424996882677}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "4e8a5f4d9ea1669ff31b4eea3f8364169662d47bf30ba78139e9a3bf25bdf476", "elapsed_seconds": 0.017170035047456622}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "05387b46367454092f460a3c4c01f544e6e8549e3bc8cf5c950f25a98cee8b33", "elapsed_seconds": 0.017017588019371033}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0bb600525627a9016f8ba0551045515fbb7e6d93f38a44402b561c7cd9c5d453", "elapsed_seconds": 0.01680444087833166}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "f48289fd6acf7e7deeb77ffb401ce79772e2ed33944b93b365b5820f027f11d6", "elapsed_seconds": 0.01683798013255}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "38c5a38e973991912f7c00019a86c295e01261fa26664bc7168718f776d068f6", "elapsed_seconds": 0.016988774063065648}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "52beb8af1a9e7f3926f14c29117725dbcf757e7f118aea007ed68375116b46f3", "elapsed_seconds": 0.01682282704859972}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "cf0fc14b5633e31da2d54eb0130df3a29b814b6c38efcde70bb430b1de062f9a", "elapsed_seconds": 0.017992439912632108}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "55f103efe0faeeb7e32f903621f25dfea77f8e7ebcf609079228a7babf004fdc", "elapsed_seconds": 0.01681498601101339}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "cca24048ba2b11131161ad4ed615fc70b1c35a90f9adb49c2cbab07c57155c72", "elapsed_seconds": 0.01687868102453649}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "5ae983117a6120c75f8d7a8977fe62d649123fc3174fee692de4f524723f359d", "elapsed_seconds": 0.01698305713944137}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "8c27bc0f95d0ca4e94e4df9b9d93bc401571f9c805e1207b7adb7150d646a6c7", "elapsed_seconds": 0.016811300069093704}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "d1229a3ddb686b06037376f078d3ac5092e1be01963c6edcd4f568c12498e59c", "elapsed_seconds": 0.017990808002650738}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "568928852caaf665d20d962885de66a1a70035fd599b8aeddb5ba884456446d8", "elapsed_seconds": 0.017783358925953507}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "a03e3b2e988c5a4f6618fec87712bf81b001dd6c673ff6aae9e98258c08dd6bf", "elapsed_seconds": 0.017172819934785366}
+{"event": "tuning_start", "block_id": "opt-pilot-01", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "bf009ac45fcdd053507f7f46863172197ed9063535723fe1c1f1d52b069c878f", "elapsed_seconds": 0.01701650582253933}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "024004655f9e311ff2c41015b2742784ac84fae192d1630c515a3c2c9e86bcbd", "elapsed_seconds": 0.011060710996389389}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "63a64a87734f8c9069c9ef610f117591e038f0c127b708008bba01a61b56d473", "elapsed_seconds": 0.011254941113293171}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "b94bc2cf0c570eceb47c962f9ef93a69dceaa6b35981ec6beb46fc802536f17c", "elapsed_seconds": 0.01106653013266623}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "c2871beb6511f75bd4510183cbfd3e47107f6d5b09fe5860fdc553d2444bb6b2", "elapsed_seconds": 0.011050585890188813}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "907bf93e31c29e91fedfd38c1d2b9412f53da1285a828e7a9cf09f5f666d2dac", "elapsed_seconds": 0.0114973618183285}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "a0d47c565206f46a024def33f111f134c34071f35fa2f7220ce4dff24bd1716d", "elapsed_seconds": 0.011106910184025764}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "2c6af356e2d2cfe13156c7850ad5763309026fbb3685c8adf07ce3a66a04e5fb", "elapsed_seconds": 0.011181793175637722}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "fb60cb660c38154b4864f79e12a5b879161837e15a8478135481b5a979148237", "elapsed_seconds": 0.010937938932329416}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "469749a173e360fdc4a4aa0507d785342bcbfe08cfa0fb0fe2d367cc6f776429", "elapsed_seconds": 0.01148697710596025}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "14335b7356b63756ff5dc221c47b08dd4466a52016ee86a73c4c9a52f5387276", "elapsed_seconds": 0.01108939410187304}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "efc09e5afa8baf79f7464511c3f3fcac3e96202ac63281dc7774345ac5563303", "elapsed_seconds": 0.01120475702919066}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "4014a16902b1df932ee9e980ef80bb5f7b6fd2364c5f3f1fc90b693d97109034", "elapsed_seconds": 0.01106216385960579}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "6b6c372556bdd1508a25955615dfa9911bb8aeab67ed9dd467c8cc468c11d142", "elapsed_seconds": 0.011081842938438058}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "73b57d1cbba95ea0f22b85fe511b3b3ed3dc691662868da6eea93626f0617353", "elapsed_seconds": 0.011269202921539545}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "b1b7f58a4b226c4a469e263963680f9085a59da970d9de9816b1e8351807f77b", "elapsed_seconds": 0.011109553975984454}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0e15fb43cb7baf7ee02cd42f6b8fa45510fe149b2ac36647fde3b8f410616175", "elapsed_seconds": 0.011050405912101269}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "7149903251a46a095db30f6494b3b4c3e37e0025fcad232edebe7b315bf8e13e", "elapsed_seconds": 0.011131678009405732}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "eba2f6b686ea027d812a6c2223b3c8cffef0013866673f68f7365f09952b7e99", "elapsed_seconds": 0.011187741067260504}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "bab540e5becb62603140a062fb67148fb88822559acbdfae4095692139ba5f47", "elapsed_seconds": 0.01091775787062943}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "e4ecb7e40a8673ef53654d405af015369bfd02a291cc11b2857f98b853cf91e5", "elapsed_seconds": 0.011038198135793209}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "f9af0ff28d945db155c4b5f224f9ffaf7ec8d9770c644f65ab54d91c2f64b5a1", "elapsed_seconds": 0.011276352917775512}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "842ff16ef08972edc34692155df378b9c5badb57cb8aa18267368922dfc16e9e", "elapsed_seconds": 0.011075533926486969}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "09069f8801461c0845e93d711e6327308447c6c8680a2fded71c76fef81d34ef", "elapsed_seconds": 0.011032047914341092}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "7d5607001c995be89ff1f0b7dc28f3d7e0c8d2e06baadbab3f7f5f35287ce874", "elapsed_seconds": 0.011517942883074284}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "6ad6bf2eceef2835dc307adf7d3ca5a8f8b8801615d52e12777410a1be6a4f1a", "elapsed_seconds": 0.01847735303454101}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "43089a5be2e389c57cee7096dcca5d1fd07a05cecc35c39004b5091d8c884984", "elapsed_seconds": 0.0178551459684968}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "ff62db0623d8a4c227cd15acd1133ce54ecfb683a246df7955c6eb573136774e", "elapsed_seconds": 0.016935225808992982}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "bb551d6591d517e498e1833c64979b9a3d3587c6584c885f4e760ad796871a21", "elapsed_seconds": 0.016566526144742966}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "4ff457106c7e864e154e61443ac005e5e99a9ff2943a2e6a43a3dc0ceddcd458", "elapsed_seconds": 0.01617569290101528}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "b45f4456d0945dd880ae2a637e74a583a8bbf5c1bed076236e7f0f40f2fa32be", "elapsed_seconds": 0.016026922035962343}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "8a4c54ad488042b2d6c36e3a71aa6bf0cb92c0a3c5950b6767e2749773d9a6dc", "elapsed_seconds": 0.016243335092440248}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "2194497f2c01c0f43cb1c0c1f43269439babc91f5dc951467fa3266b295e4530", "elapsed_seconds": 0.016053812112659216}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "170f14d77deff31d4ea2759cb722c6a160ebf309fc61b834ce4eaa3d17b653b4", "elapsed_seconds": 0.01688750507310033}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "a2236bd215db9ab4e413a3cfc3720d6594af5e5e150383ebe5c1ce1ee214263a", "elapsed_seconds": 0.0165728151332587}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "bb9004ccbf515c7a826b28524bf89c165c4f407486674403414556baba5745d8", "elapsed_seconds": 0.01621344988234341}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "df6a8b02b86d53bfe77d30106d3ff791a83d806acf142dcf23201c6165fa9103", "elapsed_seconds": 0.015991610009223223}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "026a4ef1b424fa139e7bb16b24d29508f45b6e5097622d7c37935e4241807983", "elapsed_seconds": 0.01625970914028585}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "9e314fa0abc8ad26e417a13daa7b8f801492b54057ff5e8a47d6de72407b8b44", "elapsed_seconds": 0.01605426287278533}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "51aeb17e5a9c86b0b5b8185af4cb8027b71d402b7867f72bc17348b8990015b1", "elapsed_seconds": 0.018476892029866576}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "bbee8703fee80ae2d3812ba049c132594588630d58740b6c2a5febcb5634b6d1", "elapsed_seconds": 0.017909917049109936}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "ef62607e052a080615107c74473a7c33615d8d668f340cf8b393e248904e5721", "elapsed_seconds": 0.016590310959145427}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "53d53755168ce353fafd0de0282f35e493106e348783b7f1f7dbc0d04ae80fab", "elapsed_seconds": 0.016169694950804114}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "f9f8b1db9f27fb87498e02f8d94f1eb98fb745a9082d4bf46890ce21d8db6cce", "elapsed_seconds": 0.016022495925426483}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "1aca41ecf605ebb2b5e20df0db293e5778250c84b71fa9f9a73b7dff644c9b83", "elapsed_seconds": 0.01629056502133608}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "9835fa4da6501909d0c358ff908ecd2b1e9af93c7ab71f23533c2d169f5c3e5e", "elapsed_seconds": 0.01603867905214429}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "f5befa7cf6def1407f298aa5a68dadeaf3592cd6b06c41f01b417249d43be98b", "elapsed_seconds": 0.01850405288860202}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "1cd586602b93f41bd93b3146fb920eaf04e22d7904536c8879b9afee3687fadc", "elapsed_seconds": 0.01788822584785521}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 0, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "24694552329ecb38fca1ef43250cb47b699d4638ed63d09e307138c4997657c1", "elapsed_seconds": 0.016963537083938718}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "e80ecbe1203fd1c3898cb065ab6c92c390f69d1d960ae69cbfc8a21c19bce5da", "elapsed_seconds": 0.012787744868546724}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "ace8fd74c96d94cbab42091e9c9235e3cc72de148d44c541f6e0c569ba74b408", "elapsed_seconds": 0.012571162078529596}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "58bd783e3980e05b75e59969a5fd2934b4b472624288c82a34e35fe5f3a31e06", "elapsed_seconds": 0.012441819999366999}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "848bf62901595bd85949dc0c3bbdd1fb65277056f022cdb7181b11175927d802", "elapsed_seconds": 0.014455551048740745}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "6abe84d263de2e18c99193230b5b6cb56adbdfb706693bd7a9f1ccef627aba26", "elapsed_seconds": 0.012350823963060975}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "935e4c454a1746d7d8d4622290626c0bd00b5e74b26d93fb28dbe2959a208933", "elapsed_seconds": 0.012564952950924635}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "30bf184734df30215a1f07892ccdadf55ea67a148cb8e69f2400d685a5683668", "elapsed_seconds": 0.012362822191789746}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "dd1cdd18ef4b7442fe86bd11407a58eb9584e7c4d4f20c87257581657fb2b101", "elapsed_seconds": 0.012568098027259111}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "9924ad78943d8fc6fdc25e8d7d194833c9d08cb6368ac29327b66ff9c1e47587", "elapsed_seconds": 0.012786243110895157}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "9e078d45700db97a81f9cf02c945ffc25f01757f05978d7c298440d73ca472f4", "elapsed_seconds": 0.012583861127495766}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "a153106395ccc8e5f73b56be236b74c01e047c969ccfa23e7f0383dab23125ac", "elapsed_seconds": 0.012454339070245624}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "a689ee785e029e4a34b840b723f5dd1d332fbcdc7a7c8c5bb2b12d713b0d133c", "elapsed_seconds": 0.012732562841847539}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "e515e5179772817d1fa12dc83a50f2afc4977d7025319460c51774e7394c1076", "elapsed_seconds": 0.01236919080838561}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "45678474b72e75a279df1a048290aee56971ab614a9d9e21ee4167a711fb2867", "elapsed_seconds": 0.012577130924910307}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "f6498bc882e6de8372fa39c0d965df8859675aad75c52220c953e70ac365d48c", "elapsed_seconds": 0.012353878002613783}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "0d6aa543ff7a57bad29aac746677e44c7e51ba6bf10942614f5aea2b330b9718", "elapsed_seconds": 0.012620455818250775}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "d38a8b599ec38f076b19ebc194622373a0cdce5588c46f167714ffca546e1b9c", "elapsed_seconds": 0.012350823963060975}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "b9baf6cc14c6f19bcd2a4f5d387d6ef8ac052713820cd78160f35ffb689a7b85", "elapsed_seconds": 0.012563570868223906}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "4944568f708cf34bfea2e38321f6e483148eff6c012224b63d7cab1d40228312", "elapsed_seconds": 0.01236661709845066}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "8eca98b0059677e97cc825eae2a3e9ec5a5febc64edb5e185f91eab98ad740da", "elapsed_seconds": 0.012582388939335942}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "b36c16e452857d215a32c38fc0d0d0941c8c1fab57c0dbd2b0dc799586b427a4", "elapsed_seconds": 0.012770499102771282}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "18d0e270e99ea3b7cd54946cea8b6e0a91b0f735f4b5d4a8a75dd3c5f06f28b4", "elapsed_seconds": 0.012578684138134122}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "b021801ca557966c2944323a612e34bae578da2faba2414b9f7f1a0ffdf9b254", "elapsed_seconds": 0.012427679030224681}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 128, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "bace2ff827348254ef9036f2a617d6eb347706385e4ca231779fd497eacf9aa7", "elapsed_seconds": 0.012745582032948732}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "d70e335495ad6cfc0e2277a9f0c1d995d8171048a3f546ccc69e0edec1bcd955", "elapsed_seconds": 0.01698420918546617}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "cecc0238b2d9f2f6c379a628e49d7e0c4d85acce38f749575e405a4f0239b046", "elapsed_seconds": 0.01688199699856341}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "b6604cd346a2c2240ee7517640b076e3b53d708e65b032d8965af13a97cf4ccd", "elapsed_seconds": 0.01699046790599823}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "611f53690c96248e6407d2d3c2c1335e73f90f67791785f1babf1af6c2084a9d", "elapsed_seconds": 0.017055375035852194}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 0}
+{"event": "tuning_complete", "record_id": "14cfc82f76b709e9c052a9dc971102f4a226c938d8a28a617749a13700bd46fa", "elapsed_seconds": 0.016826984006911516}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "5fbd1428c2ab83da8ed3cd201a540b0d98f03d0d538c1adc4ce1e409777800d3", "elapsed_seconds": 0.018137816805392504}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "15453b745b9675f45e517e08851931432230e212f46390a31382432545484188", "elapsed_seconds": 0.017838552128523588}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 0}
+{"event": "tuning_complete", "record_id": "e050180a34783f9fa8389aa9c437d42477b8fc44100c897e896f7700ced1483f", "elapsed_seconds": 0.017133530927821994}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "766519dc82d0b172662f97f9cbedeacca87a19045ebb4ba36c2121e8a88a06e7", "elapsed_seconds": 0.01819675602018833}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "3b5996ba6d554fce5f38238f76dd01b04c409d4da5b18f88aff058d171d9b80a", "elapsed_seconds": 0.017847484908998013}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "b7dd0ade6d62a01296c20074aa3a1e49d75a232b786e1484f8d53c82cedfd692", "elapsed_seconds": 0.01713318983092904}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "7e7cc3a602c2971132138ce971cd192fd267f2eddc7849cedfb71bacf89c1d8e", "elapsed_seconds": 0.01701260101981461}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "41ffd99f7de5f599a2e661e836acd06d84b021eabc1fd98841a1208275fb9e7e", "elapsed_seconds": 0.016885670833289623}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "a335b75b0c64b26323b46abefe76a99f6dfd00ca075077f8e53c7e794f6b0169", "elapsed_seconds": 0.016969135962426662}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 1}
+{"event": "tuning_complete", "record_id": "261c8e8865930e393cc52c31c9db3ed6dc24503e3c2538457afee10d9955d1c1", "elapsed_seconds": 0.017001593951135874}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 1}
+{"event": "tuning_complete", "record_id": "ebc95d7e2c278a5558fe35b8aa88192fbdd1272351c998cc26665311572ed03e", "elapsed_seconds": 0.016855447087436914}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "a3dc09d3ff0d99b56d8f6379f510bd9f8a366e764214ab2de606ba53303d194c", "elapsed_seconds": 0.018137558130547404}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M16_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "8dfcd6f2dba873e4724ea3b5d43ae55657a63b9495094bf18bfbd0bf48b24d99", "elapsed_seconds": 0.017836658051237464}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "c9ead01f1a9c4292d96c4d6f291f061a29629eefedbfca574cdae7a12f0c3939", "elapsed_seconds": 0.0171660790219903}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M32_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "728d6beed54695260aa33ba4e7d85475ff73f05fcb692a58626ab67235296e5f", "elapsed_seconds": 0.01700256601907313}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N64_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "5083f0dd71db1393ddfbbcb0ddf9d456f0f3c756a82394c3f75309ae47a81888", "elapsed_seconds": 0.01687870197929442}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M64_N128_K64_W4_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "23e916b086e55d225af315fae3a7d3aa96b0c802b47e6b8b37ea05d9fa6f3e7c", "elapsed_seconds": 0.016979851992800832}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "M128_N64_K64_W8_S3", "repetition": 2}
+{"event": "tuning_complete", "record_id": "746070b5549358779564b5a5104aeb7f3e6c59c024ab500bd29bcc9b413413ba", "elapsed_seconds": 0.017020792933180928}
+{"event": "tuning_start", "block_id": "opt-pilot-02", "domain": 1, "batch_tokens": 1024, "candidate": "DEFAULT", "repetition": 2}
+{"event": "tuning_complete", "record_id": "a7db871c54b3a59263a89e94db4374390e06dcaf3acdb83abe5f2c21d07e3ec7", "elapsed_seconds": 0.016867825062945485}

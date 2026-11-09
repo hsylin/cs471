@@ -1,0 +1,1047 @@
+{"event": "initialization", "phase": "import_torch"}
+{"event": "initialization", "phase": "import_vllm"}
+{"event": "initialization", "phase": "import_vllm_config_and_distributed"}
+{"event": "initialization", "phase": "pinned_sources_verified"}
+{"event": "initialization", "phase": "initialize_distributed_environment"}
+{"event": "initialization", "phase": "initialize_model_parallel_groups"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "runtime_ready"}
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "warm_native_weight_transport"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1109 12:40:27.275618030 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "native_weight_transport_warm", "process_transport_warmup": {"completed": true, "migration_count": 2, "sent_bytes": 1811939328, "sent_bytes_by_rank": [905969664, 905969664], "forward_sent_bytes_by_rank": [452984832, 452984832], "rollback_sent_bytes_by_rank": [452984832, 452984832], "sent_messages": 192, "elapsed_seconds_slowest_rank": 0.6723643778823316, "replica_budget_extra": 32, "world_size": 2, "shared_native_eplb_process_group_verified": true, "original_map_and_weights_restored": true, "scope": "one process-local cyclic cross-rank native migration and rollback on a throwaway layer; same persistent EPLB device group as all measured methods; excluded from primary and branch timing"}}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "run_complete", "record_id": "5b4fa00bda20c99d8b288bdb0c6e5c6794e7ba568475a193fd86a9564739fd16", "elapsed_seconds": 0.25906872493214905}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "71fd5689f030ac7ef673767e236d23ccf7a90cd56e22c0ea6a89b73013124611", "elapsed_seconds": 0.2457431850489229}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "2c945e294a7fd895ce72dba1c4e00007145822d80a1ba2005224b97697443c79", "elapsed_seconds": 0.27145036798901856}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "57aa6d0b4a49e0b93f7bcfd5ea843437320ef34b35fcd8296b7e69924d7b1aeb", "elapsed_seconds": 0.24496546713635325}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b9e223a2e9433a93964c89c297cd956c29196bc2eb6741abebcb8e423dbce46d", "elapsed_seconds": 0.24950893502682447}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "778ac52de6cc6b7bd9a4be547078ae8140cb49e6e0c3b011ecb74651a80e8d84", "elapsed_seconds": 0.25619638594798744}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "43ca7a93094379c7e428f0ed8d039ef0bbe719cf499846cc457d1c8ce27bf760", "elapsed_seconds": 0.24650388886220753}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "d1ec425adf3b3d58efb07aed8c8934f2468cadf4f261f09455c5573bf5b2b92c", "elapsed_seconds": 0.258250555023551}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e050b406ae774cd28387e76f9b5149a2edae6f4ee41c3b2114e7301f1c27797a", "elapsed_seconds": 0.32739581097848713}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c4524a07cb2538d0b7d13e6dc45c588c516519601561c77f78cdc45ac624023e", "elapsed_seconds": 0.32092514215037227}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "7c1ac1a2daa606b29b47959bbab72aebf85ca782f86fc45967d67ba72e63e531", "elapsed_seconds": 0.3275578711181879}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0e3b406abdad48304fa52ce20e8fbd92e2fd87334c10fb90d2ffe943e7649e59", "elapsed_seconds": 0.3213094840757549}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "336c072183bb861ae717cebdff603ea2100d6695b7c15b173d704f15ecd87661", "elapsed_seconds": 0.3209823868237436}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "13552f0dd7901fad600aba63bf7a7ba00f887836dd642edca3bc3f1e6a818b8c", "elapsed_seconds": 0.32741095195524395}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9e7f2ef6c9b5a43d53358dd82d66e32d7bb6bb373e8c18fcd7012cfa62239f23", "elapsed_seconds": 0.3206263058818877}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "7cc33fb0e952b7fdc6e620b94f8da6465cdf083403369d115fe742a1b1d04a32", "elapsed_seconds": 0.3273571820463985}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "568b0228f4c8b65e6f9ab5a95d54e1f7f74e1e93eb1ffbf04450aa673ac2a5e5", "elapsed_seconds": 0.2565170330926776}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "28342a135fc79f8741dd0950fe9b6dfbc27d9e231feba5231e1f641b38984f46", "elapsed_seconds": 0.24524937896057963}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "fdb9d1cacf6d82f352c1649085a0fcdf171cd87b408c7fd91078d2575f16fbdd", "elapsed_seconds": 0.2580250590108335}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c6d51b47a7ea6920617625dd07de43f55875e16848d5b078d209eb72d1c6abe4", "elapsed_seconds": 0.24389272811822593}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "d953b67dc56c44387862ef4dc6dd6c112be26d9deef4c919daca8375eef93899", "elapsed_seconds": 0.2565917039755732}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "58206d811a0f3a30c26ffc1e942e7f70c776b1e4b83489e43ca395abf75e2152", "elapsed_seconds": 0.24469078704714775}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "3668fea31865d73b13e3f5e50178a6766f48ff2f702c3513dec942a5af76436e", "elapsed_seconds": 0.2580573670566082}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0081dde605e18a4d356b6a73dc575ca07be002d2d6526473fb07085b55e83c85", "elapsed_seconds": 0.24612501286901534}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "9955d908e12c661944d939f23aa56271cd39d7793a3702d4681f0af871c4686b", "elapsed_seconds": 0.33238850603811443}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9586dbebc9801b8e8d87c31a8ea14b2a2d942134e2c79865c27e3b0f4dc41e25", "elapsed_seconds": 0.32631505909375846}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "85361e4c2a309cef1306be491fe463cc647e59a7484f9c32252c9eaf8fe43c93", "elapsed_seconds": 0.33187382901087403}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "483a6dbac5ac707c2e380523f9f06dd229e7af0484183fb886ff9b054c5cfb65", "elapsed_seconds": 0.3212311069946736}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "1f89cf6bd767d81e873f47009b91b450f9a7f1dbe3dba8969b2b16e2d5547849", "elapsed_seconds": 0.3319700618740171}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "e6cc3bdd91246ff3c3547bf313d82ca126a723236d517d7b3735cae2bfc62151", "elapsed_seconds": 0.3207809862215072}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c9c7a6b1d81f97435dc34002698b29bb590b96ebeb313b723c96d0a70f4f2ae9", "elapsed_seconds": 0.33494489290751517}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "19a81bce109fe94a4f79ed2f5fa6637d09190ceb6089c7fa06c25f5c94e2dee8", "elapsed_seconds": 0.3208630681037903}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "0ab54ad664e899100479b6ee2b9d63240a74dce4afb36406d0ee11d8a27e56b4", "elapsed_seconds": 0.2606368390843272}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "6b3968ff7feb155384f02b2af5c1f92f5341f88fdda1095f5d28352a2c14db43", "elapsed_seconds": 0.2552522881887853}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "b31e453656285062b2caa3efb6c35631a3a30c52c52b77ec43790e9e34e52413", "elapsed_seconds": 0.25799398217350245}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "02ea88b83b9ceb301507782be9deb8d34cb916b38e5e6b69d21f7e8fa82ff730", "elapsed_seconds": 0.256813052110374}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9395c0f0ada32d0fd53c6c344c1a161e171744d941b474c3cdba96c1081ce182", "elapsed_seconds": 0.2560825648251921}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "d7d3e53802f9f8f4b3e897038c69458dd39a4fb39883655f505e30f247d950a4", "elapsed_seconds": 0.25782218598760664}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "6033ae45e50c48daa7fb4f2d1f9f324252f9da0bb5355ac9c51727f886fd7b8e", "elapsed_seconds": 0.25680712377652526}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "0a11f42aaafb0038420703e142d1a587888b8fe2783a4117443c997254c41f01", "elapsed_seconds": 0.26099884789437056}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9092f8967e042ee13dd69fb771ae045056864422ca2be93d1c0438420e53bb46", "elapsed_seconds": 0.32608081912621856}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "ace62ff71d095cb34d4281e1a0e89379dda47c2f62ada0fc45e439e8de3f50ac", "elapsed_seconds": 0.33646812103688717}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "56d5e8bb994a616e2acd1de4970195a8911c23c7c957592d77ef69c9421bf037", "elapsed_seconds": 0.326228910125792}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "c9b2828a72958aa20368dc7df4f85bac89c524ab6eb53dddef6b7c394422e1cd", "elapsed_seconds": 0.3361146750394255}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f021e634296b422340af277e12f599acf6ee914be3dd4991bb0b90ffe29679bc", "elapsed_seconds": 0.33612618199549615}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "1da8b3b5c7895b9c19eeef8a03334b5a0ae41ceb16f42ff097f899cccb4c38b7", "elapsed_seconds": 0.3260799970012158}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "50d98c246ec19973c651ccd020ddafa8e99861010a5341d39e05f32c16ca6c0e", "elapsed_seconds": 0.3360002839472145}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0c9a36d38bd3eff250e4aa4a562c9259078a7ecc4493dd1e6700ee44d258d1c2", "elapsed_seconds": 0.3261633210349828}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b6c690afbb6fa4f1ead4fb9350eac94460c712e5a5abb2c403576c08b6004bd9", "elapsed_seconds": 0.25449353689327836}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "524ea98111b53aa38acc398ca1fa8dce0a96c2ba77ac616e6b6c30fef90dd4e7", "elapsed_seconds": 0.25979867903515697}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a3fa0ef658cc6dfc0bf50f0cbe3951b22e29077edf9c6599bb177e66fea434cf", "elapsed_seconds": 0.25098349805921316}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "0697135514fb23476cf36de3b7f0a51c55ece4c78061c65948a97c5c1e25679e", "elapsed_seconds": 0.2578276530839503}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f6ab339daef4b68181e28f8957061048afbc54d5eafa4eb88688ebb6cb288d2f", "elapsed_seconds": 0.2559844071511179}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "dc07fad2b392de58624550cb4d83c825900629134204cebcf807cd4bae5286a2", "elapsed_seconds": 0.250352828996256}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "782c85b917e42dbb73b49a7860a61468a97c49b6ef4d9049b5eb4b2f864c0a3a", "elapsed_seconds": 0.26052793487906456}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3ae2e603558069d38519fc9ed109b26f8a9f9338ab6ccf190c4b1180743430e8", "elapsed_seconds": 0.2512414928060025}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a41481b8f16e149cbc4a29abca79558ae1d8053ef9cc39e7af81ddfa4af51239", "elapsed_seconds": 0.3240416101180017}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "5cbd92e48f945254f18ad278a630eaf761f7f9aaf3a0ff51347a9da695d331d1", "elapsed_seconds": 0.33677724096924067}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "5f96d78238d5ddc4408e7ad8bb1501dda2697a254f9a889feb3eb5f4ae8e8fd3", "elapsed_seconds": 0.3239383869804442}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "a03ccf6c77feb489bfa3be6e1a4623c2a3b086e5f5005de7a4d61f251f72f172", "elapsed_seconds": 0.3303444590419531}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "1a57802d3e68f48a8a8ce109fceee6272923c0db1317114db182051962603b50", "elapsed_seconds": 0.32442114502191544}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f8ae1ae03ff051f1632c075db88973ea33108eddb91daa7853f708dcc1250f0f", "elapsed_seconds": 0.33288902905769646}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "e429521b15b7ccee1e48996a127c8debdfccc0a6a496ce16f59dfc8a54dbb413", "elapsed_seconds": 0.3235751560423523}
+{"event": "run_start", "block_id": "opt-final-01", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "d851d7258e7afc3557a355d4368dd7c8ac4a46ef9785df6b506738e1fb6f1357", "elapsed_seconds": 0.33031388302333653}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f6b2ac8d30d04c36848f48bfd704a0a057b85c60f5e42890aeaeb10b2480d6b7", "elapsed_seconds": 0.24921536399051547}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ee8aaa68ce6ca6ddc130f00bf2869df93413c29f7535da00a261a7171514856f", "elapsed_seconds": 0.23785934899933636}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "58a38bb0ca8556e87ce1cac0018ce862c03ab0c3b3ddd969c97f97b65f31737e", "elapsed_seconds": 0.2515645429957658}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7437c50bd735abfab210098fe36b1e1d3c25847e722ae25c61bb7f03c6881431", "elapsed_seconds": 0.2398159538861364}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "419d7d80121ec5a65611fd05e118f8b6dceb510d1e1e596293e5aa7cc8dd0db3", "elapsed_seconds": 0.2501773468684405}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0c79021ff05fb8076fe6d54aecd86411965d661223fc4631d6a77f8290032ebc", "elapsed_seconds": 0.24347847909666598}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "28c5e286df6a9678e4e7e5184c6da8cd5ac3b68cb209d647a648138a1406e767", "elapsed_seconds": 0.25069704093039036}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9bad1b4f7abe81cf5c75b64a1dbc805498301fde9ca674427b1a8df4ae80b379", "elapsed_seconds": 0.23928494192659855}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "b029fb7f8b88c3f93096c76e818a9c08a2e4e8b8892338a737fc9ec037f1e36c", "elapsed_seconds": 0.3245549548882991}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "fce0cc8bbce7bac6de198df3b1f5c6acad2e35c6cedcf0cfdb812a3bbd695f2a", "elapsed_seconds": 0.31918790005147457}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "bdcbffebba9eefd68ea7aa9de152b01f012cebf94114fc5590e694885ef78a94", "elapsed_seconds": 0.32466138317249715}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "75e3081399d7bf146cc80bcfbf111d720d55526703a42d13cc8947931a172790", "elapsed_seconds": 0.3192316950298846}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "ec6776137fff1c9b13ce2eff63aee9573e365e2323c207a08dd6a0376db49ec9", "elapsed_seconds": 0.3245718290563673}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "15aecff2e9d8e830ae15c9185f5ac9118949f7dda707b2c6f57c3ba918003f65", "elapsed_seconds": 0.3193638320080936}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "111dc10c20b53540e107d3ba2996e684e5855a4b39121fa2fa83662462f77b2b", "elapsed_seconds": 0.3245585791300982}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3283e712399df14834a5f3de19de529c21e6498fc4158d0ce4e44ba75e988ae1", "elapsed_seconds": 0.3244571180548519}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a52c4cb19483ed0869e4c31fc6cfc0a2c756ef17689feb2a71f5c7a6c35e6df8", "elapsed_seconds": 0.23841503588482738}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "abf88c44e9b06c0c5659fc76d5260e22fff871ff4e0bee2e1dd9128d1ef01472", "elapsed_seconds": 0.2554144070018083}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "84577edf9a003952859a9855dc073fac8fc47f90df241d7c402dfa9bb0e600ee", "elapsed_seconds": 0.24533971096388996}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f76dcaddbcad0d61776fe8c742bb218cc9de9c82b581332f6fbdd80066650edf", "elapsed_seconds": 0.2516453331336379}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "fc12dfb77d06518ad072a64ba1286152d681385de52eb02f586925160f948ace", "elapsed_seconds": 0.23853699816390872}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "cb6d73397d9162747ad967b70f2dd576534d1dc88eba1b0c8c8c41506fe98442", "elapsed_seconds": 0.2528559360653162}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3778dcc53aee91e0b38530315f3c22eb40727221f84a812bc5bf2d6a179625d4", "elapsed_seconds": 0.23945388314314187}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "1524a42c7ce8db471612f60d77884bd203506805fea40d31b1ed7352b4353536", "elapsed_seconds": 0.2527118211146444}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "be5f07e071196693de39bfb364a2144063205dc33d4b90372921f929052be60c", "elapsed_seconds": 0.32947042491286993}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "21f069b229b2857c35d44a462c410ca5bf30d6ce4a003c0d3cbe7051a860ddb0", "elapsed_seconds": 0.32114041806198657}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "df46a4658f85695e4e48bad361d29a96d5e38b8d11c89ad2a2a781417c7e883e", "elapsed_seconds": 0.3285284829325974}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "48b3959484c11327cd2ae7a978d1a1926fe0db6ceda5caeca120f5771c00c620", "elapsed_seconds": 0.3196338340640068}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "099bcc6fd0250c9c0434707a1aa2107ba4294dffcc038fef61d68508c69b30ce", "elapsed_seconds": 0.32835355098359287}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c7b191217e26f703bb391c1539c76d1812926806763bc90295c5875350da070e", "elapsed_seconds": 0.31959919119253755}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e9482a371510a69178ab539650f83cb8591376844a140cd28036157041660dca", "elapsed_seconds": 0.3283303058706224}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "42881bfdfca4c8dafbbbb05875253d1084279324712a7f05e827cf52e4610eb8", "elapsed_seconds": 0.31958234612829983}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "3ac65b224a29bc320f9b5ea382e3974128dace45e1b9794b3faeda1c7beb38d7", "elapsed_seconds": 0.27414595708251}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "da8fd065dea7f7de10480ecc9a5940c27297165e601f86eef447a068989c4f4a", "elapsed_seconds": 0.2528906869702041}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "cf75357ca63811d386e19a2f60a7d12753f0f7554e38f0f9dd7d47fe65fc3dbe", "elapsed_seconds": 0.26491996506229043}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4a25cfaff6f6e3a993b702a41ab64b424cf90135aa4f909be908e9604a2fb77b", "elapsed_seconds": 0.25474014203064144}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "30e71697660821c97d39b516bd457b515623b3560418188378bdee3624bd1bfe", "elapsed_seconds": 0.25320610706694424}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "9c490895db7623010346c72e000a2572c7e95ce93ed98a7e9ca06035abe835a3", "elapsed_seconds": 0.2649016280192882}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "84f21b8557fc8f71311f206603e83274743aa025315814411d5a5616427ad4a4", "elapsed_seconds": 0.25472853402607143}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "a54089fb5b173c09f95dea3d79349814c623987a91118f5e7ab491941ef421f9", "elapsed_seconds": 0.26869359612464905}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2a7c5a27c3dec31f4942ad24ac2776473fdb2a1d6bc9f5b98c4e3481f4e9044f", "elapsed_seconds": 0.3253655689768493}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "0d0b4a12ac8cd307501ccc1dbbad4ea4e5418480145379b05f5b1fd423327e13", "elapsed_seconds": 0.33469360414892435}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4f8ad55d7162b289619ee44a7e50bab10748d9b785b857b9ddfb3be7aedffa6e", "elapsed_seconds": 0.3256243660580367}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "0c9136562360cf7509b0658be39fccf5c2f55332585e8acd068ac9864f148913", "elapsed_seconds": 0.3353556899819523}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "4ef79f0c44a8ad6c6b3213000a222b4e740203fe08e2361e676f485d5cd6f920", "elapsed_seconds": 0.335285855922848}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d929028d175df67ba4f528d6c46dbcfad1a2a298f6db02eec7d54290f3073b92", "elapsed_seconds": 0.32540942495688796}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "0c3bd6165afc67fb3767dbe1d289f84c56939772f5dcc14f40dc5656a68ed61c", "elapsed_seconds": 0.3352262869011611}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8c6c1551ef54e56436d72f23ea6da56bdc0afa997a8d3a0a91ef43ae543f7274", "elapsed_seconds": 0.32527933083474636}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "562735b7eed51d72b62c26e4440a34ed5a652f473276cc9c26cea7c01135bfa3", "elapsed_seconds": 0.2594092860817909}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d9d522cd2ff4196198ebdc08412a13634d768ece03941a6b33ef4b7be64e3b76", "elapsed_seconds": 0.24975485494360328}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "a80ba049dcc7527fef160f19d04dd3a0626fe7a7448734597c5100401ca99705", "elapsed_seconds": 0.25581889785826206}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "721060d91ba8ef7ba4b7dc17664e390dc50f58743a496ef24e9eb36d6edd0477", "elapsed_seconds": 0.24565919488668442}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8cdad39fecc314d27957789bffbae1ec3f77d45eff7f4a344383e4e7868582a7", "elapsed_seconds": 0.24694540002383292}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "7b864ec43d18dc2c555218ffde00640c46034c2f2f3f0eb72b5321b359786774", "elapsed_seconds": 0.25597371882759035}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7a97645442eb6df60267e1d826f41a5c1701fab649197166c6492be4caebf73b", "elapsed_seconds": 0.24858663487248123}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "fb945a5d878b5cd3c13a81336c1c6966400455d139e20286b879b09b6f079086", "elapsed_seconds": 0.255244042025879}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "e86d7d75b6fb36a9988ccf76a97774bc02d11db5c2ccde7cb967bb53f06ef687", "elapsed_seconds": 0.32527011702768505}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a6e866c7fafd53241f89e81d08642196c0675d61d6130607328be88795d04812", "elapsed_seconds": 0.3224744130857289}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "70fe2b4ffe894fc414f13cddbb5a4e45af89569b390812a9908131bb923f9726", "elapsed_seconds": 0.3253471511416137}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0599e77975f61de3623c629652880434b147a2f69362b97a0f2b8939952b0db4", "elapsed_seconds": 0.3355378801934421}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "135a43e84004418eb0575d9b6a90f3672b94109336521d3011b1d16b1cd1f608", "elapsed_seconds": 0.3253060698043555}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "88a9977b207d915762906ddefdb38354368dee778020e5b142bcda0a27461f5f", "elapsed_seconds": 0.3225879408419132}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "8f0129d80ad61e3886bbb420e6b5041a5891946bb48ee1a8d0d1b4df9670bf9e", "elapsed_seconds": 0.32858930015936494}
+{"event": "run_start", "block_id": "opt-final-02", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "48ea61120e39776b614f3d5bbe8f3db6e4e42f69172cf6eec70aedabd19dd88f", "elapsed_seconds": 0.32244931487366557}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "b4de3b345ca3fe23efc64675dded82bb718567b168eddbcc5d7f593bfd7b3b0b", "elapsed_seconds": 0.2533217479940504}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "da1bb92520c12d424e8a25422e3346e8d0b60cb6caead31d7e133c75a3ed8b1e", "elapsed_seconds": 0.23739621601998806}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "85221f0b6a57f647063a58e60bed6051104f3ac9ad7b3db4d8c9e0486d01c46b", "elapsed_seconds": 0.25364347686991096}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "39049062d73678a1e1631b995b1898eca0d18fa909833c2f23283c98dfebdc1b", "elapsed_seconds": 0.2394134420901537}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c0084ce4052098610f0f9b77047db59a1c1a58941a13ffa8e6eac8506577dcbe", "elapsed_seconds": 0.23851843806914985}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "86700d4e94d32e5dabeafad1af9720e5c197e4d9b679b21f4eb1086f2a69eb55", "elapsed_seconds": 0.253639301052317}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3250b19cd8ec9c668583437b7923b8731664946e63669ae4ff59387f0bee9c85", "elapsed_seconds": 0.24016544106416404}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "13be0a49827b7e75a84263ba0f7f8b872bc18a8c364658318cb0d8246cb3012c", "elapsed_seconds": 0.2505527331959456}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "895c32f495c65e2b88b11b2adce19d8478bbd88d944b9f65a4109bc382386050", "elapsed_seconds": 0.32729156594723463}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "566cd5c56b3f0c910d3b687a8ce69bd54fe7954a35a258bd810d91118ad94322", "elapsed_seconds": 0.320194706087932}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f348243c10c0f75e066bede0d0ac4022e1c99db0885270b31dbeb4307e86ef68", "elapsed_seconds": 0.32775196293368936}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9e401b3a442a78e1a77a951798f0bd1822bc2a1de59f7564eca53da1ccd42cf7", "elapsed_seconds": 0.32020429987460375}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "9f11c9b6a19c133112bd810c2d9b7e9751191287e3390aa42dd3d89de9acf635", "elapsed_seconds": 0.32734435494057834}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "95c131eef86267b7ba0f34027821f7741cd51f44a54ad735a72d8036130d3201", "elapsed_seconds": 0.3201075969263911}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "486a1f4bdf561300e97b8400f21209968b30b67702f249ba5edf4a7c0d0c1b40", "elapsed_seconds": 0.3275794161017984}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "960b3da93f0b82469cde9affd58c9aa2be49f3fbdd81746a28f1070e94a25d47", "elapsed_seconds": 0.32612512982450426}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "9dea0cbd235293e4745248e2368221503468056e185c8031b8610d2f618c6909", "elapsed_seconds": 0.2575114378705621}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "48f71acef9efc09274fb6b6cd37c3df7e11c42f241b48acf7bf2fcfac2eee85a", "elapsed_seconds": 0.24059488996863365}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "89961584149e899e8d1a2ef1ae0a67564fddcfdee2b4a1fa67e7b00576c4f374", "elapsed_seconds": 0.2548905839212239}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "af5b2d4998d3cef616d3a5977e98b856ccb914c535f90a85446a16584939400f", "elapsed_seconds": 0.23782468284480274}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "5b617ae66eb029fbde88cb981362c972ff64c810c32f2a2081571c2b8fec8268", "elapsed_seconds": 0.25728448992595077}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9ffd55e1bbee76b9a66abe730ec6948b0e454f18e1ec879cab2d2726dfb764ea", "elapsed_seconds": 0.23841074598021805}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "bed4e0e8e35329b3579f2e11eaf1f45849b208c3a098f23d925b3c9800abdb0e", "elapsed_seconds": 0.25525257200933993}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2f4c4e1f5a8b6e38a968aee97139968cbba0a4ee362d6455b97dc068aefef358", "elapsed_seconds": 0.23901064996607602}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b48269ae9df283d0c34a784214ca9ed02dc3b8dd4cd9fa10761645dfc90a62c5", "elapsed_seconds": 0.3259545639157295}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "51226f55820335657c1868ee5d9cdf568a40750cba05247272697148a8168655", "elapsed_seconds": 0.3272564138751477}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "26be27387f95cfa91aafe69ce8b08f05efc8da5958678edd239f58cb4c1ad21f", "elapsed_seconds": 0.3203754140995443}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "03f7ad696fb6d01df8a096920e8c6189c20ef98f717640606e03c52d6bf5455a", "elapsed_seconds": 0.3272004700265825}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "592119d8c5e663305dc893681d25d2c2820ce9825a9c95e17719569a5e078360", "elapsed_seconds": 0.32066529616713524}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "d04ec3392fcf01fccb7ceb85cffeaeda358093bebfc21dad2242820b6f72ec0d", "elapsed_seconds": 0.32750934991054237}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "bab4a23ee3231e67c18b5ad87d58a0673f253d907fa119a2152bcd27328a6047", "elapsed_seconds": 0.32065005297772586}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "ab6493804bbba31a4240ee1c4aa265681edde716e5170ca603b23acf96389b48", "elapsed_seconds": 0.332418231992051}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9d71c9e7201b3a6260f22b226678d988c0e16a83007b95d3f222d2af791b24dd", "elapsed_seconds": 0.2511491198092699}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "3dd2bedfbc7d158f461aa3d4416aa3f4d215f95150ff3d3032939f904d9ab56f", "elapsed_seconds": 0.2601726809516549}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a2ae51b17ffd01f1146d1c95ba2842e5e9223c4fb6360144a3c26c6968c72d00", "elapsed_seconds": 0.24898796086199582}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "c44eba315e464d07c606f165d612978e6cc50dc3174184a8b2b7e674a7c1de7f", "elapsed_seconds": 0.2593643870204687}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "1dff3c67c02c1aacbbd0f900a57b4c6b883ce7d2ca72ca7cb167c52b3cacd50f", "elapsed_seconds": 0.26029708702117205}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "329624b10340826a56c0e0bdfd90aa3fd78ee0f4e6215de8fa8571e61563ef44", "elapsed_seconds": 0.25060658203437924}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "e7b5b0068201f37e4093107696e79d6b5ab18534e6ec0171938759d6c180074d", "elapsed_seconds": 0.25840752199292183}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "396b35506bbfbb5941edb5b94fffc18b582f16e1eaf8aac89ce0d049eab85b7f", "elapsed_seconds": 0.25180921400897205}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c47112906f270be6fc768e85f7befc9427379f58ee739c3f138fcfea4053109b", "elapsed_seconds": 0.3269181789364666}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "8177ffe4a6c8a634d9d348779ccc5d5fde207ee7343a6737692ae751d1477bb1", "elapsed_seconds": 0.3336612831335515}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "aec62a993ce46da62bba04b5b44baec669875ad21a3dfa1f18131ff57fcfd7d3", "elapsed_seconds": 0.3260432151146233}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "55de6daffc240f0199a2c24a5de397ef540337620d839ff3a5eb6983d3446574", "elapsed_seconds": 0.33357179001905024}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "dcd65cfc268954afbba4489f0bb2ae69bd906299be3214387b626f5573d9fa16", "elapsed_seconds": 0.3335465518757701}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "37992e4c09c7fbb2137b05425495eae88b94f79fbd4cd6b0416dbe9e8d298395", "elapsed_seconds": 0.32635535090230405}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "8e452f02ab468df9ea76f36f6b8d6c5769b72b0ae1df95d7aa5a46741089ed29", "elapsed_seconds": 0.33377960906364024}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "5dec3eee831bcd2cbdc6e3951f7846fc652386b43c6f0f309a500299d3db85f4", "elapsed_seconds": 0.3288582789245993}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "e42e98dfae9fc9877def99fdd39605647f59494c3214bfc83f73f1e4d103a8ee", "elapsed_seconds": 0.2465734938159585}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "484cf56f72bcfce752d3389caa4bde9bc296e776e42c842da96e1bd8d1c4fcbd", "elapsed_seconds": 0.2521832101047039}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "600316eed55f98e229d793157de8437e290ea719dfb9dd85f31269c0e39aa2c9", "elapsed_seconds": 0.2435996551066637}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c7f9068d835bb144d822526afd58dfbc78de80ab349a62241018a6c34c1c96bb", "elapsed_seconds": 0.25431445403955877}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "dbdd6ed6baece2c9c4f9502fe20f0df72fd4d10dccb431b84ef4e94ca18ad8a5", "elapsed_seconds": 0.25302022602409124}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "66f531b3fa2fda91ad0b5fa1a2aca6bc1a27d7b1ccafc5563f33028f786e7840", "elapsed_seconds": 0.24474710412323475}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c744c7e3ccb9bd6cf00dd3d3e1c97a7fd9018fa567cc482dfad8bedde8d9783c", "elapsed_seconds": 0.2545243671629578}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "691798f1ef3465f6745e7dbb5c16f3b82e1d0b154c70bbdea58acc89565f5c6f", "elapsed_seconds": 0.24541873415000737}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2dd2916797f897464f6722bcefa9069d520beeaabd1cc4ee300e06000f722ea8", "elapsed_seconds": 0.3243438240606338}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "51eec3d2029cadba0708a355f9e79b291ea5f11ccd74b1ac829ba94115cf4b3c", "elapsed_seconds": 0.33586388314142823}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d2d2b9fe49031b7d886ba09ea253030a75e11eac851f0aa508c99d78b4d7cbed", "elapsed_seconds": 0.3238372190389782}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "037517618ec477d2c7956f09f1833930e46c6c22026a4e2d3c02b30e874fab3f", "elapsed_seconds": 0.3305443390272558}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "af2fb544e515a7895068b043f58f069113803c4f015608bba10ca6c36e467081", "elapsed_seconds": 0.3242281009443104}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "5cd695f78f2b55a00c924da36e81fc84749e6bcb3abbf6424dec3481664e75ff", "elapsed_seconds": 0.33063725708052516}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7b1fc8b0f0dd4b4db862810c4723e91e77935f16b32daaec4478e5ee24511222", "elapsed_seconds": 0.32350288098677993}
+{"event": "run_start", "block_id": "opt-final-03", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "be01314b1a92b79e7481807bc0c1e6a788212ae118225f03aabad090e25e8407", "elapsed_seconds": 0.330365122994408}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "73e62a28b7692c20bbca1b50548722d11b553c2f179241710e69c387138ac8c1", "elapsed_seconds": 0.2536791870370507}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "e7a108d27b512c510283752c92324082a21cab14482886d8a29a802a44edc23b", "elapsed_seconds": 0.24157428718172014}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "b3ef43c9a762620573ef8c02fd1ed5ea8e9ad664bc2d8f0f79f56be06cb9aac0", "elapsed_seconds": 0.251501944148913}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "72d5884c0a60ee00817ace72e30340e54920f4e4353c27eb5830893ea6d999d1", "elapsed_seconds": 0.24343725200742483}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "bb266bd548e02e34d542dbfbe37a1bc654a1368c392bd198afa372cc5d157ef5", "elapsed_seconds": 0.2463088899385184}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "d944ead19ca8e6a56c643ac59042ae72bcaf61d52103616ed6ff950a37970016", "elapsed_seconds": 0.2553437470924109}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "37b4716618cb4535e1c4d5dba29155ff41847d750968d600468cbd2468940991", "elapsed_seconds": 0.24340277002193034}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "39a5adbad8f55fdff7a4dfeebe84b79d7b9fe249775b44de59eb6648ae58fe79", "elapsed_seconds": 0.2540335350204259}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "72c029b01a864e13ec930f51452c0c36820b794d35dbccdff3ecbf04712cfbd6", "elapsed_seconds": 0.32340480480343103}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4a7c7992586b73914948578cc157ef4e49eecab5876c9872408d9b011b7644a6", "elapsed_seconds": 0.3161711790598929}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "71d68761856626124ad1562944998ee61829ea43ba2cc865912cd2858fb66580", "elapsed_seconds": 0.3231622031889856}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7e9155971bfefb0c0c396979098e6927a8525eda2cfa868f16751988b9aa2a82", "elapsed_seconds": 0.31537118810229003}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "4a5d542b2d1b9e3d8a6a626fe0a753cc595d570cbeb013498d88f8e84f0952b2", "elapsed_seconds": 0.32338275108486414}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3f14e57e37b026068aaba11601ad127aad4a3ec41d9c25df097d86ef854f2d93", "elapsed_seconds": 0.3155795580241829}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "0c65a564e3d541b19b079ad3a79c6ea6974806bbb0d85cc1a7467947eb8d9239", "elapsed_seconds": 0.32315725600346923}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "984e1600518f3b03a1cda541c72c62e5809f9ade6a646f3c003e0d9b6373ac3e", "elapsed_seconds": 0.31525270198471844}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4c15dce3c5ee310f02fac034d295e687b7fa0cc7a730d706e191022609dfa499", "elapsed_seconds": 0.24478004104457796}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c0fc4db29674672b4ad679536baeeed843a23eff8f76acb89a74f615001ed210", "elapsed_seconds": 0.2535681121516973}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "46212a40b8d803cef0e5b259ce126eb61b493c15af94d3ccbc0bf6a18edc643e", "elapsed_seconds": 0.24262255779467523}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "dfd78d91378d49b44f2f6d07befc0e24ccd32b6d5f4d17e520da6367f8c360ba", "elapsed_seconds": 0.2514588099438697}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "1d93be9809156fa0b9ba5d1a3125a3832790a81b7025eb3f557694a1cc20d42a", "elapsed_seconds": 0.2425612269435078}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e0bf8a323604142eaa0cb63b869dc3efb21432c188fa50afae6e6b7206ad9e7e", "elapsed_seconds": 0.2534666999708861}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a266bc18b0cb56e34887668ab9e3c8534cbdd97b4792faa91c6525d9322144c7", "elapsed_seconds": 0.24297998496331275}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "cd437d8c77e8d5f81ca20b772b718a4e6f08c24f77a93d0ad7bb6020fb6b14a4", "elapsed_seconds": 0.2517140021082014}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b8c56f075fa590df614d11f548ee9dda4782ab3fe95d0e959a6ddb806883a966", "elapsed_seconds": 0.3163719018921256}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "4e21fa90ac131bbe978d0cf06dc98c23643735deba6540dcf8b5d43b372cb834", "elapsed_seconds": 0.3235169069375843}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c4e07f492c67207ecb28b6d532d380ad50e2a0cda4c4341981172f158e3f3309", "elapsed_seconds": 0.31571927899494767}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "fd47e2205eb00e9b19fa5c8d6eb376d802c3c66cfa1d27553bc7f673270e7f68", "elapsed_seconds": 0.32372685987502337}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "13402764b8f99ab414ad5bbd5db15d37e40bbdebf1121ba4d9fe2a7ed7a58de9", "elapsed_seconds": 0.3285688138566911}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "f894666a58588a2fdddf8053d78b422da3a376d73cbd5b6011ed332611280274", "elapsed_seconds": 0.31579044298268855}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "859db31c1040dd70d9b5d3a9cb2de5629825d667439ac7cea3629fa91b0cda69", "elapsed_seconds": 0.3239634810015559}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b88de0d946d003778475c5411883ba04c812008e0e9f8fd06a50ce84777091b6", "elapsed_seconds": 0.31578730908222497}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2d90f2024cfc4bba924c05b6630e59a6ba12d70777517ed2d18b70004f192057", "elapsed_seconds": 0.256512169027701}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "247ed106282550a9d99ef94ab63f2f9dcf82565d7fc064784131f9934059ceaf", "elapsed_seconds": 0.2626365441828966}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9f33c53e4b89f20f4418587b3ffa76bec363c684d95709b78420c0a3dc67172f", "elapsed_seconds": 0.2528293200302869}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "69bf86acae08593ea815fd6eb73b49ba12ce38b11e127b9ea55abcbebc9a9a1a", "elapsed_seconds": 0.26081995689310133}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "6d3696caf7fed35fde0f4d0f9e1d5165fc08d732a77201be653dd178051f9634", "elapsed_seconds": 0.2606996370013803}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "f46211a61e568b5b1660a4cd049eeaea77b050be07d49be7c3f09ad1cc71b675", "elapsed_seconds": 0.2527949889190495}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6193e3a71a04b49addd9ef74aa864bba3048ebf1c5853f924ebb2338a996b592", "elapsed_seconds": 0.2683075631503016}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a1cec245b90ca902f2491ae64468673f440a1504dc6b1b56f7e13a43046cd28e", "elapsed_seconds": 0.25128231407143176}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "5522002ba7059ff119b65747fefd6b993e5041b6c78059b02de5271a7cada2af", "elapsed_seconds": 0.32919302908703685}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "427486387f7e7ff42810cf77337b32641af1757e0cfd4683b59f95d7df06ba11", "elapsed_seconds": 0.32282755384221673}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "253e8cda4237585289bcd0f19362d06dec11ca6e6b06f00412f1cbfbdb5da924", "elapsed_seconds": 0.3290409620385617}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7f6d73e3592ffaaf7511e518edf9f2d92aab40d672578e215404ea6e71cf11f3", "elapsed_seconds": 0.3302398279774934}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "0f223e08633ba14f3b6623445815e3cd2be1f7be9a87aba8e7642958f3d7416e", "elapsed_seconds": 0.3291285219602287}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9efa567590abfbf90977e347174e9e26543e326cb893606a6c0e284f04ed0f92", "elapsed_seconds": 0.3230900140479207}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "2a9134997fe61d6b963383e7dc7d1bae881d0a4bc7ad1382ab073d1066a9bd9c", "elapsed_seconds": 0.3291836630087346}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "1428d144fd18646bd92518c442a16f7647b1224371d6df86f05d0fbca09e5db7", "elapsed_seconds": 0.32291836803779006}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c0f169ee11d0c33c2c9c4f43c25aa1da46352d6d6ece2686aa5c88d94be62710", "elapsed_seconds": 0.26034105895087123}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "70a2497247cb1dafd4a3dd16d6884622d1ea755d6f4ad9e3e6f6c9a8802db5f2", "elapsed_seconds": 0.2494252750184387}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "234f8056718737a7c0097ae564bba83e1cb10c977bef6c0e22050b6bdbc3139d", "elapsed_seconds": 0.2548565878532827}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "aaa646e3ce5cb602a5485d6e87b7e4687bdc30035d264698036d0254c3cc07e8", "elapsed_seconds": 0.2502927170135081}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f06f219ebba71f392bef5ba918a0cdf3179606234a21d1aba77d45039b04dace", "elapsed_seconds": 0.2546758269891143}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7b7dbc6e27316f7bbd33fb876daa808d779169193f60137170ca381e4b3c6772", "elapsed_seconds": 0.25340786785818636}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e8789a5615c52e9f7f088698ae850c9a8c53a5ca8596b037c24c9d453041a068", "elapsed_seconds": 0.2550159730017185}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "243d1d0ca22ada1182b200fbe35b5aaa87d4bf803eb71cc36e662cc042aa9196", "elapsed_seconds": 0.24727301695384085}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "26a6ceb1bbaf4829211818c351aa317a5e428cfc39940922189c2ab80a0bb9df", "elapsed_seconds": 0.3200135361403227}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "4309093e3116235c1d7a9806c3939e895bbec6a94788ac6738a5a8cfcc17928c", "elapsed_seconds": 0.3263631369918585}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4e8359ea78dcf42a395f2284764b06d298aa93326f71e3d628a1d0838caa05b0", "elapsed_seconds": 0.3243564460426569}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "31e67f90b228ad17f09cdde369dbb6733986f3d134cb88002d31af9dbb133214", "elapsed_seconds": 0.32773174508474767}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "ebb042ead0353c40b2e876b045073b0c0e431edf075f53d5666f5c4575b0858c", "elapsed_seconds": 0.3262973378878087}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c70a10299aacc42bb2ce92543d239ddb4a661471bb8bd1907b5a7860352ded5b", "elapsed_seconds": 0.319379550172016}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "50954c82b2d077246642dd1e3caee31d6f6283bee5c3cb4bbd21e3f2f4d942c0", "elapsed_seconds": 0.3317061560228467}
+{"event": "run_start", "block_id": "opt-final-04", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3ef61e3980bbf8ca9cd4c38a42ca00684f1cab605d91fbace551de6d27e044c0", "elapsed_seconds": 0.3194716658908874}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "958a41aff3f7176fe640355da2aa5d4a9ee25a3ef94cd2a557d16d889c1d5cd5", "elapsed_seconds": 0.24088867101818323}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "5e41ed3f220793246db50ffd4447443c2b637a95446a16bd8a7998ff35cfbee0", "elapsed_seconds": 0.2503611738793552}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "142ee6d35fd437a1bc72cab19410a3dd4a01d1d80e79b5d71d088c0db6d47044", "elapsed_seconds": 0.2388941701501608}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "0c1c1a99b4dd201a25005704e07a1233dd29b8dcaa1610781fe68b79ad470029", "elapsed_seconds": 0.25287828384898603}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "67f51ac67162629215bfbfd8891b1466ce24c37cc0254b2e61319717ac17e062", "elapsed_seconds": 0.24318715487606823}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "97dac6f4f82c55f11610f999b8169564caa54b013dcd732768f6b5221db6748e", "elapsed_seconds": 0.25456844293512404}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8dfb5c51ee701962c2a4cb712cab0e8ca07e9b56734a8de35cd75603b192fc9b", "elapsed_seconds": 0.23967033484950662}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "83c6c53c979beafeafe32ec4ece2941bac4378d80d4d29ba0e626244d286f7af", "elapsed_seconds": 0.25036022206768394}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "d0ac4964fa43a05d5d13cc368db4b88b56e8fd7d264c755994068bd1d46909ba", "elapsed_seconds": 0.32414943305775523}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "87fdfa847873c13185bf93b782b026f61d573225d7ab1f846797936a611eb3ad", "elapsed_seconds": 0.3148072939366102}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "68e37ea377cae7125f005866ead11de704d65e58ef58e4cd1b7cd80c1ceadd9d", "elapsed_seconds": 0.32431831397116184}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "81bcba9a0470e9a3c801374be08a7e0428b8e6f34f76f803d4ad35f13f9319b6", "elapsed_seconds": 0.31468775519169867}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "fa1919136ad49796a94c07142c15a006438880fa04f30e317cae97fc49792ef6", "elapsed_seconds": 0.31452018511481583}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6fdda83b36a4b4e927087e52c3d995379a13d4aceec7a7ddd5929f082db93105", "elapsed_seconds": 0.3241521150339395}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0ebec3d7cae7a6f54dce0c4bb52c11e7cae184dbba358312d8b2fab815e0c441", "elapsed_seconds": 0.314762094989419}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "3e44ec08a43b3237501f47520e973fa9a4103bd55faf808691b0e41383831dc1", "elapsed_seconds": 0.3237932401243597}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c91e6126cd9b07958372d8b77971250abcd30a00f2fafd3d095d827386fd6540", "elapsed_seconds": 0.2407585431355983}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "7534a1a74cbe12108e140a5f39cc16341571b7da6ec4bba4503c0a596e6b9453", "elapsed_seconds": 0.255527026951313}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "41d25c4c463219d3d8c856eba03402bf4c470a6ce82c25e10c56bd8f903c3fc4", "elapsed_seconds": 0.23940027900971472}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "27604ac023763101bf55373e9b7a490de317870cc95fcdd6322c07a95d820cca", "elapsed_seconds": 0.2519075940363109}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "cbca9cf5d18673883ffd52cc335a2c7ea69cc83ef8f9268e47cfc5dbc98e8a97", "elapsed_seconds": 0.23938122089020908}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "a2693c41ee7d3b02874b19fdae5626fe421145477f13ee86f02ce125380e5432", "elapsed_seconds": 0.25038026785477996}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "31397e6c4e348144a5cf8e55363192178dd01653545b41e354aa54a3313f01f3", "elapsed_seconds": 0.2384928569663316}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e76aff88e237ee43acdc0374493692211f08c4ddeadf825bfb9b91baedab685e", "elapsed_seconds": 0.2525486689992249}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c9f2082ec7ec7157ed5ae704e26a7e0d32500ff36ea99df7fc7f0da65ddfac53", "elapsed_seconds": 0.32426375802606344}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c2b07c6c4f4283544e56a9cb1c0a434ff8662cb1eb90043650b39b3090e96e78", "elapsed_seconds": 0.3151956470683217}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "6b808085a936d006b8c9c71da28ec72665ec02ad91c960c000203826dc3c5702", "elapsed_seconds": 0.3242281540296972}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b525055f47969b431fd37c1d9f2fb278fb23aa3d1982384325188019fa48f596", "elapsed_seconds": 0.31521099992096424}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f417f2b37419e3502b664be6ad8940d77707e39537b0d5ffa16dc2aa037b9546", "elapsed_seconds": 0.3292240579612553}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d5f1da78dcf295e885b5cce6a9ed84b67a418435a35a004c900eddc9ddc07092", "elapsed_seconds": 0.314932303968817}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "bb5774b16fb8b4bb5df39f037e0031a732c6ca4f03937db766d3ce725901ed92", "elapsed_seconds": 0.324249975848943}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "bc4aa509262b26481985ce0e128f51790aa92c7862f25977c9c36c92662be087", "elapsed_seconds": 0.3202920388430357}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "144ddf1228d66821afd6af5c8db3023a16d11ab936cd46c2cb113c418087642c", "elapsed_seconds": 0.25565271102823317}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "a237f9dec7621c975ca529153a6ccc1f95f0f5003e1594d40ea2ffe74303fd7e", "elapsed_seconds": 0.2623644301202148}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b978a817186fe43c56b7e47b02b718fcbab3143eabf2ebc86e83dabffab84af8", "elapsed_seconds": 0.253002320881933}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "cda41c80d8b75bdb460cfc235137cae02e0e32650fe99954258f5281c594f907", "elapsed_seconds": 0.26426284899935126}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "07fcbd81e88f25b6662ba0ec69366e5a7a47025631790b6036bdc44886b11f8f", "elapsed_seconds": 0.2535090269520879}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "37809cd1260164a55aeb98d9e9a35248aa89d44a84670d730ee9622b8d154e58", "elapsed_seconds": 0.26234365813434124}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "137ee72e86aa72353ff0fd0ec23cc83c60cb9b72cc47d0008156533e01587be0", "elapsed_seconds": 0.2544074850156903}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6d00d6321e0d2a875f365d3d2b30d137e0f4be50654fba7a30b2fdaa6ed41b43", "elapsed_seconds": 0.26450187410227954}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "256542b22e1e73c4fce58354a34b4a2c9a1e43e2a5efc5b9da6f823a7af65160", "elapsed_seconds": 0.32838127785362303}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "36df89d170821bc77edfe07dd2e58ba8731569212453ecd12c7c7da2874de018", "elapsed_seconds": 0.3233403069898486}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "b0295eb328e160fa28a0bb416c5913bfb91dfe65cbd512fc8fe5546e0cd396af", "elapsed_seconds": 0.3287451299838722}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "102d05e4aabca2d5ba0e7467d53ce349138bace14bdeb028be5e5436b79e6b6f", "elapsed_seconds": 0.32856602198444307}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c262f28994b08b8d0845622819834578452acc597dc38b39b0618a95ee208297", "elapsed_seconds": 0.32885176804848015}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "145ca3b2bfea27e8604cd2656ac0cd1f5c6b165070f975f7ae67d857d33868e2", "elapsed_seconds": 0.3228624339681119}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "87ead562924a615620926c7aed2bc62234100bbeb81c1fd591bdf61e6e16a08e", "elapsed_seconds": 0.3283918418455869}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8cc726aa3c751c85791f606a254339cf87dc5d7e2482ac56ab41a1b530dd4458", "elapsed_seconds": 0.32319614104926586}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "d6b89dccc80e2f8c3834bf0260157cc09607705a621605ed6a2c571fa740ba68", "elapsed_seconds": 0.24970660801045597}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "f1e0db4443f97398b792eed355bf784aa5e916016bf1955b99a56b57c28ac1af", "elapsed_seconds": 0.2507537479978055}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9f814e58fec2d54e66770c68fa1ec03606c18621b0509fc3b5eddaa40baa7395", "elapsed_seconds": 0.2470084468368441}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "2e04717d20c1740bf23fdd6e514651c514cc90262139dc177ef3f3a58ddc68bc", "elapsed_seconds": 0.25359021383337677}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a4e7f928032d5a694c902b8817c9ca9f0f0fa56b3206556e100e575b114730b5", "elapsed_seconds": 0.24700136692263186}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "2acfc84ba12d9740f2a23a96c2d6c273d9621c16e3588db536118c03b44d64fa", "elapsed_seconds": 0.2516175939235836}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "276cceb0ebe79a862b9dad1a4357b7d2c1e807ff38c1d845358add0e77fd0138", "elapsed_seconds": 0.24828156386502087}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "57da444a9d071ddc767bc4a816e0b0f1af07cc726160781f09dba62c5528e581", "elapsed_seconds": 0.2539216368459165}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "df035edbb6bb20f501053c77bf3d6c81235f5b95acd713e80302da193b8bb6ae", "elapsed_seconds": 0.3264801499899477}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b7eb3b3dd612a68b607ea694e6746872752b3190d7a3171497f19360e814b46b", "elapsed_seconds": 0.3194713480770588}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "8c3042653d4f539b70198e80ba48ed728d06b95282f830efd83004faa0c3eff6", "elapsed_seconds": 0.3260943649802357}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "fa12aaeab40faeef71f3ba084d54e1ccf5c0de9248e98b7fdde07698a4ae27db", "elapsed_seconds": 0.31896850815974176}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "8da4ab0aae0699eb8ee3e8d95a209f830b83fafd4dc2f4db2f5104ddc25ebfce", "elapsed_seconds": 0.326693267095834}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9dcf495d63fd72f9d279838c3586df87d0368b9b43edb3de4998b34038de577e", "elapsed_seconds": 0.31884127808734775}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "298c76b03100982e7aa7f31423b8df0fbd4006a50217e3c72952f18b93a4b00b", "elapsed_seconds": 0.3265336889307946}
+{"event": "run_start", "block_id": "opt-final-05", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "cf5caab14de74aad49303bc653bd617f440ca6d8c83baff44b6b8a32d5780ca8", "elapsed_seconds": 0.3201517900452018}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "80adcb93c0d036f5910b441d4daf0e068aa17bc6a13c6329b89a90b1c09df7c8", "elapsed_seconds": 0.23413021699525416}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "85bfc93a03fa9405bfe582c8cfb71156936d8b03a835478ef31a6b39c0fc3a7a", "elapsed_seconds": 0.24820974399335682}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7cb8fa3db2010dfab3f5c97e119fde0917e1f4108b9aefdb31c638aa00f235b5", "elapsed_seconds": 0.23589950194582343}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "02ffe27173743dbceb073af172b28a51d73997a35856ff2c78ec0f71e75d4857", "elapsed_seconds": 0.24856571317650378}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c57e0fda250a2fb1a08cca21c17f13920a13d732105157fd838736a878f03beb", "elapsed_seconds": 0.23506449884735048}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "c0ff0347be263357059384dda4509bf9ada0d720d52dd7730f3954e2df659059", "elapsed_seconds": 0.24767724005505443}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "061e1e7a782fe856530cd7d35e736f5571238bfd45df40964c52537c73bd8397", "elapsed_seconds": 0.23650166997686028}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e03b33c08aa75010bd8b7b1a5dd79894591993ce9a888aa35cd8d9ace831df9a", "elapsed_seconds": 0.2485958479810506}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "79eb4a25bee9957fb6fcd075f0666131d67bd968f60dfcdb2df3906c7a29d454", "elapsed_seconds": 0.3214077288284898}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ada2467539e44ed7501ec1f41ece703795d73b9b98aa81f22ec16dfd1d00b1bb", "elapsed_seconds": 0.3164793150499463}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "a067fe6ad30168b3411c862c3b7328b888bc2e59fde0d3a75fc37d8222bdf9d7", "elapsed_seconds": 0.3203785039950162}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9ad89afe3011287e7c1f7dc4c728446d2ec5916e406b2c632a682102c67f6bc6", "elapsed_seconds": 0.31115659419447184}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "60d5871d44f0db88315da4839f024733218c3d48e7dae29abe8401be0d5cf27b", "elapsed_seconds": 0.31115782586857677}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "2f638c3a0af3805e69b869b4fcdadc886d810be90fca93ab207b9ee61109b1ff", "elapsed_seconds": 0.32573435292579234}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8660f5ca96acadd14c7d93738110d61f1af7efb7a8ef3706c1d401a85796f22f", "elapsed_seconds": 0.3109822941478342}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "e5503af884f6cc434ff2c2436c4c108b3a08e8cba90fac88aa245c22d3063d28", "elapsed_seconds": 0.32159744994714856}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9da18e223d153b7b503a0a42aa1856f99166807ed50ef5217fde08fb8fd06a95", "elapsed_seconds": 0.23650672379881144}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "435523bb08199e6cf0ad8dbcdba62b6a6ccab4da32902b8eea778691fe1c098d", "elapsed_seconds": 0.25412352103739977}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ba10a8bc71bc4d547bcb886e634dfdaef65efcf0b0a4d8dfe1d633b75e54d866", "elapsed_seconds": 0.2398228149395436}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "723c7a8f098b03cfa6e76b1ce37be85cdbfd7c1bca9456ef5b80dba20d845c06", "elapsed_seconds": 0.2511175430845469}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "e3a5fac12be56ca7a64df388a456b25c261a6d92ba6455773c30621594075cb9", "elapsed_seconds": 0.23753963294439018}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "40d9f961f990d9e0196aab29d80e83bf5ed2ff7cfef453c9430bac850fe7580f", "elapsed_seconds": 0.252163850935176}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8d9664db2e2f3908863163d2d8fdc35918e3b07c51fc4614222f96aa6f69a0f3", "elapsed_seconds": 0.23549072910100222}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f80c231d73aac224aaa6902370b455221a64f5b0dd8362ba94506d9da15b3582", "elapsed_seconds": 0.2553340229205787}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "5ced68dd7af0f99bf6d884c45e87b9e20aba6f6c9d8fad49710dc57cce50886c", "elapsed_seconds": 0.3259726050309837}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "cf7c45352f95ebc542592458cb722f21fec4ee07160d2d03ac4053014af73cd5", "elapsed_seconds": 0.3169213589280844}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "9d2adc6071d5ecb2b4cb86be1f73c684d4538994b81165c137a70450eb0177c4", "elapsed_seconds": 0.3258698619902134}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4c43b01b411ea8df3e84fb47419b2df2e574a8a4ff7278a1d9f125399bc2f09b", "elapsed_seconds": 0.31162161310203373}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "92e2f5d754868deeccb7aacec990eca31344621e38bca8daa48a630c907f88a9", "elapsed_seconds": 0.3118148010689765}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "1b4fdf4afa2688bb6328eb2d31066dd9b1157fdaff54272d6a3b746b583e6f85", "elapsed_seconds": 0.33098130603320897}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "265f962ad83acc995ce5e2fbd76cce9c0ceb5035e1c2bf0c67b132c0fc794be3", "elapsed_seconds": 0.31223460496403277}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "425340ee86a4addbcecf27e9446a0cbd7a5c3f8eb8751ec114dbcc659c79596d", "elapsed_seconds": 0.3309417169075459}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3ec428fc45ddac1d11d5e01a9a1d67378ca76633e1f60c20e4060e7e02a41003", "elapsed_seconds": 0.24896709597669542}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "8952b122343cf42363504a6eed4834cc886e8843b99b657b7d4b13453511b446", "elapsed_seconds": 0.2629730920307338}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "363f725bab24d13c779a3af0496827f562298c4fe2980d7f64ee8bd09ef3d42a", "elapsed_seconds": 0.25043131690472364}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "352462bac9edaf2cb2bcd0933d61fdaac027f54b318a854ce0cf68a97e7d1903", "elapsed_seconds": 0.2629374589305371}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "7a492cee9d3e74e1dd599b498f317bf33927c7c84af413215f704facefbda437", "elapsed_seconds": 0.26141461986117065}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2a10b5e39a3d7fbb350c359f2ab44a1f86a610445eb860ac83aa0d0c65ab30a6", "elapsed_seconds": 0.2509363079443574}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f6443540817dbd557e0ca0eff6e02ddf11f79be53df2cc35e7048bd05d23be5b", "elapsed_seconds": 0.26287629804573953}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b13ef7e42d3b08ee85521cdb283386ca819d6b02d2ba952d01b97dfc322a38dd", "elapsed_seconds": 0.24919760809279978}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9abf0237f70ed7d6c8c6cfc99e7b79bf36f126a1c874831ebc5ac6e9b851ad05", "elapsed_seconds": 0.3240249690134078}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "1c72bb0dbbef48350b783f735085cda4e53d0e66401dc3840f46b0637bd219bf", "elapsed_seconds": 0.3343686789739877}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "06a0f33bd04cfad2290ac9d286859fd162cb287ffb536fb27c6bde7cf73cd775", "elapsed_seconds": 0.324086771113798}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "02055ba818882ade0778f09e40e8a3f8810a38a11336b36733bbce22eeff2e03", "elapsed_seconds": 0.3339787479490042}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "47699dbd53ae3b54660abd4ffac4724694d51fbf02c4c5aee93db8d415f9cb74", "elapsed_seconds": 0.3239600311499089}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "c9592b5b88712e81eba8f4ba9fc02280270f1b3357425ca88f3083000e8f81a8", "elapsed_seconds": 0.3339223428629339}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9e9688f2bae84fe502ee919b491f7b4a6a13c4d6402e2345b7a47b429df4c64f", "elapsed_seconds": 0.3241011411882937}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "ff617f4672d3bffb12a7f70f987c4ba9769988e1a321f2ca28ca825f65b05605", "elapsed_seconds": 0.33418494393117726}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "45dc4d4541526282dd460a35b9fff107f53d0fc3cf6920d0595a6655c7ec078b", "elapsed_seconds": 0.24394196597859263}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "2b01b4632e632aae4ee46cb819a8b3b19f8556e8e307b9399bdedee091c4e498", "elapsed_seconds": 0.2519245478324592}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0fb0db0935c1bd56192cc46ddbc386bcc6159f7d190f84c3c451eb45f8808086", "elapsed_seconds": 0.2442237448412925}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "246d9a14476fdbb690b3f8312336965093864b1ae944d8d262177fa7a9af6881", "elapsed_seconds": 0.24922402412630618}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b7663a98f282654afbfa09a967a210387f101e444c28c0cd065a9ead9908e5a6", "elapsed_seconds": 0.2431339011527598}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "8eb6fa9bc1226bd49baddea321e909f7ce42fcea88ee6602bc8a6c970ebf0d1b", "elapsed_seconds": 0.25213988800533116}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "5e08177edf57e1a6a534e297c4909f0902926b36c33c40c50ea59a383d9e0f0a", "elapsed_seconds": 0.24433388793841004}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "843f274763f5762926a23e5849e34f03f31a9784633946c19d8567fb7801000e", "elapsed_seconds": 0.2503276781644672}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2126ffec2107237c44b4d2251fc81ddbc13c1f33f198868a48436bb79d65c6a4", "elapsed_seconds": 0.31860667187720537}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "c6665a8b04aea683c40b6d3ab684c18d63c73e5383623a0e12891c249c601a56", "elapsed_seconds": 0.3226520789321512}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2a4b2fa15121152c6a8dd3c298546074c5dc9ff41644f79f5a4214421cb572eb", "elapsed_seconds": 0.32688360288739204}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "deae12a73d4c2a0c51bc4b01c4a6eeeec234bcca1566a2224a3b738763c8abca", "elapsed_seconds": 0.3225799410138279}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "4a33a65acf39337468951fde3e3f9801cde5bfde49b5af471742e3ae2fc6c85a", "elapsed_seconds": 0.3219090320635587}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "cca927afe60736ed3976bd76c9956e1e68d06b5b313da8d9ee543453b68fc3d7", "elapsed_seconds": 0.3184202031698078}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "137a6cd0d74ef1213db7e8c965251cc916152efe71e6f75a949e5319d391e8c0", "elapsed_seconds": 0.32208869792521}
+{"event": "run_start", "block_id": "opt-final-06", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b3c697ceabf0806ac35f552db9aefcb63087cd415168f15c9fef941573be0d1a", "elapsed_seconds": 0.31823029019869864}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "912c4006be646ffaee8676db3d8642695ea5b75c8c85339817b84b43eae0e9ef", "elapsed_seconds": 0.24699363904073834}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "b25bc5228f57685a3e4a245d7cd8df6a090e59954a6ab36925003400e276b809", "elapsed_seconds": 0.25685075391083956}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b3c675bd1fffcca7cd117c1daed6fc061213c34fb1e8640cc23b8c4bd68e7645", "elapsed_seconds": 0.2553428071551025}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "bf55ed093d5f019e35dfba7b92a5a7dd26666f39921c1e29834b071097e178a4", "elapsed_seconds": 0.258960286853835}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "4e04c9ea928c40b84dde8afff10e0f774119420d2302ec7cce7db81e8b5c59d1", "elapsed_seconds": 0.2572197939734906}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "90a96c2b9c0cb6603e100f2d51193845cdceffe9e6c85847e3f612bb90e9f740", "elapsed_seconds": 0.24574217316694558}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "ca5e9dc9dbd48d24945d871a1326ab3c7a9464a027142edcce0fd1e91889edd8", "elapsed_seconds": 0.25883797416463494}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "732705077f2be4ba4a44fbb2ff4f503f16d4dd1143c08ccba7aacdd253f89ed8", "elapsed_seconds": 0.24683168600313365}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "98e19e73d548727e5990df24394de9c8604005cec61cbd6b9a42842d469db9bb", "elapsed_seconds": 0.3272086039651185}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "6e1338409b9a6d842a0c534b3d33870eb1287b50a080c543e053301803ee86b1", "elapsed_seconds": 0.3229821070563048}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "8d73540826ab2b67db7ff118224e298d273c18f61bef782c1c4f51887f4e948c", "elapsed_seconds": 0.3271214331034571}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7a8f3a6b87492d980fc591e3372b460eb6d1ff8ede885950555fd3cb662d8c54", "elapsed_seconds": 0.3278111608233303}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b5aa8039c0b1f23db9eb69c348d683e2e633d165a390f65d23f7e622d3ab558a", "elapsed_seconds": 0.3230299069546163}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f23c9683e57fb529bed64a38cd3cdb7bae56b7b8467fa01550e776af67bb91f1", "elapsed_seconds": 0.3287084379699081}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "61167409a128d8bb33194a4d71d561335eba3dc064e2235d5ca9b3ad52dedccf", "elapsed_seconds": 0.32286631292663515}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "330f9faff6a3ae9e0549acc07dcf1d1f4f0add1dced2b6b10759cbd4bc649103", "elapsed_seconds": 0.32721986901015043}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "4bdd7e1078e6ef7307078d9340abe041c8b59a47c4ad13ceffde90387ce54e6d", "elapsed_seconds": 0.25811032811179757}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a85b6c463d055dcaf9c250a6cd526bc74e99810dba236cff675ba2e197818f14", "elapsed_seconds": 0.2472187909297645}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "335c838209de3bd1870156d811c8b28688fca08a3e4c289b0114117611b0f7be", "elapsed_seconds": 0.2647474850527942}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "79984944063684e58c130d67d78f6f3600fbdb109ef52db61270b81d94acf753", "elapsed_seconds": 0.24654795206151903}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "137fc5d7aa0f997f7d6dfdc014ae11ff2f79bf8a9ffd0526d313f160bdd2dda5", "elapsed_seconds": 0.2453113489318639}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "7c821ae4f8af8cc074a90244393bd614d8943d80d76d39e612a20b7a53c83936", "elapsed_seconds": 0.25737254694104195}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ff3148d9720f4c5514e9d1c7c36eec506f83b9638356da8ed01f206828d6c2d3", "elapsed_seconds": 0.24696541298180819}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "bfe6c99360f0249372bceeb15d2d8678d0023ac465d80482e4e1d2c33ad1265d", "elapsed_seconds": 0.25934451585635543}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ecc8e79e6e5ead6195b351860cb4bd6d5fab18a1e9d1239f2559c27a5bad0f0d", "elapsed_seconds": 0.32372848503291607}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6d57fbcb43c915b585b91618baab55571a6f845fd623ab37815160b9ce67a71e", "elapsed_seconds": 0.32723841397091746}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "90b38f48e84f20975ed3e132886bb9c46067be0667b4298b5a42d13249247272", "elapsed_seconds": 0.3235113611444831}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "74c64a6f986155b5e5017fe3613b4d820cc60f6ef5f37a8591c23123b9894590", "elapsed_seconds": 0.3276540329679847}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f2563cbc2a84f57437fa501a01a22882dac5789ddfc7238f13f8b3d7a52ffeac", "elapsed_seconds": 0.32725548883900046}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c4c7008b24bc68d07c098c34da2b7412b7734b7dd5b5967cd9c980363868f071", "elapsed_seconds": 0.3232096310239285}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "af072c26dda68f56f8e6f8278c1a4e37e4e9d5ed3eb95c01c1081a324b0f0175", "elapsed_seconds": 0.3275052399840206}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "44eaaa020d61b5de199e7a9f7efb7a721936fcd6f00da6f8dd3b61eb840969ff", "elapsed_seconds": 0.3232715220656246}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9a73e0ab4ea880ccf6c1d3728fb51b3d0ea4fe0e1973e901c4d702e892b0921b", "elapsed_seconds": 0.2575593839865178}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "61ff12c9ea974a0f80e52eb98edcc7825f07f7b754806cd66adec742a3766e5d", "elapsed_seconds": 0.25617209705524147}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8388335efd67fcffc3288822ee43e3112b1232b76f3477437049969e4e4722d0", "elapsed_seconds": 0.2550684530287981}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "dd2da9f624834fd70d07d564f368fa1c60be91a168c8fe5487e0d5e02dbdee8b", "elapsed_seconds": 0.25752481212839484}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "238034b330d049cec0af61d1271a2bbb65b8b921921ccdd324af020a0f1220ab", "elapsed_seconds": 0.25651281396858394}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "4f2e001d86ccdf0939265a8a8591abe3f03b10306c557bca6ec8a932acc92956", "elapsed_seconds": 0.26178822317160666}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8c25f331bf066f5265e6feb2bf8121efd27ecffe5a2f8f383bc126f5dae6eb66", "elapsed_seconds": 0.2557197620626539}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "b6599deec1ba4c7e3979211a7b04693498234c714dc9f1fc50b6e4cd636b5f0a", "elapsed_seconds": 0.2555226080585271}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "49c55fa23761d0804658d3fc1043c95d1934683d4cabdc35a0a25d352057658e", "elapsed_seconds": 0.32568375393748283}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "6a9b5d09358e51180cc84cc95039e4beef6378fe4b0934b1950fa6720ad319d7", "elapsed_seconds": 0.3332406322006136}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ce98d0038973cbbedc8b3bbc77e5818742cbfe5cbcaa5c487ace5dcbed35ef11", "elapsed_seconds": 0.32942095189355314}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6458c0f2e93e5ba09d6e83868edac1f614c3f288d74f941b8c95747bcd0005b1", "elapsed_seconds": 0.3385385440196842}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "f7a9d8d5094eb5f1075cd241f520b8b7ea6de9f8dfde2eb8e1a5a2d40d94e18a", "elapsed_seconds": 0.3253146428614855}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "76e92e3305ce8f4dd1b72391989bd0517e731589c8c52b2bccc5c5ae875d2867", "elapsed_seconds": 0.3337009181268513}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "4c08b317e692621cbe58dddb851ce516dec51601f071c5895788bbedc5f7b571", "elapsed_seconds": 0.32492578378878534}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "704af8fa85bb8400b083340f5ceef5a302f63bba752be4bd0f95c51d83290e0a", "elapsed_seconds": 0.33352397312410176}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "93eb124a537019e8a0e25bfdcb710deb6ff5d860a0a37e9e19481e332b155d8e", "elapsed_seconds": 0.2574699779506773}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "7055fb7b61b2527d23b139b252b6d5acaa4f05e580824d09cffafc1cbcc705cd", "elapsed_seconds": 0.2515207848045975}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "d72150a7c517211bf1c795903be397774d2cb360551fd822896ccbc39273de4b", "elapsed_seconds": 0.2550464270170778}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9ab6ebec12e0e41c9eac7e2560575ab49cb7365542ee326ef9e0055f3bbaf6e7", "elapsed_seconds": 0.25475188810378313}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "ff403feb9dce1cb0b97b43fe7d3d99d35a088b4dbc0938b2db46b0f4887520d6", "elapsed_seconds": 0.25728373997844756}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "b6d9ed44adbd450b4bd82a1f930476d40c70f26d08174587267e46574dc19714", "elapsed_seconds": 0.25008604605682194}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "dbe05372c5e7a926bb2d0d42f5b40b42a6716fc340fa212cc525346cb24e3616", "elapsed_seconds": 0.2554627959616482}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9a247c99026adf1d564596df0d7e705b9908bbc2848559c8246e8049ad685cc9", "elapsed_seconds": 0.2682555359788239}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ef1d50bb113ebc9174ded4ec7f4bff73fd7743685f2e570f88585893312c60be", "elapsed_seconds": 0.32784757507033646}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "1d5022ea40a807075c1d64aed10fbee4f53e0cbab52d5349e98f5b1255e7a86a", "elapsed_seconds": 0.32824592804536223}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2e76fdfe39d4d3b6c6b604b48c7a531a5c24c4ea36cfb922b8e74ec7073d9638", "elapsed_seconds": 0.3239626770373434}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "e31dd0270988b41a5250a5fb3ded4813f219046c73982f6aadee870621ca2c39", "elapsed_seconds": 0.3319521080702543}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "0930a4f91ec546866439c025297da9d0146a4d4c6db6f4f7af3db803feb9cc87", "elapsed_seconds": 0.33399692503735423}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2f1ee630fee93dfbdc230a091338882b1ebc868a40e11aff56f1900840e3a236", "elapsed_seconds": 0.32407711585983634}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "ca244da2fcc0701e3100a693a4c828318524e10d9a0ab28e920332f16618819d", "elapsed_seconds": 0.3288411730900407}
+{"event": "run_start", "block_id": "opt-final-07", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0493f62040e9c8dea1c062a9ec54eb219e9cabc2fc7bff138b51a3e9b0e686a9", "elapsed_seconds": 0.3242269188631326}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "7a4e6da4ff28e41b33c27113582cef5c231e7a62199bb60c1dc8abb709d3cc9b", "elapsed_seconds": 0.24424539296887815}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "85612d2e8ff3732ef8e70a310ea340d6198fcdab1c23fc6d58e1923f31f8fcc4", "elapsed_seconds": 0.23559882189147174}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f7a88a00e6bbbafdbd98147e72f5e3d2b3273fa0ba2764bad2342f75bf01199f", "elapsed_seconds": 0.24279420101083815}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "6e91e948a9329fe04c2ffc2f20ac41ced017df99737f69027b781a65217f4578", "elapsed_seconds": 0.23550488101318479}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "eddcf1e87e2cb8b73cd760e854064ed6950cd34c5e5e3b174d6c6a2e737e63e0", "elapsed_seconds": 0.23582665110006928}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "f3e0b94f334ca1b125d95c2d7dac5ebdb38fee4062d8082e1e86e3d97f520457", "elapsed_seconds": 0.2468706639483571}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "3c2d05986f3e5a428f43647d8e48944fbc33b9fb8e4d5e8300a7beffe09a004b", "elapsed_seconds": 0.23513686191290617}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "35d6a1fa2ea5e282d66f7340b733253f30fd0e724582bf1aa2d47601380bea14", "elapsed_seconds": 0.24160047201439738}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "37094cc8b7092602527e6f35003158b196eabd721dcb4ece9009c5dfc14206c8", "elapsed_seconds": 0.31844449206255376}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "3cfdb77a23b66310856e571e1ea092c4cba9c25543e6c0d5d05fa36daa0eeab9", "elapsed_seconds": 0.32660937611944973}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ecaf0a3c04f3859b7cec66a382186fa4a98eacdd34e0d7997aff214d72ceaaef", "elapsed_seconds": 0.31572763388976455}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "7340b05e5f22be125d2ea6c61ecebbb44d77ad5e3856e43d0eae00bd44f761e9", "elapsed_seconds": 0.3214727630838752}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "3d818ba28ea7777f42b0a9e1f0347c2fcad5bd5acdb3126b570a6e893bdcee24", "elapsed_seconds": 0.32179613411426544}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "6c61ee3c4ba4900ae990872bfde05187b5730e4024de4b46e3ed4e3acfbe6012", "elapsed_seconds": 0.3157080449163914}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "4684afa22afe8e9e089ab25b82c15776ab8ef7005ad4dab7703cc1c64391b2f0", "elapsed_seconds": 0.3265888039022684}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "stable", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "157ff2a72d38297b167f4d88fd5e59cbe18715dd82de2d06b2e0754398edff86", "elapsed_seconds": 0.31568356789648533}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "6f82f3c39413a71cd2406398546d333f5e1ed3bb7a7b32308989ec21238e8f2e", "elapsed_seconds": 0.24970440403558314}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ce5c8977e87f35bc9e86bfe835a0d80b9cd4425112794ac86a126f6d1194b10e", "elapsed_seconds": 0.23535476601682603}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "03b54545a3e4f55ff6eeff458d7270c2b81814e6d5eb1a7d58b4ddd0a3b59514", "elapsed_seconds": 0.24808098399080336}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "305f548ab00d001e2f119f8f83fd874bcef4eb799701f42cde20d5c11fc29788", "elapsed_seconds": 0.23729659896343946}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "1db8ebde33b469a549b5ca1c5e730d6eb640c622f403754441f9e7dc49ce9338", "elapsed_seconds": 0.24845131603069603}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "13d708b07a130df03c6188cd4df96f7762cca9561a87f089502a4bfa09dcbe25", "elapsed_seconds": 0.23638199479319155}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "21475e343d4f460d37e0377e988084e4db8bba36d89409206fd9596b97e48efd", "elapsed_seconds": 0.24693365511484444}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2246565381d7fedc993b5ba2f7a192034fbc368bd5873a6fac7a8dc2b4ddad6c", "elapsed_seconds": 0.23842150392010808}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "506ea3399489c7155afc06e1943ba0a0ec329dae79d3b12e158918e0afd0845e", "elapsed_seconds": 0.322735350811854}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "61a0e72843b93fb21199d4440dddd871a1fda7f070b370cd163991a275b54985", "elapsed_seconds": 0.3162250928580761}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "7456aab2313ea15d0eca59dbdc13a0f522a1e26e1aea4fd985a89304b64a1f71", "elapsed_seconds": 0.3222268340177834}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "2f263441dcf2618daeb538572e8a85811c2c870d4798eadcae1a05e1231ca7fc", "elapsed_seconds": 0.32018666388466954}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "1491a09ade3a3476bfea0dc503dc67312e4a542e6e503cdf443ab07a4dabd580", "elapsed_seconds": 0.3224407220259309}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "acb713dda6a15ca3eb4592fd4aa8a898e62dd95a8b89c21ff369bf3fa4139e9e", "elapsed_seconds": 0.31609646999277174}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "658484072dea3e3cfdb84bed15f6bd06c1eb58b396694d3f0fc8ef9a84d1e1be", "elapsed_seconds": 0.3238146190997213}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "transient", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "c3aa11824c1e03c490a3d2bda500e89486ed051123eadfb2bb3160efdc74688d", "elapsed_seconds": 0.3163586298469454}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "f0b3fe2766e9a504d323a3a144f55ee7adeb8f8ddb5c3eb51112cd47019c5808", "elapsed_seconds": 0.25525836483575404}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "9a154af79289a9fe4851ad8dafbe9c4f474d3a1080e59e732a5070f5cda4bf19", "elapsed_seconds": 0.2653938739094883}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "32b0a32959ad3cf4a834ca87cef6ba3b6d2229c391a741ae2eb88cd0dca65e73", "elapsed_seconds": 0.256514857057482}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "2b830ec54dedefc7141922a884b2a94f32c6c9eac9fe1622abb7234cd6399a1f", "elapsed_seconds": 0.26444759499281645}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a0d48a0413ecfef8b5682827c9ecb587240f4553dcab6b56c8e2d403c18ef197", "elapsed_seconds": 0.25641003996133804}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "5378d9190ae0b3409b7d98043127b0c17e99f5b6262825c6723c89c7322e2f72", "elapsed_seconds": 0.2636135120410472}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "8e35d52a889a86273bb4ff8396c98fbe20de11e86709904c4359852357abcd52", "elapsed_seconds": 0.2578096550423652}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "15b9c703f3ae2cb7224299e9a14ad1f3674399fa1d715877cb8c0cc5f8f79a09", "elapsed_seconds": 0.2677619110327214}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "fd393248f68815ed5a66c60156fda2aa0ef3de20e91a4f78ee4cd1faa755b940", "elapsed_seconds": 0.3228715308941901}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "6a28f6261a66695d08994904732590aedfc76cf86673fd5d530224aba07ec76b", "elapsed_seconds": 0.3280476122163236}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "e7bc52e175debf56ae55223a712752336559d0217d4ddb455f717825e81ab14a", "elapsed_seconds": 0.32234574714675546}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "185993bf6f6dacb710241c2c572938deb4d7391cbf165dd4e844f2ee7d0eba51", "elapsed_seconds": 0.3283584648743272}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "79559c7d7ab931100649e56ba8677d5a257a012fe4cab57e98fc92b0d52d23b0", "elapsed_seconds": 0.32800374599173665}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "51de97b2095f563ff7c77bd3f5689a017e88b4c1cf93bb88ef8401149da4d1aa", "elapsed_seconds": 0.32265454693697393}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "9a3e4a863d304c26df932f53636d6cb5e0b278b84276da437d158f41bb48d292", "elapsed_seconds": 0.32816225197166204}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "persistent", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "a5c43603ffa1b348f272891d150aac4ec25c1f385c4b0500ac8721e230fb8014", "elapsed_seconds": 0.3224225908052176}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "91ff5a51cb8d64f9c5d97ce20bba350e5a724999daf0be90a84d97ee3075f324", "elapsed_seconds": 0.2503554178401828}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "da95817ac5e2c0ede4440d76adf50f03618ad6f4d9c6a2b36523731c57517b39", "elapsed_seconds": 0.24419353785924613}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "7bc378092e7323a2f317d862cf4b6fc50a2a408591ecafd98d93ce14cda41307", "elapsed_seconds": 0.25231457711197436}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "324f9c9ca243c0e38bd18751afa738d1ed5113e09b726d8c2e464c7c3627ed72", "elapsed_seconds": 0.24056862806901336}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "54fcd09c9a40f2cf7e9ec123e9bf500a6276c666b9f7a1b0994631fcbce7d5c9", "elapsed_seconds": 0.24351698998361826}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "32aeb81c82e0d8ec496d2dc89865197f2f754f4fcd0f582307afafba0bff6335", "elapsed_seconds": 0.25072656106203794}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "16c8575a698fa1637eca060e035d5ab272ca9c176b38b2a52f13942ce9649fb5", "elapsed_seconds": 0.24262451101094484}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 128, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "5cab334d0b98110fd30e830741240d990ffed11fdfedec4ae66c6d1fbe57e3fa", "elapsed_seconds": 0.2513940951321274}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "5c9266d74665dc1897abf99391c5d620890be0b86e553dfcbe8447edea199a5e", "elapsed_seconds": 0.3196871941909194}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "d71fb3d528127f853987ad77c6a2b436c0fdf5de6aed21274a2c1bfd5f9bd2d5", "elapsed_seconds": 0.32499203691259027}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "9929fa2c22bdaa32c935b8a457d0599f219c975077af966395fa18049bcf83df", "elapsed_seconds": 0.3190836049616337}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 0, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "a306e820c4bd3290151b5a3a6d3d9d2ea3d28761a8c3a41ab92b9a08b9f00fde", "elapsed_seconds": 0.3252356390003115}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "ddb89ee437ffd70e070890ff083d2677ee6af170c0ae8b329783fa30ffdc9cbc", "elapsed_seconds": 0.3198443080764264}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "B3"}
+{"event": "run_complete", "record_id": "b90b8a8da6254f4fa4bb7d3804312f1c780bdf7b6ef463592ad58a0c9a50128c", "elapsed_seconds": 0.3249307950027287}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "DEFAULT", "policy": "SKIP"}
+{"event": "run_complete", "record_id": "0a7a9af493fa37225156e1a6050d148dd471434f1dd22aca784065a02012ab17", "elapsed_seconds": 0.3251133270096034}
+{"event": "run_start", "block_id": "opt-final-08", "regime": "switching", "batch_tokens": 1024, "repetition": 1, "kernel_variant": "TUNED", "policy": "B3"}
+{"event": "run_complete", "record_id": "56134cb395dc4c33f403167409724a3e149ccd66507f5f32e499000c6b800055", "elapsed_seconds": 0.3256351740565151}
