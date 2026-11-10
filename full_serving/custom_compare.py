@@ -24,6 +24,8 @@ from full_serving import orchestrate as native
 
 ARMS = ("off", "on", "custom")
 DATASETS = ("wildchat", "sharegpt", "instructcoder", "numinamath", "longbench")
+COMPACT_SCHEMA = "resident_compare_two_workloads_v1"
+COMPACT_DATASETS = ("longbench", "numinamath")
 ROOT = Path(__file__).resolve().parents[1]
 NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]*\Z")
 HASH = re.compile(r"[0-9a-f]{64}\Z")
@@ -53,11 +55,19 @@ def private_path(private_root, value):
 
 def validate_protocol(protocol, *, allow_draft=False):
     """Metadata-only checks: no private files, GPUs or network are touched."""
-    require(protocol.get("schema") == "resident_compare_protocol_v1", "unsupported comparison protocol")
+    compact = protocol.get("schema") == COMPACT_SCHEMA
+    require(compact or protocol.get("schema") == "resident_compare_protocol_v1", "unsupported comparison protocol")
     frozen = protocol.get("status") == "frozen"
     require(frozen or (allow_draft and protocol.get("status") == "draft"), "protocol must be frozen after the custom pilot gate")
     datasets = protocol.get("datasets", [])
-    require([d.get("dataset") for d in datasets] == list(DATASETS), "freeze the five main datasets in declared order")
+    require([d.get("dataset") for d in datasets] == list(COMPACT_DATASETS if compact else DATASETS), "freeze the declared dataset set/order")
+    if compact:
+        require(protocol.get("protocol_sha256") == canonical_hash({k: v for k, v in protocol.items() if k != "protocol_sha256"}),
+                "amended protocol seal differs")
+        require(protocol.get("generation_by_dataset") == {"longbench": {"max_tokens": 16}, "numinamath": {"max_tokens": 2048}},
+                "freeze long-input short-output and short-input long-output budgets")
+        require(protocol.get("analysis", {}).get("formal_hypothesis_tests") is False
+                and protocol["analysis"].get("inferential_intervals") is False, "one group permits descriptive comparisons only")
     generation = protocol.get("generation", {})
     require(all(generation.get(key) == value for key, value in {
         "max_tokens": 2048, "max_model_len": 32768, "temperature": 0, "enable_thinking": False,
@@ -94,7 +104,7 @@ def validate_protocol(protocol, *, allow_draft=False):
         require(HASH.fullmatch(str(warmup.get("requests_sha256", ""))), "warmup request file hash missing")
         require(warmup.get("split") == "pilot", "warmup must be explicitly pilot-only")
         blocks = dataset.get("blocks", [])
-        require(len(blocks) == 4, "four held-out blocks per dataset are required")
+        require(len(blocks) == (1 if compact else 4), "wrong number of held-out blocks for declared design")
         local_positions = [Counter() for _ in ARMS]
         for block in blocks:
             bid = block.get("block_id", "")
@@ -110,11 +120,16 @@ def validate_protocol(protocol, *, allow_draft=False):
             for position, arm in enumerate(order):
                 local_positions[position][arm] += 1
                 global_positions[position][arm] += 1
-        require(all(1 <= counts[arm] <= 2 for counts in local_positions for arm in ARMS),
-                "every dataset must expose every arm at every order position")
+        if not compact:
+            require(all(1 <= counts[arm] <= 2 for counts in local_positions for arm in ARMS),
+                    "every dataset must expose every arm at every order position")
     require(all(max(counts[arm] for arm in ARMS) - min(counts[arm] for arm in ARMS) <= 1 for counts in global_positions),
             "global arm-position counts must differ by at most one")
     return protocol
+
+
+def generation_for(protocol, dataset):
+    return {**protocol["generation"], **protocol.get("generation_by_dataset", {}).get(dataset, {})}
 
 
 def load_admitted_protocol(path):
@@ -457,6 +472,7 @@ def run(args):
                               "--block-id", job["dataset"] + "-" + job["block_id"], "--load-id", phase,
                               "--pair-id", job["dataset"] + "-" + job["block_id"] + "-" + phase,
                               "--max-inflight", "64", "--timeout-s", str(execution.get("http_timeout_s", 1800))]
+                    client += ["--max-tokens", str(generation_for(protocol, job["dataset"])["max_tokens"])]
                     client += ["--calendar", str(item["calendar"])] if measured else ["--rate", "0"]
                     if phase == "warmup-00":
                         client += ["--logprobs"]

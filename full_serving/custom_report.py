@@ -64,6 +64,31 @@ def paired_log_interval(values):
             "interpretation": "Exploratory, assumption-dependent and pointwise only; no family-wise coverage or confirmatory claim at n=4."}
 
 
+def descriptive_ratio(values):
+    if len(values) != 1 or values[0] is None or not math.isfinite(values[0]) or values[0] < 0:
+        return {"available": False, "reason": "one valid block ratio required"}
+    return {"available": True, "independent_block_count": 1, "block_ratios": values,
+            "equal_block_geometric_mean_ratio": values[0], "pointwise_95_percent_interval": None,
+            "method": "Single paired group ratio; no resampling, confidence interval or significance test.",
+            "interpretation": "Descriptive episode effect only; no estimate of between-group/run variation."}
+
+
+def phase_balance(metrics, request_count=16):
+    result = {"available": False, "meaning": "Native per-request phase durations, summed across engines; not isolated GPU busy time or memory/compute bottleneck proof."}
+    totals = {}
+    for phase in ("prefill", "decode"):
+        rows = [r for r in metrics.get("series", []) if r.get("metric") == f"vllm:request_{phase}_time_seconds"]
+        if not rows or not all(r.get("available") for r in rows) or sum(r["delta_count"] for r in rows) != request_count:
+            result["issue"] = "phase counters do not cover exactly the admitted requests"
+            return result
+        totals[phase] = sum(r["delta_sum_seconds"] for r in rows)
+    if sum(totals.values()) <= 0:
+        return result
+    result.update(available=True, request_duration_sum_s=totals, prefill_fraction=totals["prefill"] / sum(totals.values()),
+                  dominant_request_phase="prefill" if totals["prefill"] > totals["decode"] else "decode")
+    return result
+
+
 def cache_counter_deltas(before, after):
     pattern = re.compile(r'^(vllm:(?:prefix_cache_hits_total|prefix_cache_queries_total|num_preemptions_total))(\{.*\})?\s+(\S+)(?:\s+.*)?$')
     result = {"available": False, "series": [], "semantics": "Exact native counter names and labels retained; no pooled-engine cache estimate."}
@@ -165,9 +190,10 @@ def replay_evidence(path, records, calendar, expected_calendar_hash):
     return result
 
 
-def expected_generation(header, protocol, diagnostics):
+def expected_generation(header, protocol, diagnostics, dataset=None):
     generation = protocol.get("generation", {"max_tokens": 2048, "max_model_len": 32768,
                                               "temperature": 0, "enable_thinking": False, "ignore_eos": False})
+    generation = {**generation, **protocol.get("generation_by_dataset", {}).get(dataset, {})}
     return (all(header.get(key) == generation[key] for key in ("max_tokens", "max_model_len", "temperature", "enable_thinking", "ignore_eos"))
             and header.get("model") == "qwen3-full" and header.get("max_inflight") == 64
             and header.get("http_timeout_s") == protocol.get("execution", {}).get("http_timeout_s", 1800)
@@ -246,7 +272,7 @@ def report_block(root, protocol, dataset, block, expected_client_hash, request_a
                 or [r["request_id"] for r in records] != block["request_ids"]
                 or len(records) != 16 or header.get("logprobs") is not False):
             item["issues"].append("frozen request/calendar/client/arm identity or count differs")
-        if not expected_generation(header, protocol, False):
+        if not expected_generation(header, protocol, False, dataset["dataset"]):
             item["issues"].append("request generation configuration differs from frozen protocol")
         item["replay_evidence"] = (replay_evidence(directory / "measured.jsonl", records, calendar, block["calendar_sha256"])
                                    if calendar is not None else {"valid": False, "issues": ["frozen calendar unavailable"]})
@@ -266,7 +292,7 @@ def report_block(root, protocol, dataset, block, expected_client_hash, request_a
                     or warm_header.get("client_source_sha256") != expected_client_hash
                     or warm_header.get("logprobs") is not (phase == "warmup-00")
                     or [r["request_id"] for r in warm_rows] != dataset["warmup"]["request_ids"]
-                    or not expected_generation(warm_header, protocol, phase == "warmup-00")
+                    or not expected_generation(warm_header, protocol, phase == "warmup-00", dataset["dataset"])
                     or warm_header.get("arrival_kind") != "synthetic_pilot_burst"
                     or warm_header.get("synthetic_rate_requests_per_s") != 0.0 or not warm_timing["valid"]
                     or any(r.get("input_sha256") != request_admission.get(r["request_id"], {}).get("client_input_sha256") for r in warm_rows))
@@ -275,6 +301,7 @@ def report_block(root, protocol, dataset, block, expected_client_hash, request_a
             item["warmup"].append({"phase": phase, "valid": warm_valid, "summary": warm.get("summary"), "replay_evidence": warm_timing,
                 "cache_preemption_deltas": cache_counter_deltas(directory / f"{phase}-metrics-before.txt", directory / f"{phase}-metrics-after.txt")})
         item["native_metrics"] = metric_deltas(directory / "measured-metrics-before.txt", directory / "measured-metrics-after.txt")
+        item["phase_balance"] = phase_balance(item["native_metrics"])
         item["http_timing_valid"] = item["valid"] and not item["issues"]
         item["architecture_metrics_available"] = item["native_metrics"].get("available", False)
         item["native_completion_counters"] = audit_counters(directory / "measured-metrics-before.txt", directory / "measured-metrics-after.txt",
@@ -332,6 +359,7 @@ def report_block(root, protocol, dataset, block, expected_client_hash, request_a
 def build_report(root):
     root = Path(root)
     protocol = compare.validate_protocol(json.loads((root / "frozen-protocol.json").read_bytes()))
+    compact = protocol.get("schema") == compare.COMPACT_SCHEMA
     source = json.loads((root / "controller-source.json").read_bytes())
     expected_client_hash = source["files"]["full_serving/client.py"]
     status = json.loads((root / "status.json").read_bytes())
@@ -363,6 +391,12 @@ def build_report(root):
               "warmup_state": "Each server runs the same8 pilot requests twice. Native ON may change maps/history during warmup; HTTP drain does not attest an EPLB commit.",
               "commit_and_numerical_limit": "Native async normal commits remain unobservable in ordinary logs. Binding manifests and HTTP success do not establish all-layer numerical equivalence.",
               "source_dependence": "Arrival dates are reused across content sources; do not treat20blocks as independent replicates of one universal effect."}
+    result["design"] = "two_workloads_one_group" if compact else "five_datasets_four_groups"
+    if compact:
+        result["uncertainty"] = "One paired group per workload; descriptive ratios only, no confidence intervals or significance claims. Six sessions cannot estimate between-group or repeated-run variability."
+        result["source_dependence"] = "The two workloads share an Azure arrival block shape scaled to their previously frozen pilot rates; do not pool them as independent repetitions."
+        result["workload_settings"] = protocol["generation_by_dataset"]
+        result["phase_scope"] = "LongBench retains full prompts with a 16-token generation cap; NuminaMath retains a 2048-token cap. Check native measured phase durations before calling a workload prefill/decode dominated. Capped answers are not a quality evaluation."
     runtime_reference = None
     for dataset in protocol["datasets"]:
         item = {"dataset": dataset["dataset"], "blocks": [report_block(root, protocol, dataset, block, expected_client_hash, requests, sessions)
@@ -382,7 +416,7 @@ def build_report(root):
                     block["contrasts"] = {}
         item["complete"] = all(block["valid"] for block in item["blocks"])
         for contrast in ("custom/off", "custom/on"):
-            estimates = {name: paired_log_interval([block.get("contrasts", {}).get(contrast, {}).get("ratios", {}).get(name)
+            estimates = {name: (descriptive_ratio if compact else paired_log_interval)([block.get("contrasts", {}).get(contrast, {}).get("ratios", {}).get(name)
                                                   for block in item["blocks"]]) for name in METRICS}
             primary = estimates["mean_response_ms"]
             if primary["available"]:

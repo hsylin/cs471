@@ -51,7 +51,7 @@ def interval(ratios):
             "pointwise_95_percent_interval": [math.exp(center-half_width), math.exp(center+half_width)]}
 
 
-def reconstruct(path, arm, block, calendar):
+def reconstruct(path, arm, block, calendar, max_tokens=2048):
     raw = Path(path).read_bytes()
     if not raw.endswith(b"\n"):
         raise Incomplete("public JSONL tail is incomplete")
@@ -71,7 +71,7 @@ def reconstruct(path, arm, block, calendar):
             and header.get("requests_sha256") == block["requests_sha256"]
             and header.get("calendar_sha256") == block["calendar_sha256"]
             and header.get("request_ids_sha256") == canonical(ids), "frozen input/calendar/header identity differs")
-    require(header.get("max_tokens") == 2048 and header.get("max_model_len") == 32768
+    require(header.get("max_tokens") == max_tokens and header.get("max_model_len") == 32768
             and header.get("logprobs") is False and header.get("temperature") == 0
             and header.get("enable_thinking") is False and header.get("ignore_eos") is False,
             "measured generation contract differs")
@@ -94,10 +94,10 @@ def reconstruct(path, arm, block, calendar):
         require(all(type(usage.get(k)) is int and usage[k] >= 0 for k in ("prompt_tokens", "completion_tokens", "total_tokens"))
                 and usage["total_tokens"] == usage["prompt_tokens"]+usage["completion_tokens"]
                 and usage["prompt_tokens"] == row["expected_input_tokens"] > 0
-                and usage["prompt_tokens"]+2048 <= 32768 and usage["completion_tokens"] <= 2048,
+                and usage["prompt_tokens"]+max_tokens <= 32768 and usage["completion_tokens"] <= max_tokens,
                 "token accounting differs from the generation contract")
         require(row["finish_reason"] in ("stop", "length")
-                and (row["finish_reason"] != "length" or usage["completion_tokens"] == 2048), "invalid finish reason/output cap")
+                and (row["finish_reason"] != "length" or usage["completion_tokens"] == max_tokens), "invalid finish reason/output cap")
         responses.append((end-scheduled)/1_000_000)
         output_tokens += usage["completion_tokens"]
         cap_count += row["finish_reason"] == "length"
@@ -120,7 +120,10 @@ def reconstruct(path, arm, block, calendar):
 
 
 def compare_value(differences, path, actual, expected):
-    if isinstance(expected, (list, tuple)):
+    if expected is None:
+        if actual is not None:
+            differences.append({"path": path, "reported": actual, "recomputed": None})
+    elif isinstance(expected, (list, tuple)):
         if not isinstance(actual, list) or len(actual) != len(expected):
             differences.append({"path": path, "reported": actual, "recomputed": expected})
         else:
@@ -147,13 +150,20 @@ def audit(root, report_path):
         protocol_path = root/"frozen-protocol.json"
         protocol, report = load(protocol_path), load(report_path)
         result["evidence_sha256"].update(protocol=sha(protocol_path), primary_report=sha(report_path))
-        require(protocol.get("schema") == "resident_compare_protocol_v1" and protocol.get("status") == "frozen"
+        compact = protocol.get("schema") == "resident_compare_two_workloads_v1"
+        names = ["longbench", "numinamath"] if compact else list(DATASETS)
+        block_count, session_count = (1, 6) if compact else (4, 60)
+        require((compact or protocol.get("schema") == "resident_compare_protocol_v1") and protocol.get("status") == "frozen"
                 and protocol.get("final_execution_allowed") is True, "frozen final protocol required")
-        require([d["dataset"] for d in protocol["datasets"]] == list(DATASETS)
-                and all(len(d["blocks"]) == 4 for d in protocol["datasets"]), "expected five sources and four blocks each")
+        require([d["dataset"] for d in protocol["datasets"]] == names
+                and all(len(d["blocks"]) == block_count for d in protocol["datasets"]), "declared dataset/group design differs")
+        if compact:
+            require(protocol.get("generation_by_dataset") == {"longbench": {"max_tokens": 16}, "numinamath": {"max_tokens": 2048}}, "amended output budgets differ")
+            result["method"] = "Raw-timestamp reconstruction of one paired16-request group per workload; six sessions. Descriptive ratios only."
+            result["uncertainty_limit"] = "No confidence intervals or between-group/run variability estimate is possible with one group."
         require(report.get("schema") == "resident_compare_report_v1"
                 and report.get("protocol_sha256") == sha(protocol_path), "primary report/protocol identity differs")
-        require([d["dataset"] for d in report["datasets"]] == list(DATASETS), "primary report source membership differs")
+        require([d["dataset"] for d in report["datasets"]] == names, "primary report source membership differs")
     except FileNotFoundError:
         incomplete.append("frozen protocol or primary report is missing")
         return result
@@ -166,7 +176,7 @@ def audit(root, report_path):
         out = {"dataset": name, "blocks": [], "summary": {}}
         reported_blocks = {b["block_id"]: b for b in reported_dataset["blocks"]}
         expected_blocks = [b["block_id"] for b in dataset["blocks"]]
-        if list(reported_blocks) != expected_blocks or len(reported_dataset["blocks"]) != 4:
+        if list(reported_blocks) != expected_blocks or len(reported_dataset["blocks"]) != block_count:
             differences.append({"path": name, "reason": "primary report block membership/order differs"})
         for block in dataset["blocks"]:
             bid = block["block_id"]
@@ -181,7 +191,8 @@ def audit(root, report_path):
                 result["evidence_sha256"][str(calendar_path.relative_to(root))] = sha(calendar_path)
                 for arm in ARMS:
                     path = root/name/bid/arm/"measured.jsonl"
-                    values, signatures[arm] = reconstruct(path, arm, block, calendar)
+                    cap = protocol.get("generation_by_dataset", {}).get(name, {}).get("max_tokens", 2048)
+                    values, signatures[arm] = reconstruct(path, arm, block, calendar, cap)
                     entry["arms"][arm] = values
                     result["reconstructed_sessions"] += 1
                     result["evidence_sha256"][str(path.relative_to(root))] = sha(path)
@@ -216,7 +227,10 @@ def audit(root, report_path):
             for contrast in ("custom/off", "custom/on"):
                 out["summary"][contrast] = {}
                 for metric in METRICS:
-                    estimate = interval([b["contrasts"][contrast][metric] for b in out["blocks"]])
+                    ratios = [b["contrasts"][contrast][metric] for b in out["blocks"]]
+                    estimate = ({"block_ratios": ratios, "independent_block_count": 1,
+                                 "equal_block_geometric_mean_ratio": ratios[0], "pointwise_95_percent_interval": None}
+                                if compact else interval(ratios))
                     out["summary"][contrast][metric] = estimate
                     actual = reported_dataset.get("summary", {}).get(contrast, {}).get(metric, {})
                     if actual.get("available") is not True:
@@ -227,7 +241,7 @@ def audit(root, report_path):
         result["datasets"].append(out)
     if report.get("complete") is not True:
         incomplete.append("primary report is not complete")
-    result["status"] = "failed" if differences else ("passed" if not incomplete and result["reconstructed_sessions"] == 60 else "incomplete")
+    result["status"] = "failed" if differences else ("passed" if not incomplete and result["reconstructed_sessions"] == session_count else "incomplete")
     return result
 
 

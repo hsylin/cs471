@@ -61,9 +61,11 @@ def verify_closure(root, wrapper, remote, repo):
         raise ValueError("successful controller wrapper exit is required")
     state = json.loads((root / "status.json").read_bytes())
     schedule = json.loads((root / "schedule.json").read_bytes())
-    if (state.get("state") != "comparison_completed" or len(schedule) != 60
+    protocol = json.loads((root / "frozen-protocol.json").read_bytes())
+    expected_count = 6 if protocol.get("schema") == "resident_compare_two_workloads_v1" else 60
+    if (state.get("state") != "comparison_completed" or len(schedule) != expected_count
             or state.get("completed_sessions") != [job["session_id"] for job in schedule]):
-        raise ValueError("all sixty ordered sessions must have completed")
+        raise ValueError("all declared ordered sessions must have completed")
     if (remote.get("schema") != "cs471_stable_remote_inventory_v1"
             or remote.get("before") != remote.get("after") or not remote.get("after")):
         raise ValueError("two identical remote inventories around final collection are required")
@@ -74,7 +76,7 @@ def verify_closure(root, wrapper, remote, repo):
     revision = verify_source(source, repo)
     return {"schema": "cs471_full_resident_closure_v1", "status": "passed",
             "closed_utc": datetime.now(timezone.utc).isoformat(), "controller_exit": 0,
-            "completed_sessions": 60, "source_revision": revision,
+            "completed_sessions": expected_count, "source_revision": revision,
             "source_files_verified_against_git": len(source["files"]),
             "public_files_verified_remote_and_local": len(local), "files": local,
             "normal_eplb_commits_verified": False,
@@ -116,8 +118,8 @@ def finish(root, wrapper, remote, repo, output_prefix, audit_dir):
                  prefix.with_name(prefix.name + "-interpretation.json"),
                  audit_dir / "independent-statistics-audit.json", audit_dir / "raw-closure.json"]
     receipt = {"schema": "cs471_full_resident_completion_v1", "status": "completed_and_audited",
-        "completed_utc": datetime.now(timezone.utc).isoformat(), "measured_sessions": 60,
-        "measured_http_requests": 960, "raw_closure": "passed", "independent_statistics": "passed",
+        "completed_utc": datetime.now(timezone.utc).isoformat(), "measured_sessions": closure["completed_sessions"],
+        "measured_http_requests": closure["completed_sessions"] * 16, "raw_closure": "passed", "independent_statistics": "passed",
         "experiment_source_revision": closure["source_revision"],
         "analysis_source_sha256": {str(p.relative_to(repo)): digest(p) for p in (repo / "full_serving").glob("*.py")},
         "artifacts": {str(p): digest(p) for p in artifacts}, "automatic_superiority_claim": False}

@@ -37,6 +37,28 @@ def _public(protocol, protocol_path, stem, seal_key=None):
 
 def load_source_metadata(protocol, protocol_path):
     """Return public ``by_id`` rows after verifying all admitted split identities."""
+    if protocol.get("schema") == "resident_compare_two_workloads_v1":
+        from full_serving.custom_compare import validate_protocol
+        parent, _ = _public(protocol, protocol_path, "parent_protocol")
+        validate_protocol(parent)
+        require(parent.get("schema") == "resident_compare_protocol_v1", "amendment must retain the original full protocol")
+        for key, value in parent["source_admission"].items():
+            if key.endswith("_sha256"):
+                require(protocol["source_admission"].get(key) == value, "amendment changed source admission")
+        for planned in protocol["datasets"]:
+            original = next(d for d in parent["datasets"] if d["dataset"] == planned["dataset"])
+            for key in original:
+                if key not in ("blocks", "arm_position_counts"):
+                    require(planned.get(key) == original[key], "amendment changed source, warmup or arrival-rate binding")
+            require(len(planned["blocks"]) == 1, "amendment requires one group")
+            expected, actual = dict(original["blocks"][0]), dict(planned["blocks"][0])
+            expected.pop("arm_order"); actual.pop("arm_order")
+            require(actual == expected, "amendment must use the first reserved group without reselection")
+        # Rebase the parent's original source references to the archived paths.
+        # The public source digests above remain unchanged, and all640 original
+        # pilot/final identities and duplicate checks are still reconstructed.
+        parent["source_admission"] = {k: protocol["source_admission"][k] for k in parent["source_admission"]}
+        return load_source_metadata(parent, protocol_path)
     suite, suite_hash = _public(protocol, protocol_path, "suite_manifest", "manifest_sha256")
     wildchat, wild_hash = _public(protocol, protocol_path, "wildchat_manifest", "public_manifest_sha256")
     admission, admission_hash = _public(protocol, protocol_path, "suite_admission")

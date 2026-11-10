@@ -32,14 +32,21 @@ def comparison_notes(dataset, contrast):
     estimates = dataset.get("summary", {}).get(contrast, {})
     response = estimates.get("mean_response_ms", {})
     if dataset.get("complete") is not True or response.get("available") is not True:
+        if len(dataset.get("blocks", [])) == 1:
+            return ["Dataset comparison pending: the complete valid three-arm group is required."]
         return ["Dataset comparison pending: all four valid paired blocks are required."]
     point = response["equal_block_geometric_mean_ratio"]
-    low, high = response["pointwise_95_percent_interval"]
-    notes = [f"Mean response changes by {100 * (point - 1):+.2f}% "
-             f"(exploratory pointwise 95% interval {100 * (low - 1):+.2f}% to {100 * (high - 1):+.2f}%)."]
-    notes.append("The interval supports lower response latency in these episodes."
-                 if high < 1 else "The interval supports higher response latency in these episodes."
-                 if low > 1 else "The interval includes no change; the direction remains inconclusive.")
+    single = response.get("independent_block_count") == 1
+    if single:
+        notes = [f"Mean response changes by {100 * (point - 1):+.2f}% in this single group.",
+                 "No confidence interval or significance claim: one group cannot estimate between-group or repeated-run variability."]
+    else:
+        low, high = response["pointwise_95_percent_interval"]
+        notes = [f"Mean response changes by {100 * (point - 1):+.2f}% "
+                 f"(exploratory pointwise 95% interval {100 * (low - 1):+.2f}% to {100 * (high - 1):+.2f}%)."]
+        notes.append("The interval supports lower response latency in these episodes."
+                     if high < 1 else "The interval supports higher response latency in these episodes."
+                     if low > 1 else "The interval includes no change; the direction remains inconclusive.")
     notes.append("The point estimate meets the frozen 5% useful-gain margin."
                  if point <= .95 else "The point estimate does not meet the frozen 5% useful-gain margin.")
     for metric, label in (("p95_response_ms", "p95 response"), ("completed_elapsed_s", "completed elapsed time")):
@@ -48,9 +55,12 @@ def comparison_notes(dataset, contrast):
             notes.append(f"The {label} guard is unavailable.")
             continue
         value = estimate["equal_block_geometric_mean_ratio"]
-        lo, hi = estimate["pointwise_95_percent_interval"]
+        uncertainty = ""
+        if not single:
+            lo, hi = estimate["pointwise_95_percent_interval"]
+            uncertainty = f"(pointwise interval {100 * (lo - 1):+.2f}% to {100 * (hi - 1):+.2f}%); "
         notes.append(f"The {label} changes by {100 * (value - 1):+.2f}% "
-                     f"(pointwise interval {100 * (lo - 1):+.2f}% to {100 * (hi - 1):+.2f}%); "
+                     + uncertainty
                      + ("its point estimate reaches the 2% regression margin." if value >= 1.02
                         else "its point estimate stays below the 2% regression margin."))
     details = [b["contrasts"][contrast] for b in dataset["blocks"]]
@@ -65,7 +75,8 @@ def comparison_notes(dataset, contrast):
     else:
         notes.append("All generated answer hashes match in this comparison; this supports equal-output timing, not general model-quality equivalence.")
     notes.append("These are warmed full-model HTTP response times, including waiting and generation. Startup and warmup are separate. "
-                 "Four-block pointwise intervals do not give family-wise guarantees, steady-state capacity, or confirmatory acceptance.")
+                 + ("A single group does not establish a reproducible speedup or steady-state capacity." if single else
+                    "Four-block pointwise intervals do not give family-wise guarantees, steady-state capacity, or confirmatory acceptance."))
     return notes
 
 
@@ -108,7 +119,9 @@ def render_html(report, rows, source_hash):
         "<h1>Full-model resident comparison</h1>",
         "<p class=warn>" + ("Protocol complete; this does not declare superiority." if report.get("complete") else "Incomplete or invalid experiment. Missing comparisons are withheld.") + "</p>",
         "<p>Primary: resident method / native EPLB OFF. Secondary: resident method / native EPLB ON. A latency ratio below 1 is lower latency. No datasets are pooled.</p>"]
-    for key in ("scope", "uncertainty", "warmup_state", "commit_and_numerical_limit", "source_dependence"):
+    for key in ("scope", "uncertainty", "warmup_state", "commit_and_numerical_limit", "source_dependence", "phase_scope"):
+        if key not in report:
+            continue
         sections.append("<p>" + esc(report.get(key, "unavailable")) + "</p>")
     for dataset in report.get("datasets", []):
         name = dataset.get("dataset")
@@ -122,7 +135,9 @@ def render_html(report, rows, source_hash):
                       " to ".join(fmt(v) for v in interval) if available and isinstance(interval, list) and len(interval) == 2 else "unavailable",
                       str(estimate.get("independent_block_count")) if available else "incomplete"]
             sections.append("<tr>" + "".join("<td>" + esc(v) + "</td>" for v in values) + "</tr>")
-        sections.append("</table><p>The interval is pointwise and assumption-dependent with four blocks. A point estimate meeting a 5% gain or 2% regression margin is not a confirmatory acceptance decision.</p>")
+        sections.append("</table><p>" + ("One group permits descriptive ratios only; no confidence interval is estimated. "
+                        if report.get("design") == "two_workloads_one_group" else "The interval is pointwise and assumption-dependent with four blocks. ")
+                        + "A point estimate meeting a 5% gain or 2% regression margin is not a confirmatory acceptance decision.</p>")
         for contrast in ("custom/off", "custom/on"):
             sections.append("<h3>" + esc(contrast) + " — interpretation</h3><ul>" +
                             "".join("<li>" + esc(note) + "</li>" for note in comparison_notes(dataset, contrast)) + "</ul>")
@@ -142,7 +157,7 @@ def render_html(report, rows, source_hash):
             for contrast, details in block.get("contrasts", {}).items():
                 notes["generation"][contrast] = {k: v for k, v in details.items() if k != "ratios"}
             for arm, item in block.get("arms", {}).items():
-                notes["native_metrics"][arm] = {k: item.get(k) for k in ("native_completion_counters", "native_metrics", "cache_preemption_deltas", "native_eplb")}
+                notes["native_metrics"][arm] = {k: item.get(k) for k in ("native_completion_counters", "native_metrics", "cache_preemption_deltas", "native_eplb", "phase_balance")}
             sections.append("<details><summary>" + esc(block.get("block_id")) + " — generation, counters, cache and exact-label native phase records</summary><pre>" + esc(json.dumps(notes, indent=2, allow_nan=False)) + "</pre></details>")
     sections.append("<p>Generated outputs can differ under normal EOS, so output throughput alone is not a speedup measure. TTFT is first nonempty streamed content; native RUNNING duration is not isolated GPU service. Async launches and drained work do not attest normal EPLB commits.</p>")
     sections.append("<p>Public report SHA-256: <code>" + esc(source_hash) + "</code>. This page reads only that report; no private prompts or outputs are embedded.</p></html>")
