@@ -1,0 +1,88 @@
+slurmstepd: error: *** STEP 4882284.47 ON kh074 CANCELLED AT 2026-11-10T21:01:35 ***
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/venv/bin/vllm", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 118, in main
+    args.dispatch_function(args)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 154, in cmd
+    uvloop.run(run_server(args))
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1509, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1502, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1371, in uvloop.loop.Loop.run_forever
+  File "uvloop/loop.pyx", line 551, in uvloop.loop.Loop._run
+  File "uvloop/loop.pyx", line 471, in uvloop.loop.Loop._on_idle
+  File "uvloop/cbhandles.pyx", line 86, in uvloop.loop.Handle._run
+  File "uvloop/cbhandles.pyx", line 64, in uvloop.loop.Handle._run
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+    return await main
+           ^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 172, in run_server
+    await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 185, in run_server_worker
+    async with build_async_engine_client(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 58, in build_async_engine_client
+    async with build_async_engine_client_from_engine_args(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 92, in build_async_engine_client_from_engine_args
+    async_llm = AsyncLLM.from_vllm_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 248, in from_vllm_config
+    return cls(
+           ^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 180, in __init__
+    self.engine_core = EngineCoreClient.make_async_mp_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 163, in make_async_mp_client
+    return DPLBAsyncMPClient(
+           ^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 1572, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 1382, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 1100, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 674, in __init__
+    with launch_core_engines(
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1166, in launch_core_engines
+    coordinator = DPCoordinator(
+                  ^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/coordinator.py", line 124, in __init__
+    ) = self._wait_for_zmq_addrs(parent_zmq_addr_pipe)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/coordinator.py", line 62, in _wait_for_zmq_addrs
+    ready = multiprocessing.connection.wait(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/connection.py", line 1136, in wait
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 167, in _interrupt_init
+    raise KeyboardInterrupt("terminated")
+KeyboardInterrupt: terminated

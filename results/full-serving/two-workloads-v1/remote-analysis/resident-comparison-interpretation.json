@@ -1,0 +1,55 @@
+{
+  "scope": "Exploratory per-dataset full-model comparisons; no automatic superiority claim.",
+  "datasets": [
+    {
+      "dataset": "longbench",
+      "contrasts": {
+        "custom/off": [
+          "Mean response changes by +4.02% in this single group.",
+          "No confidence interval or significance claim: one group cannot estimate between-group or repeated-run variability.",
+          "The point estimate does not meet the frozen 5% useful-gain margin.",
+          "The p95 response changes by -0.27% its point estimate stays below the 2% regression margin.",
+          "The completed elapsed time changes by +0.18% its point estimate stays below the 2% regression margin.",
+          "Generated work: 16/16 answers have identical output hashes; the baseline generated 162 tokens and our method generated 162.",
+          "All generated answer hashes match in this comparison; this supports equal-output timing, not general model-quality equivalence.",
+          "These are warmed full-model HTTP response times, including waiting and generation. Startup and warmup are separate. A single group does not establish a reproducible speedup or steady-state capacity."
+        ],
+        "custom/on": [
+          "Mean response changes by +3.03% in this single group.",
+          "No confidence interval or significance claim: one group cannot estimate between-group or repeated-run variability.",
+          "The point estimate does not meet the frozen 5% useful-gain margin.",
+          "The p95 response changes by -0.86% its point estimate stays below the 2% regression margin.",
+          "The completed elapsed time changes by -0.03% its point estimate stays below the 2% regression margin.",
+          "Generated work: 14/16 answers have identical output hashes; the baseline generated 162 tokens and our method generated 162.",
+          "Different generated answers prevent interpreting this as an equal-generated-work speedup; semantic answer quality was not evaluated.",
+          "These are warmed full-model HTTP response times, including waiting and generation. Startup and warmup are separate. A single group does not establish a reproducible speedup or steady-state capacity."
+        ]
+      }
+    },
+    {
+      "dataset": "numinamath",
+      "contrasts": {
+        "custom/off": [
+          "Mean response changes by -10.65% in this single group.",
+          "No confidence interval or significance claim: one group cannot estimate between-group or repeated-run variability.",
+          "The point estimate meets the frozen 5% useful-gain margin.",
+          "The p95 response changes by -4.69% its point estimate stays below the 2% regression margin.",
+          "The completed elapsed time changes by -7.84% its point estimate stays below the 2% regression margin.",
+          "Generated work: 2/16 answers have identical output hashes; the baseline generated 17,519 tokens and our method generated 15,642.",
+          "Different generated answers prevent interpreting this as an equal-generated-work speedup; semantic answer quality was not evaluated.",
+          "These are warmed full-model HTTP response times, including waiting and generation. Startup and warmup are separate. A single group does not establish a reproducible speedup or steady-state capacity."
+        ],
+        "custom/on": [
+          "Mean response changes by -12.36% in this single group.",
+          "No confidence interval or significance claim: one group cannot estimate between-group or repeated-run variability.",
+          "The point estimate meets the frozen 5% useful-gain margin.",
+          "The p95 response changes by -17.50% its point estimate stays below the 2% regression margin.",
+          "The completed elapsed time changes by -15.38% its point estimate stays below the 2% regression margin.",
+          "Generated work: 2/16 answers have identical output hashes; the baseline generated 16,457 tokens and our method generated 15,642.",
+          "Different generated answers prevent interpreting this as an equal-generated-work speedup; semantic answer quality was not evaluated.",
+          "These are warmed full-model HTTP response times, including waiting and generation. Startup and warmup are separate. A single group does not establish a reproducible speedup or steady-state capacity."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,782 @@
+{
+  "schema": "cs471_superseded_partial_run_closure_v1",
+  "status": "preserved_user_superseded",
+  "reason": "User reduced study to two phase-focused workloads, one group each; explicit serving-step stop caused expected controller_exit1. Not a correctness or performance failure.",
+  "completed_sessions": [
+    "wildchat/wildchat-final-00/custom",
+    "wildchat/wildchat-final-00/off",
+    "wildchat/wildchat-final-00/on",
+    "wildchat/wildchat-final-01/custom"
+  ],
+  "incomplete_session": "wildchat/wildchat-final-01/on",
+  "closed_utc": "2026-11-10T21:27:23.659609+00:00",
+  "public_files_remote_local_equal": 191,
+  "files": {
+    "completed.txt": {
+      "bytes": 18,
+      "sha256": "074f7a629b1c6a9a54b9dfaf6768a74033bfd61041cc74ffc779ed6f3afb99ca"
+    },
+    "controller.err": {
+      "bytes": 1058,
+      "sha256": "0b628299068c13212f8f1368d0def3cafa655a2d733b52adee08f588e250901c"
+    },
+    "controller.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "results/allocation.json": {
+      "bytes": 32771,
+      "sha256": "1b0a533f71359c46de84ae8eccda3f2b1e6abd82db2cad096545fb3393dd30e1"
+    },
+    "results/calendars/instructcoder/instructcoder-final-00.json": {
+      "bytes": 4952,
+      "sha256": "4c80d68b80248a9db1b0eb36b712f7ace979e5a444b4bd61ce0af566dd28ccdc"
+    },
+    "results/calendars/instructcoder/instructcoder-final-01.json": {
+      "bytes": 4996,
+      "sha256": "a6df26f30f97c2d1f0c5b02808f0477691af6074b0c7869f8eb33b735cad3dd4"
+    },
+    "results/calendars/instructcoder/instructcoder-final-02.json": {
+      "bytes": 4970,
+      "sha256": "84e318ec1d62698aa2502231c9eca9dfc6a21bb77abed347701a5e41a2fe7b99"
+    },
+    "results/calendars/instructcoder/instructcoder-final-03.json": {
+      "bytes": 5005,
+      "sha256": "b491030ee839655f307db607992a42d5956eb2eb352c518263292add46919271"
+    },
+    "results/calendars/longbench/longbench-final-00.json": {
+      "bytes": 5540,
+      "sha256": "a894106443db1e58c47f3b7f9086ce24a87f8efd1828325a4f1fd154327be1f1"
+    },
+    "results/calendars/longbench/longbench-final-01.json": {
+      "bytes": 5590,
+      "sha256": "2db545929861a208d6b935d1802992957d2ba5153c3e3b7fbf900b03f9d44d8c"
+    },
+    "results/calendars/longbench/longbench-final-02.json": {
+      "bytes": 5566,
+      "sha256": "df7aa179cd9738d2b57e5ddcc1150d7e2bca9c309a19fa720b33721a2f76f761"
+    },
+    "results/calendars/longbench/longbench-final-03.json": {
+      "bytes": 5603,
+      "sha256": "6f045955bbfc1bb236e5e413d0b10308cdaf4c555bc21403e75ee57b01c7ad5b"
+    },
+    "results/calendars/numinamath/numinamath-final-00.json": {
+      "bytes": 5204,
+      "sha256": "1f6b4435c2ee95a20d5c055f4c3836f191a313445686899398d529c862d0d889"
+    },
+    "results/calendars/numinamath/numinamath-final-01.json": {
+      "bytes": 5248,
+      "sha256": "1b637d5e1134c2eccdbec579665019c461a3404ed32c0ec7fe9137243906b6c6"
+    },
+    "results/calendars/numinamath/numinamath-final-02.json": {
+      "bytes": 5222,
+      "sha256": "1a50944e5723230b2a98d6e1739593c9c48d89f85352d3a2a7d595a8c78e1e54"
+    },
+    "results/calendars/numinamath/numinamath-final-03.json": {
+      "bytes": 5255,
+      "sha256": "feddac2de0ac465562ce10c75ab7ed50c7647bda09c0f282b46a39edf5646c42"
+    },
+    "results/calendars/sharegpt/sharegpt-final-00.json": {
+      "bytes": 4874,
+      "sha256": "35a3c6a1445a08e8da6b03c41736b74530994e93fe510f4f323183a5e55d7899"
+    },
+    "results/calendars/sharegpt/sharegpt-final-01.json": {
+      "bytes": 4911,
+      "sha256": "19cc9e4fb867ec5c175fd579a72ff9f095cbc9f0cffbd26a635d0fb7dd12a0e6"
+    },
+    "results/calendars/sharegpt/sharegpt-final-02.json": {
+      "bytes": 4888,
+      "sha256": "a6ff432f51d8fc7f0c91547c891e59ac5fa73486540888cc382ffed301e2b25f"
+    },
+    "results/calendars/sharegpt/sharegpt-final-03.json": {
+      "bytes": 4918,
+      "sha256": "b739071b69053368dc706f5042334572cb2f1f538978712e263b607a0cb0e9b9"
+    },
+    "results/calendars/wildchat/wildchat-final-00.json": {
+      "bytes": 5075,
+      "sha256": "c39d455da88d54de6b90db30ee78873dbb69453dcaac7038c3f37220b0e1c391"
+    },
+    "results/calendars/wildchat/wildchat-final-01.json": {
+      "bytes": 5117,
+      "sha256": "b48fc58442f478451bac44025d8bb25933a25844d7034d10de5ff00bb73452e4"
+    },
+    "results/calendars/wildchat/wildchat-final-02.json": {
+      "bytes": 5094,
+      "sha256": "978397551fb4e626f60e875f611643ec982f74eb2543ce8ca808e0390e3cc2d6"
+    },
+    "results/calendars/wildchat/wildchat-final-03.json": {
+      "bytes": 5123,
+      "sha256": "dc7b903651632ec8e7708cfb89075c67bf29e24f5b71420a2562eb8ce7ecbfe8"
+    },
+    "results/checkpoint-preflight.log": {
+      "bytes": 174,
+      "sha256": "3d19f0789b4d28e61ce31fb13536a1f43ab78c4c877411f88b95955835cef978"
+    },
+    "results/checkpoint-verified.json": {
+      "bytes": 10643,
+      "sha256": "200a5c8568a80ca3d43a5bbace57cbe94c04bcc95618bac5672d88a878706275"
+    },
+    "results/controller-source.json": {
+      "bytes": 4778,
+      "sha256": "56c1a1fa9e06d13fc2417bbcf44b4296c4d8d050ee4fee6eea1ed3f57881db6f"
+    },
+    "results/frozen-protocol.json": {
+      "bytes": 57757,
+      "sha256": "a97cd98a032e0639fcf3f1e2471c6f962d98ea25c0b0b76c73dc7ad98105a6a2"
+    },
+    "results/implementation/config.json": {
+      "bytes": 1555,
+      "sha256": "4de70471ea35679dd8f3d940fcfa90dac898f29c859ba5b7ad4e0a423f5eef2d"
+    },
+    "results/implementation/pilot-admission.json": {
+      "bytes": 2149813,
+      "sha256": "6210769017559ed0c4993965624455b7c1260eb2dc7a0be4e8b529ee59e11d5e"
+    },
+    "results/implementation/source-manifest.json": {
+      "bytes": 884,
+      "sha256": "51f650a85016d1efdf4a1fead1f670337ef36f01153cfed5280c004b0a118f3c"
+    },
+    "results/request-admission.json": {
+      "bytes": 218246,
+      "sha256": "9e2d1b533c2ed4abfd66f98117749ea6176ceecb5a69bf0d9c632b3f649ec36b"
+    },
+    "results/schedule.json": {
+      "bytes": 11257,
+      "sha256": "ca001b15e55ba892b360caf054adc856b48b1b0388b901a24969483d34f5aa97"
+    },
+    "results/source-admission/arrival_manifest.json": {
+      "bytes": 81520,
+      "sha256": "a7208571234de4d0cfde30ff707be83285b706d467ec64eed090b808fd5e3628"
+    },
+    "results/source-admission/suite_admission.json": {
+      "bytes": 9208,
+      "sha256": "45cd5f42cdb5ca53548f864ab2fc9259debfc406c06581ca38a754e8b4deb5a3"
+    },
+    "results/source-admission/suite_manifest.json": {
+      "bytes": 495471,
+      "sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0"
+    },
+    "results/source-admission/wildchat_manifest.json": {
+      "bytes": 7305856,
+      "sha256": "682968a681c304670db81a5f87a3b74586067d32a663568b3352e6ee9c5a0558"
+    },
+    "results/status.json": {
+      "bytes": 833,
+      "sha256": "8e107ec6a545993933928f92f4bc8171e54f3cafb5e33ab18cf9b960bd18f01c"
+    },
+    "results/topology.json": {
+      "bytes": 161,
+      "sha256": "d538b21404e3ca07073ecd8e7cf8f99a12d7e0214762fde48c30effe78f9c5fa"
+    },
+    "results/wildchat/wildchat-final-00/custom/custom-startup-admission.json": {
+      "bytes": 1345,
+      "sha256": "2338e68be4f890b8ddc88aa5d5cbd61f38fa02e40340046215f2898bfa5f7a6e"
+    },
+    "results/wildchat/wildchat-final-00/custom/effective-launch-primary.json": {
+      "bytes": 1070,
+      "sha256": "3db7e3917e8ee7f9eb26b10c5d6a068651fadead4d48ccc924e7a1fa5fbdb50d"
+    },
+    "results/wildchat/wildchat-final-00/custom/effective-launch-worker.json": {
+      "bytes": 1041,
+      "sha256": "380e5a8f92875d2397f1a095031e0ee4e65201dfa5b27de58cee4b2d70971cb0"
+    },
+    "results/wildchat/wildchat-final-00/custom/flashinfer-prebuild/kh074.json": {
+      "bytes": 2714,
+      "sha256": "03fcbe88b15cc062fe54a4897ed97c9940ca7b9be54cffc0ab2fe89e631dcd84"
+    },
+    "results/wildchat/wildchat-final-00/custom/flashinfer-prebuild/kh077.json": {
+      "bytes": 2716,
+      "sha256": "e653086979a3fc25490d0f39aa6df5f3772d037a1365b6dad83f8e66e296a171"
+    },
+    "results/wildchat/wildchat-final-00/custom/launch.json": {
+      "bytes": 1234,
+      "sha256": "7835e5cc6b33a62c18ed6363cf682008990dd7154902b4b094a1fc7d6670939e"
+    },
+    "results/wildchat/wildchat-final-00/custom/measured-client.log": {
+      "bytes": 3147,
+      "sha256": "64e8665f8ae71748536d31c289f5150c807c6998d2d50ce8f4ee708ab271858e"
+    },
+    "results/wildchat/wildchat-final-00/custom/measured-metrics-after.txt": {
+      "bytes": 297370,
+      "sha256": "f3eb5983df1c8fdc9a219bce7bfcddd648d4dbca766417b88f3cd88e9316d2d9"
+    },
+    "results/wildchat/wildchat-final-00/custom/measured-metrics-before.txt": {
+      "bytes": 297288,
+      "sha256": "39e269985460fbcdbfffcd65d46b3e32958977f6e6f4de11ae4bdd81a3c8a9a5"
+    },
+    "results/wildchat/wildchat-final-00/custom/measured.jsonl": {
+      "bytes": 1702539,
+      "sha256": "b63f1d9b75440eb028a966c02e526a71524482a14474cbb40253dceca3ffee41"
+    },
+    "results/wildchat/wildchat-final-00/custom/preflight-primary.json": {
+      "bytes": 11114,
+      "sha256": "170fe12ca1073335e39e4aa7c761dc3b94c96e08f4117630fdcbfa0866b8132e"
+    },
+    "results/wildchat/wildchat-final-00/custom/preflight-primary.log": {
+      "bytes": 201,
+      "sha256": "758986a45d02e0a141835488424e2972777ba190a214d717932e2de1dec1c3fd"
+    },
+    "results/wildchat/wildchat-final-00/custom/preflight-worker.json": {
+      "bytes": 11115,
+      "sha256": "4c5da7f3cf240f26b5df3da2bd7d83c507217e7d70d2d465e2a8803e16c61c3a"
+    },
+    "results/wildchat/wildchat-final-00/custom/preflight-worker.log": {
+      "bytes": 200,
+      "sha256": "e4b11d09801e11e46b973b1e2da056290adbdc8a30f502f55182c4c5d413e938"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank0.json": {
+      "bytes": 42828,
+      "sha256": "28cd719d71a3861f8cb3096d6973090cc76578e5636082ac9a42acd13106b102"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank1.json": {
+      "bytes": 43596,
+      "sha256": "f1031529946f229dd9a2ecb2e9a61caeb061373e8e6a587325e26086ac838a1e"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank2.json": {
+      "bytes": 43788,
+      "sha256": "ec0f697c593b6d58fe0e1b1889c70312d1200769ff0f1848a755b7adbcd2d1ca"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank3.json": {
+      "bytes": 43788,
+      "sha256": "0c9125b6e6a33d675b4dd99ffa0886bea17266797f2c4a6f668938b77cd67d7d"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank4.json": {
+      "bytes": 43788,
+      "sha256": "c004f8b7579d70700efa01132095d80ea5cefa52cae8b402d0d7d8715df2f011"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank5.json": {
+      "bytes": 44748,
+      "sha256": "34fa87481e7be64e1e36af5fc84e2a8989d3619d80d2da139671ca0ff70e4113"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank6.json": {
+      "bytes": 45516,
+      "sha256": "1546bd7faecbd1015749a2add8dd9d86c22b88b99d7c513537683b908db32674"
+    },
+    "results/wildchat/wildchat-final-00/custom/resident-bindings-rank7.json": {
+      "bytes": 45516,
+      "sha256": "5464d242afc52b97c4d0aa11abf8edbd9dab307ed41ed2748e5f8eab38d820f0"
+    },
+    "results/wildchat/wildchat-final-00/custom/server-0.err": {
+      "bytes": 20890,
+      "sha256": "20077377075e709e464b4f73bcb39129c120e462126cb40e3a298ff355fcf023"
+    },
+    "results/wildchat/wildchat-final-00/custom/server-0.log": {
+      "bytes": 55793,
+      "sha256": "08d09ded4cb0074ab8d7c89a5e47675ca5a7da4d1fb0f3b2a16fe7ebe4386e03"
+    },
+    "results/wildchat/wildchat-final-00/custom/server-1.err": {
+      "bytes": 4128,
+      "sha256": "46fd7b3f7e516eba1c2cad85a024fec21e0ee250cec6fede0d1377c5804ee9ac"
+    },
+    "results/wildchat/wildchat-final-00/custom/server-1.log": {
+      "bytes": 30979,
+      "sha256": "0135e749ea5a43d5f3369577a8bf094ed326e6ac0151cea27f9c48039355eab6"
+    },
+    "results/wildchat/wildchat-final-00/custom/server-step-primary.txt": {
+      "bytes": 11,
+      "sha256": "a533bc3a45f9362aea2ef794dc67dbabea22eec086f5475cf17237bc36992231"
+    },
+    "results/wildchat/wildchat-final-00/custom/server-step-worker.txt": {
+      "bytes": 11,
+      "sha256": "a533bc3a45f9362aea2ef794dc67dbabea22eec086f5475cf17237bc36992231"
+    },
+    "results/wildchat/wildchat-final-00/custom/srun.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "results/wildchat/wildchat-final-00/custom/startup.json": {
+      "bytes": 992,
+      "sha256": "80d8dbf600119f870de412b99cb856567639bfb4e32f1894f96c4614890f609c"
+    },
+    "results/wildchat/wildchat-final-00/custom/status.json": {
+      "bytes": 347,
+      "sha256": "8df29fc79867643b3e34c910e2b86357adcb8e48bb4e55a0ecd14a60f59ccddb"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-00-client.log": {
+      "bytes": 3116,
+      "sha256": "1b26acd09dd0062722e9e959d08a780e8333c4ae58d3614321156a384b0b80ce"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-00-metrics-after.txt": {
+      "bytes": 296988,
+      "sha256": "a9f8eddf1013270dfb48d7cd31839ab633776244dc8b93de72dec22ef991da96"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-00-metrics-before.txt": {
+      "bytes": 293974,
+      "sha256": "ede25f9181ea565ace5cd752d5e7cb1760492ccc48df3ea6455c0df2c036dbb1"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-00.jsonl": {
+      "bytes": 677412,
+      "sha256": "9fe85bce52b93180187e54bbc693c6d94791e461082ea0c22bd872aa81971412"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-01-client.log": {
+      "bytes": 3161,
+      "sha256": "5cd5edf3606b2f7dc864a1ae1edb61bf1e26f56dbb0dd4845ac17d516c5a98ed"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-01-metrics-after.txt": {
+      "bytes": 297288,
+      "sha256": "ff75a4a5967d16ccd6d8a4ce1f40a7274eda02e3dd09a6192bb60d296c7beefe"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-01-metrics-before.txt": {
+      "bytes": 296988,
+      "sha256": "d91e665aefd53ef1dd0a7fc5a250c5d30d3619aaa4f37579a94bab124046b6ba"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-01.jsonl": {
+      "bytes": 742586,
+      "sha256": "d153e20dc2951be1d90b7c85aa3c0f7b64e2531f9750f8ba13c0464392d51231"
+    },
+    "results/wildchat/wildchat-final-00/custom/warmup-plan.json": {
+      "bytes": 486,
+      "sha256": "adb195d9c23cf6377c85684324e81fb8ace35d0ba6d0c7e79971860d04746b2e"
+    },
+    "results/wildchat/wildchat-final-00/off/effective-launch-primary.json": {
+      "bytes": 466,
+      "sha256": "d25c92ca7701c41fb4b84ac3961800096197cecfdc972870832892e9d5fe18d5"
+    },
+    "results/wildchat/wildchat-final-00/off/effective-launch-worker.json": {
+      "bytes": 465,
+      "sha256": "28f01281967d55ad28f1019d4760c42006260b66ac70cec16726398c4cb40c48"
+    },
+    "results/wildchat/wildchat-final-00/off/flashinfer-prebuild/kh074.json": {
+      "bytes": 2715,
+      "sha256": "c50c04291e21fb8c7ce016e4204af660eca7ea7e7c04f8e9025df304bc539158"
+    },
+    "results/wildchat/wildchat-final-00/off/flashinfer-prebuild/kh077.json": {
+      "bytes": 2716,
+      "sha256": "bb5793a45d2283cd8722b5c6f71ac02083eec668dbdf8e9fc782dcde07b7f7b5"
+    },
+    "results/wildchat/wildchat-final-00/off/launch.json": {
+      "bytes": 1219,
+      "sha256": "d3f9f7dafb7b315f12be87b206745b188d6bb9d185ae39d1313e2dc2e58020a7"
+    },
+    "results/wildchat/wildchat-final-00/off/measured-client.log": {
+      "bytes": 3137,
+      "sha256": "6d7546651e24b6a234b0c31904a805eefed3784a0e62f4332832c914529a1330"
+    },
+    "results/wildchat/wildchat-final-00/off/measured-metrics-after.txt": {
+      "bytes": 297383,
+      "sha256": "e97ffa4fdd3c4df83029cb63fc62ff811a5845e4096184b34c38d8e8ba42f9fa"
+    },
+    "results/wildchat/wildchat-final-00/off/measured-metrics-before.txt": {
+      "bytes": 297254,
+      "sha256": "2e8584ca45de81867d39c2f79d69b1b0e553e38d4191d738c0d5e7b94d8b7f8f"
+    },
+    "results/wildchat/wildchat-final-00/off/measured.jsonl": {
+      "bytes": 1815935,
+      "sha256": "593c84e381bdad0229a6410d3e9af6a547570bbdb57ce50d9699b30dfe542ebf"
+    },
+    "results/wildchat/wildchat-final-00/off/preflight-primary.json": {
+      "bytes": 11112,
+      "sha256": "fe172a93c77996d8b7a63b7b518d909f7e5c9dadb2ddc32836e7ca70a154c167"
+    },
+    "results/wildchat/wildchat-final-00/off/preflight-worker.json": {
+      "bytes": 11112,
+      "sha256": "303eb261640516af2044698daa2434922915cbcc0781119d7c1c340bed32b0b8"
+    },
+    "results/wildchat/wildchat-final-00/off/server-0.err": {
+      "bytes": 19458,
+      "sha256": "064498ce78a4fd6a0f7f8e89811d4dd91670d9d128dfc2737381b71b4d9e131e"
+    },
+    "results/wildchat/wildchat-final-00/off/server-0.log": {
+      "bytes": 55701,
+      "sha256": "1c8e3739bd6d642073aec5aaa6e1daf567851d65ee692b71e721fcea7f180644"
+    },
+    "results/wildchat/wildchat-final-00/off/server-1.err": {
+      "bytes": 4128,
+      "sha256": "6368934cfca607a6946e3c12e586294b385670e52c8f23e52564a7e6efc169b1"
+    },
+    "results/wildchat/wildchat-final-00/off/server-1.log": {
+      "bytes": 31157,
+      "sha256": "8e37fb578486d63d58ea65a46c83d1b45d3b72d11702ad02d9a6eb52964c28a1"
+    },
+    "results/wildchat/wildchat-final-00/off/server-step-primary.txt": {
+      "bytes": 11,
+      "sha256": "cbe315d2c180382583d7f448470ed6041ee3bef19bdb592cf782a13119ce5988"
+    },
+    "results/wildchat/wildchat-final-00/off/server-step-worker.txt": {
+      "bytes": 11,
+      "sha256": "cbe315d2c180382583d7f448470ed6041ee3bef19bdb592cf782a13119ce5988"
+    },
+    "results/wildchat/wildchat-final-00/off/srun.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "results/wildchat/wildchat-final-00/off/startup.json": {
+      "bytes": 992,
+      "sha256": "15012114f0f7b78a874327414a7189f59eed351cfab6d9cc7660fdd726cff42d"
+    },
+    "results/wildchat/wildchat-final-00/off/status.json": {
+      "bytes": 341,
+      "sha256": "59ecebd90d59e83b578f50f9dfd44c3baa96a7e1b34b18fdab896253e724ea68"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-00-client.log": {
+      "bytes": 3118,
+      "sha256": "357eb135c3e86f3646e19b15f6f51d45a8a4b3197bbc228eb0fd5bd8b1b1072e"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-00-metrics-after.txt": {
+      "bytes": 297033,
+      "sha256": "6fc07e3dad7c83f6120ca5ad2dd72e6180dc2db5bf06de1d7505cdcc5eaba458"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-00-metrics-before.txt": {
+      "bytes": 293965,
+      "sha256": "0fb6375cdceb50a798e761af67e8452bd8fff5858fc979cd901d1f03910dc8ba"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-00.jsonl": {
+      "bytes": 681798,
+      "sha256": "990169e16263c3787b6541146e10a8de49c29fe9b90bb563d6b9bf589b7b9c32"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-01-client.log": {
+      "bytes": 3099,
+      "sha256": "4da88dd8fa901afc65c8232f8c386948b0306d8300ce300ff05b29c95e87623c"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-01-metrics-after.txt": {
+      "bytes": 297255,
+      "sha256": "0341bffb4f49a0235a1f08ca9152852bbc9c579d280d20d7f81b0d74d3297f1b"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-01-metrics-before.txt": {
+      "bytes": 297047,
+      "sha256": "761c4b4ca9c99ab7db134161492fc37537ec9f10ca39128523f89fa8efcb4acf"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-01.jsonl": {
+      "bytes": 683616,
+      "sha256": "00bbd025fb2bdbfd5df0c9ef0efdb26cb95d758067dc91e6a54323c874a0b9b0"
+    },
+    "results/wildchat/wildchat-final-00/off/warmup-plan.json": {
+      "bytes": 486,
+      "sha256": "adb195d9c23cf6377c85684324e81fb8ace35d0ba6d0c7e79971860d04746b2e"
+    },
+    "results/wildchat/wildchat-final-00/on/effective-launch-primary.json": {
+      "bytes": 464,
+      "sha256": "1e93cdf8b20f7e26f57039d8cbcef1b5bf0e98a0051119503af6f341344b3e37"
+    },
+    "results/wildchat/wildchat-final-00/on/effective-launch-worker.json": {
+      "bytes": 463,
+      "sha256": "81314a7ca93c33aefeac077ceebcb0d928a8122df9dba100547dec6b2613e8d3"
+    },
+    "results/wildchat/wildchat-final-00/on/flashinfer-prebuild/kh074.json": {
+      "bytes": 2714,
+      "sha256": "c39eedf28cdb4d4038234e669c7546fa3e3bc9d3d2d7d2c5ae601a08a685edb4"
+    },
+    "results/wildchat/wildchat-final-00/on/flashinfer-prebuild/kh077.json": {
+      "bytes": 2716,
+      "sha256": "77b6f8e87ed1964af4a2c8078232da905d57f656845b8031d50a9834d89fedaf"
+    },
+    "results/wildchat/wildchat-final-00/on/launch.json": {
+      "bytes": 1214,
+      "sha256": "22aba6463e1ae6d6f816a56c1125b900b950fcd961bc4f02c4fef252363def6a"
+    },
+    "results/wildchat/wildchat-final-00/on/measured-client.log": {
+      "bytes": 3128,
+      "sha256": "c841723772013f04daeb47b9387699a85a13b8ea475d011b0f5c2ecee8f9ca4b"
+    },
+    "results/wildchat/wildchat-final-00/on/measured-metrics-after.txt": {
+      "bytes": 297368,
+      "sha256": "a2a866490aa3e95400b7661b46705c5e0c34c654c6105ba02880e19be441f979"
+    },
+    "results/wildchat/wildchat-final-00/on/measured-metrics-before.txt": {
+      "bytes": 297311,
+      "sha256": "5d2503b86d62ec7c7c183ee40dc7b663b81c7bcdd09b691d325baf95fc3ca4cf"
+    },
+    "results/wildchat/wildchat-final-00/on/measured.jsonl": {
+      "bytes": 1799181,
+      "sha256": "f5959a148cf44f72e5731baeb6a30e07fc57ee773f6c8f054afb31ae2d9d8473"
+    },
+    "results/wildchat/wildchat-final-00/on/preflight-primary.json": {
+      "bytes": 11110,
+      "sha256": "ccc5499e3e5eed6458aed1b3e812f6a5ff59bfa73d10d8887ef17db4b3a211b6"
+    },
+    "results/wildchat/wildchat-final-00/on/preflight-worker.json": {
+      "bytes": 11111,
+      "sha256": "a724741cacbd492cf2cde1ecdaa88ae813061ff868ccf233272ae361da283259"
+    },
+    "results/wildchat/wildchat-final-00/on/server-0.err": {
+      "bytes": 21577,
+      "sha256": "2178d8ccc82b022b69062db94f395627b9dfa41d18e0bf11f32f56814e7a60c9"
+    },
+    "results/wildchat/wildchat-final-00/on/server-0.log": {
+      "bytes": 57355,
+      "sha256": "c274fe1f28f071cc023c2da15e0717e71b75f8d426fb11713f711735d00c2057"
+    },
+    "results/wildchat/wildchat-final-00/on/server-1.err": {
+      "bytes": 4343,
+      "sha256": "e7989d1d205ee3fe83da8202f002c725b5e865cc58b4cfa744663b7fc5eee05b"
+    },
+    "results/wildchat/wildchat-final-00/on/server-1.log": {
+      "bytes": 31006,
+      "sha256": "976b44f4c624a7e7f5344cb97337fec7d65accb25cf4d9e4de2d576105b2a8bb"
+    },
+    "results/wildchat/wildchat-final-00/on/server-step-primary.txt": {
+      "bytes": 11,
+      "sha256": "d8e70854b948f8a573757718c4844ec4b3e98b517bb208039836c0fecacd6186"
+    },
+    "results/wildchat/wildchat-final-00/on/server-step-worker.txt": {
+      "bytes": 11,
+      "sha256": "d8e70854b948f8a573757718c4844ec4b3e98b517bb208039836c0fecacd6186"
+    },
+    "results/wildchat/wildchat-final-00/on/srun.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "results/wildchat/wildchat-final-00/on/startup.json": {
+      "bytes": 992,
+      "sha256": "aab023bf8b4d15abcd0dcaa5dde0ba3d6dc6713ed3fde6f1421c16828ea3401c"
+    },
+    "results/wildchat/wildchat-final-00/on/status.json": {
+      "bytes": 339,
+      "sha256": "505558710635ae25e72b9c6a372c56956257472e65a1e1e42c9b0cc3517e9de4"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-00-client.log": {
+      "bytes": 3104,
+      "sha256": "1c6040823e3b8c32ed0900cd5c7af3dc874fd48ed58a7bbb80e091b128f3736a"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-00-metrics-after.txt": {
+      "bytes": 296962,
+      "sha256": "ede4cb7501ba2d35d8c075b9a289525d7b2ab2951f966594cda71edbf51104f3"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-00-metrics-before.txt": {
+      "bytes": 293940,
+      "sha256": "f496428e2759ec36564865526e6b0ff8ff8666312a0b37f88f93faed97e568c5"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-00.jsonl": {
+      "bytes": 686144,
+      "sha256": "f0ecddcd4947b58a86840ad1e058e3e930f77c93e539f3f599538f0d29283b89"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-01-client.log": {
+      "bytes": 3172,
+      "sha256": "1265c73b417f2ed4f650f130d953e45d44cea05f7ef31f01732229436b432519"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-01-metrics-after.txt": {
+      "bytes": 297324,
+      "sha256": "2f8d260a5da3f776600b7f1624eda25cda2e0357dd33bccdf1768a82bf514709"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-01-metrics-before.txt": {
+      "bytes": 296975,
+      "sha256": "2b7e22648ff8764385f1e2b376d26259f3ef651e0691136c2468c94554f5ddde"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-01.jsonl": {
+      "bytes": 749446,
+      "sha256": "d6d2136ba6c8d1e949282fa623602bdc928bcd272f10303110e967a27a938dbd"
+    },
+    "results/wildchat/wildchat-final-00/on/warmup-plan.json": {
+      "bytes": 486,
+      "sha256": "adb195d9c23cf6377c85684324e81fb8ace35d0ba6d0c7e79971860d04746b2e"
+    },
+    "results/wildchat/wildchat-final-01/custom/custom-startup-admission.json": {
+      "bytes": 1345,
+      "sha256": "e573c39fad695111d077dbe935d18b72cc7f99dc62a0b7c67fe9ab2c35e7bda5"
+    },
+    "results/wildchat/wildchat-final-01/custom/effective-launch-primary.json": {
+      "bytes": 1070,
+      "sha256": "3db7e3917e8ee7f9eb26b10c5d6a068651fadead4d48ccc924e7a1fa5fbdb50d"
+    },
+    "results/wildchat/wildchat-final-01/custom/effective-launch-worker.json": {
+      "bytes": 1041,
+      "sha256": "380e5a8f92875d2397f1a095031e0ee4e65201dfa5b27de58cee4b2d70971cb0"
+    },
+    "results/wildchat/wildchat-final-01/custom/flashinfer-prebuild/kh074.json": {
+      "bytes": 2715,
+      "sha256": "73c532b40038f0be82be6481c64dfd59f48235252bda0cb16cf01f76184fb96a"
+    },
+    "results/wildchat/wildchat-final-01/custom/flashinfer-prebuild/kh077.json": {
+      "bytes": 2715,
+      "sha256": "1168a75a648f2ec2f22ac80d8503c55c93e7d42cdd9e4725c4b151161d6e70d7"
+    },
+    "results/wildchat/wildchat-final-01/custom/launch.json": {
+      "bytes": 1234,
+      "sha256": "f3be188fdcde714be8792409010420f2e51ac2c84789ff59da719063c3dbf7f8"
+    },
+    "results/wildchat/wildchat-final-01/custom/measured-client.log": {
+      "bytes": 3134,
+      "sha256": "0afd380135aa89e3666dcbae72ca7305b82daa16b1d2af87fd8ffb2a08a09d20"
+    },
+    "results/wildchat/wildchat-final-01/custom/measured-metrics-after.txt": {
+      "bytes": 297337,
+      "sha256": "4bcaebfe881256951b5c2c0f2f6945458b2218323be8dd855dc75200ea6e0ec9"
+    },
+    "results/wildchat/wildchat-final-01/custom/measured-metrics-before.txt": {
+      "bytes": 297285,
+      "sha256": "75d309d3f53a20be13c6a3fa7a5b25059f02e5d2c0115da4cf466499ebcc97bc"
+    },
+    "results/wildchat/wildchat-final-01/custom/measured.jsonl": {
+      "bytes": 1106166,
+      "sha256": "5b4545ab224188b2447c8f00f9e3ed5ccd4ec841df480e5becfba79a1c15fb64"
+    },
+    "results/wildchat/wildchat-final-01/custom/preflight-primary.json": {
+      "bytes": 11115,
+      "sha256": "0ce3eec3a310bf3faa0174532e0541b74de97c77eeb1832b9817c07ead1ead31"
+    },
+    "results/wildchat/wildchat-final-01/custom/preflight-primary.log": {
+      "bytes": 201,
+      "sha256": "821a6f2d1285b2d51508ae484ec9f1cec76ee592ce95ca0b3ccf5467089403df"
+    },
+    "results/wildchat/wildchat-final-01/custom/preflight-worker.json": {
+      "bytes": 11114,
+      "sha256": "a427c24a022382785023b19bf14e8cfdbde856e919ad89170a67ffbf8ad9045e"
+    },
+    "results/wildchat/wildchat-final-01/custom/preflight-worker.log": {
+      "bytes": 200,
+      "sha256": "9814b1430f0b58a2358fd65643751ceb7a9c777596df7ea7746dbaf6eb7c63eb"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank0.json": {
+      "bytes": 42828,
+      "sha256": "dd87ca220dc625941c3a208037b72c6ac70a149e8d560c6705347190eaea79a6"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank1.json": {
+      "bytes": 43596,
+      "sha256": "b1d2c56e310aecfc538d3b8d41c071ae951727de4419e17a29b4e1541aae36e3"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank2.json": {
+      "bytes": 43788,
+      "sha256": "54c5e2401f52bc84b7fd1ac86862fac83f785820f95f2d549eab5b82b4c1bb1b"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank3.json": {
+      "bytes": 43788,
+      "sha256": "a2c99415ccbd1e8a210dffc00746f3d1a3b5ef17a7dc30dbb6da0d07330ccbb4"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank4.json": {
+      "bytes": 43788,
+      "sha256": "69b5f64ba1571ed182aea257382112aa35270aa7fc5273da203589755af3096e"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank5.json": {
+      "bytes": 44748,
+      "sha256": "670f658243edc17f78261939277cd27e9f751fa6eded2eab1a25f5955e00bedf"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank6.json": {
+      "bytes": 45516,
+      "sha256": "8a2d8cedeb1756aad5e7668cabe8ef439375667da5b0ccf46cddd91f78168bdb"
+    },
+    "results/wildchat/wildchat-final-01/custom/resident-bindings-rank7.json": {
+      "bytes": 45516,
+      "sha256": "c954ebfabd6a6eae6b175308f5ed1680664b5af40f2da969837f86546cb8247f"
+    },
+    "results/wildchat/wildchat-final-01/custom/server-0.err": {
+      "bytes": 20986,
+      "sha256": "0f0111a23f1d298c0ce31985605c75fd799f77048c5a16c2e7d7066b3c9d60b2"
+    },
+    "results/wildchat/wildchat-final-01/custom/server-0.log": {
+      "bytes": 54368,
+      "sha256": "ef8e0a534a5a6638cecf2e11fee32028b5bbf4430432cba3f55e815ae0e2db4a"
+    },
+    "results/wildchat/wildchat-final-01/custom/server-1.err": {
+      "bytes": 4128,
+      "sha256": "d5c77211193a94b8ca993edc07beb73cd4676e1bcfa5c300493b1d1a0a838865"
+    },
+    "results/wildchat/wildchat-final-01/custom/server-1.log": {
+      "bytes": 31482,
+      "sha256": "71a13a9c0b22847c554b9761ad586b0f3f431ffe5501b598c7170e51cf72a8c2"
+    },
+    "results/wildchat/wildchat-final-01/custom/server-step-primary.txt": {
+      "bytes": 11,
+      "sha256": "fba1abd1d0135ade9f3792aa90995e13a6f78e52c7b6b1ed30d900bab2e65003"
+    },
+    "results/wildchat/wildchat-final-01/custom/server-step-worker.txt": {
+      "bytes": 11,
+      "sha256": "fba1abd1d0135ade9f3792aa90995e13a6f78e52c7b6b1ed30d900bab2e65003"
+    },
+    "results/wildchat/wildchat-final-01/custom/srun.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "results/wildchat/wildchat-final-01/custom/startup.json": {
+      "bytes": 992,
+      "sha256": "3376b63e5f52679de69f7c16fddfa24329ad70770735a782745b6ea587557605"
+    },
+    "results/wildchat/wildchat-final-01/custom/status.json": {
+      "bytes": 347,
+      "sha256": "5112ac6605465374107c1081cc891e1c32ff50cd769b26c16a7d60abd831a05e"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-00-client.log": {
+      "bytes": 3179,
+      "sha256": "4127c518c6ebe38210ef6dc7b403b91fd45fa90d014ee5813dfdb3c90518e9fd"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-00-metrics-after.txt": {
+      "bytes": 296983,
+      "sha256": "352a6c72223e8ff753e6d56b387b7ab98bcf44810f235be83b4fa9ba2017133e"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-00-metrics-before.txt": {
+      "bytes": 293965,
+      "sha256": "858cb936a4073a494997c3ba4ec5b1b74c7d4703b03892cb50939e4437e6a474"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-00.jsonl": {
+      "bytes": 701111,
+      "sha256": "8443d1bfa69e2a08e02996a577c1d88d33fa9b46aa8c8b42d04292779b95013b"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-01-client.log": {
+      "bytes": 3111,
+      "sha256": "6e80cb9a0b133397fcbbb659ca5c028d89d79fb670a4deebee7b5ba2f82a86f3"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-01-metrics-after.txt": {
+      "bytes": 297285,
+      "sha256": "93d921598ad27a2abc76bb4291163673a9a3818c81bbe271f7545546cf7d2f97"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-01-metrics-before.txt": {
+      "bytes": 296983,
+      "sha256": "31c68aecf245a953a48378a7ba426e0cd7e8132dcc0a98c6b880a66a145fe895"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-01.jsonl": {
+      "bytes": 659928,
+      "sha256": "ac83fae1f6ca57f00c053c37eb58f89995c59d41584d931e04d54cd46d00ee72"
+    },
+    "results/wildchat/wildchat-final-01/custom/warmup-plan.json": {
+      "bytes": 486,
+      "sha256": "adb195d9c23cf6377c85684324e81fb8ace35d0ba6d0c7e79971860d04746b2e"
+    },
+    "results/wildchat/wildchat-final-01/on/effective-launch-primary.json": {
+      "bytes": 464,
+      "sha256": "1e93cdf8b20f7e26f57039d8cbcef1b5bf0e98a0051119503af6f341344b3e37"
+    },
+    "results/wildchat/wildchat-final-01/on/effective-launch-worker.json": {
+      "bytes": 463,
+      "sha256": "81314a7ca93c33aefeac077ceebcb0d928a8122df9dba100547dec6b2613e8d3"
+    },
+    "results/wildchat/wildchat-final-01/on/flashinfer-prebuild/kh074.json": {
+      "bytes": 2715,
+      "sha256": "f21ca4c58c5e9de3922dd627610e171ac8293ba738863ca0a2d1f9de371eeb0b"
+    },
+    "results/wildchat/wildchat-final-01/on/flashinfer-prebuild/kh077.json": {
+      "bytes": 2716,
+      "sha256": "c05c6c706165bd1d14034fc694d498882e8c20d44bbc36db3b013ad1bc2a333b"
+    },
+    "results/wildchat/wildchat-final-01/on/launch.json": {
+      "bytes": 1214,
+      "sha256": "5bbdb4182383aeb91cd65888f4d71d0efc633fa8369b8478fc0f5a8baaad4dcc"
+    },
+    "results/wildchat/wildchat-final-01/on/preflight-primary.json": {
+      "bytes": 11111,
+      "sha256": "31f5e5b03c7fc8262631d6f89bfa943710da484004e7086af9839df38a7fbb6b"
+    },
+    "results/wildchat/wildchat-final-01/on/preflight-worker.json": {
+      "bytes": 11111,
+      "sha256": "1159656b1cb972a3690e065eadf22f7122f6bac903a0e92f8da7f657728484b7"
+    },
+    "results/wildchat/wildchat-final-01/on/server-0.err": {
+      "bytes": 6164,
+      "sha256": "f1806e823c5ac19c3c030cde7e65659984e958a2b5e3c1baa09518949e35ae21"
+    },
+    "results/wildchat/wildchat-final-01/on/server-0.log": {
+      "bytes": 5460,
+      "sha256": "7e30fc5c717acb17b94fb82df83676f25e658fb797194a6b5a4028313c120f60"
+    },
+    "results/wildchat/wildchat-final-01/on/server-1.err": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "results/wildchat/wildchat-final-01/on/server-1.log": {
+      "bytes": 5491,
+      "sha256": "706c211e5c09b008823774cc823f36c0ec97fc4d0946cc4db76c5a194fc0e818"
+    },
+    "results/wildchat/wildchat-final-01/on/server-step-primary.txt": {
+      "bytes": 11,
+      "sha256": "a13d1c492c902f399590d6d5e05e826b54d65dbd3cd45d74b6d3cf32814d8bdd"
+    },
+    "results/wildchat/wildchat-final-01/on/server-step-worker.txt": {
+      "bytes": 11,
+      "sha256": "a13d1c492c902f399590d6d5e05e826b54d65dbd3cd45d74b6d3cf32814d8bdd"
+    },
+    "results/wildchat/wildchat-final-01/on/srun.log": {
+      "bytes": 88,
+      "sha256": "2280b06922da8796e5d0760e386deb6f0b845c1b0a030011e875841da4a86ee4"
+    }
+  },
+  "operator_receipt": "user-scope-change.json",
+  "pool_with_reduced_experiment": false
+}

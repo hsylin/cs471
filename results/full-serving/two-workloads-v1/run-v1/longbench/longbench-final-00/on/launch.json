@@ -1,0 +1,32 @@
+{
+  "arm": "on",
+  "block_id": "longbench-final-00",
+  "command": [
+    "srun",
+    "--jobid=4882284",
+    "--mpi=none",
+    "--exact",
+    "--nodes=2",
+    "--ntasks=2",
+    "--ntasks-per-node=1",
+    "--nodelist=kh074,kh077",
+    "--cpus-per-task=56",
+    "--gpus-per-node=4",
+    "--mem=300G",
+    "--kill-on-bad-exit=1",
+    "--input=none",
+    "--output=/work/cs-471/skewbench-hlin/full-serving/full-two-workloads-20261110-v1/results/longbench/longbench-final-00/on/server-%t.log",
+    "--error=/work/cs-471/skewbench-hlin/full-serving/full-two-workloads-20261110-v1/results/longbench/longbench-final-00/on/server-%t.err",
+    "bash",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/605caea-two-workloads/full_serving/custom_compare_node.sh",
+    "on",
+    "/work/cs-471/skewbench-hlin/cache/huggingface/models--Qwen--Qwen3-30B-A3B/snapshots/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "10.91.54.74",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/605caea-two-workloads/results/full-serving/two-workloads-v1/frozen-v1/protocol.json"
+  ],
+  "dataset": "longbench",
+  "ordinal": 2,
+  "position": 2,
+  "session_id": "longbench/longbench-final-00/on",
+  "started_utc": "2026-11-10T20:33:38.130849+00:00"
+}
