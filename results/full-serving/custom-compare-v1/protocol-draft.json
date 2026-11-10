@@ -15,6 +15,7 @@
       "p95_response",
       "completed_elapsed"
     ],
+    "numerical_scope": "The separate pilot admission verifies complete BF16 duplicate weights and bindings for all48 MoE layers, exact logical/physical routing and token conservation in diagnostic cases, and native/FP32 expert arithmetic at layers0,23,47 under the previously fixed atol0.02/rtol0.03. It does not certify full-model logits, exact generated texts, semantic answer quality, or native asynchronous committed weights. Generated-token and output-length differences remain explicit in all comparisons; no post-pilot tolerance relaxation is permitted.",
     "useful_gain_percent": 5
   },
   "analysis": {
@@ -1108,14 +1109,14 @@
   "execution": {
     "absolute_arrivals_preserved": true,
     "arm_order_rule": "Explicit per-block constrained counterbalance: each source gives every arm 1 or 2 appearances at each position; across 20 blocks every arm-position occurs 6 or 7 times.",
-    "budget_note": "Historical 12 startups had median 257.94 s: 4.30 hours for 60 launches before warmup, replay, drain and teardown. Actual cache behavior varies. Budget does not authorize truncating admitted work.",
+    "budget_note": "The two completed startup measurements in contemporary OFF/resident feasibility pilots were 630.8849 and 635.9631 seconds (startup only). At their mean, 60 fresh launches require about10.56hours before warmup, replay, drain and teardown; plan11\u201314hours on the existing48hour reservation. Historical12 native launches had a lower median257.94seconds. Actual shared-storage/cache behavior varies; budget does not authorize truncating admitted work.",
     "cache_conditioning": "Identical pilot warmup file, order and two-pass policy per dataset and arm; record cache hits, preemptions, graph/config/compiler/cache fingerprints; no final-informed prewarming.",
     "calibration_on_final": false,
     "drain_every_admitted_request": true,
     "eplb_completion": "HTTP drain or drain_async is not proof of committed weights; preserve normal-commit and rank-consistency diagnostics and any unresolved coverage.",
     "estimated_budget_hours": [
-      6,
-      8
+      11,
+      14
     ],
     "failure_policy": "Retain all failures, halt on correctness failures, never select fastest attempts. Infrastructure-only retry must repeat the complete paired triple with unchanged hashes and use the first complete valid triple. No algorithm/rate/data changes after final freeze.",
     "global_arm_position_counts": {
@@ -1168,7 +1169,7 @@
     "sha256": null,
     "status": "pending"
   },
-  "protocol_sha256": "7b0b270369a00224b6c17fd73a1dfb247cccae6d517110826bc5394f83848664",
+  "protocol_sha256": "a441501e991d2353a5b2050dde02ef13b1f70842085bced0aacd1b1e7696850d",
   "schema": "resident_compare_protocol_v1",
   "scope": {
     "activation_backend": "allgather_reducescatter",

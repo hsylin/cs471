@@ -1,0 +1,27 @@
+{
+  "command": [
+    "srun",
+    "--jobid=4882284",
+    "--mpi=none",
+    "--exact",
+    "--nodes=2",
+    "--ntasks=2",
+    "--ntasks-per-node=1",
+    "--nodelist=kh074,kh077",
+    "--cpus-per-task=56",
+    "--gpus-per-node=4",
+    "--mem=300G",
+    "--kill-on-bad-exit=1",
+    "--input=none",
+    "--output=/work/cs-471/skewbench-hlin/full-serving/full-resident-timed-pilot-20261110-v1-resident/results/server-%t.log",
+    "--error=/work/cs-471/skewbench-hlin/full-serving/full-resident-timed-pilot-20261110-v1-resident/results/server-%t.err",
+    "bash",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/1f9d212-custom/full_serving/custom_pilot_node.sh",
+    "resident",
+    "/work/cs-471/skewbench-hlin/cache/huggingface/models--Qwen--Qwen3-30B-A3B/snapshots/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "10.91.54.74",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/1f9d212-custom/results/full-serving/custom-development-v1/resident-timed-config-v1.json",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/1f9d212-custom/results/full-serving/custom-development-v1/custom-sources-v1.json"
+  ],
+  "started_utc": "2026-11-10T18:27:38.567089+00:00"
+}

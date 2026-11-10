@@ -17,9 +17,10 @@ import re
 from full_serving.analyze import summarize_run
 from full_serving.audit_pilots import (AuditError, PAIR_FIELDS, audit_counters, audit_request,
                                       client_hash, paired_build_evidence, require, same)
-from full_serving.audit_runtime import log_time, parse_logs
+from full_serving.audit_runtime import parse_logs
 from full_serving.custom_compare import verify_custom_bindings
-from full_serving.custom_runtime import engine_configuration, logged_arguments, runtime_identity
+from full_serving.custom_runtime import (engine_configuration, errors_before_shutdown,
+                                         logged_arguments, runtime_identity)
 from full_serving.data import digest, file_digest
 from full_serving.resident_diagnostic import validate_weight_records
 from full_serving.resident_plugin import (EXPECTED_NATIVE_SOURCES, MODEL_REVISION, ROOT,
@@ -89,25 +90,6 @@ def checkpoint_identity(path):
     require(all(re.fullmatch(r"[0-9a-f]{64}", h) for rows in content.values() for h in rows.values()),
             "invalid checkpoint content hash")
     return digest(content)
-
-
-def errors_before_shutdown(text):
-    """Use file order first; a one-second timestamp cannot prove later order."""
-    stop_times = [log_time(line) for body in text.values() for line in body.split("\n")
-                  if "[shutdown]" in line or "signal=SIGTERM" in line]
-    cutoff = min((t for t in stop_times if t is not None), default=math.inf)
-    before_stop = 0
-    for body in text.values():
-        last_time, shutdown = None, False
-        for line in body.split("\n"):
-            last_time = log_time(line) or last_time
-            shutdown |= "[shutdown]" in line or "signal=SIGTERM" in line
-            if re.search(r"\bERROR\b|Traceback|EngineDeadError|async loop error", line):
-                # An earlier marker in this file establishes teardown order.
-                # Without one, the first shutdown second is ambiguous and must
-                # fail closed; only a strictly later second proves later timing.
-                before_stop += not shutdown and (last_time is None or last_time <= cutoff)
-    return before_stop
 
 
 def pilot_runtime(directory, arm, config_path, sources_path, suite_sha):

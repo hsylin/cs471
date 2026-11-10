@@ -1,0 +1,224 @@
+{
+  "schema": "cs471_pilot_output_diagnostic_v1",
+  "integrity_status": "verified",
+  "left_arm": "off",
+  "right_arm": "resident",
+  "evidence_sha256": {
+    "left_public": "f16b165d4bb1c6dd4b1d031879463e60b267098273cc5613458d7305058a922f",
+    "left_private": "29373b009a4a4f25d5c91907c54b628b6ba950cd59b57528003437f9707549aa",
+    "right_public": "aa96cbcfba8c3c5ab98835a08ebe0b10b248ae48043470b570c77bf89ec5004b",
+    "right_private": "7f0fc964384fde746ad7dad6956c582aabf7de7e098c1b1f34b2228a8bdf9920"
+  },
+  "scope": "Existing diagnostic pilot outputs only. No model execution, quality claim, numerical-equivalence verdict or acceptance threshold.",
+  "conditioning": "Logprobs are compared only where prompt token IDs, all earlier generated token IDs and the selected token ID match. Later positions remain excluded even if tokens reconverge.",
+  "limitations": "Selected-token logprobs are not full logits. Server event order aligns logprob entries with completion token IDs; token bytes/text are not independently retokenized. Token sequences may include EOS absent from output text. Identical token paths need not imply identical dynamic batches or floating-point reductions. -9999 placeholders are excluded.",
+  "private_content_published": false,
+  "requests": [
+    {
+      "request_id": "sharegpt:cc1rn8A_0:91792",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 65,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 891,
+      "right_completion_tokens": 817,
+      "completion_token_count_difference_right_minus_left": -74,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 65,
+        "mean": 0.016551336746266104,
+        "min": 0.0,
+        "max": 0.1570708155632019
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 826,
+        "right": 752
+      }
+    },
+    {
+      "request_id": "sharegpt:D94e4DZ_111:93646",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 4,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 342,
+      "right_completion_tokens": 325,
+      "completion_token_count_difference_right_minus_left": -17,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 4,
+        "mean": 0.005595175731286872,
+        "min": 2.3990869522094727e-06,
+        "max": 0.019070249050855637
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 338,
+        "right": 321
+      }
+    },
+    {
+      "request_id": "sharegpt:K2Gj7sJ_0:66057",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 11,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 32,
+      "right_completion_tokens": 23,
+      "completion_token_count_difference_right_minus_left": -9,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 11,
+        "mean": 0.015177451494720757,
+        "min": 0.0,
+        "max": 0.08597248792648315
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 21,
+        "right": 12
+      }
+    },
+    {
+      "request_id": "sharegpt:8Ao0B03_11:68393",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 19,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 1161,
+      "right_completion_tokens": 1144,
+      "completion_token_count_difference_right_minus_left": -17,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 19,
+        "mean": 0.016034203694504725,
+        "min": 0.0,
+        "max": 0.05333155393600464
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 1142,
+        "right": 1125
+      }
+    },
+    {
+      "request_id": "sharegpt:oLcHV4L_23:79883",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 701,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 701,
+      "right_completion_tokens": 701,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 701,
+        "mean": 0.000682821877349701,
+        "min": 0.0,
+        "max": 0.1349419355392456
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "sharegpt:T4PzkKo_43:55207",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 5,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 63,
+      "right_completion_tokens": 58,
+      "completion_token_count_difference_right_minus_left": -5,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 5,
+        "mean": 0.004843023586545314,
+        "min": 0.0,
+        "max": 0.018990282900631428
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 58,
+        "right": 53
+      }
+    },
+    {
+      "request_id": "sharegpt:cLTmFGX_195:59104",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 26,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 690,
+      "right_completion_tokens": 679,
+      "completion_token_count_difference_right_minus_left": -11,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 26,
+        "mean": 0.02018893179764037,
+        "min": 0.0,
+        "max": 0.10826736688613892
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 664,
+        "right": 653
+      }
+    },
+    {
+      "request_id": "sharegpt:aaTQJBE_22:171",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 141,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 1246,
+      "right_completion_tokens": 1288,
+      "completion_token_count_difference_right_minus_left": 42,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 141,
+        "mean": 0.017662731709519278,
+        "min": 0.0,
+        "max": 0.2044564187526703
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 1105,
+        "right": 1147
+      }
+    }
+  ],
+  "aggregate": {
+    "paired_requests": 8,
+    "first_generated_token_comparable_requests": 8,
+    "first_generated_token_matches": 8,
+    "identical_generated_token_sequences": 1,
+    "matching_output_hashes": 1,
+    "matching_completion_token_counts": 1,
+    "common_generated_prefix_tokens": {
+      "n": 8,
+      "mean": 121.5,
+      "min": 4,
+      "max": 701
+    },
+    "selected_token_abs_logprob_difference": {
+      "n": 972,
+      "mean": 0.005234619423668413,
+      "min": 0.0,
+      "max": 0.2044564187526703
+    },
+    "logprob_aggregation_unit": "Eligible generated-token positions; descriptive only, not independent statistical samples.",
+    "shared_prefix_placeholder_pairs_excluded": 0
+  }
+}

@@ -128,3 +128,36 @@ def test_malformed_custom_preflight_returns_failed_instead_of_crashing_report(tm
     protocol = fixture(tmp_path)
     (tmp_path / "custom/preflight-primary.json").write_text("null\n")
     assert audit_runtime_triplet(tmp_path, protocol)["status"] == "failed"
+
+
+@pytest.mark.parametrize("arm", ["off", "on", "custom"])
+def test_generic_pre_shutdown_error_rejects_each_final_arm(tmp_path, arm):
+    protocol = fixture(tmp_path)
+    path = tmp_path / arm / "server-0.log"
+    with path.open("a") as output:
+        output.write("ERROR 11-10 19:40:57 inference failed\nINFO 11-10 19:40:57 [shutdown] stopping\n")
+    result = audit_runtime_triplet(tmp_path, protocol)
+    assert result["status"] == "failed" and "runtime error" in result["reason"]
+    assert result["runtime_error_evidence"][arm]["before_shutdown_or_ambiguous"] == 1
+
+
+def test_final_triplet_retains_true_post_shutdown_error_counts(tmp_path):
+    protocol = fixture(tmp_path)
+    path = tmp_path / "custom/server-0.log"
+    # Same ordering/timestamp as the real timed-resident-v1 teardown.
+    with path.open("a") as output:
+        output.write("(APIServer pid=52256) INFO 11-10 19:40:57 [launcher.py:128] [shutdown] API server: shutdown triggered\n"
+                     "(APIServer pid=52256) ERROR 11-10 19:40:57 [async_llm.py:871] AsyncLLM output_handler failed.\n"
+                     "(APIServer pid=52256) ERROR 11-10 19:40:57 [async_llm.py:871] Traceback (most recent call last):\n"
+                     "(APIServer pid=52256) ERROR 11-10 19:40:57 [async_llm.py:871] vllm.v1.engine.exceptions.EngineDeadError\n")
+    result = audit_runtime_triplet(tmp_path, protocol)
+    assert result["status"] == "passed", result
+    assert result["runtime_error_evidence"]["custom"] == {"before_shutdown_or_ambiguous": 0, "after_shutdown": 3, "total": 3}
+
+
+def test_final_triplet_rejects_stderr_traceback_without_shutdown_order(tmp_path):
+    protocol = fixture(tmp_path)
+    (tmp_path / "custom/server-1.err").write_text("Traceback (most recent call last):\n")
+    result = audit_runtime_triplet(tmp_path, protocol)
+    assert result["status"] == "failed"
+    assert result["runtime_error_evidence"]["custom"]["before_shutdown_or_ambiguous"] == 1

@@ -1,0 +1,224 @@
+{
+  "schema": "cs471_pilot_output_diagnostic_v1",
+  "integrity_status": "verified",
+  "left_arm": "off",
+  "right_arm": "resident",
+  "evidence_sha256": {
+    "left_public": "86be4cd3d90c80bc13569e976890437241912c35d0083803dd8fba0a6f5e5713",
+    "left_private": "dcbc9f7a5d02033847c1e1d1391238d916ff4340d09cbe8d0492389b249488ee",
+    "right_public": "c64a4048bde9524db4c9c0ed4ee61653ce96956ed8aabac60a340eadec41784f",
+    "right_private": "d8c0d29388e47330e0cf2f429fe01c5269640c0e9521fcd2ec4e2616c9661e9b"
+  },
+  "scope": "Existing diagnostic pilot outputs only. No model execution, quality claim, numerical-equivalence verdict or acceptance threshold.",
+  "conditioning": "Logprobs are compared only where prompt token IDs, all earlier generated token IDs and the selected token ID match. Later positions remain excluded even if tokens reconverge.",
+  "limitations": "Selected-token logprobs are not full logits. Server event order aligns logprob entries with completion token IDs; token bytes/text are not independently retokenized. Token sequences may include EOS absent from output text. Identical token paths need not imply identical dynamic batches or floating-point reductions. -9999 placeholders are excluded.",
+  "private_content_published": false,
+  "requests": [
+    {
+      "request_id": "instructcoder:train.json:20693",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 95,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 95,
+      "right_completion_tokens": 95,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 95,
+        "mean": 0.005494402316600892,
+        "min": 0.0,
+        "max": 0.11188405752182007
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:9646",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 46,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 389,
+      "right_completion_tokens": 415,
+      "completion_token_count_difference_right_minus_left": 26,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 46,
+        "mean": 0.015361462304746925,
+        "min": 0.0,
+        "max": 0.11920297145843506
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 343,
+        "right": 369
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:20467",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 185,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 222,
+      "right_completion_tokens": 219,
+      "completion_token_count_difference_right_minus_left": -3,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 185,
+        "mean": 0.011470997383674797,
+        "min": 0.0,
+        "max": 0.3236185908317566
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 37,
+        "right": 34
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:99020",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 7,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 956,
+      "right_completion_tokens": 910,
+      "completion_token_count_difference_right_minus_left": -46,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 7,
+        "mean": 0.00298038432993053,
+        "min": 0.0,
+        "max": 0.019488394260406494
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 949,
+        "right": 903
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:54105",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 86,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 327,
+      "right_completion_tokens": 325,
+      "completion_token_count_difference_right_minus_left": -2,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 86,
+        "mean": 0.01137210997654021,
+        "min": 0.0,
+        "max": 0.18906810879707336
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 241,
+        "right": 239
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:78030",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 19,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 427,
+      "right_completion_tokens": 517,
+      "completion_token_count_difference_right_minus_left": 90,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 19,
+        "mean": 0.037732271182042164,
+        "min": 8.940465704654343e-06,
+        "max": 0.19303905963897705
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 408,
+        "right": 498
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:40375",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 40,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 487,
+      "right_completion_tokens": 530,
+      "completion_token_count_difference_right_minus_left": 43,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 40,
+        "mean": 0.014611333034594054,
+        "min": 0.0,
+        "max": 0.18090486526489258
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 447,
+        "right": 490
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:71473",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 2,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 572,
+      "right_completion_tokens": 796,
+      "completion_token_count_difference_right_minus_left": 224,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 2,
+        "mean": 0.04229508573189378,
+        "min": 0.015138496644794941,
+        "max": 0.06945167481899261
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 570,
+        "right": 794
+      }
+    }
+  ],
+  "aggregate": {
+    "paired_requests": 8,
+    "first_generated_token_comparable_requests": 8,
+    "first_generated_token_matches": 8,
+    "identical_generated_token_sequences": 1,
+    "matching_output_hashes": 1,
+    "matching_completion_token_counts": 1,
+    "common_generated_prefix_tokens": {
+      "n": 8,
+      "mean": 60.0,
+      "min": 2,
+      "max": 185
+    },
+    "selected_token_abs_logprob_difference": {
+      "n": 480,
+      "mean": 0.01194906415765334,
+      "min": 0.0,
+      "max": 0.3236185908317566
+    },
+    "logprob_aggregation_unit": "Eligible generated-token positions; descriptive only, not independent statistical samples.",
+    "shared_prefix_placeholder_pairs_excluded": 0
+  }
+}

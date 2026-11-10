@@ -52,7 +52,7 @@ body{font:16px/1.55 system-ui,sans-serif;max-width:1050px;margin:36px auto;paddi
 <p>There are only four independent content/arrival blocks per source. Equal-block geometric mean ratios and pointwise Student-t intervals on paired log ratios are exploratory. A 5% useful-gain point margin and 2% regression point margin do not establish a confirmatory guarantee. There is no request bootstrap, cross-source pooling, or automatic superiority claim. Missing or invalid triples withhold their contrasts and four-block summaries. Native ON can adapt during warmup; ordinary launch logs and drained asynchronous work do not prove normal commit completion.</p>
 
 <h2>Reproduce without changing the evidence</h2>
-<p>Run these commands from the repository root with its pinned environment. The private input bundle remains outside Git; the public source manifests and prior tokenizer admission bind its content. The freeze command only materializes the reserved inputs after a passed pilot gate; it runs no model inference. Output paths must be new.</p>
+<p>The archived experiment uses <a href="../results/full-serving/custom-compare-v1/frozen-v2/protocol.json">frozen-v2/protocol.json</a>. The first freeze was superseded before execution solely to include a late shutdown-log tail; inputs, method and analysis are unchanged. Run the following reproduction commands from the repository root with its pinned environment, using fresh output paths. The private input bundle remains outside Git; the public source manifests and prior tokenizer admission bind its content. The freeze command only materializes the reserved inputs after a passed pilot gate; it runs no model inference. Output paths must be new.</p>
 <pre><code>dev=results/full-serving/custom-development-v1
 draft=results/full-serving/custom-compare-v1/protocol-draft.json
 python -m full_serving.freeze_custom_compare check --draft "$draft"
@@ -67,30 +67,30 @@ python -m full_serving.custom_admission \
   --sources "$dev/custom-sources-v1.json" \
   --suite-manifest results/full-serving/suite-v1/suite-manifest.json \
   --private-pilot-root ../full-serving-suite-private-v1 \
-  --output "$dev/pilot-admission-final-v1.json"
+  --output "$dev/reproduction-pilot-admission.json"
 
 python -m full_serving.freeze_custom_compare freeze \
   --draft "$draft" --config "$dev/resident-timed-config-v1.json" \
   --source-manifest "$dev/custom-sources-v1.json" \
-  --pilot-admission "$dev/pilot-admission-final-v1.json" \
+  --pilot-admission "$dev/reproduction-pilot-admission.json" \
   --suite-private ../full-serving-suite-private-v1 \
   --private-output ../full-serving-resident-final-private-v1 \
-  --output results/full-serving/custom-compare-v1/frozen-v1/protocol.json \
+  --output results/full-serving/custom-compare-v1/reproduction-frozen/protocol.json \
   --execute</code></pre>
 <p>The timed-pilot directory arguments must name the actual retained successful attempts; failed attempts remain archived. On the reserved allocation, set <code>PINNED_MODEL_SNAPSHOT</code> to the verified local checkpoint directory. The controller uses job 4882284 and its recorded two-node/eight-GPU identity. A reproduction on another allocation requires an explicit reviewed allocation-guard update, not silently relabeling hardware. Preview the frozen schedule before execution:</p>
-<pre><code>protocol=results/full-serving/custom-compare-v1/frozen-v1/protocol.json
+<pre><code>protocol=results/full-serving/custom-compare-v1/reproduction-frozen/protocol.json
 python -m full_serving.custom_compare plan --protocol "$protocol"
 
 python -m full_serving.custom_compare run \
   --protocol "$protocol" \
   --private-data ../full-serving-resident-final-private-v1 \
   --snapshot "$PINNED_MODEL_SNAPSHOT" \
-  --output results/full-serving/custom-compare-v1/run-v1 \
+  --output results/full-serving/custom-compare-v1/reproduction-run \
   --private-output ../full-serving-resident-generated-private-v1 \
   --source-revision "$(git rev-parse HEAD)" --execute
 
 python -m full_serving.custom_report \
-  results/full-serving/custom-compare-v1/run-v1 \
+  results/full-serving/custom-compare-v1/reproduction-run \
   --output outputs/full-serving/resident-comparison.json
 python -m full_serving.render_custom_report \
   outputs/full-serving/resident-comparison.json \

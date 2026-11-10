@@ -1,0 +1,224 @@
+{
+  "schema": "cs471_pilot_output_diagnostic_v1",
+  "integrity_status": "verified",
+  "left_arm": "off",
+  "right_arm": "resident",
+  "evidence_sha256": {
+    "left_public": "4bb9a3901faf13113e68ea827fd22c0cf3471bfa0bb598d331eebd30e6d8326c",
+    "left_private": "c5abe07f53fd2762d17710aef6dee671f22ff20638ed757e1acacbd65d1c688d",
+    "right_public": "42576142c1ae65c4a7b39e54ee95e52360e2c4cea6f3379a32ccf14f6cad8a7b",
+    "right_private": "445730fdbaf0bd5edf27407a2a689d5e72d975c55af966490c82b357910f9094"
+  },
+  "scope": "Existing diagnostic pilot outputs only. No model execution, quality claim, numerical-equivalence verdict or acceptance threshold.",
+  "conditioning": "Logprobs are compared only where prompt token IDs, all earlier generated token IDs and the selected token ID match. Later positions remain excluded even if tokens reconverge.",
+  "limitations": "Selected-token logprobs are not full logits. Server event order aligns logprob entries with completion token IDs; token bytes/text are not independently retokenized. Token sequences may include EOS absent from output text. Identical token paths need not imply identical dynamic batches or floating-point reductions. -9999 placeholders are excluded.",
+  "private_content_published": false,
+  "requests": [
+    {
+      "request_id": "longbench-qasper-43ffd7775c3b4a541e227c120bffcc7c7b31fb184ba94d69",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 21,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 21,
+      "right_completion_tokens": 21,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 21,
+        "mean": 0.011371725981619073,
+        "min": 0.0,
+        "max": 0.14752823114395142
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "longbench-qasper-ac6538e9c173ba7b453d6bf62480d56eb3761b5f6f73c328",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 5,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 5,
+      "right_completion_tokens": 5,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 5,
+        "mean": 0.058413186752295586,
+        "min": 0.00010727224434958771,
+        "max": 0.1522279903292656
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "longbench-gov_report-505fee99f21568a0ba3f034052073611384ef23894390ab1",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 35,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 475,
+      "right_completion_tokens": 509,
+      "completion_token_count_difference_right_minus_left": 34,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 35,
+        "mean": 0.009247679544175874,
+        "min": 0.0,
+        "max": 0.19411298632621765
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 440,
+        "right": 474
+      }
+    },
+    {
+      "request_id": "longbench-gov_report-ddc72d28a1a4b317307130a46e60fb1d482edb9790b9e742",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 40,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 388,
+      "right_completion_tokens": 353,
+      "completion_token_count_difference_right_minus_left": -35,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 40,
+        "mean": 0.018541326562581163,
+        "min": 0.0,
+        "max": 0.12577980756759644
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 348,
+        "right": 313
+      }
+    },
+    {
+      "request_id": "longbench-hotpotqa-963e90eba94bba5bf5cf56755032d7bd4a3e4e225d3b8d14",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 5,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 5,
+      "right_completion_tokens": 5,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 5,
+        "mean": 2.1616185404127463e-05,
+        "min": 0.0,
+        "max": 0.0001017628819681704
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "longbench-hotpotqa-bf8ee342564ae21a17b169023f83a20220a63198827a0232",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 4,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 4,
+      "right_completion_tokens": 4,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 4,
+        "mean": 8.940590419115324e-07,
+        "min": 0.0,
+        "max": 2.5033732526935637e-06
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "longbench-hotpotqa-105e7f4d337799315ddf870acc4ff2a62a1e6cdf489086cd",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 3,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 3,
+      "right_completion_tokens": 3,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 3,
+        "mean": 0.14707377551182313,
+        "min": 0.0,
+        "max": 0.4412148892879486
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "longbench-gov_report-a6b66279eee0135505b08462e35738e68080a9214e36f710",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 6,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 477,
+      "right_completion_tokens": 404,
+      "completion_token_count_difference_right_minus_left": -73,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 6,
+        "mean": 0.018690829730625563,
+        "min": 0.0,
+        "max": 0.10469555854797363
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 471,
+        "right": 398
+      }
+    }
+  ],
+  "aggregate": {
+    "paired_requests": 8,
+    "first_generated_token_comparable_requests": 8,
+    "first_generated_token_matches": 8,
+    "identical_generated_token_sequences": 5,
+    "matching_output_hashes": 5,
+    "matching_completion_token_counts": 5,
+    "common_generated_prefix_tokens": {
+      "n": 8,
+      "mean": 14.875,
+      "min": 3,
+      "max": 40
+    },
+    "selected_token_abs_logprob_difference": {
+      "n": 119,
+      "mean": 0.01806447048745623,
+      "min": 0.0,
+      "max": 0.4412148892879486
+    },
+    "logprob_aggregation_unit": "Eligible generated-token positions; descriptive only, not independent statistical samples.",
+    "shared_prefix_placeholder_pairs_excluded": 0
+  }
+}

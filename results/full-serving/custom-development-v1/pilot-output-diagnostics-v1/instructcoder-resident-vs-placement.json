@@ -1,0 +1,224 @@
+{
+  "schema": "cs471_pilot_output_diagnostic_v1",
+  "integrity_status": "verified",
+  "left_arm": "placement_only",
+  "right_arm": "resident",
+  "evidence_sha256": {
+    "left_public": "822e788fa05d9407f701db91779a9100b5c202326533cfa3c1ca0d117706613b",
+    "left_private": "f10c923cf425623358fa06953b17fd4cc2d876900974bb4c5abbb75b86f31bf6",
+    "right_public": "c64a4048bde9524db4c9c0ed4ee61653ce96956ed8aabac60a340eadec41784f",
+    "right_private": "d8c0d29388e47330e0cf2f429fe01c5269640c0e9521fcd2ec4e2616c9661e9b"
+  },
+  "scope": "Existing diagnostic pilot outputs only. No model execution, quality claim, numerical-equivalence verdict or acceptance threshold.",
+  "conditioning": "Logprobs are compared only where prompt token IDs, all earlier generated token IDs and the selected token ID match. Later positions remain excluded even if tokens reconverge.",
+  "limitations": "Selected-token logprobs are not full logits. Server event order aligns logprob entries with completion token IDs; token bytes/text are not independently retokenized. Token sequences may include EOS absent from output text. Identical token paths need not imply identical dynamic batches or floating-point reductions. -9999 placeholders are excluded.",
+  "private_content_published": false,
+  "requests": [
+    {
+      "request_id": "instructcoder:train.json:20693",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 95,
+      "generated_token_sequences_identical": true,
+      "left_completion_tokens": 95,
+      "right_completion_tokens": 95,
+      "completion_token_count_difference_right_minus_left": 0,
+      "output_hash_matches": true,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 95,
+        "mean": 0.006701171841732907,
+        "min": 0.0,
+        "max": 0.26139339804649353
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:9646",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 27,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 355,
+      "right_completion_tokens": 415,
+      "completion_token_count_difference_right_minus_left": 60,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 27,
+        "mean": 0.009569941423007077,
+        "min": 0.0,
+        "max": 0.15384382009506226
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 328,
+        "right": 388
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:20467",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 165,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 225,
+      "right_completion_tokens": 219,
+      "completion_token_count_difference_right_minus_left": -6,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 165,
+        "mean": 0.012598277130659726,
+        "min": 0.0,
+        "max": 0.135013610124588
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 60,
+        "right": 54
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:99020",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 46,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 847,
+      "right_completion_tokens": 910,
+      "completion_token_count_difference_right_minus_left": 63,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 46,
+        "mean": 0.011131167534989604,
+        "min": 0.0,
+        "max": 0.10531389713287354
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 801,
+        "right": 864
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:54105",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 86,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 327,
+      "right_completion_tokens": 325,
+      "completion_token_count_difference_right_minus_left": -2,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 86,
+        "mean": 0.013096317856583902,
+        "min": 0.0,
+        "max": 0.1863047480583191
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 241,
+        "right": 239
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:78030",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 19,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 652,
+      "right_completion_tokens": 517,
+      "completion_token_count_difference_right_minus_left": -135,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 19,
+        "mean": 0.02941874583790961,
+        "min": 3.5761622712016106e-06,
+        "max": 0.12486442923545837
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 633,
+        "right": 498
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:40375",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 40,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 558,
+      "right_completion_tokens": 530,
+      "completion_token_count_difference_right_minus_left": -28,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 40,
+        "mean": 0.023683243443329616,
+        "min": 0.0,
+        "max": 0.15018951892852783
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 518,
+        "right": 490
+      }
+    },
+    {
+      "request_id": "instructcoder:train.json:71473",
+      "first_generated_token_match": true,
+      "common_generated_prefix_tokens": 2,
+      "generated_token_sequences_identical": false,
+      "left_completion_tokens": 817,
+      "right_completion_tokens": 796,
+      "completion_token_count_difference_right_minus_left": -21,
+      "output_hash_matches": false,
+      "left_finish_reason": "stop",
+      "right_finish_reason": "stop",
+      "selected_token_abs_logprob_difference": {
+        "n": 2,
+        "mean": 0.04393708985298872,
+        "min": 0.012724107131361961,
+        "max": 0.07515007257461548
+      },
+      "shared_prefix_placeholder_pairs_excluded": 0,
+      "logprob_positions_outside_shared_prefix_excluded": {
+        "left": 815,
+        "right": 794
+      }
+    }
+  ],
+  "aggregate": {
+    "paired_requests": 8,
+    "first_generated_token_comparable_requests": 8,
+    "first_generated_token_matches": 8,
+    "identical_generated_token_sequences": 1,
+    "matching_output_hashes": 1,
+    "matching_completion_token_counts": 1,
+    "common_generated_prefix_tokens": {
+      "n": 8,
+      "mean": 60.0,
+      "min": 2,
+      "max": 165
+    },
+    "selected_token_abs_logprob_difference": {
+      "n": 480,
+      "mean": 0.012929567917874696,
+      "min": 0.0,
+      "max": 0.26139339804649353
+    },
+    "logprob_aggregation_unit": "Eligible generated-token positions; descriptive only, not independent statistical samples.",
+    "shared_prefix_placeholder_pairs_excluded": 0
+  }
+}

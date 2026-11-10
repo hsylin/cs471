@@ -7,11 +7,13 @@ from __future__ import annotations
 
 import ast
 import json
+import math
 from pathlib import Path
 import re
 
 from full_serving.audit_pilots import (AuditError, paired_build_evidence,
                                       paired_configuration, require)
+from full_serving.audit_runtime import log_time
 from full_serving.data import digest, file_digest
 from full_serving.preflight import EXPECTED_VLLM_SOURCES
 from full_serving.resident_plugin import (EXPECTED_NATIVE_SOURCES, MODEL_REVISION,
@@ -22,6 +24,26 @@ ROLES = ("primary", "worker")
 SCOPE = {"dp": 8, "tp": 1, "ep": 8, "dtype": "bfloat16",
          "activation_backend": "allgather_reducescatter",
          "vllm_commit": PIN, "model_revision": MODEL_REVISION}
+ERROR_PATTERN = re.compile(r"\bERROR\b|Traceback|EngineDeadError|async loop error")
+
+
+def errors_before_shutdown(text):
+    """Use file order first; a one-second timestamp cannot prove later order."""
+    stop_times = [log_time(line) for body in text.values() for line in body.split("\n")
+                  if "[shutdown]" in line or "signal=SIGTERM" in line]
+    cutoff = min((t for t in stop_times if t is not None), default=math.inf)
+    before_stop = 0
+    for body in text.values():
+        last_time, shutdown = None, False
+        for line in body.split("\n"):
+            last_time = log_time(line) or last_time
+            shutdown |= "[shutdown]" in line or "signal=SIGTERM" in line
+            if ERROR_PATTERN.search(line):
+                # An earlier marker in this file establishes teardown order.
+                # Without one, the first shutdown second is ambiguous and must
+                # fail closed; only a strictly later second proves later timing.
+                before_stop += not shutdown and (last_time is None or last_time <= cutoff)
+    return before_stop
 
 
 def logged_arguments(text):
@@ -102,9 +124,17 @@ def audit_runtime_triplet(block_dir, protocol):
         result["native_off_on"] = native_pair
         require(native_pair["status"] == "passed", "native OFF/ON configuration admission failed")
         configs, preflights, identities, engines, backends = {}, {}, {}, {}, {}
+        error_evidence = result["runtime_error_evidence"] = {}
         for arm in ARMS:
             directory = root / arm
-            texts = [(directory / f"server-{node}.log").read_text() for node in range(2)]
+            all_text = {f"server-{node}.{suffix}": (directory / f"server-{node}.{suffix}").read_text()
+                        for node in range(2) for suffix in ("log", "err")}
+            before_stop = errors_before_shutdown(all_text)
+            total = sum(bool(ERROR_PATTERN.search(line)) for body in all_text.values() for line in body.split("\n"))
+            error_evidence[arm] = {"before_shutdown_or_ambiguous": before_stop,
+                                   "after_shutdown": total-before_stop, "total": total}
+            require(before_stop == 0, f"{arm}: runtime error preceded intentional shutdown or its order is ambiguous")
+            texts = [all_text[f"server-{node}.log"] for node in range(2)]
             configs[arm] = logged_arguments(texts[0])
             require(configs[arm].get("served_model_name") == ["qwen3-full"], "wrong served model identity")
             engines[arm] = [engine_configuration(text) for text in texts]

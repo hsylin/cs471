@@ -1,0 +1,95 @@
+{
+  "checkpoint_content_sha256": "249aa16e160f5e9802c5f8ee1823d08f797f3b0cf1bb037e3d28e92d608bbf32",
+  "checkpoint_record_note": "Full-verification record bytes differ because independently regenerated records include their check timestamp. Each is hash-bound in its own preflight; actual16 shard and5 asset content hashes agree. Final triple shares one controller verification record and still requires that identical record hash.",
+  "compiler_and_flashinfer_build_comparison": {
+    "cuda_compiler_toolchain": {
+      "nodes": [
+        {
+          "critical_file_sha256": {
+            "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+            "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+            "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+            "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+            "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+          },
+          "evidence_sha256": "cc73db4d651922e575af73fdb5b4f927b7e7d52ccfd3511d8d494ad178dd54d6",
+          "hostname": "kh074",
+          "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+          "status": "matched"
+        },
+        {
+          "critical_file_sha256": {
+            "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+            "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+            "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+            "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+            "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+          },
+          "evidence_sha256": "cc73db4d651922e575af73fdb5b4f927b7e7d52ccfd3511d8d494ad178dd54d6",
+          "hostname": "kh077",
+          "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+          "status": "matched"
+        }
+      ],
+      "status": "matched"
+    },
+    "flashinfer_prebuild": {
+      "nodes": [
+        {
+          "evidence_sha256": "31dc4d9c67069606e63836efa6d8339e55f1370faef19c58f714366a2bca7ecc",
+          "hostname": "kh074",
+          "jit_dir": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074/.cache/flashinfer/0.7.0.post1/90a/cached_ops",
+          "sampling_module_sha256": {
+            "sampling/sampling.so": "76fdd89682f5a10a98cc3d34d4b73c4f34fb81dc86f87a5e3ab03080df33b2f6"
+          },
+          "source_sha256": {
+            "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+            "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+            "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+            "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+          },
+          "status": "matched",
+          "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074"
+        },
+        {
+          "evidence_sha256": "61100b86e1db177b7b725acc8643c7766bff0452b10ccae229b89f3f1f01aa03",
+          "hostname": "kh077",
+          "jit_dir": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh077/.cache/flashinfer/0.7.0.post1/90a/cached_ops",
+          "sampling_module_sha256": {
+            "sampling/sampling.so": "e1e1f0cb477026a6cecafa21e9d3b43e23741ce8c5988d13bedc75d4e91fc68f"
+          },
+          "source_sha256": {
+            "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+            "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+            "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+            "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+          },
+          "status": "matched",
+          "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh077"
+        }
+      ],
+      "scope": "Same-node workspace, JIT path, source and compiled-module hashes plus native sampling checks. Legacy missing evidence is not reconstructed; per-arm report paths, report hashes, timings and step IDs are not compared.",
+      "status": "matched"
+    }
+  },
+  "created_utc": "2026-11-10T18:20:50.744348+00:00",
+  "evidence_sha256": {
+    "results/full-serving/custom-development-v1/diagnostic-v1/checkpoint-verified.json": "d65bbcba2254da7a3aa43bd5d66eff5ea7f2468140339e1aac729d45687f8752",
+    "results/full-serving/custom-development-v1/diagnostic-v1/preflight-primary.json": "9576d5f49d8e3a2305cea9abceffdea68b96bb8f4bc84c243b5f4d0ce5c2c3db",
+    "results/full-serving/custom-development-v1/diagnostic-v1/preflight-worker.json": "a1d13991ad806430997545cba76a86cb8b3f820cf30fef7fe77df2996f8eac35",
+    "results/full-serving/pilots-v1/longbench/checkpoint-verified.json": "0bf39db1123e5324a509921ae80d1cc5a9ef80e29f2bc25aa7e6c8f28c741fbd",
+    "results/full-serving/pilots-v1/longbench/on/preflight-primary.json": "a2ad6bb3b38f79853b4c17470d8f79b9489b8d992af46f2801753089e67c8b10",
+    "results/full-serving/pilots-v1/longbench/on/preflight-worker.json": "d90f7d3802abedda33c7e2aedaf13cb8bbc94c8c840486a4669955f073416bc9"
+  },
+  "limits": [
+    "This compares the diagnostic runtime configuration to a previously completed native ON arm; it is not a contemporaneous performance comparison.",
+    "Diagnostic startup instrumentation was enabled. Timed resident pilot must restart with startup_diagnostic=false.",
+    "Native ON commit completion is not inferred from this comparison."
+  ],
+  "runtime_identity_sha256": "4c535e69209b5be2e0d2c3cb370823512adec682565a17f55f062c52cbc72e81",
+  "same_actual_gpus_checkpoint_source_environment": true,
+  "same_native_engine_configuration": true,
+  "same_native_initialization_arguments": true,
+  "schema": "cs471_resident_actual_runtime_compatibility_v1",
+  "status": "passed"
+}
