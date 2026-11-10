@@ -18,6 +18,7 @@
     "useful_gain_percent": 5
   },
   "analysis": {
+    "arrival_normalization_caveat": "Each external source block is uniformly time-rescaled to that dataset's previously fixed OFF-based pilot rate. OFF, ON and custom share the resulting exact absolute calendar. Scaling preserves relative timing and timestamp ties but changes the original production rate; calibration is not a sustainable-capacity estimate, and these results do not establish behavior at other loads or authentic joint content/arrival distributions.",
     "cross_source_dependence": "Calendar dates and patterns are shared across sources; never pool sources or treat the 20 blocks as independent evidence for one universal effect.",
     "estimand": "Per-source equal-block geometric mean of paired treatment/baseline mean-response ratios; keep all four block ratios visible.",
     "experimental_unit": "One disjoint 16-conversation/document content block paired with one distinct Azure calendar-day block; four units per source.",
@@ -248,6 +249,8 @@
         }
       ],
       "dataset": "wildchat",
+      "pilot_calendar_file": "../pilots-v1/wildchat/pilot-calendar.json",
+      "pilot_calendar_sha256": "ca86195f9ef1ba2a8851c6ccee73381308387298579e8569ed773ae3ae9d16a2",
       "reserved_source_final_file_sha256": "bc7d8da86751dd843b9ae70dd0172c0de85ad07d6c9b24a87e3b401b362b6978",
       "source_group_unit": "conversation_id",
       "source_public_manifest_sha256": "682968a681c304670db81a5f87a3b74586067d32a663568b3352e6ee9c5a0558",
@@ -454,6 +457,8 @@
         }
       ],
       "dataset": "sharegpt",
+      "pilot_calendar_file": "../pilots-v1/sharegpt/pilot-calendar.json",
+      "pilot_calendar_sha256": "9308781121b8d0e3587d9f25ae1591419c27362ca68f5c943e8c3f1476e7c157",
       "reserved_source_final_file_sha256": "5ec5fe69671bf7f7b9af8b180559641078622ebdf8fc3bccfa17b456950a9811",
       "source_group_unit": "group_id",
       "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
@@ -660,6 +665,8 @@
         }
       ],
       "dataset": "instructcoder",
+      "pilot_calendar_file": "../pilots-v1/instructcoder/pilot-calendar.json",
+      "pilot_calendar_sha256": "802be6e646ae687acf718e6973779bab7333d0aaf52f07e71ffd743311bdefe3",
       "reserved_source_final_file_sha256": "17aebdaeb979f300f75e91c3bfee52b8215554df20d9b614ff604a847e6f4af9",
       "source_group_unit": "group_id",
       "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
@@ -866,6 +873,8 @@
         }
       ],
       "dataset": "numinamath",
+      "pilot_calendar_file": "../pilots-v1/numinamath/pilot-calendar.json",
+      "pilot_calendar_sha256": "4a1f79ea84a9d9ddbac54a5e48afe1c35d94aac64d536dce4dbdb4d35f9fc4ea",
       "reserved_source_final_file_sha256": "9f8c860d51e78dcea55e8285f866ce9e8d901bb3aac1f8eb0973f09b3bb785e9",
       "source_group_unit": "group_id",
       "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
@@ -1072,6 +1081,8 @@
         }
       ],
       "dataset": "longbench",
+      "pilot_calendar_file": "../pilots-v1/longbench/pilot-calendar.json",
+      "pilot_calendar_sha256": "9a946323481716b9daf802fb7df727824d18b8de6149ceb6b510f35bf8adbccc",
       "reserved_source_final_file_sha256": "372dabd912e81c268cedc306873a652dbf378026d37df811830249b03f6dcc77",
       "source_group_unit": "group_id",
       "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
@@ -1157,7 +1168,7 @@
     "sha256": null,
     "status": "pending"
   },
-  "protocol_sha256": "65b8742f5431b7ab8efb33f02e699e97e2cd88b4f8fdbf1247a5cc6a1c891b4a",
+  "protocol_sha256": "7b0b270369a00224b6c17fd73a1dfb247cccae6d517110826bc5394f83848664",
   "schema": "resident_compare_protocol_v1",
   "scope": {
     "activation_backend": "allgather_reducescatter",
@@ -1183,8 +1194,12 @@
   "source_admission": {
     "arrival_manifest_file": "../arrivals-v1/arrival-manifest.json",
     "arrival_manifest_sha256": "a7208571234de4d0cfde30ff707be83285b706d467ec64eed090b808fd5e3628",
+    "suite_admission_file": "../suite-v1/admission.json",
+    "suite_admission_sha256": "45cd5f42cdb5ca53548f864ab2fc9259debfc406c06581ca38a754e8b4deb5a3",
     "suite_manifest_file": "../suite-v1/suite-manifest.json",
-    "suite_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0"
+    "suite_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+    "wildchat_manifest_file": "../data-v1/request-manifest.json",
+    "wildchat_manifest_sha256": "682968a681c304670db81a5f87a3b74586067d32a663568b3352e6ee9c5a0558"
   },
   "status": "draft"
 }

@@ -40,6 +40,8 @@ def fixture_protocol(tmp_path, *, payloads=False):
                    "source_manifest_sha256": source_hash},
         "pilot_admission": {"file": "admission.json", "sha256": admission_hash},
         "execution": {"repeats": 1, "warmup_passes": 2, "max_inflight": 64},
+        "generation": {"max_tokens": 2048, "max_model_len": 32768, "temperature": 0, "enable_thinking": False,
+                       "ignore_eos": False, "truncate_prompts": False}, "source_admission": {},
         "acceptance": {"useful_gain_percent": 5}, "datasets": []}
     for dataset_index, name in enumerate(compare.DATASETS):
         dataset = {"dataset": name, "blocks": []}
@@ -108,8 +110,25 @@ def test_failed_pilot_gate_stops_before_any_final_payload_access(tmp_path, monke
         compare.run(SimpleNamespace(protocol=path, execute=True))
 
 
-def test_copied_payloads_preserve_unicode_and_pair_one_immutable_calendar(tmp_path):
+def test_generation_contract_cannot_change_even_when_all_arms_would_match(tmp_path):
+    protocol, path = fixture_protocol(tmp_path)
+    protocol["generation"]["max_tokens"] = 128
+    write_json(path, protocol)
+    with pytest.raises(ValueError, match="generation contract"):
+        compare.load_admitted_protocol(path)
+
+
+def mock_source_metadata(protocol, monkeypatch):
+    metadata = {"status": "passed", "by_id": {rid: {"id": rid} for dataset in protocol["datasets"]
+                for item in [dataset["warmup"], *dataset["blocks"]] for rid in item["request_ids"]}}
+    monkeypatch.setattr(compare, "load_source_metadata", lambda *args: metadata)
+    monkeypatch.setattr(compare, "verify_private_request", lambda row, meta: {"status": "passed", "id": row["id"]})
+    return metadata
+
+
+def test_copied_payloads_preserve_unicode_and_pair_one_immutable_calendar(tmp_path, monkeypatch):
     protocol, path = fixture_protocol(tmp_path, payloads=True)
+    mock_source_metadata(protocol, monkeypatch)
     compare.load_admitted_protocol(path)
     private, public = tmp_path / "output-private", tmp_path / "output-public"
     inputs = compare.admit_and_copy_inputs(protocol, path, tmp_path / "private", private, public)
@@ -185,3 +204,104 @@ def test_custom_requires_all_ranks_all_layers_and_exact_static_source_binding(tm
         result = compare.verify_custom_bindings(directory, protocol, path)
         assert result["status"] == "passed" and len(result["reports"]) == 8
         assert result["all_layer_numerical_equivalence_proved"] is False
+
+
+@pytest.mark.parametrize("damage", [None, "failed_check", "changed_diagnostic", "probe_in_timing_mode"])
+def test_startup_probe_evidence_is_hash_bound_and_never_silently_timed(tmp_path, damage):
+    protocol, path = fixture_protocol(tmp_path)
+    config_path = tmp_path / "config.json"
+    config = json.loads(config_path.read_text())
+    config["startup_diagnostic"] = damage != "probe_in_timing_mode"
+    protocol["custom"]["config_sha256"] = write_json(config_path, config)
+    directory = tmp_path / "custom"
+    write_bindings(directory, protocol, path)
+    flags = ("logical_identity_exact", "physical_cpu_oracle_exact", "one_home_policy_checked_by_cpu_oracle",
+             "routing_weights_unchanged", "token_conservation_exact", "gathered_rank_agreement",
+             "native_expert_outputs_close", "direct_fp32_outputs_close")
+    for rank in range(8):
+        probe = {"schema": "cs471_full_resident_startup_diagnostic_v1", "status": "passed", "ep_rank": rank,
+            "job_id": compare.native.JOB, "step_id": "42", "config_sha256": protocol["custom"]["config_sha256"],
+            "source_manifest_sha256": protocol["custom"]["source_manifest_sha256"],
+            "weight_check": {"physical_layer_experts": 7680, "logical_layer_experts": 6144,
+                "duplicated_logical_layer_experts": 1536, "full_bf16_replica_hashes_equal": True},
+            "local_weight_records": [{} for _ in range(960)],
+            "native_expert_numerical_checks": [{key: True for key in flags} for _ in range(9)]}
+        if damage == "failed_check" and rank == 7:
+            probe["native_expert_numerical_checks"][0]["logical_identity_exact"] = False
+        probe_path = directory / f"resident-startup-diagnostic-rank{rank}.json"
+        digest = write_json(probe_path, probe)
+        binding_path = directory / f"resident-bindings-rank{rank}.json"
+        binding = json.loads(binding_path.read_text())
+        binding["startup_diagnostic"] = {"path": str(probe_path), "sha256": digest, "status": "passed", "timed_serving_measurement": False}
+        write_json(binding_path, binding)
+        if damage == "changed_diagnostic" and rank == 7:
+            probe_path.write_text(probe_path.read_text() + " ")
+    if damage:
+        with pytest.raises(ValueError):
+            compare.verify_custom_bindings(directory, protocol, path)
+    else:
+        assert compare.verify_custom_bindings(directory, protocol, path)["status"] == "passed"
+
+
+@pytest.mark.parametrize("fail_warmup", [False, True])
+def test_controller_fresh_servers_shared_calendar_and_failure_cleanup(tmp_path, monkeypatch, fail_warmup):
+    protocol, path = fixture_protocol(tmp_path, payloads=True)
+    mock_source_metadata(protocol, monkeypatch)
+    selected = compare.schedule(protocol)[:3]
+    monkeypatch.setattr(compare, "schedule", lambda _: selected)
+    monkeypatch.setenv("SLURM_JOB_ID", compare.native.JOB)
+    monkeypatch.setattr(compare.socket, "gethostbyname", lambda _: "127.0.0.1")
+    monkeypatch.setattr(compare.native, "wait_server", lambda *args: {"data": [{"id": "qwen3-full"}]})
+    monkeypatch.setattr(compare.native, "get_url", lambda *_: b"# synthetic test metrics\n")
+    monkeypatch.setattr(compare, "verify_custom_bindings", lambda *args: {"status": "passed"})
+    starts, stops, clients = [], [], []
+    def popen(command, **kwargs):
+        process = SimpleNamespace(index=len(starts))
+        starts.append((process, command, kwargs["env"]))
+        return process
+    monkeypatch.setattr(compare.subprocess, "Popen", popen)
+    monkeypatch.setattr(compare.native, "stop_server", lambda process, directory: stops.append((process, directory)))
+    def command(argv, output=None, timeout=None):
+        if argv[:3] == ["scontrol", "show", "job"]:
+            value = json.dumps({"jobs": [{"job_state": "RUNNING", "nodes": "n[0-1]"}]})
+        elif argv[:3] == ["scontrol", "show", "hostnames"]:
+            value = "n0 n1"
+        elif "full_serving.preflight" in argv:
+            write_json(Path(argv[argv.index("--output") + 1]), {"complete": True})
+            value = "synthetic preflight"
+        else:
+            assert "full_serving.client" in argv
+            clients.append(argv)
+            phase = argv[argv.index("--load-id") + 1]
+            if fail_warmup and phase == "warmup-01":
+                raise RuntimeError("synthetic client failure")
+            target = Path(argv[argv.index("--output") + 1])
+            target.write_text(json.dumps({"type": "run_summary", "valid": True,
+                                          "completed_requests": 16 if phase == "measured" else 8}) + "\n")
+            value = "synthetic client completed"
+        if output:
+            Path(output).write_text(value)
+        return value
+    monkeypatch.setattr(compare.native, "command", command)
+    args = SimpleNamespace(protocol=path, private_data=tmp_path / "private", snapshot=tmp_path / "snapshot",
+        output=tmp_path / "output", private_output=tmp_path / "private-output", source_revision="a" * 40, execute=True)
+    if fail_warmup:
+        with pytest.raises(RuntimeError, match="synthetic client failure"):
+            compare.run(args)
+        assert len(starts) == len(stops) == 1
+        assert all("--calendar" not in client for client in clients)
+        state = json.loads((args.output / "status.json").read_text())
+        assert state["state"] == "failed" and state["completed_sessions"] == []
+    else:
+        compare.run(args)
+        assert len(starts) == len(stops) == 3
+        measured = [client for client in clients if "--calendar" in client]
+        assert len(measured) == 3
+        assert len({client[client.index("--calendar") + 1] for client in measured}) == 1
+        assert len({client[client.index("--requests") + 1] for client in measured}) == 1
+        assert [client[client.index("--arm") + 1] for client in measured] == ORDERS[0][0]
+        for i in range(0, 9, 3):
+            assert "--logprobs" in clients[i] and "--logprobs" not in clients[i + 1]
+            assert "--logprobs" not in clients[i + 2]
+        assert len({env["FULL_SERVING_RUN_DIR"] for _, _, env in starts}) == 3
+        assert all("FULL_SERVING_CUSTOM_MODE" not in env for _, _, env in starts)

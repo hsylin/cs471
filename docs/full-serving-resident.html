@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full-model resident dispatch: implementation and reproduction</title>
+<style>
+body{font:16px/1.55 system-ui,sans-serif;max-width:1050px;margin:36px auto;padding:0 22px;color:#18212b}h1{line-height:1.15}h2{margin-top:2em}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{text-align:left;padding:10px;border-bottom:1px solid #d9dfe5;vertical-align:top}th{background:#eef2f6}code{font-size:.9em}pre{background:#f3f5f7;padding:16px;overflow:auto;font-size:13px;line-height:1.45}.note{padding:16px;background:#fff2d0}a{color:#135ca4}.small{font-size:14px}li{margin:8px 0}
+</style>
+<h1>Full-model resident dispatch</h1>
+<p>The method chooses which already loaded expert copy handles a token. It now runs inside the complete Qwen3 model, so each measured request includes prompt processing, all 48 MoE layers, generated decoding, and HTTP streaming. Whether this improves response time is an experimental question; this page explains the implementation and the reproduction procedure.</p>
+<p class="note"><strong>Evidence snapshot, 10 November 2026:</strong> the GPU mapping gate and first loaded-weight/probe audit passed, and the correctness-only server completed 40 pilot requests. Timed pilot admission and the held-out comparison are separate gates. This document contains no final speedup result; the generated comparison report is the authority for measured final results.</p>
+
+<h2>What changed from the two-GPU experiment</h2>
+<table>
+<tr><th>Earlier layer experiment</th><th>Current full-model experiment</th></tr>
+<tr><td>Two H100s; one selected MoE layer; replayed hidden-vector layer jobs.</td><td>Eight H100 94 GB GPUs, four on each of two nodes; the complete BF16 Qwen/Qwen3-30B-A3B checkpoint.</td></tr>
+<tr><td>Fixed layer batches, replicated input, and output all-reduce. The measured response was a layer-job response.</td><td>Actual chat messages, tokenization and normal generation. Eight data-parallel workers, tensor parallelism 1, expert parallelism 8; all 48 MoE layers participate.</td></tr>
+<tr><td>The frozen two-rank dispatcher established a limited mechanism.</td><td>A separate, pinned eight-rank port extends that mechanism to four rank pairs. Earlier measurements remain unchanged; they are not full-model results.</td></tr>
+</table>
+<p>The checkpoint revision is <code>ad44e777bcd18fa416d9da3bd8f70d33ebb85d39</code>; the vLLM commit is <code>db9527a46873454610df6dbedf79a36d6bf1a7f6</code>. Runtime checks distinguish the vLLM module version <code>0.31.0</code> from its distribution version <code>0.31.0+cu129</code>. The source and checkpoint manifests bind the actual bytes.</p>
+
+<h2>One fixed map; one chosen copy per active expert</h2>
+<p>Each layer has 128 logical experts, with eight selected for each token. Native EPLB OFF stores 128 physical expert slots, 16 per GPU. Native EPLB ON and our method have the same budget of 160 slots: 128 originals plus 32 extra copies, or 20 slots per GPU. OFF therefore has a smaller expert-storage footprint; the three-arm comparison deliberately retains this native difference.</p>
+<p>Our map is independent of the test data. Rank <code>r</code> owns experts <code>16r…16r+15</code> and four extra experts from its partner <code>r XOR 1</code>. The pairs are (0,1), (2,3), (4,5), and (6,7). For example:</p>
+<table><tr><th>Rank</th><th>Original experts</th><th>Extra resident copies</th></tr>
+<tr><td>0</td><td>0–15</td><td>16–19</td></tr>
+<tr><td>1</td><td>16–31</td><td>0–3</td></tr></table>
+<p>At each MoE execution, the resident dispatcher counts the already gathered logical assignments. It assigns each active duplicated expert to one of its two resident copies for that invocation. Within each pair, it handles the largest token counts first and prefers the less-loaded eligible rank, subject to an active-expert-count cap. Experts without a copy stay on their owning rank. Choosing one copy can reduce the number of active physical experts and padded expert work, but can also concentrate tokens and costs extra GPU work. The policy makes no runtime-optimality claim.</p>
+<p>The <a href="../full_serving/resident_policy.py">CPU oracle and dispatch wrapper</a> and <a href="../full_serving/resident_gpu.py">Triton kernels</a> preserve logical expert identity, combining weights, and native <code>-1</code> padding. Small routing arrays use one fused kernel; larger arrays use histogram, planning, and application kernels. There is no additional collective or CPU tensor read in this online mapping path. All mapping overhead is included in request timing.</p>
+
+<h2>Where it is inserted, and what stays native</h2>
+<p>The <a href="../full_serving/resident_plugin.py">opt-in adapter</a> binds exactly 48 native <code>MoERunner</code> instances. In <code>resident_v1</code>, it replaces physical-copy selection immediately after native <code>MoEPrepareAndFinalizeNaiveDPEPModular.prepare</code> gathers logical routing IDs. The gathered hidden states, routing weights and padding remain native. Native Triton expert arithmetic, attention, KV-cache management, scheduling, sampling and HTTP serving remain in use.</p>
+<p>Activation communication uses vLLM's <code>allgather_reducescatter</code> backend, logged as AgRs. This is not an experiment with an optimized token all-to-all backend. Native EPLB ON uses the recorded <code>TorchDistGlooStagedEplbCommunicator</code> for expert-weight transport; this is a different operation from activation exchange.</p>
+<table>
+<tr><th>Arm</th><th>Placement and selection</th><th>Recurring EPLB work</th></tr>
+<tr><td>Native OFF</td><td>Unmodified native 128-slot placement.</td><td>EPLB disabled.</td></tr>
+<tr><td>Native ON</td><td>Unmodified native 160-slot initialization and replica dispatch; placement can change.</td><td>Native observation, decisions, asynchronous transfers and normal commit path retained.</td></tr>
+<tr><td>Resident method</td><td>Fixed paired 160-slot map and global one-copy selection.</td><td>No native EPLB state, load history, profiling migration, async worker or control step is created. Weights do not migrate after loading.</td></tr>
+<tr><td>Placement-only pilot</td><td>Same fixed paired map, native-equivalent row-hash copy selection on local IDs before gather.</td><td>Same control suppression as resident. This is a mechanism diagnostic, not an unmodified-vLLM arm.</td></tr>
+</table>
+<p>The custom process uses native ON initialization flags to allocate 160 slots, but its adapter suppresses the controller before loading/profiling. Source hashes, exact configuration and eight rank-binding reports must agree. The bootstrap uses vLLM's general-plugin entry point and repository-local metadata; it does not edit the installed vLLM package. Native OFF/ON launch without the custom opt-in. The final comparison estimates the <em>whole method</em>: fixed placement, dispatch and removed control costs differ together.</p>
+
+<h2>What has been checked</h2>
+<p>The <a href="../results/full-serving/custom-development-v1/kernel-gate-v1.json">kernel gate</a> covers 44 shape/dtype/mode cases, including padding and graph replay. The first <a href="../results/full-serving/custom-development-v1/loaded-weight-audit-v1.json">loaded-weight audit</a> records all eight ranks and 48 layers: 7,680 physical layer-expert instances, 6,144 logical instances, and 1,536 duplicated instances. Full BF16 replica hashes agree. These are loaded-tensor identity checks, not an independently recomputed copy of every checkpoint tensor.</p>
+<p>Startup probes execute real loaded expert weights at layers 0, 23 and 47 using distinct rank inputs, heterogeneous padding and an all-padding case. Logical identity, token conservation, combining weights, CPU-oracle selection and gathered-rank agreement pass. Native expert outputs and a direct FP32 reference pass the predeclared elementwise bound <code>abs(error) ≤ 0.02 + 0.03 × abs(reference)</code>; the maximum native-reference absolute difference was 0.0625, so “passed” does not mean bitwise equality. The correctness-only server also completed eight authentic pilot requests per dataset, 40 total, with finite diagnostic logprobs and matching prompt/token metadata.</p>
+<p>These checks do not prove every full-model logit or answer is equivalent. Normal EOS can produce different output lengths, even with temperature zero. Probe instrumentation must be disabled in timing configurations. The <a href="../full_serving/custom_admission.py">pilot admission</a> requires correctness and complete finite timed OFF/resident/placement-only runs; it does <strong>not</strong> require a win over OFF. A correct negative result remains admissible.</p>
+
+<h2>The held-out comparison</h2>
+<p>The <a href="../results/full-serving/custom-compare-v1/protocol-draft.json">public protocol</a> reserves WildChat, ShareGPT, InstructCoder, NuminaMath and LongBench separately. Each contributes 64 held-out inputs, divided into four disjoint 16-request blocks. Each block runs OFF, ON and resident on fresh servers: <strong>60 server sessions and 960 measured executions</strong>. Each server first runs the same eight pilot warmups twice, for another 960 warmup executions. Pass one requests diagnostic IDs/logprobs; pass two uses ordinary payloads.</p>
+<p>Messages are not truncated to 512 tokens. The context limit is 32,768 tokens and generation is capped at 2,048 new tokens, with non-thinking chat formatting, temperature zero and normal EOS. Each block shares its exact absolute calendar across all three arms. Azure code/conversation timestamp blocks are scaled once to the previously fixed per-source pilot rate; relative spacing and ties survive, but this is not the original production rate or an authentic joint sample of content and arrivals. All admitted requests drain, including overload cases. Arm order is explicitly balanced; rates, maps and input selection cannot be tuned from final outcomes.</p>
+<p>The primary endpoint is response time from scheduled arrival to completed response, resident versus OFF; resident versus ON is secondary. The report keeps mean/p95 response, TTFT, episode elapsed, drain, request throughput, output throughput and generated lengths separate. Completed elapsed includes the offered horizon and drain. Startup, warmup and shutdown are reported separately, outside warmed episode timing. Native queue/RUNNING metrics retain exact engine labels; RUNNING is not GPU kernel service.</p>
+<p>There are only four independent content/arrival blocks per source. Equal-block geometric mean ratios and pointwise Student-t intervals on paired log ratios are exploratory. A 5% useful-gain point margin and 2% regression point margin do not establish a confirmatory guarantee. There is no request bootstrap, cross-source pooling, or automatic superiority claim. Missing or invalid triples withhold their contrasts and four-block summaries. Native ON can adapt during warmup; ordinary launch logs and drained asynchronous work do not prove normal commit completion.</p>
+
+<h2>Reproduce without changing the evidence</h2>
+<p>Run these commands from the repository root with its pinned environment. The private input bundle remains outside Git; the public source manifests and prior tokenizer admission bind its content. The freeze command only materializes the reserved inputs after a passed pilot gate; it runs no model inference. Output paths must be new.</p>
+<pre><code>dev=results/full-serving/custom-development-v1
+draft=results/full-serving/custom-compare-v1/protocol-draft.json
+python -m full_serving.freeze_custom_compare check --draft "$draft"
+
+python -m full_serving.custom_admission \
+  --kernel "$dev/kernel-gate-v1.json" --diagnostic "$dev/diagnostic-v1" \
+  --off "$dev/timed-off-v1" --resident "$dev/timed-resident-v1" \
+  --placement-only "$dev/timed-placement-v1" \
+  --diagnostic-config "$dev/resident-diagnostic-config-v1.json" \
+  --resident-config "$dev/resident-timed-config-v1.json" \
+  --placement-config "$dev/placement-only-config-v1.json" \
+  --sources "$dev/custom-sources-v1.json" \
+  --suite-manifest results/full-serving/suite-v1/suite-manifest.json \
+  --private-pilot-root ../full-serving-suite-private-v1 \
+  --output "$dev/pilot-admission-final-v1.json"
+
+python -m full_serving.freeze_custom_compare freeze \
+  --draft "$draft" --config "$dev/resident-timed-config-v1.json" \
+  --source-manifest "$dev/custom-sources-v1.json" \
+  --pilot-admission "$dev/pilot-admission-final-v1.json" \
+  --suite-private ../full-serving-suite-private-v1 \
+  --private-output ../full-serving-resident-final-private-v1 \
+  --output results/full-serving/custom-compare-v1/frozen-v1/protocol.json \
+  --execute</code></pre>
+<p>The timed-pilot directory arguments must name the actual retained successful attempts; failed attempts remain archived. On the reserved allocation, set <code>PINNED_MODEL_SNAPSHOT</code> to the verified local checkpoint directory. The controller uses job 4882284 and its recorded two-node/eight-GPU identity. A reproduction on another allocation requires an explicit reviewed allocation-guard update, not silently relabeling hardware. Preview the frozen schedule before execution:</p>
+<pre><code>protocol=results/full-serving/custom-compare-v1/frozen-v1/protocol.json
+python -m full_serving.custom_compare plan --protocol "$protocol"
+
+python -m full_serving.custom_compare run \
+  --protocol "$protocol" \
+  --private-data ../full-serving-resident-final-private-v1 \
+  --snapshot "$PINNED_MODEL_SNAPSHOT" \
+  --output results/full-serving/custom-compare-v1/run-v1 \
+  --private-output ../full-serving-resident-generated-private-v1 \
+  --source-revision "$(git rev-parse HEAD)" --execute
+
+python -m full_serving.custom_report \
+  results/full-serving/custom-compare-v1/run-v1 \
+  --output outputs/full-serving/resident-comparison.json
+python -m full_serving.render_custom_report \
+  outputs/full-serving/resident-comparison.json \
+  --output-prefix outputs/full-serving/resident-comparison</code></pre>
+<p>The controller archives the exact source/configuration manifests, protocol, calendars, source-bound request hashes, preflights, logs, rank bindings, raw client records and native metric snapshots. Public records contain hashes and counts; private files hold prompts, generated text and diagnostic token arrays. The report checks actual input identities, absolute schedules, raw timing arithmetic, completion counters, warmup configuration, GPU/source identity and fresh server order. Final measurements belong in the generated JSON/CSV/HTML, rather than a hand-maintained table here.</p>
+<p class="small">Implementation entry points: <a href="../full_serving/custom_entrypoint.py">custom entry point</a> · <a href="../full_serving/resident_diagnostic.py">startup probes</a> · <a href="../full_serving/custom_compare.py">controller</a> · <a href="../full_serving/custom_runtime.py">runtime audit</a> · <a href="../full_serving/custom_report.py">analysis</a> · <a href="../full_serving/custom_pilot_report.py">descriptive pilot comparison</a>.</p>
+</html>

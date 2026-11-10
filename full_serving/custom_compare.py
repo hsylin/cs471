@@ -58,6 +58,10 @@ def validate_protocol(protocol, *, allow_draft=False):
     require(frozen or (allow_draft and protocol.get("status") == "draft"), "protocol must be frozen after the custom pilot gate")
     datasets = protocol.get("datasets", [])
     require([d.get("dataset") for d in datasets] == list(DATASETS), "freeze the five main datasets in declared order")
+    generation = protocol.get("generation", {})
+    require(all(generation.get(key) == value for key, value in {
+        "max_tokens": 2048, "max_model_len": 32768, "temperature": 0, "enable_thinking": False,
+        "ignore_eos": False, "truncate_prompts": False}.items()), "generation contract differs from the fixed client/server configuration")
     custom = protocol.get("custom", {})
     if frozen:
         require(protocol.get("final_execution_allowed") is True, "final execution remains disabled")
@@ -117,6 +121,11 @@ def load_admitted_protocol(path):
     """Read public admission first; never opens a final request payload."""
     path = Path(path)
     protocol = validate_protocol(json.loads(path.read_bytes()))
+    return validate_admission_artifacts(protocol, path)
+
+
+def validate_admission_artifacts(protocol, path):
+    """Also usable with path-rebased copies of the archived public evidence."""
     admission_record = protocol["pilot_admission"]
     admission_path = artifact_path(path, admission_record["file"])
     require(native.sha(admission_path) == admission_record["sha256"], "custom pilot admission changed")
@@ -138,6 +147,16 @@ def load_admitted_protocol(path):
     return protocol
 
 
+def load_source_metadata(protocol, path):
+    from full_serving.custom_inputs import load_source_metadata as load
+    return load(protocol, path)
+
+
+def verify_private_request(row, metadata):
+    from full_serving.custom_inputs import verify_private_request as verify
+    return verify(row, metadata)
+
+
 def schedule(protocol, *, allow_draft=False):
     validate_protocol(protocol, allow_draft=allow_draft)
     return [{"ordinal": ordinal, "dataset": dataset["dataset"], "block_id": block["block_id"],
@@ -148,9 +167,12 @@ def schedule(protocol, *, allow_draft=False):
                 for position, arm in enumerate(block["arm_order"]))]
 
 
-def admit_and_copy_inputs(protocol, protocol_path, private_root, private_out, public_out):
+def admit_and_copy_inputs(protocol, protocol_path, private_root, private_out, public_out, source_metadata=None):
     """Called only after load_admitted_protocol; source files remain read-only."""
+    validate_admission_artifacts(validate_protocol(protocol), protocol_path)
+    source_metadata = source_metadata or load_source_metadata(protocol, protocol_path)
     inputs, warmup_ids, final_ids, warmup_hashes, final_hashes = {}, set(), set(), set(), set()
+    request_evidence = {}
     for dataset in protocol["datasets"]:
         name = dataset["dataset"]
         inputs[name] = {}
@@ -166,6 +188,12 @@ def admit_and_copy_inputs(protocol, protocol_path, private_root, private_out, pu
             if item.get("request_ids_sha256") is not None:
                 require(canonical_hash(ids) == item["request_ids_sha256"], "frozen request identity digest mismatch")
             hashes = [canonical_hash(r["messages"]) for r in rows]
+            for row in rows:
+                metadata = source_metadata["by_id"][row["id"]]
+                verified = verify_private_request(row, metadata)
+                request_evidence[row["id"]] = {**verified, "dataset": name, "block_id": label,
+                    "request_id": row["id"], "source_metadata_sha256": canonical_hash(metadata),
+                    "client_input_sha256": canonical_hash(row["messages"])}
             target_ids, target_hashes = (warmup_ids, warmup_hashes) if label == "warmup" else (final_ids, final_hashes)
             require(not target_ids.intersection(ids), "request identity reused across independent blocks")
             require(not target_hashes.intersection(hashes) and len(set(hashes)) == len(hashes), "duplicate content across blocks")
@@ -192,6 +220,10 @@ def admit_and_copy_inputs(protocol, protocol_path, private_root, private_out, pu
                 target_cal.write_bytes(cal_raw)
                 inputs[name][label].update(calendar=target_cal, calendar_sha256=item["calendar_sha256"])
     require(not warmup_ids.intersection(final_ids) and not warmup_hashes.intersection(final_hashes), "pilot/final content overlap")
+    native.write_json(public_out / "request-admission.json", {"schema": "resident_compare_request_admission_v1",
+        "status": "passed", "requests": request_evidence,
+        "source_manifest_hashes": {k: v for k, v in protocol.get("source_admission", {}).items() if k.endswith("_sha256")},
+        "scope": "Frozen private bytes verified against previously admitted public source metadata; only hashes and identities retained."})
     return inputs
 
 
@@ -332,6 +364,7 @@ def launch_node(args):
 
 def run(args):
     protocol = load_admitted_protocol(args.protocol)
+    source_metadata = load_source_metadata(protocol, args.protocol)
     jobs = schedule(protocol)
     if not args.execute:
         print(json.dumps({"execute": False, "servers": len(jobs), "measured_requests": len(jobs) * 16, "schedule": jobs}, indent=2))
@@ -357,7 +390,12 @@ def run(args):
                              ("source-manifest.json", protocol["custom"]["source_manifest_file"]),
                              ("pilot-admission.json", protocol["pilot_admission"]["file"])):
             (out / "implementation" / name).write_bytes(artifact_path(args.protocol, source).read_bytes())
-        inputs = admit_and_copy_inputs(protocol, args.protocol, args.private_data, private, out)
+        (out / "source-admission").mkdir()
+        for key, source in protocol["source_admission"].items():
+            if key.endswith("_file"):
+                (out / "source-admission" / (key.removesuffix("_file") + ".json")).write_bytes(artifact_path(args.protocol, source).read_bytes())
+        inputs = admit_and_copy_inputs(protocol, args.protocol, args.private_data, private, out, source_metadata)
+        update(state="inputs_admitted", request_admission_sha256=native.sha(out / "request-admission.json"))
         source_files = sorted((ROOT / "full_serving").rglob("*.py")) + sorted((ROOT / "full_serving").glob("*.sh"))
         native.write_json(out / "controller-source.json", {"declared_git_revision": args.source_revision,
             "files": {str(p.relative_to(ROOT)): native.sha(p) for p in source_files}})
