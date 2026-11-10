@@ -254,7 +254,7 @@ def run(args):
                               "--base-url", base_url + "/v1", "--output", str(arm_dir / f"{stage}.jsonl"),
                               "--private-output", str(private / f"{arm}-{stage}-outputs.jsonl"),
                               "--run-id", f"full-pilot-{arm}-{stage}", "--arm", arm, "--block-id", "pilot-" + stage,
-                              "--max-inflight", "64", "--timeout-s", "1800"]
+                              "--load-id", stage, "--max-inflight", "64", "--timeout-s", "1800"]
                     if stage == "external":
                         client += ["--calendar", str(out / "pilot-calendar.json")]
                     else:
