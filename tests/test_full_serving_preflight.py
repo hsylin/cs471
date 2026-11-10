@@ -1,0 +1,133 @@
+import json
+from pathlib import Path
+import shlex
+import struct
+import subprocess
+
+import pytest
+
+from full_serving import preflight as p
+
+
+def write_tensor(path, *, offsets=(0, 8), shape=(2, 2), payload=b"\x00" * 8):
+    header = {"weight": {"dtype": "BF16", "shape": list(shape), "data_offsets": list(offsets)}}
+    raw = json.dumps(header).encode()
+    path.write_bytes(struct.pack("<Q", len(raw)) + raw + payload)
+
+
+def test_header_and_dense_ranges(tmp_path):
+    path = tmp_path / "shard.safetensors"
+    write_tensor(path)
+    tensors, size = p.inspect_safetensors(path)
+    assert tensors["weight"]["shape"] == [2, 2]
+    assert size == 8
+    write_tensor(path, payload=b"\0" * 7)
+    with pytest.raises(p.PreflightError, match="Truncated/trailing"):
+        p.inspect_safetensors(path)
+
+
+@pytest.mark.parametrize("offsets,shape,error", [
+    ((0, 6), (2, 2), "Tensor size mismatch"),
+    ((2, 10), (2, 2), "noncontiguous"),
+    ((-1, 7), (2, 2), "Invalid offsets"),
+    ((0, 8), (-2, -2), "Bad shape"),
+])
+def test_reject_invalid_tensor_layout(tmp_path, offsets, shape, error):
+    path = tmp_path / "shard.safetensors"
+    write_tensor(path, offsets=offsets, shape=shape)
+    with pytest.raises(p.PreflightError, match=error):
+        p.inspect_safetensors(path)
+
+
+def small_index():
+    keys = ["model.embed_tokens.weight", "model.norm.weight", "lm_head.weight"]
+    for layer in range(2):
+        prefix = f"model.layers.{layer}."
+        keys += [prefix + "mlp.gate.weight", prefix + "self_attn.q_proj.weight"]
+        keys += [f"{prefix}mlp.experts.{expert}.{projection}_proj.weight"
+                 for expert in range(2) for projection in ("down", "gate", "up")]
+    return {"weight_map": dict.fromkeys(keys, "one.safetensors")}
+
+
+def test_all_layers_and_projections_are_required():
+    index = small_index()
+    assert len(p.validate_weight_index(index, layers=2, experts=2)) == 19
+    del index["weight_map"]["model.layers.1.mlp.experts.1.up_proj.weight"]
+    with pytest.raises(p.PreflightError, match="layers.1.mlp.experts.1.up_proj"):
+        p.validate_weight_index(index, layers=2, experts=2)
+
+
+def test_index_does_not_escape_snapshot():
+    index = small_index()
+    index["weight_map"]["lm_head.weight"] = "../escape.safetensors"
+    with pytest.raises(p.PreflightError, match="Unsafe shard path"):
+        p.validate_weight_index(index, layers=2, experts=2)
+
+
+def cached_fixture(tmp_path, monkeypatch):
+    root = tmp_path / p.MODEL_REVISION
+    root.mkdir()
+    asset, shard = root / "config.json", root / "one.safetensors"
+    asset.write_text('{}\n')
+    write_tensor(shard)
+    monkeypatch.setattr(p, "EXPECTED_ASSETS", {asset.name: p.sha256(asset)})
+    monkeypatch.setattr(p, "EXPECTED_SHARDS", {shard.name: {"sha256": p.sha256(shard), "bytes": shard.stat().st_size}})
+    manifest = {"schema": 1, "complete": True, "kind": "full_checkpoint_sha256",
+                "snapshot": str(root), "model_revision": p.MODEL_REVISION,
+                "assets": {asset.name: {"sha256": p.sha256(asset), "stat": p.fingerprint(asset)}},
+                "shards": {shard.name: {"sha256": p.sha256(shard), "stat": p.fingerprint(shard)}}}
+    return root, manifest
+
+
+def test_cached_verification_detects_same_size_content_change(tmp_path, monkeypatch):
+    root, manifest = cached_fixture(tmp_path, monkeypatch)
+    p.verify_cached_checkpoint(root, manifest)
+    shard = root / "one.safetensors"
+    contents = bytearray(shard.read_bytes())
+    contents[-1] ^= 1
+    shard.write_bytes(contents)
+    with pytest.raises(p.PreflightError, match="File changed since full verification"):
+        p.verify_cached_checkpoint(root, manifest)
+
+
+@pytest.mark.parametrize("mutation", ["missing", "hash", "revision", "kind"])
+def test_cached_manifest_must_represent_the_pinned_full_verification(tmp_path, monkeypatch, mutation):
+    root, manifest = cached_fixture(tmp_path, monkeypatch)
+    if mutation == "missing":
+        manifest["shards"] = {}
+    elif mutation == "hash":
+        manifest["shards"]["one.safetensors"]["sha256"] = "0" * 64
+    elif mutation == "revision":
+        manifest["model_revision"] = "other"
+    else:
+        manifest["kind"] = "nonempty-files-only"
+    with pytest.raises(p.PreflightError):
+        p.verify_cached_checkpoint(root, manifest)
+
+
+@pytest.mark.parametrize("arm", ["off", "on"])
+@pytest.mark.parametrize("role", ["primary", "worker"])
+def test_launcher_dry_run_pins_native_multinode_semantics(arm, role):
+    script = Path(__file__).parents[1] / "full_serving/launch_native_draft.sh"
+    result = subprocess.run(["bash", str(script), arm, role, "/snapshot with space", "10.1.2.3"],
+                            text=True, capture_output=True, check=True)
+    command = shlex.split(result.stdout.splitlines()[-1])
+    assert command[:3] == ["vllm", "serve", "/snapshot with space"]
+    def value(option):
+        return command[command.index(option) + 1]
+    assert value("--data-parallel-size") == "8"
+    assert value("--data-parallel-size-local") == "4"
+    assert value("--tensor-parallel-size") == "1"
+    assert value("--data-parallel-backend") == "mp"
+    assert value("--all2all-backend") == "allgather_reducescatter"
+    assert ("--enable-eplb" in command) == (arm == "on")
+    assert "--enforce-eager" not in command
+    assert "--data-parallel-rank" not in command
+    if role == "primary":
+        assert value("--api-server-count") == "1"
+        assert value("--host") == "0.0.0.0"
+        assert "--data-parallel-start-rank" not in command
+    else:
+        assert "--headless" in command
+        assert value("--data-parallel-start-rank") == "4"
+        assert "--api-server-count" not in command

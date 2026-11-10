@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Unexecuted full-model launcher draft. Default: print only; never allocates GPUs.
+# Full-model launcher. Default: print only; never allocates GPUs.
 # Run once per node inside the existing allocation, with all four GPUs visible.
 set -euo pipefail
 
@@ -8,9 +8,14 @@ usage() {
 Usage: launch_native_draft.sh off|on primary|worker MODEL_SNAPSHOT PRIMARY_IP [--execute]
 
 Default is a dry run. MODEL_SNAPSHOT must be the complete pinned local snapshot.
-Start the primary and worker commands in separate Slurm steps on their respective
-nodes. This script does not submit jobs, choose nodes, open tunnels or download data.
-The initial backend is allgather_reducescatter, not optimized DeepEP all-to-all.
+Start primary and worker concurrently in one two-task Slurm step on their
+respective nodes. This script does not submit jobs, choose nodes, open tunnels or download data.
+Execution requires FULL_SERVING_CHECKPOINT_MANIFEST from preflight checkpoint
+and FULL_SERVING_RUN_DIR for per-node runtime records. The initial backend is
+allgather_reducescatter, not optimized DeepEP all-to-all. Wait for /health, check
+/v1/models and complete a generation before timing. Drain all admitted requests
+before SIGTERM to the serving step, then wait for both nodes to exit; do not
+cancel the parent reservation or call asynchronous drain a committed EPLB map.
 EOF
 }
 
@@ -32,6 +37,7 @@ command=(vllm serve "$model_snapshot"
   --tensor-parallel-size 1
   --data-parallel-size 8
   --data-parallel-size-local 4
+  --data-parallel-backend mp
   --enable-expert-parallel
   --all2all-backend allgather_reducescatter
   --data-parallel-address "$primary_ip"
@@ -41,12 +47,13 @@ if [[ $arm == on ]]; then
   command+=(--enable-eplb --eplb-config '{"num_redundant_experts":32}')
 fi
 if [[ $role == primary ]]; then
-  command+=(--host "$primary_ip" --port 8000 --api-server-count 4)
+  # One API process still routes to all eight DP ranks in internal LB mode.
+  command+=(--host 0.0.0.0 --port 8000 --api-server-count 1)
 else
   command+=(--data-parallel-start-rank 4 --headless)
 fi
 
-printf 'Draft command (%s, %s):\n' "$arm" "$role"
+printf 'Full-model command (%s, %s):\n' "$arm" "$role"
 printf '%q ' "${command[@]}"
 printf '\n'
 [[ $execute == --execute ]] || exit 0
@@ -62,29 +69,12 @@ printf '\n'
 }
 export OMP_NUM_THREADS=${OMP_NUM_THREADS:-4}
 export TOKENIZERS_PARALLELISM=false
-python - "$model_snapshot" <<'PY'
-import json
-import pathlib
-import sys
-import torch
-import vllm
-
-root = pathlib.Path(sys.argv[1])
-assert vllm.__version__ == '0.31.0+cu129', vllm.__version__
-assert torch.cuda.device_count() == 4, 'Expected four visible GPUs on this node'
-for i in range(4):
-    assert 'H100' in torch.cuda.get_device_name(i), torch.cuda.get_device_name(i)
-config = json.loads((root / 'config.json').read_text())
-assert config['num_hidden_layers'] == 48
-assert config['num_experts'] == 128
-assert config['num_experts_per_tok'] == 8
-index = json.loads((root / 'model.safetensors.index.json').read_text())
-shards = sorted(set(index['weight_map'].values()))
-assert len(shards) == 16, len(shards)
-for shard in shards:
-    path = root / shard
-    assert path.is_file() and path.stat().st_size > 0, f'Missing/empty shard: {path}'
-print('Basic preflight passed; final runs additionally require archived checksums,')
-print('source hashes, resolved configuration, network and correctness verification.')
-PY
+: "${FULL_SERVING_CHECKPOINT_MANIFEST:?Run full checkpoint preflight first}"
+: "${FULL_SERVING_RUN_DIR:?Set a unique run directory}"
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+python "$script_dir/preflight.py" runtime --snapshot "$model_snapshot" \
+  --checkpoint-manifest "$FULL_SERVING_CHECKPOINT_MANIFEST" \
+  --role "$role" --primary-ip "$primary_ip" \
+  --output "$FULL_SERVING_RUN_DIR/preflight-$role.json"
+# exec preserves the Slurm task PID so normal signals reach vLLM's handlers.
 exec "${command[@]}"
