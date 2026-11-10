@@ -126,7 +126,7 @@ def test_mocked_controller_runs_fresh_native_arms_and_reuses_off_selected_calend
         elif cmd[:3] == ["scontrol", "show", "hostnames"]:
             result = "mock1\nmock2\n"
         elif cmd[:2] == ["git", "rev-parse"]:
-            result = "mock-source-hash\n"
+            result = "a" * 40 + "\n"
         elif "full_serving.preflight" in cmd:
             Path(cmd[cmd.index("--output") + 1]).write_text("{}")
             result = "mock checkpoint verified\n"

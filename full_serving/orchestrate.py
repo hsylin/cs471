@@ -214,7 +214,13 @@ def run(args):
         command([sys.executable, "-m", "full_serving.preflight", "checkpoint", "--snapshot", str(args.snapshot),
                  "--output", str(out / "checkpoint-verified.json")], out / "checkpoint-preflight.log", timeout=3600)
         source_files = sorted((root / "full_serving").glob("*.py")) + sorted((root / "full_serving").glob("*.sh"))
-        write_json(out / "controller-source.json", {"git_head": command(["git", "rev-parse", "HEAD"]).strip(),
+        revision = getattr(args, "source_revision", None) or os.environ.get("FULL_SERVING_SOURCE_REVISION")
+        if revision is None:
+            revision = command(["git", "rev-parse", "HEAD"]).strip()
+        if not re.fullmatch(r"[0-9a-f]{40}", revision):
+            raise RuntimeError("A full deployed Git revision is required")
+        write_json(out / "controller-source.json", {"declared_git_revision": revision,
+                   "deployment": "Exact source files are hashed below; cluster copy need not contain Git metadata",
                    "files": {str(p.relative_to(root)): sha(p) for p in source_files},
                    "data_manifest_sha256": sha(args.data_manifest), "arrival_manifest_sha256": sha(args.arrival_manifest)})
         subsets = split_pilot(read_jsonl(args.pilot), read_jsonl(args.smoke))
@@ -302,6 +308,7 @@ def main():
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--private-output", type=Path, required=True)
     p.add_argument("--startup-timeout", type=float, default=2400)
+    p.add_argument("--source-revision", help="Full Git SHA for a deployment without .git metadata")
     run(p.parse_args())
 
 
