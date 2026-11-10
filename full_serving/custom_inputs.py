@@ -39,6 +39,7 @@ def load_source_metadata(protocol, protocol_path):
     """Return public ``by_id`` rows after verifying all admitted split identities."""
     if protocol.get("schema") == "resident_compare_two_workloads_v1":
         from full_serving.custom_compare import validate_protocol
+        from full_serving.output_lengths import LENGTH_FIELDS
         parent, _ = _public(protocol, protocol_path, "parent_protocol")
         validate_protocol(parent)
         require(parent.get("schema") == "resident_compare_protocol_v1", "amendment must retain the original full protocol")
@@ -49,9 +50,13 @@ def load_source_metadata(protocol, protocol_path):
             original = next(d for d in parent["datasets"] if d["dataset"] == planned["dataset"])
             for key in original:
                 if key not in ("blocks", "arm_position_counts"):
-                    require(planned.get(key) == original[key], "amendment changed source, warmup or arrival-rate binding")
+                    actual_value = planned.get(key)
+                    if key == "warmup" and isinstance(actual_value, dict):
+                        actual_value = {k: v for k, v in actual_value.items() if k not in LENGTH_FIELDS}
+                    require(actual_value == original[key], "amendment changed source, warmup or arrival-rate binding")
             require(len(planned["blocks"]) == 1, "amendment requires one group")
             expected, actual = dict(original["blocks"][0]), dict(planned["blocks"][0])
+            actual = {k: v for k, v in actual.items() if k not in LENGTH_FIELDS}
             expected.pop("arm_order"); actual.pop("arm_order")
             require(actual == expected, "amendment must use the first reserved group without reselection")
         # Rebase the parent's original source references to the archived paths.

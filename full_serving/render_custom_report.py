@@ -70,7 +70,9 @@ def comparison_notes(dataset, contrast):
     custom_tokens = sum(d["custom_output_tokens"] for d in details)
     notes.append(f"Generated work: {matched}/{count} answers have identical output hashes; "
                  f"the baseline generated {baseline_tokens:,} tokens and our method generated {custom_tokens:,}.")
-    if matched != count:
+    if dataset.get("equal_output_length"):
+        notes.append("Every prompt's output-token count is matched by the frozen reference contract. This controls early stopping and generated length; different token identities, routes and batching can still change execution work. It is not an answer-quality evaluation.")
+    elif matched != count:
         notes.append("Different generated answers prevent interpreting this as an equal-generated-work speedup; semantic answer quality was not evaluated.")
     else:
         notes.append("All generated answer hashes match in this comparison; this supports equal-output timing, not general model-quality equivalence.")

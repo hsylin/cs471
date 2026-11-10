@@ -56,6 +56,8 @@ def private_path(private_root, value):
 def validate_protocol(protocol, *, allow_draft=False):
     """Metadata-only checks: no private files, GPUs or network are touched."""
     compact = protocol.get("schema") == COMPACT_SCHEMA
+    equal_length = protocol.get("equal_output_length", False)
+    require(type(equal_length) is bool and (not equal_length or compact), "equal-length mode is limited to the compact design")
     require(compact or protocol.get("schema") == "resident_compare_protocol_v1", "unsupported comparison protocol")
     frozen = protocol.get("status") == "frozen"
     require(frozen or (allow_draft and protocol.get("status") == "draft"), "protocol must be frozen after the custom pilot gate")
@@ -71,7 +73,7 @@ def validate_protocol(protocol, *, allow_draft=False):
     generation = protocol.get("generation", {})
     require(all(generation.get(key) == value for key, value in {
         "max_tokens": 2048, "max_model_len": 32768, "temperature": 0, "enable_thinking": False,
-        "ignore_eos": False, "truncate_prompts": False}.items()), "generation contract differs from the fixed client/server configuration")
+        "ignore_eos": equal_length, "truncate_prompts": False}.items()), "generation contract differs from the fixed client/server configuration")
     custom = protocol.get("custom", {})
     if frozen:
         require(protocol.get("final_execution_allowed") is True, "final execution remains disabled")
@@ -159,6 +161,8 @@ def validate_admission_artifacts(protocol, path):
                 "frozen custom configuration/source manifest changed")
     config = json.loads(artifact_path(path, custom["config_file"]).read_bytes())
     require(config.get("startup_diagnostic", False) is False, "timed comparison must disable correctness-only startup probes")
+    from full_serving.output_lengths import validate_targets
+    validate_targets(protocol, path)
     return protocol
 
 
@@ -220,6 +224,12 @@ def admit_and_copy_inputs(protocol, protocol_path, private_root, private_out, pu
                 handle.write(raw)
             target.chmod(0o600)
             inputs[name][label] = {"requests": target, "requests_sha256": item["requests_sha256"], "request_ids": ids}
+            if protocol.get("equal_output_length", False):
+                for stem in ("output_lengths", "output_reference"):
+                    artifact = public_out / item[stem + "_file"]
+                    artifact.parent.mkdir(parents=True, exist_ok=True)
+                    artifact.write_bytes(artifact_path(protocol_path, item[stem + "_file"]).read_bytes())
+                inputs[name][label]["output_lengths"] = public_out / item["output_lengths_file"]
             if label != "warmup":
                 calendar_source = artifact_path(protocol_path, item["calendar_file"])
                 cal_raw = calendar_source.read_bytes()
@@ -393,7 +403,8 @@ def run(args):
     private.mkdir(parents=True, exist_ok=False, mode=0o700)
     status = {"schema": "resident_compare_status_v1", "state": "admission", "started_utc": native.stamp(),
               "job_id": native.JOB, "protocol_sha256": native.sha(args.protocol), "completed_sessions": [],
-              "held_out_comparison": True, "superiority_claim": False}
+              "held_out_comparison": not protocol.get("equal_output_length", False),
+              "fixed_output_length_comparison": protocol.get("equal_output_length", False), "superiority_claim": False}
     def update(**values):
         status.update(values, updated_utc=native.stamp())
         native.write_json(out / "status.json", status)
@@ -473,6 +484,8 @@ def run(args):
                               "--pair-id", job["dataset"] + "-" + job["block_id"] + "-" + phase,
                               "--max-inflight", "64", "--timeout-s", str(execution.get("http_timeout_s", 1800))]
                     client += ["--max-tokens", str(generation_for(protocol, job["dataset"])["max_tokens"])]
+                    if protocol.get("equal_output_length", False):
+                        client += ["--output-lengths", str(item["output_lengths"])]
                     client += ["--calendar", str(item["calendar"])] if measured else ["--rate", "0"]
                     if phase == "warmup-00":
                         client += ["--logprobs"]

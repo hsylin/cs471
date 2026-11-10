@@ -33,7 +33,7 @@ METRICS = {
 }
 IDENTITY_KEYS = ("requests_sha256", "calendar_sha256", "request_ids_sha256", "block_id", "load_id", "pair_id",
                  "model", "max_tokens", "max_model_len", "temperature", "enable_thinking", "ignore_eos", "logprobs",
-                 "max_inflight", "http_timeout_s", "client_source_sha256")
+                 "max_inflight", "http_timeout_s", "client_source_sha256", "output_lengths_sha256", "output_length_mode")
 
 
 def at(value, keys):
@@ -169,10 +169,13 @@ def replay_evidence(path, records, calendar, expected_calendar_hash):
                     or r.get("http_status") != 200 or r.get("saw_done") is not True or r.get("usage_events") != 1
                     or r.get("error_type") is not None or r.get("error_message") is not None):
                 raise ValueError
-            if (r.get("finish_reason") not in ("stop", "length")
+            limit = (r.get("requested_output_tokens") if header.get("output_length_mode") == "fixed_previous_off_reference"
+                     else header["max_tokens"])
+            if (type(limit) is not int or not 0 < limit <= header["max_tokens"]
+                    or r.get("finish_reason") not in ("stop", "length")
                     or r["usage"]["completion_tokens"] > header["max_tokens"]
                     or r["usage"]["total_tokens"] > header["max_model_len"]
-                    or (r["finish_reason"] == "length" and r["usage"]["completion_tokens"] != header["max_tokens"])):
+                    or (r["finish_reason"] == "length" and r["usage"]["completion_tokens"] != limit)):
                 raise ValueError
         last_end = max(r["end_ns"] for r in records)
         completion = max(last_end, epoch + horizon)
@@ -198,6 +201,20 @@ def expected_generation(header, protocol, diagnostics, dataset=None):
             and header.get("model") == "qwen3-full" and header.get("max_inflight") == 64
             and header.get("http_timeout_s") == protocol.get("execution", {}).get("http_timeout_s", 1800)
             and header.get("logprobs") is diagnostics)
+
+
+def output_length_issues(header, records, item, protocol, root):
+    if not protocol.get("equal_output_length", False):
+        return []
+    targets = json.loads((root / item["output_lengths_file"]).read_bytes())
+    if (header.get("ignore_eos") is not True or header.get("output_length_mode") != "fixed_previous_off_reference"
+            or header.get("output_lengths_sha256") != item["output_lengths_sha256"]
+            or {r["request_id"] for r in records} != set(targets)
+            or any(r.get("requested_output_tokens") != targets.get(r["request_id"])
+                   or r.get("usage", {}).get("completion_tokens") != targets.get(r["request_id"])
+                   or r.get("finish_reason") != "length" for r in records)):
+        return ["fixed per-request output length, target identity or length termination differs"]
+    return []
 
 
 def schedule_evidence(root, protocol, status):
@@ -274,6 +291,7 @@ def report_block(root, protocol, dataset, block, expected_client_hash, request_a
             item["issues"].append("frozen request/calendar/client/arm identity or count differs")
         if not expected_generation(header, protocol, False, dataset["dataset"]):
             item["issues"].append("request generation configuration differs from frozen protocol")
+        item["issues"].extend(output_length_issues(header, records, block, protocol, root))
         item["replay_evidence"] = (replay_evidence(directory / "measured.jsonl", records, calendar, block["calendar_sha256"])
                                    if calendar is not None else {"valid": False, "issues": ["frozen calendar unavailable"]})
         item["issues"].extend(item["replay_evidence"]["issues"])
@@ -287,7 +305,9 @@ def report_block(root, protocol, dataset, block, expected_client_hash, request_a
                              "arrival_offsets_ns": [0] * 8, "request_ids": dataset["warmup"]["request_ids"]}
             warm_hash = hashlib.sha256(json.dumps(warm_calendar, sort_keys=True).encode()).hexdigest()
             warm_timing = replay_evidence(directory / f"{phase}.jsonl", warm_rows, warm_calendar, warm_hash)
+            length_issues = output_length_issues(warm_header, warm_rows, dataset["warmup"], protocol, root)
             warm_valid = not (not warm["valid"] or len(warm_rows) != 8 or warm_header.get("arm") != arm
+                    or length_issues
                     or warm_header.get("requests_sha256") != dataset["warmup"]["requests_sha256"]
                     or warm_header.get("client_source_sha256") != expected_client_hash
                     or warm_header.get("logprobs") is not (phase == "warmup-00")
@@ -397,10 +417,14 @@ def build_report(root):
         result["source_dependence"] = "The two workloads share an Azure arrival block shape scaled to their previously frozen pilot rates; do not pool them as independent repetitions."
         result["workload_settings"] = protocol["generation_by_dataset"]
         result["phase_scope"] = "LongBench retains full prompts with a 16-token generation cap; NuminaMath retains a 2048-token cap. Check native measured phase durations before calling a workload prefill/decode dominated. Capped answers are not a quality evaluation."
+    if protocol.get("equal_output_length", False):
+        result["equal_output_length"] = True
+        result["phase_scope"] = "Each prompt generates exactly its previous natural-EOS OFF output-token count, with min_tokens=max_tokens=N and early stopping suppressed for all arms. Full prompts and absolute calendars are reused. Equal counts do not imply identical token identities, expert routing, batch shapes or answer quality. Native phase dominance is measured, not assumed."
     runtime_reference = None
     for dataset in protocol["datasets"]:
         item = {"dataset": dataset["dataset"], "blocks": [report_block(root, protocol, dataset, block, expected_client_hash, requests, sessions)
                                                                for block in dataset["blocks"]], "summary": {}}
+        item["equal_output_length"] = protocol.get("equal_output_length", False)
         for block in item["blocks"]:
             runtime = block["runtime_admission"]
             if runtime.get("status") == "passed":

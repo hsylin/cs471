@@ -1,0 +1,66 @@
+{
+  "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "files": {
+    "vllm/entrypoints/openai/chat_completion/protocol.py": {
+      "sha256": "4bdc71f668e4820d8ae5bae2a153fed0296b430cd6353ace8c0c27cfb982ebc1",
+      "excerpts": [
+        {
+          "start_line": 672,
+          "end_line": 687,
+          "text": "            )\n            for name, default in self._DEFAULT_SAMPLING_PARAMS.items()\n        }\n\n        # Merge server-default stop_token_ids (e.g., model-specific tokens\n        # like </call> for gpt-oss) with any request-specified ones\n        stop_token_ids = self.stop_token_ids\n        default_stop_ids = default_sampling_params.get(\"stop_token_ids\")\n        if default_stop_ids:\n            if not stop_token_ids:\n                stop_token_ids = list(default_stop_ids)\n            else:\n                stop_token_ids = list(\n                    dict.fromkeys([*stop_token_ids, *default_stop_ids])\n                )\n"
+        },
+        {
+          "start_line": 699,
+          "end_line": 717,
+          "text": "        return SamplingParams.from_optional(\n            n=self.n,\n            **sampling_params,\n            watermarking=self.watermarking,\n            seed=self.seed,\n            stop=self.stop,\n            stop_token_ids=stop_token_ids,\n            logprobs=(\n                self.top_logprobs\n                if self.logprobs and not self.logprob_token_ids\n                else None\n            ),\n            prompt_logprobs=prompt_logprobs,\n            logprob_token_ids=self.logprob_token_ids or None,\n            ignore_eos=self.ignore_eos,\n            max_tokens=max_tokens,\n            min_tokens=self.min_tokens,\n            skip_special_tokens=self.skip_special_tokens,\n            spaces_between_special_tokens=self.spaces_between_special_tokens,"
+        }
+      ]
+    },
+    "vllm/sampling_params.py": {
+      "sha256": "3c37c655a0a60851e3d96d946eb10d1cbb347dee6cd143f38a7fc18c6f66dd8b",
+      "excerpts": [
+        {
+          "start_line": 710,
+          "end_line": 738,
+          "text": "        self,\n        generation_config: dict[str, Any],\n        eos_token_id: int | None = None,\n    ) -> None:\n        \"\"\"Update if there are non-default values from generation_config.\"\"\"\n        if not self.ignore_eos:\n            self._eos_token_id = eos_token_id\n\n        if eos_token_id is not None:\n            # Add the eos token id into the sampling_params to support\n            # min_tokens processing.\n            self._all_stop_token_ids.add(eos_token_id)\n\n        # Update eos_token_id for generation\n        if (eos_ids := generation_config.get(\"eos_token_id\")) is not None:\n            # it can be either int or list of int\n            eos_ids = {eos_ids} if isinstance(eos_ids, int) else set(eos_ids)\n            if eos_token_id is not None:\n                # We don't need to include the primary eos_token_id in\n                # stop_token_ids since it's handled separately for stopping\n                # purposes.\n                eos_ids.discard(eos_token_id)\n            if eos_ids:\n                self._all_stop_token_ids.update(eos_ids)\n                if not self.ignore_eos:\n                    assert self.stop_token_ids is not None\n                    eos_ids.update(self.stop_token_ids)\n                    self.stop_token_ids = list(eos_ids)\n"
+        }
+      ]
+    },
+    "vllm/v1/core/sched/utils.py": {
+      "sha256": "b6583424b6da15000545cd926ec887ee591bae8a56e6734b8ddf8f9e8f90cc4b",
+      "excerpts": [
+        {
+          "start_line": 98,
+          "end_line": 129,
+          "text": "def check_stop(request: Request, max_model_len: int) -> bool:\n    assert not request.pooling_params\n\n    sampling_params = request.sampling_params\n    assert sampling_params is not None\n\n    last_token_id = request.output_token_ids[-1]\n    if last_token_id == sampling_params.eos_token_id:\n        request.status = RequestStatus.FINISHED_STOPPED\n        return True\n\n    if last_token_id in (sampling_params.stop_token_ids or ()):\n        request.status = RequestStatus.FINISHED_STOPPED\n        request.stop_reason = last_token_id\n        return True\n\n    if (\n        request.num_tokens >= max_model_len\n        or request.num_output_tokens >= request.max_tokens\n    ):\n        request.status = RequestStatus.FINISHED_LENGTH_CAPPED\n        return True\n\n    # Note(arpera):\n    # Order of checks is important for min_tokens\n    # If you decide to change the order, first look at these PRs please:\n    # 47489, 49521, and 51299\n    # These PRs show some reasoning about the order of checks\n    if request.num_output_tokens < sampling_params.min_tokens:\n        return False\n\n    repetition_detection = sampling_params.repetition_detection"
+        }
+      ]
+    },
+    "vllm/v1/sample/logits_processor/builtin.py": {
+      "sha256": "dd563972a8dc6a068b43fe9048790db4d76f41e6e86b896b7f26692bf4455029",
+      "excerpts": [
+        {
+          "start_line": 188,
+          "end_line": 207,
+          "text": "\n    def is_argmax_invariant(self) -> bool:\n        \"\"\"By censoring stop tokens, min-tokens can change the outcome\n        of the argmax operation in greedy sampling.\"\"\"\n        return False\n\n    @staticmethod\n    def add_request(\n        params: SamplingParams, _: list[int] | None, output_tok_ids: list[int]\n    ) -> tuple[int, Sequence[int], set[int], bool] | None:\n        min_tokens = params.min_tokens\n        if not min_tokens or len(output_tok_ids) >= min_tokens:\n            return None\n        return (\n            min_tokens,\n            output_tok_ids,\n            params.all_stop_token_ids,\n            params.structured_outputs is not None,\n        )\n"
+        }
+      ]
+    }
+  },
+  "generation_config": {
+    "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+    "config": {
+      "bos_token_id": 151643,
+      "do_sample": true,
+      "eos_token_id": [
+        151645,
+        151643
+      ],
+      "pad_token_id": 151643,
+      "temperature": 0.6,
+      "top_k": 20,
+      "top_p": 0.95,
+      "transformers_version": "4.51.0"
+    }
+  }
+}

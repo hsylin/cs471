@@ -51,7 +51,7 @@ def interval(ratios):
             "pointwise_95_percent_interval": [math.exp(center-half_width), math.exp(center+half_width)]}
 
 
-def reconstruct(path, arm, block, calendar, max_tokens=2048):
+def reconstruct(path, arm, block, calendar, max_tokens=2048, targets=None, target_sha=None):
     raw = Path(path).read_bytes()
     if not raw.endswith(b"\n"):
         raise Incomplete("public JSONL tail is incomplete")
@@ -73,8 +73,12 @@ def reconstruct(path, arm, block, calendar, max_tokens=2048):
             and header.get("request_ids_sha256") == canonical(ids), "frozen input/calendar/header identity differs")
     require(header.get("max_tokens") == max_tokens and header.get("max_model_len") == 32768
             and header.get("logprobs") is False and header.get("temperature") == 0
-            and header.get("enable_thinking") is False and header.get("ignore_eos") is False,
+            and header.get("enable_thinking") is False and header.get("ignore_eos") is (targets is not None),
             "measured generation contract differs")
+    if targets is not None:
+        require(header.get("output_length_mode") == "fixed_previous_off_reference"
+                and header.get("output_lengths_sha256") == target_sha and set(targets) == set(ids),
+                "fixed output-target identity differs")
     epoch, horizon = summary["epoch_monotonic_ns"], calendar["horizon_ns"]
     offsets = calendar["arrival_offsets_ns"]
     require(type(epoch) is type(horizon) is int and epoch >= 0 and horizon >= 0
@@ -96,8 +100,12 @@ def reconstruct(path, arm, block, calendar, max_tokens=2048):
                 and usage["prompt_tokens"] == row["expected_input_tokens"] > 0
                 and usage["prompt_tokens"]+max_tokens <= 32768 and usage["completion_tokens"] <= max_tokens,
                 "token accounting differs from the generation contract")
+        limit = targets[row["request_id"]] if targets is not None else max_tokens
         require(row["finish_reason"] in ("stop", "length")
-                and (row["finish_reason"] != "length" or usage["completion_tokens"] == max_tokens), "invalid finish reason/output cap")
+                and (row["finish_reason"] != "length" or usage["completion_tokens"] == limit), "invalid finish reason/output cap")
+        if targets is not None:
+            require(row.get("requested_output_tokens") == limit == usage["completion_tokens"]
+                    and row["finish_reason"] == "length", "fixed per-request output count or termination differs")
         responses.append((end-scheduled)/1_000_000)
         output_tokens += usage["completion_tokens"]
         cap_count += row["finish_reason"] == "length"
@@ -189,10 +197,34 @@ def audit(root, report_path):
                 require(sha(calendar_path) == block["calendar_sha256"], "frozen calendar bytes changed")
                 calendar = load(calendar_path)
                 result["evidence_sha256"][str(calendar_path.relative_to(root))] = sha(calendar_path)
+                targets, target_sha = None, None
+                if protocol.get("equal_output_length", False):
+                    target_path, reference_path = root/block["output_lengths_file"], root/block["output_reference_file"]
+                    target_sha = sha(target_path)
+                    require(target_sha == block["output_lengths_sha256"]
+                            and sha(reference_path) == block["output_reference_sha256"], "fixed-length reference/targets bytes changed")
+                    targets = load(target_path)
+                    ref = [json.loads(line) for line in reference_path.read_bytes().splitlines() if line]
+                    headers = [x for x in ref if x.get("type") == "run_header"]
+                    summaries = [x for x in ref if x.get("type") == "run_summary"]
+                    rows = [x for x in ref if x.get("type") == "request"]
+                    cap = protocol["generation_by_dataset"][name]["max_tokens"]
+                    require(len(headers) == len(summaries) == 1 and len(rows) == 16 and len(ref) == 18
+                            and headers[0].get("arm") == "off" and headers[0].get("ignore_eos") is False
+                            and headers[0].get("requests_sha256") == block["requests_sha256"]
+                            and headers[0].get("calendar_sha256") == block["calendar_sha256"]
+                            and headers[0].get("max_tokens") == cap and summaries[0].get("valid") is True
+                            and [x["request_id"] for x in sorted(rows,key=lambda x:x["request_index"])] == block["request_ids"]
+                            and all(x.get("success") is True for x in rows)
+                            and targets == {x["request_id"]:x["usage"]["completion_tokens"] for x in rows}
+                            and all(type(v) is int and 0 < v <= cap for v in targets.values()),
+                            "fixed targets must equal complete prior natural OFF lengths")
+                    result["evidence_sha256"][block["output_lengths_file"]] = target_sha
+                    result["evidence_sha256"][block["output_reference_file"]] = sha(reference_path)
                 for arm in ARMS:
                     path = root/name/bid/arm/"measured.jsonl"
                     cap = protocol.get("generation_by_dataset", {}).get(name, {}).get("max_tokens", 2048)
-                    values, signatures[arm] = reconstruct(path, arm, block, calendar, cap)
+                    values, signatures[arm] = reconstruct(path, arm, block, calendar, cap, targets, target_sha)
                     entry["arms"][arm] = values
                     result["reconstructed_sessions"] += 1
                     result["evidence_sha256"][str(path.relative_to(root))] = sha(path)

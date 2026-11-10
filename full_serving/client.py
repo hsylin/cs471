@@ -247,7 +247,8 @@ def _validate_diagnostics(record: dict, private_tokens: dict, private_logprobs: 
 
 async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
                       index: int, offset_ns: int, epoch_ns: int, endpoint: str,
-                      model: str, max_tokens: int, logprobs: bool = False) -> tuple[dict, dict]:
+                      model: str, max_tokens: int, logprobs: bool = False,
+                      fixed_output_length: bool = False) -> tuple[dict, dict]:
     record = {"type": "request", "request_id": request["id"], "request_index": index,
               "input_sha256": canonical_hash(request["messages"]),
               "expected_input_tokens": request["input_tokens"],
@@ -260,6 +261,8 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
               "chunks": [], "usage": None, "usage_events": 0,
               "finish_reason": None, "saw_done": False, "http_status": None,
               "success": False, "error_type": None, "error_message": None}
+    if fixed_output_length:
+        record["requested_output_tokens"] = max_tokens
     parts: list[str] = []
     private_logprobs: list[dict] = []
     private_tokens: dict = {"prompt_token_ids": None, "completion_token_ids": [], "stop_reason": None}
@@ -272,6 +275,8 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
                    "stream_options": {"include_usage": True}, "temperature": 0,
                    "max_tokens": max_tokens, "n": 1,
                    "chat_template_kwargs": {"enable_thinking": False}}
+        if fixed_output_length:
+            payload.update(ignore_eos=True, min_tokens=max_tokens, stop=[], stop_token_ids=[])
         if logprobs:
             payload.update(logprobs=True, top_logprobs=0, return_token_ids=True)
         record["payload_sha256"] = canonical_hash(payload)
@@ -293,6 +298,9 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
                 for event in decoder.feed(b"", final=True):
                     _consume_event(event, time.monotonic_ns(), record, parts, private_logprobs, private_tokens)
                 _validate_completion(record)
+                if fixed_output_length and (record["usage"]["completion_tokens"] != max_tokens
+                                            or record["finish_reason"] != "length"):
+                    raise ProtocolError("fixed output-length contract violated")
                 if logprobs:
                     _validate_diagnostics(record, private_tokens, private_logprobs)
                     record["diagnostic_passed"] = True
@@ -343,9 +351,14 @@ async def run_workload(requests: list[dict], calendar: dict, *, endpoint: str,
                        max_inflight: int = 256, timeout_s: float = 1800,
                        start_delay_s: float = 1.0,
                        on_record: Callable[[dict, dict], None] | None = None,
-                       epoch_ns: int | None = None, logprobs: bool = False) -> tuple[list[dict], dict]:
+                       epoch_ns: int | None = None, logprobs: bool = False,
+                       output_lengths: dict[str, int] | None = None) -> tuple[list[dict], dict]:
     """One task per offered request; all tasks, including failures, are drained."""
     import aiohttp
+    if output_lengths is not None:
+        if (set(output_lengths) != {r["id"] for r in requests}
+                or any(type(v) is not int or not 0 < v <= max_tokens for v in output_lengths.values())):
+            raise ValueError("one positive bounded output target per request is required")
     if max_inflight <= 0 or timeout_s <= 0 or not math.isfinite(timeout_s):
         raise ValueError("max_inflight and finite timeout_s must be positive")
     if start_delay_s < 0 or not math.isfinite(start_delay_s):
@@ -361,7 +374,9 @@ async def run_workload(requests: list[dict], calendar: dict, *, endpoint: str,
     async with aiohttp.ClientSession(timeout=timeout, connector=connector,
                                      trust_env=False, raise_for_status=False) as session:
         tasks = [asyncio.create_task(run_request(session, semaphore, request, index, offset,
-                                                epoch_ns, endpoint, model, max_tokens, logprobs))
+                                                epoch_ns, endpoint, model,
+                                                output_lengths[request["id"]] if output_lengths is not None else max_tokens,
+                                                logprobs, output_lengths is not None))
                  for index, (request, offset) in enumerate(zip(requests, calendar["arrival_offsets_ns"]))]
         for task in asyncio.as_completed(tasks):
             public, private = await task
@@ -403,6 +418,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--load-id", default="default")
     parser.add_argument("--pair-id", help="Matched arm pair ID; default block-id:load-id")
     parser.add_argument("--max-tokens", type=int, default=2048)
+    parser.add_argument("--output-lengths", type=Path, help="Frozen request-ID to exact output-token targets; suppress early stopping equally for all arms")
     parser.add_argument("--max-model-len", type=int, default=32768)
     parser.add_argument("--max-inflight", type=int, default=256)
     parser.add_argument("--timeout-s", type=float, default=1800)
@@ -412,6 +428,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.max_tokens <= 0 or args.max_model_len <= args.max_tokens:
         parser.error("invalid token limits")
     requests, calendar, hashes = load_workload(args.requests, args.calendar, args.max_tokens, args.max_model_len, args.rate)
+    length_bytes = args.output_lengths.read_bytes() if args.output_lengths is not None else None
+    output_lengths = json.loads(length_bytes) if length_bytes is not None else None
+    if output_lengths is not None and (not isinstance(output_lengths, dict)
+            or set(output_lengths) != {r["id"] for r in requests}
+            or any(type(v) is not int or not 0 < v <= args.max_tokens for v in output_lengths.values())):
+        parser.error("one positive bounded output target per request is required")
     if args.output.resolve() == args.private_output.resolve():
         parser.error("public and private outputs must be different files")
     if args.output.exists() or args.private_output.exists():
@@ -424,7 +446,9 @@ def main(argv: list[str] | None = None) -> int:
               "client_source_sha256": sha256_bytes(Path(__file__).read_bytes()),
               "endpoint": args.base_url.rstrip("/") + "/chat/completions",
               "max_tokens": args.max_tokens, "max_model_len": args.max_model_len,
-              "temperature": 0, "enable_thinking": False, "ignore_eos": False,
+              "temperature": 0, "enable_thinking": False, "ignore_eos": output_lengths is not None,
+              "output_lengths_sha256": sha256_bytes(length_bytes) if length_bytes is not None else None,
+              "output_length_mode": "fixed_previous_off_reference" if output_lengths is not None else "natural_eos",
               "max_inflight": args.max_inflight, "http_timeout_s": args.timeout_s,
               "logprobs": args.logprobs, "arrival_kind": calendar.get("kind", "external_calendar"),
               "diagnostic_return_token_ids": args.logprobs,
@@ -445,7 +469,8 @@ def main(argv: list[str] | None = None) -> int:
         records, timing = asyncio.run(run_workload(
             requests, calendar, endpoint=header["endpoint"], model=args.model,
             max_tokens=args.max_tokens, max_inflight=args.max_inflight,
-            timeout_s=args.timeout_s, start_delay_s=args.start_delay_s, on_record=write, logprobs=args.logprobs))
+            timeout_s=args.timeout_s, start_delay_s=args.start_delay_s, on_record=write, logprobs=args.logprobs,
+            output_lengths=output_lengths))
         from full_serving.analyze import summarize_run
         summary = summarize_run(records, timing)
         public.write(json.dumps({"type": "run_summary", **timing, **summary}, allow_nan=False) + "\n")

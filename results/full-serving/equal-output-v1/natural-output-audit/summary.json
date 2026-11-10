@@ -1,0 +1,143 @@
+{
+  "schema": "cs471_natural_length_diagnostic_v1",
+  "created_utc": "2026-11-10T21:49:17.252957+00:00",
+  "datasets": [
+    {
+      "dataset": "longbench",
+      "arms": {
+        "off": {
+          "requests": 16,
+          "max_tokens": 16,
+          "ignore_eos": false,
+          "temperature": 0,
+          "stop_completions": 8,
+          "length_completions": 8,
+          "output_tokens": 162,
+          "private_hash_binding": "passed",
+          "explicit_stop_reason": "Unavailable/None in all measured private records; do not claim an observed EOS token ID for these non-diagnostic records.",
+          "warmup_diagnostic_stop_completions": 4,
+          "warmup_stops_last_token_is_model_eos": 4
+        },
+        "on": {
+          "requests": 16,
+          "max_tokens": 16,
+          "ignore_eos": false,
+          "temperature": 0,
+          "stop_completions": 8,
+          "length_completions": 8,
+          "output_tokens": 162,
+          "private_hash_binding": "passed",
+          "explicit_stop_reason": "Unavailable/None in all measured private records; do not claim an observed EOS token ID for these non-diagnostic records.",
+          "warmup_diagnostic_stop_completions": 4,
+          "warmup_stops_last_token_is_model_eos": 4
+        },
+        "custom": {
+          "requests": 16,
+          "max_tokens": 16,
+          "ignore_eos": false,
+          "temperature": 0,
+          "stop_completions": 8,
+          "length_completions": 8,
+          "output_tokens": 162,
+          "private_hash_binding": "passed",
+          "explicit_stop_reason": "Unavailable/None in all measured private records; do not claim an observed EOS token ID for these non-diagnostic records.",
+          "warmup_diagnostic_stop_completions": 4,
+          "warmup_stops_last_token_is_model_eos": 4
+        }
+      },
+      "pairs": {
+        "off_vs_on": {
+          "same_output_hashes": 14,
+          "other_shorter": 0,
+          "other_longer": 0,
+          "same_count": 16
+        },
+        "off_vs_custom": {
+          "same_output_hashes": 16,
+          "other_shorter": 0,
+          "other_longer": 0,
+          "same_count": 16
+        }
+      },
+      "evidence_sha256": {
+        "off_public_measured": "333a24b7a1cd9ebf745946173c9edb9ee0fca383d37901079840c23f767f291b",
+        "off_private_measured": "cfea63ea4a1d1fb91ec65d1cd0b544e5bbca325a4866f0957b429f9cef9a79a7",
+        "on_public_measured": "81c32f70f9d429f5132b0d4e4e3d8027990eb528d632bec4d622c56f55f905e4",
+        "on_private_measured": "45083c676ccdb702a20d2973377d4ea155bf26d1b7ae26c0bf7af2ed4108a1a8",
+        "custom_public_measured": "0eb9f8ace0796e0b78adfc37ed3025808260584f15cedc11c5b5a9a264ac9cd8",
+        "custom_private_measured": "bd3892c3885c4acec79c23258fdd817310f899362508aa06ebfcbdbc6d98333f"
+      }
+    },
+    {
+      "dataset": "numinamath",
+      "arms": {
+        "off": {
+          "requests": 16,
+          "max_tokens": 2048,
+          "ignore_eos": false,
+          "temperature": 0,
+          "stop_completions": 11,
+          "length_completions": 5,
+          "output_tokens": 17519,
+          "private_hash_binding": "passed",
+          "explicit_stop_reason": "Unavailable/None in all measured private records; do not claim an observed EOS token ID for these non-diagnostic records.",
+          "warmup_diagnostic_stop_completions": 8,
+          "warmup_stops_last_token_is_model_eos": 8
+        },
+        "on": {
+          "requests": 16,
+          "max_tokens": 2048,
+          "ignore_eos": false,
+          "temperature": 0,
+          "stop_completions": 12,
+          "length_completions": 4,
+          "output_tokens": 16457,
+          "private_hash_binding": "passed",
+          "explicit_stop_reason": "Unavailable/None in all measured private records; do not claim an observed EOS token ID for these non-diagnostic records.",
+          "warmup_diagnostic_stop_completions": 7,
+          "warmup_stops_last_token_is_model_eos": 7
+        },
+        "custom": {
+          "requests": 16,
+          "max_tokens": 2048,
+          "ignore_eos": false,
+          "temperature": 0,
+          "stop_completions": 14,
+          "length_completions": 2,
+          "output_tokens": 15642,
+          "private_hash_binding": "passed",
+          "explicit_stop_reason": "Unavailable/None in all measured private records; do not claim an observed EOS token ID for these non-diagnostic records.",
+          "warmup_diagnostic_stop_completions": 8,
+          "warmup_stops_last_token_is_model_eos": 8
+        }
+      },
+      "pairs": {
+        "off_vs_on": {
+          "same_output_hashes": 1,
+          "other_shorter": 8,
+          "other_longer": 2,
+          "same_count": 6
+        },
+        "off_vs_custom": {
+          "same_output_hashes": 2,
+          "other_shorter": 9,
+          "other_longer": 3,
+          "same_count": 4
+        }
+      },
+      "evidence_sha256": {
+        "off_public_measured": "0a9de48000b78ff862673b371739962da30ab538236b53db09b1ff5c254f2efb",
+        "off_private_measured": "93cdb9104beee8e33539328075afbd0b091929be8970dae614be4ab664393db7",
+        "on_public_measured": "802f249dfebbc1be0bf808f76e4cefe844a4d2fcf93c55e381a876abf169be0c",
+        "on_private_measured": "6daf5efeac109cb19a989cefef25fe9907532dc7cb2dd9002f13b1c955f0cbcc",
+        "custom_public_measured": "b551d11afa8ae3786e3aec3b8293b552121e8a9bef5402149f21f6ee385e52ff",
+        "custom_private_measured": "1483ec482841c784360f2272bfca1f9951688324c445d9aaf22cac48b3758698"
+      }
+    }
+  ],
+  "verified": "All paired measured prompts/payloads were already audited; private output text hashes are rechecked here.",
+  "deduction": "Natural stopping and different generated paths produced different lengths. No evidence of dropped requests or a smaller custom max-token setting.",
+  "hypothesis": "Floating-point, kernel/batch shape, placement/reduction-order differences can alter greedy token selection; the available records do not isolate which mechanism caused each divergence or exclude a full-model numerical-correctness issue.",
+  "limits": "No semantic quality scoring or full-logit equivalence proof. Existing warmup diagnostics have selected-token logprobs only; compare them only before token-path divergence. No new model run is performed by this diagnostic.",
+  "private_content_published": false
+}
