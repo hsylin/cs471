@@ -203,7 +203,10 @@ def run(args):
         states = job["job_state"]
         if not (states == "RUNNING" or "RUNNING" in states):
             raise RuntimeError("Allocation is not running")
-        host_text = command(["scontrol", "show", "hostnames", os.environ["SLURM_JOB_NODELIST"]])
+        # A one-node controller step can rewrite SLURM_JOB_NODELIST. Query the
+        # allocation record rather than treating the current step as the job.
+        allocated_nodes = job["nodes"]
+        host_text = command(["scontrol", "show", "hostnames", allocated_nodes])
         nodes = host_text.split()
         if len(nodes) != 2:
             raise RuntimeError("Expected two allocated nodes")
@@ -239,8 +242,10 @@ def run(args):
             arm_dir = out / arm
             arm_dir.mkdir()
             env = dict(server_environment(os.environ),
+                       SLURM_JOB_NODELIST=allocated_nodes, SLURM_JOB_NUM_NODES="2",
                        FULL_SERVING_CHECKPOINT_MANIFEST=str(out / "checkpoint-verified.json"), FULL_SERVING_RUN_DIR=str(arm_dir))
             cmd = ["srun", "--jobid=" + JOB, "--exact", "--nodes=2", "--ntasks=2", "--ntasks-per-node=1",
+                   "--nodelist=" + ",".join(nodes),
                    "--cpus-per-task=56", "--gpus-per-node=4", "--mem=300G", "--kill-on-bad-exit=1", "--input=none",
                    "--output=" + str(arm_dir / "server-%t.log"), "--error=" + str(arm_dir / "server-%t.err"),
                    "bash", str(root / "full_serving/run_node.sh"), arm, str(args.snapshot), primary_ip]

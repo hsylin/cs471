@@ -101,7 +101,7 @@ def test_mocked_controller_runs_fresh_native_arms_and_reuses_off_selected_calend
     args.arrival_manifest.write_text(json.dumps({"blocks": [{"split": "pilot",
         "original_offsets_ns": list(range(24)), "original_horizon_ns": 24}]}))
     monkeypatch.setenv("SLURM_JOB_ID", orchestrate.JOB)
-    monkeypatch.setenv("SLURM_JOB_NODELIST", "mock[1-2]")
+    monkeypatch.setenv("SLURM_JOB_NODELIST", "mock1")  # controller step has only one node
     monkeypatch.setattr(orchestrate.socket, "gethostbyname", lambda node: "127.0.0.1")
     launches, clients, stopped = [], [], []
 
@@ -122,8 +122,9 @@ def test_mocked_controller_runs_fresh_native_arms_and_reuses_off_selected_calend
 
     def command(cmd, output=None, timeout=120):
         if cmd[:3] == ["scontrol", "show", "job"]:
-            result = json.dumps({"jobs": [{"job_state": "RUNNING"}]})
+            result = json.dumps({"jobs": [{"job_state": "RUNNING", "nodes": "mock[1-2]"}]})
         elif cmd[:3] == ["scontrol", "show", "hostnames"]:
+            assert cmd[3] == "mock[1-2]", "use scheduler allocation, not controller step nodelist"
             result = "mock1\nmock2\n"
         elif cmd[:2] == ["git", "rev-parse"]:
             result = "a" * 40 + "\n"
@@ -153,6 +154,7 @@ def test_mocked_controller_runs_fresh_native_arms_and_reuses_off_selected_calend
     assert len(clients) == 6
     assert [cmd[cmd.index("--arm") + 1] for cmd in clients] == ["off"] * 3 + ["on"] * 3
     assert all("--gpus-per-node=4" in cmd and "--nodes=2" in cmd for cmd, _ in launches)
+    assert all("--nodelist=mock1,mock2" in cmd for cmd, _ in launches)
     assert all(kwargs["start_new_session"] for _, kwargs in launches)
     assert all("--logprobs" in clients[i] for i in (0, 3))
     assert all(clients[i][clients[i].index("--rate") + 1] == "0" for i in (1, 4))
