@@ -1,0 +1,334 @@
+{
+  "correctness_plan": {
+    "kernel_gate": "Separate root-owned GPU gate validates all supported shapes/dtypes/padding and graph replay against independent CPU oracle.",
+    "numerical_tolerance": {
+      "atol": 0.02,
+      "origin": "Historical BF16 layer diagnostic thresholds; fixed before new GPU results",
+      "rtol": 0.03
+    },
+    "scope_limit": "Selected-layer arithmetic plus all-layer weight identity does not establish complete-model numerical equivalence or performance. Timed runs disable diagnostics and restart.",
+    "startup_diagnostic": "Optional correctness-only config: all48 layers/fullBF16 weights and7680 physical expert instances;1536 duplicate logical-layer experts hash equal; layers0/23/47 compare resident and local-native-hash physical assignments/native expert outputs/directFP32 on three cases."
+  },
+  "created_utc": "2026-11-10T17:50:59.590104+00:00",
+  "implementation_state": "implemented locally; CPU tests pass; full-model GPU diagnostics pending",
+  "insertion_points": [
+    {
+      "finding": "Native top-k computes logical IDs and weights locally, then applies EPLB physical mapping. Resident mode sets eplb_state=None so IDs remain logical and no mapping/recording kernel runs.",
+      "lines": [
+        291,
+        309
+      ],
+      "path": "vllm/model_executor/layers/fused_moe/router/base_router.py"
+    },
+    {
+      "finding": "supports_internal_mk is true when the unquantized method builds its internal kernel; therefore the runner does not gather router logits before routing in this active path.",
+      "lines": [
+        35,
+        40
+      ],
+      "path": "vllm/model_executor/layers/fused_moe/fused_moe_method_base.py"
+    },
+    {
+      "finding": "Native prepare gathers hidden states, top-k IDs and weights. Resident mapping is inserted after native prepare returns globally gathered IDs, preserving hidden/scales/metadata/weights and native finalize.",
+      "lines": [
+        166,
+        196
+      ],
+      "path": "vllm/model_executor/layers/fused_moe/prepare_finalize/naive_dp_ep.py"
+    },
+    {
+      "finding": "AgRs dispatch all-gathers tensors in rank order; combine reduce-scatters back to the original DP sizes. DP inputs are distinct, not replicated-layer harness inputs.",
+      "lines": [
+        113,
+        157
+      ],
+      "path": "vllm/distributed/device_communicators/all2all.py"
+    },
+    {
+      "finding": "Gather output shape is (sum(per-rank padded sizes), top_k); torch.empty output is contiguous and retains input dtype. Mapper checks shape/dtype/layout/device.",
+      "lines": [
+        768,
+        796
+      ],
+      "path": "vllm/distributed/device_communicators/cuda_communicator.py"
+    },
+    {
+      "finding": "Padded rows get -1 route indices. V2 persistent is_padding buffers are updated per step and used by captured graphs. Gathered padding is not generally a single suffix.",
+      "lines": [
+        232,
+        237,
+        551,
+        557
+      ],
+      "path": "csrc/libtorch_stable/moe/topk_softmax_kernels.cu"
+    },
+    {
+      "finding": "Native checkpoint mapping uses the same initial physical-to-logical builder as EPLB state. The plugin replaces this builder before loading, so each physical slot loads its declared logical expert directly, without migration.",
+      "lines": [
+        1107,
+        1112,
+        1156,
+        1172
+      ],
+      "path": "vllm/model_executor/layers/fused_moe/routed_experts.py"
+    },
+    {
+      "finding": "V2 prepare_load runs before model construction; maybe_register_model runs after weights load and before worker profile/graph capture. This is the binding/diagnostic hook.",
+      "lines": [
+        367,
+        379,
+        511,
+        514
+      ],
+      "path": "vllm/v1/worker/gpu/model_runner.py"
+    },
+    {
+      "finding": "Plugin bypasses native state construction, model state registration, async startup, forward metadata updates and step. A native-state constructor guard fails closed if any unsupported path attempts recurring EPLB state.",
+      "lines": [
+        46,
+        52,
+        88,
+        120
+      ],
+      "path": "vllm/v1/worker/gpu/eplb_utils.py"
+    },
+    {
+      "finding": "Supported general plugins load before worker-class initialization in every worker. Local dist-info metadata on PYTHONPATH provides discovery without changing venv packages.",
+      "lines": [
+        267,
+        279
+      ],
+      "path": "vllm/v1/worker/worker_base.py"
+    }
+  ],
+  "legacy_port_limits": {
+    "old_mapper": "resident_residual prebound mapper is hardcoded EP2/B128/top8 and constructing stream; it is not reused for dynamic full-model graphs. New mapper is separately validated.",
+    "unchanged_map_shortcut": "No recurring candidate, movement or commit exists in fixed-resident mode, so the old unchanged-map shortcut has no active work to intercept. No claim of an async unchanged-map port is made."
+  },
+  "local_verification": {
+    "source_sha256": {
+      "full_serving/bootstrap/cs471_resident-0.1.dist-info/METADATA": "ffeee1176be5af32a53591140eb1b388deb4a9dff36039958f40dfaa58c1ee75",
+      "full_serving/bootstrap/cs471_resident-0.1.dist-info/entry_points.txt": "1292a681d6fd6afb295f461155fc7e146a0d6669a4407bb9a3aa944af712ae2c",
+      "full_serving/custom_entrypoint.py": "bbc2ef4cab67a307daddf6b2fd0fc87cf54cc27ef140729c16d244abefdbc6b0",
+      "full_serving/resident_diagnostic.py": "811f436177b719ef14be18d5338e52c5f8b9626a98345eabadcd899651e3b29c",
+      "full_serving/resident_plugin.py": "8e45d9376d268fec29253edeb6c54bce0098eb30ec1c2b71f9b8c7abe6bd9a50"
+    },
+    "tests": "17 passed: test_full_serving_resident_plugin.py + test_full_serving_resident_policy.py"
+  },
+  "native_source_sha256": {
+    "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+    "distributed/device_communicators/cuda_communicator.py": "2a0695d8b46757be83b38fe657df605ba0bfb2ef2dfa690c78c57419bbad0762",
+    "distributed/device_communicators/pynccl.py": "4c51becc2ebfd41910526b93d7bd8e9e36312df444fdfb55fa2fbc92b0f8f88e",
+    "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+    "forward_context.py": "8dab5a4dee60e46c4e52821667321c9f05c793578af49cddbdb204cf9324c403",
+    "model_executor/layers/fused_moe/all2all_utils.py": "829d16c4dedbd69dffdb8c2bf1b68caf23f095b320cbf83795149cfccb9f1906",
+    "model_executor/layers/fused_moe/fused_moe_method_base.py": "f8defdd0f8aa1f7a4cb68aca64f9d8e737eb9c65f00fa2d66571704aa1532916",
+    "model_executor/layers/fused_moe/layer.py": "0c30a9a56ff22c63a1498f61c72a349e4dba0d1e4fbe42efb333dda45d4bdecf",
+    "model_executor/layers/fused_moe/prepare_finalize/naive_dp_ep.py": "5cc53791999bc0116f8d9d5a4658f8b39f53f59c1b7d644219cf4655011e29c4",
+    "model_executor/layers/fused_moe/routed_experts.py": "78bff37911f17cb4cf77a09861dd11fc9bdbf59e7dadb422b4f3fe9e9d526812",
+    "model_executor/layers/fused_moe/router/base_router.py": "c909924fcfa461ccdaa6290d215d4d35bd4062fb02feeb23619b234da993f6bf",
+    "model_executor/layers/fused_moe/router/fused_topk_router.py": "1c80f4af4d781fd66b12aa6a7a0fd30082bc521df40f1252987a8ac4c0bef51c",
+    "model_executor/layers/fused_moe/runner/moe_runner.py": "2c6e1fffba1f4fd2e4c5d3981c4d26f7c0de802fc9c35865748b113c30235da5",
+    "model_executor/layers/fused_moe/unquantized_fused_moe_method.py": "dade56ddeef4967aa3ad3448ef46d964e6130a6f3d558e4a77ccce62303816a9",
+    "model_executor/models/qwen3_moe.py": "cac0cffc3e5b1ff805e9e15fe1d4bcfd5e55c27378e4a9ab23b0fa6c1b05e5ee",
+    "plugins/__init__.py": "06942d64e526c2c7407265e1903d625c4d2118d8d7fc39c616b1cc6aa6fc2c8f",
+    "v1/worker/gpu/cudagraph_utils.py": "8e6ac6f655dd013dd2a3d3561bc88fe05ceeea2b060e5cb6bc85decb0bb2f813",
+    "v1/worker/gpu/eplb_utils.py": "98aaa1e7763faa3ae6fbd012f5a222f050ab2d5a6d8942193341f2e5716228ae",
+    "v1/worker/gpu/input_batch.py": "96163c486368f2cf0e539fe68eaa06f4df3ac814da8f7a92af2b04242e01bc6d",
+    "v1/worker/gpu/model_runner.py": "725c47114e148ade3a26b4cc9c5f7295588fdd387afc3cb5fdb2d16513a1bb5c",
+    "v1/worker/worker_base.py": "41cdc6fb72d5cb2352093de7fdf35bf829fbb9e097dc6113d4597cd9a88a46aa"
+  },
+  "padding_and_graph_contract": {
+    "allocation": "Immutable setup metadata and per-call capturable output tensors; no reused single-stream B128 scratch buffers",
+    "logical_ids": "contiguous int32/int64 [T,8], T <= 65536; native -1 sentinels preserved, count only valid0..127 IDs",
+    "selection": "After native gather for resident; before gather for native-hash placement-only diagnostic",
+    "unsupported": [
+      "TP>1",
+      "DP/EP sizes other than8",
+      "pipeline parallel",
+      "DBO/microbatch overlap",
+      "LoRA",
+      "speculation",
+      "elastic EP",
+      "quantization",
+      "non-TRITON/monolithic backend",
+      "alternate checkpoint geometry"
+    ]
+  },
+  "placement": {
+    "change_from_native": "Native ON retains its original contiguous [0..127,0..31] map. Custom comparison includes this explicit balanced placement and resident selection.",
+    "duplicates": 32,
+    "frozen_from": "Topology and model geometry only, no pilot/final routing outcomes",
+    "per_rank": "16 original experts + first four experts of partner rank",
+    "physical_to_logical_map": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      0,
+      1,
+      2,
+      3,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      32,
+      33,
+      34,
+      35,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      64,
+      65,
+      66,
+      67,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      96,
+      97,
+      98,
+      99
+    ],
+    "policy": "Four independent replica-connected pairs (rank xor 1)"
+  },
+  "schema": "full_resident_source_audit_v1",
+  "supporting_cpp_source": {
+    "path": "csrc/libtorch_stable/moe/topk_softmax_kernels.cu",
+    "runtime_guard": "Python sources checked; compiled native padding behavior must pass GPU diagnostic",
+    "sha256": "5e0eae8dbd76f04f9ddabb587dab1cfc2fdae48cf1966775bb9cf0b8ad6b432a"
+  },
+  "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6"
+}
