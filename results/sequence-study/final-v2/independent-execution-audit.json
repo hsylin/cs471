@@ -1,0 +1,176 @@
+{
+  "schema": "independent_sequence_execution_v1",
+  "passed": true,
+  "records": 54,
+  "source_sha256": "69cced71025c74d2bbf28f1df1ae2d14d6a14ad4fda260d5eb619b50ed35319d",
+  "source_files_verified": 116,
+  "plan_content_sha256": "4226fbecfd88a0dfa5df507dc28cd50da59fb2cbc2938e5e93dade2c919ab1ba",
+  "plan_file_sha256": "c20ece4314ebe18b5bbab21e6a9d8556096562b302b0dbafc77d56ee367f7afa",
+  "source_archive_sha256": "a9a8bdd3293aa7333919988ee76f821cbd8b024aeba2cf68e56075b6ecf07728",
+  "raw_files": {
+    "residual-gsm8k_train-final-06.jsonl": {
+      "container_sha256": "a11258e13374082ac09fbf8c10fa21a28513169fdf917870d76623a0298439a0",
+      "decompressed_sha256": "a11258e13374082ac09fbf8c10fa21a28513169fdf917870d76623a0298439a0"
+    },
+    "residual-gsm8k_train-final-07.jsonl": {
+      "container_sha256": "6e714d26cdb139ab6c85c6491216a3098c08a68f5ea849ccc24bd991751a87e4",
+      "decompressed_sha256": "6e714d26cdb139ab6c85c6491216a3098c08a68f5ea849ccc24bd991751a87e4"
+    },
+    "residual-wildchat-final-07.jsonl": {
+      "container_sha256": "bda15c4cd83f0cbae540a85f0d271564eca74f7af42ac53ec9cd865c08f432f2",
+      "decompressed_sha256": "bda15c4cd83f0cbae540a85f0d271564eca74f7af42ac53ec9cd865c08f432f2"
+    },
+    "residual-wildchat-final-08.jsonl": {
+      "container_sha256": "cf35b942a59c617153175318b5ceca1c5f41fb93346c41462b43534e0b6332b1",
+      "decompressed_sha256": "cf35b942a59c617153175318b5ceca1c5f41fb93346c41462b43534e0b6332b1"
+    }
+  },
+  "unique_content_bundles": 4,
+  "unique_ordered_inputs": 9,
+  "prepared_batches_verified": 37008,
+  "independent_resident_assignment_batches": 37008,
+  "raw_jobs_verified": 221184,
+  "native_committed_cycles": 36,
+  "compiled_binary_verification": {
+    "independently_hashed": true,
+    "artifacts": {
+      "int32": {
+        "cubin_sha256": {
+          "sha256": "677e4a904dc49939013043fdd4741aad63d2b0cdae2ec46b6ac95de4fa5082d2",
+          "file": "results/resident-residual/compiled-artifacts/UAK34ODCJZCWPAQ5WNNIP6XJDOJ5AKWQ3G4ZBLPTK5B5FNDHQA5Q/fused_home_map.cubin"
+        },
+        "ptx_sha256": {
+          "sha256": "6f2abc594171a24ccca76e0f0465b867d9b7abd81db3602bdfb3e390ccd59f7f",
+          "file": "results/resident-residual/compiled-artifacts/UAK34ODCJZCWPAQ5WNNIP6XJDOJ5AKWQ3G4ZBLPTK5B5FNDHQA5Q/fused_home_map.ptx"
+        }
+      },
+      "int64": {
+        "cubin_sha256": {
+          "sha256": "772606d1bc78303540071773adadc5c085852cd1f0594d7a951360e9840b8a59",
+          "file": "results/resident-residual/compiled-artifacts/JC2G35D3Y5NFQMMPS2LUOICANRO5RGUSIZVCPLFE3ULU7EVBEXOA/fused_home_map.cubin"
+        },
+        "ptx_sha256": {
+          "sha256": "26a47db1e593dd2e7c8c69aea4b404df32f75dd1a0168efbc8a12122fd745ce0",
+          "file": "results/resident-residual/compiled-artifacts/JC2G35D3Y5NFQMMPS2LUOICANRO5RGUSIZVCPLFE3ULU7EVBEXOA/fused_home_map.ptx"
+        }
+      }
+    }
+  },
+  "captured_record_routing_identity": {
+    "residual-gsm8k_train-final-07": {
+      "source_records": 1880,
+      "modes": 3,
+      "token_occurrences_checked": 1579008,
+      "logical_topk_exact": true,
+      "float32_combining_weights_bitwise_equal": true,
+      "canonical_logical_routes_sha256": "c255b24c709acdf5172e960e09afcf82f319a6c8777f709c7de13d5e77b20a3f",
+      "canonical_float32_weights_sha256": "6af41cb5e09e603547d15b4715457416337efcb107c6174ae4d69d44af690cb0",
+      "scope": "Same captured-record ID, all positions/modes/repetitions via shared authenticated input artifacts; includes warmup"
+    },
+    "residual-gsm8k_train-final-06": {
+      "source_records": 1926,
+      "modes": 2,
+      "token_occurrences_checked": 1052672,
+      "logical_topk_exact": true,
+      "float32_combining_weights_bitwise_equal": true,
+      "canonical_logical_routes_sha256": "5d7b1b6a32c1d738e4b75b8137624823dc08f7b746f63e52f4d636fa10b8f549",
+      "canonical_float32_weights_sha256": "dc807b9e8e36a093f16fc280cbb03a694efaf8699fd66d5ad5f0e5deba72bcf1",
+      "scope": "Same captured-record ID, all positions/modes/repetitions via shared authenticated input artifacts; includes warmup"
+    },
+    "residual-wildchat-final-08": {
+      "source_records": 5453,
+      "modes": 2,
+      "token_occurrences_checked": 1052672,
+      "logical_topk_exact": true,
+      "float32_combining_weights_bitwise_equal": true,
+      "canonical_logical_routes_sha256": "735a5ab50ef829dc83c32052097f03fc4d140b481d21f4a983bc23185281bfaa",
+      "canonical_float32_weights_sha256": "06a5a04dd64eabefb7ac626284f8691a6837c738c12ee3eb9400e217090c0c39",
+      "scope": "Same captured-record ID, all positions/modes/repetitions via shared authenticated input artifacts; includes warmup"
+    },
+    "residual-wildchat-final-07": {
+      "source_records": 2162,
+      "modes": 2,
+      "token_occurrences_checked": 1052672,
+      "logical_topk_exact": true,
+      "float32_combining_weights_bitwise_equal": true,
+      "canonical_logical_routes_sha256": "f5c50cd210b23047feabacf64dedf02fbb5ed0a4f8af26825b16fb77c864725f",
+      "canonical_float32_weights_sha256": "49424e88cbb2026e6746ca432f9201a312f1bb2cc4a3b9eaeff7e992badbe15b",
+      "scope": "Same captured-record ID, all positions/modes/repetitions via shared authenticated input artifacts; includes warmup"
+    }
+  },
+  "inputs": {
+    "residual-gsm8k_train-final-06-mixed": {
+      "index": "778d11b4fa786ceba59b71085ec95e7ee24752c1dbca677f432cc6d74eb72d31",
+      "routes": "d7f964a21de898dd6799f6e05448debfafb99ed57d05e221fb86598c46f9ee88",
+      "resident": "449284cdae2acce2d61f1e94a32ae8ac0286913cb6853a66035a872226031c13"
+    },
+    "residual-gsm8k_train-final-06-contiguous": {
+      "index": "c1b5e0053f2c347226f49bdd1bdb753d79c13ca17099b397b4eff190b1197f9f",
+      "routes": "9718f5382576cc9ae07b583c6f1e1dee9acbe331b87c40080a8ff0156f5ae72e",
+      "resident": "9f42140ce7ad07c4b4853e46295af71e0dffef9643eed4cf1d3c024c9c47b1de"
+    },
+    "residual-gsm8k_train-final-07-contiguous": {
+      "index": "2190a94a591032cbe758eadb22318a155e913067a15c83ffe5f50eaab97b992e",
+      "routes": "027b0d1d049dbac5bd97bc2137a00d69d0df3f068a53483e67cec18a33a19bec",
+      "resident": "8ca7566489828bdd573c1cf9e72ab560134538eb3730d0d57044d8af2885bfea"
+    },
+    "residual-gsm8k_train-final-07-mixed": {
+      "index": "846799c34cb44c8b872131efcf144629502cda522d2fe86049ac4495c569ae37",
+      "routes": "ca405d72e0b0009e301c74177b3bf7918a97801ee06e10cd6a3fbc71cf89254e",
+      "resident": "d7fc9390208549babd4c41ce84ee27bb04e8921539ee63fd634e4be379a705a9"
+    },
+    "residual-gsm8k_train-final-07-batch_shuffle": {
+      "index": "80a906ce59dfb27de591664def941fb886c176599c265e5c514a251a50f4f2ca",
+      "routes": "5547ccfe904c7b47875349cd9e052f314802407f4378b068b2bc456b8bce7e28",
+      "resident": "600213953e22003ddd41ee84a35ba5706af5ccd120a3bdb901475a0a26a01ab9"
+    },
+    "residual-wildchat-final-07-mixed": {
+      "index": "ae750db0a5a716ec1aae7f885083b0298edb9186d5ee17e2d3cfe19d76110abf",
+      "routes": "4d8f60092233b71db984664048f34e1f06a25bc3de6205dd51067f5ca32c405e",
+      "resident": "108e83008e5ec764e7f694b44e6f9792ac663266ada5ffa3c8f1acd86c84aad1"
+    },
+    "residual-wildchat-final-07-contiguous": {
+      "index": "62606a6129718ccd9b918ce6bf7328ab5c85449db8b7f2bc48e76850381af1cd",
+      "routes": "a8af1d1494f40a4258338936b82a27e282edafa957c9cda6930bae2bcf33d889",
+      "resident": "c6590e769540c1d172e6bcb5f197c1fb78087f6b713f97c286e1f9052805b012"
+    },
+    "residual-wildchat-final-08-contiguous": {
+      "index": "4b63e54ff0541876c8b0bab8dbf5716e111fbe4801045e7bff8a706f44578a98",
+      "routes": "bf6b68633a2ac5f2a47b6798ba8e22eecd9ca9197d61ea400daea16f78d27f3e",
+      "resident": "feeb046a37486d55127c3f95bec63a71687d0f23d2f5741090049b4fe2976aa6"
+    },
+    "residual-wildchat-final-08-mixed": {
+      "index": "f1711476dffaf4c42778b007b48c64424acd183ac2fa2f7a3b79247ea2db1bbd",
+      "routes": "808b9afba7d7e740080bfdf5ad2b852cc77198a0da8bbdf8141ae252a959a08c",
+      "resident": "ac708baa63fa4d97015ab0f092c40146392c9d298b13e0b291971cbbb17e4d19"
+    }
+  },
+  "expert_probe_audit": {
+    "passed": true,
+    "file_sha256": "aec0396888ed49b00ad592725e666a655ff0c8900563bc51542d8af0f2eca37e",
+    "rank_input_arguments_reconstructed": 512,
+    "event_intervals_checked": 512,
+    "scope": "Actual argument/count reconstruction and recorded numerical/state attestations; CUDA event values are not independently rerun"
+  },
+  "structural_work_audit": {
+    "jobs_checked": 221184,
+    "summary_sha256": "958377d1e20fbcd80915cf07f33340e86380b077c84194170bfa011e34633566",
+    "scope": "Structural assignment proxies, not counters or exclusive GPU time"
+  },
+  "auditor_sha256": "321f2b09414f12ba42df2f8e3f7d64078a0ddaa195aa5cea458ca5aa8e3c772d",
+  "helper_sha256": {
+    "residual_stock_primitives.py": "20d18bcbcb1358e2ee462b69b35a262daaf92f9543040a9db581c351de3b38b7",
+    "audit_residual_records.py": "510255bffd1c9c8b052e3a142ba984b7ff7a7b88077bfccd8105ed068598d29c",
+    "audit_residual_development.py": "6a1d0215758301cd295f7b42b08229cea8b84fff09fc5631bff95d3675cad8d1",
+    "audit_residual_diagnostic.py": "1882a92935425f532e5e75213691b1369d44407b8bd33351a4a8030f9a087ab1",
+    "residual_preflight_primitives.py": "c922e94ae4bd94da4d46b8c99432a0786015b5ad80648d27678c592e9f83708a",
+    "sequence_input_primitives.py": "647d208366a4ea67fee7e522e50a3b69ec21aec789e7005bc442c75e2a4ad978"
+  },
+  "limits": [
+    "CPU audit of saved native routes and recorded numerical/full-weight attestations; no independent GPU rerun.",
+    "Four reused content bundles and reused arrivals; technical repetitions are not independent workloads.",
+    "Mixed versus contiguous changes batching and temporal order; batch_shuffle preserves batches.",
+    "Expert intervals are separate instrumented GPU-stream observations, not pure GEMM residence or migration payback.",
+    "No new significance tests or acceptance gate."
+  ]
+}
