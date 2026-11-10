@@ -1,0 +1,1142 @@
+{
+  "kind": "independent_public_off_pilot_audit",
+  "dataset": "wildchat",
+  "claims": "OFF-only functionality and record integrity; no comparative speedup",
+  "checks": [
+    "frozen source and request file hashes",
+    "disjoint stage request IDs and exact order",
+    "actual calendar hash, offsets and horizon",
+    "full prompt counts and generation/context limits",
+    "all monotonic event/chunk timestamp orderings",
+    "response, TTFT, delay and stream-boundary TPOT identities",
+    "completed elapsed and drain boundaries",
+    "declared usage totals and completion status",
+    "public smoke token-ID hashes/counts and diagnostic status"
+  ],
+  "stages": {
+    "smoke": {
+      "raw_file_sha256": "4dd5ae7605063d8b72dce0dc94b87ef71445cf967b1187279d85e9dd20073f73",
+      "completed": 8,
+      "failed": 0,
+      "input_tokens": 11860,
+      "output_tokens": 7012,
+      "input_min": 20,
+      "input_max": 8121,
+      "inputs_over512": 3,
+      "finish_reasons": {
+        "stop": 7,
+        "length": 1
+      },
+      "completed_elapsed_s": 22.885130368,
+      "max_client_send_delay_ms": 5.645635,
+      "max_client_semaphore_wait_ms": 0.009815,
+      "all_checks_passed": true
+    },
+    "calibration": {
+      "raw_file_sha256": "0d90541c8edeaa4f7ad814b390b9a706e9ac37be1c9b1922f1935f39f38f2164",
+      "completed": 32,
+      "failed": 0,
+      "input_tokens": 31098,
+      "output_tokens": 28660,
+      "input_min": 24,
+      "input_max": 5225,
+      "inputs_over512": 12,
+      "finish_reasons": {
+        "stop": 29,
+        "length": 3
+      },
+      "completed_elapsed_s": 24.140651704,
+      "max_client_send_delay_ms": 11.144011,
+      "max_client_semaphore_wait_ms": 0.009504,
+      "all_checks_passed": true
+    },
+    "external": {
+      "raw_file_sha256": "951b51679d5fd3dc561573aa3fc3cba9462ebe01e3b3fc2d179fee5de4088b0c",
+      "completed": 24,
+      "failed": 0,
+      "input_tokens": 16799,
+      "output_tokens": 25683,
+      "input_min": 29,
+      "input_max": 4088,
+      "inputs_over512": 10,
+      "finish_reasons": {
+        "stop": 19,
+        "length": 5
+      },
+      "completed_elapsed_s": 47.308776262,
+      "max_client_send_delay_ms": 6.010368,
+      "max_client_semaphore_wait_ms": 0.011147,
+      "all_checks_passed": true
+    }
+  },
+  "private_token_arrays_rechecked": true,
+  "total_completed": 64,
+  "total_input_tokens": 59757,
+  "total_output_tokens": 61355,
+  "private_smoke_audit": {
+    "private_source_sha256": "848635c035a4bc70d703e452731b44388d0741b8357cf24c17e9a6c3681c7d9a",
+    "private_file_mode": "0o600",
+    "request_count": 8,
+    "exact_prompt_and_output_token_hashes_verified": true,
+    "generated_text_hashes_verified": true,
+    "finite_selected_token_logprobs_checked": 7012,
+    "clamped_or_placeholder_logprobs": 0,
+    "logprob_min": -3.4882712364196777,
+    "logprob_max": 0.0,
+    "stop_and_cap_counts": {
+      "stop": 7,
+      "length": 1
+    },
+    "no_raw_text_or_token_arrays_in_this_report": true,
+    "full_model_numerical_or_committed_state_proof": false,
+    "prompt_tokenization_independently_reconstructed": 8,
+    "decoded_output_token_arrays_match_streamed_text": 8,
+    "decoded_output_mismatches": 0,
+    "tokenizer_source": "pinned local ../full-serving-tokenizer; no network/model execution"
+  },
+  "native_metric_accounting_audit": {
+    "semantics": "Counter sums are used only to check request/token accounting coverage, not to pool latency or infer independent observations. Durations retain exact engine/model labels.",
+    "stages": {
+      "smoke": {
+        "completed_request_histogram_counts": {
+          "vllm:request_queue_time_seconds": 8.0,
+          "vllm:request_inference_time_seconds": 8.0,
+          "vllm:request_prefill_time_seconds": 8.0,
+          "vllm:request_decode_time_seconds": 8.0
+        },
+        "accounting_counters": {
+          "vllm:prefix_cache_hits_total": 0.0,
+          "vllm:prompt_tokens_total": 11860.0,
+          "vllm:request_success_total": 8.0,
+          "vllm:prefix_cache_queries_total": 11860.0,
+          "vllm:generation_tokens_total": 7012.0,
+          "vllm:prompt_tokens_cached_total": 0.0
+        },
+        "counter_coverage_matches_http": true,
+        "native_duration_series": [
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 5.523208528757095e-05,
+            "mean_seconds": 5.523208528757095e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 4.3504172936081886e-05,
+            "mean_seconds": 4.3504172936081886e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 3.981892950832844e-05,
+            "mean_seconds": 3.981892950832844e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.0002349491696804762,
+            "mean_seconds": 0.0002349491696804762
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 4.824204370379448e-05,
+            "mean_seconds": 4.824204370379448e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 5.171680822968483e-05,
+            "mean_seconds": 5.171680822968483e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.00025207502767443657,
+            "mean_seconds": 0.00025207502767443657
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.00011008395813405514,
+            "mean_seconds": 0.00011008395813405514
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 8.415952864801511,
+            "mean_seconds": 8.415952864801511
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 11.901347855804488,
+            "mean_seconds": 11.901347855804488
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.8886729548685253,
+            "mean_seconds": 0.8886729548685253
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 12.998066036961973,
+            "mean_seconds": 12.998066036961973
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 9.151698176050559,
+            "mean_seconds": 9.151698176050559
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 1.7966464799828827,
+            "mean_seconds": 1.7966464799828827
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 9.814675731118768,
+            "mean_seconds": 9.814675731118768
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 18.99745365511626,
+            "mean_seconds": 18.99745365511626
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.20824540499597788,
+            "mean_seconds": 0.20824540499597788
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.03893824084661901,
+            "mean_seconds": 0.03893824084661901
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.04357263399288058,
+            "mean_seconds": 0.04357263399288058
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.064648212864995,
+            "mean_seconds": 0.064648212864995
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.08310564910061657,
+            "mean_seconds": 0.08310564910061657
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.08502020197920501,
+            "mean_seconds": 0.08502020197920501
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.9372442991007119,
+            "mean_seconds": 0.9372442991007119
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.29750281013548374,
+            "mean_seconds": 0.29750281013548374
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 8.207707459805533,
+            "mean_seconds": 8.207707459805533
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 11.862409614957869,
+            "mean_seconds": 11.862409614957869
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 0.8451003208756447,
+            "mean_seconds": 0.8451003208756447
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 12.933417824096978,
+            "mean_seconds": 12.933417824096978
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 9.068592526949942,
+            "mean_seconds": 9.068592526949942
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 1.7116262780036777,
+            "mean_seconds": 1.7116262780036777
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 8.877431432018057,
+            "mean_seconds": 8.877431432018057
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 1,
+            "sum_seconds": 18.699950844980776,
+            "mean_seconds": 18.699950844980776
+          }
+        ]
+      },
+      "calibration": {
+        "completed_request_histogram_counts": {
+          "vllm:request_queue_time_seconds": 32.0,
+          "vllm:request_inference_time_seconds": 32.0,
+          "vllm:request_prefill_time_seconds": 32.0,
+          "vllm:request_decode_time_seconds": 32.0
+        },
+        "accounting_counters": {
+          "vllm:prefix_cache_hits_total": 0.0,
+          "vllm:prompt_tokens_total": 31098.0,
+          "vllm:request_success_total": 32.0,
+          "vllm:prefix_cache_queries_total": 31098.0,
+          "vllm:generation_tokens_total": 28660.0,
+          "vllm:prompt_tokens_cached_total": 0.0
+        },
+        "counter_coverage_matches_http": true,
+        "native_duration_series": [
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00012947292998433113,
+            "mean_seconds": 3.236823249608278e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00025306595489382744,
+            "mean_seconds": 6.326648872345686e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00022577447816729546,
+            "mean_seconds": 5.6443619541823864e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00019667111337184906,
+            "mean_seconds": 4.9167778342962265e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00021085399203002453,
+            "mean_seconds": 5.271349800750613e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.0001657465472817421,
+            "mean_seconds": 4.1436636820435524e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00020886072888970375,
+            "mean_seconds": 5.221518222242594e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 9.841611608862877e-05,
+            "mean_seconds": 2.4604029022157192e-05
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 43.42343849805184,
+            "mean_seconds": 10.85585962451296
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 53.03035199758597,
+            "mean_seconds": 13.257587999396492
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 46.52761801262386,
+            "mean_seconds": 11.631904503155965
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 26.063322770874947,
+            "mean_seconds": 6.515830692718737
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 50.15342132886872,
+            "mean_seconds": 12.53835533221718
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 66.21012219996192,
+            "mean_seconds": 16.55253054999048
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 56.474483649246395,
+            "mean_seconds": 14.118620912311599
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 26.828772782813758,
+            "mean_seconds": 6.707193195703439
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.9790395647287369,
+            "mean_seconds": 0.24475989118218422
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.398993044393137,
+            "mean_seconds": 0.3497482610982843
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.3987864286173135,
+            "mean_seconds": 0.3496966071543284
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.4676584287080914,
+            "mean_seconds": 0.36691460717702284
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.6185169075615704,
+            "mean_seconds": 0.4046292268903926
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.61792324623093,
+            "mean_seconds": 0.4044808115577325
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.6186408740468323,
+            "mean_seconds": 0.4046602185117081
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.619263581931591,
+            "mean_seconds": 0.40481589548289776
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 42.4443989333231,
+            "mean_seconds": 10.611099733330775
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 51.63135895319283,
+            "mean_seconds": 12.907839738298208
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 45.12883158400655,
+            "mean_seconds": 11.282207896001637
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 24.595664342166856,
+            "mean_seconds": 6.148916085541714
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 48.53490442130715,
+            "mean_seconds": 12.133726105326787
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 64.59219895373099,
+            "mean_seconds": 16.148049738432746
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 54.85584277519956,
+            "mean_seconds": 13.71396069379989
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 25.209509200882167,
+            "mean_seconds": 6.302377300220542
+          }
+        ]
+      },
+      "external": {
+        "completed_request_histogram_counts": {
+          "vllm:request_queue_time_seconds": 24.0,
+          "vllm:request_inference_time_seconds": 24.0,
+          "vllm:request_prefill_time_seconds": 24.0,
+          "vllm:request_decode_time_seconds": 24.0
+        },
+        "accounting_counters": {
+          "vllm:prefix_cache_hits_total": 0.0,
+          "vllm:prompt_tokens_total": 16799.0,
+          "vllm:request_success_total": 24.0,
+          "vllm:prefix_cache_queries_total": 16799.0,
+          "vllm:generation_tokens_total": 25683.0,
+          "vllm:prompt_tokens_cached_total": 0.0
+        },
+        "counter_coverage_matches_http": true,
+        "native_duration_series": [
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 0.00018057716079056263,
+            "mean_seconds": 4.514429019764066e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 0.00018835999071598053,
+            "mean_seconds": 6.278666357199351e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 0.0001365325879305601,
+            "mean_seconds": 4.5510862643520035e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 0.00011428911238908768,
+            "mean_seconds": 5.714455619454384e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 0.0001556721981614828,
+            "mean_seconds": 7.78360990807414e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 0.00018500606529414654,
+            "mean_seconds": 6.166868843138218e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 7.203826680779457e-05,
+            "mean_seconds": 3.6019133403897285e-05
+          },
+          {
+            "metric": "vllm:request_queue_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 5,
+            "sum_seconds": 0.00022110878489911556,
+            "mean_seconds": 4.422175697982311e-05
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 40.69470244389959,
+            "mean_seconds": 10.173675610974897
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 37.33050430030562,
+            "mean_seconds": 12.443501433435207
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 42.20785631518811,
+            "mean_seconds": 14.069285438396037
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 20.97853836696595,
+            "mean_seconds": 10.489269183482975
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 27.98908609780483,
+            "mean_seconds": 13.994543048902415
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 19.16537621594034,
+            "mean_seconds": 6.38845873864678
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 38.54750250792131,
+            "mean_seconds": 19.273751253960654
+          },
+          {
+            "metric": "vllm:request_inference_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 5,
+            "sum_seconds": 41.96431027282961,
+            "mean_seconds": 8.39286205456592
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 1.2723170726094395,
+            "mean_seconds": 0.3180792681523599
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 0.31138458591885865,
+            "mean_seconds": 0.10379486197295289
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 0.32935046311467886,
+            "mean_seconds": 0.10978348770489295
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 0.26042455714195967,
+            "mean_seconds": 0.13021227857097983
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 0.22716075065545738,
+            "mean_seconds": 0.11358037532772869
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 0.3511877548880875,
+            "mean_seconds": 0.11706258496269584
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 0.26169687998481095,
+            "mean_seconds": 0.13084843999240547
+          },
+          {
+            "metric": "vllm:request_prefill_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 5,
+            "sum_seconds": 0.4880228789988905,
+            "mean_seconds": 0.0976045757997781
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "0",
+              "model_name": "qwen3-full"
+            },
+            "count": 4,
+            "sum_seconds": 39.42238537129015,
+            "mean_seconds": 9.855596342822537
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "1",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 37.01911971438676,
+            "mean_seconds": 12.339706571462253
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "2",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 41.87850585207343,
+            "mean_seconds": 13.959501950691143
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "3",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 20.71811380982399,
+            "mean_seconds": 10.359056904911995
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "4",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 27.761925347149372,
+            "mean_seconds": 13.880962673574686
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "5",
+              "model_name": "qwen3-full"
+            },
+            "count": 3,
+            "sum_seconds": 18.814188461052254,
+            "mean_seconds": 6.271396153684084
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "6",
+              "model_name": "qwen3-full"
+            },
+            "count": 2,
+            "sum_seconds": 38.2858056279365,
+            "mean_seconds": 19.14290281396825
+          },
+          {
+            "metric": "vllm:request_decode_time_seconds",
+            "labels": {
+              "engine": "7",
+              "model_name": "qwen3-full"
+            },
+            "count": 5,
+            "sum_seconds": 41.47628739383072,
+            "mean_seconds": 8.295257478766143
+          }
+        ]
+      }
+    },
+    "between_stage_counter_changes": {
+      "calibration": [],
+      "external": []
+    }
+  },
+  "report_failure_gate_audit": [
+    {
+      "counterfactual_fixture": "failed_request",
+      "comparison_withheld": true,
+      "successful_subset_not_used": true
+    },
+    {
+      "counterfactual_fixture": "calendar_mismatch",
+      "comparison_withheld": true,
+      "successful_subset_not_used": true
+    },
+    {
+      "counterfactual_fixture": "request_id_mismatch",
+      "comparison_withheld": true,
+      "successful_subset_not_used": true
+    }
+  ],
+  "report_complete_semantics_checked": "complete means controller/request protocol completion, not superiority; actual OFF-only partial report remains false",
+  "raw_speed_claim_allowed_caution": "The older raw summary field is a failure-free eligibility flag only; it does not establish a comparison or independent-run uncertainty. Reporting explicitly sets final_speedup_claim false."
+}

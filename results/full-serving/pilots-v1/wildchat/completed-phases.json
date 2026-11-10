@@ -1,0 +1,811 @@
+[
+  {
+    "arm": "off",
+    "stage": "smoke",
+    "summary": {
+      "client_finished_ns": 1147166679800670,
+      "client_queue_over_1ms_requests": 0,
+      "client_schedule_lag_ms": {
+        "max": 5.591525,
+        "mean": 1.4893376249999999,
+        "n": 8,
+        "p50": 0.8390365,
+        "p95": 4.619902249999998,
+        "p99": 5.39720045
+      },
+      "client_semaphore_wait_ms": {
+        "max": 0.009815,
+        "mean": 0.006136625,
+        "n": 8,
+        "p50": 0.0050925,
+        "p95": 0.00927145,
+        "p99": 0.00970629
+      },
+      "client_send_delay_ms": {
+        "max": 5.645635,
+        "mean": 1.5729228750000002,
+        "n": 8,
+        "p50": 0.9118395,
+        "p95": 4.747695299999999,
+        "p99": 5.466047059999999
+      },
+      "completed_elapsed_ns": 22885130368,
+      "completed_elapsed_s": 22.885130368,
+      "completed_input_tokens": 11860,
+      "completed_output_tokens": 7012,
+      "completed_output_tokens_per_s": 306.3998276280215,
+      "completed_requests": 8,
+      "completed_requests_per_s": 0.3495719653485699,
+      "completion_ns": 1147166672624485,
+      "completion_tokens": {
+        "max": 2048.0,
+        "mean": 876.5,
+        "n": 8,
+        "p50": 862.5,
+        "p95": 1763.7999999999997,
+        "p99": 1991.1599999999999
+      },
+      "content_chunk_counts": {
+        "max": 2041.0,
+        "mean": 870.625,
+        "n": 8,
+        "p50": 855.5,
+        "p95": 1758.8999999999996,
+        "p99": 1984.58
+      },
+      "drain_ns": 19385130368,
+      "drain_s": 19.385130368,
+      "empty_content_completions": 0,
+      "epoch_monotonic_ns": 1147143787494117,
+      "epoch_wall_ns_approx": 1794320715153120197,
+      "error_counts": {},
+      "expected_prompt_tokens_all_requests": {
+        "max": 8121.0,
+        "mean": 1482.5,
+        "n": 8,
+        "p50": 353.5,
+        "p95": 5959.749999999996,
+        "p99": 7688.749999999998
+      },
+      "failed_requests": 0,
+      "finish_reason_counts": {
+        "length": 1,
+        "stop": 7
+      },
+      "last_request_end_ns": 1147166672624485,
+      "offered_horizon_ns": 3500000000,
+      "offered_horizon_s": 3.5,
+      "offered_requests": 8,
+      "output_cap_completions": 1,
+      "prompt_tokens": {
+        "max": 8121.0,
+        "mean": 1482.5,
+        "n": 8,
+        "p50": 353.5,
+        "p95": 5959.749999999996,
+        "p99": 7688.749999999998
+      },
+      "response_from_schedule_ms": {
+        "max": 19385.130368,
+        "mean": 9306.44939575,
+        "n": 8,
+        "p50": 9496.4108985,
+        "p95": 17154.784283249995,
+        "p99": 18939.061151049995
+      },
+      "response_from_send_ms": {
+        "max": 19382.050275,
+        "mean": 9304.876472875,
+        "n": 8,
+        "p50": 9495.499059,
+        "p95": 17152.715469049996,
+        "p99": 18936.183313809997
+      },
+      "server_queue_and_service": "not measured by HTTP client",
+      "speed_claim_allowed": true,
+      "successful_request_metrics_only": true,
+      "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+      "tpot_stream_boundary_estimate_ms": {
+        "max": 27.438083387096775,
+        "mean": 12.353453897761966,
+        "n": 8,
+        "p50": 10.552369581671622,
+        "p95": 21.696620057215817,
+        "p99": 26.289790721120582
+      },
+      "ttft_from_schedule_ms": {
+        "max": 955.885055,
+        "mean": 296.9101385,
+        "n": 8,
+        "p50": 95.0122535,
+        "p95": 861.3414309999998,
+        "p99": 936.9763301999999
+      },
+      "ttft_from_send_ms": {
+        "max": 954.912087,
+        "mean": 295.337215625,
+        "n": 8,
+        "p50": 94.41513800000001,
+        "p95": 859.6309692499999,
+        "p99": 935.85586345
+      },
+      "type": "run_summary",
+      "uncertainty_unit": "independent content/arrival blocks, not requests",
+      "valid": true
+    }
+  },
+  {
+    "arm": "off",
+    "stage": "calibration",
+    "summary": {
+      "client_finished_ns": 1147192116473525,
+      "client_queue_over_1ms_requests": 0,
+      "client_schedule_lag_ms": {
+        "max": 11.130962,
+        "mean": 8.08453759375,
+        "n": 32,
+        "p50": 7.914335,
+        "p95": 10.9017816,
+        "p99": 11.08042518
+      },
+      "client_semaphore_wait_ms": {
+        "max": 0.009504,
+        "mean": 0.0014781875000000001,
+        "n": 32,
+        "p50": 0.001072,
+        "p95": 0.002977249999999998,
+        "p99": 0.008016930000000005
+      },
+      "client_send_delay_ms": {
+        "max": 11.144011,
+        "mean": 8.118875,
+        "n": 32,
+        "p50": 7.936272499999999,
+        "p95": 10.937755099999999,
+        "p99": 11.105172340000001
+      },
+      "completed_elapsed_ns": 24140651704,
+      "completed_elapsed_s": 24.140651704,
+      "completed_input_tokens": 31098,
+      "completed_output_tokens": 28660,
+      "completed_output_tokens_per_s": 1187.2090427140856,
+      "completed_requests": 32,
+      "completed_requests_per_s": 1.325564876721938,
+      "completion_ns": 1147192114557372,
+      "completion_tokens": {
+        "max": 2048.0,
+        "mean": 895.625,
+        "n": 32,
+        "p50": 728.5,
+        "p95": 2048.0,
+        "p99": 2048.0
+      },
+      "content_chunk_counts": {
+        "max": 2048.0,
+        "mean": 892.15625,
+        "n": 32,
+        "p50": 727.5,
+        "p95": 2040.85,
+        "p99": 2048.0
+      },
+      "drain_ns": 24140651704,
+      "drain_s": 24.140651704,
+      "empty_content_completions": 0,
+      "epoch_monotonic_ns": 1147167973905668,
+      "epoch_wall_ns_approx": 1794320739339531708,
+      "error_counts": {},
+      "expected_prompt_tokens_all_requests": {
+        "max": 5225.0,
+        "mean": 971.8125,
+        "n": 32,
+        "p50": 336.5,
+        "p95": 3942.2,
+        "p99": 4833.470000000001
+      },
+      "failed_requests": 0,
+      "finish_reason_counts": {
+        "length": 3,
+        "stop": 29
+      },
+      "last_request_end_ns": 1147192114557372,
+      "offered_horizon_ns": 0,
+      "offered_horizon_s": 0.0,
+      "offered_requests": 32,
+      "output_cap_completions": 3,
+      "prompt_tokens": {
+        "max": 5225.0,
+        "mean": 971.8125,
+        "n": 32,
+        "p50": 336.5,
+        "p95": 3942.2,
+        "p99": 4833.470000000001
+      },
+      "response_from_schedule_ms": {
+        "max": 24140.651704,
+        "mean": 11682.368344,
+        "n": 32,
+        "p50": 10102.976909500001,
+        "p95": 24121.1390413,
+        "p99": 24134.92143522
+      },
+      "response_from_send_ms": {
+        "max": 24131.166243,
+        "mean": 11674.249469,
+        "n": 32,
+        "p50": 10094.421978999999,
+        "p95": 24113.3488515,
+        "p99": 24126.03914649
+      },
+      "server_queue_and_service": "not measured by HTTP client",
+      "speed_claim_allowed": true,
+      "successful_request_metrics_only": true,
+      "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+      "tpot_stream_boundary_estimate_ms": {
+        "max": 19.28236695833333,
+        "mean": 13.20339575546075,
+        "n": 32,
+        "p50": 12.760460621750877,
+        "p95": 15.967451908258257,
+        "p99": 18.573163164222972
+      },
+      "ttft_from_schedule_ms": {
+        "max": 875.275224,
+        "mean": 531.20318478125,
+        "n": 32,
+        "p50": 360.4300835,
+        "p95": 875.1478337,
+        "p99": 875.25832869
+      },
+      "ttft_from_send_ms": {
+        "max": 866.186973,
+        "mean": 523.08430978125,
+        "n": 32,
+        "p50": 353.0067415,
+        "p95": 865.02715985,
+        "p99": 866.16689523
+      },
+      "type": "run_summary",
+      "uncertainty_unit": "independent content/arrival blocks, not requests",
+      "valid": true
+    }
+  },
+  {
+    "arm": "off",
+    "stage": "external",
+    "summary": {
+      "client_finished_ns": 1147240694258571,
+      "client_queue_over_1ms_requests": 0,
+      "client_schedule_lag_ms": {
+        "max": 5.867626,
+        "mean": 0.9610431249999999,
+        "n": 24,
+        "p50": 0.6373785000000001,
+        "p95": 3.0336843999999954,
+        "p99": 5.2905472599999985
+      },
+      "client_semaphore_wait_ms": {
+        "max": 0.011147,
+        "mean": 0.005472375000000001,
+        "n": 24,
+        "p50": 0.005157500000000001,
+        "p95": 0.009917249999999992,
+        "p99": 0.01097887
+      },
+      "client_send_delay_ms": {
+        "max": 6.010368,
+        "mean": 1.0159780833333334,
+        "n": 24,
+        "p50": 0.6817445,
+        "p95": 3.089306299999995,
+        "p99": 5.411715489999999
+      },
+      "completed_elapsed_ns": 47308776262,
+      "completed_elapsed_s": 47.308776262,
+      "completed_input_tokens": 16799,
+      "completed_output_tokens": 25683,
+      "completed_output_tokens_per_s": 542.8802439903618,
+      "completed_requests": 24,
+      "completed_requests_per_s": 0.5073054493543856,
+      "completion_ns": 1147240692637054,
+      "completion_tokens": {
+        "max": 2048.0,
+        "mean": 1070.125,
+        "n": 24,
+        "p50": 1012.0,
+        "p95": 2048.0,
+        "p99": 2048.0
+      },
+      "content_chunk_counts": {
+        "max": 2048.0,
+        "mean": 1064.3333333333333,
+        "n": 24,
+        "p50": 999.0,
+        "p95": 2044.45,
+        "p99": 2047.77
+      },
+      "drain_ns": 17132961632,
+      "drain_s": 17.132961632,
+      "empty_content_completions": 0,
+      "epoch_monotonic_ns": 1147193383860792,
+      "epoch_wall_ns_approx": 1794320764749486831,
+      "error_counts": {},
+      "expected_prompt_tokens_all_requests": {
+        "max": 4088.0,
+        "mean": 699.9583333333334,
+        "n": 24,
+        "p50": 389.5,
+        "p95": 2601.7999999999965,
+        "p99": 3802.3399999999992
+      },
+      "failed_requests": 0,
+      "finish_reason_counts": {
+        "length": 5,
+        "stop": 19
+      },
+      "last_request_end_ns": 1147240692637054,
+      "offered_horizon_ns": 30175814630,
+      "offered_horizon_s": 30.17581463,
+      "offered_requests": 24,
+      "output_cap_completions": 5,
+      "prompt_tokens": {
+        "max": 4088.0,
+        "mean": 699.9583333333334,
+        "n": 24,
+        "p50": 389.5,
+        "p95": 2601.7999999999965,
+        "p99": 3802.3399999999992
+      },
+      "response_from_schedule_ms": {
+        "max": 21767.417848,
+        "mean": 11463.793667,
+        "n": 24,
+        "p50": 11442.1227025,
+        "p95": 21563.1219575,
+        "p99": 21721.68783465
+      },
+      "response_from_send_ms": {
+        "max": 21766.817853,
+        "mean": 11462.777688916665,
+        "n": 24,
+        "p50": 11441.707000999999,
+        "p95": 21562.11242005,
+        "p99": 21720.97719884
+      },
+      "server_queue_and_service": "not measured by HTTP client",
+      "speed_claim_allowed": true,
+      "successful_request_metrics_only": true,
+      "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+      "tpot_stream_boundary_estimate_ms": {
+        "max": 17.800761,
+        "mean": 10.767506435198726,
+        "n": 24,
+        "p50": 10.611749583914737,
+        "p95": 11.477200289539676,
+        "p99": 16.350729649697623
+      },
+      "ttft_from_schedule_ms": {
+        "max": 1132.920173,
+        "mean": 407.63719887499997,
+        "n": 24,
+        "p50": 96.1537615,
+        "p95": 1115.42386205,
+        "p99": 1129.56588911
+      },
+      "ttft_from_send_ms": {
+        "max": 1132.649667,
+        "mean": 406.62122079166664,
+        "n": 24,
+        "p50": 95.90450799999999,
+        "p95": 1114.5008215,
+        "p99": 1129.1373878299999
+      },
+      "type": "run_summary",
+      "uncertainty_unit": "independent content/arrival blocks, not requests",
+      "valid": true
+    }
+  },
+  {
+    "arm": "on",
+    "stage": "smoke",
+    "summary": {
+      "client_finished_ns": 1148088805620244,
+      "client_queue_over_1ms_requests": 0,
+      "client_schedule_lag_ms": {
+        "max": 5.720949,
+        "mean": 1.247851,
+        "n": 8,
+        "p50": 0.691581,
+        "p95": 4.057999249999997,
+        "p99": 5.388359049999998
+      },
+      "client_semaphore_wait_ms": {
+        "max": 0.010666,
+        "mean": 0.00568975,
+        "n": 8,
+        "p50": 0.0051325,
+        "p95": 0.009284899999999999,
+        "p99": 0.01038978
+      },
+      "client_send_delay_ms": {
+        "max": 5.801419,
+        "mean": 1.327134125,
+        "n": 8,
+        "p50": 0.761615,
+        "p95": 4.134182449999997,
+        "p99": 5.467971689999999
+      },
+      "completed_elapsed_ns": 25586268712,
+      "completed_elapsed_s": 25.586268712,
+      "completed_input_tokens": 11860,
+      "completed_output_tokens": 7407,
+      "completed_output_tokens_per_s": 289.4912143452205,
+      "completed_requests": 8,
+      "completed_requests_per_s": 0.31266770821679,
+      "completion_ns": 1148088798194112,
+      "completion_tokens": {
+        "max": 2007.0,
+        "mean": 925.875,
+        "n": 8,
+        "p50": 857.0,
+        "p95": 1911.4499999999998,
+        "p99": 1987.8899999999999
+      },
+      "content_chunk_counts": {
+        "max": 1997.0,
+        "mean": 919.875,
+        "n": 8,
+        "p50": 851.5,
+        "p95": 1904.6,
+        "p99": 1978.52
+      },
+      "drain_ns": 22086268712,
+      "drain_s": 22.086268712,
+      "empty_content_completions": 0,
+      "epoch_monotonic_ns": 1148063211925400,
+      "epoch_wall_ns_approx": 1794321634577551440,
+      "error_counts": {},
+      "expected_prompt_tokens_all_requests": {
+        "max": 8121.0,
+        "mean": 1482.5,
+        "n": 8,
+        "p50": 353.5,
+        "p95": 5959.749999999996,
+        "p99": 7688.749999999998
+      },
+      "failed_requests": 0,
+      "finish_reason_counts": {
+        "stop": 8
+      },
+      "last_request_end_ns": 1148088798194112,
+      "offered_horizon_ns": 3500000000,
+      "offered_horizon_s": 3.5,
+      "offered_requests": 8,
+      "output_cap_completions": 0,
+      "prompt_tokens": {
+        "max": 8121.0,
+        "mean": 1482.5,
+        "n": 8,
+        "p50": 353.5,
+        "p95": 5959.749999999996,
+        "p99": 7688.749999999998
+      },
+      "response_from_schedule_ms": {
+        "max": 22086.268712,
+        "mean": 10943.10858575,
+        "n": 8,
+        "p50": 11176.978431,
+        "p95": 21392.66780575,
+        "p99": 21947.54853075
+      },
+      "response_from_send_ms": {
+        "max": 22085.468618,
+        "mean": 10941.781451625,
+        "n": 8,
+        "p50": 11176.0805105,
+        "p95": 21391.8798984,
+        "p99": 21946.750874079997
+      },
+      "server_queue_and_service": "not measured by HTTP client",
+      "speed_claim_allowed": true,
+      "successful_request_metrics_only": true,
+      "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+      "tpot_stream_boundary_estimate_ms": {
+        "max": 13.137027426229508,
+        "mean": 11.718191670276488,
+        "n": 8,
+        "p50": 11.931265644501766,
+        "p95": 13.104962063793613,
+        "p99": 13.13061435374233
+      },
+      "ttft_from_schedule_ms": {
+        "max": 270.274721,
+        "mean": 136.509413875,
+        "n": 8,
+        "p50": 88.6528815,
+        "p95": 268.2675144,
+        "p99": 269.87327968
+      },
+      "ttft_from_send_ms": {
+        "max": 269.474627,
+        "mean": 135.18227975,
+        "n": 8,
+        "p50": 88.158774,
+        "p95": 267.38419319999997,
+        "p99": 269.05654024
+      },
+      "type": "run_summary",
+      "uncertainty_unit": "independent content/arrival blocks, not requests",
+      "valid": true
+    }
+  },
+  {
+    "arm": "on",
+    "stage": "calibration",
+    "summary": {
+      "client_finished_ns": 1148116831302247,
+      "client_queue_over_1ms_requests": 0,
+      "client_schedule_lag_ms": {
+        "max": 11.214348,
+        "mean": 8.20960703125,
+        "n": 32,
+        "p50": 7.9566795,
+        "p95": 10.9781783,
+        "p99": 11.16218089
+      },
+      "client_semaphore_wait_ms": {
+        "max": 0.010116,
+        "mean": 0.001691625,
+        "n": 32,
+        "p50": 0.0011515,
+        "p95": 0.005060999999999994,
+        "p99": 0.00985157
+      },
+      "client_send_delay_ms": {
+        "max": 11.228288,
+        "mean": 8.24560628125,
+        "n": 32,
+        "p50": 7.9932490000000005,
+        "p95": 11.016172150000001,
+        "p99": 11.188486789999999
+      },
+      "completed_elapsed_ns": 26735421497,
+      "completed_elapsed_s": 26.735421497,
+      "completed_input_tokens": 31098,
+      "completed_output_tokens": 28827,
+      "completed_output_tokens_per_s": 1078.2324865622447,
+      "completed_requests": 32,
+      "completed_requests_per_s": 1.1969139893152887,
+      "completion_ns": 1148116829399793,
+      "completion_tokens": {
+        "max": 2048.0,
+        "mean": 900.84375,
+        "n": 32,
+        "p50": 830.0,
+        "p95": 2019.3999999999999,
+        "p99": 2048.0
+      },
+      "content_chunk_counts": {
+        "max": 2048.0,
+        "mean": 896.9375,
+        "n": 32,
+        "p50": 829.0,
+        "p95": 2013.8999999999999,
+        "p99": 2044.59
+      },
+      "drain_ns": 26735421497,
+      "drain_s": 26.735421497,
+      "empty_content_completions": 0,
+      "epoch_monotonic_ns": 1148090093978296,
+      "epoch_wall_ns_approx": 1794321661459604326,
+      "error_counts": {},
+      "expected_prompt_tokens_all_requests": {
+        "max": 5225.0,
+        "mean": 971.8125,
+        "n": 32,
+        "p50": 336.5,
+        "p95": 3942.2,
+        "p99": 4833.470000000001
+      },
+      "failed_requests": 0,
+      "finish_reason_counts": {
+        "length": 2,
+        "stop": 30
+      },
+      "last_request_end_ns": 1148116829399793,
+      "offered_horizon_ns": 0,
+      "offered_horizon_s": 0.0,
+      "offered_requests": 32,
+      "output_cap_completions": 2,
+      "prompt_tokens": {
+        "max": 5225.0,
+        "mean": 971.8125,
+        "n": 32,
+        "p50": 336.5,
+        "p95": 3942.2,
+        "p99": 4833.470000000001
+      },
+      "response_from_schedule_ms": {
+        "max": 26735.421497,
+        "mean": 12360.441647125,
+        "n": 32,
+        "p50": 11503.26279,
+        "p95": 26465.0974848,
+        "p99": 26729.250119919998
+      },
+      "response_from_send_ms": {
+        "max": 26725.967772,
+        "mean": 12352.19604084375,
+        "n": 32,
+        "p50": 11494.970796,
+        "p95": 26458.00779635,
+        "p99": 26720.58286492
+      },
+      "server_queue_and_service": "not measured by HTTP client",
+      "speed_claim_allowed": true,
+      "successful_request_metrics_only": true,
+      "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+      "tpot_stream_boundary_estimate_ms": {
+        "max": 16.704349121951218,
+        "mean": 13.321877465660606,
+        "n": 32,
+        "p50": 13.014659350854101,
+        "p95": 15.066372893348623,
+        "p99": 16.424845519008727
+      },
+      "ttft_from_schedule_ms": {
+        "max": 900.956773,
+        "mean": 652.40976403125,
+        "n": 32,
+        "p50": 547.083573,
+        "p95": 900.1796764999999,
+        "p99": 900.93783169
+      },
+      "ttft_from_send_ms": {
+        "max": 891.968512,
+        "mean": 644.1641577500001,
+        "n": 32,
+        "p50": 540.0461275,
+        "p95": 890.4314778500001,
+        "p99": 891.53015743
+      },
+      "type": "run_summary",
+      "uncertainty_unit": "independent content/arrival blocks, not requests",
+      "valid": true
+    }
+  },
+  {
+    "arm": "on",
+    "stage": "external",
+    "summary": {
+      "client_finished_ns": 1148166573681554,
+      "client_queue_over_1ms_requests": 0,
+      "client_schedule_lag_ms": {
+        "max": 5.886656,
+        "mean": 0.9164425416666666,
+        "n": 24,
+        "p50": 0.6981925,
+        "p95": 1.4796952999999995,
+        "p99": 4.878961369999999
+      },
+      "client_semaphore_wait_ms": {
+        "max": 0.010826,
+        "mean": 0.0050558750000000005,
+        "n": 24,
+        "p50": 0.0050825,
+        "p95": 0.006539349999999999,
+        "p99": 0.009849419999999998
+      },
+      "client_send_delay_ms": {
+        "max": 6.029008,
+        "mean": 0.970246875,
+        "n": 24,
+        "p50": 0.7479715,
+        "p95": 1.5379058999999995,
+        "p99": 5.002328479999999
+      },
+      "completed_elapsed_ns": 48490528132,
+      "completed_elapsed_s": 48.490528132,
+      "completed_input_tokens": 16799,
+      "completed_output_tokens": 25594,
+      "completed_output_tokens_per_s": 527.8144203818217,
+      "completed_requests": 24,
+      "completed_requests_per_s": 0.4949420211441635,
+      "completion_ns": 1148166572069251,
+      "completion_tokens": {
+        "max": 2048.0,
+        "mean": 1066.4166666666667,
+        "n": 24,
+        "p50": 1028.5,
+        "p95": 2048.0,
+        "p99": 2048.0
+      },
+      "content_chunk_counts": {
+        "max": 2048.0,
+        "mean": 1061.5833333333333,
+        "n": 24,
+        "p50": 1024.5,
+        "p95": 2045.55,
+        "p99": 2047.54
+      },
+      "drain_ns": 18314713502,
+      "drain_s": 18.314713502,
+      "empty_content_completions": 0,
+      "epoch_monotonic_ns": 1148118081541119,
+      "epoch_wall_ns_approx": 1794321689447167139,
+      "error_counts": {},
+      "expected_prompt_tokens_all_requests": {
+        "max": 4088.0,
+        "mean": 699.9583333333334,
+        "n": 24,
+        "p50": 389.5,
+        "p95": 2601.7999999999965,
+        "p99": 3802.3399999999992
+      },
+      "failed_requests": 0,
+      "finish_reason_counts": {
+        "length": 4,
+        "stop": 20
+      },
+      "last_request_end_ns": 1148166572069251,
+      "offered_horizon_ns": 30175814630,
+      "offered_horizon_s": 30.17581463,
+      "offered_requests": 24,
+      "output_cap_completions": 4,
+      "prompt_tokens": {
+        "max": 4088.0,
+        "mean": 699.9583333333334,
+        "n": 24,
+        "p50": 389.5,
+        "p95": 2601.7999999999965,
+        "p99": 3802.3399999999992
+      },
+      "response_from_schedule_ms": {
+        "max": 24192.107002,
+        "mean": 11719.279351333333,
+        "n": 24,
+        "p50": 11382.896662,
+        "p95": 23773.848580499995,
+        "p99": 24168.31054604
+      },
+      "response_from_send_ms": {
+        "max": 24191.30364,
+        "mean": 11718.309104458334,
+        "n": 24,
+        "p50": 11382.064664,
+        "p95": 23773.019927999998,
+        "p99": 24167.519776769997
+      },
+      "server_queue_and_service": "not measured by HTTP client",
+      "speed_claim_allowed": true,
+      "successful_request_metrics_only": true,
+      "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+      "tpot_stream_boundary_estimate_ms": {
+        "max": 17.725202666666668,
+        "mean": 11.101540862778213,
+        "n": 24,
+        "p50": 10.772261357333502,
+        "p95": 11.900384464705287,
+        "p99": 16.385601120613494
+      },
+      "ttft_from_schedule_ms": {
+        "max": 241.732412,
+        "mean": 113.37133516666667,
+        "n": 24,
+        "p50": 90.337151,
+        "p95": 226.14416749999998,
+        "p99": 238.81878419
+      },
+      "ttft_from_send_ms": {
+        "max": 240.740032,
+        "mean": 112.40108829166667,
+        "n": 24,
+        "p50": 89.3134525,
+        "p95": 225.65490164999994,
+        "p99": 237.9517604
+      },
+      "type": "run_summary",
+      "uncertainty_unit": "independent content/arrival blocks, not requests",
+      "valid": true
+    }
+  }
+]

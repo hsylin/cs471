@@ -1,5 +1,21 @@
 # SkewBench
 
+**Eight-GPU full-model dataset pilots are running.** The complete pinned
+Qwen3-30B-A3B model now serves real text and generates replies through all
+48 layers. WildChat, ShareGPT, InstructCoder, NuminaMath-1.5 and a bounded
+LongBench subset have separate 64-request pilots and 64 reserved final
+candidates each. BurstGPT supplies a separate arrival-timing diagnostic with
+explicitly reused ShareGPT content. WildChat completed 64/64 requests in each
+native arm, and ShareGPT is running; this is functional/calibration evidence,
+not a final speedup result.
+The current arms are native vLLM EPLB off/on; the old two-rank resident
+dispatcher is not installed in this new serving path. See the
+[full-model protocol and execution limits](full_serving/plan.md) and
+[source/tokenization admission](results/full-serving/suite-v1/admission.json),
+[completed WildChat pilot report](outputs/full-serving/wildchat-pilot-report.json)
+and [its raw records](results/full-serving/pilots-v1/wildchat).
+Earlier layer-only results below remain separate and unchanged.
+
 **Resident-path repair: much faster than our previous method, still slower than EPLB-off.**
 The controller-free, one-launch dispatcher preserves the previous physical
 assignments while removing inactive recording/planning work. On the same two

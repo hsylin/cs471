@@ -1,10 +1,10 @@
-# Eight-GPU full-model extension — implemented pilot, not yet measured
+# Eight-GPU full-model extension — separate dataset pilots
 
 ## Full-model experiment
 
 ### Status and scope
 
-This is a new full-model experiment, separate from the frozen two-GPU layer experiments. No full-model throughput or latency result exists yet. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
+This is a new full-model experiment, separate from the frozen two-GPU layer experiments. The WildChat pilot completed 64/64 requests in each native EPLB-off/on arm on 2026-11-10; ShareGPT is running and the remaining separate datasets are queued in the same suite. These are functional/calibration measurements, not final comparative evidence. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
 
 Use the existing **Qwen/Qwen3-30B-A3B**, revision `ad44e777bcd18fa416d9da3bd8f70d33ebb85d39`, and vLLM `0.31.0+cu129`, source commit `db9527a46873454610df6dbedf79a36d6bf1a7f6`. The model has 48 layers, 128 routed experts per layer, top-8 routing, and a 40,960-token configured context. The complete checkpoint has 16 weight shards; downloading missing shards is preparation, not proof of a successful full-model load. Verify the index, all shard files, revision and checksums before final measurements. [Pinned model configuration](https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/config.json)
 
@@ -72,12 +72,28 @@ The source and checkpoint preflight hashes all 16 weight shards and checks every
 
 Execution uses `wait_and_run.sh RUN_ID`, tied to allocation 4882284. It waits at most 24 hours for that allocation, then starts a four-CPU, zero-GPU controller step and two 56-CPU/four-GPU serving tasks. It does not submit another allocation, switch accounts, cancel the holding reservation, shorten EPLB windows, or install the layer-only dispatcher. All admitted requests are drained, including failures; missing usage or tokenization mismatches invalidate a run. Server shutdown uses the actual recorded Slurm step ID so native SIGTERM handlers can run. Native commit consistency remains a separate diagnostic; process exit or asynchronous drain is not counted as a commit.
 
-The pilot writes `status.json`, `completed-phases.json`, per-arm raw request JSONL, server logs, metric snapshots, launch/source/checkpoint/hardware records and a smoke-output hash comparison under the server's `full-serving/RUN_ID/results/`. A failure stops further execution and preserves logs. Successful pilot completion still requires inspecting output/logprob differences, native decision/commit opportunities, backend behavior and capacity before freezing the independent final comparison. No end-to-end speedup has been measured yet.
+The pilot writes `status.json`, `completed-phases.json`, per-arm raw request JSONL, server logs, metric snapshots, launch/source/checkpoint/hardware records and a smoke-output hash comparison under the server's `full-serving/RUN_ID/results/`. A failure stops further execution and preserves logs. Successful pilot completion still requires inspecting output/logprob differences, native decision/commit opportunities, backend behavior and capacity before freezing the independent final comparison. These pilots do not establish an end-to-end speedup.
 
 
 ### Separate named datasets
 
 The extension keeps **WildChat, ShareGPT, InstructCoder, NuminaMath-1.5 and LongBench as five separate content workloads**, each with its own pilot and reserved final file. It does not pool their response times into a single headline speedup. The initial suite has 64 pilot and 64 final candidates per source (320 of each); the other 320 previously prepared WildChat final requests remain reserved. All final candidates remain unmeasured until the pilot supports a frozen allocation and duration. Source and license evidence live under `results/full-serving/suite-sources/`; `suite-v1/suite-manifest.json` records selection and hashes.
+
+The separate suite is launched by `run_suite_allocation.sh RUN_ID`, using the
+already running allocation. It starts fresh native off/on servers for each
+source and then a separately labelled ShareGPT/BurstGPT timing diagnostic.
+`run_suite.py` checks the admitted payload hashes before the first server starts;
+`report_pilots.py` keeps every dataset and stage separate and withholds paired
+ratios for missing, failed or mismatched requests. The executed source revision
+is recorded in each cohort, independent of subsequent documentation updates.
+
+The completed WildChat pilot is archived under `results/full-serving/pilots-v1/`;
+its manifest hashes all 56 raw cohort files. Recompute its separate-stage report
+with `python -m full_serving.report_pilots results/full-serving/pilots-v1/wildchat --output /tmp/wildchat-pilot-report.json`.
+Both arms completed 64 requests without HTTP failures. Native logs contain three
+ordinary asynchronous launch entries, but no successful-commit attestation.
+Generated reply lengths differ across arms; these observations are descriptive
+and do not satisfy the final numerical, repeated-block or speedup criteria.
 
 ShareGPT uses the release recognized by the pinned vLLM benchmark documentation. Its upstream creators filtered and segmented conversations; our inputs retain complete released prefixes, not claimed original unsegmented sessions. We keep at most one released segment per underlying conversation and exclude its recorded target reply. The selected 128 prompts range from 22 to 5,682 tokens. [Official vLLM benchmark data](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/docs/benchmarking/cli.md) · [Released ShareGPT dataset](https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered)
 
