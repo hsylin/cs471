@@ -1,0 +1,1211 @@
+{
+  "acceptance": {
+    "acceptable_regression_percent": 2,
+    "correctness_required": [
+      "all admitted requests drain",
+      "no missing/duplicated logical tokens",
+      "routing and combining-weight preservation",
+      "declared numerical tolerances",
+      "rank agreement",
+      "resident copy equivalence",
+      "committed-state consistency evidence with explicit native observability limits"
+    ],
+    "decision_rule": "Report point effects and intervals per source: useful point gain is ratio <= 0.95, material point regression is ratio >= 1.02. Label uncertainty explicitly; no automatic promotion or confirmatory pass with four blocks.",
+    "guard_endpoints": [
+      "p95_response",
+      "completed_elapsed"
+    ],
+    "numerical_scope": "The separate pilot admission verifies complete BF16 duplicate weights and bindings for all48 MoE layers, exact logical/physical routing and token conservation in diagnostic cases, and native/FP32 expert arithmetic at layers0,23,47 under the previously fixed atol0.02/rtol0.03. It does not certify full-model logits, exact generated texts, semantic answer quality, or native asynchronous committed weights. Generated-token and output-length differences remain explicit in all comparisons; no post-pilot tolerance relaxation is permitted.",
+    "useful_gain_percent": 5
+  },
+  "analysis": {
+    "arrival_normalization_caveat": "Each external source block is uniformly time-rescaled to that dataset's previously fixed OFF-based pilot rate. OFF, ON and custom share the resulting exact absolute calendar. Scaling preserves relative timing and timestamp ties but changes the original production rate; calibration is not a sustainable-capacity estimate, and these results do not establish behavior at other loads or authentic joint content/arrival distributions.",
+    "cross_source_dependence": "Calendar dates and patterns are shared across sources; never pool sources or treat the 20 blocks as independent evidence for one universal effect.",
+    "estimand": "Per-source equal-block geometric mean of paired treatment/baseline mean-response ratios; keep all four block ratios visible.",
+    "experimental_unit": "One disjoint 16-conversation/document content block paired with one distinct Azure calendar-day block; four units per source.",
+    "formal_hypothesis_tests": false,
+    "generation_caveat": "EOS-respecting generation can diverge and alter work. Report output lengths/hashes and numerical diagnostics; do not call equal-input timing an equal-generated-work experiment.",
+    "metrics": [
+      "mean_response",
+      "p95_response_with_n16_warning",
+      "TTFT_from_schedule_and_send",
+      "completed_elapsed_including_horizon_and_drain",
+      "drain",
+      "requests_per_second",
+      "generated_tokens_per_second",
+      "input_and_generated_token_counts",
+      "finish_reasons",
+      "native_queue_and_RUNNING_histograms",
+      "preemption_and_cache_hits"
+    ],
+    "multiplicity": "Pointwise intervals have no family-wise coverage; no formal superiority claim. Any change to formal testing requires pre-final specification, including Holm correction across the five primary source tests.",
+    "pilot_precision_limit": "One completed pilot content/arrival block per source cannot estimate between-block variance or power. Four final blocks do not justify a confirmatory 5% gain or 2% regression guarantee.",
+    "primary_contrast": "custom/off",
+    "primary_endpoint": "mean full-response latency from scheduled arrival",
+    "secondary_contrast": "custom/on",
+    "timing_boundary": "Primary request and replay timing charge online decision/feature/communication overhead and complete output drain. Startup, pilot warmup and shutdown are separately reported, excluded from warmed replay latency; no claim about deployment-total time.",
+    "uncertainty": "Pointwise 95% Student-t interval on four paired log ratios (df 3), explicitly exploratory and assumption-dependent; also publish every raw block ratio. Do not bootstrap requests or count three arms as independent samples."
+  },
+  "custom": {
+    "anticipated_control": "No further recording/rebalance after resident initialization.",
+    "anticipated_dispatch": "One-home resident assignment using globally agreed routing; per-pair active-copy cap plus longest-processing-time assignment. Exact implementation and correctness evidence await integration admission.",
+    "anticipated_physical_experts": 160,
+    "anticipated_physical_map_formula": "For rank r in 0..7: [16*r + i for i in 0..15] followed by [16*(r XOR 1) + i for i in 0..3].",
+    "anticipated_placement": "Each EP rank r owns its 16 logical experts plus the first 4 experts of its paired neighbor (r XOR 1); four independent rank pairs, 160 physical slots and 32 redundant copies total.",
+    "anticipated_redundant_experts": 32,
+    "bootstrap_path": "full_serving/bootstrap",
+    "config_file": "implementation/config.json",
+    "config_sha256": "4de70471ea35679dd8f3d940fcfa90dac898f29c859ba5b7ad4e0a423f5eef2d",
+    "contrast_scope": "Whole method: paired static placement plus resident dispatch plus disabled recurring control. Native ON retains its default initialization and async EPLB. Results cannot isolate dispatcher-only causality.",
+    "entrypoint": "full_serving.custom_entrypoint",
+    "mode": "resident_v1",
+    "placement_selection_basis": "Static structural CPU feasibility, independent of final inputs or outcomes; uniform activation admits 16 active physical experts per rank within each pair.",
+    "source_manifest_file": "implementation/source_manifest.json",
+    "source_manifest_sha256": "51f650a85016d1efdf4a1fead1f670337ef36f01153cfed5280c004b0a118f3c"
+  },
+  "datasets": [
+    {
+      "arm_position_counts": {
+        "custom": [
+          2,
+          1,
+          1
+        ],
+        "off": [
+          1,
+          2,
+          1
+        ],
+        "on": [
+          1,
+          1,
+          2
+        ]
+      },
+      "arrival_rate_requests_per_s": 0.7953389260331627,
+      "blocks": [
+        {
+          "arm_order": [
+            "custom",
+            "off",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "wildchat-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/wildchat-final-00.json",
+          "calendar_sha256": "c39d455da88d54de6b90db30ee78873dbb69453dcaac7038c3f37220b0e1c391",
+          "content_block_id": "wildchat-final-00",
+          "request_count": 16,
+          "request_ids": [
+            "wc-9256eda47f2ae38a2017e6d5d8e682b9-0",
+            "wc-4d6a2a0bfc4c0ea74b63f8e556c71633-0",
+            "wc-07a31bba606938ef5701e6410018147e-0",
+            "wc-45918471364b7d8b9451ae53e88f6ff5-0",
+            "wc-5cd031cb565634ca46a010334afd30c5-0",
+            "wc-c13b9e272e46630563125fbda05b6b1d-4",
+            "wc-dc0b04abbae941c7d103304668508ec2-2",
+            "wc-6d87b525763ba127f93b7c051f909dc3-4",
+            "wc-2b7cc18c4542e7bf902eb2334e523635-4",
+            "wc-96008a7cff6a377712517be13a7d9658-0",
+            "wc-150552cea6812f3a77960f04a028a11a-0",
+            "wc-adf8a6d66d50b7f0fcc5187927c96af4-0",
+            "wc-17efcc57a273b46dbcec7a524797b323-0",
+            "wc-e71825dfe024d4cfad3f07648d62f6b5-0",
+            "wc-0b59f82e01dd31ea9acee3e015de2c6b-2",
+            "wc-e4143a9a093e9d9ee9002b1d6e6dfc8c-0"
+          ],
+          "request_ids_sha256": "36308e5e46f5243da423dad5dbbd614c73813e9d2738957e2b41fd513bface66",
+          "requests_file": "wildchat/final-block-00.jsonl",
+          "requests_sha256": "430d610fba50a3151af3bc91a2f2178f153087351de36ab94e26341658af3dc1",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "c4e0c95313643b72ed1d4ba4c915f50d52f8a3be67e6e951eace7dda31fb1c24",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "custom",
+            "on",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-16-final-rows-00-15",
+          "block_id": "wildchat-final-01",
+          "calendar_date_cluster": "2024-05-16",
+          "calendar_file": "calendars/wildchat-final-01.json",
+          "calendar_sha256": "b48fc58442f478451bac44025d8bb25933a25844d7034d10de5ff00bb73452e4",
+          "content_block_id": "wildchat-final-01",
+          "request_count": 16,
+          "request_ids": [
+            "wc-8378c0bce6857b628f61a2991c9ee3b8-0",
+            "wc-9731c12564cfb059c0693be8a9607df8-2",
+            "wc-33f5d7abc55838d9971f317164f53efc-2",
+            "wc-bf1b46f3e5e7c7c427c5ccb08befbe13-2",
+            "wc-535fe466e07588f13050885f66e7a9fd-0",
+            "wc-54bfa98a313a20bf89ab6572084b467a-0",
+            "wc-1651f81a199187cdfd82b6a274250fb4-2",
+            "wc-345d239025c232ea6db3cad5f40e85b3-0",
+            "wc-67f5d2ba0836f769c64f8e494ac05f3f-4",
+            "wc-72720fcbb20ac2a857f2a69edef33748-2",
+            "wc-b6740c4dc5c34b27d45bd37bcad19fca-0",
+            "wc-2e26f895b79593ead23d7c03e5ec00f5-0",
+            "wc-ace8f2bf3b103a5e14ea8be2afab480f-18",
+            "wc-936731320a6a214c987dcb3e46a51e3f-0",
+            "wc-9104f70ae9c4728106a4d60e305bd178-2",
+            "wc-3ae4705b69e77fb623ddcec1c723e984-0"
+          ],
+          "request_ids_sha256": "24959e77c7a5fcd60e85b9fd2af16e9cbd142adda80b00a27082131ce46e93b1",
+          "requests_file": "wildchat/final-block-01.jsonl",
+          "requests_sha256": "6305cb5c4694f1500c5c9d80cd25f440489c04b3793697c2b0502327ca89f557",
+          "source_final_index_range_half_open": [
+            16,
+            32
+          ],
+          "source_group_ids_sha256": "743f553806145254ecaadb94ae1ca02b49311510629801542582c174671f296e",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "off",
+            "custom",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-11-final-rows-00-15",
+          "block_id": "wildchat-final-02",
+          "calendar_date_cluster": "2024-05-11",
+          "calendar_file": "calendars/wildchat-final-02.json",
+          "calendar_sha256": "978397551fb4e626f60e875f611643ec982f74eb2543ce8ca808e0390e3cc2d6",
+          "content_block_id": "wildchat-final-02",
+          "request_count": 16,
+          "request_ids": [
+            "wc-711551d1b589f15626543ee884acab13-0",
+            "wc-cc2b19280064db882adf63d28b1b915e-0",
+            "wc-8d4b81ccd3b334d6c3ffc125e1e5fea7-40",
+            "wc-ceee5693cc13a581232393082f91bf33-4",
+            "wc-482065ca64645a91b6bd5641147aad32-0",
+            "wc-ecaeb852a614d93f72910c50e853868a-0",
+            "wc-88ad4874e8fbdc4a5e04376152176a3b-32",
+            "wc-0dccbae45e8954d127f85ba332962c34-0",
+            "wc-64bc7b0ce7e5d491d76f3d7605dbbe54-0",
+            "wc-f8e7b24a04ea22dd542354b4c435a601-0",
+            "wc-6f4340bf29b387baa816180095a3c94b-0",
+            "wc-56bb6fdd3b31be52019f0e3fe59ebfd3-0",
+            "wc-303befffcd86c96d63b14e39acf9bbe4-2",
+            "wc-2a861fea09223fdf5fb10e6772a2a631-0",
+            "wc-5eaadcfcd15575d7897bd7e3b2120fb0-0",
+            "wc-d9632e5fc0d64b0d5504456ca27b9f53-0"
+          ],
+          "request_ids_sha256": "7f8a49cee6532b3016face497db1040ceb1c42192788d9e524857d80c3fef56d",
+          "requests_file": "wildchat/final-block-02.jsonl",
+          "requests_sha256": "98e87613733842bdb3c6f719f41808ea89a739bebfc652266705f81c3c1b14c6",
+          "source_final_index_range_half_open": [
+            32,
+            48
+          ],
+          "source_group_ids_sha256": "2565d8cfea5161b842742b3e2a709f34e5581d592189262cedb8e155f2c02147",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "on",
+            "off",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-17-final-rows-00-15",
+          "block_id": "wildchat-final-03",
+          "calendar_date_cluster": "2024-05-17",
+          "calendar_file": "calendars/wildchat-final-03.json",
+          "calendar_sha256": "dc7b903651632ec8e7708cfb89075c67bf29e24f5b71420a2562eb8ce7ecbfe8",
+          "content_block_id": "wildchat-final-03",
+          "request_count": 16,
+          "request_ids": [
+            "wc-beb3dc4d84c6c88636333908a2014ef9-2",
+            "wc-6dc9139e3d35687829a305bcd3a1b5ea-2",
+            "wc-8173aeae68882d5237626a7c78da906a-2",
+            "wc-7252a556cff7701ce8e64e80c6606350-0",
+            "wc-7c66ee13fb1877db8030c91a1d16f17d-0",
+            "wc-ebb6a83b8cd4f53a5ee3f2c43dec6dec-0",
+            "wc-26c6d41139e511cf19bde7af445da92d-6",
+            "wc-f437b9f88520f725194b0f8010b43b1d-0",
+            "wc-6639583db1c5659a44ad246f15497abb-0",
+            "wc-8f77b5a0b56eec21f241f98fb79690bc-2",
+            "wc-5d5a9e1c9e9cba863689c18824608a60-4",
+            "wc-ea8a940062814588c3fadcd446930863-0",
+            "wc-7fb72ec7e4c2834c4c35bcded1947bbf-6",
+            "wc-3a02dc30190e94c2605332a61c14490e-0",
+            "wc-223af56efa4908d77c7fa593ce1ad57a-0",
+            "wc-cdeb5a0a7bd89c028ead243d1aaa6d2b-0"
+          ],
+          "request_ids_sha256": "183f3083ed9ba79dc0c978b3ab6e9787aeaca50881523f80b3945810e1234db9",
+          "requests_file": "wildchat/final-block-03.jsonl",
+          "requests_sha256": "e0ac94f2511683e0253b07ed346aebc99ec293973b4a5dcb75fcd76f42f9f109",
+          "source_final_index_range_half_open": [
+            48,
+            64
+          ],
+          "source_group_ids_sha256": "36d404862211fde5c97b604277812532615d9819e8c7baf583ce94fdee4fedb3",
+          "split": "final"
+        }
+      ],
+      "dataset": "wildchat",
+      "pilot_calendar_file": "pilot-calendars/wildchat.json",
+      "pilot_calendar_sha256": "ca86195f9ef1ba2a8851c6ccee73381308387298579e8569ed773ae3ae9d16a2",
+      "reserved_source_final_file_sha256": "bc7d8da86751dd843b9ae70dd0172c0de85ad07d6c9b24a87e3b401b362b6978",
+      "source_group_unit": "conversation_id",
+      "source_public_manifest_sha256": "682968a681c304670db81a5f87a3b74586067d32a663568b3352e6ee9c5a0558",
+      "warmup": {
+        "request_count": 8,
+        "request_ids": [
+          "wc-b620d0fe4dbc5cb5167631fa381acc2b-0",
+          "wc-e59b6eb6d2e60fb0475b05ff341007bc-0",
+          "wc-8e9884d5742709c2e7b4a2c64c222cdd-2",
+          "wc-d25c731b015e3c3ffc17ec44cb082fdc-0",
+          "wc-44348860a81c930f71c8e2dcd9268b21-2",
+          "wc-8962e79ab8b7e2e22e65ac4d2937ceda-12",
+          "wc-d7e6471ce7dcb8d58c654b370b49228f-0",
+          "wc-cc5794a725f5de2e81616e4ee902504a-10"
+        ],
+        "requests_file": "wildchat/warmup.jsonl",
+        "requests_sha256": "4c7b2a904bdcbbfeb51f2ef94d9a5f11d5a62f78f297eaa3206d57570f149a4d",
+        "split": "pilot"
+      }
+    },
+    {
+      "arm_position_counts": {
+        "custom": [
+          1,
+          2,
+          1
+        ],
+        "off": [
+          1,
+          1,
+          2
+        ],
+        "on": [
+          2,
+          1,
+          1
+        ]
+      },
+      "arrival_rate_requests_per_s": 0.7767551246091046,
+      "blocks": [
+        {
+          "arm_order": [
+            "off",
+            "custom",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "sharegpt-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/sharegpt-final-00.json",
+          "calendar_sha256": "35a3c6a1445a08e8da6b03c41736b74530994e93fe510f4f323183a5e55d7899",
+          "content_block_id": "sharegpt-final-00",
+          "request_count": 16,
+          "request_ids": [
+            "sharegpt:ylo5bXc_27:44728",
+            "sharegpt:6HDMxUB_0:10783",
+            "sharegpt:3mu0hmb_0:74893",
+            "sharegpt:Mpic8gv_33:12347",
+            "sharegpt:Cy1ki4f_0:77203",
+            "sharegpt:dEG6bxc_17:79750",
+            "sharegpt:uUmnLet_17:51137",
+            "sharegpt:ZNEat6k_163:59456",
+            "sharegpt:MHdjCwg_55:63303",
+            "sharegpt:O3FeoHQ_37:28608",
+            "sharegpt:pBVh40k_17:61874",
+            "sharegpt:HzgDDoL_0:18727",
+            "sharegpt:wLMrVR9_0:65417",
+            "sharegpt:0GQHxil_0:14163",
+            "sharegpt:aTjpTbO_0:8577",
+            "sharegpt:gEc9lNJ_43:43852"
+          ],
+          "request_ids_sha256": "c49fa314b7def1abf640e5d5f96b774dec28b429f8af234b79cbad616e171479",
+          "requests_file": "sharegpt/final-block-00.jsonl",
+          "requests_sha256": "5a19404694d054f9746952b5ac939a29f1b1f027e65da20c4aae0cc184a18f71",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "99bba86434f98de93cb56e56e364576d64c9ee435ae0449874273387c1f153e4",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "custom",
+            "on",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-16-final-rows-00-15",
+          "block_id": "sharegpt-final-01",
+          "calendar_date_cluster": "2024-05-16",
+          "calendar_file": "calendars/sharegpt-final-01.json",
+          "calendar_sha256": "19cc9e4fb867ec5c175fd579a72ff9f095cbc9f0cffbd26a635d0fb7dd12a0e6",
+          "content_block_id": "sharegpt-final-01",
+          "request_count": 16,
+          "request_ids": [
+            "sharegpt:PDEjkQd_0:60396",
+            "sharegpt:5LMCylO_21:78751",
+            "sharegpt:llNm7SH_0:68491",
+            "sharegpt:UUFCRmF_29:66570",
+            "sharegpt:2CKVlKw_17:55451",
+            "sharegpt:o90pJyE_0:53465",
+            "sharegpt:Khywq0h_0:12157",
+            "sharegpt:Dp2Y4pl_0:70240",
+            "sharegpt:EAjlUH2_0:51349",
+            "sharegpt:22nkgIs_2:22745",
+            "sharegpt:cgiGsMx_64:10350",
+            "sharegpt:Usa5jE0_9:68243",
+            "sharegpt:iPApSt2_0:67654",
+            "sharegpt:jGKq34x_31:7731",
+            "sharegpt:wTUT28e_7:88351",
+            "sharegpt:VUnrSaI_0:65701"
+          ],
+          "request_ids_sha256": "7f7c7d5b8962a9b4867a89b38e3c957e17015338b558983398c08818904840e2",
+          "requests_file": "sharegpt/final-block-01.jsonl",
+          "requests_sha256": "e5f3ac95df6557d07db32d0915905d493c56d05480393c6fc63bd7d45d5359ba",
+          "source_final_index_range_half_open": [
+            16,
+            32
+          ],
+          "source_group_ids_sha256": "d48cdd926183d111bd26b87e1715d551c8f8875f11035d5abcb62224b8b559ff",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "on",
+            "off",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-11-final-rows-00-15",
+          "block_id": "sharegpt-final-02",
+          "calendar_date_cluster": "2024-05-11",
+          "calendar_file": "calendars/sharegpt-final-02.json",
+          "calendar_sha256": "a6ff432f51d8fc7f0c91547c891e59ac5fa73486540888cc382ffed301e2b25f",
+          "content_block_id": "sharegpt-final-02",
+          "request_count": 16,
+          "request_ids": [
+            "sharegpt:rRp4184_0:12778",
+            "sharegpt:xcd9nky_19:52951",
+            "sharegpt:1DYmuLq_19:36434",
+            "sharegpt:51BJWyu_0:42434",
+            "sharegpt:GGZMs1q_5:44553",
+            "sharegpt:vq6IyNe_0:10592",
+            "sharegpt:mhhxM0Y_0:28838",
+            "sharegpt:281mQX4_0:62404",
+            "sharegpt:77kpCO8_5:32292",
+            "sharegpt:9rtFihH_0:71452",
+            "sharegpt:8zsFRKh_27:11634",
+            "sharegpt:pF3R6Vd_21:52486",
+            "sharegpt:2frqvHA_7:21933",
+            "sharegpt:xmBg0il_0:60208",
+            "sharegpt:TU4Eq7G_0:17393",
+            "sharegpt:1nuLH2u_5:40695"
+          ],
+          "request_ids_sha256": "fac5da6043dd2be04ef49b634ce45020c5d660524c5f23f86ca1413ccbf21608",
+          "requests_file": "sharegpt/final-block-02.jsonl",
+          "requests_sha256": "9abaac788bc1176104ca4747c1da1a9b59c0c8e1afc1e8c2bf6d80d43ace15f6",
+          "source_final_index_range_half_open": [
+            32,
+            48
+          ],
+          "source_group_ids_sha256": "257fa1e290930399c861ef7c39181ce23946308d2adb2327856517d29270bc64",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "on",
+            "custom",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-17-final-rows-00-15",
+          "block_id": "sharegpt-final-03",
+          "calendar_date_cluster": "2024-05-17",
+          "calendar_file": "calendars/sharegpt-final-03.json",
+          "calendar_sha256": "b739071b69053368dc706f5042334572cb2f1f538978712e263b607a0cb0e9b9",
+          "content_block_id": "sharegpt-final-03",
+          "request_count": 16,
+          "request_ids": [
+            "sharegpt:JRQtEcd_0:3081",
+            "sharegpt:munCHGC_0:48377",
+            "sharegpt:0fGHEL9_0:65756",
+            "sharegpt:dRP5iXr_19:71703",
+            "sharegpt:uh5Sbla_11:48262",
+            "sharegpt:l2PDaGT_0:41123",
+            "sharegpt:Zegdf65_133:12200",
+            "sharegpt:9jMBTkl_0:35730",
+            "sharegpt:KzDwaf1_7:89353",
+            "sharegpt:jpTNcFF_0:10119",
+            "sharegpt:3fjWnZq_231:33238",
+            "sharegpt:b0eoDGG_0:85488",
+            "sharegpt:t40ODRS_0:68580",
+            "sharegpt:K05FvBo_0:7150",
+            "sharegpt:qVwYlVm_0:48169",
+            "sharegpt:yqkUABL_0:69065"
+          ],
+          "request_ids_sha256": "ed6f76255d953f95d71b6d316e81ac492690e1c319da1235f809600289edee57",
+          "requests_file": "sharegpt/final-block-03.jsonl",
+          "requests_sha256": "555e0a301f7edb61d36932d28c3cd8fd4de19e1cb4522ce1c5e2a7773196e132",
+          "source_final_index_range_half_open": [
+            48,
+            64
+          ],
+          "source_group_ids_sha256": "7d899511225cbe8a525734f98f68f93d262488c0797063c5ef5f5ed7f9e3c837",
+          "split": "final"
+        }
+      ],
+      "dataset": "sharegpt",
+      "pilot_calendar_file": "pilot-calendars/sharegpt.json",
+      "pilot_calendar_sha256": "9308781121b8d0e3587d9f25ae1591419c27362ca68f5c943e8c3f1476e7c157",
+      "reserved_source_final_file_sha256": "5ec5fe69671bf7f7b9af8b180559641078622ebdf8fc3bccfa17b456950a9811",
+      "source_group_unit": "group_id",
+      "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+      "warmup": {
+        "request_count": 8,
+        "request_ids": [
+          "sharegpt:cc1rn8A_0:91792",
+          "sharegpt:D94e4DZ_111:93646",
+          "sharegpt:K2Gj7sJ_0:66057",
+          "sharegpt:8Ao0B03_11:68393",
+          "sharegpt:oLcHV4L_23:79883",
+          "sharegpt:T4PzkKo_43:55207",
+          "sharegpt:cLTmFGX_195:59104",
+          "sharegpt:aaTQJBE_22:171"
+        ],
+        "requests_file": "sharegpt/warmup.jsonl",
+        "requests_sha256": "57cb90590b1f4e2b96c8fa8637529c2e4356727239cb2ba884d110150d2e9446",
+        "split": "pilot"
+      }
+    },
+    {
+      "arm_position_counts": {
+        "custom": [
+          1,
+          1,
+          2
+        ],
+        "off": [
+          1,
+          2,
+          1
+        ],
+        "on": [
+          2,
+          1,
+          1
+        ]
+      },
+      "arrival_rate_requests_per_s": 1.7020169044457236,
+      "blocks": [
+        {
+          "arm_order": [
+            "on",
+            "off",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "instructcoder-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/instructcoder-final-00.json",
+          "calendar_sha256": "4c80d68b80248a9db1b0eb36b712f7ace979e5a444b4bd61ce0af566dd28ccdc",
+          "content_block_id": "instructcoder-final-00",
+          "request_count": 16,
+          "request_ids": [
+            "instructcoder:train.json:45595",
+            "instructcoder:train.json:89503",
+            "instructcoder:train.json:40540",
+            "instructcoder:train.json:25780",
+            "instructcoder:train.json:90541",
+            "instructcoder:train.json:105378",
+            "instructcoder:train.json:50282",
+            "instructcoder:train.json:77081",
+            "instructcoder:train.json:15068",
+            "instructcoder:train.json:85881",
+            "instructcoder:train.json:40918",
+            "instructcoder:train.json:60415",
+            "instructcoder:train.json:70503",
+            "instructcoder:train.json:22677",
+            "instructcoder:train.json:23964",
+            "instructcoder:train.json:52978"
+          ],
+          "request_ids_sha256": "c2ff9064020b13959fd9a9a351dc1fb47881f6c7dbb1f09d7b21369696340c74",
+          "requests_file": "instructcoder/final-block-00.jsonl",
+          "requests_sha256": "caf35f29a02d356d18e5820e8795a3fcb99a168933fd19619beb640a3c5544c7",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "f4e87e0db5dfc302f79c44b9fddc65d4f5d9bb09726cd563bdb52115b8a3adde",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "on",
+            "custom",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-16-final-rows-00-15",
+          "block_id": "instructcoder-final-01",
+          "calendar_date_cluster": "2024-05-16",
+          "calendar_file": "calendars/instructcoder-final-01.json",
+          "calendar_sha256": "a6df26f30f97c2d1f0c5b02808f0477691af6074b0c7869f8eb33b735cad3dd4",
+          "content_block_id": "instructcoder-final-01",
+          "request_count": 16,
+          "request_ids": [
+            "instructcoder:train.json:103910",
+            "instructcoder:train.json:19293",
+            "instructcoder:train.json:26717",
+            "instructcoder:train.json:48777",
+            "instructcoder:train.json:88508",
+            "instructcoder:train.json:13859",
+            "instructcoder:train.json:105407",
+            "instructcoder:train.json:104065",
+            "instructcoder:train.json:42182",
+            "instructcoder:train.json:43023",
+            "instructcoder:train.json:97274",
+            "instructcoder:train.json:691",
+            "instructcoder:train.json:87943",
+            "instructcoder:train.json:46921",
+            "instructcoder:train.json:72595",
+            "instructcoder:train.json:94616"
+          ],
+          "request_ids_sha256": "5789c853cc037212c7d804fa72fccdca59bff9535459b6f0c9314e1f30a10efd",
+          "requests_file": "instructcoder/final-block-01.jsonl",
+          "requests_sha256": "33d11d3a93cbe8d9f58b9794dfe21eff6226c378bff7303d007c2781d95d0709",
+          "source_final_index_range_half_open": [
+            16,
+            32
+          ],
+          "source_group_ids_sha256": "4e1f74e431870f06821c597af6e220f11552bc74b3dd501f344f7cf2e3d8a35d",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "off",
+            "on",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-11-final-rows-00-15",
+          "block_id": "instructcoder-final-02",
+          "calendar_date_cluster": "2024-05-11",
+          "calendar_file": "calendars/instructcoder-final-02.json",
+          "calendar_sha256": "84e318ec1d62698aa2502231c9eca9dfc6a21bb77abed347701a5e41a2fe7b99",
+          "content_block_id": "instructcoder-final-02",
+          "request_count": 16,
+          "request_ids": [
+            "instructcoder:train.json:31930",
+            "instructcoder:train.json:45826",
+            "instructcoder:train.json:22658",
+            "instructcoder:train.json:17894",
+            "instructcoder:train.json:64602",
+            "instructcoder:train.json:30235",
+            "instructcoder:train.json:94876",
+            "instructcoder:train.json:25911",
+            "instructcoder:train.json:84241",
+            "instructcoder:train.json:68162",
+            "instructcoder:train.json:93690",
+            "instructcoder:train.json:25453",
+            "instructcoder:train.json:66769",
+            "instructcoder:train.json:96669",
+            "instructcoder:train.json:29255",
+            "instructcoder:train.json:89419"
+          ],
+          "request_ids_sha256": "c617b89467f9e5c407626bfd391b6770978e680245806886124ff121877da58f",
+          "requests_file": "instructcoder/final-block-02.jsonl",
+          "requests_sha256": "394d9d03aee1f35e1ae7f6b16efe0a1328c265090369dd3c58fe76acaee9c95a",
+          "source_final_index_range_half_open": [
+            32,
+            48
+          ],
+          "source_group_ids_sha256": "0d93e95908a4c1e8fca28ed1a5a95866a0bccccceff64277df00bc5b362af4c6",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "custom",
+            "off",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-17-final-rows-00-15",
+          "block_id": "instructcoder-final-03",
+          "calendar_date_cluster": "2024-05-17",
+          "calendar_file": "calendars/instructcoder-final-03.json",
+          "calendar_sha256": "b491030ee839655f307db607992a42d5956eb2eb352c518263292add46919271",
+          "content_block_id": "instructcoder-final-03",
+          "request_count": 16,
+          "request_ids": [
+            "instructcoder:train.json:63322",
+            "instructcoder:train.json:97859",
+            "instructcoder:train.json:77204",
+            "instructcoder:train.json:61691",
+            "instructcoder:train.json:32651",
+            "instructcoder:train.json:105912",
+            "instructcoder:train.json:30369",
+            "instructcoder:train.json:107576",
+            "instructcoder:train.json:78861",
+            "instructcoder:train.json:101455",
+            "instructcoder:train.json:29167",
+            "instructcoder:train.json:12378",
+            "instructcoder:train.json:55240",
+            "instructcoder:train.json:72634",
+            "instructcoder:train.json:20331",
+            "instructcoder:train.json:49668"
+          ],
+          "request_ids_sha256": "7c2ec41135ad28b7a2839663a6924ca62be4113c12dece58836424533caf2ffb",
+          "requests_file": "instructcoder/final-block-03.jsonl",
+          "requests_sha256": "f26e15631c200a98d97e18a37821dd187c937ebf1c04e7744af1e64d88bdff7c",
+          "source_final_index_range_half_open": [
+            48,
+            64
+          ],
+          "source_group_ids_sha256": "96668f7001da98927500f1513044b43b10fe40c753f849d696638731576244b7",
+          "split": "final"
+        }
+      ],
+      "dataset": "instructcoder",
+      "pilot_calendar_file": "pilot-calendars/instructcoder.json",
+      "pilot_calendar_sha256": "802be6e646ae687acf718e6973779bab7333d0aaf52f07e71ffd743311bdefe3",
+      "reserved_source_final_file_sha256": "17aebdaeb979f300f75e91c3bfee52b8215554df20d9b614ff604a847e6f4af9",
+      "source_group_unit": "group_id",
+      "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+      "warmup": {
+        "request_count": 8,
+        "request_ids": [
+          "instructcoder:train.json:20693",
+          "instructcoder:train.json:9646",
+          "instructcoder:train.json:20467",
+          "instructcoder:train.json:99020",
+          "instructcoder:train.json:54105",
+          "instructcoder:train.json:78030",
+          "instructcoder:train.json:40375",
+          "instructcoder:train.json:71473"
+        ],
+        "requests_file": "instructcoder/warmup.jsonl",
+        "requests_sha256": "97c5d4a941deb74649a5cc9bebceb5b84beda7abfde480f0aaeb00c337c8e7bd",
+        "split": "pilot"
+      }
+    },
+    {
+      "arm_position_counts": {
+        "custom": [
+          2,
+          1,
+          1
+        ],
+        "off": [
+          1,
+          1,
+          2
+        ],
+        "on": [
+          1,
+          2,
+          1
+        ]
+      },
+      "arrival_rate_requests_per_s": 0.82110153213484,
+      "blocks": [
+        {
+          "arm_order": [
+            "custom",
+            "off",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "numinamath-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/numinamath-final-00.json",
+          "calendar_sha256": "1f6b4435c2ee95a20d5c055f4c3836f191a313445686899398d529c862d0d889",
+          "content_block_id": "numinamath-final-00",
+          "request_count": 16,
+          "request_ids": [
+            "numinamath:train-00000-of-00003.parquet:107885",
+            "numinamath:train-00002-of-00003.parquet:238065",
+            "numinamath:train-00001-of-00003.parquet:51578",
+            "numinamath:train-00001-of-00003.parquet:2902",
+            "numinamath:train-00000-of-00003.parquet:250626",
+            "numinamath:train-00000-of-00003.parquet:241975",
+            "numinamath:train-00001-of-00003.parquet:30445",
+            "numinamath:train-00000-of-00003.parquet:127490",
+            "numinamath:train-00002-of-00003.parquet:290237",
+            "numinamath:train-00000-of-00003.parquet:196603",
+            "numinamath:train-00001-of-00003.parquet:298488",
+            "numinamath:train-00002-of-00003.parquet:191085",
+            "numinamath:train-00000-of-00003.parquet:11416",
+            "numinamath:train-00002-of-00003.parquet:76067",
+            "numinamath:train-00002-of-00003.parquet:61623",
+            "numinamath:train-00001-of-00003.parquet:262964"
+          ],
+          "request_ids_sha256": "41a7f2d88aeb688ebc681a870d73df23d5f94568da30bc8333089e9cdbdaae88",
+          "requests_file": "numinamath/final-block-00.jsonl",
+          "requests_sha256": "bbe4b9fb88674bb3a706f02c32c5c38b84eea8ba525e98fa5111569ed4bcb33a",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "0076b5803f453e62f635719137db82b589a03eb58d791b5305b420149e3c4c8e",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "off",
+            "on",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-16-final-rows-00-15",
+          "block_id": "numinamath-final-01",
+          "calendar_date_cluster": "2024-05-16",
+          "calendar_file": "calendars/numinamath-final-01.json",
+          "calendar_sha256": "1b637d5e1134c2eccdbec579665019c461a3404ed32c0ec7fe9137243906b6c6",
+          "content_block_id": "numinamath-final-01",
+          "request_count": 16,
+          "request_ids": [
+            "numinamath:train-00002-of-00003.parquet:243080",
+            "numinamath:train-00000-of-00003.parquet:37774",
+            "numinamath:train-00001-of-00003.parquet:185745",
+            "numinamath:train-00000-of-00003.parquet:53839",
+            "numinamath:train-00000-of-00003.parquet:232125",
+            "numinamath:train-00002-of-00003.parquet:194954",
+            "numinamath:train-00000-of-00003.parquet:13529",
+            "numinamath:train-00001-of-00003.parquet:292003",
+            "numinamath:train-00000-of-00003.parquet:182859",
+            "numinamath:train-00000-of-00003.parquet:184156",
+            "numinamath:train-00002-of-00003.parquet:167876",
+            "numinamath:train-00002-of-00003.parquet:257553",
+            "numinamath:train-00000-of-00003.parquet:215088",
+            "numinamath:train-00001-of-00003.parquet:122244",
+            "numinamath:train-00000-of-00003.parquet:54454",
+            "numinamath:train-00001-of-00003.parquet:138653"
+          ],
+          "request_ids_sha256": "120996ce83fee2e45c295602800085edae2bee502e265e0514bd4cc94f9efd50",
+          "requests_file": "numinamath/final-block-01.jsonl",
+          "requests_sha256": "4e997572eb9c0976a341fb1b0840d6347b5734a4c351b0a26bfb40384724d32d",
+          "source_final_index_range_half_open": [
+            16,
+            32
+          ],
+          "source_group_ids_sha256": "8caaabac145356d2e2ca664d0d8e3d7988009d79aa04dbc1f54873767d115476",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "on",
+            "custom",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-11-final-rows-00-15",
+          "block_id": "numinamath-final-02",
+          "calendar_date_cluster": "2024-05-11",
+          "calendar_file": "calendars/numinamath-final-02.json",
+          "calendar_sha256": "1a50944e5723230b2a98d6e1739593c9c48d89f85352d3a2a7d595a8c78e1e54",
+          "content_block_id": "numinamath-final-02",
+          "request_count": 16,
+          "request_ids": [
+            "numinamath:train-00001-of-00003.parquet:153861",
+            "numinamath:train-00001-of-00003.parquet:159152",
+            "numinamath:train-00001-of-00003.parquet:18047",
+            "numinamath:train-00002-of-00003.parquet:222483",
+            "numinamath:train-00002-of-00003.parquet:248093",
+            "numinamath:train-00000-of-00003.parquet:16968",
+            "numinamath:train-00000-of-00003.parquet:4490",
+            "numinamath:train-00002-of-00003.parquet:45346",
+            "numinamath:train-00000-of-00003.parquet:142795",
+            "numinamath:train-00001-of-00003.parquet:140620",
+            "numinamath:train-00000-of-00003.parquet:197353",
+            "numinamath:train-00000-of-00003.parquet:54201",
+            "numinamath:train-00000-of-00003.parquet:225261",
+            "numinamath:train-00001-of-00003.parquet:61450",
+            "numinamath:train-00001-of-00003.parquet:260923",
+            "numinamath:train-00001-of-00003.parquet:222674"
+          ],
+          "request_ids_sha256": "1e7d367160697f8bf46d71d045877ff39cfe8fd072225b81f3d828704f180ff8",
+          "requests_file": "numinamath/final-block-02.jsonl",
+          "requests_sha256": "81d8f76a39223006438cd228919882f1bb4c9da372d293f928984253b2b105cc",
+          "source_final_index_range_half_open": [
+            32,
+            48
+          ],
+          "source_group_ids_sha256": "9923f904ce172124452ddaadcc47af0938ccc352a8e7fc5d6cc1eaa991f3ce34",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "custom",
+            "on",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-17-final-rows-00-15",
+          "block_id": "numinamath-final-03",
+          "calendar_date_cluster": "2024-05-17",
+          "calendar_file": "calendars/numinamath-final-03.json",
+          "calendar_sha256": "feddac2de0ac465562ce10c75ab7ed50c7647bda09c0f282b46a39edf5646c42",
+          "content_block_id": "numinamath-final-03",
+          "request_count": 16,
+          "request_ids": [
+            "numinamath:train-00001-of-00003.parquet:198471",
+            "numinamath:train-00001-of-00003.parquet:239060",
+            "numinamath:train-00002-of-00003.parquet:85703",
+            "numinamath:train-00002-of-00003.parquet:255746",
+            "numinamath:train-00000-of-00003.parquet:16935",
+            "numinamath:train-00001-of-00003.parquet:71168",
+            "numinamath:train-00000-of-00003.parquet:168016",
+            "numinamath:train-00000-of-00003.parquet:187109",
+            "numinamath:train-00002-of-00003.parquet:61193",
+            "numinamath:train-00000-of-00003.parquet:153360",
+            "numinamath:train-00002-of-00003.parquet:127808",
+            "numinamath:train-00001-of-00003.parquet:169001",
+            "numinamath:train-00000-of-00003.parquet:283594",
+            "numinamath:train-00001-of-00003.parquet:185689",
+            "numinamath:train-00000-of-00003.parquet:222627",
+            "numinamath:train-00001-of-00003.parquet:273805"
+          ],
+          "request_ids_sha256": "94f2325b18fc6fd0af9b40374297badbf1d7ce5ee19b9301b912f8a0f9c66483",
+          "requests_file": "numinamath/final-block-03.jsonl",
+          "requests_sha256": "fe3e289fedea3482e9d5c62a5d8a7d85f1cf8ba62ac87d794f45d7a1775fbe04",
+          "source_final_index_range_half_open": [
+            48,
+            64
+          ],
+          "source_group_ids_sha256": "e6a4ccf886f12a0acdfb474ecacfe6bc3c35e80e3102fd062e30a29eb883b014",
+          "split": "final"
+        }
+      ],
+      "dataset": "numinamath",
+      "pilot_calendar_file": "pilot-calendars/numinamath.json",
+      "pilot_calendar_sha256": "4a1f79ea84a9d9ddbac54a5e48afe1c35d94aac64d536dce4dbdb4d35f9fc4ea",
+      "reserved_source_final_file_sha256": "9f8c860d51e78dcea55e8285f866ce9e8d901bb3aac1f8eb0973f09b3bb785e9",
+      "source_group_unit": "group_id",
+      "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+      "warmup": {
+        "request_count": 8,
+        "request_ids": [
+          "numinamath:train-00002-of-00003.parquet:280692",
+          "numinamath:train-00000-of-00003.parquet:242767",
+          "numinamath:train-00002-of-00003.parquet:268045",
+          "numinamath:train-00001-of-00003.parquet:82468",
+          "numinamath:train-00002-of-00003.parquet:113032",
+          "numinamath:train-00000-of-00003.parquet:33859",
+          "numinamath:train-00001-of-00003.parquet:248081",
+          "numinamath:train-00001-of-00003.parquet:50696"
+        ],
+        "requests_file": "numinamath/warmup.jsonl",
+        "requests_sha256": "b0c860e00d2a8bcedbe677dd49aa9c6ca6c1d774078573281ceabb6fde6b30eb",
+        "split": "pilot"
+      }
+    },
+    {
+      "arm_position_counts": {
+        "custom": [
+          1,
+          2,
+          1
+        ],
+        "off": [
+          2,
+          1,
+          1
+        ],
+        "on": [
+          1,
+          1,
+          2
+        ]
+      },
+      "arrival_rate_requests_per_s": 1.8930422988665387,
+      "blocks": [
+        {
+          "arm_order": [
+            "custom",
+            "off",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "longbench-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/longbench-final-00.json",
+          "calendar_sha256": "a894106443db1e58c47f3b7f9086ce24a87f8efd1828325a4f1fd154327be1f1",
+          "content_block_id": "longbench-final-00",
+          "request_count": 16,
+          "request_ids": [
+            "longbench-gov_report-052f22dafd736b1df286b3b4188184d3ee213281295b3ea0",
+            "longbench-qasper-72bf7a9599ea8ea1cf309f0dfe07f16f2e05d59ff82f4a37",
+            "longbench-qasper-3bb91d7f22ae15ff9fc6475233052ad0981ad7e812f7eaa7",
+            "longbench-qasper-3ca65b23b3cb316653709b469b4a9b42b790e0350c76ae1a",
+            "longbench-qasper-aaaf5a6e22afc0f84ee63ab9e8dfe9484462ef105aa44ec6",
+            "longbench-gov_report-caf5073d724df260e53ec2cab2e8cc627e97c0f93798cdba",
+            "longbench-gov_report-3aefe57b8fc0900533ff595b34971a18d6ca08c54c54b433",
+            "longbench-hotpotqa-d3249d0550c7105bdd4ed60c9ca9d955db08d362574c2086",
+            "longbench-hotpotqa-8a5d7c131d291d2c7cf2c20ea36a629f969402e0c50a8a8a",
+            "longbench-hotpotqa-670498f9d7fd2582c5791cad2fe212f580d316fa49a8a984",
+            "longbench-hotpotqa-d18fde9d0b8da2a2febb67a679847ee4ee3259e85a9565f4",
+            "longbench-gov_report-8715d32b4155d9bfe5ec4f00d13dbe44c5c57a75b58ce2dc",
+            "longbench-qasper-78ec3790de7582388e6f9f2e428ddd2f6cccef851a8fcd57",
+            "longbench-qasper-07484380079dcec47eb573ab62eaff39a1a44b32006ec74e",
+            "longbench-gov_report-2ffa8e41905ff69637e32b478476fd68758395f1ac7d3dcd",
+            "longbench-qasper-7e339da53449dbd58a1e815d55e440e712af6a1950f342b7"
+          ],
+          "request_ids_sha256": "9fe493cf1b435bf53f2e26e997b7424f1f9a4b247933bf094c593a3e29434d7d",
+          "requests_file": "longbench/final-block-00.jsonl",
+          "requests_sha256": "b6088cb540a2edb9162d4d8d123d5647daf28f1d11ad75cf4ffb82e360ea023e",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "941dd37627e763328791b8a0080bc77db6f9bd995f56ed0549f7428beeb2cf43",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "off",
+            "on",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-16-final-rows-00-15",
+          "block_id": "longbench-final-01",
+          "calendar_date_cluster": "2024-05-16",
+          "calendar_file": "calendars/longbench-final-01.json",
+          "calendar_sha256": "2db545929861a208d6b935d1802992957d2ba5153c3e3b7fbf900b03f9d44d8c",
+          "content_block_id": "longbench-final-01",
+          "request_count": 16,
+          "request_ids": [
+            "longbench-qasper-443d051a54d96c296d9135dad3794d09f89ff91d6433d092",
+            "longbench-gov_report-f9c3887bcf4a8492d37350d51247c096a94d6703bbdee13b",
+            "longbench-gov_report-79efb6240ef8486e6a6eeb17feafaae41d5cbd53412d244e",
+            "longbench-qasper-03e03cd498cae30eb47667209de54bfe6545647ddfe4457d",
+            "longbench-hotpotqa-b4dfcf1c4f152ba5684531d0eaa43f33ec5b185b92a36884",
+            "longbench-hotpotqa-9dc6d234e2406aef691ea02ddc2064f343fc30cbc534c937",
+            "longbench-qasper-bee3efb92996570d990ab04bfdf054835ef720b9dd1c6f5a",
+            "longbench-qasper-10f50fd914b227d12f503b3ef4ac5fe772e70f44557c17b5",
+            "longbench-gov_report-a3d447e9e71289db0d265d538e7e639471f9adfddf14cb48",
+            "longbench-hotpotqa-d542fcd45bbf5112eee9127f04ae060a887c8ef2050aa160",
+            "longbench-qasper-b3d9af44008c13b316e929ad00b8eeea477fdbf5aa50eab7",
+            "longbench-gov_report-a12d1df7a84ab7478fc861b8b0221e9b0dd8d0e6a96d18fc",
+            "longbench-hotpotqa-a30caa5dafcc37835bfe4093f129017adf4c814e9016e10d",
+            "longbench-gov_report-c325a40777333d0e9c79489ab40a509f45e261d2054ea3d7",
+            "longbench-hotpotqa-5748ce1eca37fc55596e58fcff71e45363396002d28e0af9",
+            "longbench-gov_report-c4ab4348f446ef7a62ecfabeda590f9b4b94f3680c136037"
+          ],
+          "request_ids_sha256": "89b8b2c4d941e3a9ed9c78c7c6791a43ad3cc0dbddf4de5da237ff1936b559b7",
+          "requests_file": "longbench/final-block-01.jsonl",
+          "requests_sha256": "373f79ac92b2e9a2ea58c01b463e252d66c9adfe2ea8ad412331b8e162e4a637",
+          "source_final_index_range_half_open": [
+            16,
+            32
+          ],
+          "source_group_ids_sha256": "7a9b5fb629a39a3801f9adad185d2c16ef5f13f5493f4e167c7d372559eb51f1",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "on",
+            "custom",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-11-final-rows-00-15",
+          "block_id": "longbench-final-02",
+          "calendar_date_cluster": "2024-05-11",
+          "calendar_file": "calendars/longbench-final-02.json",
+          "calendar_sha256": "df7aa179cd9738d2b57e5ddcc1150d7e2bca9c309a19fa720b33721a2f76f761",
+          "content_block_id": "longbench-final-02",
+          "request_count": 16,
+          "request_ids": [
+            "longbench-hotpotqa-76096cce081ab5b9ef72be19076ee0a79d9e9239474e8b73",
+            "longbench-qasper-db4afd55783aaf6d069c5228152492cf0804e9cf310cb238",
+            "longbench-hotpotqa-1fd7df3ba224e985f87e976c7a4a67ddc1012a249a542bea",
+            "longbench-gov_report-ba50360a6669fb0e2fbd41a020483b9bab271b5ce69b5c87",
+            "longbench-qasper-3c1ef39c9ae5336afa8c7d3501bd8d24dc655c17ebf6c75f",
+            "longbench-hotpotqa-7d3bc2e36b406094cb586b4eeb07f13a7f1ac9dfbdce7d1f",
+            "longbench-gov_report-c2a4cfdac819a761d81184d9708cd683900944d37dbc8696",
+            "longbench-hotpotqa-4aee23759e842807b156492356b920a11236c7ea3da20732",
+            "longbench-gov_report-dc41fbf74e1c82b1902f266a75ae9e43a1605b4879fabf18",
+            "longbench-hotpotqa-cae319fad2385d30d79efac0fb61e58518fbdc0703be3b0f",
+            "longbench-gov_report-94f563e56143c3d06aefcf8e166786722d595c1f4d83cd2a",
+            "longbench-hotpotqa-0aaabfd136117761896b5931d7b468ff8c61909e00140470",
+            "longbench-qasper-6b9d0c1e63714067fc0b54c024dc065e63f64cbaf44ab4d0",
+            "longbench-gov_report-f5f68ded1b0f845b033d85fd29a0180cc1d1a25fd2b57916",
+            "longbench-hotpotqa-6e541b3b8fc7e59da0da6548a17932b403b2e865d4036982",
+            "longbench-hotpotqa-e8ba4badc3c5d30cc0942ede8df86a72257c492c07025dab"
+          ],
+          "request_ids_sha256": "90b24caa62719cf9ce9fb079de3d70af461bba69dde5fc226f80b71c3ca17edc",
+          "requests_file": "longbench/final-block-02.jsonl",
+          "requests_sha256": "6544fb97de1a12a5925223f6232b98bd7a66639b39234d31cd99d2a7a94805b9",
+          "source_final_index_range_half_open": [
+            32,
+            48
+          ],
+          "source_group_ids_sha256": "1d5326277161bf9c0c8d462941a751c02499455f326e305d77bed303ad49db5f",
+          "split": "final"
+        },
+        {
+          "arm_order": [
+            "off",
+            "custom",
+            "on"
+          ],
+          "arrival_block_id": "full-azure-conversation-2024-05-17-final-rows-00-15",
+          "block_id": "longbench-final-03",
+          "calendar_date_cluster": "2024-05-17",
+          "calendar_file": "calendars/longbench-final-03.json",
+          "calendar_sha256": "6f045955bbfc1bb236e5e413d0b10308cdaf4c555bc21403e75ee57b01c7ad5b",
+          "content_block_id": "longbench-final-03",
+          "request_count": 16,
+          "request_ids": [
+            "longbench-gov_report-ce19441feee1de58a5c147dc4e878d4cf00f1cce6b945e05",
+            "longbench-gov_report-915e6d5d6f6cbeeba77c26faa8bb21d3361458f21d6b64a0",
+            "longbench-hotpotqa-0d6a7aae6f7e00180107c47a73dedda18caf3949666c4d55",
+            "longbench-gov_report-2275b1cfb1730906621cffa517740e08f71691dc5391ee26",
+            "longbench-gov_report-cde0dd328fcfff44d9709e0e3b6e07100b1d23ebc8208f78",
+            "longbench-hotpotqa-203709148e7052e14bf493f95037458b606b42f2fff54c79",
+            "longbench-qasper-90b2dc5aba0e95b2f541da4efa36c414b93bb33d56f2c31e",
+            "longbench-gov_report-d4f5454b64bf353d6cb971ab69def4910ee970b07733fe60",
+            "longbench-hotpotqa-f2da37b927d3f8ce752b69d7149a6eb31aa738d123f8fdb6",
+            "longbench-gov_report-8be9961b3148717dd324148abf0ab947fb11adb0b9ca3fc6",
+            "longbench-gov_report-9df657c6cce9210cfbd1229e1a32c01d3350b61b93cbdb26",
+            "longbench-qasper-acb71edfecd0645219cfd258956141fe666557f8debad399",
+            "longbench-gov_report-fb70e010d41eb638eb5a92f57ae858347858b41f986857fc",
+            "longbench-qasper-f3b5a2a6642523c5347d7612ee64a3378c6592ea58a0857e",
+            "longbench-qasper-e7860b94e9aedb1f9b1e5a8839cb1424486c3f2dd69ee124",
+            "longbench-gov_report-717196b201b32c40650297b1168ac3e629cdae29538b8cd4"
+          ],
+          "request_ids_sha256": "da33d88d34703d171cb374f830f6f9439db90b1e550fb60fc8f82e0d8d45ef93",
+          "requests_file": "longbench/final-block-03.jsonl",
+          "requests_sha256": "bf29c2b686a6ccc49d94c879a88ba68429007aad90e5814cfd91c2e974d8f11d",
+          "source_final_index_range_half_open": [
+            48,
+            64
+          ],
+          "source_group_ids_sha256": "562601dbdfbb8a617d9fe8838e77e1448a7393817ec21e76b341aa4c00fde638",
+          "split": "final"
+        }
+      ],
+      "dataset": "longbench",
+      "pilot_calendar_file": "pilot-calendars/longbench.json",
+      "pilot_calendar_sha256": "9a946323481716b9daf802fb7df727824d18b8de6149ceb6b510f35bf8adbccc",
+      "reserved_source_final_file_sha256": "372dabd912e81c268cedc306873a652dbf378026d37df811830249b03f6dcc77",
+      "source_group_unit": "group_id",
+      "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+      "warmup": {
+        "request_count": 8,
+        "request_ids": [
+          "longbench-qasper-43ffd7775c3b4a541e227c120bffcc7c7b31fb184ba94d69",
+          "longbench-qasper-ac6538e9c173ba7b453d6bf62480d56eb3761b5f6f73c328",
+          "longbench-gov_report-505fee99f21568a0ba3f034052073611384ef23894390ab1",
+          "longbench-gov_report-ddc72d28a1a4b317307130a46e60fb1d482edb9790b9e742",
+          "longbench-hotpotqa-963e90eba94bba5bf5cf56755032d7bd4a3e4e225d3b8d14",
+          "longbench-hotpotqa-bf8ee342564ae21a17b169023f83a20220a63198827a0232",
+          "longbench-hotpotqa-105e7f4d337799315ddf870acc4ff2a62a1e6cdf489086cd",
+          "longbench-gov_report-a6b66279eee0135505b08462e35738e68080a9214e36f710"
+        ],
+        "requests_file": "longbench/warmup.jsonl",
+        "requests_sha256": "a35291916fc02dcccdb84cd1b90d2dc5152aadce82e934385fa005b50c288af9",
+        "split": "pilot"
+      }
+    }
+  ],
+  "execution": {
+    "absolute_arrivals_preserved": true,
+    "arm_order_rule": "Explicit per-block constrained counterbalance: each source gives every arm 1 or 2 appearances at each position; across 20 blocks every arm-position occurs 6 or 7 times.",
+    "budget_note": "The two completed startup measurements in contemporary OFF/resident feasibility pilots were 630.8849 and 635.9631 seconds (startup only). At their mean, 60 fresh launches require about10.56hours before warmup, replay, drain and teardown; plan11\u201314hours on the existing48hour reservation. Historical12 native launches had a lower median257.94seconds. Actual shared-storage/cache behavior varies; budget does not authorize truncating admitted work.",
+    "cache_conditioning": "Identical pilot warmup file, order and two-pass policy per dataset and arm; record cache hits, preemptions, graph/config/compiler/cache fingerprints; no final-informed prewarming.",
+    "calibration_on_final": false,
+    "drain_every_admitted_request": true,
+    "eplb_completion": "HTTP drain or drain_async is not proof of committed weights; preserve normal-commit and rank-consistency diagnostics and any unresolved coverage.",
+    "estimated_budget_hours": [
+      11,
+      14
+    ],
+    "failure_policy": "Retain all failures, halt on correctness failures, never select fastest attempts. Infrastructure-only retry must repeat the complete paired triple with unchanged hashes and use the first complete valid triple. No algorithm/rate/data changes after final freeze.",
+    "global_arm_position_counts": {
+      "custom": [
+        7,
+        7,
+        6
+      ],
+      "off": [
+        6,
+        7,
+        7
+      ],
+      "on": [
+        7,
+        6,
+        7
+      ]
+    },
+    "http_timeout_s": 1800,
+    "initial_state": "Fresh server/checkpoint and arm-defined placement before identical warmup; native ON may adapt its map during warmup as part of its treatment. Record this history; do not equate HTTP drain with EPLB commit.",
+    "max_inflight": 64,
+    "new_server_each_arm_each_block": true,
+    "order_seed": 471111,
+    "repeats": 1,
+    "startup_timeout_s": 2400,
+    "warmup_diagnostics": {
+      "pass_0": "Prompt/output token IDs and selected-token logprobs requested",
+      "pass_1": "Same 8 inputs without diagnostic logprobs/token-ID return; warm native execution shapes"
+    },
+    "warmup_passes": 2,
+    "warmup_passes_status": "Fixed before final admission: the same 8 pilot requests run twice per server, 16 warmup executions total."
+  },
+  "final_execution_allowed": true,
+  "freeze": {
+    "created_utc": "2026-11-10T19:00:39.073118+00:00",
+    "draft_file_sha256": "c4bf77fad9805459278c00423bdc34f1ded4ee1e61a733869286fb0c2c467cd2",
+    "freezer_source_sha256": "22b9d4fb9a6a5f5b0eee4e0cf73212b4a0544bccbb552dbf8071214ce0089a64",
+    "no_final_model_execution_performed": true,
+    "no_final_selection_or_rate_tuning": true
+  },
+  "generation": {
+    "enable_thinking": false,
+    "ignore_eos": false,
+    "max_model_len": 32768,
+    "max_tokens": 2048,
+    "temperature": 0,
+    "truncate_prompts": false
+  },
+  "native_arms": {
+    "off": "Unmodified vLLM, EPLB disabled, no redundant experts",
+    "on": "Unmodified vLLM, native async EPLB,32 redundant experts,default linear initial map; ordinary native intervals unchanged"
+  },
+  "pilot_admission": {
+    "file": "implementation/pilot-admission.json",
+    "sha256": "6210769017559ed0c4993965624455b7c1260eb2dc7a0be4e8b529ee59e11d5e",
+    "status": "passed"
+  },
+  "protocol_sha256": "3e9c6b2b40d1f0e428eb47bccb07c00942fc915e9e066374ad023a93ea3ccf86",
+  "schema": "resident_compare_protocol_v1",
+  "scope": {
+    "activation_backend": "allgather_reducescatter",
+    "dp": 8,
+    "dtype": "bfloat16",
+    "ep": 8,
+    "final_distinct_requests": 320,
+    "fresh_server_launches": 60,
+    "hardware": "Same 8 H100s on kh074/kh077, Slurm 4882284",
+    "main_content_sources": 5,
+    "measured_arms_per_request": 3,
+    "measured_http_executions": 960,
+    "model": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "scope_limit": "Short warmed full-model request episodes, not steady-state production capacity or long-horizon EPLB payback.",
+    "sustained_adaptation_claim": false,
+    "total_planned_warmup_and_measured_http_executions": 1920,
+    "tp": 1,
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "warmup_http_executions": 960,
+    "warmup_requests_per_server": 16
+  },
+  "source_admission": {
+    "arrival_manifest_file": "source-admission/arrival_manifest.json",
+    "arrival_manifest_sha256": "a7208571234de4d0cfde30ff707be83285b706d467ec64eed090b808fd5e3628",
+    "suite_admission_file": "source-admission/suite_admission.json",
+    "suite_admission_sha256": "45cd5f42cdb5ca53548f864ab2fc9259debfc406c06581ca38a754e8b4deb5a3",
+    "suite_manifest_file": "source-admission/suite_manifest.json",
+    "suite_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+    "wildchat_manifest_file": "source-admission/wildchat_manifest.json",
+    "wildchat_manifest_sha256": "682968a681c304670db81a5f87a3b74586067d32a663568b3352e6ee9c5a0558"
+  },
+  "status": "frozen"
+}
