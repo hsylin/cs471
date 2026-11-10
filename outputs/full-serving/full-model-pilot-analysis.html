@@ -1,0 +1,54 @@
+<!doctype html><html lang=en><meta charset=utf-8><title>Full-model resident pilot analysis</title>
+<style>body{font:15px/1.55 system-ui;max-width:1320px;margin:32px auto;padding:0 20px;color:#17212b}table{border-collapse:collapse;width:100%;margin:16px 0 28px}th,td{padding:7px;border-bottom:1px solid #d5dde4;text-align:right}th:first-child,td:first-child{text-align:left}th{background:#edf2f6}.note{padding:15px;background:#fff0ce}pre{white-space:pre-wrap;font-size:12px}h2{margin-top:35px}a{color:#135da6}</style>
+<h1>Full-model resident pilot: no consistent advantage over OFF</h1>
+<p class=note>All 240 timed-pilot executions completed (3 arms ×5 sources ×2 passes ×8 requests). These are previously used pilot inputs, one fixed-order server session per arm, at 2 requests/s. Pass1 repeats pass0 inputs without logprobs. No interval, p-value, final-data analysis or superiority claim is made.</p>
+<p>On pass1, resident mean response is slightly lower than OFF on WildChat and InstructCoder, almost unchanged on NuminaMath, and higher on ShareGPT and LongBench. None shows a 5% mean-response gain over OFF. A lower mean can coexist with worse tails and longer completion time: InstructCoder illustrates this directly.</p>
+<h2>Normal request pass: resident changes relative to each baseline</h2>
+<p>Negative percentages mean lower latency/time or fewer output tokens; fewer output tokens are not themselves an optimization. TPOT is the mean of per-request stream-boundary estimates, not individual-token or isolated GPU timing. Each row uses the same eight inputs and absolute arrival offsets.</p>
+<table><tr><th>Source / baseline</th><th>Mean response</th><th>p95</th><th>TTFT</th><th>TPOT estimate</th><th>Elapsed</th><th>Output tokens</th><th>Identical text /8</th></tr>
+<tr><td>wildchat / off</td><td>-1.60%</td><td>-3.32%</td><td>+5.56%</td><td>+0.15%</td><td>-1.65%</td><td>-1.87%</td><td>0</td></tr>
+<tr><td>wildchat / placement_only</td><td>-6.89%</td><td>-12.80%</td><td>-3.72%</td><td>-2.42%</td><td>-15.17%</td><td>-5.00%</td><td>1</td></tr>
+<tr><td>sharegpt / off</td><td>+8.12%</td><td>+20.70%</td><td>+7.38%</td><td>-0.15%</td><td>+22.91%</td><td>+8.42%</td><td>0</td></tr>
+<tr><td>sharegpt / placement_only</td><td>+2.63%</td><td>+9.25%</td><td>+1.01%</td><td>-2.03%</td><td>+10.28%</td><td>+4.70%</td><td>0</td></tr>
+<tr><td>instructcoder / off</td><td>-1.82%</td><td>+9.89%</td><td>+0.27%</td><td>-0.27%</td><td>+9.53%</td><td>-1.30%</td><td>2</td></tr>
+<tr><td>instructcoder / placement_only</td><td>+2.13%</td><td>+13.76%</td><td>+3.29%</td><td>-1.60%</td><td>+2.30%</td><td>+4.02%</td><td>2</td></tr>
+<tr><td>numinamath / off</td><td>+0.39%</td><td>-7.66%</td><td>+1.66%</td><td>+0.44%</td><td>-15.03%</td><td>-0.54%</td><td>0</td></tr>
+<tr><td>numinamath / placement_only</td><td>-10.26%</td><td>-16.38%</td><td>+3.33%</td><td>-1.84%</td><td>-17.19%</td><td>-9.01%</td><td>2</td></tr>
+<tr><td>longbench / off</td><td>+6.81%</td><td>+6.14%</td><td>-6.13%</td><td>+5.99%</td><td>+0.96%</td><td>+6.08%</td><td>5</td></tr>
+<tr><td>longbench / placement_only</td><td>-1.71%</td><td>+3.34%</td><td>-6.16%</td><td>+1.29%</td><td>-5.02%</td><td>-0.66%</td><td>5</td></tr>
+</table><p><strong>Mechanism evidence is limited:</strong> resident has a 1.60–2.42% lower TPOT estimate than placement-only on the first four sources, while LongBench is 1.29% higher. Against OFF, the first four differ by only −0.27% to +0.44%; LongBench is 5.99% higher. This is compatible with recovering a small cost of hash dispatch on the replicated map, without an established advantage over OFF. It does not isolate a kernel effect because scheduling, generated work and fixed execution order also differ.</p>
+<p><strong>Output length matters:</strong> ShareGPT resident produces 8.42% more tokens than OFF while mean response rises 8.12% and mean TPOT is almost unchanged. NuminaMath resident and OFF have similar total token counts, but OFF hits the 2,048-token cap once and resident never does; resident elapsed falls 15.03% while mean response rises 0.39%. InstructCoder resident mean falls 1.82%, but p95 rises 9.89% and elapsed rises 9.53%. The distribution and timing of individual outputs matter, not just their sum. These are descriptive associations, not causal decompositions.</p>
+<h2>Absolute pass1 values</h2><table><tr><th>Source / arm</th><th>Mean response s</th><th>TTFT ms</th><th>TPOT estimate ms</th><th>Elapsed s</th><th>Drain s</th><th>Output tokens</th><th>Length caps</th></tr>
+<tr><td>wildchat / off</td><td>7.851</td><td>39.722</td><td>9.133</td><td>19.187</td><td>15.687</td><td>6778</td><td>0</td></tr>
+<tr><td>wildchat / resident</td><td>7.725</td><td>41.931</td><td>9.146</td><td>18.870</td><td>15.370</td><td>6651</td><td>0</td></tr>
+<tr><td>wildchat / placement_only</td><td>8.297</td><td>43.552</td><td>9.373</td><td>22.244</td><td>18.744</td><td>7001</td><td>1</td></tr>
+<tr><td>sharegpt / off</td><td>5.549</td><td>38.905</td><td>9.011</td><td>13.278</td><td>9.778</td><td>4848</td><td>0</td></tr>
+<tr><td>sharegpt / resident</td><td>6.000</td><td>41.777</td><td>8.998</td><td>16.320</td><td>12.820</td><td>5256</td><td>0</td></tr>
+<tr><td>sharegpt / placement_only</td><td>5.847</td><td>41.357</td><td>9.184</td><td>14.799</td><td>11.299</td><td>5020</td><td>0</td></tr>
+<tr><td>instructcoder / off</td><td>4.330</td><td>37.444</td><td>8.847</td><td>9.606</td><td>6.106</td><td>3850</td><td>0</td></tr>
+<tr><td>instructcoder / resident</td><td>4.251</td><td>37.546</td><td>8.823</td><td>10.521</td><td>7.021</td><td>3800</td><td>0</td></tr>
+<tr><td>instructcoder / placement_only</td><td>4.163</td><td>36.352</td><td>8.967</td><td>10.285</td><td>6.785</td><td>3653</td><td>0</td></tr>
+<tr><td>numinamath / off</td><td>8.627</td><td>38.252</td><td>8.936</td><td>19.833</td><td>16.333</td><td>7730</td><td>1</td></tr>
+<tr><td>numinamath / resident</td><td>8.661</td><td>38.888</td><td>8.976</td><td>16.852</td><td>13.352</td><td>7688</td><td>0</td></tr>
+<tr><td>numinamath / placement_only</td><td>9.651</td><td>37.636</td><td>9.144</td><td>20.351</td><td>16.851</td><td>8449</td><td>2</td></tr>
+<tr><td>longbench / off</td><td>1.504</td><td>59.490</td><td>6.344</td><td>7.279</td><td>3.779</td><td>1282</td><td>0</td></tr>
+<tr><td>longbench / resident</td><td>1.606</td><td>55.845</td><td>6.724</td><td>7.349</td><td>3.849</td><td>1360</td><td>0</td></tr>
+<tr><td>longbench / placement_only</td><td>1.634</td><td>59.513</td><td>6.638</td><td>7.737</td><td>4.237</td><td>1369</td><td>0</td></tr>
+</table><h2>Repeated inputs and cache</h2>
+<p>For pass1, prefix-cache hit/query counts match exactly across the three arms for every recorded engine/model label, and all recorded preemption deltas are zero. Total cached/query token counts are WildChat 11,792/11,860, ShareGPT 12,736/12,791, InstructCoder 1,104/1,177, NuminaMath 864/943, and LongBench 81,456/81,531. The second pass is strongly cache-warmed, especially for long prompts. Matching counters reduce one observed arm difference; they do not make this a cold-input test or prove identical cache execution. Pass0 and pass1 cannot be interpreted as a controlled cache experiment because diagnostics, repeated content, warming and generated outputs change together.</p>
+<h2>Memory cost recorded by the actual servers</h2><p>Ranges below cover all eight ranks; they are rounded startup log measurements, not repeated samples or a serving-peak profile. Token capacity is the allocated KV-cache capacity.</p>
+<table><tr><th>Arm</th><th>Model-loading GiB/rank</th><th>Weights + non-Torch GiB/rank</th><th>Peak activation GiB/rank</th><th>Actual graph pool GiB/rank</th><th>KV-cache GiB/rank</th><th>KV token capacity/rank</th></tr>
+<tr><td>off</td><td>9.63</td><td>14.37–14.39</td><td>3.12</td><td>1.35</td><td>68.16–68.17</td><td>744,464.00–744,624.00</td></tr>
+<tr><td>resident</td><td>11.32</td><td>16.06–16.08</td><td>3.18</td><td>1.44</td><td>66.41–66.43</td><td>725,392.00–725,552.00</td></tr>
+<tr><td>placement_only</td><td>11.32</td><td>16.06–16.08</td><td>3.14</td><td>1.35</td><td>66.45–66.46</td><td>725,792.00–725,968.00</td></tr>
+</table><p>Both 160-slot arms use 11.32 GiB per GPU for model loading versus OFF's 9.63 GiB, an observed +1.69 GiB. The shape-based expectation for four extra BF16 experts per rank across 48 layers is 1.6875 GiB, consistent with that rounded difference. Resident's graph pool is 1.44 GiB versus 1.35 GiB for OFF and placement-only. Its mean configured KV token capacity is about 2.56% below OFF and 0.056% below placement-only. Extra storage reduces capacity headroom, but the pilot records zero preemptions; these logs do not establish memory pressure as the latency cause.</p>
+<h2>Diagnostic pass0 retained separately</h2><p>These comparisons include requested token IDs and logprobs, so they are not ordinary-payload performance baselines. They also show that the signs are not stable across the two passes.</p>
+<table><tr><th>Source</th><th>Resident/OFF mean response change</th><th>Resident/placement mean response change</th><th>Resident/OFF output-token change</th></tr>
+<tr><td>wildchat</td><td>-0.08%</td><td>+10.75%</td><td>-2.87%</td></tr>
+<tr><td>sharegpt</td><td>-0.09%</td><td>-20.97%</td><td>-1.78%</td></tr>
+<tr><td>instructcoder</td><td>+9.65%</td><td>-3.58%</td><td>+9.55%</td></tr>
+<tr><td>numinamath</td><td>+11.04%</td><td>+2.70%</td><td>+11.10%</td></tr>
+<tr><td>longbench</td><td>-1.86%</td><td>+2.22%</td><td>-5.37%</td></tr>
+</table><p><strong>What remains unresolved:</strong> equal-prompt runs generate different continuations; temperature zero does not guarantee identical text. These pilots cannot distinguish numerical/scheduling effects from routing overhead, cannot establish a causal benefit from the dispatcher alone, and have no independent session-level uncertainty. The frozen held-out experiment is needed for generalization. No policy, threshold or final selection was changed for this analysis.</p>
+<p>Evidence: <a href="custom-pilot-report.json">complete pilot comparison</a> · <a href="full-model-pilot-analysis.json">independent recomputation and per-rank log citations</a> · <a href="build-full-model-pilot-analysis.py">reproduction script</a>. The script checks 30 raw eight-request phases and reads only closed pilot files; no final or private text data is accessed.</p>
+<p>Source report SHA-256: <code>4eadab4d80c4d93c142d70ade2e51f8c2c77bb86916760bf38bf59db691621c7</code>.</p></html>
