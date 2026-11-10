@@ -7,8 +7,9 @@ from pathlib import Path
 import pytest
 
 from full_serving.analyze import summarize_run
-from full_serving.audit_pilots import (AuditError, COUNT_METRICS, NATIVE_FINISH_REASONS, audit_cohort, audit_counters,
-                                      audit_request, audit_run, client_hash, paired_configuration)
+from full_serving.audit_pilots import (AuditError, COUNT_METRICS, CUDA_CRITICAL_FILES, FLASHINFER_SOURCES,
+                                      NATIVE_FINISH_REASONS, audit_cohort, audit_counters, audit_request,
+                                      audit_run, client_hash, paired_build_evidence, paired_configuration)
 
 
 def request_fixture(index=0):
@@ -166,3 +167,58 @@ def test_native_log_constructor_is_never_executed(tmp_path):
     (tmp_path / "off/server-0.log").write_text("non-default args: {'evil': __import__('os').system('false')}\n")
     report = paired_configuration(tmp_path)
     assert report["status"] == "failed" and "unsupported constructor" in report["reason"]
+
+
+def build_evidence_fixture(*, include_cache=True):
+    result = {}
+    for arm in ("off", "on"):
+        result[arm] = {}
+        for role, host, module_hash in (("primary", "node-a", "a"*64), ("worker", "node-b", "b"*64)):
+            value = {"hostname": host, "cuda_compiler_toolchain": {
+                "cuda_home": "/tools/cuda", "install_manifest_sha256": "c"*64,
+                "critical_file_sha256": {name: "d"*64 for name in CUDA_CRITICAL_FILES},
+                "nvcc_version": "V12.9.86", "runtime_library_environment_changed": False}}
+            if include_cache:
+                value["flashinfer_prebuild"] = {
+                    "workspace_base": f"/cache/{host}", "jit_dir": f"/cache/{host}/ops",
+                    "source_sha256": {name: "e"*64 for name in FLASHINFER_SOURCES},
+                    "sampling_module_sha256": {"sampling/sampling.so": module_hash},
+                    "checks": [{"exact_mask_match": True, "top_k": [5]},
+                               {"exact_mask_match": True, "top_k": [1, 5]},
+                               {"exact_sample_match": True, "operation": "top_k_top_p_sampling_from_logits"},
+                               {"exact_sample_match": True, "operation": "top_p_sampling_from_probs"}],
+                    "report_path": f"/results/{arm}/{host}.json", "report_sha256": ("f" if arm == "off" else "0")*64,
+                    "get_sampling_module_elapsed_s": 0.1 if arm == "off" else 0.2,
+                    "step_id": "1" if arm == "off" else "2"}
+            result[arm][role] = value
+    return result
+
+
+def test_native_build_pair_allows_node_specific_modules_and_arm_specific_bookkeeping():
+    result = paired_build_evidence(build_evidence_fixture())
+    assert result["cuda_compiler_toolchain"]["status"] == "matched"
+    assert result["flashinfer_prebuild"]["status"] == "matched"
+    nodes = result["flashinfer_prebuild"]["nodes"]
+    assert nodes[0]["sampling_module_sha256"] != nodes[1]["sampling_module_sha256"]
+
+
+def test_legacy_missing_cache_evidence_is_explicit_and_never_inferred():
+    result = paired_build_evidence(build_evidence_fixture(include_cache=False))
+    assert result["cuda_compiler_toolchain"]["status"] == "matched"
+    assert result["flashinfer_prebuild"]["status"] == "not_recorded_in_either_arm"
+
+
+@pytest.mark.parametrize("corruption,reason", [("cache_hash", "FlashInfer cache evidence differs"),
+                                               ("compiler_hash", "CUDA compiler/install-manifest evidence differs"),
+                                               ("missing_cache", "missing from one arm")])
+def test_native_build_pair_rejects_same_node_cache_or_compiler_corruption(corruption, reason):
+    evidence = build_evidence_fixture()
+    changed = evidence["on"]["primary"]
+    if corruption == "cache_hash":
+        changed["flashinfer_prebuild"]["sampling_module_sha256"]["sampling/sampling.so"] = "9"*64
+    elif corruption == "compiler_hash":
+        changed["cuda_compiler_toolchain"]["critical_file_sha256"]["bin/ptxas"] = "9"*64
+    else:
+        del changed["flashinfer_prebuild"]
+    with pytest.raises(AuditError, match=reason):
+        paired_build_evidence(evidence)

@@ -1,0 +1,240 @@
+{
+  "schema": "full_serving_smoke_paired_audit_v2",
+  "result_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/longbench",
+  "expected_request_pairs": 8,
+  "valid": true,
+  "issues": [],
+  "arms": {
+    "off": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 1389,
+      "prompt_tokens": 81531,
+      "finish_reason_counts": {
+        "stop": 8
+      },
+      "output_cap_completions": 0,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    },
+    "on": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 1314,
+      "prompt_tokens": 81531,
+      "finish_reason_counts": {
+        "stop": 8
+      },
+      "output_cap_completions": 0,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    }
+  },
+  "source_sha256": {
+    "status": "46eb593de6a5b57330606c48bcfec61076930a2dea33c677d17d10681fa03969",
+    "pilot_splits": "54b75a98929414b0ebcd427c51375d57551c554c884fe88723e11de5eb2593e3",
+    "off": {
+      "public": "c2f8472af7d257f12bafd547c76915493bc3f659b8edbbb7d1f8c665dd87c4ea",
+      "private": "0515912bb8a757ba8f1e7598bd3521c43277183323787bead75f4e918bbffbea"
+    },
+    "on": {
+      "public": "a5d5f2df50b63792aee11eabf07a4015eb05fad0e97f4174e885b44a2d203a41",
+      "private": "d66f9c94b7cfcbb6588da40884600c806ea14ec5b649efb7faaef35059ef44ff"
+    }
+  },
+  "requests": [
+    {
+      "request_id": "longbench-qasper-43ffd7775c3b4a541e227c120bffcc7c7b31fb184ba94d69",
+      "request_index": 0,
+      "off_generated_tokens": 21,
+      "on_generated_tokens": 21,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 21,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 21,
+        "mean_absolute": 0.01553018316057898,
+        "max_absolute": 0.16077938675880432,
+        "signed_mean": -0.0007312633506769219
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-qasper-ac6538e9c173ba7b453d6bf62480d56eb3761b5f6f73c328",
+      "request_index": 1,
+      "off_generated_tokens": 5,
+      "on_generated_tokens": 5,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 5,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 5,
+        "mean_absolute": 0.047069064718380106,
+        "max_absolute": 0.11963004618883133,
+        "signed_mean": -0.007707200389995705
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-gov_report-505fee99f21568a0ba3f034052073611384ef23894390ab1",
+      "request_index": 2,
+      "off_generated_tokens": 462,
+      "on_generated_tokens": 431,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 23,
+      "first_divergence_zero_based_index": 23,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 23,
+        "mean_absolute": 0.014778633524908559,
+        "max_absolute": 0.22289863973855972,
+        "signed_mean": 0.010133396554786723
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-gov_report-ddc72d28a1a4b317307130a46e60fb1d482edb9790b9e742",
+      "request_index": 3,
+      "off_generated_tokens": 412,
+      "on_generated_tokens": 388,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 6,
+      "first_divergence_zero_based_index": 6,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 6,
+        "mean_absolute": 0.03522188631419946,
+        "max_absolute": 0.1923588067293167,
+        "signed_mean": 0.03510096688842168
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-hotpotqa-963e90eba94bba5bf5cf56755032d7bd4a3e4e225d3b8d14",
+      "request_index": 4,
+      "off_generated_tokens": 5,
+      "on_generated_tokens": 5,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 5,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 5,
+        "mean_absolute": 0.0008012176017018647,
+        "max_absolute": 0.004004895919933915,
+        "signed_mean": -0.0008007407662717015
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-hotpotqa-bf8ee342564ae21a17b169023f83a20220a63198827a0232",
+      "request_index": 5,
+      "off_generated_tokens": 4,
+      "on_generated_tokens": 4,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 4,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 4,
+        "mean_absolute": 1.5496928540414956e-06,
+        "max_absolute": 4.410645487951115e-06,
+        "signed_mean": 6.556298899340618e-07
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-hotpotqa-105e7f4d337799315ddf870acc4ff2a62a1e6cdf489086cd",
+      "request_index": 6,
+      "off_generated_tokens": 3,
+      "on_generated_tokens": 3,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 3,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 3,
+        "mean_absolute": 0.07302522658377104,
+        "max_absolute": 0.21907174587249756,
+        "signed_mean": 0.073022603997894
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "longbench-gov_report-a6b66279eee0135505b08462e35738e68080a9214e36f710",
+      "request_index": 7,
+      "off_generated_tokens": 477,
+      "on_generated_tokens": 457,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 55,
+      "first_divergence_zero_based_index": 55,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 55,
+        "mean_absolute": 0.017408748005454104,
+        "max_absolute": 0.25656962394714355,
+        "signed_mean": -0.005719625163925457
+      },
+      "post_divergence_logprobs_compared": false
+    }
+  ],
+  "comparison_available": true,
+  "request_pairs": 8,
+  "equal_generated_token_sequences": 5,
+  "equal_generated_texts": 5,
+  "shared_prefix_selected_logprob_difference_on_minus_off": {
+    "count": 122,
+    "mean_absolute": 0.018797443981584977,
+    "max_absolute": 0.25656962394714355,
+    "signed_mean": 0.002379251938052573
+  },
+  "logprob_comparison_available": true,
+  "decoder": {
+    "requested": true,
+    "tokenizer": "../full-serving-tokenizer",
+    "verified": true
+  },
+  "comparison_boundary": "Only same selected token under exactly identical prompt and previously generated prefix. Divergent positions and all later positions are excluded.",
+  "tolerance": "No numerical tolerance is invented. Differences are descriptive, not a numerical pass/fail threshold.",
+  "interpretation": "Greedy generations can differ with batching/reduction order. These checks cannot identify an algorithmic cause or distinguish near-tie selection from mapping/kernel errors. Different outputs change subsequent workloads.",
+  "full_model_numerical_correctness_proved": false,
+  "algorithmic_cause_established": false,
+  "speedup_claim": false,
+  "dataset": "longbench",
+  "controller_state": "pilot_completed",
+  "input_token_sequences_identical": true,
+  "off_completion_tokens": 1389,
+  "on_completion_tokens": 1314,
+  "logprob_comparison_note": "All selected logprobs finite, with no -9999 placeholders; compare common-prefix positions only.",
+  "shared_generated_prefix_tokens": 122
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "full_serving_external_independent_recompute_v1",
+  "dataset": "numinamath",
+  "stage": "external",
+  "arms": {
+    "off": {
+      "request_count": 24,
+      "failed_requests": 0,
+      "response_from_schedule_ms": {
+        "mean": 9417.192626666667,
+        "p95": 16739.603699349995
+      },
+      "ttft_from_send_ms": {
+        "mean": 57.34158158333333,
+        "p95": 86.29408844999999
+      },
+      "completed_elapsed_s": 42.520172945,
+      "drain_s": 13.291144548,
+      "completed_input_tokens": 3049,
+      "completed_output_tokens": 22933,
+      "output_cap_completions": 1,
+      "completed_output_tokens_per_s": 539.3439963112079,
+      "client_tail_after_completion_ms": 2.247949
+    },
+    "on": {
+      "request_count": 24,
+      "failed_requests": 0,
+      "response_from_schedule_ms": {
+        "mean": 10562.481550583334,
+        "p95": 20062.77115355
+      },
+      "ttft_from_send_ms": {
+        "mean": 66.7341345,
+        "p95": 101.20435334999999
+      },
+      "completed_elapsed_s": 46.224873774,
+      "drain_s": 16.995845377,
+      "completed_input_tokens": 3049,
+      "completed_output_tokens": 23775,
+      "output_cap_completions": 1,
+      "completed_output_tokens_per_s": 514.3334758736036,
+      "client_tail_after_completion_ms": 1.548658
+    }
+  },
+  "source_sha256": {
+    "off": "2110a2b3178d97f41e733403d7671de8e248826f734e04ca8a3ba884051c3c11",
+    "on": "b09a5dacffa2b2c7fae0205388484ab1133054dccfa0afa32d715f84fbab7b1b"
+  },
+  "report_snapshot_sha256": "1640f0a694b433faa19cc0bebc0b88542828b79a47c1db86d1374baca2566472",
+  "report_created_utc": "2026-11-10T17:07:03.634314+00:00",
+  "report_snapshot": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/outputs/full-serving/suite-progress-report.json",
+  "issues": [],
+  "uncertainty": "unavailable: single fixed-order content/arrival block per arm",
+  "final_speedup_claim": false,
+  "method": "Raw integer monotonic timestamp differences; linear-interpolated p95 at (n-1)*0.95; no full_serving analysis helpers.",
+  "valid": true,
+  "paired_identities_and_absolute_offsets_match": true,
+  "reported_summaries_match_independent_recompute": true,
+  "on_minus_off_percent": {
+    "completed_elapsed_s": 8.712807527363653,
+    "completed_output_tokens": 3.671564993677223,
+    "completed_output_tokens_per_s": -4.637211243410777,
+    "drain_s": 27.87345224950899,
+    "response_from_schedule_ms_mean": 12.161680973515953,
+    "response_from_schedule_ms_p95": 19.852127409259058,
+    "ttft_from_send_ms_mean": 16.380003232064098,
+    "ttft_from_send_ms_p95": 17.278431428868068
+  },
+  "generation": {
+    "equal_text_hash_pairs": 3,
+    "equal_output_count_pairs": 4,
+    "equal_finish_reason_pairs": 24,
+    "pairs": 24,
+    "generated_token_identity_available": false,
+    "interpretation": "External stage stores text hashes and usage counts, not output token arrays. Differing generations change executed work; no equal-work causal speedup or independent-run inference."
+  }
+}

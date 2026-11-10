@@ -30,6 +30,8 @@ COUNT_METRICS = ("vllm:request_success_total", "vllm:e2e_request_latency_seconds
                  "vllm:request_queue_time_seconds_count", "vllm:request_inference_time_seconds_count",
                  "vllm:request_prefill_time_seconds_count", "vllm:request_decode_time_seconds_count")
 NATIVE_FINISH_REASONS = ("stop", "length", "abort", "error", "repetition")
+CUDA_CRITICAL_FILES = {"bin/nvcc", "bin/ptxas", "include/cuda_runtime.h", "include/cub/cub.cuh", "include/curand.h"}
+FLASHINFER_SOURCES = {"jit/env.py", "jit/core.py", "jit/cpp_ext.py", "sampling.py"}
 
 
 class AuditError(ValueError):
@@ -292,10 +294,74 @@ def audit_counters(before, after, expected, finish_counts):
         return {"status": "unreconciled", "reason": str(exc) if isinstance(exc, AuditError) else type(exc).__name__}
 
 
+def paired_build_evidence(preflights):
+    """Compare stable compiler/cache evidence on each paired host, not across hosts."""
+    def hashes(value, expected_keys, label):
+        require(isinstance(value, dict) and bool(value)
+                and (expected_keys is None or set(value) == expected_keys)
+                and all(isinstance(v, str) and re.fullmatch(r"[0-9a-f]{64}", v) for v in value.values()),
+                f"incomplete or invalid {label} hashes")
+        return value
+
+    compiler_nodes, cache_nodes = [], []
+    for role in ("primary", "worker"):
+        off, on = preflights["off"][role], preflights["on"][role]
+        require(off["hostname"] == on["hostname"], "paired compiler/cache host identity differs")
+        host = off["hostname"]
+        compilers = []
+        for value in (off, on):
+            compiler = value.get("cuda_compiler_toolchain")
+            require(isinstance(compiler, dict), "CUDA compiler evidence missing from runtime preflight")
+            hashes(compiler.get("critical_file_sha256"), CUDA_CRITICAL_FILES, "CUDA critical-file")
+            hashes({"install_manifest": compiler.get("install_manifest_sha256")}, {"install_manifest"}, "CUDA install-manifest")
+            require(compiler.get("runtime_library_environment_changed") is False,
+                    "CUDA compiler evidence does not preserve runtime library environment")
+            compilers.append({key: compiler[key] for key in ("cuda_home", "critical_file_sha256", "install_manifest_sha256", "nvcc_version", "runtime_library_environment_changed")})
+        require(compilers[0] == compilers[1], f"paired CUDA compiler/install-manifest evidence differs on {host}")
+        compiler_nodes.append({"hostname": host, "status": "matched", "evidence_sha256": digest(compilers[0]),
+                               "critical_file_sha256": compilers[0]["critical_file_sha256"],
+                               "install_manifest_sha256": compilers[0]["install_manifest_sha256"]})
+
+        present = ["flashinfer_prebuild" in value for value in (off, on)]
+        require(present[0] == present[1], f"FlashInfer prebuild evidence missing from one arm on {host}")
+        if not present[0]:
+            cache_nodes.append({"hostname": host, "status": "not_recorded_in_either_arm"})
+            continue
+        caches = []
+        for value in (off, on):
+            cache = value["flashinfer_prebuild"]
+            require(isinstance(cache, dict), "invalid FlashInfer prebuild evidence")
+            hashes(cache.get("source_sha256"), FLASHINFER_SOURCES, "FlashInfer source")
+            modules = hashes(cache.get("sampling_module_sha256"), None, "FlashInfer sampling-module")
+            require(all(isinstance(k, str) and not Path(k).is_absolute() and ".." not in Path(k).parts
+                        and Path(k).suffix == ".so" for k in modules), "unsafe FlashInfer sampling-module path")
+            workspace, jit = cache.get("workspace_base"), cache.get("jit_dir")
+            require(isinstance(workspace, str) and isinstance(jit, str)
+                    and Path(workspace).is_absolute() and Path(jit).is_absolute()
+                    and ".." not in Path(workspace).parts and ".." not in Path(jit).parts
+                    and Path(jit).is_relative_to(workspace), "invalid FlashInfer workspace/JIT scope")
+            checks = cache.get("checks")
+            require(isinstance(checks, list) and all(isinstance(c, dict) for c in checks)
+                    and sum(c.get("exact_mask_match") is True for c in checks) == 2
+                    and {c.get("operation") for c in checks if c.get("exact_sample_match") is True}
+                    == {"top_k_top_p_sampling_from_logits", "top_p_sampling_from_probs"},
+                    "incomplete FlashInfer native sampling checks")
+            caches.append({key: cache[key] for key in ("workspace_base", "jit_dir", "source_sha256", "sampling_module_sha256", "checks")})
+        require(caches[0] == caches[1], f"paired FlashInfer cache evidence differs on {host}")
+        cache_nodes.append({"hostname": host, "status": "matched", "evidence_sha256": digest(caches[0]),
+                            "workspace_base": caches[0]["workspace_base"], "jit_dir": caches[0]["jit_dir"],
+                            "source_sha256": caches[0]["source_sha256"], "sampling_module_sha256": caches[0]["sampling_module_sha256"]})
+    matched = sum(node["status"] == "matched" for node in cache_nodes)
+    return {"cuda_compiler_toolchain": {"status": "matched", "nodes": compiler_nodes},
+            "flashinfer_prebuild": {"status": "matched" if matched == 2 else "not_recorded_in_either_arm" if matched == 0 else "partial_coverage",
+                                    "nodes": cache_nodes,
+                                    "scope": "Same-node workspace, JIT path, source and compiled-module hashes plus native sampling checks. Legacy missing evidence is not reconstructed; per-arm report paths, report hashes, timings and step IDs are not compared."}}
+
+
 def paired_configuration(directory):
     """Compare logged native arguments without executing any log content."""
     try:
-        configs, fingerprints = {}, {}
+        configs, fingerprints, preflights = {}, {}, {}
         for arm in ("off", "on"):
             path = directory / arm / "server-0.log"
             if not path.exists():
@@ -318,11 +384,13 @@ def paired_configuration(directory):
                     and str(configs[arm].get("model", "")).endswith(MODEL_REVISION),
                     "native model/parallel/context configuration differs from scope")
             runtime = []
+            preflights[arm] = {}
             for role in ("primary", "worker"):
                 p = directory / arm / f"preflight-{role}.json"
                 if not p.exists():
                     return {"status": "pending", "reason": "runtime preflight unavailable"}
                 value = read_json(p)
+                preflights[arm][role] = value
                 require(value.get("model_revision") == MODEL_REVISION
                         and value.get("vllm_commit") == "db9527a46873454610df6dbedf79a36d6bf1a7f6"
                         and len(value.get("devices", [])) == 4
@@ -339,9 +407,11 @@ def paired_configuration(directory):
         require(configs["on"]["eplb_config"].get("num_redundant_experts") == 32
                 and configs["on"]["eplb_config"].get("use_async") is True, "unexpected native EPLB configuration")
         require(fingerprints["off"] == fingerprints["on"], "paired hardware/checkpoint/source fingerprints differ")
+        build_evidence = paired_build_evidence(preflights)
         return {"status": "passed", "allowed_differences": differences,
                 "off_eplb": False, "on_eplb_config": configs["on"]["eplb_config"],
                 "common_runtime_fingerprint_sha256": fingerprints["off"],
+                "native_build_evidence_pair": build_evidence,
                 "scope": "Logged arguments and selected runtime fingerprints; not proof of asynchronous migration commits"}
     except (KeyError, TypeError, ValueError, OSError, SyntaxError) as exc:
         return {"status": "failed", "reason": str(exc) if isinstance(exc, AuditError) else type(exc).__name__}

@@ -1,0 +1,1788 @@
+{
+  "cohorts": [
+    {
+      "arms": {
+        "off": {
+          "available": true,
+          "complete_requests": true,
+          "hardware": [
+            {
+              "checkpoint_manifest_sha256": "195361ee9fa1b673f3a60dd9cd2ab13cdab952552bbbbda3272471f46b8581e2",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+                }
+              ],
+              "hostname": "kh074",
+              "job_id": "4882284",
+              "preflight_sha256": "64dc0072ed8163f396c96a8e58f82723f3752c60dc61bfa354e29bc2a1578f93",
+              "role": "primary",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            },
+            {
+              "checkpoint_manifest_sha256": "195361ee9fa1b673f3a60dd9cd2ab13cdab952552bbbbda3272471f46b8581e2",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "0d188b56-db2a-369e-1f56-7968f1d630cb"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d417d440-a598-33ae-99ad-f08b19ce3706"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "739d84d8-77d7-1a88-89b8-817753b6cdee"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "8e4f8e0d-1805-e2eb-e431-7abe7579bb04"
+                }
+              ],
+              "hostname": "kh077",
+              "job_id": "4882284",
+              "preflight_sha256": "c83315967bf80b69f88fa51fcc4ae49f1da673e6cced65e0984b7bbdaaa52de6",
+              "role": "worker",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            }
+          ],
+          "phases": {
+            "calibration": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "e4090ce0fbcba295ad526d7082e87b76f4259b7546dd1cccba60fc8fd6d26830",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 24.140651704,
+              "diagnostic_passes": 0,
+              "diagnostic_requests": 0,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 3,
+                "stop": 29
+              },
+              "generated_tokens": 28660,
+              "input_hash": "bce424abe63dde30df25ea05095ccae1f26dc3420f19f1d2c8a592929195a00d",
+              "last_request_end_utc_approx": "2026-11-10T14:26:03.480183+00:00",
+              "requests": 32,
+              "source_sha256": "0d90541c8edeaa4f7ad814b390b9a706e9ac37be1c9b1922f1935f39f38f2164",
+              "successes": 32,
+              "valid": true
+            },
+            "external": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "ca86195f9ef1ba2a8851c6ccee73381308387298579e8569ed773ae3ae9d16a2",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 47.308776262,
+              "diagnostic_passes": 0,
+              "diagnostic_requests": 0,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 5,
+                "stop": 19
+              },
+              "generated_tokens": 25683,
+              "input_hash": "c7790cb30a6041d264daddd20748c19a6001136bcb9fea895e8c11fe16884f94",
+              "last_request_end_utc_approx": "2026-11-10T14:26:52.058263+00:00",
+              "requests": 24,
+              "source_sha256": "951b51679d5fd3dc561573aa3fc3cba9462ebe01e3b3fc2d179fee5de4088b0c",
+              "successes": 24,
+              "valid": true
+            },
+            "smoke": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "612514edb4c2ac77a2100edadf54bd90e7b995daee5bd5804c6295a5ce7a6fac",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 22.885130368,
+              "diagnostic_passes": 8,
+              "diagnostic_requests": 8,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 1,
+                "stop": 7
+              },
+              "generated_tokens": 7012,
+              "input_hash": "4c7b2a904bdcbbfeb51f2ef94d9a5f11d5a62f78f297eaa3206d57570f149a4d",
+              "last_request_end_utc_approx": "2026-11-10T14:25:38.038251+00:00",
+              "requests": 8,
+              "source_sha256": "4dd5ae7605063d8b72dce0dc94b87ef71445cf967b1187279d85e9dd20073f73",
+              "successes": 8,
+              "valid": true
+            }
+          },
+          "runtime": {
+            "activation_managers": [
+              "Using AgRsAll2AllManager"
+            ],
+            "async_error_log_entries": 0,
+            "attention": [
+              "Using FlashAttention version 3"
+            ],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {
+              "0": 329.03,
+              "1": 329.02,
+              "2": 328.91,
+              "3": 329.02,
+              "4": 328.96,
+              "5": 328.9,
+              "6": 328.98,
+              "7": 328.96
+            },
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": true,
+            "graph_capture_rank_records": {
+              "0": [
+                10.0,
+                15.0
+              ],
+              "1": [
+                10.0,
+                15.0
+              ],
+              "2": [
+                10.0,
+                15.0
+              ],
+              "3": [
+                10.0,
+                15.0
+              ],
+              "4": [
+                10.0,
+                15.0
+              ],
+              "5": [
+                10.0,
+                15.0
+              ],
+              "6": [
+                10.0,
+                15.0
+              ],
+              "7": [
+                10.0,
+                15.0
+              ]
+            },
+            "jit_during_inference": [
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-0.log",
+                "kernel": "_topk_log_softmax_kernel",
+                "line": 170,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:25:15+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-0.log",
+                "kernel": "fused_moe_kernel",
+                "line": 177,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:25:18+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-1.log",
+                "kernel": "_topk_log_softmax_kernel",
+                "line": 121,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:25:17+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-1.log",
+                "kernel": "fused_moe_kernel",
+                "line": 122,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:25:18+00:00"
+              }
+            ],
+            "kv_tokens_per_dp_rank": {
+              "0": 744464,
+              "1": 744464,
+              "2": 744624,
+              "3": 744624,
+              "4": 744464,
+              "5": 744464,
+              "6": 744624,
+              "7": 744624
+            },
+            "moe": [
+              "Using TRITON Unquantized MoE"
+            ],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {
+              "0": 23.67,
+              "1": 23.65,
+              "2": 23.6,
+              "3": 23.67,
+              "4": 23.61,
+              "5": 23.63,
+              "6": 23.6,
+              "7": 23.63
+            },
+            "runner": [
+              "Using V2 Model Runner"
+            ],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": true,
+            "warnings": [
+              {
+                "file": "server-0.log",
+                "line": 46,
+                "text": "(Worker_DP0_EP0 pid=14717) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 47,
+                "text": "(EngineCore_DP0 pid=14583) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 49,
+                "text": "(EngineCore_DP3 pid=14586) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 50,
+                "text": "(EngineCore_DP1 pid=14584) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 54,
+                "text": "(EngineCore_DP2 pid=14585) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 65,
+                "text": "(Worker_DP0_EP0 pid=14717) WARNING 11-10 15:20:19 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=16,N=768,device_name=NVIDIA_H100.json",
+                "utc_second": "2026-11-10T14:20:19+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 219,
+                "text": "(VLLM_DP_Coordinator pid=14539) WARNING 11-10 15:25:39 [coordinator.py:414] Received stats for out-of-order step (1, 1) from engine 6 (expected > (1, 2))",
+                "utc_second": "2026-11-10T14:25:39+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 220,
+                "text": "(VLLM_DP_Coordinator pid=14539) WARNING 11-10 15:25:39 [coordinator.py:414] Received stats for out-of-order step (1, 1) from engine 6 (expected > (1, 2))",
+                "utc_second": "2026-11-10T14:25:39+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 231,
+                "text": "(VLLM_DP_Coordinator pid=14539) WARNING 11-10 15:25:39 [coordinator.py:414] Received stats for out-of-order step (1, 1) from engine 0 (expected > (1, 2))",
+                "utc_second": "2026-11-10T14:25:39+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 232,
+                "text": "(VLLM_DP_Coordinator pid=14539) WARNING 11-10 15:25:39 [coordinator.py:414] Received stats for out-of-order step (1, 2) from engine 0 (expected > (1, 3))",
+                "utc_second": "2026-11-10T14:25:39+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 233,
+                "text": "(VLLM_DP_Coordinator pid=14539) WARNING 11-10 15:25:39 [coordinator.py:414] Received stats for out-of-order step (1, 2) from engine 3 (expected > (1, 3))",
+                "utc_second": "2026-11-10T14:25:39+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 34,
+                "text": "(EngineCore_DP6 pid=3888898) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 36,
+                "text": "(Worker_DP4_EP4 pid=3889051) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 37,
+                "text": "(EngineCore_DP4 pid=3888896) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 38,
+                "text": "(EngineCore_DP7 pid=3888899) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 42,
+                "text": "(EngineCore_DP5 pid=3888897) WARNING 11-10 15:19:37 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:19:37+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 53,
+                "text": "(Worker_DP4_EP4 pid=3889051) WARNING 11-10 15:20:19 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=16,N=768,device_name=NVIDIA_H100.json",
+                "utc_second": "2026-11-10T14:20:19+00:00"
+              }
+            ],
+            "weight_load_seconds_per_dp_rank": {
+              "0": 153.783375,
+              "1": 153.982195,
+              "2": 154.02917,
+              "3": 154.001038,
+              "4": 154.085622,
+              "5": 153.85591,
+              "6": 154.095398,
+              "7": 153.895573
+            }
+          },
+          "source_log_sha256": {
+            "server-0.err": "342eceee07b4871d200d8945c4da8a711f947032b1069a38b3335c4f246bd8b1",
+            "server-0.log": "ad567f314562a29c10aad96b943e038bebf027af8694399ef78aaf5d846b60c5",
+            "server-1.err": "44acf338bdbf8da1d22af054b317d8642d4f1c84722bb724079ce26c5fe27053",
+            "server-1.log": "efe2c5067737f703bc8e8dfcc64cd04ad79ef56cc68f11603e8b3d96f86d1715"
+          },
+          "startup_elapsed_s": 665.8160324189812
+        },
+        "on": {
+          "available": true,
+          "complete_requests": true,
+          "hardware": [
+            {
+              "checkpoint_manifest_sha256": "195361ee9fa1b673f3a60dd9cd2ab13cdab952552bbbbda3272471f46b8581e2",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+                }
+              ],
+              "hostname": "kh074",
+              "job_id": "4882284",
+              "preflight_sha256": "944730685df8308d45ee514203f7945c180b0ab180169e2abc27b4fdc3540d27",
+              "role": "primary",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            },
+            {
+              "checkpoint_manifest_sha256": "195361ee9fa1b673f3a60dd9cd2ab13cdab952552bbbbda3272471f46b8581e2",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "0d188b56-db2a-369e-1f56-7968f1d630cb"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d417d440-a598-33ae-99ad-f08b19ce3706"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "739d84d8-77d7-1a88-89b8-817753b6cdee"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "8e4f8e0d-1805-e2eb-e431-7abe7579bb04"
+                }
+              ],
+              "hostname": "kh077",
+              "job_id": "4882284",
+              "preflight_sha256": "52f7e9b5c4747479c753ff043607708ef62ce41d6829680dc9b23baca0064994",
+              "role": "worker",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            }
+          ],
+          "phases": {
+            "calibration": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "e4090ce0fbcba295ad526d7082e87b76f4259b7546dd1cccba60fc8fd6d26830",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 26.735421497,
+              "diagnostic_passes": 0,
+              "diagnostic_requests": 0,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 2,
+                "stop": 30
+              },
+              "generated_tokens": 28827,
+              "input_hash": "bce424abe63dde30df25ea05095ccae1f26dc3420f19f1d2c8a592929195a00d",
+              "last_request_end_utc_approx": "2026-11-10T14:41:28.195026+00:00",
+              "requests": 32,
+              "source_sha256": "a92b7d27f0415e3f6c51ab720f4193c71b7b6a4c15694a85526b1ee4ecf763c5",
+              "successes": 32,
+              "valid": true
+            },
+            "external": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "ca86195f9ef1ba2a8851c6ccee73381308387298579e8569ed773ae3ae9d16a2",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 48.490528132,
+              "diagnostic_passes": 0,
+              "diagnostic_requests": 0,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 4,
+                "stop": 20
+              },
+              "generated_tokens": 25594,
+              "input_hash": "c7790cb30a6041d264daddd20748c19a6001136bcb9fea895e8c11fe16884f94",
+              "last_request_end_utc_approx": "2026-11-10T14:42:17.937695+00:00",
+              "requests": 24,
+              "source_sha256": "b6b017e777791275c1a9d3df0d0fccfdfc90aaf555185a5fe30f64ed048d7cc2",
+              "successes": 24,
+              "valid": true
+            },
+            "smoke": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "612514edb4c2ac77a2100edadf54bd90e7b995daee5bd5804c6295a5ce7a6fac",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 25.586268712,
+              "diagnostic_passes": 8,
+              "diagnostic_requests": 8,
+              "failures": 0,
+              "finish_reasons": {
+                "stop": 8
+              },
+              "generated_tokens": 7407,
+              "input_hash": "4c7b2a904bdcbbfeb51f2ef94d9a5f11d5a62f78f297eaa3206d57570f149a4d",
+              "last_request_end_utc_approx": "2026-11-10T14:41:00.163820+00:00",
+              "requests": 8,
+              "source_sha256": "65024173367fe172efca62c13e9609b78320d2c0c29b9f96e8dfec7e4a563de0",
+              "successes": 8,
+              "valid": true
+            }
+          },
+          "runtime": {
+            "activation_managers": [
+              "Using AgRsAll2AllManager"
+            ],
+            "async_error_log_entries": 0,
+            "attention": [
+              "Using FlashAttention version 3"
+            ],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {
+              "0": 326.61,
+              "1": 326.59,
+              "2": 326.6,
+              "3": 326.6,
+              "4": 326.59,
+              "5": 326.58,
+              "6": 326.58,
+              "7": 326.58
+            },
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": true,
+            "graph_capture_rank_records": {
+              "0": [
+                12.0,
+                16.0
+              ],
+              "1": [
+                12.0,
+                16.0
+              ],
+              "2": [
+                12.0,
+                16.0
+              ],
+              "3": [
+                11.0,
+                16.0
+              ],
+              "4": [
+                11.0,
+                16.0
+              ],
+              "5": [
+                12.0,
+                16.0
+              ],
+              "6": [
+                12.0,
+                16.0
+              ],
+              "7": [
+                12.0,
+                16.0
+              ]
+            },
+            "jit_during_inference": [
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-0.log",
+                "kernel": "_topk_log_softmax_kernel",
+                "line": 175,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:40:34+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-0.log",
+                "kernel": "fused_moe_kernel",
+                "line": 182,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:40:37+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-1.log",
+                "kernel": "_topk_log_softmax_kernel",
+                "line": 123,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:40:36+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-1.log",
+                "kernel": "fused_moe_kernel",
+                "line": 124,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:40:37+00:00"
+              }
+            ],
+            "kv_tokens_per_dp_rank": {
+              "0": 713312,
+              "1": 713312,
+              "2": 713664,
+              "3": 713664,
+              "4": 713312,
+              "5": 713312,
+              "6": 713664,
+              "7": 713664
+            },
+            "moe": [
+              "Using TRITON Unquantized MoE"
+            ],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 3,
+            "ordinary_async_launches": [
+              {
+                "file": "server-0.log",
+                "line": 192,
+                "utc_second": "2026-11-10T14:40:42+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 249,
+                "utc_second": "2026-11-10T14:41:19+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 304,
+                "utc_second": "2026-11-10T14:41:54+00:00"
+              }
+            ],
+            "profile_rearrangement_entries": [
+              {
+                "file": "server-0.log",
+                "line": 70,
+                "utc_second": "2026-11-10T14:35:42+00:00"
+              }
+            ],
+            "reported_compilation_seconds_per_dp_rank": {
+              "0": 22.99,
+              "1": 22.92,
+              "2": 22.98,
+              "3": 22.97,
+              "4": 22.95,
+              "5": 22.9,
+              "6": 22.9,
+              "7": 22.95
+            },
+            "runner": [
+              "Using V2 Model Runner"
+            ],
+            "selected_weight_communicators": [
+              "TorchDistGlooStagedEplbCommunicator"
+            ],
+            "shutdown_abort_zero_timeout": true,
+            "warnings": [
+              {
+                "file": "server-0.log",
+                "line": 50,
+                "text": "(Worker_DP0_EP0 pid=17091) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 51,
+                "text": "(EngineCore_DP0 pid=16948) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 53,
+                "text": "(EngineCore_DP2 pid=16950) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 54,
+                "text": "(EngineCore_DP1 pid=16949) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 55,
+                "text": "(EngineCore_DP3 pid=16951) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 68,
+                "text": "(Worker_DP0_EP0 pid=17091) WARNING 11-10 15:35:41 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=20,N=768,device_name=NVIDIA_H100.json",
+                "utc_second": "2026-11-10T14:35:41+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 37,
+                "text": "(Worker_DP4_EP4 pid=3891291) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 38,
+                "text": "(EngineCore_DP5 pid=3891145) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 39,
+                "text": "(EngineCore_DP6 pid=3891146) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 40,
+                "text": "(EngineCore_DP7 pid=3891147) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 44,
+                "text": "(EngineCore_DP4 pid=3891144) WARNING 11-10 15:35:00 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:35:00+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 55,
+                "text": "(Worker_DP4_EP4 pid=3891291) WARNING 11-10 15:35:41 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=20,N=768,device_name=NVIDIA_H100.json",
+                "utc_second": "2026-11-10T14:35:41+00:00"
+              }
+            ],
+            "weight_load_seconds_per_dp_rank": {
+              "0": 314.039347,
+              "1": 314.258699,
+              "2": 314.342956,
+              "3": 314.310266,
+              "4": 314.414217,
+              "5": 314.117997,
+              "6": 314.265978,
+              "7": 314.056326
+            }
+          },
+          "source_log_sha256": {
+            "server-0.err": "1e13912e232a0faa1dd6bc03b126c3e4186ed054b283ddf04377685530e4dcfb",
+            "server-0.log": "b70161d495148562b44288d44016482e2d7da02dd99f8d8f6fe40118fbaa5cd2",
+            "server-1.err": "798d2027761c483d4be8e6bbeb7311d7e00f704e659af8759a56003a8613f99b",
+            "server-1.log": "6153f335fb9544d2aab3c0ff6f6c390f21f982e049f66c303c4a9557f268d45b"
+          },
+          "startup_elapsed_s": 815.9557966981083
+        }
+      },
+      "completed_pair": true,
+      "controller_state": "pilot_completed",
+      "custom_dispatcher_installed": false,
+      "dataset": "wildchat",
+      "directory": "results/full-serving/live-suite-v1/wildchat",
+      "numerical_and_committed_state_correctness_proven": false,
+      "pairs": {
+        "calibration": {
+          "completed_valid_arms": true,
+          "input_calendar_client_hashes_match": true,
+          "off_generated_tokens": 28660,
+          "on_generated_tokens": 28827
+        },
+        "external": {
+          "completed_valid_arms": true,
+          "input_calendar_client_hashes_match": true,
+          "off_generated_tokens": 25683,
+          "on_generated_tokens": 25594
+        },
+        "smoke": {
+          "completed_valid_arms": true,
+          "input_calendar_client_hashes_match": true,
+          "off_generated_tokens": 7012,
+          "on_generated_tokens": 7407
+        }
+      },
+      "smoke_equal_text_count": 0,
+      "smoke_generated_texts_all_equal": false,
+      "smoke_pair_count": 8
+    },
+    {
+      "arms": {
+        "off": {
+          "available": true,
+          "complete_requests": true,
+          "hardware": [
+            {
+              "checkpoint_manifest_sha256": "b3dc8e74f2cdb6a8587e4e35954a9eebb4046bd87fd17bc764139c745fb95dfc",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+                }
+              ],
+              "hostname": "kh074",
+              "job_id": "4882284",
+              "preflight_sha256": "4ca6ecaf156404fc5b91360b6ff29d50cec0f242b554312e89dd23d865cd22d8",
+              "role": "primary",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            },
+            {
+              "checkpoint_manifest_sha256": "b3dc8e74f2cdb6a8587e4e35954a9eebb4046bd87fd17bc764139c745fb95dfc",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "0d188b56-db2a-369e-1f56-7968f1d630cb"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d417d440-a598-33ae-99ad-f08b19ce3706"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "739d84d8-77d7-1a88-89b8-817753b6cdee"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "8e4f8e0d-1805-e2eb-e431-7abe7579bb04"
+                }
+              ],
+              "hostname": "kh077",
+              "job_id": "4882284",
+              "preflight_sha256": "0820bf645b57f2e0ae70ee70f8957c7f83ea5891eff3c2c1c2261e2da8409d58",
+              "role": "worker",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            }
+          ],
+          "phases": {
+            "calibration": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "0d87b8fcb375fa8541485f1b90bd7787406d8cbb8d0b65380d76e726b9bbd204",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 24.265971024,
+              "diagnostic_passes": 0,
+              "diagnostic_requests": 0,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 4,
+                "stop": 28
+              },
+              "generated_tokens": 30580,
+              "input_hash": "a04cb29113b4d5c33140073d34f7b2284313e343cedbdaa8aaa761271f90c194",
+              "last_request_end_utc_approx": "2026-11-10T14:52:41.986461+00:00",
+              "requests": 32,
+              "source_sha256": "35954586cf3f5ce7ac253d94f40db6adb47f8c3366d7941acb59a413bccbbcfd",
+              "successes": 32,
+              "valid": true
+            },
+            "external": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "8cfea32ce8e27f1a1d9debe0d01368b668b04ee1af22c080a5d4e556cb39f035",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 37.042329374,
+              "diagnostic_passes": 0,
+              "diagnostic_requests": 0,
+              "failures": 0,
+              "finish_reasons": {
+                "length": 1,
+                "stop": 23
+              },
+              "generated_tokens": 18591,
+              "input_hash": "5a2aedde49c1f4e64935a1d85e125f25604df47f49de0ea3ddcef367e4a1f324",
+              "last_request_end_utc_approx": "2026-11-10T14:53:20.283568+00:00",
+              "requests": 24,
+              "source_sha256": "d3fa30bcf5cefae17b9e83ab1e23ddf2263e1985b2af9e7a341e9caf1d9f3115",
+              "successes": 24,
+              "valid": true
+            },
+            "smoke": {
+              "all_prompt_counts_match": true,
+              "all_sse_done": true,
+              "available": true,
+              "calendar_hash": "78d1831bff201097217edcd72d062f12f3cedbab7c3017ff218cbdd85b37382d",
+              "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+              "complete": true,
+              "completed_elapsed_s": 15.152227982,
+              "diagnostic_passes": 8,
+              "diagnostic_requests": 8,
+              "failures": 0,
+              "finish_reasons": {
+                "stop": 8
+              },
+              "generated_tokens": 5035,
+              "input_hash": "57cb90590b1f4e2b96c8fa8637529c2e4356727239cb2ba884d110150d2e9446",
+              "last_request_end_utc_approx": "2026-11-10T14:52:16.417894+00:00",
+              "requests": 8,
+              "source_sha256": "2244c396cb395c21d58661ef87f88b96a3b13d0b8164c81637f49fba38c016e4",
+              "successes": 8,
+              "valid": true
+            }
+          },
+          "runtime": {
+            "activation_managers": [
+              "Using AgRsAll2AllManager"
+            ],
+            "async_error_log_entries": 0,
+            "attention": [
+              "Using FlashAttention version 3"
+            ],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {
+              "0": 291.43,
+              "1": 291.44,
+              "2": 291.42,
+              "3": 291.43,
+              "4": 291.53,
+              "5": 291.5,
+              "6": 291.44,
+              "7": 291.54
+            },
+            "errors": [
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 341,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871] AsyncLLM output_handler failed.",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 342,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871] Traceback (most recent call last):",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 343,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871]   File \"/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py\", line 817, in output_handler",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 344,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871]     outputs = await engine_core.get_output_async()",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 345,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 346,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871]   File \"/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 1215, in get_output_async",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 347,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871]     raise self._format_exception(outputs) from None",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              },
+              {
+                "after_shutdown_marker_in_same_file": true,
+                "file": "server-0.log",
+                "line": 348,
+                "text": "(APIServer pid=19220) ERROR 11-10 15:53:20 [async_llm.py:871] vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.",
+                "utc_second": "2026-11-10T14:53:20+00:00"
+              }
+            ],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": true,
+            "graph_capture_rank_records": {
+              "0": [
+                10.0,
+                15.0
+              ],
+              "1": [
+                10.0,
+                15.0
+              ],
+              "2": [
+                10.0,
+                15.0
+              ],
+              "3": [
+                10.0,
+                15.0
+              ],
+              "4": [
+                10.0,
+                15.0
+              ],
+              "5": [
+                10.0,
+                15.0
+              ],
+              "6": [
+                10.0,
+                15.0
+              ],
+              "7": [
+                10.0,
+                15.0
+              ]
+            },
+            "jit_during_inference": [
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-0.log",
+                "kernel": "_topk_log_softmax_kernel",
+                "line": 170,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:52:01+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-0.log",
+                "kernel": "fused_moe_kernel",
+                "line": 185,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:52:04+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-1.log",
+                "kernel": "_topk_log_softmax_kernel",
+                "line": 121,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:52:03+00:00"
+              },
+              {
+                "compatible_phases": [
+                  "smoke"
+                ],
+                "file": "server-1.log",
+                "kernel": "fused_moe_kernel",
+                "line": 122,
+                "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+                "utc_second": "2026-11-10T14:52:04+00:00"
+              }
+            ],
+            "kv_tokens_per_dp_rank": {
+              "0": 744464,
+              "1": 744464,
+              "2": 744624,
+              "3": 744624,
+              "4": 744464,
+              "5": 744464,
+              "6": 744624,
+              "7": 744624
+            },
+            "moe": [
+              "Using TRITON Unquantized MoE"
+            ],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {
+              "0": 1.13,
+              "1": 1.13,
+              "2": 1.13,
+              "3": 1.13,
+              "4": 1.13,
+              "5": 1.13,
+              "6": 1.13,
+              "7": 1.13
+            },
+            "runner": [
+              "Using V2 Model Runner"
+            ],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": true,
+            "warnings": [
+              {
+                "file": "server-0.log",
+                "line": 47,
+                "text": "(Worker_DP0_EP0 pid=19577) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 48,
+                "text": "(EngineCore_DP0 pid=19384) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 50,
+                "text": "(EngineCore_DP2 pid=19386) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 51,
+                "text": "(EngineCore_DP3 pid=19387) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 52,
+                "text": "(EngineCore_DP1 pid=19385) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-0.log",
+                "line": 65,
+                "text": "(Worker_DP0_EP0 pid=19577) WARNING 11-10 15:47:16 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=16,N=768,device_name=NVIDIA_H100.json",
+                "utc_second": "2026-11-10T14:47:16+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 33,
+                "text": "(Worker_DP4_EP4 pid=3893605) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 35,
+                "text": "(EngineCore_DP4 pid=3893455) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 36,
+                "text": "(EngineCore_DP7 pid=3893458) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 39,
+                "text": "(EngineCore_DP5 pid=3893456) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 42,
+                "text": "(EngineCore_DP6 pid=3893457) WARNING 11-10 15:46:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+                "utc_second": "2026-11-10T14:46:59+00:00"
+              },
+              {
+                "file": "server-1.log",
+                "line": 53,
+                "text": "(Worker_DP4_EP4 pid=3893605) WARNING 11-10 15:47:16 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=16,N=768,device_name=NVIDIA_H100.json",
+                "utc_second": "2026-11-10T14:47:16+00:00"
+              }
+            ],
+            "weight_load_seconds_per_dp_rank": {
+              "0": 64.926731,
+              "1": 64.589522,
+              "2": 64.924866,
+              "3": 64.710144,
+              "4": 64.793028,
+              "5": 64.57428,
+              "6": 64.645769,
+              "7": 64.536084
+            }
+          },
+          "source_log_sha256": {
+            "server-0.err": "9dd0dcdacd15b7fc0367439c20c57161c9f6cf7c078e4d4ad137723366e41683",
+            "server-0.log": "2be19a460e762c10d945b36f93deac529d1ad7c585948bf1a1fc2d0f9c832ff8",
+            "server-1.err": "21a9f760ee57248d13db930f3d53b605a2ef812690f64040a910a09d2116373a",
+            "server-1.log": "6633d66eb3d3f1387788587b00354d2218f696ac4b58da55c2e8d98b8f4c2598"
+          },
+          "startup_elapsed_s": 535.6216032591183
+        },
+        "on": {
+          "available": true,
+          "complete_requests": false,
+          "hardware": [
+            {
+              "checkpoint_manifest_sha256": "b3dc8e74f2cdb6a8587e4e35954a9eebb4046bd87fd17bc764139c745fb95dfc",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+                }
+              ],
+              "hostname": "kh074",
+              "job_id": "4882284",
+              "preflight_sha256": "8982b3af1645927d3933ad18c3542a017bbe8e339c4b154201bc5206bdf64d68",
+              "role": "primary",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            },
+            {
+              "checkpoint_manifest_sha256": "b3dc8e74f2cdb6a8587e4e35954a9eebb4046bd87fd17bc764139c745fb95dfc",
+              "devices": [
+                {
+                  "cuda_index": 0,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "0d188b56-db2a-369e-1f56-7968f1d630cb"
+                },
+                {
+                  "cuda_index": 1,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "d417d440-a598-33ae-99ad-f08b19ce3706"
+                },
+                {
+                  "cuda_index": 2,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "739d84d8-77d7-1a88-89b8-817753b6cdee"
+                },
+                {
+                  "cuda_index": 3,
+                  "name": "NVIDIA H100",
+                  "total_memory": 99981918208,
+                  "uuid": "8e4f8e0d-1805-e2eb-e431-7abe7579bb04"
+                }
+              ],
+              "hostname": "kh077",
+              "job_id": "4882284",
+              "preflight_sha256": "732fb07435b3b34ca62f7f1412408cf5ffcaa0e0c8b6a6b0a7f29043499985eb",
+              "role": "worker",
+              "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+            }
+          ],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [
+              "Using AgRsAll2AllManager"
+            ],
+            "async_error_log_entries": 0,
+            "attention": [
+              "Using FlashAttention version 3"
+            ],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [
+              "Using TRITON Unquantized MoE"
+            ],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [
+              "Using V2 Model Runner"
+            ],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {
+            "server-0.err": "29d85de330061901851a42700596110132d510436be1721f1480b7792e04a475",
+            "server-0.log": "5bdd7a363f39b00576d138336f6ebb8cd0a6d8725be95fc383b7dc1ef763eded",
+            "server-1.err": "75ac7d0f95860da640ab378556ac12aa5ac01e33dc661e2f4e964de1313fcd4f",
+            "server-1.log": "e283b99a831640893dbfd5c8c3898ed7905fa4ccced8b686e5a8e61932a94cf9"
+          },
+          "startup_elapsed_s": null
+        }
+      },
+      "completed_pair": false,
+      "controller_state": "starting_server",
+      "custom_dispatcher_installed": false,
+      "dataset": "sharegpt",
+      "directory": "results/full-serving/live-suite-v1/sharegpt",
+      "numerical_and_committed_state_correctness_proven": false,
+      "pairs": {
+        "calibration": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": 30580,
+          "on_generated_tokens": null
+        },
+        "external": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": 18591,
+          "on_generated_tokens": null
+        },
+        "smoke": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": 5035,
+          "on_generated_tokens": null
+        }
+      },
+      "smoke_equal_text_count": null,
+      "smoke_generated_texts_all_equal": null,
+      "smoke_pair_count": null
+    },
+    {
+      "arms": {
+        "off": {
+          "available": false,
+          "complete_requests": false,
+          "hardware": [],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [],
+            "async_error_log_entries": 0,
+            "attention": [],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {},
+          "startup_elapsed_s": null
+        },
+        "on": {
+          "available": false,
+          "complete_requests": false,
+          "hardware": [],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [],
+            "async_error_log_entries": 0,
+            "attention": [],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {},
+          "startup_elapsed_s": null
+        }
+      },
+      "completed_pair": false,
+      "controller_state": "not available",
+      "custom_dispatcher_installed": null,
+      "dataset": "instructcoder",
+      "directory": "results/full-serving/live-suite-v1/instructcoder",
+      "numerical_and_committed_state_correctness_proven": false,
+      "pairs": {
+        "calibration": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        },
+        "external": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        },
+        "smoke": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        }
+      },
+      "smoke_equal_text_count": null,
+      "smoke_generated_texts_all_equal": null,
+      "smoke_pair_count": null
+    },
+    {
+      "arms": {
+        "off": {
+          "available": false,
+          "complete_requests": false,
+          "hardware": [],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [],
+            "async_error_log_entries": 0,
+            "attention": [],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {},
+          "startup_elapsed_s": null
+        },
+        "on": {
+          "available": false,
+          "complete_requests": false,
+          "hardware": [],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [],
+            "async_error_log_entries": 0,
+            "attention": [],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {},
+          "startup_elapsed_s": null
+        }
+      },
+      "completed_pair": false,
+      "controller_state": "not available",
+      "custom_dispatcher_installed": null,
+      "dataset": "numinamath",
+      "directory": "results/full-serving/live-suite-v1/numinamath",
+      "numerical_and_committed_state_correctness_proven": false,
+      "pairs": {
+        "calibration": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        },
+        "external": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        },
+        "smoke": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        }
+      },
+      "smoke_equal_text_count": null,
+      "smoke_generated_texts_all_equal": null,
+      "smoke_pair_count": null
+    },
+    {
+      "arms": {
+        "off": {
+          "available": false,
+          "complete_requests": false,
+          "hardware": [],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [],
+            "async_error_log_entries": 0,
+            "attention": [],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {},
+          "startup_elapsed_s": null
+        },
+        "on": {
+          "available": false,
+          "complete_requests": false,
+          "hardware": [],
+          "phases": {
+            "calibration": {
+              "available": false
+            },
+            "external": {
+              "available": false
+            },
+            "smoke": {
+              "available": false
+            }
+          },
+          "runtime": {
+            "activation_managers": [],
+            "async_error_log_entries": 0,
+            "attention": [],
+            "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+            "committed_state_consistency_verified": false,
+            "engine_init_seconds_per_dp_rank": {},
+            "errors": [],
+            "errors_before_shutdown_marker": 0,
+            "forced_engine_shutdown": false,
+            "graph_capture_rank_records": {},
+            "jit_during_inference": [],
+            "kv_tokens_per_dp_rank": {},
+            "moe": [],
+            "normal_async_commits_observed": null,
+            "ordinary_async_launch_log_entries": 0,
+            "ordinary_async_launches": [],
+            "profile_rearrangement_entries": [],
+            "reported_compilation_seconds_per_dp_rank": {},
+            "runner": [],
+            "selected_weight_communicators": [],
+            "shutdown_abort_zero_timeout": false,
+            "warnings": [],
+            "weight_load_seconds_per_dp_rank": {}
+          },
+          "source_log_sha256": {},
+          "startup_elapsed_s": null
+        }
+      },
+      "completed_pair": false,
+      "controller_state": "not available",
+      "custom_dispatcher_installed": null,
+      "dataset": "longbench",
+      "directory": "results/full-serving/live-suite-v1/longbench",
+      "numerical_and_committed_state_correctness_proven": false,
+      "pairs": {
+        "calibration": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        },
+        "external": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        },
+        "smoke": {
+          "completed_valid_arms": false,
+          "input_calendar_client_hashes_match": null,
+          "off_generated_tokens": null,
+          "on_generated_tokens": null
+        }
+      },
+      "smoke_equal_text_count": null,
+      "smoke_generated_texts_all_equal": null,
+      "smoke_pair_count": null
+    }
+  ],
+  "created_utc": "2026-11-10T14:58:32.816497+00:00",
+  "datasets_kept_separate": true,
+  "interpretation": [
+    "Fixed OFF-then-ON pilots provide descriptive native-configuration comparisons, not independent-run uncertainty or final speedup claims.",
+    "Equal input and arrival hashes do not guarantee equal generated work: outputs, termination and token counts can differ at temperature zero.",
+    "ON adds 32 physical expert copies per layer and may change KV capacity and local-expert kernel shape. This does not isolate decision overhead.",
+    "Full HTTP request timing excludes server startup; startup is reported separately. Smoke is a diagnostic, not a performance headline.",
+    "All-layer routing/numerical correctness and normally committed expert-map consistency are not established by finite token logprobs or successful requests.",
+    "Errors after a same-file intentional shutdown marker are reported separately, not automatically treated as inference failures. Other-file ordering still requires review."
+  ],
+  "root": "results/full-serving/live-suite-v1",
+  "schema": "full_serving_runtime_audit_v1",
+  "startup_explanation": {
+    "deduction": "Completed WildChat OFF/ON have similar roughly 329/327-second initialization and later successful requests; shared-memory waiting notices in that interval do not alone show a hang. The long gap after brief FlashInfer autotune and before final graph capture is consistent with intervening V2 kernel warmup.",
+    "sources": [
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/v1/engine/core.py#L286-L378",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/v1/worker/gpu_worker.py#L829-L1000",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/v1/worker/gpu/warmup.py#L213-L454"
+    ],
+    "unresolved": "Logs do not time every startup subphase; do not assign the entire gap to a particular kernel, compiler, storage operation or synchronization.",
+    "verified": "The native init-engine timer includes memory profiling, KV allocation and compile_or_warm_up_model. That worker method invokes kernel/autotune warmup, V2 scheduler-realistic eager prefill/decode sampling warmup, final graph capture and lazy compiler initialization. It is not a pure compilation timer."
+  },
+  "vllm_pin": "db9527a46873454610df6dbedf79a36d6bf1a7f6"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "full_serving_external_independent_recompute_v1",
+  "dataset": "instructcoder",
+  "stage": "external",
+  "arms": {
+    "off": {
+      "request_count": 24,
+      "failed_requests": 0,
+      "response_from_schedule_ms": {
+        "mean": 4339.345172333334,
+        "p95": 8053.5096097
+      },
+      "ttft_from_send_ms": {
+        "mean": 63.926733999999996,
+        "p95": 87.75799305
+      },
+      "completed_elapsed_s": 22.000118799,
+      "drain_s": 7.899201272,
+      "completed_input_tokens": 3227,
+      "completed_output_tokens": 9810,
+      "output_cap_completions": 0,
+      "completed_output_tokens_per_s": 445.906683033271,
+      "client_tail_after_completion_ms": 0.997055
+    },
+    "on": {
+      "request_count": 24,
+      "failed_requests": 0,
+      "response_from_schedule_ms": {
+        "mean": 4781.316406208333,
+        "p95": 8654.1810316
+      },
+      "ttft_from_send_ms": {
+        "mean": 64.65354716666667,
+        "p95": 93.6991492
+      },
+      "completed_elapsed_s": 26.265690403,
+      "drain_s": 12.164772876,
+      "completed_input_tokens": 3227,
+      "completed_output_tokens": 10155,
+      "output_cap_completions": 0,
+      "completed_output_tokens_per_s": 386.6260450111801,
+      "client_tail_after_completion_ms": 1.030135
+    }
+  },
+  "source_sha256": {
+    "off": "790ad25c268d042a95241599329a63d740ebf0b7eb0be2381a80660abd031bee",
+    "on": "0ab9e4af83592f9f3125dba0d16389c0c98dcf3b473fa64949197e8b672e6b9a"
+  },
+  "report_snapshot_sha256": "28e68b0c1c072acc56a5f65a8d632cffc6c72d33dfe7322bd30b47bbfe9ec649",
+  "report_created_utc": "2026-11-10T16:53:26.989516+00:00",
+  "report_snapshot": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/outputs/full-serving/suite-progress-report.json",
+  "issues": [],
+  "uncertainty": "unavailable: single fixed-order content/arrival block per arm",
+  "final_speedup_claim": false,
+  "method": "Raw integer monotonic timestamp differences; linear-interpolated p95 at (n-1)*0.95; no full_serving analysis helpers.",
+  "valid": true,
+  "paired_identities_and_absolute_offsets_match": true,
+  "reported_summaries_match_independent_recompute": true,
+  "on_minus_off_percent": {
+    "completed_elapsed_s": 19.388857137416405,
+    "completed_output_tokens": 3.5168195718654482,
+    "completed_output_tokens_per_s": -13.294404474684162,
+    "drain_s": 54.00003692930335,
+    "response_from_schedule_ms_mean": 10.185205747007785,
+    "response_from_schedule_ms_p95": 7.458505061899023,
+    "ttft_from_send_ms_mean": 1.136947128671828,
+    "ttft_from_send_ms_p95": 6.769931653536143
+  },
+  "generation": {
+    "equal_text_hash_pairs": 2,
+    "equal_output_count_pairs": 2,
+    "equal_finish_reason_pairs": 24,
+    "pairs": 24,
+    "generated_token_identity_available": false,
+    "interpretation": "External stage stores text hashes and usage counts, not output token arrays. Differing generations change executed work; no equal-work causal speedup or independent-run inference."
+  }
+}

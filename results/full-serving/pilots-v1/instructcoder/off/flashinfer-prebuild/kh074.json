@@ -1,0 +1,72 @@
+{
+  "checks": [
+    {
+      "exact_mask_match": true,
+      "top_k": [
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "exact_mask_match": true,
+      "top_k": [
+        1,
+        5,
+        32,
+        4096
+      ]
+    },
+    {
+      "exact_sample_match": true,
+      "operation": "top_k_top_p_sampling_from_logits",
+      "top_k": 1,
+      "top_p": 0.75
+    },
+    {
+      "distribution": "one-hot",
+      "exact_sample_match": true,
+      "operation": "top_p_sampling_from_probs",
+      "top_p": 0.9
+    }
+  ],
+  "created_utc": "2026-11-10T16:42:18.197036+00:00",
+  "cuda_home": "/work/cs-471/skewbench-hlin/tools/cuda-12.9.1",
+  "cuda_visible_devices": "0,1,2,3",
+  "diagnostic_source_sha256": "01932750019856641371df2c883dc3973833ccddf091ef18ecb1445d3f8b35f2",
+  "flashinfer_jit_dir": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074/.cache/flashinfer/0.7.0.post1/90a/cached_ops",
+  "flashinfer_source_sha256": {
+    "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+    "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+    "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+    "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+  },
+  "flashinfer_version": "0.7.0.post1",
+  "flashinfer_workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074",
+  "get_sampling_module_elapsed_s": 0.06688517611473799,
+  "gpu_capability": [
+    9,
+    0
+  ],
+  "gpu_name": "NVIDIA H100",
+  "gpu_total_memory": 99981918208,
+  "hostname": "kh074",
+  "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+  "job_id": "4882284",
+  "nvcc_sha256": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+  "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0\n",
+  "rank": 0,
+  "sampling_lock_path": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074/.cache/flashinfer/0.7.0.post1/90a/cached_ops/tmp/sampling.lock",
+  "sampling_module_sha256": {
+    "sampling/sampling.so": "76fdd89682f5a10a98cc3d34d4b73c4f34fb81dc86f87a5e3ab03080df33b2f6"
+  },
+  "sampling_module_type": "SimpleNamespace",
+  "schema_version": 2,
+  "scope": "Native FlashInfer compilation/loading, exact top-k masks and deterministic top-k/top-p samples; no full-model serving or speedup measurement",
+  "status": "passed",
+  "step_id": "22",
+  "torch_cuda": "12.9",
+  "torch_version": "2.13.0+cu129",
+  "visible_gpu_count": 4
+}

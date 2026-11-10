@@ -1,0 +1,240 @@
+{
+  "schema": "full_serving_smoke_paired_audit_v2",
+  "result_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt",
+  "expected_request_pairs": 8,
+  "valid": true,
+  "issues": [],
+  "arms": {
+    "off": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 5061,
+      "prompt_tokens": 12791,
+      "finish_reason_counts": {
+        "stop": 8
+      },
+      "output_cap_completions": 0,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    },
+    "on": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 5229,
+      "prompt_tokens": 12791,
+      "finish_reason_counts": {
+        "stop": 8
+      },
+      "output_cap_completions": 0,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    }
+  },
+  "source_sha256": {
+    "status": "ea596a98cf57f1a2875906928c4b465d4fc9c3b950b67c07e8e4aa0e4c22a44a",
+    "pilot_splits": "f0173f91eef4913f9973331a01ad6dc689159620b545140a62825158a0a4e5de",
+    "off": {
+      "public": "74ca230e9a914d135d2e2c81d9277db910219d2fa07a03ff43a35dfe327ac856",
+      "private": "a0dc0b722f36d53601e0d8d42bb1eff8dc1326edb335ccec18fdfdcf8c76f591"
+    },
+    "on": {
+      "public": "005f65b7f2471d4f368d9c1647afa27e81d1c81078913c17464460ca2734ae46",
+      "private": "c84cd7f07b60062d432c8e5a355529fdac324ec771be14b8798f5434008d87fd"
+    }
+  },
+  "requests": [
+    {
+      "request_id": "sharegpt:cc1rn8A_0:91792",
+      "request_index": 0,
+      "off_generated_tokens": 826,
+      "on_generated_tokens": 812,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 65,
+      "first_divergence_zero_based_index": 65,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 65,
+        "mean_absolute": 0.01181813910559063,
+        "max_absolute": 0.10186228156089783,
+        "signed_mean": -0.003380644061446849
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:D94e4DZ_111:93646",
+      "request_index": 1,
+      "off_generated_tokens": 342,
+      "on_generated_tokens": 341,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 116,
+      "first_divergence_zero_based_index": 116,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 116,
+        "mean_absolute": 0.012800189071554917,
+        "max_absolute": 0.24480879306793213,
+        "signed_mean": 0.003849792618043826
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:K2Gj7sJ_0:66057",
+      "request_index": 2,
+      "off_generated_tokens": 32,
+      "on_generated_tokens": 32,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 32,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 32,
+        "mean_absolute": 0.03075851697113996,
+        "max_absolute": 0.21319931745529175,
+        "signed_mean": 0.005698204290603082
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:8Ao0B03_11:68393",
+      "request_index": 3,
+      "off_generated_tokens": 1161,
+      "on_generated_tokens": 1232,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 14,
+      "first_divergence_zero_based_index": 14,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 14,
+        "mean_absolute": 0.03796756565342158,
+        "max_absolute": 0.24455904960632324,
+        "signed_mean": -0.012835922036694163
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:oLcHV4L_23:79883",
+      "request_index": 4,
+      "off_generated_tokens": 701,
+      "on_generated_tokens": 701,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 701,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 701,
+        "mean_absolute": 0.0006011470917293685,
+        "max_absolute": 0.1349419355392456,
+        "signed_mean": 7.912702307909178e-05
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:T4PzkKo_43:55207",
+      "request_index": 5,
+      "off_generated_tokens": 63,
+      "on_generated_tokens": 120,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 12,
+      "first_divergence_zero_based_index": 12,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 12,
+        "mean_absolute": 0.03486713668113831,
+        "max_absolute": 0.2516822814941406,
+        "signed_mean": -0.01089211596339131
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:cLTmFGX_195:59104",
+      "request_index": 6,
+      "off_generated_tokens": 690,
+      "on_generated_tokens": 629,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 26,
+      "first_divergence_zero_based_index": 26,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 26,
+        "mean_absolute": 0.018235525980114832,
+        "max_absolute": 0.12451660633087158,
+        "signed_mean": -0.005321869864314539
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "sharegpt:aaTQJBE_22:171",
+      "request_index": 7,
+      "off_generated_tokens": 1246,
+      "on_generated_tokens": 1362,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 141,
+      "first_divergence_zero_based_index": 141,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 141,
+        "mean_absolute": 0.01931511321343436,
+        "max_absolute": 0.1490604281425476,
+        "signed_mean": 0.0009719045193359861
+      },
+      "post_divergence_logprobs_compared": false
+    }
+  ],
+  "comparison_available": true,
+  "request_pairs": 8,
+  "equal_generated_token_sequences": 2,
+  "equal_generated_texts": 2,
+  "shared_prefix_selected_logprob_difference_on_minus_off": {
+    "count": 1107,
+    "mean_absolute": 0.007051656573117723,
+    "max_absolute": 0.2516822814941406,
+    "signed_mean": 0.000138126721640978
+  },
+  "logprob_comparison_available": true,
+  "decoder": {
+    "requested": true,
+    "tokenizer": "../full-serving-tokenizer",
+    "verified": true
+  },
+  "comparison_boundary": "Only same selected token under exactly identical prompt and previously generated prefix. Divergent positions and all later positions are excluded.",
+  "tolerance": "No numerical tolerance is invented. Differences are descriptive, not a numerical pass/fail threshold.",
+  "interpretation": "Greedy generations can differ with batching/reduction order. These checks cannot identify an algorithmic cause or distinguish near-tie selection from mapping/kernel errors. Different outputs change subsequent workloads.",
+  "full_model_numerical_correctness_proved": false,
+  "algorithmic_cause_established": false,
+  "speedup_claim": false,
+  "dataset": "sharegpt",
+  "controller_state": "pilot_completed",
+  "input_token_sequences_identical": true,
+  "off_completion_tokens": 5061,
+  "on_completion_tokens": 5229,
+  "logprob_comparison_note": "All selected logprobs finite, with no -9999 placeholders; compare common-prefix positions only.",
+  "shared_generated_prefix_tokens": 1107
+}

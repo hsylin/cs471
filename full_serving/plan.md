@@ -4,7 +4,7 @@
 
 ### Status and scope
 
-This is a new full-model experiment, separate from the frozen two-GPU layer experiments. The WildChat pilot completed 64/64 requests in each native EPLB-off/on arm on 2026-11-10; ShareGPT is running and the remaining separate datasets are queued in the same suite. These are functional/calibration measurements, not final comparative evidence. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
+This is a new full-model experiment, separate from the frozen two-GPU layer experiments. All five main dataset pilots completed 64/64 requests in each native EPLB-off/on arm on 2026-11-10, with no HTTP failures; the separate ShareGPT/BurstGPT timing diagnostic is still running. These are functional/calibration measurements, not final comparative evidence. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
 
 Use the existing **Qwen/Qwen3-30B-A3B**, revision `ad44e777bcd18fa416d9da3bd8f70d33ebb85d39`, and vLLM `0.31.0+cu129`, source commit `db9527a46873454610df6dbedf79a36d6bf1a7f6`. The model has 48 layers, 128 routed experts per layer, top-8 routing, and a 40,960-token configured context. The complete checkpoint has 16 weight shards; downloading missing shards is preparation, not proof of a successful full-model load. Verify the index, all shard files, revision and checksums before final measurements. [Pinned model configuration](https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/config.json)
 
@@ -136,3 +136,63 @@ complete admitted pair regardless of its timing, retain every failure, and do no
 pair the old ShareGPT OFF with a repaired ON. WildChat's earlier complete pair
 remains separate, with its previous cache location disclosed. These are repeated
 pilot inputs after an infrastructure repair; final candidates stay unexecuted.
+
+### Reproducing the closed pilot comparisons
+
+The headline comparison uses each dataset's **24-request external-arrival
+stage**, separately. Its other 40 pilot requests are eight smoke requests and a
+32-request simultaneous calibration burst. Do not pool these stages. Response
+time runs from the scheduled arrival until the complete HTTP reply; completed
+elapsed time includes the arrival horizon and drain, but excludes server
+startup, earlier phases and shutdown after completion. The HTML/CSV also expose
+TTFT from actual send, output-token totals, cap finishes and completed output
+tokens per second. This token rate includes gaps in the arrival calendar and is
+not a peak-capacity measurement.
+
+From the repository root, regenerate the five main datasets without a GPU:
+
+```bash
+python -m full_serving.report_pilots \
+  results/full-serving/pilots-v1/wildchat \
+  results/full-serving/pilots-v1/sharegpt \
+  results/full-serving/pilots-v1/instructcoder \
+  results/full-serving/pilots-v1/numinamath \
+  results/full-serving/pilots-v1/longbench \
+  --output /tmp/native-comparison.json
+python -m full_serving.render_report /tmp/native-comparison.json \
+  --output-prefix /tmp/native-comparison
+python -m full_serving.report_pilots \
+  results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic \
+  --output /tmp/burstgpt-diagnostic.json
+python -m full_serving.render_report /tmp/burstgpt-diagnostic.json \
+  --output-prefix /tmp/burstgpt-diagnostic
+python -m full_serving.audit_runtime --root results/full-serving/pilots-v1 \
+  --output /tmp/runtime-audit.json
+```
+
+Paths and creation timestamps may differ across checkouts; the underlying
+request counts and numerical summaries must match. Per-dataset archive
+manifests hash the original raw bytes, including logs and metric snapshots.
+The independent timestamp recomputation recipe is
+`results/full-serving/audits-v1/recompute_external.py`.
+Revalidating private prompt identity and smoke-token decoding additionally
+requires reconstructing the admitted source data and pinned tokenizer; the
+public timing records alone cannot establish those checks. Raw prompt text,
+generated text, token-ID arrays and selected-token logprobs remain outside Git.
+
+Each native pair runs OFF then ON once, on the same eight physical GPUs.
+Consequently these observations have **no independent-run confidence interval**.
+Generated replies and token counts can differ even with temperature zero, so
+the observed response difference includes changed generated work. The comparison
+also includes the memory and execution effects of 32 extra replicas in ON.
+Neither a request-level bootstrap nor dividing by output tokens removes those
+limitations. The declared final data and balanced repeated-run protocol remain
+unused; this pilot cannot establish a general speedup or satisfy the final 5%
+gain criterion.
+
+The common external calendar is scaled using OFF's calibration. This preserves
+the same absolute arrivals across arms, but does not establish a common fraction
+of sustainable capacity: in particular, InstructCoder OFF logged MoE-kernel JIT
+compilation during calibration. Phase-attributed JIT warnings, backend choices,
+KV capacity and shutdown-only errors are retained in the runtime audit. Native
+EPLB launch entries remain separate from unobserved successful commits.

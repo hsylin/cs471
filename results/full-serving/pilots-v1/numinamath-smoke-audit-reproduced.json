@@ -1,0 +1,242 @@
+{
+  "schema": "full_serving_smoke_paired_audit_v2",
+  "result_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/numinamath",
+  "expected_request_pairs": 8,
+  "valid": true,
+  "issues": [],
+  "arms": {
+    "off": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 7541,
+      "prompt_tokens": 943,
+      "finish_reason_counts": {
+        "stop": 7,
+        "length": 1
+      },
+      "output_cap_completions": 1,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    },
+    "on": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 7925,
+      "prompt_tokens": 943,
+      "finish_reason_counts": {
+        "stop": 7,
+        "length": 1
+      },
+      "output_cap_completions": 1,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    }
+  },
+  "source_sha256": {
+    "status": "7aeff715841bfcfe6ff35ad41b902c55319547cfecc67117207ee463b36f0725",
+    "pilot_splits": "49d1adb94183b6ea10f79369256cf18e44a6600f70b93f2be066e44275ad349c",
+    "off": {
+      "public": "31e287da901bafeeddefbb72120ca5d3d239736f5747519698c42d755b61fb14",
+      "private": "bc9f05f5d84059f6fc1ad27ca4d7e8b90e38d496ba42dbb058f6780da13e203a"
+    },
+    "on": {
+      "public": "1e9216bafd0c08c7637492d9a950cf5e2f45d1452157516e32527cf16c15d7a6",
+      "private": "299a8fc39522a1492ee803bbcf48dd52265898dea7ab8205f4adc2e08b9ebb7c"
+    }
+  },
+  "requests": [
+    {
+      "request_id": "numinamath:train-00002-of-00003.parquet:280692",
+      "request_index": 0,
+      "off_generated_tokens": 280,
+      "on_generated_tokens": 306,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 45,
+      "first_divergence_zero_based_index": 45,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 45,
+        "mean_absolute": 0.006803385531764958,
+        "max_absolute": 0.11720401048660278,
+        "signed_mean": 0.004109433394861621
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00000-of-00003.parquet:242767",
+      "request_index": 1,
+      "off_generated_tokens": 1619,
+      "on_generated_tokens": 2048,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "length",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 206,
+      "first_divergence_zero_based_index": 206,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 206,
+        "mean_absolute": 0.006117575344489875,
+        "max_absolute": 0.12171638011932373,
+        "signed_mean": 0.0007408837756561803
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00002-of-00003.parquet:268045",
+      "request_index": 2,
+      "off_generated_tokens": 469,
+      "on_generated_tokens": 469,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 469,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 469,
+        "mean_absolute": 0.005588906231075123,
+        "max_absolute": 0.13494208455085754,
+        "signed_mean": -0.0013111820943788061
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00001-of-00003.parquet:82468",
+      "request_index": 3,
+      "off_generated_tokens": 601,
+      "on_generated_tokens": 528,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 20,
+      "first_divergence_zero_based_index": 20,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 20,
+        "mean_absolute": 0.007078844786002491,
+        "max_absolute": 0.038805827498435974,
+        "signed_mean": 0.00136698982672101
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00002-of-00003.parquet:113032",
+      "request_index": 4,
+      "off_generated_tokens": 2048,
+      "on_generated_tokens": 1806,
+      "off_finish_reason": "length",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 124,
+      "first_divergence_zero_based_index": 124,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 124,
+        "mean_absolute": 0.010606981373725883,
+        "max_absolute": 0.15980422496795654,
+        "signed_mean": 0.0033437621147114206
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00000-of-00003.parquet:33859",
+      "request_index": 5,
+      "off_generated_tokens": 584,
+      "on_generated_tokens": 851,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 115,
+      "first_divergence_zero_based_index": 115,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 115,
+        "mean_absolute": 0.004099417299460499,
+        "max_absolute": 0.1891525685787201,
+        "signed_mean": 0.0017630311524874781
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00001-of-00003.parquet:248081",
+      "request_index": 6,
+      "off_generated_tokens": 918,
+      "on_generated_tokens": 895,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 398,
+      "first_divergence_zero_based_index": 398,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 398,
+        "mean_absolute": 0.007419233206127213,
+        "max_absolute": 0.14148247241973877,
+        "signed_mean": -0.0021859754921768645
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "numinamath:train-00001-of-00003.parquet:50696",
+      "request_index": 7,
+      "off_generated_tokens": 1022,
+      "on_generated_tokens": 1022,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": true,
+      "generated_text_equal": true,
+      "shared_generated_prefix_tokens": 1022,
+      "first_divergence_zero_based_index": null,
+      "divergence_kind": "none",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 1022,
+        "mean_absolute": 0.004147861234074277,
+        "max_absolute": 0.1857743263244629,
+        "signed_mean": -0.00043679342549448073
+      },
+      "post_divergence_logprobs_compared": false
+    }
+  ],
+  "comparison_available": true,
+  "request_pairs": 8,
+  "equal_generated_token_sequences": 2,
+  "equal_generated_texts": 2,
+  "shared_prefix_selected_logprob_difference_on_minus_off": {
+    "count": 2399,
+    "mean_absolute": 0.00554723404128017,
+    "max_absolute": 0.1891525685787201,
+    "signed_mean": -0.00039562488001532685
+  },
+  "logprob_comparison_available": true,
+  "decoder": {
+    "requested": true,
+    "tokenizer": "../full-serving-tokenizer",
+    "verified": true
+  },
+  "comparison_boundary": "Only same selected token under exactly identical prompt and previously generated prefix. Divergent positions and all later positions are excluded.",
+  "tolerance": "No numerical tolerance is invented. Differences are descriptive, not a numerical pass/fail threshold.",
+  "interpretation": "Greedy generations can differ with batching/reduction order. These checks cannot identify an algorithmic cause or distinguish near-tie selection from mapping/kernel errors. Different outputs change subsequent workloads.",
+  "full_model_numerical_correctness_proved": false,
+  "algorithmic_cause_established": false,
+  "speedup_claim": false,
+  "dataset": "numinamath",
+  "controller_state": "pilot_completed",
+  "input_token_sequences_identical": true,
+  "off_completion_tokens": 7541,
+  "on_completion_tokens": 7925,
+  "logprob_comparison_note": "All selected logprobs finite, with no -9999 placeholders; compare common-prefix positions only.",
+  "shared_generated_prefix_tokens": 2399
+}

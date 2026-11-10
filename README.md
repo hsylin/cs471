@@ -1,19 +1,39 @@
 # SkewBench
 
-**Eight-GPU full-model dataset pilots are running.** The complete pinned
-Qwen3-30B-A3B model now serves real text and generates replies through all
-48 layers. WildChat, ShareGPT, InstructCoder, NuminaMath-1.5 and a bounded
-LongBench subset have separate 64-request pilots and 64 reserved final
-candidates each. BurstGPT supplies a separate arrival-timing diagnostic with
-explicitly reused ShareGPT content. WildChat completed 64/64 requests in each
-native arm, and ShareGPT is running; this is functional/calibration evidence,
-not a final speedup result.
-The current arms are native vLLM EPLB off/on; the old two-rank resident
-dispatcher is not installed in this new serving path. See the
-[full-model protocol and execution limits](full_serving/plan.md) and
-[source/tokenization admission](results/full-serving/suite-v1/admission.json),
-[completed WildChat pilot report](outputs/full-serving/wildchat-pilot-report.json)
-and [its raw records](results/full-serving/pilots-v1/wildchat).
+**Five full-model dataset pilots are complete on eight H100s.** Native vLLM
+served all 48 layers of the pinned Qwen3-30B-A3B model with actual text and
+newly generated replies. Each dataset completed 64 requests per EPLB OFF/ON arm
+without HTTP failures: eight smoke, 32 calibration and 24 external-arrival
+requests. Inputs were not truncated to 512 tokens; the selected LongBench pilot
+includes prompts up to 19,488 tokens.
+
+The following table uses only each dataset's 24-request external block.
+Positive changes mean EPLB ON had higher mean response latency.
+
+| Dataset | EPLB OFF mean response | EPLB ON mean response | ON change |
+| --- | ---: | ---: | ---: |
+| WildChat | 11.464 s | 11.719 s | +2.23% |
+| ShareGPT | 8.205 s | 9.502 s | +15.81% |
+| InstructCoder | 4.339 s | 4.781 s | +10.19% |
+| NuminaMath-1.5 | 9.417 s | 10.562 s | +12.16% |
+| LongBench (Qasper/GovReport/HotpotQA) | 2.594 s | 2.638 s | +1.69% |
+
+These are **descriptive, fixed-order pilot results**, with one OFF-then-ON pair
+per source and no independent-run confidence intervals. Generated replies differ
+across arms. LongBench ON generated 7.02% more tokens and achieved 3.30% more
+output tokens/s despite higher response latency and completed elapsed time;
+that token-rate increase is not an equal-work speedup. EPLB OFF was faster on
+mean response in these blocks, which does not establish universal superiority.
+The custom two-rank resident dispatcher is not installed in this full-model path.
+The 320 reserved final candidates remain unexecuted.
+
+Read the [separate-dataset HTML report](outputs/full-serving/native-comparison.html),
+[CSV](outputs/full-serving/native-comparison.csv),
+[raw records and archive hashes](results/full-serving/pilots-v1),
+[protocol, limitations and reproduction commands](full_serving/plan.md), and
+[source/tokenization admission](results/full-serving/suite-v1/admission.json).
+The declared ShareGPT/BurstGPT timing diagnostic is being completed separately;
+it reuses ShareGPT content and is not a sixth prompt dataset.
 Earlier layer-only results below remain separate and unchanged.
 
 **Resident-path repair: much faster than our previous method, still slower than EPLB-off.**
