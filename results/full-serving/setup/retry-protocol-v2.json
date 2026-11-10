@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-11-10T16:06:52.797887+00:00",
+  "previous_run": "full-separate-suite-20261110-v1",
+  "new_run": "full-separate-suite-20261110-v2",
+  "remaining_datasets": [
+    "sharegpt",
+    "instructcoder",
+    "numinamath",
+    "longbench"
+  ],
+  "supplement": "separate repeated-content ShareGPT/BurstGPT timing diagnostic",
+  "hardware_job": "4882284",
+  "nodes": [
+    "kh074",
+    "kh077"
+  ],
+  "change": "Isolate supported FlashInfer compiler workspace/cache per node under project storage; prebuild and verify native sampling before full server load. Earlier fatal worker errors will terminate startup wait. Model, package pins, inference flags, batch policy, data, generation and client unchanged.",
+  "pairing": "Restart BOTH native arms for ShareGPT; do not pair its old OFF with new ON. Within each remaining dataset use same repaired environment and first complete source-admitted pair irrespective of timing. Retain all failed attempts.",
+  "wildchat": "Retain completed first-suite pair separately, disclose prior shared cache location; no pooling across datasets.",
+  "content_reuse": "ShareGPT pilot OFF is repeated after infrastructure failure. It is not newly sampled final content. All held-out final candidates remain unexecuted.",
+  "acceptance": "Complete all64 requests per arm with matching source/input/calendar identity; report generation differences, runtime errors, all timing boundaries and native metadata; no final statistical or numerical/commit claim from single fixed-order pilot."
+}

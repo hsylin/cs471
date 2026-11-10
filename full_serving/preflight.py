@@ -189,11 +189,66 @@ def verify_toolchain():
             "runtime_library_environment_changed": False}
 
 
+def verify_flashinfer_prebuild(toolchain):
+    """Admit only this node/step's successful isolated native sampler check."""
+    node = socket.gethostname().split(".")[0]
+    require(os.environ.get("SLURMD_NODENAME", node) == node, "FlashInfer node identity mismatch")
+    expected = (Path(os.environ["SKB_ROOT"]) / "cache/flashinfer-jit" / JOB_ID / node).resolve()
+    configured = os.environ.get("FLASHINFER_WORKSPACE_BASE")
+    require(bool(configured) and Path(configured).resolve() == expected,
+            "FlashInfer requires the isolated job/node workspace")
+    report_path = Path(os.environ["FULL_SERVING_RUN_DIR"]) / "flashinfer-prebuild" / (node + ".json")
+    require(report_path.is_file(), "Missing native FlashInfer prebuild report")
+    report = json.loads(report_path.read_text())
+    require(report.get("status") == "passed" and report.get("schema_version") == 2,
+            "Native FlashInfer prebuild did not pass")
+    require(report.get("job_id") == JOB_ID and report.get("step_id") == os.environ.get("SLURM_STEP_ID")
+            and report.get("hostname") == socket.gethostname(), "Stale or wrong-node FlashInfer prebuild")
+    require(report.get("flashinfer_workspace_base") == str(expected), "FlashInfer prebuild workspace mismatch")
+    require(report.get("diagnostic_source_sha256") == sha256(Path(__file__).with_name("check_toolchain.py")),
+            "FlashInfer prebuild diagnostic changed")
+    require(report.get("install_manifest_sha256") == toolchain["install_manifest_sha256"],
+            "FlashInfer prebuild compiler manifest changed")
+    require(report.get("nvcc_sha256") == toolchain["critical_file_sha256"]["bin/nvcc"],
+            "FlashInfer prebuild compiler changed")
+    checks = report.get("checks", [])
+    require(sum(item.get("exact_mask_match") is True for item in checks) == 2
+            and {item.get("operation") for item in checks if item.get("exact_sample_match") is True}
+            == {"top_k_top_p_sampling_from_logits", "top_p_sampling_from_probs"},
+            "Incomplete native FlashInfer sampling checks")
+    package = importlib.util.find_spec("flashinfer")
+    require(package is not None and package.origin is not None, "FlashInfer package missing")
+    package_root = Path(package.origin).parent
+    source_names = {"jit/env.py", "jit/core.py", "jit/cpp_ext.py", "sampling.py"}
+    require(set(report.get("flashinfer_source_sha256", {})) == source_names,
+            "Incomplete FlashInfer source record")
+    for name, digest in report["flashinfer_source_sha256"].items():
+        require(sha256(package_root / name) == digest, f"FlashInfer source changed: {name}")
+    jit_dir = Path(report["flashinfer_jit_dir"]).resolve()
+    require(jit_dir.is_relative_to(expected), "FlashInfer JIT directory is outside isolated workspace")
+    require(report.get("sampling_lock_path") == str(jit_dir / "tmp/sampling.lock"),
+            "FlashInfer sampling lock path mismatch")
+    modules = report.get("sampling_module_sha256", {})
+    require(bool(modules), "Missing compiled native sampling module")
+    for relative, digest in modules.items():
+        path = (jit_dir / relative).resolve()
+        require(path.is_relative_to(jit_dir) and path.suffix == ".so", "Unsafe sampling module path")
+        require(sha256(path) == digest, "Native sampling module changed since prebuild")
+    return {"report_path": str(report_path), "report_sha256": sha256(report_path),
+            "workspace_base": str(expected), "jit_dir": str(jit_dir),
+            "sampling_lock_path": report["sampling_lock_path"],
+            "source_sha256": report["flashinfer_source_sha256"],
+            "sampling_module_sha256": modules, "checks": checks,
+            "get_sampling_module_elapsed_s": report["get_sampling_module_elapsed_s"],
+            "timing_boundary": "prebuild is startup; executed before model loading and all measured requests"}
+
+
 def runtime_preflight(snapshot, checkpoint_manifest, role, primary_ip):
     require(os.environ.get("SLURM_JOB_ID") == JOB_ID, f"Expected allocation {JOB_ID}")
     require(os.environ.get("SLURM_JOB_NUM_NODES", os.environ.get("SLURM_NNODES")) == "2",
             "Expected two-node allocation")
     toolchain = verify_toolchain()
+    sampler_prebuild = verify_flashinfer_prebuild(toolchain)
     checkpoint_record = json.loads(Path(checkpoint_manifest).read_text())
     verify_cached_checkpoint(snapshot, checkpoint_record)
     if role == "primary":
@@ -233,6 +288,7 @@ def runtime_preflight(snapshot, checkpoint_manifest, role, primary_ip):
             "checkpoint_verification": "full SHA256 record plus unchanged file stat fingerprints",
             "model_revision": MODEL_REVISION, "vllm_commit": VLLM_COMMIT,
             "cuda_compiler_toolchain": toolchain,
+            "flashinfer_prebuild": sampler_prebuild,
             "vllm_version": vllm.__version__, "vllm_distribution_version": distribution_version,
             "torch_version": torch.__version__,
             "selected_vllm_source_sha256": source_hashes, "devices": devices,

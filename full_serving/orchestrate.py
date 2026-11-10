@@ -74,7 +74,7 @@ def scale_arrivals(block, request_ids, rate):
             "horizon_ns": int(target), "absolute_arrivals": True,
             "offered_requests_per_s": rate,
             "scale_numerator": scale.numerator, "scale_denominator": scale.denominator,
-            "mapping": "Independent WildChat conversations assigned in frozen order to Azure timestamps; not a joint production trace",
+            "mapping": "Independently selected input requests assigned in frozen order to recorded external timestamps; not a joint production trace",
             "source_request_sizes_executed": False}
 
 
@@ -103,11 +103,28 @@ def get_url(url, timeout=5):
         return response.read()
 
 
-def wait_server(process, base_url, timeout):
+def startup_failure(arm_dir):
+    """Detect native worker failure even while the API parent is still alive."""
+    if arm_dir is None:
+        return None
+    fatal = re.compile(r"\bERROR\b.*(?:WorkerProc hit an exception|EngineCore failed to start)")
+    for path in sorted(Path(arm_dir).glob("server-*.*")):
+        if path.suffix not in (".log", ".err"):
+            continue
+        for line in path.read_text(errors="replace").split("\n"):
+            if fatal.search(line):
+                return f"Native worker failed during startup; inspect {path.name}"
+    return None
+
+
+def wait_server(process, base_url, timeout, arm_dir=None):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         if process.poll() is not None:
             raise RuntimeError(f"Server step exited during startup: {process.returncode}")
+        failure = startup_failure(arm_dir)
+        if failure:
+            raise RuntimeError(failure)
         try:
             get_url(base_url + "/health")
             models = json.loads(get_url(base_url + "/v1/models"))
@@ -257,7 +274,7 @@ def run(args):
             with (arm_dir / "srun.log").open("w") as log:
                 server = subprocess.Popen(cmd, cwd=root, env=env, stdout=log, stderr=subprocess.STDOUT,
                                           start_new_session=True)
-                models = wait_server(server, base_url, args.startup_timeout)
+                models = wait_server(server, base_url, args.startup_timeout, arm_dir)
                 write_json(arm_dir / "startup.json", {"startup_elapsed_s": time.monotonic() - started,
                            "ready_utc": stamp(), "models": models})
                 for stage in ("smoke", "calibration", "external"):

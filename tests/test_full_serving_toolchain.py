@@ -4,6 +4,23 @@ from pathlib import Path
 import pytest
 
 from full_serving.install_toolchain import PINS, component_specs, download, merge_tree
+from full_serving import check_toolchain as diagnostic
+
+
+def test_workspace_rejects_shared_home_and_other_node_before_cuda_import(tmp_path, monkeypatch):
+    monkeypatch.setenv("SKB_ROOT", str(tmp_path))
+    monkeypatch.setenv("SLURM_JOB_ID", "4882284")
+    monkeypatch.setenv("SLURMD_NODENAME", "kh074")
+    monkeypatch.setattr(diagnostic.socket, "gethostname", lambda: "kh074")
+    expected = tmp_path / "cache/flashinfer-jit/4882284/kh074"
+    monkeypatch.setenv("FLASHINFER_WORKSPACE_BASE", str(tmp_path))
+    with pytest.raises(RuntimeError, match="isolated job/node"):
+        diagnostic.verified_workspace()
+    monkeypatch.setenv("FLASHINFER_WORKSPACE_BASE", str(expected))
+    assert diagnostic.verified_workspace() == ("kh074", expected)
+    monkeypatch.setenv("SLURMD_NODENAME", "kh077")
+    with pytest.raises(RuntimeError, match="identify this host"):
+        diagnostic.verified_workspace()
 
 
 def index():

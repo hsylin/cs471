@@ -1,0 +1,188 @@
+{
+  "comparison_policy": "Restart both OFF and ON for each remaining dataset under the same cache policy. Preserve original completed ShareGPT OFF as a prior attempt; do not combine it into the replacement pair.",
+  "created_utc": "2026-11-10T16:12:13.924154+00:00",
+  "deduction": "A shared-workspace build/filesystem failure is established by Ninja. The exact deletion, locking or filesystem event is not established. Cross-node contention is a plausible mechanism, not a demonstrated root filesystem cause.",
+  "diagnostic_step": "4882284.18",
+  "implementation_sha256": {
+    "full_serving/check_toolchain.py": "01932750019856641371df2c883dc3973833ccddf091ef18ecb1445d3f8b35f2",
+    "full_serving/preflight.py": "c701a2239377df7324f3eb28e370705388e125741972563b515749831485cd2b",
+    "full_serving/run_node.sh": "58bcbbecd5827dcaab4e90100501ecec0f670c0de5b60446d6e8d2a93436115f"
+  },
+  "nodes": [
+    "kh074",
+    "kh077"
+  ],
+  "remedy": {
+    "admission": [
+      "same job, step, node, and workspace",
+      "current diagnostic and installed FlashInfer source hashes",
+      "unchanged CUDA compiler/manifest",
+      "successful scalar/per-row top-k masks and deterministic top-k/top-p sampling",
+      "unchanged compiled sampling module hash"
+    ],
+    "ordering": "run_node launches one native sampler prebuild process per node before vLLM starts its four local workers. The same step runtime preflight checks this report before model loading.",
+    "path_template": "$SKB_ROOT/cache/flashinfer-jit/$SLURM_JOB_ID/$SLURMD_NODENAME",
+    "preservation": "HOME, old shared cache, frozen failed attempt, venv packages, compiler, model, runner, backend, and algorithm flags are unchanged. No cache deletion, new allocation, or reservation cancellation.",
+    "supported_environment": "FLASHINFER_WORKSPACE_BASE",
+    "timing_boundary": "The prebuild belongs to server startup, is recorded separately, and precedes measured client requests in both arms.",
+    "workspace_by_node": {
+      "kh074": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074",
+      "kh077": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh077"
+    }
+  },
+  "reservation": "4882284",
+  "schema": "flashinfer_isolated_cache_remediation_v1",
+  "source_evidence": {
+    "installed_source_sha256": {
+      "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+      "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+      "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+      "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+    },
+    "package": "flashinfer-python",
+    "records": [
+      {
+        "file": "jit/env.py",
+        "finding": "FLASHINFER_WORKSPACE_BASE determines FLASHINFER_BASE_DIR; .cache/flashinfer is appended. Default is Path.home().",
+        "lines": [
+          66,
+          70
+        ]
+      },
+      {
+        "file": "jit/core.py",
+        "finding": "The sampling FileLock is under FLASHINFER_JIT_DIR/tmp/sampling.lock, on the same filesystem as JIT artifacts; it is not /tmp.",
+        "lines": [
+          479,
+          480,
+          748,
+          753
+        ]
+      },
+      {
+        "file": "jit/core.py",
+        "finding": "JIT loads invoke Ninja to check cached object freshness, even when a compiled .so already exists.",
+        "lines": [
+          543,
+          569
+        ]
+      },
+      {
+        "file": "jit/cpp_ext.py",
+        "finding": "The Ninja invocation sets its working directory and -C to the same build directory.",
+        "lines": [
+          389,
+          413
+        ]
+      },
+      {
+        "file": "jit/core.py",
+        "finding": "An explicit clear_cache_dir function exists; no evidence here shows it was called during the failed run.",
+        "lines": [
+          123,
+          127
+        ]
+      }
+    ],
+    "version": "0.7.0.post1"
+  },
+  "status": "native_two_node_sampler_diagnostic_passed_full_model_retry_pending",
+  "validation": {
+    "cpu_tests": "23 passed: tests/test_full_serving_preflight.py and tests/test_full_serving_toolchain.py",
+    "diagnostic_step_completed": true,
+    "full_model_validation": "pending parent-controlled full-model retry; this diagnostic does not establish serving correctness or speedup",
+    "native_sampler": {
+      "kh074": {
+        "checks": [
+          {
+            "exact_mask_match": true,
+            "top_k": [
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          {
+            "exact_mask_match": true,
+            "top_k": [
+              1,
+              5,
+              32,
+              4096
+            ]
+          },
+          {
+            "exact_sample_match": true,
+            "operation": "top_k_top_p_sampling_from_logits",
+            "top_k": 1,
+            "top_p": 0.75
+          },
+          {
+            "distribution": "one-hot",
+            "exact_sample_match": true,
+            "operation": "top_p_sampling_from_probs",
+            "top_p": 0.9
+          }
+        ],
+        "get_sampling_module_elapsed_s": 55.382920613046736,
+        "report_path": "results/full-serving/setup/flashinfer-isolated-cache-v1/reports/kh074.json",
+        "report_sha256": "967a876338975fb3da227e2ccb0dfa01d46ef1a881c026171babebc67f4dabfb",
+        "status": "passed"
+      },
+      "kh077": {
+        "checks": [
+          {
+            "exact_mask_match": true,
+            "top_k": [
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          {
+            "exact_mask_match": true,
+            "top_k": [
+              1,
+              5,
+              32,
+              4096
+            ]
+          },
+          {
+            "exact_sample_match": true,
+            "operation": "top_k_top_p_sampling_from_logits",
+            "top_k": 1,
+            "top_p": 0.75
+          },
+          {
+            "distribution": "one-hot",
+            "exact_sample_match": true,
+            "operation": "top_p_sampling_from_probs",
+            "top_p": 0.9
+          }
+        ],
+        "get_sampling_module_elapsed_s": 55.02158342697658,
+        "report_path": "results/full-serving/setup/flashinfer-isolated-cache-v1/reports/kh077.json",
+        "report_sha256": "766420cf6d90b9f4ec20df7dadf25c10dfba2402d354e9039b59ebb411cfd379",
+        "status": "passed"
+      }
+    },
+    "shell_syntax": "bash -n full_serving/run_node.sh passed"
+  },
+  "verified_failure": {
+    "error": "ninja: error: opening build log: No such file or directory",
+    "first_error_local_time": "2026-11-10 16:02:06 Europe/Zurich",
+    "log_sha256": {
+      "server-0.log": "6bdc6fc639ea80977c0a2053ee1ba14f75de257142d81e89b868d785b91a9eae",
+      "server-1.log": "a5a124e1b599d1f5ffbd2136d09e171d07e09e8cba11fdd325f3eebde50078eb"
+    },
+    "phase": "V2 scheduler-realistic prefill sampler warmup before HTTP readiness; top_k_mask_logits -> get_sampling_module -> Ninja",
+    "rank": "DP4_EP4",
+    "secondary_failure": "Other workers later reported Gloo peer closure or waited in decode synchronization until controller timeout.",
+    "source_file": "results/full-serving/attempts/suite-v1-sharegpt/on/server-1.log",
+    "source_line": 162,
+    "workspace": "/home/hlin/.cache/flashinfer/0.7.0.post1/90a/cached_ops/sampling"
+  }
+}

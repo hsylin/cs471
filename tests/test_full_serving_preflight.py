@@ -3,6 +3,7 @@ from pathlib import Path
 import shlex
 import struct
 import subprocess
+from types import SimpleNamespace
 
 import pytest
 
@@ -154,3 +155,46 @@ def test_toolchain_admission_fails_before_model_loading_on_missing_or_changed_co
     with pytest.raises(p.PreflightError, match="file changed"):
         p.verify_toolchain()
     assert len(calls) == 1
+
+
+def test_sampler_admission_requires_same_step_isolated_intact_prebuild(tmp_path, monkeypatch):
+    node = "kh074"
+    workspace = tmp_path / "cache/flashinfer-jit" / p.JOB_ID / node
+    jit_dir = workspace / ".cache/flashinfer/0.7.0.post1/90a/cached_ops"
+    module = jit_dir / "sampling/sampling.so"
+    module.parent.mkdir(parents=True)
+    module.write_bytes(b"compiled sampler")
+    package_root = tmp_path / "package"
+    sources = {}
+    for name in ("jit/env.py", "jit/core.py", "jit/cpp_ext.py", "sampling.py"):
+        path = package_root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(name)
+        sources[name] = p.sha256(path)
+    monkeypatch.setattr(p.socket, "gethostname", lambda: node)
+    monkeypatch.setattr(p.importlib.util, "find_spec", lambda name: SimpleNamespace(origin=str(package_root / "__init__.py")))
+    for key, value in {"SKB_ROOT": str(tmp_path), "SLURM_STEP_ID": "99", "SLURMD_NODENAME": node,
+                       "FLASHINFER_WORKSPACE_BASE": str(workspace), "FULL_SERVING_RUN_DIR": str(tmp_path / "run")}.items():
+        monkeypatch.setenv(key, value)
+    toolchain = {"install_manifest_sha256": "manifest", "critical_file_sha256": {"bin/nvcc": "nvcc"}}
+    report = {"schema_version": 2, "status": "passed", "job_id": p.JOB_ID, "step_id": "99", "hostname": node,
+              "flashinfer_workspace_base": str(workspace), "flashinfer_jit_dir": str(jit_dir),
+              "sampling_lock_path": str(jit_dir / "tmp/sampling.lock"),
+              "diagnostic_source_sha256": p.sha256(Path(p.__file__).with_name("check_toolchain.py")),
+              "install_manifest_sha256": "manifest", "nvcc_sha256": "nvcc", "flashinfer_source_sha256": sources,
+              "sampling_module_sha256": {"sampling/sampling.so": p.sha256(module)},
+              "get_sampling_module_elapsed_s": 1,
+              "checks": [{"exact_mask_match": True}, {"exact_mask_match": True},
+                         {"operation": "top_k_top_p_sampling_from_logits", "exact_sample_match": True},
+                         {"operation": "top_p_sampling_from_probs", "exact_sample_match": True}]}
+    report_path = tmp_path / "run/flashinfer-prebuild" / (node + ".json")
+    report_path.parent.mkdir(parents=True)
+    report_path.write_text(json.dumps(report))
+    assert p.verify_flashinfer_prebuild(toolchain)["workspace_base"] == str(workspace)
+    monkeypatch.setenv("SLURM_STEP_ID", "100")
+    with pytest.raises(p.PreflightError, match="Stale or wrong-node"):
+        p.verify_flashinfer_prebuild(toolchain)
+    monkeypatch.setenv("SLURM_STEP_ID", "99")
+    module.write_bytes(b"unexpected replacement")
+    with pytest.raises(p.PreflightError, match="module changed"):
+        p.verify_flashinfer_prebuild(toolchain)

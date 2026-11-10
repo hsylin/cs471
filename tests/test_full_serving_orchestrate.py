@@ -46,6 +46,24 @@ def test_external_arrivals_preserve_bursts_and_are_scaled_once():
         orchestrate.scale_arrivals({**source, "original_horizon_ns": 30}, ["a", "b", "c", "d"], rate=2)
 
 
+def test_startup_worker_failure_stops_wait_even_when_parent_is_alive(tmp_path, monkeypatch):
+    (tmp_path / "server-1.log").write_text(
+        "(Worker_DP4) ERROR 11-10 16:02:06 WorkerProc hit an exception.\n"
+        "ninja: error: opening build log: No such file or directory\n")
+    monkeypatch.setattr(orchestrate, "get_url", lambda *a: pytest.fail("failed startup cannot be ready"))
+    monkeypatch.setattr(orchestrate.time, "sleep", lambda *a: pytest.fail("do not wait for full timeout"))
+    with pytest.raises(RuntimeError, match="server-1.log"):
+        orchestrate.wait_server(SimpleNamespace(poll=lambda: None), "http://localhost:8000", 2400, tmp_path)
+
+
+def test_startup_wait_does_not_reject_warning_or_normal_warmup(tmp_path, monkeypatch):
+    (tmp_path / "server-0.log").write_text(
+        "(Worker_DP0) WARNING 11-10 16:02:06 Using default MoE config.\n"
+        "(EngineCore_DP0) INFO 11-10 16:02:07 No available shared memory broadcast block found in 60 seconds.\n")
+    monkeypatch.setattr(orchestrate, "get_url", lambda url: b'{"data":[{"id":"qwen3-full"}]}')
+    assert orchestrate.wait_server(SimpleNamespace(poll=lambda: None), "http://localhost:8000", 5, tmp_path)["data"][0]["id"] == "qwen3-full"
+
+
 def test_nested_server_environment_drops_controller_resource_limits_preserves_allocation():
     inherited = {"SLURM_JOB_ID": orchestrate.JOB, "SLURM_JOB_NODELIST": "mock[1-2]",
                  "SLURM_JOB_NUM_NODES": "2", "PATH": "/test/bin", "HF_HOME": "/cache",

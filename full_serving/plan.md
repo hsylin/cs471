@@ -116,3 +116,23 @@ The smoke requests retain prompt/output token IDs and selected-token logprobs pr
 ### Toolchain admission
 
 The first complete eight-rank model load and native graph capture reached sampler warmup, which failed because the runtime-only Python environment lacked an `nvcc` executable. A private CUDA 12.9.1 compiler/header tree was assembled from NVIDIA's pinned redistributables, including the required cuRAND headers. Its native FlashInfer scalar/per-row top-k sampling test passed against PyTorch on both reserved nodes (Slurm step 4882284.10). This is an environment fix applied to both arms, not a vLLM algorithm modification. Python packages, system CUDA and the earlier frozen layer environments remain unchanged. Compiler/header hashes and version are checked before each model startup. The failed attempt remains under `results/full-serving/attempts/v3/`; it contains no completed benchmark requests. [NVIDIA CUDA 12.9.1 component manifest](https://developer.download.nvidia.com/compute/cuda/redist/redistrib_12.9.1.json)
+
+The first separate suite completed WildChat and ShareGPT OFF, then ShareGPT ON
+failed during startup: Ninja could not open its build log in the shared home
+FlashInfer cache. Subsequent Gloo waits were consequences of the exited worker;
+the underlying reason the cache directory became unavailable is not proven.
+The complete attempt is retained under `results/full-serving/attempts/suite-v1-sharegpt/`.
+The repair uses FlashInfer's supported `FLASHINFER_WORKSPACE_BASE` under project
+storage, with a distinct directory per allocation/node and a single sampler
+prebuild before workers fork. Native top-k/top-p checks passed on both nodes
+in step 4882284.18. Model, Python package pins and inference configuration remain
+unchanged. Startup now detects logged native worker failure promptly instead of
+waiting for an otherwise-live API parent's full timeout.
+
+Retry v2 restarts both ShareGPT arms and then InstructCoder, NuminaMath, LongBench
+and the declared BurstGPT diagnostic. Its rules were recorded before new
+measurements in `results/full-serving/setup/retry-protocol-v2.json`: use the first
+complete admitted pair regardless of its timing, retain every failure, and do not
+pair the old ShareGPT OFF with a repaired ON. WildChat's earlier complete pair
+remains separate, with its previous cache location disclosed. These are repeated
+pilot inputs after an infrastructure repair; final candidates stay unexecuted.

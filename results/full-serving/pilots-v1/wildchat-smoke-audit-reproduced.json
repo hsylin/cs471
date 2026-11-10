@@ -1,0 +1,241 @@
+{
+  "schema": "full_serving_smoke_paired_audit_v2",
+  "result_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/wildchat",
+  "expected_request_pairs": 8,
+  "valid": true,
+  "issues": [],
+  "arms": {
+    "off": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 7012,
+      "prompt_tokens": 11860,
+      "finish_reason_counts": {
+        "stop": 7,
+        "length": 1
+      },
+      "output_cap_completions": 1,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    },
+    "on": {
+      "valid": true,
+      "issues": [],
+      "public_requests": 8,
+      "private_requests": 8,
+      "completion_tokens": 7407,
+      "prompt_tokens": 11860,
+      "finish_reason_counts": {
+        "stop": 8
+      },
+      "output_cap_completions": 0,
+      "clamped_or_placeholder_logprobs": 0,
+      "token_ids_decode_matches_streamed_text": true
+    }
+  },
+  "source_sha256": {
+    "status": "8224836a82e9fdbeada2cea1c2956c00f8197a22dfe1b04c3fb0b1a78b22aa41",
+    "pilot_splits": "acc1d477bc081c14a11a37fbdc2daac8a2fe6877344b121156b0b11f0fd7a595",
+    "off": {
+      "public": "4dd5ae7605063d8b72dce0dc94b87ef71445cf967b1187279d85e9dd20073f73",
+      "private": "848635c035a4bc70d703e452731b44388d0741b8357cf24c17e9a6c3681c7d9a"
+    },
+    "on": {
+      "public": "65024173367fe172efca62c13e9609b78320d2c0c29b9f96e8dfec7e4a563de0",
+      "private": "41b2e503b1e1681a1f0ae31df1d3676fa9e375e27e61a9c176c49fd0d02c968d"
+    }
+  },
+  "requests": [
+    {
+      "request_id": "wc-b620d0fe4dbc5cb5167631fa381acc2b-0",
+      "request_index": 0,
+      "off_generated_tokens": 734,
+      "on_generated_tokens": 762,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 91,
+      "first_divergence_zero_based_index": 91,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 91,
+        "mean_absolute": 0.019016160585963986,
+        "max_absolute": 0.16082382202148438,
+        "signed_mean": 0.00025903164586762306
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-e59b6eb6d2e60fb0475b05ff341007bc-0",
+      "request_index": 1,
+      "off_generated_tokens": 1115,
+      "on_generated_tokens": 1040,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 39,
+      "first_divergence_zero_based_index": 39,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 39,
+        "mean_absolute": 0.023024486732210265,
+        "max_absolute": 0.20156991481781006,
+        "signed_mean": 0.012178593042147686
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-8e9884d5742709c2e7b4a2c64c222cdd-2",
+      "request_index": 2,
+      "off_generated_tokens": 91,
+      "on_generated_tokens": 88,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 54,
+      "first_divergence_zero_based_index": 54,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 54,
+        "mean_absolute": 0.018132043530880746,
+        "max_absolute": 0.24103789031505585,
+        "signed_mean": -0.011620950376850571
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-d25c731b015e3c3ffc17ec44cb082fdc-0",
+      "request_index": 3,
+      "off_generated_tokens": 1236,
+      "on_generated_tokens": 1734,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 79,
+      "first_divergence_zero_based_index": 79,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 79,
+        "mean_absolute": 0.02525329427140904,
+        "max_absolute": 0.2811751365661621,
+        "signed_mean": -0.014280329783600158
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-44348860a81c930f71c8e2dcd9268b21-2",
+      "request_index": 4,
+      "off_generated_tokens": 822,
+      "on_generated_tokens": 770,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 32,
+      "first_divergence_zero_based_index": 32,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 32,
+        "mean_absolute": 0.016310457866406836,
+        "max_absolute": 0.17323845624923706,
+        "signed_mean": -0.0016384066998078595
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-8962e79ab8b7e2e22e65ac4d2937ceda-12",
+      "request_index": 5,
+      "off_generated_tokens": 63,
+      "on_generated_tokens": 62,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 56,
+      "first_divergence_zero_based_index": 56,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 56,
+        "mean_absolute": 0.023579492259121895,
+        "max_absolute": 0.22052383422851562,
+        "signed_mean": -0.006822197880973745
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-d7e6471ce7dcb8d58c654b370b49228f-0",
+      "request_index": 6,
+      "off_generated_tokens": 903,
+      "on_generated_tokens": 944,
+      "off_finish_reason": "stop",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 6,
+      "first_divergence_zero_based_index": 6,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 6,
+        "mean_absolute": 0.05671607625333763,
+        "max_absolute": 0.15847527980804443,
+        "signed_mean": -0.03024137842805885
+      },
+      "post_divergence_logprobs_compared": false
+    },
+    {
+      "request_id": "wc-cc5794a725f5de2e81616e4ee902504a-10",
+      "request_index": 7,
+      "off_generated_tokens": 2048,
+      "on_generated_tokens": 2007,
+      "off_finish_reason": "length",
+      "on_finish_reason": "stop",
+      "generated_token_ids_equal": false,
+      "generated_text_equal": false,
+      "shared_generated_prefix_tokens": 12,
+      "first_divergence_zero_based_index": 12,
+      "divergence_kind": "different_next_token",
+      "shared_prefix_selected_logprob_difference_on_minus_off": {
+        "count": 12,
+        "mean_absolute": 0.016836225015803546,
+        "max_absolute": 0.10029178857803345,
+        "signed_mean": 0.0038411343707783394
+      },
+      "post_divergence_logprobs_compared": false
+    }
+  ],
+  "comparison_available": true,
+  "request_pairs": 8,
+  "equal_generated_token_sequences": 0,
+  "equal_generated_texts": 0,
+  "shared_prefix_selected_logprob_difference_on_minus_off": {
+    "count": 369,
+    "mean_absolute": 0.021645754932068592,
+    "max_absolute": 0.2811751365661621,
+    "signed_mean": -0.004951130402937735
+  },
+  "logprob_comparison_available": true,
+  "decoder": {
+    "requested": true,
+    "tokenizer": "../full-serving-tokenizer",
+    "verified": true
+  },
+  "comparison_boundary": "Only same selected token under exactly identical prompt and previously generated prefix. Divergent positions and all later positions are excluded.",
+  "tolerance": "No numerical tolerance is invented. Differences are descriptive, not a numerical pass/fail threshold.",
+  "interpretation": "Greedy generations can differ with batching/reduction order. These checks cannot identify an algorithmic cause or distinguish near-tie selection from mapping/kernel errors. Different outputs change subsequent workloads.",
+  "full_model_numerical_correctness_proved": false,
+  "algorithmic_cause_established": false,
+  "speedup_claim": false,
+  "dataset": "wildchat",
+  "controller_state": "pilot_completed",
+  "input_token_sequences_identical": true,
+  "off_completion_tokens": 7012,
+  "on_completion_tokens": 7407,
+  "logprob_comparison_note": "All selected logprobs finite, with no -9999 placeholders; compare common-prefix positions only.",
+  "shared_generated_prefix_tokens": 369
+}
