@@ -1,0 +1,51 @@
+{
+  "schema": "resident_residual_independent_statistics_v1",
+  "passed": true,
+  "plan_sha256": "1231f0ab43990f340666d3abb740eb331b15034d1aade4d03f4d2af61e1cf95c",
+  "source_sha256": "136259a52849be38f9dc875f6ccef964ba2c92f8cd53ceee2c5e5c51f2e0dce7",
+  "previous_closure_sha256": "08d4b09f110b0ca225eb95073723b4c93a3ab799a0cf52b9c04ed0322ceba1ff",
+  "compared_analysis_sha256": "b3df24a5f03cfb8b2b6a300ef9da9661634f904cce81e24e19b2e08c611a26ad",
+  "protocol_sha256": "16c5b83da9fe48a46c4fb85354e3f455adb087b2377731e496dfe1acade2dc4b",
+  "raw_record_files": [
+    {
+      "file": "residual-gsm8k_train-pilot-01.jsonl",
+      "stored_sha256": "e594fc4be4d9ec3e85eec1e77895eb7c79aa50cf595797e2dfaba7cde37bbdda",
+      "uncompressed_sha256": "e594fc4be4d9ec3e85eec1e77895eb7c79aa50cf595797e2dfaba7cde37bbdda"
+    },
+    {
+      "file": "residual-gsm8k_train-pilot-02.jsonl",
+      "stored_sha256": "2b1aaa180b98ea7a1215ec6ced71d7b7bbcf684be5e71512335538325b1e21a2",
+      "uncompressed_sha256": "2b1aaa180b98ea7a1215ec6ced71d7b7bbcf684be5e71512335538325b1e21a2"
+    },
+    {
+      "file": "residual-wildchat-pilot-01.jsonl",
+      "stored_sha256": "1f570618e0f40ace1366f6b869fbe88218de1a3f2e4537f20f2c5c4184e1fab4",
+      "uncompressed_sha256": "1f570618e0f40ace1366f6b869fbe88218de1a3f2e4537f20f2c5c4184e1fab4"
+    },
+    {
+      "file": "residual-wildchat-pilot-02.jsonl",
+      "stored_sha256": "4008a1e125574cc982185aa7a2fd5238b1c36460a00675e40667d67852b4fe34",
+      "uncompressed_sha256": "4008a1e125574cc982185aa7a2fd5238b1c36460a00675e40667d67852b4fe34"
+    }
+  ],
+  "comparison": {
+    "passed": true,
+    "scalar_comparisons": 11063,
+    "numeric_comparisons": 10836,
+    "maximum_absolute_numeric_difference": 0
+  },
+  "recomputed": {
+    "phase": "pilot",
+    "trial_count": 48,
+    "matched_triplets": 16,
+    "paired_comparisons": 48,
+    "pairs_per_contrast": {
+      "fix_over_stockoff": 16,
+      "fix_over_previous": 16,
+      "previous_over_stockoff": 16
+    },
+    "confirmatory": null
+  },
+  "program_sha256": "ccf5750b3a7b7b6d4259ec1243a68cf386c375ccc1774409ed384a34ffe4f6a1",
+  "scope": "Independent implementation within same team; conditional GSM8K-train/WildChat content-bundle uncertainty. No production analysis/inference imports."
+}

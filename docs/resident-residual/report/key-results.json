@@ -1,0 +1,106 @@
+{
+  "primary": {
+    "name": "high_load_mean_response_vs_stockoff",
+    "contrast": "fix_over_stockoff",
+    "rho": 0.85,
+    "metric": "response_mean_ns",
+    "datasets": [
+      "gsm8k_train",
+      "wildchat"
+    ],
+    "ratio": 1.0700047920278666,
+    "content_group_log_ratios": {
+      "residual-gsm8k_train-final-01": 0.03218939400573806,
+      "residual-gsm8k_train-final-02": 0.032609024930336794,
+      "residual-gsm8k_train-final-03": 0.054332993883325464,
+      "residual-gsm8k_train-final-04": 0.04431985273251193,
+      "residual-gsm8k_train-final-05": 0.03152238232097915,
+      "residual-gsm8k_train-final-06": 0.03691982076501077,
+      "residual-gsm8k_train-final-07": 0.03860232274759312,
+      "residual-gsm8k_train-final-08": 0.0050358275387036855,
+      "residual-wildchat-final-01": 0.06578588318101453,
+      "residual-wildchat-final-02": 0.07334816594451965,
+      "residual-wildchat-final-03": 0.20028597776714907,
+      "residual-wildchat-final-04": 0.08117636656512506,
+      "residual-wildchat-final-05": 0.09144628394366183,
+      "residual-wildchat-final-06": 0.059559848287774386,
+      "residual-wildchat-final-07": 0.1257599724448628,
+      "residual-wildchat-final-08": 0.10971591485373722
+    },
+    "upper_confidence_bound": 1.0885068641922069,
+    "ratio_limit": 0.95,
+    "passes": false,
+    "criterion": "upper < limit",
+    "interval_scope": "Conditional main-content-bundle bootstrap; no new-day or hardware-population inference",
+    "ci95": [
+      1.055402674338154,
+      1.0885068641922069
+    ],
+    "status": "not_established"
+  },
+  "secondary": {
+    "name": "high_load_mean_response_vs_previous",
+    "contrast": "fix_over_previous",
+    "rho": 0.85,
+    "metric": "response_mean_ns",
+    "ratio": 0.8534117997807541,
+    "content_group_log_ratios": {
+      "residual-gsm8k_train-final-01": -0.14311194783898973,
+      "residual-gsm8k_train-final-02": -0.22785628087221976,
+      "residual-gsm8k_train-final-03": -0.3691958005174323,
+      "residual-gsm8k_train-final-04": -0.1555785782755068,
+      "residual-gsm8k_train-final-05": -0.17595554889548293,
+      "residual-gsm8k_train-final-06": -0.05320254063415675,
+      "residual-gsm8k_train-final-07": -0.13881995492031152,
+      "residual-gsm8k_train-final-08": -0.16764744699761547,
+      "residual-wildchat-final-01": -0.08877849922523762,
+      "residual-wildchat-final-02": -0.22905338551746723,
+      "residual-wildchat-final-03": -0.18219645832703524,
+      "residual-wildchat-final-04": -0.047965660870057825,
+      "residual-wildchat-final-05": -0.12722231340256407,
+      "residual-wildchat-final-06": -0.12506087302437408,
+      "residual-wildchat-final-07": -0.23641813259516198,
+      "residual-wildchat-final-08": -0.06814588266195809
+    },
+    "ratio_limit": 0.95,
+    "ci95": null,
+    "upper_confidence_bound": null,
+    "passes": null,
+    "status": "not_tested_gate_closed",
+    "confirmatory": false,
+    "gate_passed": false
+  },
+  "acceptance": "do_not_advance",
+  "ratios": {
+    "response_mean_ns": {
+      "previous_over_stockoff": 1.2537965754665643,
+      "fix_over_stockoff": 1.0700047920278666,
+      "fix_over_previous": 0.8534117997807541
+    },
+    "response_p95_ns": {
+      "previous_over_stockoff": 1.2661576170314164,
+      "fix_over_stockoff": 1.0815480347453765,
+      "fix_over_previous": 0.8541969974331725
+    },
+    "service_mean_ns": {
+      "previous_over_stockoff": 1.0256310571068827,
+      "fix_over_stockoff": 1.0087253133806429,
+      "fix_over_previous": 0.9835167396608212
+    },
+    "queue_mean_ns": {
+      "previous_over_stockoff": 1.2867753720946875,
+      "fix_over_stockoff": 1.0795332732828873,
+      "fix_over_previous": 0.8389446182246716
+    },
+    "completed_elapsed_ns": {
+      "previous_over_stockoff": 1.0004625334427093,
+      "fix_over_stockoff": 1.0000344677798783,
+      "fix_over_previous": 0.9995721322403168
+    },
+    "throughput_jobs_per_second": {
+      "previous_over_stockoff": 0.999537680395569,
+      "fix_over_stockoff": 0.9999655334081086,
+      "fix_over_previous": 1.0004280509088663
+    }
+  }
+}

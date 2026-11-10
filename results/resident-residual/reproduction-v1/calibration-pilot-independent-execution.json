@@ -1,0 +1,475 @@
+{
+  "schema": "independent_residual_records_v1",
+  "passed": true,
+  "phase": "calibration",
+  "records": 4,
+  "plan_sha256": "4a6db51fbcd05cb13734d4cc57becfbd248c65dbc0b3694a04fcace094bf9cd7",
+  "plan_content_sha256": "b33418a4ae6180e33fe1b044862ed9a19d23d9f8468ff6dd17955742fd138fea",
+  "source_sha256": "136259a52849be38f9dc875f6ccef964ba2c92f8cd53ceee2c5e5c51f2e0dce7",
+  "source_files_verified": 107,
+  "raw_files": {
+    "residual-gsm8k_train-pilot-01.jsonl": {
+      "container_sha256": "af38035f7e6af9469a653ec5c7b8094c2511ccaee98b3865533746f344d5df42",
+      "decompressed_sha256": "af38035f7e6af9469a653ec5c7b8094c2511ccaee98b3865533746f344d5df42"
+    },
+    "residual-gsm8k_train-pilot-02.jsonl": {
+      "container_sha256": "d05434b6a07460086edb20f9fc72347928e16f3b08898fb8b0933eabe479abea",
+      "decompressed_sha256": "d05434b6a07460086edb20f9fc72347928e16f3b08898fb8b0933eabe479abea"
+    },
+    "residual-wildchat-pilot-01.jsonl": {
+      "container_sha256": "cf85210d082007e6ee9feb71e9c4c04bfd08d2717ddf30c8628eead1a3c25632",
+      "decompressed_sha256": "cf85210d082007e6ee9feb71e9c4c04bfd08d2717ddf30c8628eead1a3c25632"
+    },
+    "residual-wildchat-pilot-02.jsonl": {
+      "container_sha256": "e7cf6703cd98875e34243bd97d3b85fd90efd66e324923f97b47e4197d548964",
+      "decompressed_sha256": "e7cf6703cd98875e34243bd97d3b85fd90efd66e324923f97b47e4197d548964"
+    }
+  },
+  "unique_content_groups": 4,
+  "actual_prepared_batches": 16448,
+  "physical_oracle_batches": 0,
+  "native_geometry_batches": 32896,
+  "raw_jobs": 16384,
+  "compiled_kernels": null,
+  "compiled_binary_verification": null,
+  "adversarial_checks": {},
+  "input_checks": {
+    "residual-gsm8k_train-pilot-01": {
+      "prepared_batches": 4112,
+      "physical_oracle_batches": 0,
+      "physical_assignment_digest": null,
+      "geometry": {
+        "stockoff": {
+          "file_sha256": "8ff9af1f6c155c2bec1d116d7863418553a459adcc800cef88258c844a509503",
+          "summaries": [
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            },
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            }
+          ]
+        }
+      },
+      "native_geometry_batches": 8224,
+      "source_prompt_ids": [
+        "gsm8k_train:train-3912",
+        "gsm8k_train:train-5952",
+        "gsm8k_train:train-1460",
+        "gsm8k_train:train-7408",
+        "gsm8k_train:train-6605",
+        "gsm8k_train:train-155",
+        "gsm8k_train:train-2703",
+        "gsm8k_train:train-6977",
+        "gsm8k_train:train-2421",
+        "gsm8k_train:train-2260",
+        "gsm8k_train:train-6857",
+        "gsm8k_train:train-5641",
+        "gsm8k_train:train-3387",
+        "gsm8k_train:train-5981",
+        "gsm8k_train:train-4178",
+        "gsm8k_train:train-816",
+        "gsm8k_train:train-3400",
+        "gsm8k_train:train-4884",
+        "gsm8k_train:train-1732",
+        "gsm8k_train:train-2959",
+        "gsm8k_train:train-5425",
+        "gsm8k_train:train-5119",
+        "gsm8k_train:train-804",
+        "gsm8k_train:train-1254",
+        "gsm8k_train:train-4916",
+        "gsm8k_train:train-3121",
+        "gsm8k_train:train-2428",
+        "gsm8k_train:train-4291",
+        "gsm8k_train:train-928",
+        "gsm8k_train:train-4758",
+        "gsm8k_train:train-5860",
+        "gsm8k_train:train-459"
+      ],
+      "authenticated_bank_sha256": "9ddfede42e05fea11cad84f8fac42ca7f2cb5ca8bb5f319bbea11b557c599a72"
+    },
+    "residual-gsm8k_train-pilot-02": {
+      "prepared_batches": 4112,
+      "physical_oracle_batches": 0,
+      "physical_assignment_digest": null,
+      "geometry": {
+        "stockoff": {
+          "file_sha256": "e7ad21d246ab60b7198ab3be1843a25138f422f7b71bf2619adc7f304924382b",
+          "summaries": [
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            },
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            }
+          ]
+        }
+      },
+      "native_geometry_batches": 8224,
+      "source_prompt_ids": [
+        "gsm8k_train:train-1493",
+        "gsm8k_train:train-3953",
+        "gsm8k_train:train-2115",
+        "gsm8k_train:train-2665",
+        "gsm8k_train:train-5898",
+        "gsm8k_train:train-6322",
+        "gsm8k_train:train-3626",
+        "gsm8k_train:train-3519",
+        "gsm8k_train:train-6582",
+        "gsm8k_train:train-3973",
+        "gsm8k_train:train-5278",
+        "gsm8k_train:train-1800",
+        "gsm8k_train:train-560",
+        "gsm8k_train:train-3695",
+        "gsm8k_train:train-477",
+        "gsm8k_train:train-4277",
+        "gsm8k_train:train-4880",
+        "gsm8k_train:train-4939",
+        "gsm8k_train:train-5214",
+        "gsm8k_train:train-1521",
+        "gsm8k_train:train-5523",
+        "gsm8k_train:train-5334",
+        "gsm8k_train:train-5621",
+        "gsm8k_train:train-1195",
+        "gsm8k_train:train-288",
+        "gsm8k_train:train-5891",
+        "gsm8k_train:train-5660",
+        "gsm8k_train:train-552",
+        "gsm8k_train:train-2081",
+        "gsm8k_train:train-6910",
+        "gsm8k_train:train-326",
+        "gsm8k_train:train-5400"
+      ],
+      "authenticated_bank_sha256": "6a715a7797e6187d3db7c1b11065eef0bbeaef622c8b5e77a3ac89692580b7a6"
+    },
+    "residual-wildchat-pilot-01": {
+      "prepared_batches": 4112,
+      "physical_oracle_batches": 0,
+      "physical_assignment_digest": null,
+      "geometry": {
+        "stockoff": {
+          "file_sha256": "266bd706a83e85b48b8ab0f5c6c6d9fe777680afbf4050c9929a98fb4c10dd9f",
+          "summaries": [
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            },
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            }
+          ]
+        }
+      },
+      "native_geometry_batches": 8224,
+      "source_prompt_ids": [
+        "wildchat:3851bbeeaf3a8e74da778a4351f41b8d",
+        "wildchat:1ce8d64cc7b6b285d2116fe665b51ea2",
+        "wildchat:2d75f1479dd37fe1494f7a69bb535a02",
+        "wildchat:ca5f72944e2c08cb0848316bbce3ee61",
+        "wildchat:ec07f87bf23e499b624bb813e92c15cc",
+        "wildchat:237f806ac4569a6dfd685f57774d5a55",
+        "wildchat:1c83c64a8367527c4ae7d30dcf2695e7",
+        "wildchat:a1fb0267760e3a6888dede469b0b043f",
+        "wildchat:6dca33ab40a65e658e96f25c54cfdd10",
+        "wildchat:c7afe536aa74985324c8d19047f0a92b",
+        "wildchat:a70224025eed51aa306ccaf873091c61",
+        "wildchat:93d3d0d331940b5af2778e3bee1e1836",
+        "wildchat:db391fcdb396b564add22d7c7e36ceef",
+        "wildchat:3d33868e89eb90de1e0f6d84b8b77953",
+        "wildchat:0926f203c184d38d946577f3382f9f84",
+        "wildchat:f7ac41bb90506954aaf41ca43a1b5558",
+        "wildchat:c02581d8629fe211867dfeab4178584a",
+        "wildchat:aa0cd8c42243a91e290cfc54c0581b29",
+        "wildchat:e02669d6d3b262c74a7537ca0ccbd24c",
+        "wildchat:eab346062db124f3a048318531f8826a",
+        "wildchat:fa7fd1aafbca32f86442325533f3031a",
+        "wildchat:e57cc067075d7c207d883eab90adf76d",
+        "wildchat:56ba8a4d7bab45fd28bcd236c0fe242c",
+        "wildchat:9f73b7300b2fce34a891395f6fdfca8b",
+        "wildchat:c37a62b0c0d2f1d87fefd7f2da20e5b3",
+        "wildchat:7205065699416a3378ef3da1b43feade",
+        "wildchat:2b362f523b7985e1cfbe74f7c9697491",
+        "wildchat:063b5bf480ea53fff2e6a7c2c977f12e",
+        "wildchat:4490f96e04b3eed5d690319f53df175c",
+        "wildchat:747189854060d7a329ff4b59f31ef5cc",
+        "wildchat:0531e630de350d0c6d9298a1966349a8",
+        "wildchat:37c700e7e3eeef584f7910a42ed00161"
+      ],
+      "authenticated_bank_sha256": "79b7848aa7217e4249435e1fb3422895feae11446efb64581e5cb7dcb114b697"
+    },
+    "residual-wildchat-pilot-02": {
+      "prepared_batches": 4112,
+      "physical_oracle_batches": 0,
+      "physical_assignment_digest": null,
+      "geometry": {
+        "stockoff": {
+          "file_sha256": "25593f275b90c61dc1cb9ed17f6f57652f36313f7ba02a9b16cc01e2d4ae8484",
+          "summaries": [
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            },
+            {
+              "schema": "native_alignment_extent_v1",
+              "enabled": false,
+              "probe_only": true,
+              "alignment_calls": 4112,
+              "native_allocation_preserved": true,
+              "native_alignment_algorithm_preserved": true,
+              "policy": "stockoff_64_resident_experts_per_rank",
+              "capacity_bound": 5056,
+              "active_local_cap": 64,
+              "global_physical_experts": 128,
+              "native_capacity": 9088,
+              "config": {
+                "BLOCK_SIZE_M": 64,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 64,
+                "GROUP_SIZE_M": 1,
+                "SPLIT_K": 1,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "native_source_sha256": {
+                "model_executor/layers/fused_moe/experts/triton_moe.py": "ee6b83b108a0460e6308e35447434165d0778a053aa39f0c6c8ed7f36a3ddbab",
+                "model_executor/layers/fused_moe/fused_moe.py": "21860340e4b409b01666e2ba0f0edae66b0f97b859756b174b573bab895cfaf7",
+                "model_executor/layers/fused_moe/moe_align_block_size.py": "2addb33632b611b4c0df21f2b874dc1124d2fc867785f19f05d4ce33d4b872c6"
+              },
+              "runtime_gpu_readback": false,
+              "actual_padding_verified": true
+            }
+          ]
+        }
+      },
+      "native_geometry_batches": 8224,
+      "source_prompt_ids": [
+        "wildchat:230472b4ec1d7c05e8a6bdb21ccd1e5a",
+        "wildchat:041848176f7db2adea33f6eb1fbf6fa9",
+        "wildchat:4b4588a50f5f39e69860443d2e76468b",
+        "wildchat:19c833c0b35989e84560dd9e30b72a95",
+        "wildchat:82770ec7de23b5e1432d44cca2937bde",
+        "wildchat:3aeea837a421bf3d7025876475139be2",
+        "wildchat:7663d176744da688ddc041177206f919",
+        "wildchat:91fa1742221ccb9a1560f7e5f75316ce",
+        "wildchat:8ee7f70e3b1709e6f8663cdea90098d9",
+        "wildchat:5da7c66d7575e52ac2316c7ff8354baf",
+        "wildchat:a88c56761e66c69c4966d029e71a653c",
+        "wildchat:213b66f7e4aef31ff62ef2f048cfa801",
+        "wildchat:044f7ff506b9f753f4c4bac7393112c2",
+        "wildchat:c3bb1259283dd9605c6d7c54a7600b87",
+        "wildchat:a5bc7bb0288a059253345de66105b2b4",
+        "wildchat:36d667ad8a4a8e901be0aae3ce3212c6",
+        "wildchat:825dfa95245a9389e5464d4bb0d1b7e7",
+        "wildchat:1c94a170ccfc7e79ec5f932961c93b36",
+        "wildchat:f4982bdcadebd8f7d0260b37e515d3bb",
+        "wildchat:697f6aa2b021467df3a01636b401fc93",
+        "wildchat:98dd949a66be1d9295c9b8fe5fddca8b",
+        "wildchat:03bcb801e53f729ba53cebe4ffc32f4b",
+        "wildchat:e71ffa3239b7c8c8995ef167fd4f5a63",
+        "wildchat:574408820417da162608d8860776bb65",
+        "wildchat:b9cc34fce4740db5880dcc25c3a99a4b",
+        "wildchat:9fbe49d4c0a2dbc51dbb2ab68c36c8b6",
+        "wildchat:bd9d6ee2eda3ef47fadeed8fd84bd65e",
+        "wildchat:db77e14c92c449a95ceba455929e80c7",
+        "wildchat:4fb6ff88a7953e07f85093a87daff638",
+        "wildchat:567baf3d81d0e81fb184a1fd894c21fc",
+        "wildchat:97a1d384bfa1a4882d99183e1a8a6dcd",
+        "wildchat:e89ac13413d3f203df12574db75409d9"
+      ],
+      "authenticated_bank_sha256": "3a62cecb1932c4120f1176dad0448080ae154bcb104ac5a4fd2bad87becd14cc"
+    }
+  },
+  "auditor_sha256": "510255bffd1c9c8b052e3a142ba984b7ff7a7b88077bfccd8105ed068598d29c",
+  "helper_sha256": {
+    "residual_stock_primitives.py": "20d18bcbcb1358e2ee462b69b35a262daaf92f9543040a9db581c351de3b38b7",
+    "audit_residual_development.py": "6a1d0215758301cd295f7b42b08229cea8b84fff09fc5631bff95d3675cad8d1",
+    "audit_residual_diagnostic.py": "1882a92935425f532e5e75213691b1369d44407b8bd33351a4a8030f9a087ab1",
+    "residual_preflight_primitives.py": "c922e94ae4bd94da4d46b8c99432a0786015b5ad80648d27678c592e9f83708a"
+  },
+  "limits": [
+    "No GPU rerun: numerical comparisons and full slot-weight checks are authenticated recorded attestations.",
+    "Native gate outputs are authenticated actual float32 route artifacts; CPU does not recompute the native gate/kernel.",
+    "Every4112 input-index row, exact resident assignment and native alignment count/grid is independently checked.",
+    "Statistical acceptance is handled by a separate independent inference audit."
+  ]
+}
