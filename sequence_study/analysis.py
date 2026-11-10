@@ -10,6 +10,12 @@ from stock_comparison.data import digest
 
 METRICS=('response_mean_ns','response_p95_ns','service_mean_ns','queue_mean_ns','completed_elapsed_ns','drain_ns','throughput_jobs_per_second')
 
+def geometric_nonnegative(values):
+    if any(v is None for v in values):return None
+    if any(v<0 or not math.isfinite(v) for v in values):raise ValueError('Invalid nonnegative ratio')
+    if any(v==0 for v in values):return 0.
+    return math.exp(statistics.mean(math.log(v) for v in values))
+
 def analyze(plan,rows):
     expected={(t['block_id'],t['mode'],t['rep'],t['arm']):t for t in plan['trials']}
     assert len(expected)==54 and len(rows)==54
@@ -57,14 +63,14 @@ def analyze(plan,rows):
     for gid,mode,arm in sorted({(p['block_id'],p['mode'],p['arm']) for p in paired}):
         selected=[p for p in paired if (p['block_id'],p['mode'],p['arm'])==(gid,mode,arm)];assert len(selected)==2
         bundles.append(dict(block_id=gid,dataset=selected[0]['dataset'],mode=mode,arm=arm,
-            ratios={m:None if any(p['ratios'][m] is None for p in selected) else math.exp(statistics.mean(math.log(p['ratios'][m]) for p in selected)) for m in METRICS},
+            ratios={m:geometric_nonnegative([p['ratios'][m] for p in selected]) for m in METRICS},
             response_faster_in_both_repetitions=all(p['ratios']['response_mean_ns']<1 for p in selected),
             response_slower_in_both_repetitions=all(p['ratios']['response_mean_ns']>1 for p in selected)))
     interactions=[]
     for b in plan['banks']:
         for arm in ('stockon32','fix'):
             x={p['mode']:p for p in bundles if p['block_id']==b['block_id'] and p['arm']==arm}
-            interactions.append(dict(block_id=b['block_id'],arm=arm,contiguous_over_mixed_relative_effect={m:x['contiguous']['ratios'][m]/x['mixed']['ratios'][m] if x['contiguous']['ratios'][m] and x['mixed']['ratios'][m] else None for m in METRICS}))
+            interactions.append(dict(block_id=b['block_id'],arm=arm,contiguous_over_mixed_relative_effect={m:x['contiguous']['ratios'][m]/x['mixed']['ratios'][m] if x['contiguous']['ratios'][m] is not None and x['mixed']['ratios'][m] is not None and x['mixed']['ratios'][m]>0 else None for m in METRICS}))
     return dict(schema='sequence_study_analysis_v1',valid=True,records=54,independent_content_bundles=4,
         no_confirmatory_test=True,trial_summaries=summaries,paired_cases=paired,bundle_effects=bundles,
         ordering_interactions=interactions,episode_break_even=break_even,
