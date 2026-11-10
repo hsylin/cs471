@@ -131,3 +131,26 @@ def test_launcher_dry_run_pins_native_multinode_semantics(arm, role):
         assert "--headless" in command
         assert value("--data-parallel-start-rank") == "4"
         assert "--api-server-count" not in command
+
+
+def test_toolchain_admission_fails_before_model_loading_on_missing_or_changed_compiler(tmp_path, monkeypatch):
+    monkeypatch.setenv("CUDA_HOME", str(tmp_path))
+    with pytest.raises(p.PreflightError, match="install manifest"):
+        p.verify_toolchain()
+    names = ("bin/nvcc", "bin/ptxas", "include/cuda_runtime.h", "include/cub/cub.cuh", "include/curand.h")
+    for name in names:
+        file = tmp_path / name
+        file.parent.mkdir(parents=True, exist_ok=True)
+        file.write_text(name)
+    records = [{"path": name, "sha256": p.sha256(tmp_path / name)} for name in names]
+    (tmp_path / "install-manifest.json").write_text(json.dumps({
+        "status": "installed_verified", "release": "12.9.1", "prefix": str(tmp_path), "files": records}))
+    calls = []
+    monkeypatch.setattr(p.subprocess, "check_output", lambda command, **kwargs:
+                        calls.append(command) or "Cuda compilation tools, release 12.9, V12.9.86")
+    assert len(p.verify_toolchain()["critical_file_sha256"]) == 5
+    assert calls == [[str(tmp_path / "bin/nvcc"), "--version"]]
+    (tmp_path / "bin/nvcc").write_text("changed compiler")
+    with pytest.raises(p.PreflightError, match="file changed"):
+        p.verify_toolchain()
+    assert len(calls) == 1

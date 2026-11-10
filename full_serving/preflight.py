@@ -166,10 +166,34 @@ def verify_cached_checkpoint(snapshot, manifest):
                     f"File changed since full verification: {name}; rerun checkpoint preflight")
 
 
+def verify_toolchain():
+    require(bool(os.environ.get("CUDA_HOME")), "Set the verified private CUDA_HOME before serving")
+    root = Path(os.environ["CUDA_HOME"]).resolve()
+    manifest_path = root / "install-manifest.json"
+    require(manifest_path.is_file(), "Missing private CUDA install manifest")
+    manifest = json.loads(manifest_path.read_text())
+    require(manifest.get("status") == "installed_verified" and manifest.get("release") == "12.9.1",
+            "Expected the verified CUDA 12.9.1 compiler components")
+    require(manifest.get("prefix") == str(root), "Toolchain manifest path mismatch")
+    records = {r["path"]: r for r in manifest["files"]}
+    checked = {}
+    for name in ("bin/nvcc", "bin/ptxas", "include/cuda_runtime.h", "include/cub/cub.cuh", "include/curand.h"):
+        require((root / name).is_file(), f"Missing CUDA toolchain component: {name}")
+        actual = sha256(root / name)
+        require(records.get(name, {}).get("sha256") == actual, f"CUDA toolchain file changed: {name}")
+        checked[name] = actual
+    version = subprocess.check_output([str(root / "bin/nvcc"), "--version"], text=True, timeout=30)
+    require("V12.9.86" in version, "Unexpected CUDA compiler version")
+    return {"cuda_home": str(root), "install_manifest_sha256": sha256(manifest_path),
+            "critical_file_sha256": checked, "nvcc_version": version,
+            "runtime_library_environment_changed": False}
+
+
 def runtime_preflight(snapshot, checkpoint_manifest, role, primary_ip):
     require(os.environ.get("SLURM_JOB_ID") == JOB_ID, f"Expected allocation {JOB_ID}")
     require(os.environ.get("SLURM_JOB_NUM_NODES", os.environ.get("SLURM_NNODES")) == "2",
             "Expected two-node allocation")
+    toolchain = verify_toolchain()
     checkpoint_record = json.loads(Path(checkpoint_manifest).read_text())
     verify_cached_checkpoint(snapshot, checkpoint_record)
     if role == "primary":
@@ -208,6 +232,7 @@ def runtime_preflight(snapshot, checkpoint_manifest, role, primary_ip):
             "checkpoint_manifest_sha256": sha256(checkpoint_manifest),
             "checkpoint_verification": "full SHA256 record plus unchanged file stat fingerprints",
             "model_revision": MODEL_REVISION, "vllm_commit": VLLM_COMMIT,
+            "cuda_compiler_toolchain": toolchain,
             "vllm_version": vllm.__version__, "vllm_distribution_version": distribution_version,
             "torch_version": torch.__version__,
             "selected_vllm_source_sha256": source_hashes, "devices": devices,

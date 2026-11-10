@@ -6,6 +6,8 @@ snapshot=$2
 primary_ip=$3
 cd "$(dirname "$0")/.."
 source scripts/cluster-env.sh
+export CUDA_HOME="${FULL_SERVING_CUDA_HOME:-$SKB_ROOT/tools/cuda-12.9.1}"
+export PATH="$CUDA_HOME/bin:$PATH"
 case ${SLURM_PROCID:?} in
   0) role=primary ;;
   1) role=worker ;;

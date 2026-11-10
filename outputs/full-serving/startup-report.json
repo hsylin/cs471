@@ -1,0 +1,236 @@
+{
+  "schema": "full_serving_pilot_report_v1",
+  "created_utc": "2026-11-10T13:59:10.959408+00:00",
+  "complete": false,
+  "cohorts": [
+    {
+      "result_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3",
+      "dataset": "wildchat",
+      "controller_state": "failed",
+      "complete": false,
+      "issues": [
+        "cohort pilot incomplete or invalid; successful subsets do not establish a complete comparison"
+      ],
+      "stages": {
+        "smoke": {
+          "arms": {
+            "off": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/smoke.jsonl",
+              "available": false,
+              "valid": false,
+              "issues": [
+                "missing request result file"
+              ],
+              "native_metrics": {
+                "available": false,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/smoke-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/smoke-metrics-after.txt",
+                "series": [],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "issue": "one or both native metric snapshots missing"
+              }
+            },
+            "on": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/smoke.jsonl",
+              "available": false,
+              "valid": false,
+              "issues": [
+                "missing request result file"
+              ],
+              "native_metrics": {
+                "available": false,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/smoke-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/smoke-metrics-after.txt",
+                "series": [],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "issue": "one or both native metric snapshots missing"
+              }
+            }
+          },
+          "pair": {
+            "valid_for_descriptive_pair": false,
+            "issues": [
+              "both complete, failure-free arm runs are required"
+            ],
+            "final_speedup_claim": false,
+            "uncertainty": {
+              "available": false,
+              "independent_blocks": 1,
+              "reason": "single-block fixed-order pilot; requests are not independent repetitions"
+            }
+          }
+        },
+        "calibration": {
+          "arms": {
+            "off": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/calibration.jsonl",
+              "available": false,
+              "valid": false,
+              "issues": [
+                "missing request result file"
+              ],
+              "native_metrics": {
+                "available": false,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/calibration-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/calibration-metrics-after.txt",
+                "series": [],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "issue": "one or both native metric snapshots missing"
+              }
+            },
+            "on": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/calibration.jsonl",
+              "available": false,
+              "valid": false,
+              "issues": [
+                "missing request result file"
+              ],
+              "native_metrics": {
+                "available": false,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/calibration-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/calibration-metrics-after.txt",
+                "series": [],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "issue": "one or both native metric snapshots missing"
+              }
+            }
+          },
+          "pair": {
+            "valid_for_descriptive_pair": false,
+            "issues": [
+              "both complete, failure-free arm runs are required"
+            ],
+            "final_speedup_claim": false,
+            "uncertainty": {
+              "available": false,
+              "independent_blocks": 1,
+              "reason": "single-block fixed-order pilot; requests are not independent repetitions"
+            }
+          }
+        },
+        "external": {
+          "arms": {
+            "off": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/external.jsonl",
+              "available": false,
+              "valid": false,
+              "issues": [
+                "missing request result file"
+              ],
+              "native_metrics": {
+                "available": false,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/external-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/external-metrics-after.txt",
+                "series": [],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "issue": "one or both native metric snapshots missing"
+              }
+            },
+            "on": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/external.jsonl",
+              "available": false,
+              "valid": false,
+              "issues": [
+                "missing request result file"
+              ],
+              "native_metrics": {
+                "available": false,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/external-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/on/external-metrics-after.txt",
+                "series": [],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "issue": "one or both native metric snapshots missing"
+              }
+            }
+          },
+          "pair": {
+            "valid_for_descriptive_pair": false,
+            "issues": [
+              "both complete, failure-free arm runs are required"
+            ],
+            "final_speedup_claim": false,
+            "uncertainty": {
+              "available": false,
+              "independent_blocks": 1,
+              "reason": "single-block fixed-order pilot; requests are not independent repetitions"
+            }
+          }
+        }
+      },
+      "native_eplb": {
+        "off": {
+          "logs_available": true,
+          "ordinary_async_launch_log_entries": 0,
+          "profile_launch_log_entries": 0,
+          "ordinary_sync_launch_log_entries": 0,
+          "sync_completion_log_entries": 0,
+          "async_error_log_entries": 0,
+          "coordinated_stop_log_entries": 0,
+          "discarding_drain_log_entries": 0,
+          "files": [
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/server-0.err"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/server-0.log"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/server-1.err"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/server-1.log"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/attempts/v3/off/srun.log"
+            }
+          ],
+          "normal_async_commits": null,
+          "committed_state_consistency_verified": false,
+          "count_semantics": "Raw matching log entries, not unique cycle IDs. No cross-file deduplication or phase attribution is assumed.",
+          "commit_verification": "Unavailable from native async success logs/metrics; launch or drain is not a commit attestation."
+        },
+        "on": {
+          "logs_available": false,
+          "ordinary_async_launch_log_entries": null,
+          "profile_launch_log_entries": null,
+          "ordinary_sync_launch_log_entries": null,
+          "sync_completion_log_entries": null,
+          "async_error_log_entries": null,
+          "coordinated_stop_log_entries": null,
+          "discarding_drain_log_entries": null,
+          "files": [],
+          "normal_async_commits": null,
+          "committed_state_consistency_verified": false,
+          "count_semantics": "Raw matching log entries, not unique cycle IDs. No cross-file deduplication or phase attribution is assumed.",
+          "commit_verification": "Unavailable from native async success logs/metrics; launch or drain is not a commit attestation."
+        }
+      },
+      "final_speedup_claim": false
+    }
+  ],
+  "complete_semantics": "controller/request records complete with identity/failure gates; not an all-layer numerical or committed-state proof; optional log/metric coverage is reported separately",
+  "pooling": "none: each explicit cohort, dataset, stage and arm remains separate",
+  "final_speedup_claim": false,
+  "independent_run_uncertainty": "unavailable for these single-block pilots",
+  "audit_notes": {
+    "prompt_token_usage": "Pinned vLLM counts the complete chat-templated prompt, including cached tokens. Cache hits are separate optional prompt_tokens_details; do not subtract them from prompt identity checks.",
+    "prompt_template": "Pinned Qwen template appends the assistant prefix and an empty think block for enable_thinking=False. Diagnostic prompt-ID hashes check tokenization; absence of structured reasoning alone is not a semantic proof when no parser is enabled.",
+    "streaming": "SSE receipt chunks may contain multiple tokens or metadata only. TTFT uses first nonempty content. TPOT is a stream-boundary estimate, not measured individual-token latency.",
+    "numerical_scope": "Smoke verifies returned prompt/output token identities and finite selected-token API logprobs. Equal text alone is weaker. After a generated-token divergence, logprobs have different conditioning. Temperature 0 and finite selected-token logprobs do not prove all-layer numerical, routing or committed-weight consistency.",
+    "logprob_limits": "Pinned vLLM can clamp unavailable/extreme logprobs to -9999; the client reports these separately. Top-logprobs0 does not expose runner-up margins or all logits.",
+    "eplb": "Native async launch logs do not report successful layer/final commits or map versions. A later launch is only conditional evidence that prior work ceased pending; the last cycle remains unverified. drain_async acknowledges but discards transferred weights.",
+    "opportunities": "Native counter starts at 2250 for interval 3000. Dummy DP steps increment it, and pending async work may defer launches. Request/output-token totals cannot recover exact opportunity counts. Balancedness logging adds collective/synchronization overhead and is not enabled merely for this report.",
+    "metrics": "Native histogram deltas retain exact engine/model labels. Request RUNNING time is not GPU kernel service. Snapshot publication can lag completion; absent or decreasing series are unavailable, not zero. No EPLB commit metric is present in the audited metrics source.",
+    "sources": [
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/entrypoints/openai/chat_completion/serving.py#L515-L885",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/entrypoints/openai/chat_completion/protocol.py#L82-L180",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L584-L687",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L985-L1019",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L1418-L1443",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/async_worker.py#L104-L159",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/v1/metrics/loggers.py#L850-L900",
+      "https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/tokenizer_config.json"
+    ]
+  },
+  "partial_snapshot_requested": true
+}

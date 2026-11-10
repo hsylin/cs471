@@ -1,0 +1,194 @@
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+Process EngineCore_DP4:
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1437, in run_engine_core
+    raise e
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1389, in run_engine_core
+    engine_core = DPEngineCoreProc(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 2107, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1151, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 151, in __init__
+    kv_cache_config = self._initialize_kv_caches(vllm_config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 357, in _initialize_kv_caches
+    self.model_executor.compile_or_warm_up_model()
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 128, in compile_or_warm_up_model
+    compilation_times: list[CompilationTimes] = self.collective_rpc(
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 450, in collective_rpc
+    return future if non_block else future.result()
+                                    ^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 99, in result
+    return super().result()
+           ^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 103, in _wait_for_response
+    response = self.aggregate(self.get_response())
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 439, in get_response
+    raise RuntimeError(
+RuntimeError: Worker failed with error 'Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist', please check the stack trace above for the root cause
+Process EngineCore_DP5:
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1437, in run_engine_core
+    raise e
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1389, in run_engine_core
+    engine_core = DPEngineCoreProc(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 2107, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1151, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 151, in __init__
+    kv_cache_config = self._initialize_kv_caches(vllm_config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 357, in _initialize_kv_caches
+    self.model_executor.compile_or_warm_up_model()
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 128, in compile_or_warm_up_model
+    compilation_times: list[CompilationTimes] = self.collective_rpc(
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 450, in collective_rpc
+    return future if non_block else future.result()
+                                    ^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 99, in result
+    return super().result()
+           ^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 103, in _wait_for_response
+    response = self.aggregate(self.get_response())
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 439, in get_response
+    raise RuntimeError(
+RuntimeError: Worker failed with error 'Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist', please check the stack trace above for the root cause
+Process EngineCore_DP6:
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1437, in run_engine_core
+    raise e
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1389, in run_engine_core
+    engine_core = DPEngineCoreProc(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 2107, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1151, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 151, in __init__
+    kv_cache_config = self._initialize_kv_caches(vllm_config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 357, in _initialize_kv_caches
+    self.model_executor.compile_or_warm_up_model()
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 128, in compile_or_warm_up_model
+    compilation_times: list[CompilationTimes] = self.collective_rpc(
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 450, in collective_rpc
+    return future if non_block else future.result()
+                                    ^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 99, in result
+    return super().result()
+           ^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 103, in _wait_for_response
+    response = self.aggregate(self.get_response())
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 439, in get_response
+    raise RuntimeError(
+RuntimeError: Worker failed with error 'Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist', please check the stack trace above for the root cause
+Process EngineCore_DP7:
+Traceback (most recent call last):
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1437, in run_engine_core
+    raise e
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1389, in run_engine_core
+    engine_core = DPEngineCoreProc(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 2107, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1151, in __init__
+    super().__init__(
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 151, in __init__
+    kv_cache_config = self._initialize_kv_caches(vllm_config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 357, in _initialize_kv_caches
+    self.model_executor.compile_or_warm_up_model()
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 128, in compile_or_warm_up_model
+    compilation_times: list[CompilationTimes] = self.collective_rpc(
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 450, in collective_rpc
+    return future if non_block else future.result()
+                                    ^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 99, in result
+    return super().result()
+           ^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 103, in _wait_for_response
+    response = self.aggregate(self.get_response())
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 439, in get_response
+    raise RuntimeError(
+RuntimeError: Worker failed with error 'Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist', please check the stack trace above for the root cause
+/work/cs-471/skewbench-hlin/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 4 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
