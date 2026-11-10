@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import importlib.metadata
 import json
 import math
 import os
@@ -178,7 +179,13 @@ def runtime_preflight(snapshot, checkpoint_manifest, role, primary_ip):
             sock.bind((primary_ip, 0))
     import torch
     import vllm
-    require(vllm.__version__ == VLLM_VERSION, f"Unexpected vLLM: {vllm.__version__}")
+    distribution_version = importlib.metadata.version("vllm")
+    require(distribution_version == VLLM_VERSION, f"Unexpected vLLM distribution: {distribution_version}")
+    # The official CUDA wheel's Python module exposes the base version while
+    # distribution metadata retains the CUDA build suffix. Check both, plus
+    # the exact source bytes below; do not mistake packaging for a different pin.
+    require(vllm.__version__ in {VLLM_VERSION, VLLM_VERSION.split("+")[0]},
+            f"Unexpected vLLM module: {vllm.__version__}")
     package_root = Path(vllm.__file__).parent
     source_hashes = {}
     for name, expected in EXPECTED_VLLM_SOURCES.items():
@@ -201,7 +208,8 @@ def runtime_preflight(snapshot, checkpoint_manifest, role, primary_ip):
             "checkpoint_manifest_sha256": sha256(checkpoint_manifest),
             "checkpoint_verification": "full SHA256 record plus unchanged file stat fingerprints",
             "model_revision": MODEL_REVISION, "vllm_commit": VLLM_COMMIT,
-            "vllm_version": vllm.__version__, "torch_version": torch.__version__,
+            "vllm_version": vllm.__version__, "vllm_distribution_version": distribution_version,
+            "torch_version": torch.__version__,
             "selected_vllm_source_sha256": source_hashes, "devices": devices,
             "slurm_nodes": os.environ.get("SLURM_JOB_NODELIST"),
             "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),

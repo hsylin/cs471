@@ -190,7 +190,9 @@ def run(args):
     private.mkdir(parents=True, mode=0o700, exist_ok=False)
     status = {"schema": "full_serving_controller_v1", "job_id": JOB, "started_utc": stamp(),
               "state": "preflight", "kind": "full_model_functional_calibration_pilot",
-              "final_measurements": False, "custom_dispatcher_installed": False}
+              "final_measurements": False, "custom_dispatcher_installed": False,
+              "dataset": getattr(args, "dataset_id", "wildchat")}
+    dataset_id = status["dataset"]
     def update(**values):
         status.update(values, updated_utc=stamp())
         write_json(out / "status.json", status)
@@ -264,7 +266,8 @@ def run(args):
                     client = [sys.executable, "-m", "full_serving.client", "--requests", str(private / f"{stage}-requests.jsonl"),
                               "--base-url", base_url + "/v1", "--output", str(arm_dir / f"{stage}.jsonl"),
                               "--private-output", str(private / f"{arm}-{stage}-outputs.jsonl"),
-                              "--run-id", f"full-pilot-{arm}-{stage}", "--arm", arm, "--block-id", "pilot-" + stage,
+                              "--run-id", f"full-pilot-{dataset_id}-{arm}-{stage}", "--arm", arm,
+                              "--block-id", dataset_id + "-pilot-" + stage,
                               "--load-id", stage, "--max-inflight", "64", "--timeout-s", "1800"]
                     if stage == "external":
                         client += ["--calendar", str(out / "pilot-calendar.json")]
@@ -314,6 +317,7 @@ def main():
     p.add_argument("--private-output", type=Path, required=True)
     p.add_argument("--startup-timeout", type=float, default=2400)
     p.add_argument("--source-revision", help="Full Git SHA for a deployment without .git metadata")
+    p.add_argument("--dataset-id", default="wildchat")
     run(p.parse_args())
 
 
