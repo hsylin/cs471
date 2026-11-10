@@ -1,0 +1,3565 @@
+{
+  "schema": "full_serving_pilot_report_v1",
+  "created_utc": "2026-11-10T17:27:26.967661+00:00",
+  "complete": true,
+  "cohorts": [
+    {
+      "result_directory": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic",
+      "dataset": "sharegpt-burstgpt-diagnostic",
+      "controller_state": "pilot_completed",
+      "complete": true,
+      "issues": [],
+      "stages": {
+        "smoke": {
+          "arms": {
+            "off": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/smoke.jsonl",
+              "available": true,
+              "valid": true,
+              "issues": [],
+              "header": {
+                "type": "run_header",
+                "schema_version": 1,
+                "run_id": "full-pilot-sharegpt-burstgpt-diagnostic-off-smoke",
+                "arm": "off",
+                "block_id": "sharegpt-burstgpt-diagnostic-pilot-smoke",
+                "load_id": "smoke",
+                "pair_id": "sharegpt-burstgpt-diagnostic-pilot-smoke:smoke",
+                "requests_sha256": "57cb90590b1f4e2b96c8fa8637529c2e4356727239cb2ba884d110150d2e9446",
+                "calendar_sha256": "78d1831bff201097217edcd72d062f12f3cedbab7c3017ff218cbdd85b37382d",
+                "request_ids_sha256": "bd95c4ceff5db58e9b14aeb3a602cf6a9cf0db78d3fe39ad6be6acfdd275c3cb",
+                "request_count": 8,
+                "model": "qwen3-full",
+                "python_version": "3.12.14",
+                "aiohttp_version": "3.14.5",
+                "client_source_sha256": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+                "endpoint": "http://10.91.54.74:8000/v1/chat/completions",
+                "max_tokens": 2048,
+                "max_model_len": 32768,
+                "temperature": 0,
+                "enable_thinking": false,
+                "ignore_eos": false,
+                "max_inflight": 64,
+                "http_timeout_s": 1800.0,
+                "logprobs": true,
+                "arrival_kind": "synthetic_regular_pilot",
+                "diagnostic_return_token_ids": true,
+                "synthetic_rate_requests_per_s": 2.0,
+                "client_time_origin": "monotonic_ns; epoch is shared across all requests",
+                "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
+                "server_queue_and_service": "not observable from HTTP; do not infer them from response minus TTFT",
+                "tpot_semantics": "(last nonempty content receipt - first)/(server completion_tokens - 1); stream-boundary estimate only",
+                "created_wall_ns": 1794330889877983160
+              },
+              "summary": {
+                "valid": true,
+                "offered_requests": 8,
+                "completed_requests": 8,
+                "failed_requests": 0,
+                "error_counts": {},
+                "finish_reason_counts": {
+                  "stop": 8
+                },
+                "output_cap_completions": 0,
+                "empty_content_completions": 0,
+                "completed_elapsed_s": 15.10851309,
+                "drain_s": 11.60851309,
+                "offered_horizon_s": 3.5,
+                "completed_requests_per_s": 0.5295028009933702,
+                "completed_output_tokens_per_s": 334.24864312706495,
+                "completed_input_tokens": 12791,
+                "completed_output_tokens": 5050,
+                "successful_request_metrics_only": true,
+                "speed_claim_allowed": true,
+                "prompt_tokens": {
+                  "n": 8,
+                  "mean": 1598.875,
+                  "p50": 1288.0,
+                  "p95": 4348.8499999999985,
+                  "p99": 5415.369999999999,
+                  "max": 5682.0
+                },
+                "completion_tokens": {
+                  "n": 8,
+                  "mean": 631.25,
+                  "p50": 695.5,
+                  "p95": 1216.25,
+                  "p99": 1240.05,
+                  "max": 1246.0
+                },
+                "expected_prompt_tokens_all_requests": {
+                  "n": 8,
+                  "mean": 1598.875,
+                  "p50": 1288.0,
+                  "p95": 4348.8499999999985,
+                  "p99": 5415.369999999999,
+                  "max": 5682.0
+                },
+                "content_chunk_counts": {
+                  "n": 8,
+                  "mean": 622.875,
+                  "p50": 691.5,
+                  "p95": 1205.5,
+                  "p99": 1230.7,
+                  "max": 1237.0
+                },
+                "client_queue_over_1ms_requests": 0,
+                "server_queue_and_service": "not measured by HTTP client",
+                "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+                "uncertainty_unit": "independent content/arrival blocks, not requests",
+                "response_from_schedule_ms": {
+                  "n": 8,
+                  "mean": 6204.704937,
+                  "p50": 6947.379045,
+                  "p95": 11475.4859699,
+                  "p99": 11581.907665980001,
+                  "max": 11608.51309
+                },
+                "response_from_send_ms": {
+                  "n": 8,
+                  "mean": 6203.4122234999995,
+                  "p50": 6946.764988999999,
+                  "p95": 11474.37203375,
+                  "p99": 11580.71510835,
+                  "max": 11607.300877
+                },
+                "ttft_from_schedule_ms": {
+                  "n": 8,
+                  "mean": 118.3618065,
+                  "p50": 91.9431465,
+                  "p95": 229.51671154999997,
+                  "p99": 252.14544551,
+                  "max": 257.802629
+                },
+                "ttft_from_send_ms": {
+                  "n": 8,
+                  "mean": 117.069093,
+                  "p50": 91.37833,
+                  "p95": 226.75511784999998,
+                  "p99": 250.62335636999998,
+                  "max": 256.590416
+                },
+                "tpot_stream_boundary_estimate_ms": {
+                  "n": 8,
+                  "mean": 9.715998090957354,
+                  "p50": 9.76226993424844,
+                  "p95": 10.468915877052785,
+                  "p99": 10.53924360473607,
+                  "max": 10.556825536656891
+                },
+                "client_schedule_lag_ms": {
+                  "n": 8,
+                  "mean": 1.214604875,
+                  "p50": 0.555428,
+                  "p95": 3.995721449999998,
+                  "p99": 5.2655138899999985,
+                  "max": 5.582962
+                },
+                "client_semaphore_wait_ms": {
+                  "n": 8,
+                  "mean": 0.00548575,
+                  "p50": 0.004407,
+                  "p95": 0.00935045,
+                  "p99": 0.009914089999999999,
+                  "max": 0.010055
+                },
+                "client_send_delay_ms": {
+                  "n": 8,
+                  "mean": 1.2927134999999998,
+                  "p50": 0.6250565,
+                  "p95": 4.0896342999999975,
+                  "p99": 5.329138859999999,
+                  "max": 5.639015
+                }
+              },
+              "logprob_clamp_or_placeholder_count": 0,
+              "native_metrics": {
+                "available": true,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/smoke-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/smoke-metrics-after.txt",
+                "series": [
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 8.086484828963876,
+                    "delta_count": 1,
+                    "mean_seconds": 8.086484828963876
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 3.609668696997687,
+                    "delta_count": 1,
+                    "mean_seconds": 3.609668696997687
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.27883460000157356,
+                    "delta_count": 1,
+                    "mean_seconds": 0.27883460000157356
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 11.136131176026538,
+                    "delta_count": 1,
+                    "mean_seconds": 11.136131176026538
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 6.9707739860750735,
+                    "delta_count": 1,
+                    "mean_seconds": 6.9707739860750735
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.649605151033029,
+                    "delta_count": 1,
+                    "mean_seconds": 0.649605151033029
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 6.740184064023197,
+                    "delta_count": 1,
+                    "mean_seconds": 6.740184064023197
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 11.351829711114988,
+                    "delta_count": 1,
+                    "mean_seconds": 11.351829711114988
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 8.117169770877808,
+                    "delta_count": 1,
+                    "mean_seconds": 8.117169770877808
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 3.670002448139712,
+                    "delta_count": 1,
+                    "mean_seconds": 3.670002448139712
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 0.33891630615107715,
+                    "delta_count": 1,
+                    "mean_seconds": 0.33891630615107715
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 11.214940797071904,
+                    "delta_count": 1,
+                    "mean_seconds": 11.214940797071904
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 7.048389673000202,
+                    "delta_count": 1,
+                    "mean_seconds": 7.048389673000202
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 0.7335651428438723,
+                    "delta_count": 1,
+                    "mean_seconds": 0.7335651428438723
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 6.826056502060965,
+                    "delta_count": 1,
+                    "mean_seconds": 6.826056502060965
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 11.588961061090231,
+                    "delta_count": 1,
+                    "mean_seconds": 11.588961061090231
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.030684941913932562,
+                    "delta_count": 1,
+                    "mean_seconds": 0.030684941913932562
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.060333751142024994,
+                    "delta_count": 1,
+                    "mean_seconds": 0.060333751142024994
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.06008170614950359,
+                    "delta_count": 1,
+                    "mean_seconds": 0.06008170614950359
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.07880962104536593,
+                    "delta_count": 1,
+                    "mean_seconds": 0.07880962104536593
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.0776156869251281,
+                    "delta_count": 1,
+                    "mean_seconds": 0.0776156869251281
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.08395999181084335,
+                    "delta_count": 1,
+                    "mean_seconds": 0.08395999181084335
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.085872438037768,
+                    "delta_count": 1,
+                    "mean_seconds": 0.085872438037768
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.2371313499752432,
+                    "delta_count": 1,
+                    "mean_seconds": 0.2371313499752432
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 5.440111272037029e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 5.440111272037029e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 4.59388829767704e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 4.59388829767704e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 5.969894118607044e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 5.969894118607044e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 5.73860015720129e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 5.73860015720129e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 4.428601823747158e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 4.428601823747158e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00010337401181459427,
+                    "delta_count": 1,
+                    "mean_seconds": 0.00010337401181459427
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 4.1822902858257294e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 4.1822902858257294e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 9.681400842964649e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 9.681400842964649e-05
+                  }
+                ],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "all_series_valid": true
+              }
+            },
+            "on": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/smoke.jsonl",
+              "available": true,
+              "valid": true,
+              "issues": [],
+              "header": {
+                "type": "run_header",
+                "schema_version": 1,
+                "run_id": "full-pilot-sharegpt-burstgpt-diagnostic-on-smoke",
+                "arm": "on",
+                "block_id": "sharegpt-burstgpt-diagnostic-pilot-smoke",
+                "load_id": "smoke",
+                "pair_id": "sharegpt-burstgpt-diagnostic-pilot-smoke:smoke",
+                "requests_sha256": "57cb90590b1f4e2b96c8fa8637529c2e4356727239cb2ba884d110150d2e9446",
+                "calendar_sha256": "78d1831bff201097217edcd72d062f12f3cedbab7c3017ff218cbdd85b37382d",
+                "request_ids_sha256": "bd95c4ceff5db58e9b14aeb3a602cf6a9cf0db78d3fe39ad6be6acfdd275c3cb",
+                "request_count": 8,
+                "model": "qwen3-full",
+                "python_version": "3.12.14",
+                "aiohttp_version": "3.14.5",
+                "client_source_sha256": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+                "endpoint": "http://10.91.54.74:8000/v1/chat/completions",
+                "max_tokens": 2048,
+                "max_model_len": 32768,
+                "temperature": 0,
+                "enable_thinking": false,
+                "ignore_eos": false,
+                "max_inflight": 64,
+                "http_timeout_s": 1800.0,
+                "logprobs": true,
+                "arrival_kind": "synthetic_regular_pilot",
+                "diagnostic_return_token_ids": true,
+                "synthetic_rate_requests_per_s": 2.0,
+                "client_time_origin": "monotonic_ns; epoch is shared across all requests",
+                "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
+                "server_queue_and_service": "not observable from HTTP; do not infer them from response minus TTFT",
+                "tpot_semantics": "(last nonempty content receipt - first)/(server completion_tokens - 1); stream-boundary estimate only",
+                "created_wall_ns": 1794331476996555422
+              },
+              "summary": {
+                "valid": true,
+                "offered_requests": 8,
+                "completed_requests": 8,
+                "failed_requests": 0,
+                "error_counts": {},
+                "finish_reason_counts": {
+                  "stop": 8
+                },
+                "output_cap_completions": 0,
+                "empty_content_completions": 0,
+                "completed_elapsed_s": 18.795567544,
+                "drain_s": 15.295567544,
+                "offered_horizon_s": 3.5,
+                "completed_requests_per_s": 0.425632265760115,
+                "completed_output_tokens_per_s": 277.13980904305487,
+                "completed_input_tokens": 12791,
+                "completed_output_tokens": 5209,
+                "successful_request_metrics_only": true,
+                "speed_claim_allowed": true,
+                "prompt_tokens": {
+                  "n": 8,
+                  "mean": 1598.875,
+                  "p50": 1288.0,
+                  "p95": 4348.8499999999985,
+                  "p99": 5415.369999999999,
+                  "max": 5682.0
+                },
+                "completion_tokens": {
+                  "n": 8,
+                  "mean": 651.125,
+                  "p50": 665.0,
+                  "p95": 1306.1,
+                  "p99": 1366.02,
+                  "max": 1381.0
+                },
+                "expected_prompt_tokens_all_requests": {
+                  "n": 8,
+                  "mean": 1598.875,
+                  "p50": 1288.0,
+                  "p95": 4348.8499999999985,
+                  "p99": 5415.369999999999,
+                  "max": 5682.0
+                },
+                "content_chunk_counts": {
+                  "n": 8,
+                  "mean": 643.0,
+                  "p50": 660.5,
+                  "p95": 1296.1,
+                  "p99": 1356.02,
+                  "max": 1371.0
+                },
+                "client_queue_over_1ms_requests": 0,
+                "server_queue_and_service": "not measured by HTTP client",
+                "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+                "uncertainty_unit": "independent content/arrival blocks, not requests",
+                "response_from_schedule_ms": {
+                  "n": 8,
+                  "mean": 7561.023533125,
+                  "p50": 7946.0900325,
+                  "p95": 14770.6333566,
+                  "p99": 15190.580706519999,
+                  "max": 15295.567544
+                },
+                "response_from_send_ms": {
+                  "n": 8,
+                  "mean": 7559.976953750001,
+                  "p50": 7945.583099,
+                  "p95": 14770.22033325,
+                  "p99": 15190.07088185,
+                  "max": 15295.033519
+                },
+                "ttft_from_schedule_ms": {
+                  "n": 8,
+                  "mean": 145.15903624999999,
+                  "p50": 95.83928,
+                  "p95": 345.7317629499999,
+                  "p99": 402.86266699,
+                  "max": 417.145393
+                },
+                "ttft_from_send_ms": {
+                  "n": 8,
+                  "mean": 144.112456875,
+                  "p50": 95.4464285,
+                  "p95": 343.3625825999999,
+                  "p99": 401.96161092,
+                  "max": 416.611368
+                },
+                "tpot_stream_boundary_estimate_ms": {
+                  "n": 8,
+                  "mean": 11.3731403392311,
+                  "p50": 11.574932191764706,
+                  "p95": 12.893444320910051,
+                  "p99": 13.327556104518145,
+                  "max": 13.436084050420169
+                },
+                "client_schedule_lag_ms": {
+                  "n": 8,
+                  "mean": 0.96261925,
+                  "p50": 0.30706049999999996,
+                  "p95": 3.8872737499999976,
+                  "p99": 5.355530749999999,
+                  "max": 5.722595
+                },
+                "client_semaphore_wait_ms": {
+                  "n": 8,
+                  "mean": 0.005627125,
+                  "p50": 0.0049075,
+                  "p95": 0.009038249999999998,
+                  "p99": 0.009963649999999998,
+                  "max": 0.010195
+                },
+                "client_send_delay_ms": {
+                  "n": 8,
+                  "mean": 1.046579375,
+                  "p50": 0.4018975,
+                  "p95": 3.9505786999999972,
+                  "p99": 5.411976539999999,
+                  "max": 5.777326
+                }
+              },
+              "logprob_clamp_or_placeholder_count": 0,
+              "native_metrics": {
+                "available": true,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/smoke-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/smoke-metrics-after.txt",
+                "series": [
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 9.3919994069729,
+                    "delta_count": 1,
+                    "mean_seconds": 9.3919994069729
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 3.891687751049176,
+                    "delta_count": 1,
+                    "mean_seconds": 3.891687751049176
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.2868662748951465,
+                    "delta_count": 1,
+                    "mean_seconds": 0.2868662748951465
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 13.700883558019996,
+                    "delta_count": 1,
+                    "mean_seconds": 13.700883558019996
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 8.22392051294446,
+                    "delta_count": 1,
+                    "mean_seconds": 8.22392051294446
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 1.609831898007542,
+                    "delta_count": 1,
+                    "mean_seconds": 1.609831898007542
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 7.47543757292442,
+                    "delta_count": 1,
+                    "mean_seconds": 7.47543757292442
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 14.879980015102774,
+                    "delta_count": 1,
+                    "mean_seconds": 14.879980015102774
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 9.457764565013349,
+                    "delta_count": 1,
+                    "mean_seconds": 9.457764565013349
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 3.9531168329995126,
+                    "delta_count": 1,
+                    "mean_seconds": 3.9531168329995126
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 0.3562922510318458,
+                    "delta_count": 1,
+                    "mean_seconds": 0.3562922510318458
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 13.782087675994262,
+                    "delta_count": 1,
+                    "mean_seconds": 13.782087675994262
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 8.303072704933584,
+                    "delta_count": 1,
+                    "mean_seconds": 8.303072704933584
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 1.695023019099608,
+                    "delta_count": 1,
+                    "mean_seconds": 1.695023019099608
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 7.5628948209341615,
+                    "delta_count": 1,
+                    "mean_seconds": 7.5628948209341615
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 15.267151775071397,
+                    "delta_count": 1,
+                    "mean_seconds": 15.267151775071397
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.06576515804044902,
+                    "delta_count": 1,
+                    "mean_seconds": 0.06576515804044902
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.061429081950336695,
+                    "delta_count": 1,
+                    "mean_seconds": 0.061429081950336695
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.06942597613669932,
+                    "delta_count": 1,
+                    "mean_seconds": 0.06942597613669932
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.08120411797426641,
+                    "delta_count": 1,
+                    "mean_seconds": 0.08120411797426641
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.07915219198912382,
+                    "delta_count": 1,
+                    "mean_seconds": 0.07915219198912382
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.08519112109206617,
+                    "delta_count": 1,
+                    "mean_seconds": 0.08519112109206617
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.0874572480097413,
+                    "delta_count": 1,
+                    "mean_seconds": 0.0874572480097413
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.3871717599686235,
+                    "delta_count": 1,
+                    "mean_seconds": 0.3871717599686235
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 6.71599991619587e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 6.71599991619587e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 3.928900696337223e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 3.928900696337223e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 4.077097401022911e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 4.077097401022911e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 5.7145021855831146e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 5.7145021855831146e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 4.096096381545067e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 4.096096381545067e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 8.26928298920393e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 8.26928298920393e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00033897487446665764,
+                    "delta_count": 1,
+                    "mean_seconds": 0.00033897487446665764
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 4.769093357026577e-05,
+                    "delta_count": 1,
+                    "mean_seconds": 4.769093357026577e-05
+                  }
+                ],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "all_series_valid": true
+              }
+            }
+          },
+          "pair": {
+            "valid_for_descriptive_pair": true,
+            "issues": [],
+            "final_speedup_claim": false,
+            "uncertainty": {
+              "available": false,
+              "independent_blocks": 1,
+              "reason": "single-block fixed-order pilot; requests are not independent repetitions"
+            },
+            "paired_identity_mismatches": [],
+            "completion_token_counts_equal": false,
+            "generated_text_hashes_equal": false,
+            "generated_token_ids_equal": false,
+            "diagnostic_token_identity_available": true,
+            "finish_reasons_equal": true,
+            "numerical_review_required": true,
+            "on_over_off_ratios_descriptive_only": {
+              "completed_elapsed_s": 1.2440382076010101,
+              "completed_requests_per_s": 0.8038338323453821,
+              "completed_output_tokens_per_s": 0.8291426599380387,
+              "response_from_schedule_ms": {
+                "mean": 1.2185951805761104,
+                "p95": 1.2871466529036864,
+                "p99": 1.3115784674350235
+              },
+              "ttft_from_send_ms": {
+                "mean": 1.2310034457600179,
+                "p95": 1.5142440261354388,
+                "p99": 1.6038473697821543
+              },
+              "tpot_stream_boundary_estimate_ms": {
+                "mean": 1.1705581076447558,
+                "p95": 1.2315930772900452,
+                "p99": 1.2645647642615527
+              }
+            }
+          }
+        },
+        "calibration": {
+          "arms": {
+            "off": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/calibration.jsonl",
+              "available": true,
+              "valid": true,
+              "issues": [],
+              "header": {
+                "type": "run_header",
+                "schema_version": 1,
+                "run_id": "full-pilot-sharegpt-burstgpt-diagnostic-off-calibration",
+                "arm": "off",
+                "block_id": "sharegpt-burstgpt-diagnostic-pilot-calibration",
+                "load_id": "calibration",
+                "pair_id": "sharegpt-burstgpt-diagnostic-pilot-calibration:calibration",
+                "requests_sha256": "a04cb29113b4d5c33140073d34f7b2284313e343cedbdaa8aaa761271f90c194",
+                "calendar_sha256": "0d87b8fcb375fa8541485f1b90bd7787406d8cbb8d0b65380d76e726b9bbd204",
+                "request_ids_sha256": "f676bc21f4129668acda1217ef85d8ba991df24d8484e0d80ddeae6f6d547546",
+                "request_count": 32,
+                "model": "qwen3-full",
+                "python_version": "3.12.14",
+                "aiohttp_version": "3.14.5",
+                "client_source_sha256": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+                "endpoint": "http://10.91.54.74:8000/v1/chat/completions",
+                "max_tokens": 2048,
+                "max_model_len": 32768,
+                "temperature": 0,
+                "enable_thinking": false,
+                "ignore_eos": false,
+                "max_inflight": 64,
+                "http_timeout_s": 1800.0,
+                "logprobs": false,
+                "arrival_kind": "synthetic_pilot_burst",
+                "diagnostic_return_token_ids": false,
+                "synthetic_rate_requests_per_s": 0.0,
+                "client_time_origin": "monotonic_ns; epoch is shared across all requests",
+                "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
+                "server_queue_and_service": "not observable from HTTP; do not infer them from response minus TTFT",
+                "tpot_semantics": "(last nonempty content receipt - first)/(server completion_tokens - 1); stream-boundary estimate only",
+                "created_wall_ns": 1794330906208703450
+              },
+              "summary": {
+                "valid": true,
+                "offered_requests": 32,
+                "completed_requests": 32,
+                "failed_requests": 0,
+                "error_counts": {},
+                "finish_reason_counts": {
+                  "stop": 30,
+                  "length": 2
+                },
+                "output_cap_completions": 2,
+                "empty_content_completions": 0,
+                "completed_elapsed_s": 25.020708903,
+                "drain_s": 25.020708903,
+                "offered_horizon_s": 0.0,
+                "completed_requests_per_s": 1.2789405817419977,
+                "completed_output_tokens_per_s": 1241.971205551018,
+                "completed_input_tokens": 36542,
+                "completed_output_tokens": 31075,
+                "successful_request_metrics_only": true,
+                "speed_claim_allowed": true,
+                "prompt_tokens": {
+                  "n": 32,
+                  "mean": 1141.9375,
+                  "p50": 1188.5,
+                  "p95": 2115.0,
+                  "p99": 2391.82,
+                  "max": 2447.0
+                },
+                "completion_tokens": {
+                  "n": 32,
+                  "mean": 971.09375,
+                  "p50": 874.0,
+                  "p95": 2041.95,
+                  "p99": 2048.0,
+                  "max": 2048.0
+                },
+                "expected_prompt_tokens_all_requests": {
+                  "n": 32,
+                  "mean": 1141.9375,
+                  "p50": 1188.5,
+                  "p95": 2115.0,
+                  "p99": 2391.82,
+                  "max": 2447.0
+                },
+                "content_chunk_counts": {
+                  "n": 32,
+                  "mean": 965.53125,
+                  "p50": 867.5,
+                  "p95": 2024.1,
+                  "p99": 2047.07,
+                  "max": 2048.0
+                },
+                "client_queue_over_1ms_requests": 0,
+                "server_queue_and_service": "not measured by HTTP client",
+                "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+                "uncertainty_unit": "independent content/arrival blocks, not requests",
+                "response_from_schedule_ms": {
+                  "n": 32,
+                  "mean": 12718.07088,
+                  "p50": 11768.813850499999,
+                  "p95": 24964.4249108,
+                  "p99": 25020.12418565,
+                  "max": 25020.708903
+                },
+                "response_from_send_ms": {
+                  "n": 32,
+                  "mean": 12709.45648259375,
+                  "p50": 11761.0706355,
+                  "p95": 24955.48889505,
+                  "p99": 25009.6638257,
+                  "max": 25009.900644
+                },
+                "ttft_from_schedule_ms": {
+                  "n": 32,
+                  "mean": 881.10458090625,
+                  "p50": 903.1378575,
+                  "p95": 906.34863105,
+                  "p99": 906.41822831,
+                  "max": 906.434782
+                },
+                "ttft_from_send_ms": {
+                  "n": 32,
+                  "mean": 872.4901835000001,
+                  "p50": 895.1240285,
+                  "p95": 898.7604751,
+                  "p99": 899.43454519,
+                  "max": 899.459454
+                },
+                "tpot_stream_boundary_estimate_ms": {
+                  "n": 32,
+                  "mean": 11.797592409955,
+                  "p50": 12.330849341777446,
+                  "p95": 12.488734382155656,
+                  "p99": 12.929682759095755,
+                  "max": 13.126925606707317
+                },
+                "client_schedule_lag_ms": {
+                  "n": 32,
+                  "mean": 8.57372578125,
+                  "p50": 8.5107,
+                  "p95": 11.3621307,
+                  "p99": 11.48939265,
+                  "max": 11.517567
+                },
+                "client_semaphore_wait_ms": {
+                  "n": 32,
+                  "mean": 0.00141371875,
+                  "p50": 0.0010615,
+                  "p95": 0.0021564499999999994,
+                  "p99": 0.00778069000000001,
+                  "max": 0.010075
+                },
+                "client_send_delay_ms": {
+                  "n": 32,
+                  "mean": 8.61439740625,
+                  "p50": 8.5390175,
+                  "p95": 11.3822937,
+                  "p99": 11.53120452,
+                  "max": 11.572189
+                }
+              },
+              "logprob_clamp_or_placeholder_count": 0,
+              "native_metrics": {
+                "available": true,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/calibration-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/calibration-metrics-after.txt",
+                "series": [
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 27.232231536647305,
+                    "delta_count": 4,
+                    "mean_seconds": 6.808057884161826
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 45.07074422133155,
+                    "delta_count": 4,
+                    "mean_seconds": 11.267686055332888
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 56.49040984013118,
+                    "delta_count": 4,
+                    "mean_seconds": 14.122602460032795
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 81.26621420984156,
+                    "delta_count": 4,
+                    "mean_seconds": 20.31655355246039
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 42.1217349851504,
+                    "delta_count": 4,
+                    "mean_seconds": 10.5304337462876
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 16.01958565483801,
+                    "delta_count": 4,
+                    "mean_seconds": 4.004896413709503
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 46.9134950870648,
+                    "delta_count": 4,
+                    "mean_seconds": 11.7283737717662
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 63.984280871925876,
+                    "delta_count": 4,
+                    "mean_seconds": 15.996070217981469
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 29.56514697172679,
+                    "delta_count": 4,
+                    "mean_seconds": 7.3912867429316975
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 47.99365978897549,
+                    "delta_count": 4,
+                    "mean_seconds": 11.998414947243873
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 59.41355455224402,
+                    "delta_count": 4,
+                    "mean_seconds": 14.853388638061006
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 84.18966437806375,
+                    "delta_count": 4,
+                    "mean_seconds": 21.04741609451594
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 45.0457535488531,
+                    "delta_count": 4,
+                    "mean_seconds": 11.261438387213275
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 18.943454274674878,
+                    "delta_count": 4,
+                    "mean_seconds": 4.735863568668719
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 49.83759072702378,
+                    "delta_count": 4,
+                    "mean_seconds": 12.459397681755945
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 66.90740518434905,
+                    "delta_count": 4,
+                    "mean_seconds": 16.72685129608726
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.332915435079485,
+                    "delta_count": 4,
+                    "mean_seconds": 0.5832288587698713
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.9229155676439404,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7307288919109851
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.923144712112844,
+                    "delta_count": 4,
+                    "mean_seconds": 0.730786178028211
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.923450168222189,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7308625420555472
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.9240185637027025,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7310046409256756
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.923868619836867,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7309671549592167
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.9240956399589777,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7310239099897444
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.9231243124231696,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7307810781057924
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0003756301011890173,
+                    "delta_count": 4,
+                    "mean_seconds": 9.390752529725432e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0003619701601564884,
+                    "delta_count": 4,
+                    "mean_seconds": 9.04925400391221e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00037854560650885105,
+                    "delta_count": 4,
+                    "mean_seconds": 9.463640162721276e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00039052171632647514,
+                    "delta_count": 4,
+                    "mean_seconds": 9.763042908161879e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00030495342798531055,
+                    "delta_count": 4,
+                    "mean_seconds": 7.623835699632764e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0004843121860176325,
+                    "delta_count": 4,
+                    "mean_seconds": 0.00012107804650440812
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0003503307234495878,
+                    "delta_count": 4,
+                    "mean_seconds": 8.758268086239696e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0001904759556055069,
+                    "delta_count": 4,
+                    "mean_seconds": 4.7618988901376724e-05
+                  }
+                ],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "all_series_valid": true
+              }
+            },
+            "on": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/calibration.jsonl",
+              "available": true,
+              "valid": true,
+              "issues": [],
+              "header": {
+                "type": "run_header",
+                "schema_version": 1,
+                "run_id": "full-pilot-sharegpt-burstgpt-diagnostic-on-calibration",
+                "arm": "on",
+                "block_id": "sharegpt-burstgpt-diagnostic-pilot-calibration",
+                "load_id": "calibration",
+                "pair_id": "sharegpt-burstgpt-diagnostic-pilot-calibration:calibration",
+                "requests_sha256": "a04cb29113b4d5c33140073d34f7b2284313e343cedbdaa8aaa761271f90c194",
+                "calendar_sha256": "0d87b8fcb375fa8541485f1b90bd7787406d8cbb8d0b65380d76e726b9bbd204",
+                "request_ids_sha256": "f676bc21f4129668acda1217ef85d8ba991df24d8484e0d80ddeae6f6d547546",
+                "request_count": 32,
+                "model": "qwen3-full",
+                "python_version": "3.12.14",
+                "aiohttp_version": "3.14.5",
+                "client_source_sha256": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+                "endpoint": "http://10.91.54.74:8000/v1/chat/completions",
+                "max_tokens": 2048,
+                "max_model_len": 32768,
+                "temperature": 0,
+                "enable_thinking": false,
+                "ignore_eos": false,
+                "max_inflight": 64,
+                "http_timeout_s": 1800.0,
+                "logprobs": false,
+                "arrival_kind": "synthetic_pilot_burst",
+                "diagnostic_return_token_ids": false,
+                "synthetic_rate_requests_per_s": 0.0,
+                "client_time_origin": "monotonic_ns; epoch is shared across all requests",
+                "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
+                "server_queue_and_service": "not observable from HTTP; do not infer them from response minus TTFT",
+                "tpot_semantics": "(last nonempty content receipt - first)/(server completion_tokens - 1); stream-boundary estimate only",
+                "created_wall_ns": 1794331497080481070
+              },
+              "summary": {
+                "valid": true,
+                "offered_requests": 32,
+                "completed_requests": 32,
+                "failed_requests": 0,
+                "error_counts": {},
+                "finish_reason_counts": {
+                  "stop": 29,
+                  "length": 3
+                },
+                "output_cap_completions": 3,
+                "empty_content_completions": 0,
+                "completed_elapsed_s": 25.531425943,
+                "drain_s": 25.531425943,
+                "offered_horizon_s": 0.0,
+                "completed_requests_per_s": 1.253357335835506,
+                "completed_output_tokens_per_s": 1247.4822233237771,
+                "completed_input_tokens": 36542,
+                "completed_output_tokens": 31850,
+                "successful_request_metrics_only": true,
+                "speed_claim_allowed": true,
+                "prompt_tokens": {
+                  "n": 32,
+                  "mean": 1141.9375,
+                  "p50": 1188.5,
+                  "p95": 2115.0,
+                  "p99": 2391.82,
+                  "max": 2447.0
+                },
+                "completion_tokens": {
+                  "n": 32,
+                  "mean": 995.3125,
+                  "p50": 916.0,
+                  "p95": 2048.0,
+                  "p99": 2048.0,
+                  "max": 2048.0
+                },
+                "expected_prompt_tokens_all_requests": {
+                  "n": 32,
+                  "mean": 1141.9375,
+                  "p50": 1188.5,
+                  "p95": 2115.0,
+                  "p99": 2391.82,
+                  "max": 2447.0
+                },
+                "content_chunk_counts": {
+                  "n": 32,
+                  "mean": 989.5,
+                  "p50": 911.5,
+                  "p95": 2023.0,
+                  "p99": 2047.07,
+                  "max": 2048.0
+                },
+                "client_queue_over_1ms_requests": 0,
+                "server_queue_and_service": "not measured by HTTP client",
+                "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+                "uncertainty_unit": "independent content/arrival blocks, not requests",
+                "response_from_schedule_ms": {
+                  "n": 32,
+                  "mean": 13264.1404915,
+                  "p50": 12588.047338,
+                  "p95": 25528.730920050002,
+                  "p99": 25530.91398048,
+                  "max": 25531.425943
+                },
+                "response_from_send_ms": {
+                  "n": 32,
+                  "mean": 13255.59364896875,
+                  "p50": 12580.572345,
+                  "p95": 25519.09568525,
+                  "p99": 25522.953551590002,
+                  "max": 25523.176135
+                },
+                "ttft_from_schedule_ms": {
+                  "n": 32,
+                  "mean": 806.7239954375,
+                  "p50": 830.985542,
+                  "p95": 831.7297621499999,
+                  "p99": 831.7948087899999,
+                  "max": 831.809531
+                },
+                "ttft_from_send_ms": {
+                  "n": 32,
+                  "mean": 798.1771529062501,
+                  "p50": 822.311266,
+                  "p95": 824.5796071000001,
+                  "p99": 824.76109882,
+                  "max": 824.839491
+                },
+                "tpot_stream_boundary_estimate_ms": {
+                  "n": 32,
+                  "mean": 12.273989506127545,
+                  "p50": 12.784519639249469,
+                  "p95": 12.910017415933776,
+                  "p99": 12.92053032407422,
+                  "max": 12.924112278768234
+                },
+                "client_schedule_lag_ms": {
+                  "n": 32,
+                  "mean": 8.50632746875,
+                  "p50": 8.352166,
+                  "p95": 11.23129555,
+                  "p99": 11.43024529,
+                  "max": 11.478432
+                },
+                "client_semaphore_wait_ms": {
+                  "n": 32,
+                  "mean": 0.00145984375,
+                  "p50": 0.001092,
+                  "p95": 0.0021389499999999993,
+                  "p99": 0.00780409000000001,
+                  "max": 0.010055
+                },
+                "client_send_delay_ms": {
+                  "n": 32,
+                  "mean": 8.54684253125,
+                  "p50": 8.3787155,
+                  "p95": 11.2846476,
+                  "p99": 11.48518972,
+                  "max": 11.532523
+                }
+              },
+              "logprob_clamp_or_placeholder_count": 0,
+              "native_metrics": {
+                "available": true,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/calibration-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/calibration-metrics-after.txt",
+                "series": [
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 58.1793724084273,
+                    "delta_count": 4,
+                    "mean_seconds": 14.544843102106825
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 24.784796732245013,
+                    "delta_count": 4,
+                    "mean_seconds": 6.196199183061253
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 52.97109900950454,
+                    "delta_count": 4,
+                    "mean_seconds": 13.242774752376135
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 76.33318130695261,
+                    "delta_count": 4,
+                    "mean_seconds": 19.083295326738153
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 57.68868362298235,
+                    "delta_count": 4,
+                    "mean_seconds": 14.422170905745588
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 47.94582522357814,
+                    "delta_count": 4,
+                    "mean_seconds": 11.986456305894535
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 41.2614370174706,
+                    "delta_count": 4,
+                    "mean_seconds": 10.31535925436765
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 39.75368257146329,
+                    "delta_count": 4,
+                    "mean_seconds": 9.938420642865822
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 60.43503193138167,
+                    "delta_count": 4,
+                    "mean_seconds": 15.108757982845418
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 27.684557292377576,
+                    "delta_count": 4,
+                    "mean_seconds": 6.921139323094394
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 55.871431382140145,
+                    "delta_count": 4,
+                    "mean_seconds": 13.967857845535036
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 79.23337671929039,
+                    "delta_count": 4,
+                    "mean_seconds": 19.808344179822598
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 60.58985016262159,
+                    "delta_count": 4,
+                    "mean_seconds": 15.147462540655397
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 50.84441400016658,
+                    "delta_count": 4,
+                    "mean_seconds": 12.711103500041645
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 44.16541045811027,
+                    "delta_count": 4,
+                    "mean_seconds": 11.041352614527568
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 42.65257151611149,
+                    "delta_count": 4,
+                    "mean_seconds": 10.663142879027873
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.2556595229543746,
+                    "delta_count": 4,
+                    "mean_seconds": 0.5639148807385936
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.899760560132563,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7249401400331408
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.900332372635603,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7250830931589007
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.90019541233778,
+                    "delta_count": 4,
+                    "mean_seconds": 0.725048853084445
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.9011665396392345,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7252916349098086
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.89858877658844,
+                    "delta_count": 4,
+                    "mean_seconds": 0.72464719414711
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.9039734406396747,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7259933601599187
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 2.8988889446482062,
+                    "delta_count": 4,
+                    "mean_seconds": 0.7247222361620516
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0005528740584850311,
+                    "delta_count": 4,
+                    "mean_seconds": 0.00013821851462125778
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0003159395419061184,
+                    "delta_count": 4,
+                    "mean_seconds": 7.89848854765296e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0002934779040515423,
+                    "delta_count": 4,
+                    "mean_seconds": 7.336947601288557e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0008581285364925861,
+                    "delta_count": 4,
+                    "mean_seconds": 0.00021453213412314653
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0003291501197963953,
+                    "delta_count": 4,
+                    "mean_seconds": 8.228752994909883e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00031923665665090084,
+                    "delta_count": 4,
+                    "mean_seconds": 7.980916416272521e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0005071158520877361,
+                    "delta_count": 4,
+                    "mean_seconds": 0.00012677896302193403
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0001669705379754305,
+                    "delta_count": 4,
+                    "mean_seconds": 4.174263449385762e-05
+                  }
+                ],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "all_series_valid": true
+              }
+            }
+          },
+          "pair": {
+            "valid_for_descriptive_pair": true,
+            "issues": [],
+            "final_speedup_claim": false,
+            "uncertainty": {
+              "available": false,
+              "independent_blocks": 1,
+              "reason": "single-block fixed-order pilot; requests are not independent repetitions"
+            },
+            "paired_identity_mismatches": [],
+            "completion_token_counts_equal": false,
+            "generated_text_hashes_equal": false,
+            "generated_token_ids_equal": null,
+            "diagnostic_token_identity_available": false,
+            "finish_reasons_equal": false,
+            "numerical_review_required": true,
+            "on_over_off_ratios_descriptive_only": {
+              "completed_elapsed_s": 1.0204117733825984,
+              "completed_requests_per_s": 0.9799965328556188,
+              "completed_output_tokens_per_s": 1.0044373152518573,
+              "response_from_schedule_ms": {
+                "mean": 1.0429365126718024,
+                "p95": 1.0226044065211322,
+                "p99": 1.0204151582558074
+              },
+              "ttft_from_send_ms": {
+                "mean": 0.9148265138117168,
+                "p95": 0.9174631394513135,
+                "p99": 0.9169773422987376
+              },
+              "tpot_stream_boundary_estimate_ms": {
+                "mean": 1.0403808743019936,
+                "p95": 1.0337330445893753,
+                "p99": 0.9992921376964878
+              }
+            }
+          }
+        },
+        "external": {
+          "arms": {
+            "off": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/external.jsonl",
+              "available": true,
+              "valid": true,
+              "issues": [],
+              "header": {
+                "type": "run_header",
+                "schema_version": 1,
+                "run_id": "full-pilot-sharegpt-burstgpt-diagnostic-off-external",
+                "arm": "off",
+                "block_id": "sharegpt-burstgpt-diagnostic-pilot-external",
+                "load_id": "external",
+                "pair_id": "sharegpt-burstgpt-diagnostic-pilot-external:external",
+                "requests_sha256": "5a2aedde49c1f4e64935a1d85e125f25604df47f49de0ea3ddcef367e4a1f324",
+                "calendar_sha256": "8a528d6e94f42768f8e2069173236ee1b5e9b16278a89af1a7a2a351c395c919",
+                "request_ids_sha256": "f52af13eb06e13312dcae096211839dbf4dd7b5285ffa865fe8a1685e5cd6fb0",
+                "request_count": 24,
+                "model": "qwen3-full",
+                "python_version": "3.12.14",
+                "aiohttp_version": "3.14.5",
+                "client_source_sha256": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+                "endpoint": "http://10.91.54.74:8000/v1/chat/completions",
+                "max_tokens": 2048,
+                "max_model_len": 32768,
+                "temperature": 0,
+                "enable_thinking": false,
+                "ignore_eos": false,
+                "max_inflight": 64,
+                "http_timeout_s": 1800.0,
+                "logprobs": false,
+                "arrival_kind": "external_calendar",
+                "diagnostic_return_token_ids": false,
+                "synthetic_rate_requests_per_s": null,
+                "client_time_origin": "monotonic_ns; epoch is shared across all requests",
+                "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
+                "server_queue_and_service": "not observable from HTTP; do not infer them from response minus TTFT",
+                "tpot_semantics": "(last nonempty content receipt - first)/(server completion_tokens - 1); stream-boundary estimate only",
+                "created_wall_ns": 1794330932491634696
+              },
+              "summary": {
+                "valid": true,
+                "offered_requests": 24,
+                "completed_requests": 24,
+                "failed_requests": 0,
+                "error_counts": {},
+                "finish_reason_counts": {
+                  "stop": 23,
+                  "length": 1
+                },
+                "output_cap_completions": 1,
+                "empty_content_completions": 0,
+                "completed_elapsed_s": 38.12085528,
+                "drain_s": 6.844969152,
+                "offered_horizon_s": 31.275886128,
+                "completed_requests_per_s": 0.6295766404955644,
+                "completed_output_tokens_per_s": 478.7405703768355,
+                "completed_input_tokens": 28625,
+                "completed_output_tokens": 18250,
+                "successful_request_metrics_only": true,
+                "speed_claim_allowed": true,
+                "prompt_tokens": {
+                  "n": 24,
+                  "mean": 1192.7083333333333,
+                  "p50": 1397.0,
+                  "p95": 1939.75,
+                  "p99": 1995.8999999999999,
+                  "max": 2012.0
+                },
+                "completion_tokens": {
+                  "n": 24,
+                  "mean": 760.4166666666666,
+                  "p50": 726.5,
+                  "p95": 1929.6999999999991,
+                  "p99": 2035.35,
+                  "max": 2048.0
+                },
+                "expected_prompt_tokens_all_requests": {
+                  "n": 24,
+                  "mean": 1192.7083333333333,
+                  "p50": 1397.0,
+                  "p95": 1939.75,
+                  "p99": 1995.8999999999999,
+                  "max": 2012.0
+                },
+                "content_chunk_counts": {
+                  "n": 24,
+                  "mean": 755.7916666666666,
+                  "p50": 718.5,
+                  "p95": 1917.8999999999992,
+                  "p99": 2032.36,
+                  "max": 2048.0
+                },
+                "client_queue_over_1ms_requests": 0,
+                "server_queue_and_service": "not measured by HTTP client",
+                "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+                "uncertainty_unit": "independent content/arrival blocks, not requests",
+                "response_from_schedule_ms": {
+                  "n": 24,
+                  "mean": 7265.225907166667,
+                  "p50": 7033.075627,
+                  "p95": 18156.11779669999,
+                  "p99": 19309.49084824,
+                  "max": 19469.925258
+                },
+                "response_from_send_ms": {
+                  "n": 24,
+                  "mean": 7264.338245708333,
+                  "p50": 7032.3777580000005,
+                  "p95": 18155.42842624999,
+                  "p99": 19308.465938939997,
+                  "max": 19468.816516
+                },
+                "ttft_from_schedule_ms": {
+                  "n": 24,
+                  "mean": 102.61669620833334,
+                  "p50": 101.31633149999999,
+                  "p95": 139.65482885,
+                  "p99": 140.33911599,
+                  "max": 140.369542
+                },
+                "ttft_from_send_ms": {
+                  "n": 24,
+                  "mean": 101.72903475,
+                  "p50": 100.5492335,
+                  "p95": 138.88643715,
+                  "p99": 139.84754802,
+                  "max": 139.945626
+                },
+                "tpot_stream_boundary_estimate_ms": {
+                  "n": 24,
+                  "mean": 9.396655144111138,
+                  "p50": 9.405288922805,
+                  "p95": 10.054519254464351,
+                  "p99": 10.350740255764583,
+                  "max": 10.428649519999999
+                },
+                "client_schedule_lag_ms": {
+                  "n": 24,
+                  "mean": 0.8276744166666666,
+                  "p50": 0.6512065,
+                  "p95": 1.2585651499999997,
+                  "p99": 4.2641404399999985,
+                  "max": 5.152946
+                },
+                "client_semaphore_wait_ms": {
+                  "n": 24,
+                  "mean": 0.004569833333333333,
+                  "p50": 0.0049775,
+                  "p95": 0.008248899999999995,
+                  "p99": 0.01011141,
+                  "max": 0.010556
+                },
+                "client_send_delay_ms": {
+                  "n": 24,
+                  "mean": 0.8876614583333334,
+                  "p50": 0.7150685,
+                  "p95": 1.3027856499999995,
+                  "p99": 4.345741699999998,
+                  "max": 5.245113
+                }
+              },
+              "logprob_clamp_or_placeholder_count": 0,
+              "native_metrics": {
+                "available": true,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/external-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/external-metrics-after.txt",
+                "series": [
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 24.957503946265206,
+                    "delta_count": 4,
+                    "mean_seconds": 6.239375986566301
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 21.295496330829337,
+                    "delta_count": 3,
+                    "mean_seconds": 7.098498776943113
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 28.532401212258264,
+                    "delta_count": 3,
+                    "mean_seconds": 9.510800404086089
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 19.177346961107105,
+                    "delta_count": 3,
+                    "mean_seconds": 6.392448987035702
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 17.9880812659394,
+                    "delta_count": 3,
+                    "mean_seconds": 5.996027088646467
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 26.96447311202064,
+                    "delta_count": 2,
+                    "mean_seconds": 13.48223655601032
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 14.866527523146942,
+                    "delta_count": 3,
+                    "mean_seconds": 4.955509174382314
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 18.15033933101222,
+                    "delta_count": 3,
+                    "mean_seconds": 6.050113110337406
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 25.293508219299838,
+                    "delta_count": 4,
+                    "mean_seconds": 6.3233770548249595
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 21.538792031817138,
+                    "delta_count": 3,
+                    "mean_seconds": 7.179597343939046
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 28.777848604135215,
+                    "delta_count": 3,
+                    "mean_seconds": 9.592616201378405
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 19.411588322138414,
+                    "delta_count": 3,
+                    "mean_seconds": 6.470529440712805
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 18.307016366859898,
+                    "delta_count": 3,
+                    "mean_seconds": 6.1023387889533
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 27.171132439747453,
+                    "delta_count": 2,
+                    "mean_seconds": 13.585566219873726
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 15.165602482156828,
+                    "delta_count": 3,
+                    "mean_seconds": 5.055200827385609
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 18.320745254168287,
+                    "delta_count": 3,
+                    "mean_seconds": 6.106915084722762
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.3360042730346322,
+                    "delta_count": 4,
+                    "mean_seconds": 0.08400106825865805
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.24329570098780096,
+                    "delta_count": 3,
+                    "mean_seconds": 0.08109856699593365
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.24544739187695086,
+                    "delta_count": 3,
+                    "mean_seconds": 0.08181579729231696
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.23424136103130877,
+                    "delta_count": 3,
+                    "mean_seconds": 0.07808045367710292
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.31893510092049837,
+                    "delta_count": 3,
+                    "mean_seconds": 0.10631170030683279
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.20665932772681117,
+                    "delta_count": 2,
+                    "mean_seconds": 0.10332966386340559
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.2990749590098858,
+                    "delta_count": 3,
+                    "mean_seconds": 0.09969165300329526
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.17040592315606773,
+                    "delta_count": 3,
+                    "mean_seconds": 0.05680197438535591
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00021325680427253246,
+                    "delta_count": 4,
+                    "mean_seconds": 5.3314201068133116e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00016867229714989662,
+                    "delta_count": 3,
+                    "mean_seconds": 5.622409904996554e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0002617808058857918,
+                    "delta_count": 3,
+                    "mean_seconds": 8.726026862859726e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0002238941378891468,
+                    "delta_count": 3,
+                    "mean_seconds": 7.463137929638226e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00018548616208136082,
+                    "delta_count": 3,
+                    "mean_seconds": 6.182872069378693e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.000197485089302063,
+                    "delta_count": 2,
+                    "mean_seconds": 9.87425446510315e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0001425908412784338,
+                    "delta_count": 3,
+                    "mean_seconds": 4.75302804261446e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00014746980741620064,
+                    "delta_count": 3,
+                    "mean_seconds": 4.915660247206688e-05
+                  }
+                ],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "all_series_valid": true
+              }
+            },
+            "on": {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/external.jsonl",
+              "available": true,
+              "valid": true,
+              "issues": [],
+              "header": {
+                "type": "run_header",
+                "schema_version": 1,
+                "run_id": "full-pilot-sharegpt-burstgpt-diagnostic-on-external",
+                "arm": "on",
+                "block_id": "sharegpt-burstgpt-diagnostic-pilot-external",
+                "load_id": "external",
+                "pair_id": "sharegpt-burstgpt-diagnostic-pilot-external:external",
+                "requests_sha256": "5a2aedde49c1f4e64935a1d85e125f25604df47f49de0ea3ddcef367e4a1f324",
+                "calendar_sha256": "8a528d6e94f42768f8e2069173236ee1b5e9b16278a89af1a7a2a351c395c919",
+                "request_ids_sha256": "f52af13eb06e13312dcae096211839dbf4dd7b5285ffa865fe8a1685e5cd6fb0",
+                "request_count": 24,
+                "model": "qwen3-full",
+                "python_version": "3.12.14",
+                "aiohttp_version": "3.14.5",
+                "client_source_sha256": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+                "endpoint": "http://10.91.54.74:8000/v1/chat/completions",
+                "max_tokens": 2048,
+                "max_model_len": 32768,
+                "temperature": 0,
+                "enable_thinking": false,
+                "ignore_eos": false,
+                "max_inflight": 64,
+                "http_timeout_s": 1800.0,
+                "logprobs": false,
+                "arrival_kind": "external_calendar",
+                "diagnostic_return_token_ids": false,
+                "synthetic_rate_requests_per_s": null,
+                "client_time_origin": "monotonic_ns; epoch is shared across all requests",
+                "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
+                "server_queue_and_service": "not observable from HTTP; do not infer them from response minus TTFT",
+                "tpot_semantics": "(last nonempty content receipt - first)/(server completion_tokens - 1); stream-boundary estimate only",
+                "created_wall_ns": 1794331523891053275
+              },
+              "summary": {
+                "valid": true,
+                "offered_requests": 24,
+                "completed_requests": 24,
+                "failed_requests": 0,
+                "error_counts": {},
+                "finish_reason_counts": {
+                  "stop": 23,
+                  "length": 1
+                },
+                "output_cap_completions": 1,
+                "empty_content_completions": 0,
+                "completed_elapsed_s": 38.957720958,
+                "drain_s": 7.68183483,
+                "offered_horizon_s": 31.275886128,
+                "completed_requests_per_s": 0.6160524643080174,
+                "completed_output_tokens_per_s": 456.0071678513304,
+                "completed_input_tokens": 28625,
+                "completed_output_tokens": 17765,
+                "successful_request_metrics_only": true,
+                "speed_claim_allowed": true,
+                "prompt_tokens": {
+                  "n": 24,
+                  "mean": 1192.7083333333333,
+                  "p50": 1397.0,
+                  "p95": 1939.75,
+                  "p99": 1995.8999999999999,
+                  "max": 2012.0
+                },
+                "completion_tokens": {
+                  "n": 24,
+                  "mean": 740.2083333333334,
+                  "p50": 749.5,
+                  "p95": 1467.2999999999997,
+                  "p99": 1920.5799999999997,
+                  "max": 2048.0
+                },
+                "expected_prompt_tokens_all_requests": {
+                  "n": 24,
+                  "mean": 1192.7083333333333,
+                  "p50": 1397.0,
+                  "p95": 1939.75,
+                  "p99": 1995.8999999999999,
+                  "max": 2012.0
+                },
+                "content_chunk_counts": {
+                  "n": 24,
+                  "mean": 736.0416666666666,
+                  "p50": 745.5,
+                  "p95": 1459.6999999999996,
+                  "p99": 1918.9699999999998,
+                  "max": 2048.0
+                },
+                "client_queue_over_1ms_requests": 0,
+                "server_queue_and_service": "not measured by HTTP client",
+                "tpot_note": "stream-boundary estimate; SSE chunks may include multiple tokens; not individual-token intervals",
+                "uncertainty_unit": "independent content/arrival blocks, not requests",
+                "response_from_schedule_ms": {
+                  "n": 24,
+                  "mean": 7818.673591208334,
+                  "p50": 8455.0731765,
+                  "p95": 14508.7235493,
+                  "p99": 19973.036164229998,
+                  "max": 21603.891138
+                },
+                "response_from_send_ms": {
+                  "n": 24,
+                  "mean": 7817.773798791666,
+                  "p50": 8454.385162999999,
+                  "p95": 14508.04092485,
+                  "p99": 19972.4251791,
+                  "max": 21603.261208
+                },
+                "ttft_from_schedule_ms": {
+                  "n": 24,
+                  "mean": 115.29061245833333,
+                  "p50": 104.8995605,
+                  "p95": 150.45595115,
+                  "p99": 335.6652022699999,
+                  "max": 390.985688
+                },
+                "ttft_from_send_ms": {
+                  "n": 24,
+                  "mean": 114.39082004166666,
+                  "p50": 103.6032245,
+                  "p95": 149.72053160000002,
+                  "p99": 334.75340390999986,
+                  "max": 390.00745
+                },
+                "tpot_stream_boundary_estimate_ms": {
+                  "n": 24,
+                  "mean": 10.43752497901454,
+                  "p50": 10.418521030081353,
+                  "p95": 11.686697931413613,
+                  "p99": 12.107663809444405,
+                  "max": 12.225352679104477
+                },
+                "client_schedule_lag_ms": {
+                  "n": 24,
+                  "mean": 0.8379109166666666,
+                  "p50": 0.6118494999999999,
+                  "p95": 1.3708752999999998,
+                  "p99": 4.319304099999998,
+                  "max": 5.193541
+                },
+                "client_semaphore_wait_ms": {
+                  "n": 24,
+                  "mean": 0.004675833333333333,
+                  "p50": 0.005318,
+                  "p95": 0.007480549999999997,
+                  "p99": 0.009917279999999999,
+                  "max": 0.010576
+                },
+                "client_send_delay_ms": {
+                  "n": 24,
+                  "mean": 0.8997924166666667,
+                  "p50": 0.663687,
+                  "p95": 1.4257863999999996,
+                  "p99": 4.417768509999998,
+                  "max": 5.304847
+                }
+              },
+              "logprob_clamp_or_placeholder_count": 0,
+              "native_metrics": {
+                "available": true,
+                "before": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/external-metrics-before.txt",
+                "after": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/external-metrics-after.txt",
+                "series": [
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 19.859837790951133,
+                    "delta_count": 3,
+                    "mean_seconds": 6.619945930317044
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 23.991567372577265,
+                    "delta_count": 3,
+                    "mean_seconds": 7.997189124192421
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 30.97316797915846,
+                    "delta_count": 4,
+                    "mean_seconds": 7.743291994789615
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 21.415670644957572,
+                    "delta_count": 3,
+                    "mean_seconds": 7.138556881652524
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 21.013128963997588,
+                    "delta_count": 3,
+                    "mean_seconds": 7.004376321332529
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 23.87638222705573,
+                    "delta_count": 3,
+                    "mean_seconds": 7.958794075685243
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 26.223294056253508,
+                    "delta_count": 2,
+                    "mean_seconds": 13.111647028126754
+                  },
+                  {
+                    "metric": "vllm:request_decode_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request DECODE phase",
+                    "available": true,
+                    "delta_sum_seconds": 17.556373887928203,
+                    "delta_count": 3,
+                    "mean_seconds": 5.852124629309401
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 20.09089551004581,
+                    "delta_count": 3,
+                    "mean_seconds": 6.696965170015271
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 24.242836485849693,
+                    "delta_count": 3,
+                    "mean_seconds": 8.080945495283231
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 31.339399237185717,
+                    "delta_count": 4,
+                    "mean_seconds": 7.834849809296429
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 21.672844782937318,
+                    "delta_count": 3,
+                    "mean_seconds": 7.22428159431244
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 21.617972793988883,
+                    "delta_count": 3,
+                    "mean_seconds": 7.2059909313296275
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 24.122129125054926,
+                    "delta_count": 3,
+                    "mean_seconds": 8.040709708351642
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 26.40104241319932,
+                    "delta_count": 2,
+                    "mean_seconds": 13.20052120659966
+                  },
+                  {
+                    "metric": "vllm:request_inference_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request RUNNING phase; not isolated GPU service",
+                    "available": true,
+                    "delta_sum_seconds": 17.833072020905092,
+                    "delta_count": 3,
+                    "mean_seconds": 5.944357340301697
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.23105771909467876,
+                    "delta_count": 3,
+                    "mean_seconds": 0.07701923969822626
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.2512691132724285,
+                    "delta_count": 3,
+                    "mean_seconds": 0.08375637109080951
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.36623125802725554,
+                    "delta_count": 4,
+                    "mean_seconds": 0.09155781450681388
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.25717413797974586,
+                    "delta_count": 3,
+                    "mean_seconds": 0.08572471265991528
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.6048438299912959,
+                    "delta_count": 3,
+                    "mean_seconds": 0.20161460999709865
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.24574689799919724,
+                    "delta_count": 3,
+                    "mean_seconds": 0.08191563266639908
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.1777483569458127,
+                    "delta_count": 2,
+                    "mean_seconds": 0.08887417847290635
+                  },
+                  {
+                    "metric": "vllm:request_prefill_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request PREFILL phase",
+                    "available": true,
+                    "delta_sum_seconds": 0.2766981329768896,
+                    "delta_count": 3,
+                    "mean_seconds": 0.09223271099229653
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "0",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0002205988857895136,
+                    "delta_count": 3,
+                    "mean_seconds": 7.353296192983787e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "1",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00019571185111999512,
+                    "delta_count": 3,
+                    "mean_seconds": 6.523728370666504e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "2",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00014538690447807312,
+                    "delta_count": 4,
+                    "mean_seconds": 3.634672611951828e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "3",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00028654723428189754,
+                    "delta_count": 3,
+                    "mean_seconds": 9.551574476063251e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "4",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00012839119881391525,
+                    "delta_count": 3,
+                    "mean_seconds": 4.2797066271305084e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "5",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.00013735494576394558,
+                    "delta_count": 3,
+                    "mean_seconds": 4.578498192131519e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "6",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 0.0001356119755655527,
+                    "delta_count": 2,
+                    "mean_seconds": 6.780598778277636e-05
+                  },
+                  {
+                    "metric": "vllm:request_queue_time_seconds",
+                    "labels": {
+                      "engine": "7",
+                      "model_name": "qwen3-full"
+                    },
+                    "semantics": "request WAITING phase; not client queue delay",
+                    "available": true,
+                    "delta_sum_seconds": 8.696014992892742e-05,
+                    "delta_count": 3,
+                    "mean_seconds": 2.8986716642975807e-05
+                  }
+                ],
+                "interpretation": "Native per-request phase duration histograms; exact labels preserved; RUNNING is not isolated GPU service; no pooled-engine mean.",
+                "all_series_valid": true
+              }
+            }
+          },
+          "pair": {
+            "valid_for_descriptive_pair": true,
+            "issues": [],
+            "final_speedup_claim": false,
+            "uncertainty": {
+              "available": false,
+              "independent_blocks": 1,
+              "reason": "single-block fixed-order pilot; requests are not independent repetitions"
+            },
+            "paired_identity_mismatches": [],
+            "completion_token_counts_equal": false,
+            "generated_text_hashes_equal": false,
+            "generated_token_ids_equal": null,
+            "diagnostic_token_identity_available": false,
+            "finish_reasons_equal": true,
+            "numerical_review_required": true,
+            "on_over_off_ratios_descriptive_only": {
+              "completed_elapsed_s": 1.0219529617542202,
+              "completed_requests_per_s": 0.9785186181988875,
+              "completed_output_tokens_per_s": 0.9525141508111361,
+              "response_from_schedule_ms": {
+                "mean": 1.0761776290391367,
+                "p95": 0.7991093532085957,
+                "p99": 1.0343636878468228
+              },
+              "ttft_from_send_ms": {
+                "mean": 1.1244657960510793,
+                "p95": 1.0780068570576045,
+                "p99": 2.393702346945159
+              },
+              "tpot_stream_boundary_estimate_ms": {
+                "mean": 1.1107702495132763,
+                "p95": 1.1623328411474823,
+                "p99": 1.1697389278705306
+              }
+            }
+          }
+        }
+      },
+      "native_eplb": {
+        "off": {
+          "logs_available": true,
+          "ordinary_async_launch_log_entries": 0,
+          "profile_launch_log_entries": 0,
+          "ordinary_sync_launch_log_entries": 0,
+          "sync_completion_log_entries": 0,
+          "async_error_log_entries": 0,
+          "coordinated_stop_log_entries": 0,
+          "discarding_drain_log_entries": 0,
+          "files": [
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/server-0.err"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/server-0.log"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/server-1.err"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/server-1.log"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/off/srun.log"
+            }
+          ],
+          "normal_async_commits": null,
+          "committed_state_consistency_verified": false,
+          "count_semantics": "Raw matching log entries, not unique cycle IDs. No cross-file deduplication or phase attribution is assumed.",
+          "commit_verification": "Unavailable from native async success logs/metrics; launch or drain is not a commit attestation."
+        },
+        "on": {
+          "logs_available": true,
+          "ordinary_async_launch_log_entries": 3,
+          "profile_launch_log_entries": 1,
+          "ordinary_sync_launch_log_entries": 0,
+          "sync_completion_log_entries": 0,
+          "async_error_log_entries": 0,
+          "coordinated_stop_log_entries": 0,
+          "discarding_drain_log_entries": 0,
+          "files": [
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/server-0.err"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/server-0.log",
+              "profile_launch_log_entries": 1,
+              "ordinary_async_launch_log_entries": 3
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/server-1.err"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/server-1.log"
+            },
+            {
+              "path": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic/on/srun.log"
+            }
+          ],
+          "normal_async_commits": null,
+          "committed_state_consistency_verified": false,
+          "count_semantics": "Raw matching log entries, not unique cycle IDs. No cross-file deduplication or phase attribution is assumed.",
+          "commit_verification": "Unavailable from native async success logs/metrics; launch or drain is not a commit attestation."
+        }
+      },
+      "final_speedup_claim": false
+    }
+  ],
+  "complete_semantics": "controller/request records complete with identity/failure gates; not an all-layer numerical or committed-state proof; optional log/metric coverage is reported separately",
+  "pooling": "none: each explicit cohort, dataset, stage and arm remains separate",
+  "final_speedup_claim": false,
+  "independent_run_uncertainty": "unavailable for these single-block pilots",
+  "audit_notes": {
+    "prompt_token_usage": "Pinned vLLM counts the complete chat-templated prompt, including cached tokens. Cache hits are separate optional prompt_tokens_details; do not subtract them from prompt identity checks.",
+    "prompt_template": "Pinned Qwen template appends the assistant prefix and an empty think block for enable_thinking=False. Diagnostic prompt-ID hashes check tokenization; absence of structured reasoning alone is not a semantic proof when no parser is enabled.",
+    "streaming": "SSE receipt chunks may contain multiple tokens or metadata only. TTFT uses first nonempty content. TPOT is a stream-boundary estimate, not measured individual-token latency.",
+    "numerical_scope": "Smoke verifies returned prompt/output token identities and finite selected-token API logprobs. Equal text alone is weaker. After a generated-token divergence, logprobs have different conditioning. Temperature 0 and finite selected-token logprobs do not prove all-layer numerical, routing or committed-weight consistency.",
+    "logprob_limits": "Pinned vLLM can clamp unavailable/extreme logprobs to -9999; the client reports these separately. Top-logprobs0 does not expose runner-up margins or all logits.",
+    "eplb": "Native async launch logs do not report successful layer/final commits or map versions. A later launch is only conditional evidence that prior work ceased pending; the last cycle remains unverified. drain_async acknowledges but discards transferred weights.",
+    "opportunities": "Native counter starts at 2250 for interval 3000. Dummy DP steps increment it, and pending async work may defer launches. Request/output-token totals cannot recover exact opportunity counts. Balancedness logging adds collective/synchronization overhead and is not enabled merely for this report.",
+    "metrics": "Native histogram deltas retain exact engine/model labels. Request RUNNING time is not GPU kernel service. Snapshot publication can lag completion; absent or decreasing series are unavailable, not zero. No EPLB commit metric is present in the audited metrics source.",
+    "sources": [
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/entrypoints/openai/chat_completion/serving.py#L515-L885",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/entrypoints/openai/chat_completion/protocol.py#L82-L180",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L584-L687",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L985-L1019",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py#L1418-L1443",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/async_worker.py#L104-L159",
+      "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/v1/metrics/loggers.py#L850-L900",
+      "https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/tokenizer_config.json"
+    ]
+  },
+  "partial_snapshot_requested": false
+}

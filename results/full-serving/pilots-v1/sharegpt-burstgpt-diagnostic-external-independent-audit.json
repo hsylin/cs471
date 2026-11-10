@@ -1,0 +1,113 @@
+{
+  "schema": "full_serving_external_independent_recompute_v1",
+  "dataset": "sharegpt-burstgpt-diagnostic",
+  "stage": "external",
+  "arms": {
+    "off": {
+      "request_count": 24,
+      "failed_requests": 0,
+      "response_from_schedule_ms": {
+        "mean": 7265.225907166667,
+        "p95": 18156.11779669999
+      },
+      "ttft_from_send_ms": {
+        "mean": 101.72903475,
+        "p95": 138.88643715
+      },
+      "completed_elapsed_s": 38.12085528,
+      "drain_s": 6.844969152,
+      "completed_input_tokens": 28625,
+      "completed_output_tokens": 18250,
+      "output_cap_completions": 1,
+      "completed_output_tokens_per_s": 478.7405703768355,
+      "client_tail_after_completion_ms": 1.523112
+    },
+    "on": {
+      "request_count": 24,
+      "failed_requests": 0,
+      "response_from_schedule_ms": {
+        "mean": 7818.673591208333,
+        "p95": 14508.7235493
+      },
+      "ttft_from_send_ms": {
+        "mean": 114.39082004166667,
+        "p95": 149.72053160000002
+      },
+      "completed_elapsed_s": 38.957720958,
+      "drain_s": 7.68183483,
+      "completed_input_tokens": 28625,
+      "completed_output_tokens": 17765,
+      "output_cap_completions": 1,
+      "completed_output_tokens_per_s": 456.0071678513304,
+      "client_tail_after_completion_ms": 1.022985
+    }
+  },
+  "source_sha256": {
+    "off": "b2e6f4e01bf82614dabb18068dc219c5dd79f4768936d5a1799f73a0bc929dfc",
+    "on": "26303e77985acab4952da5d634deb16c7e5dcfe2a325c8e6473f748d4439704c"
+  },
+  "report_snapshot_sha256": "f9e46462e8349f303d4ad5eb2c296fc54b59fe08bca6eb85866d0954db01d88b",
+  "report_created_utc": "2026-11-10T17:26:54.519305+00:00",
+  "report_snapshot": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/outputs/full-serving/suite-progress-report.json",
+  "issues": [],
+  "uncertainty": "unavailable: single fixed-order content/arrival block per arm",
+  "final_speedup_claim": false,
+  "method": "Raw integer monotonic timestamp differences; linear-interpolated p95 at (n-1)*0.95; no full_serving analysis helpers.",
+  "valid": true,
+  "paired_identities_and_absolute_offsets_match": true,
+  "reported_summaries_match_independent_recompute": true,
+  "on_minus_off_percent": {
+    "completed_elapsed_s": 2.1952961754220235,
+    "completed_output_tokens": -2.6575342465753438,
+    "completed_output_tokens_per_s": -4.748584918886389,
+    "drain_s": 12.225996340034339,
+    "response_from_schedule_ms_mean": 7.61776290391365,
+    "response_from_schedule_ms_p95": -20.089064679140435,
+    "ttft_from_send_ms_mean": 12.446579605107955,
+    "ttft_from_send_ms_p95": 7.800685705760446
+  },
+  "generation": {
+    "equal_text_hash_pairs": 3,
+    "equal_output_count_pairs": 4,
+    "equal_finish_reason_pairs": 24,
+    "pairs": 24,
+    "generated_token_identity_available": false,
+    "interpretation": "External stage stores text hashes and usage counts, not output token arrays. Differing generations change executed work; no equal-work causal speedup or independent-run inference."
+  },
+  "workload_classification": {
+    "supplementary_diagnostic": true,
+    "independent_new_content_cohort": false,
+    "reused_content_source": "sharegpt",
+    "per_stage_reuse_checks": {
+      "smoke": {
+        "requests": 8,
+        "ordered_ids_input_payload_hashes_match_primary_sharegpt": true,
+        "request_file_hashes_match": true,
+        "calendar_hashes_match": true
+      },
+      "calibration": {
+        "requests": 32,
+        "ordered_ids_input_payload_hashes_match_primary_sharegpt": true,
+        "request_file_hashes_match": true,
+        "calendar_hashes_match": true
+      },
+      "external": {
+        "requests": 24,
+        "ordered_ids_input_payload_hashes_match_primary_sharegpt": true,
+        "request_file_hashes_match": true,
+        "calendar_hashes_match": false
+      }
+    },
+    "interpretation": "Repeated ShareGPT pilot payloads paired with a different external arrival calendar. Keep separate from the five main content cohorts; this is not a sixth independent content replication.",
+    "arrival_replay": {
+      "source": "BurstGPT metadata-only request timestamps",
+      "source_horizon_s": 20.0,
+      "executed_horizon_s": 31.275886128,
+      "rate_selection_rule": "0.6 * off pilot burst completed requests / completed elapsed",
+      "not_a_final_capacity_estimate": true,
+      "same_absolute_arrivals_across_off_on": true,
+      "original_wall_clock_scale_preserved": false,
+      "joint_production_prompt_timing_trace": false
+    }
+  }
+}

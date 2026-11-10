@@ -32,8 +32,13 @@ Read the [separate-dataset HTML report](outputs/full-serving/native-comparison.h
 [raw records and archive hashes](results/full-serving/pilots-v1),
 [protocol, limitations and reproduction commands](full_serving/plan.md), and
 [source/tokenization admission](results/full-serving/suite-v1/admission.json).
-The declared ShareGPT/BurstGPT timing diagnostic is being completed separately;
-it reuses ShareGPT content and is not a sixth prompt dataset.
+The separate [ShareGPT/BurstGPT timing diagnostic](outputs/full-serving/burstgpt-diagnostic.html)
+also completed 64 requests per arm. Its external block has mean response
+7.265 s OFF versus 7.819 s ON (+7.62%), while p95 is 18.156 s versus 14.509 s
+(−20.09%). ON generated 2.66% fewer tokens. This remains one descriptive pair
+with reused ShareGPT content, not a sixth prompt dataset or a causal comparison
+between arrival patterns. The complete planned pilot suite has 768 successful
+HTTP executions over 320 distinct inputs, with no HTTP failures.
 Earlier layer-only results below remain separate and unchanged.
 
 **Resident-path repair: much faster than our previous method, still slower than EPLB-off.**

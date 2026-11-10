@@ -1,0 +1,1265 @@
+{
+  "cohort": {
+    "arms": {
+      "off": {
+        "available": true,
+        "complete_requests": true,
+        "hardware": [
+          {
+            "checkpoint_manifest_sha256": "9262888aa2e99e3d155f4798d8f9d1641cf49801a81fb8926f844543c643c00f",
+            "devices": [
+              {
+                "cuda_index": 0,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+              },
+              {
+                "cuda_index": 1,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+              },
+              {
+                "cuda_index": 2,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+              },
+              {
+                "cuda_index": 3,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+              }
+            ],
+            "hostname": "kh074",
+            "job_id": "4882284",
+            "preflight_sha256": "eed4f8ce331078bbb78f9beb5fe4a6717c944f9c099d76124cd3888cd0a8221d",
+            "role": "primary",
+            "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+          },
+          {
+            "checkpoint_manifest_sha256": "9262888aa2e99e3d155f4798d8f9d1641cf49801a81fb8926f844543c643c00f",
+            "devices": [
+              {
+                "cuda_index": 0,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "0d188b56-db2a-369e-1f56-7968f1d630cb"
+              },
+              {
+                "cuda_index": 1,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "d417d440-a598-33ae-99ad-f08b19ce3706"
+              },
+              {
+                "cuda_index": 2,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "739d84d8-77d7-1a88-89b8-817753b6cdee"
+              },
+              {
+                "cuda_index": 3,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "8e4f8e0d-1805-e2eb-e431-7abe7579bb04"
+              }
+            ],
+            "hostname": "kh077",
+            "job_id": "4882284",
+            "preflight_sha256": "8eaa1a23a6424d65367c3992778c0f8c1226f86c179e8be6349a8abd0e26bff5",
+            "role": "worker",
+            "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+          }
+        ],
+        "phases": {
+          "calibration": {
+            "all_prompt_counts_match": true,
+            "all_sse_done": true,
+            "available": true,
+            "calendar_hash": "0d87b8fcb375fa8541485f1b90bd7787406d8cbb8d0b65380d76e726b9bbd204",
+            "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+            "complete": true,
+            "completed_elapsed_s": 25.020708903,
+            "diagnostic_passes": 0,
+            "diagnostic_requests": 0,
+            "failures": 0,
+            "finish_reasons": {
+              "length": 2,
+              "stop": 30
+            },
+            "generated_tokens": 31075,
+            "input_hash": "a04cb29113b4d5c33140073d34f7b2284313e343cedbdaa8aaa761271f90c194",
+            "last_request_end_utc_approx": "2026-11-10T17:15:32.231009+00:00",
+            "observed_request_completion_coherent": true,
+            "requests": 32,
+            "source_sha256": "89c7c650e1ff281b73cc7fdaa6c933f78db41eb43b10023e0607136a8e04810a",
+            "successes": 32,
+            "valid": true,
+            "valid_semantics": "reported client summary flag; raw integrity is audited separately"
+          },
+          "external": {
+            "all_prompt_counts_match": true,
+            "all_sse_done": true,
+            "available": true,
+            "calendar_hash": "8a528d6e94f42768f8e2069173236ee1b5e9b16278a89af1a7a2a351c395c919",
+            "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+            "complete": true,
+            "completed_elapsed_s": 38.12085528,
+            "diagnostic_passes": 0,
+            "diagnostic_requests": 0,
+            "failures": 0,
+            "finish_reasons": {
+              "length": 1,
+              "stop": 23
+            },
+            "generated_tokens": 18250,
+            "input_hash": "5a2aedde49c1f4e64935a1d85e125f25604df47f49de0ea3ddcef367e4a1f324",
+            "last_request_end_utc_approx": "2026-11-10T17:16:11.615246+00:00",
+            "observed_request_completion_coherent": true,
+            "requests": 24,
+            "source_sha256": "b2e6f4e01bf82614dabb18068dc219c5dd79f4768936d5a1799f73a0bc929dfc",
+            "successes": 24,
+            "valid": true,
+            "valid_semantics": "reported client summary flag; raw integrity is audited separately"
+          },
+          "smoke": {
+            "all_prompt_counts_match": true,
+            "all_sse_done": true,
+            "available": true,
+            "calendar_hash": "78d1831bff201097217edcd72d062f12f3cedbab7c3017ff218cbdd85b37382d",
+            "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+            "complete": true,
+            "completed_elapsed_s": 15.10851309,
+            "diagnostic_passes": 8,
+            "diagnostic_requests": 8,
+            "failures": 0,
+            "finish_reasons": {
+              "stop": 8
+            },
+            "generated_tokens": 5050,
+            "input_hash": "57cb90590b1f4e2b96c8fa8637529c2e4356727239cb2ba884d110150d2e9446",
+            "last_request_end_utc_approx": "2026-11-10T17:15:05.987586+00:00",
+            "observed_request_completion_coherent": true,
+            "requests": 8,
+            "source_sha256": "9315e00fe5c306d5d085c811dd917ec0645c72ca8640ec06fa798530a785ec70",
+            "successes": 8,
+            "valid": true,
+            "valid_semantics": "reported client summary flag; raw integrity is audited separately"
+          }
+        },
+        "runtime": {
+          "activation_managers": [
+            "Using AgRsAll2AllManager"
+          ],
+          "async_error_log_entries": 0,
+          "attention": [
+            "Using FlashAttention version 3"
+          ],
+          "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+          "committed_state_consistency_verified": false,
+          "engine_init_seconds_per_dp_rank": {
+            "0": 42.72,
+            "1": 42.89,
+            "2": 42.8,
+            "3": 42.9,
+            "4": 42.89,
+            "5": 42.32,
+            "6": 42.42,
+            "7": 42.55
+          },
+          "errors": [
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 326,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871] AsyncLLM output_handler failed.",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 327,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871] Traceback (most recent call last):",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 328,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871]   File \"/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py\", line 817, in output_handler",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 329,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871]     outputs = await engine_core.get_output_async()",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 330,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 331,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871]   File \"/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 1215, in get_output_async",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 332,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871]     raise self._format_exception(outputs) from None",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 333,
+              "text": "(APIServer pid=41787) ERROR 11-10 18:16:11 [async_llm.py:871] vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.",
+              "utc_second": "2026-11-10T17:16:11+00:00"
+            }
+          ],
+          "errors_before_shutdown_marker": 0,
+          "forced_engine_shutdown": true,
+          "graph_capture_rank_records": {
+            "0": [
+              9.0,
+              15.0
+            ],
+            "1": [
+              9.0,
+              15.0
+            ],
+            "2": [
+              9.0,
+              15.0
+            ],
+            "3": [
+              9.0,
+              15.0
+            ],
+            "4": [
+              9.0,
+              15.0
+            ],
+            "5": [
+              9.0,
+              15.0
+            ],
+            "6": [
+              9.0,
+              15.0
+            ],
+            "7": [
+              9.0,
+              15.0
+            ]
+          },
+          "jit_during_inference": [
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-0.log",
+              "kernel": "_topk_log_softmax_kernel",
+              "line": 155,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:14:50+00:00"
+            },
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-0.log",
+              "kernel": "fused_moe_kernel",
+              "line": 163,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:14:54+00:00"
+            },
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-1.log",
+              "kernel": "_topk_log_softmax_kernel",
+              "line": 106,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:14:52+00:00"
+            },
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-1.log",
+              "kernel": "fused_moe_kernel",
+              "line": 107,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:14:54+00:00"
+            }
+          ],
+          "kv_tokens_per_dp_rank": {
+            "0": 744464,
+            "1": 744464,
+            "2": 744624,
+            "3": 744624,
+            "4": 744464,
+            "5": 744464,
+            "6": 744624,
+            "7": 744624
+          },
+          "moe": [
+            "Using TRITON Unquantized MoE"
+          ],
+          "normal_async_commits_observed": null,
+          "ordinary_async_launch_log_entries": 0,
+          "ordinary_async_launches": [],
+          "profile_rearrangement_entries": [],
+          "reported_compilation_seconds_per_dp_rank": {
+            "0": 0.52,
+            "1": 0.52,
+            "2": 0.52,
+            "3": 0.52,
+            "4": 0.32,
+            "5": 0.32,
+            "6": 0.32,
+            "7": 0.32
+          },
+          "runner": [
+            "Using V2 Model Runner"
+          ],
+          "selected_weight_communicators": [],
+          "shutdown_abort_zero_timeout": true,
+          "warnings": [
+            {
+              "file": "server-0.log",
+              "line": 45,
+              "text": "(EngineCore_DP3 pid=41947) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 47,
+              "text": "(EngineCore_DP1 pid=41945) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 50,
+              "text": "(EngineCore_DP2 pid=41946) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 54,
+              "text": "(Worker_DP0_EP0 pid=42221) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 55,
+              "text": "(EngineCore_DP0 pid=41944) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 66,
+              "text": "(Worker_DP0_EP0 pid=42221) WARNING 11-10 18:14:03 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=16,N=768,device_name=NVIDIA_H100.json",
+              "utc_second": "2026-11-10T17:14:03+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 33,
+              "text": "(Worker_DP4_EP4 pid=3915144) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 34,
+              "text": "(EngineCore_DP4 pid=3914856) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 37,
+              "text": "(EngineCore_DP7 pid=3914859) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 40,
+              "text": "(EngineCore_DP6 pid=3914858) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 43,
+              "text": "(EngineCore_DP5 pid=3914857) WARNING 11-10 18:13:59 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:13:59+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 54,
+              "text": "(Worker_DP4_EP4 pid=3915144) WARNING 11-10 18:14:03 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=16,N=768,device_name=NVIDIA_H100.json",
+              "utc_second": "2026-11-10T17:14:03+00:00"
+            }
+          ],
+          "weight_load_seconds_per_dp_rank": {
+            "0": 33.79953,
+            "1": 33.857001,
+            "2": 33.793945,
+            "3": 33.839333,
+            "4": 33.60771,
+            "5": 34.168635,
+            "6": 34.065926,
+            "7": 34.028162
+          }
+        },
+        "source_log_sha256": {
+          "server-0.err": "df8ff2cd164831605177a8fdb1c91083e1c2f756bca4fcd2e725691660d0bd55",
+          "server-0.log": "95b11698ad11d94b181a1cdd0d7b74a46eee28e911226a04b41eeba90dcf0d39",
+          "server-1.err": "aae89df05b4906c416ae97d0dd3c910c81d02895e3ac67654751680b3ea387df",
+          "server-1.log": "376e9c33239f1ce1dd539c9e241bd79e96fa6896d0235ecb54c0ef26d4b8b87e"
+        },
+        "startup_elapsed_s": 200.320640363032
+      },
+      "on": {
+        "available": true,
+        "complete_requests": true,
+        "hardware": [
+          {
+            "checkpoint_manifest_sha256": "9262888aa2e99e3d155f4798d8f9d1641cf49801a81fb8926f844543c643c00f",
+            "devices": [
+              {
+                "cuda_index": 0,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+              },
+              {
+                "cuda_index": 1,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+              },
+              {
+                "cuda_index": 2,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+              },
+              {
+                "cuda_index": 3,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+              }
+            ],
+            "hostname": "kh074",
+            "job_id": "4882284",
+            "preflight_sha256": "98f1a4e0276ec1ee5e7400a536ab84ab4dc8c004df5b4884fb40d53bc019994a",
+            "role": "primary",
+            "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+          },
+          {
+            "checkpoint_manifest_sha256": "9262888aa2e99e3d155f4798d8f9d1641cf49801a81fb8926f844543c643c00f",
+            "devices": [
+              {
+                "cuda_index": 0,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "0d188b56-db2a-369e-1f56-7968f1d630cb"
+              },
+              {
+                "cuda_index": 1,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "d417d440-a598-33ae-99ad-f08b19ce3706"
+              },
+              {
+                "cuda_index": 2,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "739d84d8-77d7-1a88-89b8-817753b6cdee"
+              },
+              {
+                "cuda_index": 3,
+                "name": "NVIDIA H100",
+                "total_memory": 99981918208,
+                "uuid": "8e4f8e0d-1805-e2eb-e431-7abe7579bb04"
+              }
+            ],
+            "hostname": "kh077",
+            "job_id": "4882284",
+            "preflight_sha256": "e7294defbb05b7a3b9ce2ae49deb559c561db32f3d8f15238f895b2d57185cdd",
+            "role": "worker",
+            "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n"
+          }
+        ],
+        "phases": {
+          "calibration": {
+            "all_prompt_counts_match": true,
+            "all_sse_done": true,
+            "available": true,
+            "calendar_hash": "0d87b8fcb375fa8541485f1b90bd7787406d8cbb8d0b65380d76e726b9bbd204",
+            "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+            "complete": true,
+            "completed_elapsed_s": 25.531425943,
+            "diagnostic_passes": 0,
+            "diagnostic_requests": 0,
+            "failures": 0,
+            "finish_reasons": {
+              "length": 3,
+              "stop": 29
+            },
+            "generated_tokens": 31850,
+            "input_hash": "a04cb29113b4d5c33140073d34f7b2284313e343cedbdaa8aaa761271f90c194",
+            "last_request_end_utc_approx": "2026-11-10T17:25:23.613099+00:00",
+            "observed_request_completion_coherent": true,
+            "requests": 32,
+            "source_sha256": "4faf909001e0ed6245bc1bfd781fdf250c42c00518e33654d60c4726293f1cda",
+            "successes": 32,
+            "valid": true,
+            "valid_semantics": "reported client summary flag; raw integrity is audited separately"
+          },
+          "external": {
+            "all_prompt_counts_match": true,
+            "all_sse_done": true,
+            "available": true,
+            "calendar_hash": "8a528d6e94f42768f8e2069173236ee1b5e9b16278a89af1a7a2a351c395c919",
+            "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+            "complete": true,
+            "completed_elapsed_s": 38.957720958,
+            "diagnostic_passes": 0,
+            "diagnostic_requests": 0,
+            "failures": 0,
+            "finish_reasons": {
+              "length": 1,
+              "stop": 23
+            },
+            "generated_tokens": 17765,
+            "input_hash": "5a2aedde49c1f4e64935a1d85e125f25604df47f49de0ea3ddcef367e4a1f324",
+            "last_request_end_utc_approx": "2026-11-10T17:26:03.851504+00:00",
+            "observed_request_completion_coherent": true,
+            "requests": 24,
+            "source_sha256": "26303e77985acab4952da5d634deb16c7e5dcfe2a325c8e6473f748d4439704c",
+            "successes": 24,
+            "valid": true,
+            "valid_semantics": "reported client summary flag; raw integrity is audited separately"
+          },
+          "smoke": {
+            "all_prompt_counts_match": true,
+            "all_sse_done": true,
+            "available": true,
+            "calendar_hash": "78d1831bff201097217edcd72d062f12f3cedbab7c3017ff218cbdd85b37382d",
+            "client_source_hash": "44e10f22f01193594c8675d14f44e5eed5f926e3ee78a4503b41f4e0fef30b19",
+            "complete": true,
+            "completed_elapsed_s": 18.795567544,
+            "diagnostic_passes": 8,
+            "diagnostic_requests": 8,
+            "failures": 0,
+            "finish_reasons": {
+              "stop": 8
+            },
+            "generated_tokens": 5209,
+            "input_hash": "57cb90590b1f4e2b96c8fa8637529c2e4356727239cb2ba884d110150d2e9446",
+            "last_request_end_utc_approx": "2026-11-10T17:24:56.793304+00:00",
+            "observed_request_completion_coherent": true,
+            "requests": 8,
+            "source_sha256": "e01aa14c1bb7edff62760d3565d8dff7b7eca5ce75a5f49e1ea6e9a361c020ed",
+            "successes": 8,
+            "valid": true,
+            "valid_semantics": "reported client summary flag; raw integrity is audited separately"
+          }
+        },
+        "runtime": {
+          "activation_managers": [
+            "Using AgRsAll2AllManager"
+          ],
+          "async_error_log_entries": 0,
+          "attention": [
+            "Using FlashAttention version 3"
+          ],
+          "commit_limit": "Native launch/profile/transfer messages and HTTP completion are not normal-commit certificates.",
+          "committed_state_consistency_verified": false,
+          "engine_init_seconds_per_dp_rank": {
+            "0": 78.84,
+            "1": 78.84,
+            "2": 78.83,
+            "3": 78.83,
+            "4": 78.7,
+            "5": 78.77,
+            "6": 78.84,
+            "7": 78.83
+          },
+          "errors": [
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 342,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871] AsyncLLM output_handler failed.",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 343,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871] Traceback (most recent call last):",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 344,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871]   File \"/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py\", line 817, in output_handler",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 345,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871]     outputs = await engine_core.get_output_async()",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 346,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 347,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871]   File \"/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 1215, in get_output_async",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 348,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871]     raise self._format_exception(outputs) from None",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            },
+            {
+              "after_shutdown_marker_in_same_file": true,
+              "file": "server-0.log",
+              "line": 349,
+              "text": "(APIServer pid=43048) ERROR 11-10 18:26:04 [async_llm.py:871] vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.",
+              "utc_second": "2026-11-10T17:26:04+00:00"
+            }
+          ],
+          "errors_before_shutdown_marker": 0,
+          "forced_engine_shutdown": true,
+          "graph_capture_rank_records": {
+            "0": [
+              10.0,
+              15.0
+            ],
+            "1": [
+              10.0,
+              15.0
+            ],
+            "2": [
+              10.0,
+              15.0
+            ],
+            "3": [
+              10.0,
+              15.0
+            ],
+            "4": [
+              10.0,
+              15.0
+            ],
+            "5": [
+              10.0,
+              15.0
+            ],
+            "6": [
+              10.0,
+              15.0
+            ],
+            "7": [
+              10.0,
+              15.0
+            ]
+          },
+          "jit_during_inference": [
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-0.log",
+              "kernel": "_topk_log_softmax_kernel",
+              "line": 160,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:24:38+00:00"
+            },
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-0.log",
+              "kernel": "fused_moe_kernel",
+              "line": 168,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:24:41+00:00"
+            },
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-1.log",
+              "kernel": "_topk_log_softmax_kernel",
+              "line": 108,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:24:40+00:00"
+            },
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-1.log",
+              "kernel": "fused_moe_kernel",
+              "line": 109,
+              "time_limit": "Logs have one-second precision; boundary overlap is not exact attribution.",
+              "utc_second": "2026-11-10T17:24:41+00:00"
+            }
+          ],
+          "kv_tokens_per_dp_rank": {
+            "0": 713312,
+            "1": 713312,
+            "2": 713664,
+            "3": 713664,
+            "4": 713312,
+            "5": 713312,
+            "6": 713664,
+            "7": 713664
+          },
+          "moe": [
+            "Using TRITON Unquantized MoE"
+          ],
+          "normal_async_commits_observed": null,
+          "ordinary_async_launch_log_entries": 3,
+          "ordinary_async_launches": [
+            {
+              "compatible_phases": [
+                "smoke"
+              ],
+              "file": "server-0.log",
+              "line": 176,
+              "time_limit": "One-second log precision permits phase-boundary ambiguity; launch evidence is not a commit certificate.",
+              "utc_second": "2026-11-10T17:24:45+00:00"
+            },
+            {
+              "compatible_phases": [
+                "calibration",
+                "external"
+              ],
+              "file": "server-0.log",
+              "line": 243,
+              "time_limit": "One-second log precision permits phase-boundary ambiguity; launch evidence is not a commit certificate.",
+              "utc_second": "2026-11-10T17:25:23+00:00"
+            },
+            {
+              "compatible_phases": [
+                "external"
+              ],
+              "file": "server-0.log",
+              "line": 294,
+              "time_limit": "One-second log precision permits phase-boundary ambiguity; launch evidence is not a commit certificate.",
+              "utc_second": "2026-11-10T17:25:55+00:00"
+            }
+          ],
+          "profile_rearrangement_entries": [
+            {
+              "file": "server-0.log",
+              "line": 71,
+              "utc_second": "2026-11-10T17:23:32+00:00"
+            }
+          ],
+          "reported_compilation_seconds_per_dp_rank": {
+            "0": 1.3,
+            "1": 1.3,
+            "2": 1.3,
+            "3": 1.3,
+            "4": 1.29,
+            "5": 1.29,
+            "6": 1.29,
+            "7": 1.29
+          },
+          "runner": [
+            "Using V2 Model Runner"
+          ],
+          "selected_weight_communicators": [
+            "TorchDistGlooStagedEplbCommunicator"
+          ],
+          "shutdown_abort_zero_timeout": true,
+          "warnings": [
+            {
+              "file": "server-0.log",
+              "line": 51,
+              "text": "(Worker_DP0_EP0 pid=43344) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 52,
+              "text": "(EngineCore_DP0 pid=43218) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 54,
+              "text": "(EngineCore_DP1 pid=43219) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 56,
+              "text": "(EngineCore_DP2 pid=43220) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 58,
+              "text": "(EngineCore_DP3 pid=43221) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-0.log",
+              "line": 69,
+              "text": "(Worker_DP0_EP0 pid=43344) WARNING 11-10 18:23:31 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=20,N=768,device_name=NVIDIA_H100.json",
+              "utc_second": "2026-11-10T17:23:31+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 34,
+              "text": "(EngineCore_DP6 pid=3916046) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 36,
+              "text": "(EngineCore_DP7 pid=3916047) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 39,
+              "text": "(EngineCore_DP5 pid=3916045) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 44,
+              "text": "(Worker_DP4_EP4 pid=3916193) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 45,
+              "text": "(EngineCore_DP4 pid=3916044) WARNING 11-10 18:23:09 [torch_utils.py:274] OMP_NUM_THREADS=4 is set; leaving Torch threads at 4 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.",
+              "utc_second": "2026-11-10T17:23:09+00:00"
+            },
+            {
+              "file": "server-1.log",
+              "line": 56,
+              "text": "(Worker_DP4_EP4 pid=3916193) WARNING 11-10 18:23:31 [fused_moe.py:1163] Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=20,N=768,device_name=NVIDIA_H100.json",
+              "utc_second": "2026-11-10T17:23:31+00:00"
+            }
+          ],
+          "weight_load_seconds_per_dp_rank": {
+            "0": 303.300181,
+            "1": 303.315828,
+            "2": 303.686578,
+            "3": 303.476256,
+            "4": 303.656167,
+            "5": 303.501026,
+            "6": 303.587342,
+            "7": 303.470007
+          }
+        },
+        "source_log_sha256": {
+          "server-0.err": "1f53fdc7217e26f6898f76320fce5dd3ffd4335078380f78480a6ec02473a6fd",
+          "server-0.log": "5fc98bfe238bc7db0e11294f0d5bccabcc033794c34a6da81009c79f8520d60f",
+          "server-1.err": "c9fda84fea9ddedd8f00ef533cefe47bb7d97ddec7c481f7922d8c80d8129a14",
+          "server-1.log": "fd3cf82aac7e72fc9cef0406991c6d7ade53b0ea93328ac2b44ae164ee5262cf"
+        },
+        "startup_elapsed_s": 500.72189454804175
+      }
+    },
+    "completed_pair": true,
+    "controller_state": "pilot_completed",
+    "custom_dispatcher_installed": false,
+    "dataset": "sharegpt-burstgpt-diagnostic",
+    "directory": "results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic",
+    "numerical_and_committed_state_correctness_proven": false,
+    "pairs": {
+      "calibration": {
+        "completed_valid_arms": true,
+        "input_calendar_client_hashes_match": true,
+        "off_generated_tokens": 31075,
+        "on_generated_tokens": 31850
+      },
+      "external": {
+        "completed_valid_arms": true,
+        "input_calendar_client_hashes_match": true,
+        "off_generated_tokens": 18250,
+        "on_generated_tokens": 17765
+      },
+      "smoke": {
+        "completed_valid_arms": true,
+        "input_calendar_client_hashes_match": true,
+        "off_generated_tokens": 5050,
+        "on_generated_tokens": 5209
+      }
+    },
+    "smoke_equal_text_count": 2,
+    "smoke_generated_texts_all_equal": false,
+    "smoke_pair_count": 8
+  },
+  "created_utc": "2026-11-10T17:27:57.819831+00:00",
+  "manual_review": {
+    "audit_runtime_source_sha256": "54d4124624ecd1146ee6ff68220cf3722ad5cb20e8eccfdfae9817a08f37c778",
+    "configuration": "Both arms log DP=8, TP=1, enabled expert parallelism, BF16 and max_model_len=32768, V2 Model Runner, AgRsAll2AllManager, FlashAttention 3 and TRITON Unquantized MoE. ON adds native EPLB with 32 redundant experts and explicitly selects TorchDistGlooStagedEplbCommunicator. No custom dispatcher is installed.",
+    "eplb": "ON has three ordinary async launch log entries, separate from one profiling rearrangement. The logs do not prove successful normal all-layer commit or rank-agreed committed maps. Drain and shutdown are not commit certificates.",
+    "jit": "All eight recorded JIT warnings across the pair are compatible with smoke only. No calibration or external warning was observed. This is warning-based phase attribution, not measured compilation duration or proof every possible shape is warm.",
+    "limitations": "The diagnostic reuses ShareGPT content and runs OFF before ON once; it does not supply independent content generalization, run-level uncertainty or a fixed-generated-work speedup. No dataset pooling is appropriate.",
+    "reproduction": "Use full_serving.audit_runtime.audit_cohort(Path(\"results/full-serving/pilots-v1/sharegpt-burstgpt-diagnostic\")) to regenerate parsed evidence. Ordinary launch compatible_phases use read_phase intervals with a \u00b11-second allowance. Configuration comparisons use the referenced per-node runtime-preflight JSONs.",
+    "requests": "Both OFF and ON completed 8 smoke, 32 calibration, and 24 external requests, with zero recorded request failures and all SSE DONE markers. Input/calendar/client hashes match within the pair. Generated work differs between arms.",
+    "shutdown": "Both arms contain eight ERROR/traceback log lines only after explicit same-file shutdown markers. Final external request end is approximately 17:16:11.615 UTC OFF and 17:26:03.852 UTC ON; log timestamps have one-second precision. Both use abort timeout=0 and force-kill remaining engines. These are teardown errors; no earlier runtime error or async-loop error is recorded. Request completion does not establish a graceful shutdown or committed expert state."
+  },
+  "observational_checks": {
+    "configuration_records": {
+      "off": {
+        "primary": {
+          "cuda_compiler_toolchain": {
+            "critical_file_sha256": {
+              "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+              "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+              "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+              "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+              "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+            },
+            "cuda_home": "/work/cs-471/skewbench-hlin/tools/cuda-12.9.1",
+            "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+            "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0\n",
+            "runtime_library_environment_changed": false
+          },
+          "flashinfer": {
+            "checks": [
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              },
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  1,
+                  5,
+                  32,
+                  4096
+                ]
+              },
+              {
+                "exact_sample_match": true,
+                "operation": "top_k_top_p_sampling_from_logits",
+                "top_k": 1,
+                "top_p": 0.75
+              },
+              {
+                "distribution": "one-hot",
+                "exact_sample_match": true,
+                "operation": "top_p_sampling_from_probs",
+                "top_p": 0.9
+              }
+            ],
+            "sampling_module_sha256": {
+              "sampling/sampling.so": "76fdd89682f5a10a98cc3d34d4b73c4f34fb81dc86f87a5e3ab03080df33b2f6"
+            },
+            "source_sha256": {
+              "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+              "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+              "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+              "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+            },
+            "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074"
+          },
+          "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+          "selected_vllm_source_sha256": {
+            "config/parallel.py": "eee9418488deb7945562c3127106109bac632471a2c1a08a58169a48cd15684c",
+            "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+            "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+            "engine/arg_utils.py": "95be1adb96f55933f6a52260c8cb2181d04707401ca21d97c33108c5ab58f3ac",
+            "entrypoints/cli/serve.py": "c182c88347f1eb3440a816986f1c2025a2ab2a13236cd68b0ad0146250d031ff",
+            "entrypoints/launchers/api_server/entry.py": "4f60dee4693159b79016c6a84f016eb0ade024433807ff393ea782a31bb9f7e4",
+            "entrypoints/launchers/api_server/routers.py": "c2f1bb2708f44f0fe24f3d8ab8f884c7262e551c6557ebc606263abc4d7b1db1",
+            "entrypoints/launchers/launcher.py": "d5ab9febbe139885c95b03b804680f3a404f74d6bfef7f3d433d506319b490e1",
+            "entrypoints/openai/api_server.py": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+            "model_executor/layers/fused_moe/layer.py": "0c30a9a56ff22c63a1498f61c72a349e4dba0d1e4fbe42efb333dda45d4bdecf",
+            "model_executor/models/qwen3_moe.py": "cac0cffc3e5b1ff805e9e15fe1d4bcfd5e55c27378e4a9ab23b0fa6c1b05e5ee",
+            "v1/engine/utils.py": "2f5b1b802ca31f19545ba00c68afc83cbbec4e55399e311e9102ce7a483254ab"
+          },
+          "torch_version": "2.13.0+cu129",
+          "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+          "vllm_distribution_version": "0.31.0+cu129"
+        },
+        "worker": {
+          "cuda_compiler_toolchain": {
+            "critical_file_sha256": {
+              "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+              "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+              "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+              "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+              "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+            },
+            "cuda_home": "/work/cs-471/skewbench-hlin/tools/cuda-12.9.1",
+            "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+            "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0\n",
+            "runtime_library_environment_changed": false
+          },
+          "flashinfer": {
+            "checks": [
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              },
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  1,
+                  5,
+                  32,
+                  4096
+                ]
+              },
+              {
+                "exact_sample_match": true,
+                "operation": "top_k_top_p_sampling_from_logits",
+                "top_k": 1,
+                "top_p": 0.75
+              },
+              {
+                "distribution": "one-hot",
+                "exact_sample_match": true,
+                "operation": "top_p_sampling_from_probs",
+                "top_p": 0.9
+              }
+            ],
+            "sampling_module_sha256": {
+              "sampling/sampling.so": "e1e1f0cb477026a6cecafa21e9d3b43e23741ce8c5988d13bedc75d4e91fc68f"
+            },
+            "source_sha256": {
+              "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+              "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+              "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+              "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+            },
+            "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh077"
+          },
+          "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+          "selected_vllm_source_sha256": {
+            "config/parallel.py": "eee9418488deb7945562c3127106109bac632471a2c1a08a58169a48cd15684c",
+            "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+            "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+            "engine/arg_utils.py": "95be1adb96f55933f6a52260c8cb2181d04707401ca21d97c33108c5ab58f3ac",
+            "entrypoints/cli/serve.py": "c182c88347f1eb3440a816986f1c2025a2ab2a13236cd68b0ad0146250d031ff",
+            "entrypoints/launchers/api_server/entry.py": "4f60dee4693159b79016c6a84f016eb0ade024433807ff393ea782a31bb9f7e4",
+            "entrypoints/launchers/api_server/routers.py": "c2f1bb2708f44f0fe24f3d8ab8f884c7262e551c6557ebc606263abc4d7b1db1",
+            "entrypoints/launchers/launcher.py": "d5ab9febbe139885c95b03b804680f3a404f74d6bfef7f3d433d506319b490e1",
+            "entrypoints/openai/api_server.py": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+            "model_executor/layers/fused_moe/layer.py": "0c30a9a56ff22c63a1498f61c72a349e4dba0d1e4fbe42efb333dda45d4bdecf",
+            "model_executor/models/qwen3_moe.py": "cac0cffc3e5b1ff805e9e15fe1d4bcfd5e55c27378e4a9ab23b0fa6c1b05e5ee",
+            "v1/engine/utils.py": "2f5b1b802ca31f19545ba00c68afc83cbbec4e55399e311e9102ce7a483254ab"
+          },
+          "torch_version": "2.13.0+cu129",
+          "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+          "vllm_distribution_version": "0.31.0+cu129"
+        }
+      },
+      "on": {
+        "primary": {
+          "cuda_compiler_toolchain": {
+            "critical_file_sha256": {
+              "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+              "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+              "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+              "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+              "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+            },
+            "cuda_home": "/work/cs-471/skewbench-hlin/tools/cuda-12.9.1",
+            "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+            "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0\n",
+            "runtime_library_environment_changed": false
+          },
+          "flashinfer": {
+            "checks": [
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              },
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  1,
+                  5,
+                  32,
+                  4096
+                ]
+              },
+              {
+                "exact_sample_match": true,
+                "operation": "top_k_top_p_sampling_from_logits",
+                "top_k": 1,
+                "top_p": 0.75
+              },
+              {
+                "distribution": "one-hot",
+                "exact_sample_match": true,
+                "operation": "top_p_sampling_from_probs",
+                "top_p": 0.9
+              }
+            ],
+            "sampling_module_sha256": {
+              "sampling/sampling.so": "76fdd89682f5a10a98cc3d34d4b73c4f34fb81dc86f87a5e3ab03080df33b2f6"
+            },
+            "source_sha256": {
+              "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+              "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+              "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+              "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+            },
+            "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074"
+          },
+          "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+          "selected_vllm_source_sha256": {
+            "config/parallel.py": "eee9418488deb7945562c3127106109bac632471a2c1a08a58169a48cd15684c",
+            "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+            "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+            "engine/arg_utils.py": "95be1adb96f55933f6a52260c8cb2181d04707401ca21d97c33108c5ab58f3ac",
+            "entrypoints/cli/serve.py": "c182c88347f1eb3440a816986f1c2025a2ab2a13236cd68b0ad0146250d031ff",
+            "entrypoints/launchers/api_server/entry.py": "4f60dee4693159b79016c6a84f016eb0ade024433807ff393ea782a31bb9f7e4",
+            "entrypoints/launchers/api_server/routers.py": "c2f1bb2708f44f0fe24f3d8ab8f884c7262e551c6557ebc606263abc4d7b1db1",
+            "entrypoints/launchers/launcher.py": "d5ab9febbe139885c95b03b804680f3a404f74d6bfef7f3d433d506319b490e1",
+            "entrypoints/openai/api_server.py": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+            "model_executor/layers/fused_moe/layer.py": "0c30a9a56ff22c63a1498f61c72a349e4dba0d1e4fbe42efb333dda45d4bdecf",
+            "model_executor/models/qwen3_moe.py": "cac0cffc3e5b1ff805e9e15fe1d4bcfd5e55c27378e4a9ab23b0fa6c1b05e5ee",
+            "v1/engine/utils.py": "2f5b1b802ca31f19545ba00c68afc83cbbec4e55399e311e9102ce7a483254ab"
+          },
+          "torch_version": "2.13.0+cu129",
+          "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+          "vllm_distribution_version": "0.31.0+cu129"
+        },
+        "worker": {
+          "cuda_compiler_toolchain": {
+            "critical_file_sha256": {
+              "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+              "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+              "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+              "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+              "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+            },
+            "cuda_home": "/work/cs-471/skewbench-hlin/tools/cuda-12.9.1",
+            "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+            "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0\n",
+            "runtime_library_environment_changed": false
+          },
+          "flashinfer": {
+            "checks": [
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  5,
+                  5,
+                  5,
+                  5
+                ]
+              },
+              {
+                "exact_mask_match": true,
+                "top_k": [
+                  1,
+                  5,
+                  32,
+                  4096
+                ]
+              },
+              {
+                "exact_sample_match": true,
+                "operation": "top_k_top_p_sampling_from_logits",
+                "top_k": 1,
+                "top_p": 0.75
+              },
+              {
+                "distribution": "one-hot",
+                "exact_sample_match": true,
+                "operation": "top_p_sampling_from_probs",
+                "top_p": 0.9
+              }
+            ],
+            "sampling_module_sha256": {
+              "sampling/sampling.so": "e1e1f0cb477026a6cecafa21e9d3b43e23741ce8c5988d13bedc75d4e91fc68f"
+            },
+            "source_sha256": {
+              "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+              "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+              "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+              "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+            },
+            "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh077"
+          },
+          "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+          "selected_vllm_source_sha256": {
+            "config/parallel.py": "eee9418488deb7945562c3127106109bac632471a2c1a08a58169a48cd15684c",
+            "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+            "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+            "engine/arg_utils.py": "95be1adb96f55933f6a52260c8cb2181d04707401ca21d97c33108c5ab58f3ac",
+            "entrypoints/cli/serve.py": "c182c88347f1eb3440a816986f1c2025a2ab2a13236cd68b0ad0146250d031ff",
+            "entrypoints/launchers/api_server/entry.py": "4f60dee4693159b79016c6a84f016eb0ade024433807ff393ea782a31bb9f7e4",
+            "entrypoints/launchers/api_server/routers.py": "c2f1bb2708f44f0fe24f3d8ab8f884c7262e551c6557ebc606263abc4d7b1db1",
+            "entrypoints/launchers/launcher.py": "d5ab9febbe139885c95b03b804680f3a404f74d6bfef7f3d433d506319b490e1",
+            "entrypoints/openai/api_server.py": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+            "model_executor/layers/fused_moe/layer.py": "0c30a9a56ff22c63a1498f61c72a349e4dba0d1e4fbe42efb333dda45d4bdecf",
+            "model_executor/models/qwen3_moe.py": "cac0cffc3e5b1ff805e9e15fe1d4bcfd5e55c27378e4a9ab23b0fa6c1b05e5ee",
+            "v1/engine/utils.py": "2f5b1b802ca31f19545ba00c68afc83cbbec4e55399e311e9102ce7a483254ab"
+          },
+          "torch_version": "2.13.0+cu129",
+          "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+          "vllm_distribution_version": "0.31.0+cu129"
+        }
+      }
+    },
+    "same_eight_gpu_uuids_as_all_main_arms": true,
+    "same_model_vllm_torch_compiler_records_between_arms": true,
+    "same_node_flashinfer_workspace_source_module_and_check_records_between_arms": true
+  },
+  "schema": "full_serving_supplementary_runtime_audit_v1",
+  "scope": "Repeated ShareGPT pilot content under a BurstGPT-derived arrival diagnostic; supplementary trace sensitivity, not a sixth independent content corpus.",
+  "vllm_pin": "db9527a46873454610df6dbedf79a36d6bf1a7f6"
+}

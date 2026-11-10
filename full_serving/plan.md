@@ -4,7 +4,7 @@
 
 ### Status and scope
 
-This is a new full-model experiment, separate from the frozen two-GPU layer experiments. All five main dataset pilots completed 64/64 requests in each native EPLB-off/on arm on 2026-11-10, with no HTTP failures; the separate ShareGPT/BurstGPT timing diagnostic is still running. These are functional/calibration measurements, not final comparative evidence. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
+This is a new full-model experiment, separate from the frozen two-GPU layer experiments. All five main dataset pilots completed 64/64 requests in each native EPLB-off/on arm on 2026-11-10, with no HTTP failures; the separate ShareGPT/BurstGPT timing diagnostic also completed 64/64 requests per arm. The complete planned pilot suite has 768 successful HTTP executions over 320 distinct inputs. These are functional/calibration measurements, not final comparative evidence. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
 
 Use the existing **Qwen/Qwen3-30B-A3B**, revision `ad44e777bcd18fa416d9da3bd8f70d33ebb85d39`, and vLLM `0.31.0+cu129`, source commit `db9527a46873454610df6dbedf79a36d6bf1a7f6`. The model has 48 layers, 128 routed experts per layer, top-8 routing, and a 40,960-token configured context. The complete checkpoint has 16 weight shards; downloading missing shards is preparation, not proof of a successful full-model load. Verify the index, all shard files, revision and checksums before final measurements. [Pinned model configuration](https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/config.json)
 
@@ -196,3 +196,37 @@ of sustainable capacity: in particular, InstructCoder OFF logged MoE-kernel JIT
 compilation during calibration. Phase-attributed JIT warnings, backend choices,
 KV capacity and shutdown-only errors are retained in the runtime audit. Native
 EPLB launch entries remain separate from unobserved successful commits.
+
+
+### Completion on 2026-11-10
+
+The [main comparison](../outputs/full-serving/native-comparison.html) preserves
+all five datasets separately; the [BurstGPT timing supplement](../outputs/full-serving/burstgpt-diagnostic.html)
+uses the same ShareGPT pilot text under its declared separate arrival calendar.
+The external-stage ON mean-response changes are +2.23% WildChat, +15.81%
+ShareGPT, +10.19% InstructCoder, +12.16% NuminaMath and +1.69% LongBench.
+LongBench's output-token rate rises 3.30%, but it generates 7.02% more tokens
+and takes 3.60% longer to finish. In the supplementary replay, ON mean response
+rises 7.62% while p95 falls 20.09%, with 2.66% fewer generated tokens. These
+mixed metrics are retained rather than reduced to an overall winner.
+
+All five main pairs passed the input/timing/counter/configuration audit and the
+smoke token-decoding checks. A separate-directory CPU reproduction matched the
+main report and independent timestamp recomputation exactly. All 186
+full-serving tests passed. Native logs contain 3, 3, 2, 3 and 1 ordinary
+asynchronous EPLB launch entries for WildChat, ShareGPT, InstructCoder,
+NuminaMath and LongBench respectively; they do not certify successful commits.
+LongBench's single launch occurs during calibration, so it does not meet the
+planned repeated-opportunity condition for studying sustained adaptation.
+No external-phase JIT warning was observed in the five main pairs, while the
+InstructCoder calibration caveat above remains.
+
+The original failed ShareGPT startup is retained; its OFF measurements are not
+paired with the repaired ON. Main WildChat ran revision `ce0926d`; the remaining
+cohorts and supplement ran `9ee2690`, before subsequent analysis/documentation
+commits. The suite controller and report command exited zero; serving steps stopped
+after all admitted requests completed. Native forced-teardown messages are
+preserved. The holding 48-hour allocation remains active. Private outputs remain outside Git, and
+reserved final inputs remain unexecuted. See `results/full-serving/audits-v1/`
+for the independent checks and `results/full-serving/suite-completion-v2/` for terminal controller
+records.
