@@ -1,0 +1,73 @@
+{
+  "source_report_sha256": "aed8c9a88e8a058f35c9b16f4057391242af42b98e46ee4651c09616a5259e16",
+  "proposal_pdf_sha256": "2ad4e03bc2928778cb95db25ed00965b95444b3a7f632ef411e70bf039b7baa2",
+  "records": [
+    {
+      "dataset": "longbench",
+      "arm": "custom",
+      "mean_native_request_ms": {
+        "vllm:request_inference_time_seconds": 1045.4301118734293,
+        "vllm:request_decode_time_seconds": 486.494857352227,
+        "vllm:request_prefill_time_seconds": 558.9352545212023,
+        "vllm:request_queue_time_seconds": 0.06641708023380488
+      },
+      "mean_response_ms": 1163.6301105
+    },
+    {
+      "dataset": "longbench",
+      "arm": "off",
+      "mean_native_request_ms": {
+        "vllm:request_inference_time_seconds": 1047.5017217395362,
+        "vllm:request_decode_time_seconds": 484.32623261760455,
+        "vllm:request_prefill_time_seconds": 563.1754891219316,
+        "vllm:request_queue_time_seconds": 0.07013377035036683
+      },
+      "mean_response_ms": 1134.985213
+    },
+    {
+      "dataset": "longbench",
+      "arm": "on",
+      "mean_native_request_ms": {
+        "vllm:request_inference_time_seconds": 1054.8334407649236,
+        "vllm:request_decode_time_seconds": 489.17621801956557,
+        "vllm:request_prefill_time_seconds": 565.657222745358,
+        "vllm:request_queue_time_seconds": 0.0794527877587825
+      },
+      "mean_response_ms": 1144.8552054375
+    },
+    {
+      "dataset": "numinamath",
+      "arm": "custom",
+      "mean_native_request_ms": {
+        "vllm:request_inference_time_seconds": 10662.602651296766,
+        "vllm:request_decode_time_seconds": 10617.736051324755,
+        "vllm:request_prefill_time_seconds": 44.86659997201059,
+        "vllm:request_queue_time_seconds": 0.05809401045553386
+      },
+      "mean_response_ms": 10673.33090525
+    },
+    {
+      "dataset": "numinamath",
+      "arm": "off",
+      "mean_native_request_ms": {
+        "vllm:request_inference_time_seconds": 10610.509517850005,
+        "vllm:request_decode_time_seconds": 10565.72005180351,
+        "vllm:request_prefill_time_seconds": 44.78946604649536,
+        "vllm:request_queue_time_seconds": 0.0546364753972739
+      },
+      "mean_response_ms": 10622.9254300625
+    },
+    {
+      "dataset": "numinamath",
+      "arm": "on",
+      "mean_native_request_ms": {
+        "vllm:request_inference_time_seconds": 11957.284184798482,
+        "vllm:request_decode_time_seconds": 11912.614962639054,
+        "vllm:request_prefill_time_seconds": 44.66922215942759,
+        "vllm:request_queue_time_seconds": 0.058841833379119635
+      },
+      "mean_response_ms": 11968.5203213125
+    }
+  ],
+  "limit": "Native RUNNING and HTTP timing have different boundaries. Their difference is not an isolated measured frontend span. One episode cannot establish a stable main bottleneck."
+}
