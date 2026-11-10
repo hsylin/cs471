@@ -1,0 +1,82 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1110 00:45:05.588060691 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "prepare_content", "group": "residual-wildchat-pilot-01", "phase": "calibration"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "reference", "group": "residual-wildchat-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "trial_start", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "residual-wildchat-pilot-01", "arm": "stockoff", "mean_response_ns": 1528157962.2358398, "record_id": "b90c568de5f31c8b2097f0c3d4e99bc5dee69890906d226c08b05731e9e1f646"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-pilot-01", "phase": "calibration"}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "residual-gsm8k_train-pilot-01", "arm": "stockoff", "mean_response_ns": 1488805415.7834473, "record_id": "4aa8023110b8606f90de3295fb932fbb93ff23bdc08e593419ad438efcd5eae3"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-pilot-02", "phase": "calibration"}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-pilot-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "residual-gsm8k_train-pilot-02", "arm": "stockoff", "mean_response_ns": 1480176976.0927734, "record_id": "0df562bfd1c5d0f7f6cecddef157a2c5e328fe49b6b12ca38fd8a82cca700d9b"}
+{"event": "prepare_content", "group": "residual-wildchat-pilot-02", "phase": "calibration"}
+{"event": "reference", "group": "residual-wildchat-pilot-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-pilot-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "rho": null}
+{"event": "trial_complete", "group": "residual-wildchat-pilot-02", "arm": "stockoff", "mean_response_ns": 1528947425.7036133, "record_id": "eba6e5a4bcecbe07cc047bbccd9b647ef161213a6722073ba6e54d3be250f5ff"}

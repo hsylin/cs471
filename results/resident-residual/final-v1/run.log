@@ -1,0 +1,755 @@
+{"event": "initialization", "phase": "stock_import_torch"}
+{"event": "initialization", "phase": "stock_sources_verified"}
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+{"event": "initialization", "phase": "stock_initialize_distributed"}
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+SymmMemCommunicator: symmetric memory multicast operations are not supported.
+{"event": "initialization", "phase": "stock_runtime_ready"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W1110 01:04:59.316471809 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+{"event": "initialization", "phase": "verify_checkpoint_sha256"}
+{"event": "initialization", "phase": "checkpoint_ready"}
+{"event": "initialization", "phase": "stock_construct_stockoff"}
+{"event": "initialization", "phase": "stock_ready_stockoff"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+{"event": "initialization", "phase": "stock_construct_ours"}
+{"event": "initialization", "phase": "stock_ready_ours"}
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=64,N=768,device_name=NVIDIA_H100.json
+Using default MoE config. Performance might be sub-optimal! Config file not found at /work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=80,N=768,device_name=NVIDIA_H100.json
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-01", "phase": "final"}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: [SymmDeviceMemory] Device does not support multicasting.. This is expected on GPUs without NVSwitch (e.g., NVLink bridge-only or PCIe topologies).
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:FlashInfer mnnvl allreduce workspace unavailable (likely no NVSwitch multicast support); falling back to trtllm backend for single node.
+WARNING:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer All Reduce workspace: Could not find nvcc and default cuda_home='/usr/local/cuda' doesn't exist.
+ERROR:vllm.distributed.device_communicators.flashinfer_all_reduce:Failed to initialize FlashInfer Allreduce norm fusion workspace with backend=trtllm
+{"event": "reference", "group": "residual-gsm8k_train-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "input": 4096, "total": 4112}
+/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "mean_response_ns": 4461132.697265625, "record_id": "ef4f54a5fc87410dd4d16289cf36d92b4e15577319d5d4217a6a9af33b1d98d6"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "previous", "mean_response_ns": 5864595.700439453, "record_id": "6a7b195f7f8e26c93d62445d7a3b5778adafbd8c98ac605f1e62b79e6b6dbbe5"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "fix", "mean_response_ns": 4888647.728027344, "record_id": "f22954ea82c96a4741bb6663472357fffbdbd63bf1923e67b9c2150d21ff5c7c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "fix", "mean_response_ns": 2089102.197265625, "record_id": "a8a55bc1d302a0c73369f38a6bbf80673fcbaac46a77b0599f739795d6c05717"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "previous", "mean_response_ns": 2127245.01953125, "record_id": "20d81244cfadc31d7b30c63cc57f47ed8a31c2f5970f5e5ec40365f1eb3d0727"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "mean_response_ns": 2103013.9658203125, "record_id": "c6dafe3849ab90747e57c67a1deef5f29467bf14e91335c3e35e3955121cb900"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "mean_response_ns": 2131905.869873047, "record_id": "48ca31bbba09fb1f2e284ac0fdb90c3d5d2768928dafc76149bba0e00cf8d430"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "previous", "mean_response_ns": 2212825.5278320312, "record_id": "8e49538beb41a965570e0bb1bb99045c2628f4718f9b4186be53fe4159d5095b"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "fix", "mean_response_ns": 2150150.4555664062, "record_id": "96bb99254fdce41f3c66c71b988d3ec4ac1c6bff3b0e2ed0f576b5851038d6f6"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "fix", "mean_response_ns": 4011109.284423828, "record_id": "fdd4dbd8d8564a1c3d461160e9d643865310ea10bdb934a78f3ec0388a7dd3b8"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "previous", "mean_response_ns": 4451645.975097656, "record_id": "c9222ffbb6b684ab50f8289e8b72afcf594a4a1054d0dd90ba1251ef5667e3c1"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-01", "arm": "stockoff", "mean_response_ns": 4121437.745361328, "record_id": "5198e3846360bdb7e58cededad86e2f139673805bf42f85c93faa8c6da036ef3"}
+{"event": "prepare_content", "group": "residual-wildchat-final-03", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-03", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-03", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-03", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-03", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-03", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "previous", "mean_response_ns": 5351027.951904297, "record_id": "c311b645d577b7af60317823d84912e938c58103932266de3afbf92e20bba525"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 4409068.583251953, "record_id": "b1f72da32c226c0c5eb429343e2b036fb9923f2cde64831edfd41cc40de33105"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "fix", "mean_response_ns": 4446212.741699219, "record_id": "9dd426c61451b3a68c865902ef3b323735964d0e5f0f6827daba932c4d9cefab"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "previous", "mean_response_ns": 1752970.0104980469, "record_id": "d279b3ee86205d6a5931a3509b8f6ff1032cc618137d5f65ee9b5c233938b97d"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "fix", "mean_response_ns": 1712563.9780273438, "record_id": "f7c165642b612400bdb3d332c50d9d8071ed5e69b011bc671656641b733c3abb"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 1681106.7780761719, "record_id": "270c44e0bb3191de9cf669f19771f1a90a749bb1afb9f0a970ccd7400fb6dd41"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 1504643.1931152344, "record_id": "e00c1a2183dcc6a5350ece1a200654748eca6702dab35bf9197eeb8261abcb44"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "fix", "mean_response_ns": 1547867.4470214844, "record_id": "20e17ad2419d97d1bdec0b6204452b48a966d439e0885d5c5c474e772aff80be"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "previous", "mean_response_ns": 1605172.4943847656, "record_id": "b0e1adc004a8e540d0bcb4b3282ae620521923ddf0de08b7a78294813e01bb08"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "fix", "mean_response_ns": 10460578.66381836, "record_id": "f7a0bb5bfc37e047683b23c2014e6298a8da9f3c657b75359106ca079c5cc928"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "stockoff", "mean_response_ns": 7066964.413818359, "record_id": "a367233d31d013da49a83d8b0a6acea12149883679600b8e6983ef1b879c9f69"}
+{"event": "trial_start", "group": "residual-wildchat-final-03", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-03", "arm": "previous", "mean_response_ns": 12513032.196044922, "record_id": "13fa7c6f609af2bbacafeb97de22b3f482158fa18714b75e6f3a0c2a77fbb881"}
+{"event": "prepare_content", "group": "residual-wildchat-final-01", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-01", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-01", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-01", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-01", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-01", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-01", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "fix", "mean_response_ns": 3960351.9951171875, "record_id": "8e41e82ffca919a1b99f046dbfe44cd1d742792a7780f51ab62c04913438dc01"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 3727086.0432128906, "record_id": "9654c4cbfde45def204789554ccc1be65fb69d5969c5dc6ecb0fdf95b76c29a0"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "previous", "mean_response_ns": 4185027.4067382812, "record_id": "f9956e6cadb98d7f3a19b88a20f74fafab23d79404f303ef650b1c34c522d60b"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "previous", "mean_response_ns": 2089561.0065917969, "record_id": "4f284ca71780fbf0aff1f1e1a9ec497a996871ef149c2886651933226cadca32"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 1999098.15625, "record_id": "7bf4db143599dfdc233a39aa626c4ee01f41e94c31814f5ee8cfbd055f52674f"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "fix", "mean_response_ns": 2038223.2299804688, "record_id": "b6448d1a16276ed103365f0cee6257160c3a40a55ee8fcdb3c10c6b9a629c200"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "previous", "mean_response_ns": 6199991.127441406, "record_id": "b819a3f513cf08dc3ea5a1c77782765d9fe480abdb0475d2a7fb17df4b5b45c6"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 5110542.905029297, "record_id": "d8bbe6098542a8c2c2b29d20caf800a922cb1df0b5722f60fd70b65a80a95375"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "fix", "mean_response_ns": 5485845.372558594, "record_id": "fb4a40c07f4bfc40b5b1ad80b20cedbe200ac98b29b43adeb9d3c81b7fc27325"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "fix", "mean_response_ns": 2883346.1936035156, "record_id": "d6d1c59e052bffb79ba7325a46f6672ef8724f6cfaacf7e115c97969cb1889e9"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "stockoff", "mean_response_ns": 2796176.9321289062, "record_id": "80b9d0dad4c779563a3fe9aae47b4f8ba18493b760219026f030f455b69f1d06"}
+{"event": "trial_start", "group": "residual-wildchat-final-01", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-01", "arm": "previous", "mean_response_ns": 2942478.4509277344, "record_id": "cd2697fc9ecfcdfb2ffa13e9b58c75205abbacdb69c077082bee45d918816a2a"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-05", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-05", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-05", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-05", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-05", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-05", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "fix", "mean_response_ns": 2346238.317626953, "record_id": "8470cb1cee8beb84e444553997c358a370d7620a806bfb0a87a94f9c97b861cb"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "mean_response_ns": 2331627.7165527344, "record_id": "13ccc090261a3c9959da32d033a56cb04bce605d44d48cddf4317fed03a30b35"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "previous", "mean_response_ns": 2372133.9025878906, "record_id": "dca794588d19be56461569213d70a983feeabad66be0e56ef0152124c73dd3c0"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "previous", "mean_response_ns": 4715819.02734375, "record_id": "159642db00b390349f403b69696d49dde8a85efc5e3e012fb9e8639734af84d4"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "fix", "mean_response_ns": 4453866.510253906, "record_id": "4e276e74c06c714ecdfa8776183cdc7c1c6ffbcc4e5b5ded39509e25c310676d"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "mean_response_ns": 4333095.537353516, "record_id": "625714db9a05e64ba3b7050466fcd53f5f14133e77d9a19cf9d4012ae5819bb7"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "previous", "mean_response_ns": 1549953.6486816406, "record_id": "bac6b0b56a31fb33b5e402a1970bd7d877a7f5c6f642957d78f6bd0110572aeb"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "mean_response_ns": 1518165.8681640625, "record_id": "6b27c1fe4fd6746548032951a4a631430c6cc5e415fb8d0aafccbc2a948f8e51"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "fix", "mean_response_ns": 1504277.4912109375, "record_id": "db2393d5a7a360f8642dd1d351127bcecbf592fd1feb02e31894bf2db2c7bc0f"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "stockoff", "mean_response_ns": 9210244.338134766, "record_id": "f81bf17273972156ad4aee16b95e752b413b704a570ef00c20dd0804bb1c5207"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "fix", "mean_response_ns": 9543599.666992188, "record_id": "cf187f5a5bf226eb566493b1c7da598cb6e2daf54b90300b3119a54e3587c94f"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-05", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-05", "arm": "previous", "mean_response_ns": 12815198.194824219, "record_id": "ef1f03b0278001b0094ee9b7c875471dd8f10e519182f2ad2dccfe5d4f39acad"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-08", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-08", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-08", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-08", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-08", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-08", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-08", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "previous", "mean_response_ns": 3710072.7822265625, "record_id": "587472f8df572b235ccb6e72ce96c600f0554339ace54da2e0ff04c4a001ae72"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "mean_response_ns": 3245920.4204101562, "record_id": "c6337f9ebc7c400c0c1a3162a0fa9f7c873e579341244501e322c3df3c401e9d"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "fix", "mean_response_ns": 3288988.5524902344, "record_id": "2b1e78cbbe5e0dbe2b00bec966ab3dbfd4cd975d2497a0a07dab38791d0ac568"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "fix", "mean_response_ns": 8424164.413085938, "record_id": "84d40204a754348ca450ce52d9332bf681d7b31094b85a428ab32cd8567affdf"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "mean_response_ns": 8450399.943603516, "record_id": "5642d2720fe7cdbe0dcaf6414d2d0f5918e3b9e5bd5338cba0279b9b932f53e9"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "previous", "mean_response_ns": 10442956.982666016, "record_id": "49df5aed3a0f84d12a5558377eae6c0b7c0529aa5d588731979b06f41d67de3e"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "mean_response_ns": 1839959.5603027344, "record_id": "851e7ea221c04050262f753bf9471a158d449920a87c928afc8230d21190af8c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "previous", "mean_response_ns": 1894766.5607910156, "record_id": "877d8cf1a897bd952c79f0e8254e9411853132da58330dbe755acdd480ba9796"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "fix", "mean_response_ns": 1856884.9846191406, "record_id": "ba7b3de3d1f6a658a9a229c23135d3b33fa7919091f766ba16ad44635a59137b"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "fix", "mean_response_ns": 1416613.048828125, "record_id": "747cbcbf69177823439dd05394d85a68a70b62b3236dd9e6d9c627760091bfde"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "previous", "mean_response_ns": 1469417.2019042969, "record_id": "14410750c3ad4d404352ca61a6b9c4e2dd8fb1f621c6628c6bb306b0f1e02307"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-08", "arm": "stockoff", "mean_response_ns": 1438572.404296875, "record_id": "88762f7d58af04986f5d6705f08f718d7796ff480c45c9da5d696b79187a3328"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-03", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-03", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-03", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-03", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-03", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-03", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-03", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "fix", "mean_response_ns": 6368783.8017578125, "record_id": "f494f27913bf21bf75b6ca11ee2495eb908a471fd1e3065efd3bf36fcf38ddab"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "mean_response_ns": 5638222.504394531, "record_id": "ff28758e1275f67657723942439b987343bf71d6513b6fc3f5fb506e02412918"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "previous", "mean_response_ns": 12010105.497558594, "record_id": "4c288c07474f85e11649075d39acd1dff3f7a0d2823bae5bb9a7e7a0caaa1f63"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "fix", "mean_response_ns": 2044904.271484375, "record_id": "518f4776a7c12e2edd26c102600dd594d3015809e578f1985e6eee3a6fa6284e"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "mean_response_ns": 2050509.6315917969, "record_id": "895141f1adab0ba6931fa8083e620699917322ec362a88e7c2c6c0430ddd270b"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "previous", "mean_response_ns": 2060812.1381835938, "record_id": "968737286ddbe4f7de1a835b4a37638f0a89d4a7543a48f8f2fe892b1d3c8bf4"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "previous", "mean_response_ns": 4188864.2697753906, "record_id": "865904498a7d4e0c76fc9ace05e7586d24ff46e0a5541fe398f7ef808efe30d6"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "mean_response_ns": 3824973.787109375, "record_id": "257387360e838320e3588545b724df4a94b669cb933b6d3e1e8797e5f6d94e6f"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "fix", "mean_response_ns": 3774915.2556152344, "record_id": "85b0e23d130186e7db28608f8a3df533007de59dd9f4f2a391a6bc3ca28f319f"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "previous", "mean_response_ns": 2394377.0634765625, "record_id": "552cf9a40131a3f29999561821d528409cd7f78fe6ef77519d193e6fbe495a2c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "stockoff", "mean_response_ns": 2358166.3979492188, "record_id": "92695a74d0366c0752ef82b548ad3d1dd8386d3f2fe6b73369b1b8e6fa6c688c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-03", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-03", "arm": "fix", "mean_response_ns": 2336948.420654297, "record_id": "122d319f6c0b3a3b0adef3e62185a652ab90932657c361b76b98d173deb71ce9"}
+{"event": "prepare_content", "group": "residual-wildchat-final-05", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-05", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-05", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-05", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-05", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-05", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-05", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 2348577.2690429688, "record_id": "0d3660dac906d6a54dc34687f5f477bb35a433c66f66a658bffbb4b934d46b57"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "fix", "mean_response_ns": 2381232.0747070312, "record_id": "65b7311f64cf707c7956e384d6dfd004ca811e13597a14c1d9becfceb592b58c"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "previous", "mean_response_ns": 2420701.5522460938, "record_id": "5dfdb484540eebde080569148e1fd43080bf9832ec10df0e7daef06dc2092306"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "fix", "mean_response_ns": 4372995.147949219, "record_id": "23ab9292b1f76da0e4915548e52ebe7374f372a94bc0a322ed52268bc18aae94"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "previous", "mean_response_ns": 4677275.570068359, "record_id": "be740d4136e4a089bee5bf02cd5489f03e797bae843378ddbdf424826423b744"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 4271987.090576172, "record_id": "31faf213b1dd88e5afd3d95dea5775d1cf696e59687e127641da141664fe4775"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 6680612.379638672, "record_id": "10500dd03d7622737d0a0dfb1e0ed26aaabb7786452a1bdb18194ee0357f7468"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "previous", "mean_response_ns": 9449011.512207031, "record_id": "72d5705daef951dda82414f08907ee1be26063c053fa86c2fc72d1c81a88beda"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "fix", "mean_response_ns": 7836036.3720703125, "record_id": "9a2a05edc9570aeb6b61ce6d4d171e8d90661a752f76f4c4ede730f899cc0bd5"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "previous", "mean_response_ns": 1439411.4907226562, "record_id": "7bcafa4fb873246f62583412430e152b18756291dd51bfc21b274767bdb2d47f"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "fix", "mean_response_ns": 1405548.4536132812, "record_id": "fd8e04b0fc0298343525f0735e2ff238c2dbeb439af86f3cb4ca85caa3fd52ae"}
+{"event": "trial_start", "group": "residual-wildchat-final-05", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-05", "arm": "stockoff", "mean_response_ns": 1403831.4389648438, "record_id": "3e3baeffef73b9b46c096fdd5658010486dcc616de595ca0204cdc6626fae76d"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-02", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-02", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "mean_response_ns": 1646701.333984375, "record_id": "cec5fdcc16537f8467c19d5702fdb865aaba344a60daed1d3147f34015bf32d7"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "fix", "mean_response_ns": 1650743.0900878906, "record_id": "ec27376a336c62d952427564c87244d6a484cb8c687839884b27309be03d278b"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "previous", "mean_response_ns": 1706645.3044433594, "record_id": "31e71ea645549f530a91c12f612b354c04b0feb8de65bbc011c62ddacf9d160c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "previous", "mean_response_ns": 2433523.0405273438, "record_id": "4b726a8fde1b18a1106a9f135faffe10565d844bd86be44978648dcc6226b333"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "fix", "mean_response_ns": 2371936.583984375, "record_id": "9ba05f42575e4b5d14a2497c432abbcd7562c7ee15390b5d98b04dba635f4432"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "mean_response_ns": 2338270.0205078125, "record_id": "473e7dab19e34c0fd464088291e67a8391c7118b619ef38fbc6516886219b711"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "mean_response_ns": 5213307.538818359, "record_id": "d2ddf4285ae51d8604bed433de3b683a4b009f9be465d6b4624daa1db4a3177b"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "previous", "mean_response_ns": 8193975.348876953, "record_id": "74f7ff30042db6d0604f1fd7aa9222321aefd6734093bf7a98626cd1c830302c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "fix", "mean_response_ns": 5654476.6015625, "record_id": "18809571189c368c4ddc0d8b0ffd8a70d7929c65116e44622a481c9ced3587c2"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "fix", "mean_response_ns": 4480173.1435546875, "record_id": "a578566089c64be6e609e0eedb12c312202742fcf2e6c9d5005d44f4056e496c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "previous", "mean_response_ns": 4876475.060302734, "record_id": "938cbe160a72a53d031c9195bc3c5d834824e4f81f330854df545ea982e57ac2"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-02", "arm": "stockoff", "mean_response_ns": 4552500.741943359, "record_id": "c4bda5f98ed98b8a91cc174ca5801c89afd0004f8bee870ff6a198f6712423be"}
+{"event": "prepare_content", "group": "residual-wildchat-final-02", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-02", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-02", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-02", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-02", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-02", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-02", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 1878084.1547851562, "record_id": "916a954ab36e75c582ccca46d63ed093afe6dd091b627361abb8356394fa6a46"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "previous", "mean_response_ns": 1976450.837890625, "record_id": "15ff0269ecc377c3b521d0bc2a259fb1b1a877f168be483212e1faea6c9678ed"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "fix", "mean_response_ns": 1945094.7231445312, "record_id": "e88a726b15e0fa264208ebb1077e48b242686139c71ba3443251cb2419bdb234"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "fix", "mean_response_ns": 15443018.954345703, "record_id": "052b6b9a85f38658a330569dfbaa61118905d6c0d38f2119a43295cbbe4376f0"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "previous", "mean_response_ns": 21581363.177734375, "record_id": "1ae64b3b279cfd44c187205003d2338c45582c366f308a9f042f5c9a0390c3e2"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 16262345.993408203, "record_id": "04d2e546f52b331b776fe53f8dc7898f23feddeb166c6dd7cb040598a0a2f40a"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 4312697.001220703, "record_id": "01cb724e3c593d3c6de3fe39230bb308704b892b934f5d50cd0c9622e518e9c5"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "previous", "mean_response_ns": 5949985.681152344, "record_id": "adaaccb2b1efd5d2c55c3d4321499f2e827266b8fc13947746e672192fc5208b"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "fix", "mean_response_ns": 5259074.784423828, "record_id": "5ba9f05ed096c014fa97d7ee7229ebdd872400d6320113306a94eae6d78b9cc8"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "fix", "mean_response_ns": 1348941.4697265625, "record_id": "dcc5aa355a38aed09bca455561306d2237b4404251a223b59d9cd4f990f71dee"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "previous", "mean_response_ns": 1397780.9831542969, "record_id": "16db2c3d90a106d8ea202580dcaf8e6298735335ee944134347cb61fbdb187ea"}
+{"event": "trial_start", "group": "residual-wildchat-final-02", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-02", "arm": "stockoff", "mean_response_ns": 1307023.0112304688, "record_id": "d6b1632f574703b65012d074d26bf5537092b127f6c091498e173c28ce48356c"}
+{"event": "prepare_content", "group": "residual-wildchat-final-08", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-08", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-08", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-08", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-08", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-08", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-08", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 5522567.28125, "record_id": "1296e82e9a854e53ae44a91f9ed3be90936f4ce83d03971bb8b322d4c92d1470"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "fix", "mean_response_ns": 6214151.021240234, "record_id": "cf526599fb761068448e3ffea3d9df766cb44db3514f196a4ec6c5c1ecff7727"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "previous", "mean_response_ns": 6539505.726074219, "record_id": "368b93b5464e86187314db5ccd8a21123906e4200a17c4251a73215fb9130cd4"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "previous", "mean_response_ns": 2763946.4396972656, "record_id": "6a9a6e4c7b592f8ff768e04210780f0d9a0afa6ba755afd127ec8252020d331b"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 2706005.6469726562, "record_id": "1fc4877ca3f3b99f7e384cb5fd172b9dc365814930a02801819422a8b6570f41"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "fix", "mean_response_ns": 2688254.194580078, "record_id": "abafe8b9ec164e5b43824641057e5788bee6991d2940897ba92c2d00498c8de7"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "fix", "mean_response_ns": 2162303.4174804688, "record_id": "9f7093e5a702762341fe63b46d2dd0121d5389c0f5b80aaab2d9262e69538a77"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 2132115.6154785156, "record_id": "a78d13f9243b4ca30389824dcd18c1096d4c916e5539fe82fc9cb7a74234a414"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "previous", "mean_response_ns": 2196305.5180664062, "record_id": "c8f8d71fa0f2773776455471ed45da61d8cb7d5db7bd71314d29e9a11480fdee"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "previous", "mean_response_ns": 5693753.442138672, "record_id": "ad965fa2b16bb0a45ab55d641c43a187d2db32fcf56b3d42adabe5e7b418704c"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "fix", "mean_response_ns": 5228426.6064453125, "record_id": "acc67f63615af0f6f4986f6c7ce7fd97d80b325888fae63ed93cd352dd3bedf4"}
+{"event": "trial_start", "group": "residual-wildchat-final-08", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-08", "arm": "stockoff", "mean_response_ns": 4724042.229980469, "record_id": "8969e6df8e8e4b2475852a8b8ee18ff1e7d756b9326dd674de7d6e5761ce9d4f"}
+{"event": "prepare_content", "group": "residual-wildchat-final-06", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-06", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-06", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-06", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-06", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-06", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 5888241.518798828, "record_id": "44dfc8824315d743679cd2fcc6d130b41659b521ccd4e1722a73502bbc65992a"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "previous", "mean_response_ns": 7349894.756347656, "record_id": "6b841cea532920e46e98241cb7e4091a0a5339a8ea5322eb065a084b0ac4c591"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "fix", "mean_response_ns": 6322979.264160156, "record_id": "3e9f3a37978ab1f49fc0e9f4580f73d88b7eef35e1943ef9ded7db0f3f76958f"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "fix", "mean_response_ns": 2488462.66796875, "record_id": "e0f5b4ce7531b2fa363f5b5939527ccc2d020f5a76774d288169fe52d06fb9cc"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "previous", "mean_response_ns": 2526270.8806152344, "record_id": "905bf5cff70e05cdab8eebd2dbb50b4296e63a8bc8dbe0c7ab9a90b8ac75d31d"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 2414390.141357422, "record_id": "f92c3cd27f4d0cde61e5e31e7b73e66aab9282922be9d998f95df1184bd79bdc"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "fix", "mean_response_ns": 4478483.893066406, "record_id": "2777651497727f69e330682d4a01cade6260d89f52ec8fdaebb2d1cb8e7eed8d"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "previous", "mean_response_ns": 4947640.636474609, "record_id": "ffd3703e62dbe197096b8b95fb8fe737d5e76201ebfe36afc167a61f5de0d9db"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 4269078.4150390625, "record_id": "3c6a25f5ade2656e9d82880ad9d48e3af130e0ff1d5059fc4b77a58c26fb3bc8"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "stockoff", "mean_response_ns": 1314199.5598144531, "record_id": "9297a6921ea7441564d6a4fd2a28eac6581c5bc3f1070fa37949faf518fa2425"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "previous", "mean_response_ns": 1371907.3098144531, "record_id": "0c160096430fb1e6ea063f11b39b7f3a9172a324842a96b21c5b49122aa3c6a6"}
+{"event": "trial_start", "group": "residual-wildchat-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-06", "arm": "fix", "mean_response_ns": 1339615.0866699219, "record_id": "1d91c1582d050407ebcc2d606a0ebe6443bc92464f31933201e76e217f143d8f"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-07", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-07", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-07", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-07", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-07", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-07", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-07", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "fix", "mean_response_ns": 4667178.031982422, "record_id": "39e9cd26d918e98a91d44a9d91bc5d033e4f31e46c155b224f57ef9c4c1db465"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "previous", "mean_response_ns": 5796039.455566406, "record_id": "8e5c37cff1e98bf3b192a3ac789a441fafd680d28a1f37fe3f7bffbcebf20589"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "mean_response_ns": 4577336.760253906, "record_id": "f9fb08652c3c98b06b6e465e4b2ce2dce2142b98d5946768296489deee51036d"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "mean_response_ns": 4893670.0341796875, "record_id": "02b37705f248e50056b046d7acc18ac9ecf6d678afa5b9ca0eec3d8f32d79d63"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "previous", "mean_response_ns": 5510909.09375, "record_id": "799c2c6b0851d250ae28274326fee64279403039265f7a2980f851fd42275616"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "fix", "mean_response_ns": 5184689.253662109, "record_id": "2058f76c4a73fa701c5f6bd642738019db14a06935398b3129ec8769945ef7d6"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "mean_response_ns": 2279460.492919922, "record_id": "c8281b8ba89a6a7232483d1c3a6955fd1614403179049960118765b5d9b8c310"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "fix", "mean_response_ns": 2226823.41015625, "record_id": "f1ca27fff7dab10d43b229d7d5ca861845d17c18e93739eae4c92d2ffcceb118"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "previous", "mean_response_ns": 2308510.3461914062, "record_id": "1ec7f6dc51dafc7021a61e61df6cf9e2467990dffa8e447ecb92fa9846f43f65"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "previous", "mean_response_ns": 2703527.143310547, "record_id": "8cef4c8d8137947e6fb76e35a3d1ea443cf3f7dbb1cec6b037b1895aa63f70ae"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "fix", "mean_response_ns": 2612708.421875, "record_id": "6df5eea915f0fd871b996f165f7e904f13ccc80a22bb34d7f0d202e72dd8b143"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-07", "arm": "stockoff", "mean_response_ns": 2626801.741455078, "record_id": "67c67b35670899ce9263d89914b82047d6637bf98fcd519d9a279a22c17401cc"}
+{"event": "prepare_content", "group": "residual-wildchat-final-04", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-04", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-04", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-04", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-04", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-04", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-04", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 3979318.942626953, "record_id": "1460a2ffe6d11677a8c84ecc8d76a00bbcd156afea40ec42a3f5cec41529fd67"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "fix", "mean_response_ns": 4447451.919921875, "record_id": "e743d5a5aa2f01d6fb2689e558ceaa58ee98e5a44c435db529041501753737c2"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "previous", "mean_response_ns": 4620951.802734375, "record_id": "480899dfdc84550c23e0b96c24e1443f51da678bc0475210596e41f08fb197d2"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "previous", "mean_response_ns": 6082048.249755859, "record_id": "547b8b0aa25b61483bdb86ea5c87ed82ffb6922f0a7a9074e5d9199754069c60"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "fix", "mean_response_ns": 5741265.0185546875, "record_id": "324e9e4b54863cf8550596f38f3a2624b74912b356ef4df11adc207b2d78862e"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 5455081.091064453, "record_id": "2812d309302a0b8dd28c6d837753401ae7a6768d882e007711b77cc7d3df294a"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "fix", "mean_response_ns": 2654167.673828125, "record_id": "c21554a0c7f79d76303dc260346b70671fc7b8fa37e4c93d5fb74b7570056301"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "previous", "mean_response_ns": 2701442.1796875, "record_id": "7ebae2692052ece3b3a241377239c760ae3ae280e4ac937b25f7a41c2c90d6af"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 2632514.1018066406, "record_id": "1e3481365b9eb53ef617efb4dfc49f19f9e8e9a38ab6fc0b6a4198f70f4a47de"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "stockoff", "mean_response_ns": 1695446.5209960938, "record_id": "137a377a21eb42f5dce19e33eddb7908962162c60c56aac32f4bdcd620606723"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "previous", "mean_response_ns": 1755472.01953125, "record_id": "f6d067d370f2c710188b45ade0330049dccdef773f21f9aef8855c7feac1c592"}
+{"event": "trial_start", "group": "residual-wildchat-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-04", "arm": "fix", "mean_response_ns": 1724883.1704101562, "record_id": "1020b1e99ff7bd7732c7a31f6fe215f3724eb20e3192ca5e794c81542139d0f6"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-04", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-04", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-04", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-04", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-04", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-04", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-04", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "previous", "mean_response_ns": 5636577.279541016, "record_id": "fec001308c3393d687fa21321f7d4e6cc228a98bd4f7aa0ecbdc706bca2b5df4"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "mean_response_ns": 4416561.589111328, "record_id": "a0e05b30c35c4c8e268d3ff032e7e40004df85d5effaf9b213b6f71f83a0f35c"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "fix", "mean_response_ns": 4956192.7900390625, "record_id": "98f0b95a4b05f026454e6985e5d1b5eb207e2c5ff310a19e1263908929b7e020"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "previous", "mean_response_ns": 2609485.5063476562, "record_id": "5d4f6b166f815971b419f5d58d2925bcb495a8ecc6b919e78dd940417b90e032"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "mean_response_ns": 2566944.9599609375, "record_id": "351f5528b92770f942b799e03276145ccd280f8e95f4089fde9ee25daae47261"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "fix", "mean_response_ns": 2558497.1467285156, "record_id": "390cd16cdfc9168369e78a21a1e2a90d6f9003dbd34b25c3844998198aeb15f1"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "fix", "mean_response_ns": 5555173.676025391, "record_id": "d32be814a750a0a3f552c810424cd8cc0d2c2138a7ab4e13cc9079bca31ec658"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "mean_response_ns": 5705133.439453125, "record_id": "8f4a958dc7365cad5d0f5c35451df79610a753e9e5c03b5a542ee4361b7de28b"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "previous", "mean_response_ns": 6667518.097412109, "record_id": "b7be50438a0a2e6c87708f0f41fb552fb45abc31de3f8d987a11a0eb98f09e4f"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "fix", "mean_response_ns": 1606601.2978515625, "record_id": "834d14e50aaf3fcdf23fa2302072585b44c3bdcdde7794be177d845096cf9c09"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "stockoff", "mean_response_ns": 1599829.0615234375, "record_id": "8657c1935f3402795c47905885dd06b9f2fbe695b20ea9fd2c243dc576d08806"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-04", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-04", "arm": "previous", "mean_response_ns": 1654127.4125976562, "record_id": "19d6f4c14da96f7732af628481e36b0972791ad913da74b1c5bf28c669f7e45b"}
+{"event": "prepare_content", "group": "residual-gsm8k_train-final-06", "phase": "final"}
+{"event": "reference", "group": "residual-gsm8k_train-final-06", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-06", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-06", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-06", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-gsm8k_train-final-06", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-gsm8k_train-final-06", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "previous", "mean_response_ns": 5634722.7265625, "record_id": "72b40882759f418d77e6245e889927429981c4b36936f9b6d485013fb9706273"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "fix", "mean_response_ns": 5269789.654541016, "record_id": "d936ef5563e660e7e94e1ee9b9f26f96568b87e974d2c5eeaa68ca45befc0e75"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "mean_response_ns": 5254269.490966797, "record_id": "fc77d243dd48721212314e80e6dd3c5ff4160e5bfa2f6605b8570f91912b505e"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "mean_response_ns": 2243438.936279297, "record_id": "c9a656c29ff9d8bcbe0235b3c4783500b6a04823698f4f6affff49c2fc0b3409"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "fix", "mean_response_ns": 2254450.637939453, "record_id": "f94d1c17a03e0f84f7eea2ebbe97490739cfd0546cb7b46288f0109698b8688e"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "previous", "mean_response_ns": 2312770.427734375, "record_id": "20dc4c9edcfb9f83ba34b2731a507529445758679c5f9d4f80c916b4271a8ad8"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "previous", "mean_response_ns": 2608704.775390625, "record_id": "f82555c5e07052abc92f8e20bfc57ee261122954c0fa23d2672d34b51897e8df"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "fix", "mean_response_ns": 2550840.703857422, "record_id": "9a82e47df8c479010bf5154f619e02dca418eb15e11a560519080dc46d34e8bf"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "mean_response_ns": 2585861.7119140625, "record_id": "12cf5954021ea6cfcb481ba701ff9cfbf0b7eeccd12b7eb60f5abbdb46543e63"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "stockoff", "mean_response_ns": 5256719.556396484, "record_id": "30a1bdc3b8ad2e53d734d98c2a8e9a8686c10d2e813116c504475239a02c3215"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "fix", "mean_response_ns": 5642895.666015625, "record_id": "e734d2823544c963a445c56638f12a77dc810cde752a9fa37f6af15739fea816"}
+{"event": "trial_start", "group": "residual-gsm8k_train-final-06", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-gsm8k_train-final-06", "arm": "previous", "mean_response_ns": 5869943.087402344, "record_id": "2030519aa8be4e15e5accc8cc1979c876dc1a727e0bb105fd5e3eac24612fb16"}
+{"event": "prepare_content", "group": "residual-wildchat-final-07", "phase": "final"}
+{"event": "reference", "group": "residual-wildchat-final-07", "input": 0, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-07", "input": 1024, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-07", "input": 2048, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-07", "input": 3072, "total": 4112}
+{"event": "reference", "group": "residual-wildchat-final-07", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "stockoff", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "stockoff", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "stockoff", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "stockoff", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "stockoff", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "previous", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "previous", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "previous", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "previous", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "previous", "input": 4096, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "fix", "input": 0, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "fix", "input": 1024, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "fix", "input": 2048, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "fix", "input": 3072, "total": 4112}
+{"event": "preflight", "group": "residual-wildchat-final-07", "arm": "fix", "input": 4096, "total": 4112}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "previous", "mean_response_ns": 26833015.169921875, "record_id": "9ac56707bd311e689e97c70892914539d03599498117fc41404ef2924a433d2e"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "fix", "mean_response_ns": 17401249.73022461, "record_id": "e29c65eaebb391fbb0f9e240c5d95a9c541060ee494206088c5e6da1619e4e4f"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 15145349.905517578, "record_id": "2ca3e8bb75f9b030361c243e2c721c47b33d65a5cb37044a7ae8acadae1d850f"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "stockoff", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 4234980.0341796875, "record_id": "33dbcb2dbcff32963d3ac978b1c14ec82323377ab5577a366c25d497ca03a501"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "fix", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "fix", "mean_response_ns": 4740061.3525390625, "record_id": "b2a5291daa25e89ee352da61aeea2303037d35acf51097b4980673105ad59447"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "previous", "rho": 0.85}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "previous", "mean_response_ns": 4932250.293701172, "record_id": "0b2c44c033b1b55e6afad06e837ec659da0a2779aca48060433a380e47bf1a0f"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "previous", "mean_response_ns": 2817217.998779297, "record_id": "6d166264d8a01d342912c5e2909da1e612fc1ae9ea8f042d0ff8a4b076634374"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 2686624.3325195312, "record_id": "fef42ee3ac1395df40f5268b0b567732dc62c7f23d005aeccb077d2b2cd6ca2c"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "fix", "mean_response_ns": 2757966.2209472656, "record_id": "7d0bbf80b947fbdc2ab53e3258b38dc0e933cb5062f6a94fa84fccc9c56e1933"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "fix", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "fix", "mean_response_ns": 2455852.8823242188, "record_id": "9d3f7236f38e0196555a08896feda219e5a2f25e0b892861870f81a653822ab8"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "stockoff", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "stockoff", "mean_response_ns": 2410794.3166503906, "record_id": "7f1ee566046290fd2f497319dbf9b0c6a6cbc2354fa441512d3e520b84473d6b"}
+{"event": "trial_start", "group": "residual-wildchat-final-07", "arm": "previous", "rho": 0.5}
+{"event": "trial_complete", "group": "residual-wildchat-final-07", "arm": "previous", "mean_response_ns": 2529444.4184570312, "record_id": "31245f5fdd67a999d735b278698d312bbe2721e041dd88e26771bb2a842336d5"}
