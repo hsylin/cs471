@@ -246,7 +246,7 @@ def run(args):
             env = dict(server_environment(os.environ),
                        SLURM_JOB_NODELIST=allocated_nodes, SLURM_JOB_NUM_NODES="2",
                        FULL_SERVING_CHECKPOINT_MANIFEST=str(out / "checkpoint-verified.json"), FULL_SERVING_RUN_DIR=str(arm_dir))
-            cmd = ["srun", "--jobid=" + JOB, "--exact", "--nodes=2", "--ntasks=2", "--ntasks-per-node=1",
+            cmd = ["srun", "--jobid=" + JOB, "--mpi=none", "--exact", "--nodes=2", "--ntasks=2", "--ntasks-per-node=1",
                    "--nodelist=" + ",".join(nodes),
                    "--cpus-per-task=56", "--gpus-per-node=4", "--mem=300G", "--kill-on-bad-exit=1", "--input=none",
                    "--output=" + str(arm_dir / "server-%t.log"), "--error=" + str(arm_dir / "server-%t.err"),

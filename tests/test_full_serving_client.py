@@ -11,7 +11,7 @@ import time
 from aiohttp import web
 import pytest
 
-from full_serving.client import SSEDecoder, ProtocolError, _open_new, load_workload, run_workload
+from full_serving.client import SSEDecoder, ProtocolError, _open_new, canonical_hash, load_workload, run_workload
 from full_serving.analyze import compare_runs, load_run, summarize_run
 
 
@@ -35,12 +35,16 @@ def request(rid="r0"):
 
 
 def events(*, usage=True, done=True, prompt_tokens=4, private_logprobs=False):
+    def diagnostic(token, token_id):
+        return {"logprobs": {"content": [{"token": token, "logprob": -0.1, "bytes": None, "top_logprobs": []}]},
+                "token_ids": [token_id]} if private_logprobs else {}
     values = [
-        {"id": "chatcmpl-test", "choices": [{"index": 0, "delta": {"role": "assistant"}}]},
+        {"id": "chatcmpl-test", "choices": [{"index": 0, "delta": {"role": "assistant"}}],
+         **({"prompt_token_ids": [0, 1, 2, 3]} if private_logprobs else {})},
         {"choices": [{"index": 0, "delta": {"content": "你好"},
-                      **({"logprobs": {"content": [{"token": "你好", "logprob": -0.1}]}} if private_logprobs else {})}]},
-        {"choices": [{"index": 0, "delta": {"content": " world"}}]},
-        {"choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}]},
+                      **diagnostic("你好", 10)}]},
+        {"choices": [{"index": 0, "delta": {"content": " world"}, **diagnostic(" world", 11)}]},
+        {"choices": [{"index": 0, "delta": {}, "finish_reason": "stop", **diagnostic("<|im_end|>", 12)}]},
     ]
     if usage:
         values.append({"choices": [], "usage": {"prompt_tokens": prompt_tokens,
@@ -83,7 +87,8 @@ def test_mock_stream_uses_server_tokens_and_keeps_output_private():
             return response
 
         async with mock_server(handler) as endpoint:
-            records, timing = await run_workload([request()], {"arrival_offsets_ns": [0]},
+            frozen_request = {**request(), "prompt_token_ids_sha256": canonical_hash([0, 1, 2, 3])}
+            records, timing = await run_workload([frozen_request], {"arrival_offsets_ns": [0]},
                 endpoint=endpoint, start_delay_s=0, logprobs=True,
                 on_record=lambda public, private: stored.append((public, private)))
         row = records[0]
@@ -93,15 +98,86 @@ def test_mock_stream_uses_server_tokens_and_keeps_output_private():
         assert row["scheduled_ns"] <= row["send_ns"] <= row["first_content_ns"] <= row["last_content_ns"] <= row["end_ns"]
         assert stored[0][1]["output"] == "你好 world"
         assert stored[0][1]["token_logprobs"][0]["logprobs"]["content"][0]["logprob"] == -.1
+        assert stored[0][1]["prompt_token_ids"] == [0, 1, 2, 3]
+        assert stored[0][1]["completion_token_ids"] == [10, 11, 12]
+        assert row["diagnostic_passed"] is True and row["diagnostic_logprob_count"] == 3
+        assert row["prompt_token_ids_sha256"] == frozen_request["prompt_token_ids_sha256"]
+        assert row["completion_token_ids_sha256"] == canonical_hash([10, 11, 12])
+        assert "prompt_token_ids" not in row and "completion_token_ids" not in row
         assert "你好" not in json.dumps(row, ensure_ascii=False)
         assert row["output_sha256"] == hashlib.sha256("你好 world".encode()).hexdigest()
         assert received[0]["max_tokens"] == 2048 and received[0]["temperature"] == 0
         assert received[0]["chat_template_kwargs"] == {"enable_thinking": False}
         assert received[0]["stream_options"] == {"include_usage": True}
+        assert received[0]["return_token_ids"] is True and received[0]["top_logprobs"] == 0
         assert "ignore_eos" not in received[0] and "min_tokens" not in received[0]
         summary = summarize_run(records, timing)
         assert summary["valid"] and summary["completion_tokens"]["mean"] == 3
         assert summary["content_chunk_counts"]["mean"] == 2
+
+    asyncio.run(run())
+
+
+@pytest.mark.parametrize("mode", ["missing_logprobs", "nonfinite_logprob", "null_logprob",
+                                  "missing_output_ids", "missing_prompt_ids", "wrong_prompt_hash"])
+def test_diagnostic_requires_complete_finite_token_metadata(mode):
+    async def run():
+        async def handler(req):
+            values = [json.loads(event.decode()[6:].strip()) for event in events(private_logprobs=True)[:-1]]
+            if mode == "missing_logprobs":
+                values[2]["choices"][0].pop("logprobs")
+            elif mode in {"nonfinite_logprob", "null_logprob"}:
+                values[2]["choices"][0]["logprobs"]["content"][0]["logprob"] = float("nan") if mode == "nonfinite_logprob" else None
+            elif mode == "missing_output_ids":
+                values[2]["choices"][0].pop("token_ids")
+            elif mode == "missing_prompt_ids":
+                values[0].pop("prompt_token_ids")
+            response = web.StreamResponse(headers={"Content-Type": "text/event-stream"})
+            await response.prepare(req)
+            await response.write(("".join("data: " + json.dumps(v) + "\n\n" for v in values) + "data: [DONE]\n\n").encode())
+            await response.write_eof()
+            return response
+
+        private_records = []
+        input_request = request()
+        if mode == "wrong_prompt_hash":
+            input_request["prompt_token_ids_sha256"] = canonical_hash([0, 1, 2, 99])
+        async with mock_server(handler) as endpoint:
+            rows, timing = await run_workload([input_request], {"arrival_offsets_ns": [0]},
+                endpoint=endpoint, start_delay_s=0, logprobs=True,
+                on_record=lambda public, private: private_records.append(private))
+        assert len(rows) == 1 and rows[0]["diagnostic_passed"] is False
+        assert not rows[0]["success"] and not summarize_run(rows, timing)["valid"]
+        # Failed non-finite streams must still produce writable audit records.
+        json.dumps(rows, allow_nan=False)
+        json.dumps(private_records, allow_nan=False)
+
+    asyncio.run(run())
+
+
+def test_main_request_payload_unchanged_and_cached_tokens_do_not_reduce_prompt_count():
+    async def run():
+        payloads = []
+
+        async def handler(req):
+            payloads.append(await req.json())
+            values = events()
+            usage = json.loads(values[-2].decode()[6:].strip())
+            usage["usage"]["prompt_tokens_details"] = {"cached_tokens": 3}
+            values[-2] = ("data: " + json.dumps(usage) + "\n\n").encode()
+            response = web.StreamResponse(headers={"Content-Type": "text/event-stream"})
+            await response.prepare(req)
+            await response.write(b"".join(values))
+            await response.write_eof()
+            return response
+
+        async with mock_server(handler) as endpoint:
+            rows, _ = await run_workload([request()], {"arrival_offsets_ns": [0]}, endpoint=endpoint, start_delay_s=0)
+        assert rows[0]["success"] and rows[0]["usage"]["prompt_tokens"] == 4
+        assert rows[0]["usage"]["prompt_tokens_details"]["cached_tokens"] == 3
+        assert payloads[0] == {"model": "qwen3-full", "messages": request()["messages"],
+            "stream": True, "stream_options": {"include_usage": True}, "temperature": 0,
+            "max_tokens": 2048, "n": 1, "chat_template_kwargs": {"enable_thinking": False}}
 
     asyncio.run(run())
 

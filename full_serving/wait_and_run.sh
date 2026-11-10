@@ -28,7 +28,7 @@ done
 primary=$(scontrol show hostnames "$(squeue -h -j "$job" -o '%N')" | head -1)
 # The complete snapshot must exist by startup; preflight fails closed otherwise.
 printf 'launching controller on %s at %s\n' "$primary" "$(date --iso-8601=seconds)" > "$state/waiter-state.txt"
-srun --jobid="$job" --nodes=1 --ntasks=1 --nodelist="$primary" --exact \
+srun --jobid="$job" --mpi=none --nodes=1 --ntasks=1 --nodelist="$primary" --exact \
   --cpus-per-task=4 --gpus=0 --mem=16G --input=none \
   --output="$state/controller.log" --error="$state/controller.err" \
   python -m full_serving.orchestrate \

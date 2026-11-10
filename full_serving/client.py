@@ -72,6 +72,17 @@ def _integer(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
 
 
+def _finite_json_float(value: str) -> float:
+    parsed = float(value)
+    if not math.isfinite(parsed):
+        raise ProtocolError("non-finite JSON number in server event")
+    return parsed
+
+
+def _reject_json_constant(value: str):
+    raise ProtocolError("non-finite JSON constant in server event")
+
+
 def load_workload(request_path: Path, calendar_path: Path | None, max_tokens: int = 2048,
                   max_model_len: int = 32768, rate: float | None = None) -> tuple[list[dict], dict, dict]:
     request_bytes = request_path.read_bytes()
@@ -134,14 +145,14 @@ async def sleep_until_ns(target_ns: int) -> None:
 
 
 def _consume_event(raw: str, received_ns: int, record: dict, text_parts: list[str],
-                   private_logprobs: list[dict]) -> None:
+                   private_logprobs: list[dict], private_tokens: dict) -> None:
     if record["saw_done"]:
         raise ProtocolError("event after [DONE]")
     if raw == "[DONE]":
         record["saw_done"] = True
         record["done_ns"] = received_ns
         return
-    event = json.loads(raw)
+    event = json.loads(raw, parse_float=_finite_json_float, parse_constant=_reject_json_constant)
     if not isinstance(event, dict):
         raise ProtocolError("SSE data is not an object")
     if event.get("error") is not None:
@@ -153,6 +164,13 @@ def _consume_event(raw: str, received_ns: int, record: dict, text_parts: list[st
     if event.get("usage") is not None:
         record["usage"] = event["usage"]
         record["usage_events"] += 1
+    if event.get("prompt_token_ids") is not None:
+        ids = event["prompt_token_ids"]
+        if not isinstance(ids, list) or any(not _integer(i) or i < 0 for i in ids):
+            raise ProtocolError("invalid prompt token IDs")
+        if private_tokens["prompt_token_ids"] is not None:
+            raise ProtocolError("duplicate prompt token IDs in stream")
+        private_tokens["prompt_token_ids"] = ids
     choices = event.get("choices", [])
     if not isinstance(choices, list) or len(choices) > 1:
         raise ProtocolError("expected at most one streamed choice")
@@ -162,7 +180,22 @@ def _consume_event(raw: str, received_ns: int, record: dict, text_parts: list[st
             raise ProtocolError("unexpected choice index")
         delta = choice.get("delta") or {}
         if choice.get("logprobs") is not None:
-            private_logprobs.append({"received_ns": received_ns, "logprobs": choice["logprobs"]})
+            logprobs = choice["logprobs"]
+            if not isinstance(logprobs, dict) or not isinstance(logprobs.get("content"), list):
+                raise ProtocolError("invalid streamed logprob content")
+            for item in logprobs["content"]:
+                value = item.get("logprob") if isinstance(item, dict) else None
+                if (not isinstance(value, (int, float)) or isinstance(value, bool)
+                        or not math.isfinite(value)):
+                    raise ProtocolError("missing or non-finite generated token logprob")
+            private_logprobs.append({"received_ns": received_ns, "logprobs": logprobs})
+        if choice.get("token_ids") is not None:
+            ids = choice["token_ids"]
+            if not isinstance(ids, list) or any(not _integer(i) or i < 0 for i in ids):
+                raise ProtocolError("invalid completion token IDs")
+            private_tokens["completion_token_ids"].extend(ids)
+        if choice.get("stop_reason") is not None:
+            private_tokens["stop_reason"] = choice["stop_reason"]
         if delta.get("reasoning_content") or delta.get("reasoning"):
             raise ProtocolError("thinking output present despite enable_thinking=false")
         content = delta.get("content") or ""
@@ -197,12 +230,29 @@ def _validate_completion(record: dict) -> None:
         raise ProtocolError("server prompt tokens differ from frozen tokenization")
 
 
+def _validate_diagnostics(record: dict, private_tokens: dict, private_logprobs: list[dict]) -> None:
+    """Pinned vLLM emits every generated token's metadata, even without text."""
+    prompt_ids = private_tokens["prompt_token_ids"]
+    if prompt_ids is None or len(prompt_ids) != record["usage"]["prompt_tokens"]:
+        raise ProtocolError("missing or incomplete diagnostic prompt token IDs")
+    expected_hash = record["expected_prompt_token_ids_sha256"]
+    if expected_hash is not None and canonical_hash(prompt_ids) != expected_hash:
+        raise ProtocolError("diagnostic prompt token IDs differ from frozen tokenization")
+    count = record["usage"]["completion_tokens"]
+    if len(private_tokens["completion_token_ids"]) != count:
+        raise ProtocolError("missing or incomplete diagnostic completion token IDs")
+    if sum(len(event["logprobs"]["content"]) for event in private_logprobs) != count:
+        raise ProtocolError("missing or incomplete diagnostic token logprobs")
+
+
 async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
                       index: int, offset_ns: int, epoch_ns: int, endpoint: str,
                       model: str, max_tokens: int, logprobs: bool = False) -> tuple[dict, dict]:
     record = {"type": "request", "request_id": request["id"], "request_index": index,
               "input_sha256": canonical_hash(request["messages"]),
               "expected_input_tokens": request["input_tokens"],
+              "expected_prompt_token_ids_sha256": request.get("prompt_token_ids_sha256"),
+              "diagnostic_requested": logprobs, "diagnostic_passed": None,
               "scheduled_ns": epoch_ns + offset_ns, "arrival_offset_ns": offset_ns,
               "arrival_wakeup_ns": None, "semaphore_acquired_ns": None,
               "send_ns": None, "headers_ns": None, "first_content_ns": None,
@@ -212,6 +262,7 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
               "success": False, "error_type": None, "error_message": None}
     parts: list[str] = []
     private_logprobs: list[dict] = []
+    private_tokens: dict = {"prompt_token_ids": None, "completion_token_ids": [], "stop_reason": None}
     private_error = None
     await sleep_until_ns(record["scheduled_ns"])
     record["arrival_wakeup_ns"] = time.monotonic_ns()
@@ -222,7 +273,7 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
                    "max_tokens": max_tokens, "n": 1,
                    "chat_template_kwargs": {"enable_thinking": False}}
         if logprobs:
-            payload.update(logprobs=True, top_logprobs=0)
+            payload.update(logprobs=True, top_logprobs=0, return_token_ids=True)
         record["payload_sha256"] = canonical_hash(payload)
         record["send_ns"] = time.monotonic_ns()
         try:
@@ -238,12 +289,17 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
                 async for data in response.content.iter_any():
                     received_ns = time.monotonic_ns()
                     for event in decoder.feed(data):
-                        _consume_event(event, received_ns, record, parts, private_logprobs)
+                        _consume_event(event, received_ns, record, parts, private_logprobs, private_tokens)
                 for event in decoder.feed(b"", final=True):
-                    _consume_event(event, time.monotonic_ns(), record, parts, private_logprobs)
+                    _consume_event(event, time.monotonic_ns(), record, parts, private_logprobs, private_tokens)
                 _validate_completion(record)
+                if logprobs:
+                    _validate_diagnostics(record, private_tokens, private_logprobs)
+                    record["diagnostic_passed"] = True
                 record["success"] = True
         except Exception as exc:
+            if logprobs:
+                record["diagnostic_passed"] = False
             record["error_type"] = type(exc).__name__
             # Exception text can contain server/user data: only retain it privately.
             private_error = private_error or str(exc) or repr(exc)
@@ -254,6 +310,14 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
     record["output_sha256"] = sha256_bytes(output.encode())
     record["output_chars"] = len(output)
     record["output_utf8_bytes"] = len(output.encode())
+    prompt_ids, output_ids = private_tokens["prompt_token_ids"], private_tokens["completion_token_ids"]
+    record["prompt_token_ids_count"] = len(prompt_ids) if prompt_ids is not None else None
+    record["prompt_token_ids_sha256"] = canonical_hash(prompt_ids) if prompt_ids is not None else None
+    record["completion_token_ids_count"] = len(output_ids) if logprobs else None
+    record["completion_token_ids_sha256"] = canonical_hash(output_ids) if logprobs else None
+    record["diagnostic_logprob_count"] = sum(len(event["logprobs"]["content"]) for event in private_logprobs)
+    record["diagnostic_clamped_or_placeholder_logprobs"] = sum(
+        item["logprob"] == -9999.0 for event in private_logprobs for item in event["logprobs"]["content"])
     record["client_schedule_lag_ns"] = record["arrival_wakeup_ns"] - record["scheduled_ns"]
     record["client_semaphore_wait_ns"] = record["semaphore_acquired_ns"] - record["arrival_wakeup_ns"]
     record["client_send_delay_ns"] = record["send_ns"] - record["scheduled_ns"]
@@ -270,6 +334,7 @@ async def run_request(session: Any, semaphore: asyncio.Semaphore, request: dict,
     return record, {"type": "private_request", "request_id": request["id"],
                     "output": output, "error_detail": private_error,
                     "token_logprobs": private_logprobs,
+                    **private_tokens,
                     "output_sha256": record["output_sha256"]}
 
 
@@ -342,7 +407,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--max-inflight", type=int, default=256)
     parser.add_argument("--timeout-s", type=float, default=1800)
     parser.add_argument("--start-delay-s", type=float, default=1)
-    parser.add_argument("--logprobs", action="store_true", help="Correctness diagnostic: save generated token logprobs privately")
+    parser.add_argument("--logprobs", action="store_true", help="Correctness diagnostic: validate/save prompt/output IDs and finite generated token logprobs privately")
     args = parser.parse_args(argv)
     if args.max_tokens <= 0 or args.max_model_len <= args.max_tokens:
         parser.error("invalid token limits")
@@ -362,6 +427,7 @@ def main(argv: list[str] | None = None) -> int:
               "temperature": 0, "enable_thinking": False, "ignore_eos": False,
               "max_inflight": args.max_inflight, "http_timeout_s": args.timeout_s,
               "logprobs": args.logprobs, "arrival_kind": calendar.get("kind", "external_calendar"),
+              "diagnostic_return_token_ids": args.logprobs,
               "synthetic_rate_requests_per_s": args.rate,
               "client_time_origin": "monotonic_ns; epoch is shared across all requests",
               "timestamp_semantics": "send=submission to aiohttp; content timestamps=SSE receipt, not individual tokens",
