@@ -27,6 +27,48 @@ def fmt(value, digits=3):
     return f"{n:,.{digits}f}" if n is not None else "unavailable"
 
 
+def comparison_notes(dataset, contrast):
+    """Describe the frozen endpoints; never turn exploratory data into acceptance."""
+    estimates = dataset.get("summary", {}).get(contrast, {})
+    response = estimates.get("mean_response_ms", {})
+    if dataset.get("complete") is not True or response.get("available") is not True:
+        return ["Dataset comparison pending: all four valid paired blocks are required."]
+    point = response["equal_block_geometric_mean_ratio"]
+    low, high = response["pointwise_95_percent_interval"]
+    notes = [f"Mean response changes by {100 * (point - 1):+.2f}% "
+             f"(exploratory pointwise 95% interval {100 * (low - 1):+.2f}% to {100 * (high - 1):+.2f}%)."]
+    notes.append("The interval supports lower response latency in these episodes."
+                 if high < 1 else "The interval supports higher response latency in these episodes."
+                 if low > 1 else "The interval includes no change; the direction remains inconclusive.")
+    notes.append("The point estimate meets the frozen 5% useful-gain margin."
+                 if point <= .95 else "The point estimate does not meet the frozen 5% useful-gain margin.")
+    for metric, label in (("p95_response_ms", "p95 response"), ("completed_elapsed_s", "completed elapsed time")):
+        estimate = estimates.get(metric, {})
+        if estimate.get("available") is not True:
+            notes.append(f"The {label} guard is unavailable.")
+            continue
+        value = estimate["equal_block_geometric_mean_ratio"]
+        lo, hi = estimate["pointwise_95_percent_interval"]
+        notes.append(f"The {label} changes by {100 * (value - 1):+.2f}% "
+                     f"(pointwise interval {100 * (lo - 1):+.2f}% to {100 * (hi - 1):+.2f}%); "
+                     + ("its point estimate reaches the 2% regression margin." if value >= 1.02
+                        else "its point estimate stays below the 2% regression margin."))
+    details = [b["contrasts"][contrast] for b in dataset["blocks"]]
+    matched = sum(d["equal_generated_texts"] for d in details)
+    count = sum(d["paired_requests"] for d in details)
+    baseline_tokens = sum(d["baseline_output_tokens"] for d in details)
+    custom_tokens = sum(d["custom_output_tokens"] for d in details)
+    notes.append(f"Generated work: {matched}/{count} answers have identical output hashes; "
+                 f"the baseline generated {baseline_tokens:,} tokens and our method generated {custom_tokens:,}.")
+    if matched != count:
+        notes.append("Different generated answers prevent interpreting this as an equal-generated-work speedup; semantic answer quality was not evaluated.")
+    else:
+        notes.append("All generated answer hashes match in this comparison; this supports equal-output timing, not general model-quality equivalence.")
+    notes.append("These are warmed full-model HTTP response times, including waiting and generation. Startup and warmup are separate. "
+                 "Four-block pointwise intervals do not give family-wise guarantees, steady-state capacity, or confirmatory acceptance.")
+    return notes
+
+
 def table_rows(report):
     if report.get("schema") != "resident_compare_report_v1" or report.get("final_speedup_claim") is not False:
         raise ValueError("expected an audited resident_compare_report_v1 exploratory report")
@@ -81,6 +123,9 @@ def render_html(report, rows, source_hash):
                       str(estimate.get("independent_block_count")) if available else "incomplete"]
             sections.append("<tr>" + "".join("<td>" + esc(v) + "</td>" for v in values) + "</tr>")
         sections.append("</table><p>The interval is pointwise and assumption-dependent with four blocks. A point estimate meeting a 5% gain or 2% regression margin is not a confirmatory acceptance decision.</p>")
+        for contrast in ("custom/off", "custom/on"):
+            sections.append("<h3>" + esc(contrast) + " — interpretation</h3><ul>" +
+                            "".join("<li>" + esc(note) + "</li>" for note in comparison_notes(dataset, contrast)) + "</ul>")
         headers = ("Block / arm", "Completed / failed", "Mean response ms", "p95 response ms", "TTFT ms", "Elapsed s", "Drain s", "Output tok/s", "Output tokens", "Length caps")
         sections.append("<table><tr>" + "".join("<th>" + x + "</th>" for x in headers) + "</tr>")
         for row in (r for r in rows if r["dataset"] == name):
