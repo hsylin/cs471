@@ -1,0 +1,86 @@
+{
+  "asset": "BurstGPT_1.csv",
+  "asset_id": 341026710,
+  "bytes": 52283111,
+  "collected_utc": "2026-11-10T13:33:50.911338+00:00",
+  "dataset": "burstgpt",
+  "diagnostic_manifest": "burstgpt-diagnostic-block.json",
+  "diagnostic_policy": "One fixed-seed contiguous 24-row block, no length/model/failure/performance filtering. Preserve timestamp ties, original source token counts and zero-response failure indicators. Do not force new outputs to source lengths or inject source failures.",
+  "does_not_contain": [
+    "prompt text",
+    "generated text",
+    "Qwen tokenizer counts",
+    "per-token timings"
+  ],
+  "download_url": "https://github.com/HPMLL/BurstGPT/releases/download/v2.0/BurstGPT_1.csv",
+  "evidence_files": {
+    "burstgpt/evidence/CITATION.cff": {
+      "bytes": 1465,
+      "sha256": "1f2dbb542c836ce8db4e5d5aee7b7278207258ee88becc33e87b5c267a981562"
+    },
+    "burstgpt/evidence/LICENSE": {
+      "bytes": 18656,
+      "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+    },
+    "burstgpt/evidence/README.md": {
+      "bytes": 5176,
+      "sha256": "7e0443b352b6db6a3cc6aa1929662e44f548752b80517e534b9ee2e81b6eb999"
+    },
+    "burstgpt/evidence/arxiv-2401.17644v4.html": {
+      "bytes": 156468,
+      "sha256": "efe7f27a538f9790db708602584e528a2181f6d43f9d3cf2388b404fdf6d9264"
+    },
+    "burstgpt/evidence/crossref.json": {
+      "bytes": 23862,
+      "sha256": "aa7edfd0d3cc578e0c81112c70b9c9ed2b847db326499f92065472c9862e49a9"
+    },
+    "burstgpt/evidence/github-release-v2.0.json": {
+      "bytes": 13906,
+      "sha256": "5eba7030c99c5b6c4c2c7e36bd1dd887576d64c9e77bdfb17da46e3068c219f0"
+    },
+    "burstgpt/evidence/github-tag-v2.0.json": {
+      "bytes": 362,
+      "sha256": "def6cddf8817e02fd18d80ea2bc782c97e8d0e06caa74acad82d0e21e203eac4"
+    }
+  },
+  "license": {
+    "declared": "CC-BY-4.0",
+    "evidence_url": "https://github.com/HPMLL/BurstGPT/blob/7eb2c4f8350f8a6985272386f5c14af1f678b299/LICENSE",
+    "requirement": "Attribution to BurstGPT authors, link to CC-BY4.0, and disclosure of changes"
+  },
+  "measurements": "source acquisition and trace selection only; no serving result",
+  "observed_columns": [
+    "Timestamp",
+    "Model",
+    "Request tokens",
+    "Response tokens",
+    "Total tokens",
+    "Log Type"
+  ],
+  "publication": {
+    "doi": "10.1145/3711896.3737413",
+    "methods_read": "https://arxiv.org/html/2401.17644v4#S4",
+    "methods_version": "arXiv v4 (21 May 2025), preprint counterpart; not claimed identical to inaccessible final publisher text",
+    "published": [
+      2025,
+      8,
+      3
+    ],
+    "publisher_landing_status": "HTTP403 during access; metadata from publisher-deposited Crossref record",
+    "title": "BurstGPT: A Real-World Workload Dataset to Optimize LLM Serving Systems",
+    "type": "proceedings-article",
+    "venue": "Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2"
+  },
+  "release": "v2.0",
+  "release_published_at": "2026-01-15T16:39:16Z",
+  "repository": "HPMLL/BurstGPT",
+  "sha256": "4bb3783693d0a435686fbfc885615d2349bd067239079fa4b749f2e679e12122",
+  "sha256_matches_github_asset_digest": true,
+  "tag_commit": "7eb2c4f8350f8a6985272386f5c14af1f678b299",
+  "vllm_recognition": {
+    "commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "difference": "vLLM docs name v1.1 without_fails_2; this diagnostic deliberately uses failure-inclusive v2.0 BurstGPT_1 with published asset checksum",
+    "section": "Dataset Overview / BurstGPT",
+    "url": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/docs/benchmarking/cli.md"
+  }
+}

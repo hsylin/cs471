@@ -1,0 +1,66 @@
+{
+  "asset": "ShareGPT_V3_unfiltered_cleaned_split.json",
+  "authenticity_scope": "Full released conversation-segment prefixes, ending at last user. Upstream already cleaned and split original conversations; not untouched original sessions.",
+  "bytes": 672837942,
+  "collected_utc": "2026-11-10T13:33:50.911338+00:00",
+  "dataset": "sharegpt",
+  "download_url": "https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/192ab2185289094fc556ec8ce5ce1e8e587154ca/ShareGPT_V3_unfiltered_cleaned_split.json",
+  "evidence_files": {
+    "sharegpt/evidence/README.md": {
+      "bytes": 4413,
+      "sha256": "a2785f1615abc94a60cebb570b1a61848751661edadb1d9ccc27b7072bf263cb"
+    },
+    "sharegpt/evidence/hf-metadata.json": {
+      "bytes": 1772,
+      "sha256": "01155fea8f394f13d51c3cf7585a5b593b4bae554cbcb23da2823823794dbb8e"
+    },
+    "sharegpt/evidence/hf-tree.json": {
+      "bytes": 7856,
+      "sha256": "78a603e1d783f919a1a420f54094ff83a65d9a9e17aa505f7fd791243d842a6d"
+    },
+    "sharegpt/evidence/split_long_conversation.py": {
+      "bytes": 3403,
+      "sha256": "5f91c27efe1366a586952e94efa986b1a840692b4a312dda69325f1873c4755c"
+    }
+  },
+  "grouping_evidence": {
+    "all_94145_observed_release_ids_match": true,
+    "function": "split_sample",
+    "line": 28,
+    "root_constraint": "at most one candidate per group_id across pilot and final",
+    "rule": "release id is original id + underscore + starting-message index; strip exactly the final numeric suffix",
+    "url": "https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/blob/192ab2185289094fc556ec8ce5ce1e8e587154ca/split_long_conversation.py"
+  },
+  "license": {
+    "declared": "Apache-2.0",
+    "evidence_kind": "publisher dataset-card YAML license declaration",
+    "evidence_url": "https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/blob/192ab2185289094fc556ec8ce5ce1e8e587154ca/README.md",
+    "scope_note": "Declaration recorded, not an independent audit of every original contributor right.",
+    "separate_license_file_present": false
+  },
+  "measurements": "source acquisition and format audit only; no serving result",
+  "our_processing": {
+    "assistant_initial_segments_retained_and_marked": true,
+    "no_text_truncation": true,
+    "prior_assistant_context_retained": true,
+    "target_answer_used_as_input": false,
+    "tokenization": "deferred to pinned model cohort builder"
+  },
+  "preparation_manifest": "sharegpt-preparation.json",
+  "repository": "anon8231489123/ShareGPT_Vicuna_unfiltered",
+  "revision": "192ab2185289094fc556ec8ce5ce1e8e587154ca",
+  "sha256": "35f0e213ce091ed9b9af2a1f0755e9d39f9ccec34ab281cd4ca60d70f6479ba4",
+  "sha256_matches_published_huggingface_lfs_oid": true,
+  "upstream_processing": [
+    "English/language filtering",
+    "Repeated-character filtering",
+    "Content and refusal-phrase filtering",
+    "Conversation splitting described around 2048 upstream tokens"
+  ],
+  "vllm_recognition": {
+    "commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "exact_asset_named": true,
+    "section": "Dataset Overview / ShareGPT",
+    "url": "https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/docs/benchmarking/cli.md"
+  }
+}

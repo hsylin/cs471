@@ -1,12 +1,14 @@
 # Eight-GPU full-model extension — implemented pilot, not yet measured
 
-## Status and scope
+## Full-model experiment
 
-This is a new full-model experiment, separate from the frozen two-GPU layer experiments. No full-model throughput or latency result exists yet. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. At verification it was pending for priority; the estimated start is not a guarantee, and the 48 hours begin at actual allocation. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
+### Status and scope
+
+This is a new full-model experiment, separate from the frozen two-GPU layer experiments. No full-model throughput or latency result exists yet. Slurm job **4882284** requests two nodes with four H100s, 64 CPUs and 360 GB host memory per node for 48 hours. It began running on kh074 and kh077 at 2026-11-10 14:22:47 Zurich, with four 94 GB H100s per node and NV6 links within each node. Its 48 hours run from the actual allocation start. The account's verified limit is eight GPUs per job and per user, so a 16-GPU request is not currently feasible under this QOS. See `cluster/reservation-4882284.json`.
 
 Use the existing **Qwen/Qwen3-30B-A3B**, revision `ad44e777bcd18fa416d9da3bd8f70d33ebb85d39`, and vLLM `0.31.0+cu129`, source commit `db9527a46873454610df6dbedf79a36d6bf1a7f6`. The model has 48 layers, 128 routed experts per layer, top-8 routing, and a 40,960-token configured context. The complete checkpoint has 16 weight shards; downloading missing shards is preparation, not proof of a successful full-model load. Verify the index, all shard files, revision and checksums before final measurements. [Pinned model configuration](https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/config.json)
 
-## What changes relative to the layer benchmark
+### What changes relative to the layer benchmark
 
 The old capture path saves layer-0 inputs, replaces expert computation with a recorder, and uses a 512-token prefix. The old executable benchmark supplies the same input to two ranks and combines their outputs. Its B128/top-8 dispatcher hard-codes 160 physical slots split across two ranks, a fixed stream and a reused output buffer. It is not a full inference server. Relevant code: `scripts/capture_residual_inputs.py`, `stock_comparison/native.py`, `resident_fastpath/fused.py`, and `resident_residual/compiled.py`.
 
@@ -14,7 +16,7 @@ The new experiment sends actual text to vLLM's HTTP chat endpoint, runs every mo
 
 **Do not install the old resident dispatcher in this experiment.** Different data-parallel ranks receive different requests. Their local routing histograms need not agree. The old assumption that identical local inputs imply identical replica decisions therefore fails. Preserving its globally coordinated choice would require demand communication and agreement at every applicable layer/step, plus support for dynamic batch sizes, CUDA graphs, all-to-all dispatch, all layers and concurrent execution. That is a separate implementation and correctness task. Native full-model baselines must work first; their results cannot establish a speedup from our layer-only dispatcher.
 
-## Verified serving topology and first comparison
+### Verified serving topology and first comparison
 
 Use **DP=8, TP=1, EP enabled**, with four local DP ranks on each node. The pinned implementation makes EP size equal to DP × TP; DP greater than one activates communication of dispatched request activations. Attention is replicated across the eight TP1 ranks. This avoids treating TP-only replicated input execution as the new distributed request experiment.
 
@@ -29,7 +31,7 @@ This is a comparison of native configurations, including the memory and executio
 
 `launch_native_draft.sh` produces exact commands for this topology. It now explicitly selects multiprocessing DP and one API process; internal load balancing still reaches all eight DP engines. The primary and worker start concurrently in one two-task Slurm step. Its CLI flags were checked against the pinned [argument definitions](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/engine/arg_utils.py) and [serve entrypoint](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/entrypoints/cli/serve.py). CPU tests and dry runs pass. Installed bytes for 12 critical vLLM sources match the pinned commit (`results/full-serving/setup/installed-source-check.json`). This verifies selected files, not the entire wheel or a running GPU server.
 
-## Actual requests and fresh data
+### Actual requests and fresh data
 
 Use bounded, previously unused WildChat conversations from the pinned dataset revision `f66566ceaaeb619dd98ffb0f3bf3ce1f86775ac4`; retain its ODC-By attribution and privacy/access constraints. Verify license and source metadata in the archived manifest. Split by conversation ID and normalized-text hash, excluding IDs used in earlier experiments and separating pilot from final data. Do not select by expert distribution or measured performance. [Dataset and license](https://huggingface.co/datasets/allenai/WildChat)
 
@@ -39,7 +41,7 @@ For the initial pilot, set maximum model context to 32,768, request maximum new 
 
 Use contiguous, disjoint blocks from the already licensed Azure public conversation/code arrival data. Assign actual requests to these timestamps with a fixed seed and preserve absolute arrivals under overload. This pairing provides external arrival patterns plus external content; it does not reconstruct a joint production trace. Record source block IDs, any timestamp rescaling and the independent content/arrival pairing. Submit via streaming HTTP so TTFT and per-token arrival times are observable. The load generator must not become the bottleneck; record actual send delay, concurrency and failed connections.
 
-## Bounded execution plan
+### Bounded execution plan
 
 1. **Allocation and checkpoint preflight:** verify the running reservation, two hosts/four H100s each, model completeness, pinned package/source hashes, available RAM/KV capacity, network interfaces and backend. Start only one arm at a time across the same eight GPUs.
 2. **Smoke:** complete a few real short and long requests through all 48 layers, including generated decode and EOS/cap accounting. Test both native arms. Confirm health, finite logits/output, identical tokenization, correct number of ranks, stable process completion and no failed collectives. Compare deterministic output tokens/log probabilities on a small correctness set with a documented numerical tolerance; flag divergent generations for investigation rather than assuming bitwise equality across parallel reductions.
@@ -49,7 +51,7 @@ Use contiguous, disjoint blocks from the already licensed Azure public conversat
 
 The 24-run outline is not a frozen protocol: pilot precision and actual run lengths are unknown. The freeze must fit measured duration, checkpoint load time, warmup, diagnostics and drain within the reservation, and must not cut an overloaded run short to improve reported latency.
 
-## Records, decisions and falsification
+### Records, decisions and falsification
 
 Record git/source and environment hashes, checkpoint shard hashes, hardware/topology, all resolved server flags, model/tokenizer/template revisions, workload IDs and input/output lengths, generated token IDs or approved hashes, finish reasons, client send/first-token/token/end timestamps, status/errors, server queue/service metrics, KV usage/preemption and synchronized diagnostic timing. Preserve request-level records and run-level totals. For EPLB diagnostics record proposed map, transfer start/end, normal commit completion and map version on each rank; draining asynchronous work alone is not evidence of commit. Verify logical expert IDs, replica equivalence and rank agreement on a small instrumented subset. Record backend logs and profiler traces that show actual dispatch/combine communication.
 
@@ -58,7 +60,9 @@ Report TTFT, inter-token/TPOT latency, end-to-end mean and p95/p99 request laten
 Before final runs, predeclare a primary completed-elapsed or throughput endpoint at common offered rate and a 5% useful-gain target, with 2% acceptable latency-regression margins and multiplicity handling for the two load guards. A confidence interval spanning useful gain and material regression is inconclusive. Failure includes missing/corrupt requests, violated numerical/routing checks, inconsistent committed maps, reduced throughput hidden by normalization, or a method whose charged end-to-end benefit does not exceed uncertainty. Native EPLB may win, lose or be indistinguishable here; none is predetermined. Publish exact workload manifests, commands, raw timing records and an independent replay procedure. A native baseline success establishes full-model feasibility, not that our custom method is faster.
 
 
-## Implemented first execution and current evidence
+## Execution and datasets
+
+### Implemented first execution and current evidence
 
 `prepare_data.py` selected 448 real WildChat conversation prefixes from all 88,238 rows of the pinned first shard. It excluded earlier source identities and normalized text duplicates. All 448 requests were independently retokenized with Transformers 5.17.0 and the pinned Qwen chat template. Prompt lengths are **16–8,121 tokens**, median 307; **165 exceed 512 tokens** and 64 exceed 2,048. There is no 512-token prefix truncation. Eight smoke inputs span 20, 37, 96, 263, 444, 933, 1,946 and 8,121 tokens. Public identities and preparation checks are in `results/full-serving/data-v1/request-manifest.json`; private message JSONL remains outside Git. The 384 final requests are prepared candidates, not completed measurements or a frozen final allocation.
 
@@ -69,3 +73,25 @@ The source and checkpoint preflight hashes all 16 weight shards and checks every
 Execution uses `wait_and_run.sh RUN_ID`, tied to allocation 4882284. It waits at most 24 hours for that allocation, then starts a four-CPU, zero-GPU controller step and two 56-CPU/four-GPU serving tasks. It does not submit another allocation, switch accounts, cancel the holding reservation, shorten EPLB windows, or install the layer-only dispatcher. All admitted requests are drained, including failures; missing usage or tokenization mismatches invalidate a run. Server shutdown uses the actual recorded Slurm step ID so native SIGTERM handlers can run. Native commit consistency remains a separate diagnostic; process exit or asynchronous drain is not counted as a commit.
 
 The pilot writes `status.json`, `completed-phases.json`, per-arm raw request JSONL, server logs, metric snapshots, launch/source/checkpoint/hardware records and a smoke-output hash comparison under the server's `full-serving/RUN_ID/results/`. A failure stops further execution and preserves logs. Successful pilot completion still requires inspecting output/logprob differences, native decision/commit opportunities, backend behavior and capacity before freezing the independent final comparison. No end-to-end speedup has been measured yet.
+
+
+### Separate named datasets
+
+The extension keeps **WildChat, ShareGPT, InstructCoder, NuminaMath-1.5 and LongBench as five separate content workloads**, each with its own pilot and reserved final file. It does not pool their response times into a single headline speedup. The initial suite has 64 pilot and 64 final candidates per source (320 of each); the other 320 previously prepared WildChat final requests remain reserved. All final candidates remain unmeasured until the pilot supports a frozen allocation and duration. Source and license evidence live under `results/full-serving/suite-sources/`; `suite-v1/suite-manifest.json` records selection and hashes.
+
+ShareGPT uses the release recognized by the pinned vLLM benchmark documentation. Its upstream creators filtered and segmented conversations; our inputs retain complete released prefixes, not claimed original unsegmented sessions. We keep at most one released segment per underlying conversation and exclude its recorded target reply. The selected 128 prompts range from 22 to 5,682 tokens. [Official vLLM benchmark data](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/docs/benchmarking/cli.md) · [Released ShareGPT dataset](https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered)
+
+InstructCoder and NuminaMath-1.5 connect the evaluation to METRO's named workloads and eight-GPU Qwen3 model configuration. METRO does not disclose an exact revision, row selection, template or generation cap, so this is aligned workload testing, not an exact reproduction. InstructCoder's selected prompts contain code-editing instructions plus input code (62–317 tokens); NuminaMath contains problems only (27–287 tokens), with no reference solution or answer supplied. Short natural inputs are retained. NuminaMath declares Apache-2.0. InstructCoder's official repository declares MIT, while its Hugging Face card lacks a separate explicit dataset-license declaration; that distinction remains recorded. [METRO methods, preprint](https://arxiv.org/html/2512.09277v1#S6.SS1) · [InstructCoder](https://huggingface.co/datasets/likaixin/InstructCoder) · [NuminaMath-1.5](https://huggingface.co/datasets/AI-MO/NuminaMath-1.5)
+
+The bounded original LongBench subset uses Qasper, GovReport and HotpotQA, with the pinned official task templates. Its 128 selected inputs range from 2,087 to 27,013 tokens. One question per context/document group prevents related Qasper questions from crossing the pilot/final boundary. Three oversized GovReport source prompts were rejected with their lengths recorded; none was truncated. These tasks also appear in FreeBalance, but its fixed-8K prefill measurements are not equivalent to natural-length autoregressive serving. Our generated outputs remain capped at 2,048 with normal EOS; the official task-specific answer caps are recorded as source metadata, not silently applied. [Original LongBench](https://github.com/THUDM/LongBench/tree/2e00731f8d0bff23dc4325161044d0ed8af94c1e/LongBench) · [FreeBalance evaluation, preprint](https://arxiv.org/html/2608.14205v1#S4)
+
+**BurstGPT is a separate timing diagnostic, not a sixth prompt dataset.** Its published data provide request timestamps, sizes and failures, not authentic prompt text. A fixed contiguous 24-row block is paired with independently sourced ShareGPT pilot text. This repeated-content diagnostic restarts native servers and preserves absolute, explicitly scaled source arrival offsets. It does not reproduce BurstGPT's original content, expert routing, model or token lengths. The selected block happens to contain no failures; the source was failure-inclusive and no failed rows were filtered. Results remain labelled as a hybrid replay. [BurstGPT KDD 2025](https://doi.org/10.1145/3711896.3737413) · [Official artifact](https://github.com/HPMLL/BurstGPT)
+
+The generic selector uses deterministic hash order, one source group per selected request, exact normalized text checks against all prior 448 WildChat requests and earlier selected suite sources, and the context-fit condition including output allowance. Private payloads stay outside Git; public metadata uses an explicit allowlist. Dataset source bytes and derived candidate files are admitted by hash before serving. The suite retains fresh payload distinctions: named-source pilots are new full-text content except the already declared WildChat pilot; BurstGPT reuses ShareGPT pilot content by design. The final comparison must report dataset-specific uncertainty and enough ordinary EPLB opportunities, rather than treating this pilot or 64 requests as evidence of sustained adaptation.
+
+
+### Native observability limits
+
+Native asynchronous EPLB logs show launch attempts, excluding profiling calls, but do not expose per-layer/final successful commit maps or a completion counter. The native counter starts at 2,250 against the 3,000-step interval, so the first nominal launch is after 750 calls; dummy DP steps and pending asynchronous work prevent reconstructing opportunities from request or token counts. A later ordinary launch is conditional evidence that the earlier cycle is no longer pending, not a proof of weight equality or the final committed map. `drain_async` discards transferred weights. Consequently the pilot reports launch counts and leaves commit consistency unverified until a separate diagnostic establishes it. `log_balancedness` remains disabled because enabling it adds collectives and synchronization. [Pinned EPLB state](https://github.com/vllm-project/vllm/blob/db9527a46873454610df6dbedf79a36d6bf1a7f6/vllm/distributed/eplb/eplb_state.py)
+
+The smoke requests retain prompt/output token IDs and selected-token logprobs privately, with hashes/counts in public records. Prompt IDs must equal the frozen tokenizer's IDs; requested output diagnostics must be present and finite. These are HTTP-level checks, not proof of all internal logits or expert maps. Greedy off/on generations may diverge because of batching/reduction order. Compare logprobs only along a common token prefix; later positions have different conditioning. Native metric snapshots can supply per-engine request queue and RUNNING-time means, prefill/decode means, cache hits and preemptions. Request RUNNING time is not isolated GPU service time, and histogram buckets give only coarse tail bounds.
