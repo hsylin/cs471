@@ -154,12 +154,74 @@ def test_native_on_arguments_match_the_unchanged_native_dry_run(tmp_path):
 def test_custom_environment_does_not_leak_into_native_controls(tmp_path):
     protocol, _ = fixture_protocol(tmp_path)
     env = compare.clean_server_environment({"SLURM_JOB_ID": compare.native.JOB, "SLURM_GPUS": "0", "CUDA_VISIBLE_DEVICES": "",
+        "SLURM_STEP_ID": "controller-step", "SLURM_CPU_BIND": "controller-binding",
         "FULL_SERVING_CUSTOM_MODE": "resident_v1", "FULL_SERVING_CUSTOM_CONFIG": "secret", "VLLM_PLUGINS": "cs471_resident,other",
-        "PYTHONPATH": str(compare.ROOT / "full_serving/bootstrap") + ":/some/normal/path"}, protocol)
+        "PYTHONPATH": str(compare.ROOT / "full_serving/bootstrap") + ":/some/normal/path"}, protocol, for_srun=True)
     assert env["SLURM_JOB_ID"] == compare.native.JOB
     assert "SLURM_GPUS" not in env and "CUDA_VISIBLE_DEVICES" not in env
+    assert "SLURM_STEP_ID" not in env and "SLURM_CPU_BIND" not in env
     assert "FULL_SERVING_CUSTOM_MODE" not in env and "FULL_SERVING_CUSTOM_CONFIG" not in env
     assert env["VLLM_PLUGINS"] == "other" and env["PYTHONPATH"] == "/some/normal/path"
+
+
+@pytest.mark.parametrize("arm", ["off", "on", "custom"])
+def test_in_step_launch_preserves_allocation_and_preflight_identity(tmp_path, monkeypatch, arm):
+    protocol, path = fixture_protocol(tmp_path)
+    run_dir = tmp_path / "server-step"
+    run_dir.mkdir()
+    allocation = {"SLURM_JOB_ID": compare.native.JOB, "SLURM_STEP_ID": "41", "SLURM_STEP_NUM_TASKS": "2",
+                  "SLURM_STEP_GPUS": "0,1,2,3", "SLURM_PROCID": "1", "SLURM_LOCALID": "0",
+                  "SLURMD_NODENAME": "kh077", "SLURM_JOB_NODELIST": "kh[074,077]",
+                  "SLURM_CPUS_PER_TASK": "56", "SLURM_MEM_PER_NODE": "307200", "SLURM_GPUS_PER_NODE": "4",
+                  "SLURM_CPU_BIND": "quiet,mask_cpu:0x00ff", "SLURM_GPU_BIND": "none",
+                  "CUDA_VISIBLE_DEVICES": "0,1,2,3"}
+    for key, value in allocation.items():
+        monkeypatch.setenv(key, value)
+    monkeypatch.setenv("FULL_SERVING_PROTOCOL_SHA256", compare.native.sha(path))
+    monkeypatch.setenv("FULL_SERVING_RUN_DIR", str(run_dir))
+    monkeypatch.setenv("FULL_SERVING_CHECKPOINT_MANIFEST", str(tmp_path / "checkpoint.json"))
+    monkeypatch.setenv("FULL_SERVING_CUSTOM_MODE", "stale-mode")
+    monkeypatch.setenv("FULL_SERVING_CUSTOM_CONFIG", "stale-config")
+    monkeypatch.setenv("FULL_SERVING_CUSTOM_UNREVIEWED", "must-be-removed")
+    monkeypatch.setenv("VLLM_PLUGINS", "cs471_resident,other")
+    monkeypatch.setenv("PYTHONPATH", str(compare.ROOT / "full_serving/bootstrap") + ":/normal/path")
+    observed = []
+    def check_common(env):
+        assert {key: env.get(key) for key in allocation} == allocation
+        assert env.get("FULL_SERVING_CUSTOM_UNREVIEWED") is None
+        assert env.get("VLLM_PLUGINS") == "other"
+    def preflight(command, **kwargs):
+        env = kwargs["env"]
+        check_common(env)
+        assert not any(key.startswith("FULL_SERVING_CUSTOM_") for key in env)
+        assert env["PYTHONPATH"] == "/normal/path"
+        # These are the values required by the native sampler-report guard.
+        sampler_report = {"job_id": compare.native.JOB, "step_id": "41", "hostname": "kh077"}
+        assert sampler_report["job_id"] == env["SLURM_JOB_ID"]
+        assert sampler_report["step_id"] == env["SLURM_STEP_ID"]
+        assert sampler_report["hostname"] == env["SLURMD_NODENAME"]
+        observed.append("preflight")
+        return SimpleNamespace(returncode=0, stdout="preflight passed\n")
+    class ExecCaptured(Exception):
+        pass
+    def execute(file, command, env):
+        check_common(env)
+        if arm == "custom":
+            assert env["FULL_SERVING_CUSTOM_MODE"] == "resident_v1"
+            assert env["FULL_SERVING_CUSTOM_CONFIG"] == str(tmp_path / "config.json")
+            assert env["FULL_SERVING_CUSTOM_CONFIG_SHA256"] == protocol["custom"]["config_sha256"]
+        else:
+            assert not any(key.startswith("FULL_SERVING_CUSTOM_") for key in env)
+            assert env["PYTHONPATH"] == "/normal/path"
+        observed.append("exec")
+        raise ExecCaptured
+    monkeypatch.setattr(compare.subprocess, "run", preflight)
+    monkeypatch.setattr(compare.os, "execvpe", execute)
+    args = SimpleNamespace(arm=arm, role="worker", snapshot=tmp_path / "snapshot",
+                           primary_ip="10.91.54.74", protocol=path)
+    with pytest.raises(ExecCaptured):
+        compare.launch_node(args)
+    assert observed == (["preflight", "exec"] if arm == "custom" else ["exec"])
 
 
 def write_bindings(directory, protocol, path):

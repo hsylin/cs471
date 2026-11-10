@@ -227,8 +227,10 @@ def admit_and_copy_inputs(protocol, protocol_path, private_root, private_out, pu
     return inputs
 
 
-def clean_server_environment(environment, protocol):
-    env = native.server_environment(environment)
+def clean_server_environment(environment, protocol, *, for_srun):
+    # Controller resource options must not constrain a new srun step. Once
+    # inside that step, its Slurm identity and GPU visibility are authoritative.
+    env = native.server_environment(environment) if for_srun else dict(environment)
     for key in list(env):
         if key.startswith("FULL_SERVING_CUSTOM_"):
             env.pop(key)
@@ -334,7 +336,7 @@ def launch_node(args):
     require(os.environ.get("SLURM_JOB_ID") == native.JOB, "wrong allocation")
     require(native.sha(args.protocol) == os.environ.get("FULL_SERVING_PROTOCOL_SHA256"), "protocol changed before node launch")
     protocol = load_admitted_protocol(args.protocol)
-    env = clean_server_environment(os.environ, protocol)
+    env = clean_server_environment(os.environ, protocol, for_srun=False)
     if args.arm != "custom":
         command = ["bash", str(ROOT / "full_serving/launch_native_draft.sh"), args.arm, args.role,
                    str(args.snapshot), args.primary_ip, "--execute"]
@@ -417,7 +419,7 @@ def run(args):
             private_session = private / job["session_id"]
             private_session.mkdir(parents=True, exist_ok=False, mode=0o700)
             update(state="starting_server", active_session=job["session_id"])
-            env = clean_server_environment(os.environ, protocol)
+            env = clean_server_environment(os.environ, protocol, for_srun=True)
             env.update(SLURM_JOB_NODELIST=allocated_nodes, SLURM_JOB_NUM_NODES="2",
                        FULL_SERVING_CHECKPOINT_MANIFEST=str(out / "checkpoint-verified.json"), FULL_SERVING_RUN_DIR=str(arm_dir),
                        FULL_SERVING_PROTOCOL_SHA256=status["protocol_sha256"])

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/custom_compare.py", line 512, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/custom_compare.py", line 507, in main
+    run(args)
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/custom_compare.py", line 433, in run
+    models = native.wait_server(server, base_url, execution.get("startup_timeout_s", 2400), arm_dir)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/orchestrate.py", line 124, in wait_server
+    raise RuntimeError(f"Server step exited during startup: {process.returncode}")
+RuntimeError: Server step exited during startup: 143

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/preflight.py", line 390, in <module>
+    main()
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/preflight.py", line 323, in main
+    result = runtime_preflight(args.snapshot, args.checkpoint_manifest, args.role, args.primary_ip)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/preflight.py", line 251, in runtime_preflight
+    sampler_prebuild = verify_flashinfer_prebuild(toolchain)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/preflight.py", line 205, in verify_flashinfer_prebuild
+    require(report.get("job_id") == JOB_ID and report.get("step_id") == os.environ.get("SLURM_STEP_ID")
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/a2084b4-final/full_serving/preflight.py", line 32, in require
+    raise PreflightError(message)
+PreflightError: Stale or wrong-node FlashInfer prebuild
