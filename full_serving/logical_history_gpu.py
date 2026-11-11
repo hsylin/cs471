@@ -1,26 +1,20 @@
-"""Exact logical rolling windows, fused outside the captured model graph.
+"""Exact logical demand windows, fused outside the captured model graph.
 
-One CTA owns one layer, including duplicate-expert reduction and window update.
+One CTA owns one layer, including reduction of duplicate physical copies into a logical ring row.
 Counts are observed BEFORE native async commits. No sampling or clock changes.
 """
 from vllm.triton_utils import triton, tl
 
 
 @triton.jit(do_not_specialize=['seen'])
-def update_history(Ring, Previous, Recent, Map, Counts, seen,
+def update_history(Ring, Map, Counts, seen,
                    W: tl.constexpr, L: tl.constexpr, E: tl.constexpr,
-                   P: tl.constexpr, DUMMY: tl.constexpr, ROLLING: tl.constexpr,
+                   P: tl.constexpr, DUMMY: tl.constexpr,
                    BLOCK: tl.constexpr):
     layer = tl.program_id(0)
     columns = tl.arange(0, BLOCK)
     logical = columns < E + 1
     row = Ring + ((seen % (2 * W)) * L + layer) * (E + 1)
-    if ROLLING:
-        middle = Ring + (((seen + W) % (2 * W)) * L + layer) * (E + 1)
-        outgoing = tl.load(row + columns, logical, 0)
-        crossing = tl.load(middle + columns, logical, 0)
-        prev = tl.load(Previous + layer * E + columns, columns < E, 0)
-        recent = tl.load(Recent + layer * E + columns, columns < E, 0)
     tl.store(row + columns, 0, logical)
     tl.debug_barrier()
     if not DUMMY:
@@ -28,11 +22,6 @@ def update_history(Ring, Previous, Recent, Map, Counts, seen,
         ids = tl.where(ids < 0, E, ids)
         values = tl.load(Counts + layer * P + columns, columns < P, 0).to(tl.int64)
         tl.atomic_add(row + ids, values, columns < P, sem='relaxed')
-    tl.debug_barrier()
-    if ROLLING:
-        added = tl.load(row + columns, logical, 0)
-        tl.store(Previous + layer * E + columns, prev - outgoing + crossing, columns < E)
-        tl.store(Recent + layer * E + columns, recent - crossing + added, columns < E)
 
 
 @triton.jit(do_not_specialize=['seen'])
@@ -50,30 +39,24 @@ def reduce_history(Ring, Output, seen, W: tl.constexpr, L: tl.constexpr,
 
 
 class LogicalHistory:
-    def __init__(self, device, *, window=1000, layers=48, experts=128, physical=160, rolling=True):
+    def __init__(self, device, *, window=1000, layers=48, experts=128, physical=160, rolling=False):
         import torch
         self.window, self.layers, self.experts, self.physical = window, layers, experts, physical
-        self.rolling = rolling
+        if rolling:raise ValueError("Rolling prototype was rejected by the exact GPU oracle")
         self.ring = torch.zeros((2 * window, layers, experts + 1), dtype=torch.int64, device=device)
-        self.previous = torch.zeros((layers, experts), dtype=torch.int64, device=device)
-        self.recent = torch.zeros_like(self.previous)
         self.seen = 0
 
     def update(self, mapping, counts, dummy=False):
         assert mapping.shape == counts.shape == (self.layers, self.physical)
         assert mapping.is_contiguous() and counts.is_contiguous()
-        update_history[(self.layers,)](self.ring, self.previous, self.recent, mapping, counts,
+        update_history[(self.layers,)](self.ring, mapping, counts,
                                      self.seen, self.window, self.layers, self.experts,
-                                     self.physical, dummy, self.rolling,
+                                     self.physical, dummy,
                                      triton.next_power_of_2(max(self.physical, self.experts + 1)), num_warps=4)
         self.seen += 1
 
     def snapshot(self):
         import torch
-        if self.rolling:
-            # The worker consumes snapshots later on another stream. Never hand
-            # it the mutable running sums or let an allreduce overwrite them.
-            return self.previous.clone(), self.recent.clone()
         out = torch.empty((2, self.layers, self.experts), dtype=torch.int64, device=self.ring.device)
         reduce_history[(self.layers, triton.cdiv(self.experts, 8), 2)](
             self.ring, out, self.seen, self.window, self.layers, self.experts,

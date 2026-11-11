@@ -20,8 +20,8 @@ def register():
     if mode not in ('b3','b4'):raise RuntimeError('Unknown gate mode')
     from full_serving.logical_history_gpu import LogicalHistory
     shadow_check=os.environ.get('CS471_GATE_SHADOW')=='1'
-    rolling=os.environ.get('CS471_GATE_HISTORY','rolling')=='rolling'
-    if os.environ.get('CS471_GATE_HISTORY','rolling') not in ('rolling','reduction'):raise RuntimeError('Unknown history implementation')
+    rolling=os.environ.get('CS471_GATE_HISTORY','reduction')=='rolling'
+    if os.environ.get('CS471_GATE_HISTORY','reduction') !='reduction':raise RuntimeError('Unknown history implementation')
     import numpy as np
     import torch
     from vllm.distributed import get_ep_group

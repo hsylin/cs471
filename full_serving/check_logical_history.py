@@ -17,7 +17,7 @@ def run():
     torch.manual_seed(4711111)
     device='cuda'
     checked=0
-    for rolling in (True,False):
+    for rolling in (False,):
         for window,layers,experts,physical,steps in ((7,3,11,16,45),(1000,48,128,160,7051)):
             h=LogicalHistory(device,window=window,layers=layers,experts=experts,physical=physical,rolling=rolling)
             ring=np.zeros((2*window,layers,experts+1),dtype=np.int64)
@@ -39,11 +39,15 @@ def run():
                 if step in checkpoints:
                     a,b=h.snapshot();order=(np.arange(2*window)+step+1)%(2*window)
                     expected=(ring[order[:window],:,:experts].sum(0),ring[order[window:],:,:experts].sum(0))
-                    assert np.array_equal(a.cpu().numpy(),expected[0]),(rolling,window,step,'previous')
+                    actual_a=a.cpu().numpy();actual_b=b.cpu().numpy()
+                    if not np.array_equal(actual_a,expected[0]) or not np.array_equal(actual_b,expected[1]):
+                        actual_ring=h.ring.cpu().numpy()
+                        raise AssertionError({'rolling':rolling,'window':window,'step':step,'ring_equal':bool(np.array_equal(actual_ring,ring)),'previous_max_error':int(np.abs(actual_a-expected[0]).max()),'recent_max_error':int(np.abs(actual_b-expected[1]).max()),'example':[(int(l),int(e),int(actual_a[l,e]),int(expected[0][l,e])) for l,e in zip(*np.nonzero(actual_a!=expected[0]))][:8]})
                     assert np.array_equal(b.cpu().numpy(),expected[1]),(rolling,window,step,'recent')
                     checked+=1
                     if saved is not None:assert torch.equal(saved[0],saved[1])
                     saved=(a,a.clone())
+            print(json.dumps({'rolling':rolling,'window':window,'checked':checked}),flush=True)
     # Same actual geometry and operation sequences; no map/count generation timed.
     W,L,E,P=1000,48,128,160
     m=torch.arange(P,device=device).remainder(E).expand(L,-1).contiguous().to(torch.int64)
@@ -57,7 +61,7 @@ def run():
         ordered=ring.index_select(0,order)
         return ordered[:W,:,:E].sum(0),ordered[W:,:,:E].sum(0)
     timings={}
-    for kind in ('original','rolling','reduction'):
+    for kind in ('original','reduction'):
         ring=torch.zeros((2*W,L,E+1),device=device,dtype=torch.int64)
         history=LogicalHistory(device,rolling=kind=='rolling')
         def update(i):
@@ -81,8 +85,9 @@ def run():
         end.record();end.synchronize()
         timings[kind]={'three_cycle_wall_ms':repeats,'median_cycle_wall_ms':statistics.median(repeats),'update_device_us_including_host_enqueue_gaps':start.elapsed_time(end)*10}
     return {'status':'passed','exact_snapshot_cases':checked,'timings':timings,
-            'selection_rule':'Choose the correct fused variant with lower median charged cycle time; do not use final serving traces for tuning.',
-            'selected':min(('rolling','reduction'),key=lambda k:timings[k]['median_cycle_wall_ms']),
+            'selection_rule':'Direct reduction is the only correctness-admitted fused candidate. Report both original and fused costs; do not select serving attempts by speed.',
+            'selected':'reduction',
+            'rejected_candidate':'Rolling prototype failed exact previous-window sums at step3749 with an intact ring/current window; not admitted.',
             'limitations':'Synthetic counter state; component timing includes Python enqueue and GPU synchronization. Not a full-model latency prediction.',
             'torch':torch.__version__,'gpu':torch.cuda.get_device_name()}
 

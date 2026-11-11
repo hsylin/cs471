@@ -1,0 +1,16 @@
+{
+  "status": "rejected_not_deployed_to_final",
+  "checks": [
+    "kernel-check-v1",
+    "kernel-check-v2"
+  ],
+  "mismatch": {
+    "window": 1000,
+    "step": 3749,
+    "ring_equal": true,
+    "previous_max_error": 115367,
+    "recent_max_error": 0
+  },
+  "decision": "Remove incremental rolling sums. Retain fused logical row updates and direct history reduction, which passed both window-size oracle cases in v2; recheck final simplified implementation and benchmark in v3.",
+  "cause": "Not fully diagnosed; no claim that GPU hardware, original B3/B4 or original recorded results are faulty."
+}
