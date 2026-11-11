@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Proposal and resident follow-up results</title><style>body{font:16px system-ui;max-width:1200px;margin:40px auto;padding:20px}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #ccc}</style><h1>Equal-output full-model comparison</h1><p>One group per dataset; descriptive ratios only. Startup and warmup excluded from serving timing. Equal output lengths do not prove identical tokens, routing or quality.</p><table><tr><th>dataset</th><th>arm</th><th>mean_response_ms</th><th>p95_response_ms</th><th>mean_ttft_schedule_ms</th><th>completed_elapsed_s</th><th>drain_s</th><th>output_tokens</th></tr><tr><td>longbench</td><td>off</td><td>1131.389</td><td>1910.073</td><td>651.619</td><td>9.471</td><td>1.019</td><td>162</td></tr><tr><td>longbench</td><td>b1</td><td>1137.181</td><td>1916.478</td><td>655.447</td><td>9.481</td><td>1.029</td><td>162</td></tr><tr><td>longbench</td><td>b2</td><td>1148.632</td><td>1931.332</td><td>662.970</td><td>9.482</td><td>1.030</td><td>162</td></tr><tr><td>longbench</td><td>b3</td><td>1152.081</td><td>1940.852</td><td>685.519</td><td>9.486</td><td>1.034</td><td>162</td></tr><tr><td>longbench</td><td>b4</td><td>1145.491</td><td>1928.313</td><td>658.323</td><td>9.484</td><td>1.032</td><td>162</td></tr><tr><td>longbench</td><td>resident_v1</td><td>1174.138</td><td>1904.343</td><td>693.747</td><td>9.470</td><td>1.018</td><td>162</td></tr><tr><td>longbench</td><td>resident_v2</td><td>1348.248</td><td>1905.929</td><td>868.272</td><td>9.469</td><td>1.017</td><td>162</td></tr><tr><td>numinamath</td><td>off</td><td>10635.107</td><td>19830.128</td><td>57.085</td><td>35.801</td><td>16.315</td><td>17519</td></tr><tr><td>numinamath</td><td>b1</td><td>11897.974</td><td>22097.395</td><td>60.243</td><td>36.918</td><td>17.432</td><td>17519</td></tr><tr><td>numinamath</td><td>b2</td><td>12183.149</td><td>22774.173</td><td>58.835</td><td>37.000</td><td>17.514</td><td>17519</td></tr><tr><td>numinamath</td><td>b3</td><td>12017.037</td><td>22126.664</td><td>86.759</td><td>37.522</td><td>18.036</td><td>17519</td></tr><tr><td>numinamath</td><td>b4</td><td>11392.782</td><td>20984.982</td><td>57.342</td><td>37.194</td><td>17.708</td><td>17519</td></tr><tr><td>numinamath</td><td>resident_v1</td><td>10693.353</td><td>19948.831</td><td>58.050</td><td>35.920</td><td>16.434</td><td>17519</td></tr><tr><td>numinamath</td><td>resident_v2</td><td>10602.811</td><td>19785.110</td><td>54.814</td><td>35.786</td><td>16.300</td><td>17519</td></tr></table><h2>longbench</h2><p>resident_v2/off: mean response +19.17%, p95 -0.22%, elapsed -0.03%. Identical output hashes 11/16.</p><p>resident_v2/resident_v1: mean response +14.83%, p95 +0.08%, elapsed -0.02%. Identical output hashes 14/16.</p><p>b4/b3: mean response -0.57%, p95 -0.65%, elapsed -0.02%. Identical output hashes 16/16.</p><p>resident_v2/b2: mean response +17.38%, p95 -1.32%, elapsed -0.15%. Identical output hashes 12/16.</p><p>b1/off: mean response +0.51%, p95 +0.34%, elapsed +0.10%. Identical output hashes 16/16.</p><p>b2/b1: mean response +1.01%, p95 +0.78%, elapsed +0.02%. Identical output hashes 13/16.</p><p>b3/b2: mean response +0.30%, p95 +0.49%, elapsed +0.03%. Identical output hashes 14/16.</p><p>b4/b2: mean response -0.27%, p95 -0.16%, elapsed +0.02%. Identical output hashes 14/16.</p><pre>{
+  &quot;b3&quot;: {
+    &quot;status&quot;: &quot;passed&quot;,
+    &quot;proposal_cycles&quot;: 0,
+    &quot;layer_decisions_rank0&quot;: {},
+    &quot;rank_layer_commits_enqueued&quot;: 0,
+    &quot;rank_layer_commits_gpu_completed&quot;: 0,
+    &quot;all_rank_layer_commits_completed&quot;: 0,
+    &quot;completion_not_observed_count&quot;: 0,
+    &quot;remote_expert_tensor_bytes_received_all_ranks&quot;: 0,
+    &quot;rank_agreement&quot;: true,
+    &quot;decisions_independently_reconstructed&quot;: true,
+    &quot;scope&quot;: &quot;Commit events follow native move_from_buffer and map-copy enqueue; completion observed by CUDA event query. Does not hash final full-model weights. Unobserved completion remains censored; drain is not a commit. Rejected proposals retain native no-op bookkeeping.&quot;,
+    &quot;phase_evidence&quot;: {
+      &quot;approximate_measured_wall_bounds_ns&quot;: [
+        1794358724311305322,
+        1794358733796817913
+      ],
+      &quot;partitions&quot;: {
+        &quot;before_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        },
+        &quot;during_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        },
+        &quot;after_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        }
+      },
+      &quot;scope&quot;: &quot;Rank0 and client run on kh074; approximate wall-clock alignment, not a cross-node clock synchronization proof. Counts classify event observation time: a completion during measurement can belong to an earlier proposal. Full-session all-rank commit audit is reported separately. Warmup decisions may affect measured placement.&quot;
+    }
+  }
+}</pre><pre>{
+  &quot;b4&quot;: {
+    &quot;status&quot;: &quot;passed&quot;,
+    &quot;proposal_cycles&quot;: 0,
+    &quot;layer_decisions_rank0&quot;: {},
+    &quot;rank_layer_commits_enqueued&quot;: 0,
+    &quot;rank_layer_commits_gpu_completed&quot;: 0,
+    &quot;all_rank_layer_commits_completed&quot;: 0,
+    &quot;completion_not_observed_count&quot;: 0,
+    &quot;remote_expert_tensor_bytes_received_all_ranks&quot;: 0,
+    &quot;rank_agreement&quot;: true,
+    &quot;decisions_independently_reconstructed&quot;: true,
+    &quot;scope&quot;: &quot;Commit events follow native move_from_buffer and map-copy enqueue; completion observed by CUDA event query. Does not hash final full-model weights. Unobserved completion remains censored; drain is not a commit. Rejected proposals retain native no-op bookkeeping.&quot;,
+    &quot;phase_evidence&quot;: {
+      &quot;approximate_measured_wall_bounds_ns&quot;: [
+        1794361907431902338,
+        1794361916915932847
+      ],
+      &quot;partitions&quot;: {
+        &quot;before_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        },
+        &quot;during_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        },
+        &quot;after_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        }
+      },
+      &quot;scope&quot;: &quot;Rank0 and client run on kh074; approximate wall-clock alignment, not a cross-node clock synchronization proof. Counts classify event observation time: a completion during measurement can belong to an earlier proposal. Full-session all-rank commit audit is reported separately. Warmup decisions may affect measured placement.&quot;
+    }
+  }
+}</pre><h2>numinamath</h2><p>resident_v2/off: mean response -0.30%, p95 -0.23%, elapsed -0.04%. Identical output hashes 1/16.</p><p>resident_v2/resident_v1: mean response -0.85%, p95 -0.82%, elapsed -0.37%. Identical output hashes 1/16.</p><p>b4/b3: mean response -5.19%, p95 -5.16%, elapsed -0.87%. Identical output hashes 0/16.</p><p>resident_v2/b2: mean response -12.97%, p95 -13.12%, elapsed -3.28%. Identical output hashes 1/16.</p><p>b1/off: mean response +11.87%, p95 +11.43%, elapsed +3.12%. Identical output hashes 2/16.</p><p>b2/b1: mean response +2.40%, p95 +3.06%, elapsed +0.22%. Identical output hashes 1/16.</p><p>b3/b2: mean response -1.36%, p95 -2.84%, elapsed +1.41%. Identical output hashes 0/16.</p><p>b4/b2: mean response -6.49%, p95 -7.86%, elapsed +0.52%. Identical output hashes 0/16.</p><pre>{
+  &quot;b3&quot;: {
+    &quot;status&quot;: &quot;passed&quot;,
+    &quot;proposal_cycles&quot;: 3,
+    &quot;layer_decisions_rank0&quot;: {
+      &quot;incomplete_recent&quot;: 48,
+      &quot;allow&quot;: 70,
+      &quot;insufficient_gain&quot;: 26
+    },
+    &quot;rank_layer_commits_enqueued&quot;: 888,
+    &quot;rank_layer_commits_gpu_completed&quot;: 880,
+    &quot;all_rank_layer_commits_completed&quot;: 110,
+    &quot;completion_not_observed_count&quot;: 8,
+    &quot;remote_expert_tensor_bytes_received_all_ranks&quot;: 69438799872,
+    &quot;rank_agreement&quot;: true,
+    &quot;decisions_independently_reconstructed&quot;: true,
+    &quot;scope&quot;: &quot;Commit events follow native move_from_buffer and map-copy enqueue; completion observed by CUDA event query. Does not hash final full-model weights. Unobserved completion remains censored; drain is not a commit. Rejected proposals retain native no-op bookkeeping.&quot;,
+    &quot;phase_evidence&quot;: {
+      &quot;approximate_measured_wall_bounds_ns&quot;: [
+        1794367286106029231,
+        1794367323627583043
+      ],
+      &quot;partitions&quot;: {
+        &quot;before_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 1,
+          &quot;proposal_steps&quot;: [
+            750
+          ],
+          &quot;layer_decisions&quot;: {
+            &quot;incomplete_recent&quot;: 48
+          },
+          &quot;rank0_commit_enqueued&quot;: 48,
+          &quot;rank0_commit_gpu_completed&quot;: 48
+        },
+        &quot;during_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 2,
+          &quot;proposal_steps&quot;: [
+            3750,
+            6750
+          ],
+          &quot;layer_decisions&quot;: {
+            &quot;allow&quot;: 70,
+            &quot;insufficient_gain&quot;: 26
+          },
+          &quot;rank0_commit_enqueued&quot;: 61,
+          &quot;rank0_commit_gpu_completed&quot;: 61
+        },
+        &quot;after_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 2,
+          &quot;rank0_commit_gpu_completed&quot;: 1
+        }
+      },
+      &quot;scope&quot;: &quot;Rank0 and client run on kh074; approximate wall-clock alignment, not a cross-node clock synchronization proof. Counts classify event observation time: a completion during measurement can belong to an earlier proposal. Full-session all-rank commit audit is reported separately. Warmup decisions may affect measured placement.&quot;
+    }
+  }
+}</pre><pre>{
+  &quot;b4&quot;: {
+    &quot;status&quot;: &quot;passed&quot;,
+    &quot;proposal_cycles&quot;: 3,
+    &quot;layer_decisions_rank0&quot;: {
+      &quot;incomplete_recent&quot;: 48,
+      &quot;unstable&quot;: 76,
+      &quot;insufficient_gain&quot;: 20
+    },
+    &quot;rank_layer_commits_enqueued&quot;: 1152,
+    &quot;rank_layer_commits_gpu_completed&quot;: 1152,
+    &quot;all_rank_layer_commits_completed&quot;: 144,
+    &quot;completion_not_observed_count&quot;: 0,
+    &quot;remote_expert_tensor_bytes_received_all_ranks&quot;: 0,
+    &quot;rank_agreement&quot;: true,
+    &quot;decisions_independently_reconstructed&quot;: true,
+    &quot;scope&quot;: &quot;Commit events follow native move_from_buffer and map-copy enqueue; completion observed by CUDA event query. Does not hash final full-model weights. Unobserved completion remains censored; drain is not a commit. Rejected proposals retain native no-op bookkeeping.&quot;,
+    &quot;phase_evidence&quot;: {
+      &quot;approximate_measured_wall_bounds_ns&quot;: [
+        1794363870510498832,
+        1794363907704664540
+      ],
+      &quot;partitions&quot;: {
+        &quot;before_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 1,
+          &quot;proposal_steps&quot;: [
+            750
+          ],
+          &quot;layer_decisions&quot;: {
+            &quot;incomplete_recent&quot;: 48
+          },
+          &quot;rank0_commit_enqueued&quot;: 48,
+          &quot;rank0_commit_gpu_completed&quot;: 48
+        },
+        &quot;during_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 2,
+          &quot;proposal_steps&quot;: [
+            3750,
+            6750
+          ],
+          &quot;layer_decisions&quot;: {
+            &quot;unstable&quot;: 76,
+            &quot;insufficient_gain&quot;: 20
+          },
+          &quot;rank0_commit_enqueued&quot;: 96,
+          &quot;rank0_commit_gpu_completed&quot;: 96
+        },
+        &quot;after_measurement&quot;: {
+          &quot;proposal_cycles&quot;: 0,
+          &quot;proposal_steps&quot;: [],
+          &quot;layer_decisions&quot;: {},
+          &quot;rank0_commit_enqueued&quot;: 0,
+          &quot;rank0_commit_gpu_completed&quot;: 0
+        }
+      },
+      &quot;scope&quot;: &quot;Rank0 and client run on kh074; approximate wall-clock alignment, not a cross-node clock synchronization proof. Counts classify event observation time: a completion during measurement can belong to an earlier proposal. Full-session all-rank commit audit is reported separately. Warmup decisions may affect measured placement.&quot;
+    }
+  }
+}</pre><p>Recorded CUDA-event completion is distinct from drain. It does not establish full-weight or all-logit correctness. No automatic superiority or capacity claim.</p></html>
