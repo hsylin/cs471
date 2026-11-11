@@ -1,0 +1,265 @@
+{
+  "status": "passed",
+  "rank": 6,
+  "local_rank": 2,
+  "cuda_visible_devices": "0,1,2,3",
+  "hostname": "kh077",
+  "job": "4882284",
+  "step": "143",
+  "gpu": "NVIDIA H100",
+  "records": [
+    {
+      "shape": {
+        "sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "hidden_dtype": "torch.bfloat16",
+        "weights_dtype": "torch.float32",
+        "ids_dtype": "torch.int32"
+      },
+      "rank": 6,
+      "correct_rank_payloads_and_sum": true,
+      "timings": {
+        "dispatch_3_tensors/eager": [
+          {
+            "event_us_per_call": 43.56351852416992,
+            "wall_us_per_call": 44.2461
+          },
+          {
+            "event_us_per_call": 42.70912170410156,
+            "wall_us_per_call": 43.234399999999994
+          },
+          {
+            "event_us_per_call": 44.95744228363037,
+            "wall_us_per_call": 45.41564
+          }
+        ],
+        "dispatch_3_tensors/cuda_graph": [
+          {
+            "event_us_per_call": 88.39615821838379,
+            "wall_us_per_call": 88.92906
+          },
+          {
+            "event_us_per_call": 89.31839942932129,
+            "wall_us_per_call": 89.85022000000001
+          },
+          {
+            "event_us_per_call": 89.90592002868652,
+            "wall_us_per_call": 90.43567999999999
+          }
+        ],
+        "combine_1_tensor/eager": [
+          {
+            "event_us_per_call": 24.691200256347656,
+            "wall_us_per_call": 25.21136
+          },
+          {
+            "event_us_per_call": 25.521280765533447,
+            "wall_us_per_call": 26.023359999999997
+          },
+          {
+            "event_us_per_call": 23.669118881225586,
+            "wall_us_per_call": 24.113919999999997
+          }
+        ],
+        "combine_1_tensor/cuda_graph": [
+          {
+            "event_us_per_call": 70.62143802642822,
+            "wall_us_per_call": 71.1025
+          },
+          {
+            "event_us_per_call": 68.5920000076294,
+            "wall_us_per_call": 69.11174
+          },
+          {
+            "event_us_per_call": 65.94304084777832,
+            "wall_us_per_call": 66.4846
+          }
+        ]
+      },
+      "per_rank_local_dispatch_input_bytes": 4160,
+      "per_rank_combine_input_bytes": 32768
+    },
+    {
+      "shape": {
+        "sizes": [
+          7827,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "hidden_dtype": "torch.bfloat16",
+        "weights_dtype": "torch.float32",
+        "ids_dtype": "torch.int32"
+      },
+      "rank": 6,
+      "correct_rank_payloads_and_sum": true,
+      "timings": {
+        "dispatch_3_tensors/eager": [
+          {
+            "event_us_per_call": 1278.3904266357422,
+            "wall_us_per_call": 1279.31174
+          },
+          {
+            "event_us_per_call": 1270.877456665039,
+            "wall_us_per_call": 1272.0311199999999
+          },
+          {
+            "event_us_per_call": 1266.7206573486328,
+            "wall_us_per_call": 1267.88814
+          }
+        ],
+        "dispatch_3_tensors/cuda_graph": [
+          {
+            "event_us_per_call": 1306.1683654785156,
+            "wall_us_per_call": 1307.67418
+          },
+          {
+            "event_us_per_call": 1300.4794311523438,
+            "wall_us_per_call": 1301.68346
+          },
+          {
+            "event_us_per_call": 1306.3052368164062,
+            "wall_us_per_call": 1307.22992
+          }
+        ],
+        "combine_1_tensor/eager": [
+          {
+            "event_us_per_call": 1115.4163360595703,
+            "wall_us_per_call": 1116.0834399999999
+          },
+          {
+            "event_us_per_call": 1115.4956817626953,
+            "wall_us_per_call": 1116.47642
+          },
+          {
+            "event_us_per_call": 1114.606704711914,
+            "wall_us_per_call": 1115.3577599999999
+          }
+        ],
+        "combine_1_tensor/cuda_graph": [
+          {
+            "event_us_per_call": 1221.7350769042969,
+            "wall_us_per_call": 1222.64054
+          },
+          {
+            "event_us_per_call": 1221.8163299560547,
+            "wall_us_per_call": 1222.5488
+          },
+          {
+            "event_us_per_call": 1219.7869110107422,
+            "wall_us_per_call": 1220.6064999999999
+          }
+        ]
+      },
+      "per_rank_local_dispatch_input_bytes": 4160,
+      "per_rank_combine_input_bytes": 32088064
+    },
+    {
+      "shape": {
+        "sizes": [
+          8192,
+          8192,
+          8192,
+          8192,
+          8192,
+          8192,
+          8192,
+          8192
+        ],
+        "hidden_dtype": "torch.bfloat16",
+        "weights_dtype": "torch.float32",
+        "ids_dtype": "torch.int32"
+      },
+      "rank": 6,
+      "correct_rank_payloads_and_sum": true,
+      "timings": {
+        "dispatch_3_tensors/eager": [
+          {
+            "event_us_per_call": 7167.159423828125,
+            "wall_us_per_call": 7168.13164
+          },
+          {
+            "event_us_per_call": 7161.2994384765625,
+            "wall_us_per_call": 7162.748619999999
+          },
+          {
+            "event_us_per_call": 7185.4412841796875,
+            "wall_us_per_call": 7186.9989399999995
+          }
+        ],
+        "dispatch_3_tensors/cuda_graph": [
+          {
+            "event_us_per_call": 7289.3035888671875,
+            "wall_us_per_call": 7290.5956400000005
+          },
+          {
+            "event_us_per_call": 7283.0731201171875,
+            "wall_us_per_call": 7284.34892
+          },
+          {
+            "event_us_per_call": 7253.6663818359375,
+            "wall_us_per_call": 7255.1288
+          }
+        ],
+        "combine_1_tensor/eager": [
+          {
+            "event_us_per_call": 6893.1463623046875,
+            "wall_us_per_call": 6894.744860000001
+          },
+          {
+            "event_us_per_call": 6912.28759765625,
+            "wall_us_per_call": 6913.731559999999
+          },
+          {
+            "event_us_per_call": 6923.2550048828125,
+            "wall_us_per_call": 6924.65182
+          }
+        ],
+        "combine_1_tensor/cuda_graph": [
+          {
+            "event_us_per_call": 6996.4312744140625,
+            "wall_us_per_call": 6997.59906
+          },
+          {
+            "event_us_per_call": 6996.2933349609375,
+            "wall_us_per_call": 6997.87206
+          },
+          {
+            "event_us_per_call": 7010.2398681640625,
+            "wall_us_per_call": 7011.5288
+          }
+        ]
+      },
+      "per_rank_local_dispatch_input_bytes": 34078720,
+      "per_rank_combine_input_bytes": 268435456
+    }
+  ],
+  "native_source_sha256": {
+    "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+    "distributed/eplb/async_worker.py": "b458e8252f3147982aa71670deae8264587f3ab01e552030641c2f9d8b6dbc43",
+    "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+    "distributed/eplb/rebalance_execute.py": "686eb68f425e7c1450abea9466178d430e95441bd74ea6aaed12c13090654431",
+    "model_executor/layers/fused_moe/prepare_finalize/naive_dp_ep.py": "5cc53791999bc0116f8d9d5a4658f8b39f53f59c1b7d644219cf4655011e29c4",
+    "model_executor/layers/fused_moe/router/base_router.py": "c909924fcfa461ccdaa6290d215d4d35bd4062fb02feeb23619b234da993f6bf",
+    "model_executor/layers/fused_moe/router/fused_topk_router.py": "1c80f4af4d781fd66b12aa6a7a0fd30082bc521df40f1252987a8ac4c0bef51c",
+    "v1/worker/gpu/eplb_utils.py": "98aaa1e7763faa3ae6fbd012f5a222f050ab2d5a6d8942193341f2e5716228ae",
+    "distributed/parallel_state.py": "a33fc846e0f4e682a644ce712d862806ecfa12dca6e5f641806e2e7991cd0087",
+    "distributed/device_communicators/cuda_communicator.py": "2a0695d8b46757be83b38fe657df605ba0bfb2ef2dfa690c78c57419bbad0762",
+    "distributed/device_communicators/pynccl.py": "4c51becc2ebfd41910526b93d7bd8e9e36312df444fdfb55fa2fbc92b0f8f88e"
+  },
+  "source_sha256": "f648fce54128ca05b8b32601dedd049e376bd44735fc23fb5a784236119cb77a",
+  "backend": "Pinned vLLM GroupCoordinator.all_gatherv/reduce_scatterv, same primitives called by AgRs; NCCL device communicator",
+  "scope": "Synthetic payload, observed sizes; component-only, excludes experts, compute imbalance and serving scheduler. Both eager and graph replay charged; no bandwidth-saturation or serving-speedup claim."
+}

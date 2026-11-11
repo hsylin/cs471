@@ -1,0 +1,68 @@
+kh074:231874:231874 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+kh074:231874:231874 [0] NCCL INFO Bootstrap: Using bond0:10.91.54.74<0>
+kh074:231874:231874 [0] NCCL INFO cudaDriverVersion 12060
+kh074:231874:231874 [0] NCCL INFO NCCL version 2.29.7+cuda12.9
+kh074:231874:231874 [0] NCCL INFO NCCL git version stable b81d6a5a3
+kh074:231874:231874 [0] NCCL INFO Skipping symmetric kernel 35 which requires driver 12070
+kh074:231874:231874 [0] NCCL INFO Skipping symmetric kernel 38 which requires driver 12070
+kh074:231874:231874 [0] NCCL INFO Skipping symmetric kernel 40 which requires driver 12070
+kh074:231874:231874 [0] NCCL INFO Skipping symmetric kernel 44 which requires driver 12070
+kh074:231874:231874 [0] NCCL INFO Skipping symmetric kernel 47 which requires driver 12070
+kh074:231874:231874 [0] NCCL INFO Skipping symmetric kernel 49 which requires driver 12070
+kh074:231874:231874 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+kh074:231874:231874 [0] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [1]mlx5_2:1/IB [2]mlx5_3:1/IB [RO]; OOB bond0:10.91.54.74<0>
+kh074:231874:231874 [0] NCCL INFO Initialized NET plugin IB
+kh074:231874:231874 [0] NCCL INFO Assigned NET plugin IB to comm
+kh074:231874:231874 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+kh074:231874:231874 [0] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+kh074:231874:231874 [0] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+kh074:231874:231874 [0] NCCL INFO Using network IB
+kh074:231874:231874 [0] NCCL INFO DMA-BUF is available on GPU device 0
+kh074:231874:231874 [0] NCCL INFO [Rank 0] ncclCommInitRank comm 0x1284f910 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId e3000 commId 0xc568a66eaa0de52e - Init START
+kh074:231874:231874 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+kh074:231874:231874 [0] NCCL INFO Bootstrap timings total 0.043064 (create 0.000041, send 0.000115, recv 0.035112, ring 0.004369, delay 0.000001)
+kh074:231874:231874 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is empty, ignoring. (GPU affinity = 40-47 ; CPU affinity = 24-27).
+kh074:231874:231874 [0] NCCL INFO NVLS multicast support is not available on dev 0 (NVLS_NCHANNELS 0)
+kh074:231874:231874 [0] NCCL INFO comm 0x1284f910 rank 0 nRanks 8 nNodes 2 localRanks 4 localRank 0 MNNVL 0
+kh074:231874:231874 [0] NCCL INFO Channel 00/04 : 0 1 2 3 4 5 6 7
+kh074:231874:231874 [0] NCCL INFO Channel 01/04 : 0 3 1 6 4 7 5 2
+kh074:231874:231874 [0] NCCL INFO Channel 02/04 : 0 1 2 3 4 5 6 7
+kh074:231874:231874 [0] NCCL INFO Channel 03/04 : 0 3 1 6 4 7 5 2
+kh074:231874:231874 [0] NCCL INFO Trees [0] 1/4/-1->0->-1 [1] 1/-1/-1->0->3 [2] 1/-1/-1->0->4 [3] 1/-1/-1->0->3
+kh074:231874:231874 [0] NCCL INFO P2P Chunksize set to 131072
+kh074:231874:231874 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+kh074:231874:231874 [0] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0 isAllCudaP2p 1
+kh074:231874:232268 [0] NCCL INFO [Proxy Service] Device 0 CPU core 24
+kh074:231874:232272 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 26
+kh074:231874:231874 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+kh074:231874:231874 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+kh074:231874:231874 [0] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+kh074:231874:231874 [0] NCCL INFO Symmetric VA size=96GB
+kh074:231874:231874 [0] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, globalNicFused 1 cuMemGdrSupport 1
+kh074:231874:231874 [0] NCCL INFO CC Off, workFifoBytes 1048576
+kh074:231874:231874 [0] NCCL INFO ncclCommInitRank comm 0x1284f910 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId e3000 commId 0xc568a66eaa0de52e - Init COMPLETE
+kh074:231874:231874 [0] NCCL INFO Init timings - ncclCommInitRank: rank 0 nranks 8 total 0.40 (kernels 0.16, alloc 0.04, bootstrap 0.04, allgathers 0.00, topo 0.15, graphs 0.00, connections 0.00, rest 0.00)
+kh074:231874:231874 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] via P2P/CUMEM
+kh074:231874:231874 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] via P2P/CUMEM
+kh074:231874:231874 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[0] via P2P/CUMEM
+kh074:231874:231874 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[0] via P2P/CUMEM
+kh074:231874:231874 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[0] via P2P/CUMEM
+kh074:231874:231874 [0] NCCL INFO Channel 03/0 : 0[0] -> 3[0] via P2P/CUMEM
+kh074:231874:232275 [0] NCCL INFO [Proxy Progress] Device 0 CPU core 27
+kh074:231874:231874 [0] NCCL INFO Channel 00/0 : 4[0] -> 0[0] [receive] via NET/IB/3
+kh074:231874:231874 [0] NCCL INFO Channel 02/0 : 4[0] -> 0[0] [receive] via NET/IB/3
+kh074:231874:231874 [0] NCCL INFO Channel 00/0 : 0[0] -> 4[0] [send] via NET/IB/3
+kh074:231874:231874 [0] NCCL INFO Channel 02/0 : 0[0] -> 4[0] [send] via NET/IB/3
+
+[2026-11-11 17:10:05] kh074:231874:231874 [0] transport/p2p.cc:285 NCCL WARN Cuda failure 101 'invalid device ordinal'
+kh074:231874:231874 [0] NCCL INFO transport/p2p.cc:373 -> 1
+kh074:231874:231874 [0] NCCL INFO transport/p2p.cc:512 -> 1
+kh074:231874:231874 [0] NCCL INFO transport.cc:213 -> 1
+kh074:231874:231874 [0] NCCL INFO transport/generic.cc:58 -> 1
+kh074:231874:231874 [0] NCCL INFO group.cc:157 -> 1
+kh074:231874:231874 [0] NCCL INFO group.cc:213 -> 1
+kh074:231874:231874 [0] NCCL INFO group.cc:80 -> 1 [Async thread]
+kh074:231874:231874 [0] NCCL INFO group.cc:650 -> 1
+kh074:231874:231874 [0] NCCL INFO group.cc:833 -> 1
+kh074:231874:231874 [0] NCCL INFO enqueue.cc:3016 -> 1
+kh074:231874:231874 [0] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault

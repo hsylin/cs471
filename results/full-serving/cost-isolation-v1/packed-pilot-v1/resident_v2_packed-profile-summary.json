@@ -1,0 +1,1389 @@
+{
+  "files": [
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp0_pp0_tp0_dcp0_ep0_rank0.1794416882669915897.pt.trace.json.gz",
+      "kernel_events": 36064,
+      "summed_kernel_us": 1723439.5369999986,
+      "mapper_kernel_us": 4177.567000000007,
+      "mapper_fraction_of_summed_kernel_time": 0.0024239707342863463,
+      "collective_kernel_us": 1204316.1359999995,
+      "collective_fraction_of_summed_kernel_time": 0.6987864152730068,
+      "moe_kernel_us": 98711.03199999999,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 696.8939999999991
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 546.2289999999999
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 417.02099999999973
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 1344,
+          "sum_us": 2517.4230000000084
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 668128.0789999992
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 452808.4690000001
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > >::Params)",
+          "calls": 96,
+          "sum_us": 155202.7440000001
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 3072,
+          "sum_us": 98711.03199999999
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 1536,
+          "sum_us": 56686.59099999909
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 54275.53600000007
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 29104.052000000043
+        },
+        {
+          "name": "nvjet_tst_320x128_64x3_1x2_h_bz_coopB_TNT",
+          "calls": 96,
+          "sum_us": 22152.554999999993
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 1392,
+          "sum_us": 17453.313999999966
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 1536,
+          "sum_us": 17139.404999999988
+        },
+        {
+          "name": "nvjet_tst_256x128_64x4_1x2_h_bz_coopA_TNT",
+          "calls": 96,
+          "sum_us": 16317.723999999998
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 1392,
+          "sum_us": 15312.16
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp0_pp0_tp0_dcp0_ep0_rank0.1794416919846191102.pt.trace.json.gz",
+      "kernel_events": 17844,
+      "summed_kernel_us": 140385.03499999995,
+      "mapper_kernel_us": 1502.2409999999986,
+      "mapper_fraction_of_summed_kernel_time": 0.010700862809201845,
+      "collective_kernel_us": 54430.00199999996,
+      "collective_fraction_of_summed_kernel_time": 0.38771940328255056,
+      "moe_kernel_us": 22921.89899999996,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 768,
+          "sum_us": 1502.2409999999986
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 768,
+          "sum_us": 33372.337999999974
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1536,
+          "sum_us": 22921.89899999996
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 768,
+          "sum_us": 21057.663999999982
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 672,
+          "sum_us": 8332.209999999974
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 672,
+          "sum_us": 7186.332000000004
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 720,
+          "sum_us": 7016.945000000009
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4618.318
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 672,
+          "sum_us": 3486.5880000000043
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 768,
+          "sum_us": 3239.3290000000065
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 768,
+          "sum_us": 2970.9
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 768,
+          "sum_us": 2798.3209999999895
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::FlashAttnFwdCombine<cute::tuple<cute::C<8>, cute::C<128> >, 5, 256, 1, false, true, cutlass::bfloat16_t, float, cutlass::arch::Sm90> >(flash::FlashAttnFwdCombine<cute::tuple<cute::C<8>, cute::C<128> >, 5, 256, 1, false, true, cutlass::bfloat16_t, float, cutlass::arch::Sm90>::Params)",
+          "calls": 768,
+          "sum_us": 2364.909000000007
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp1_pp0_tp0_dcp0_ep1_rank0.1794416877183836951.pt.trace.json.gz",
+      "kernel_events": 19304,
+      "summed_kernel_us": 1633212.8619999988,
+      "mapper_kernel_us": 2827.2039999999974,
+      "mapper_fraction_of_summed_kernel_time": 0.0017310689045994053,
+      "collective_kernel_us": 1322083.5969999994,
+      "collective_fraction_of_summed_kernel_time": 0.8094986439067122,
+      "moe_kernel_us": 94402.75299999972,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 694.0459999999994
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 547.5519999999996
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 418.84999999999985
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 624,
+          "sum_us": 1166.7559999999987
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 886911.5839999993
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 394567.4770000001
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 94402.75299999972
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 55018.97799999962
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > >::Params)",
+          "calls": 48,
+          "sum_us": 37765.349
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 23490.180999999997
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 17114.355000000003
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 15571.925000000001
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 768,
+          "sum_us": 12908.65099999998
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 10508.017999999985
+        },
+        {
+          "name": "nvjet_tst_256x152_64x4_1x2_h_bz_coopA_TNT",
+          "calls": 48,
+          "sum_us": 10117.909000000001
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 768,
+          "sum_us": 10106.546999999988
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp1_pp0_tp0_dcp0_ep1_rank0.1794416922234293061.pt.trace.json.gz",
+      "kernel_events": 18971,
+      "summed_kernel_us": 150384.345,
+      "mapper_kernel_us": 1597.3699999999994,
+      "mapper_fraction_of_summed_kernel_time": 0.010621916795927125,
+      "collective_kernel_us": 60204.996000000014,
+      "collective_fraction_of_summed_kernel_time": 0.4003408466486323,
+      "moe_kernel_us": 23739.009999999984,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1597.3699999999994
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 35149.02200000001
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 25055.974
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 23739.009999999984
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8936.975999999979
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7765.943000000004
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 768,
+          "sum_us": 7744.508999999987
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4634.414
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3756.2810000000068
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3455.7260000000038
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3150.4559999999988
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2984.2059999999965
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 2097.869000000005
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp2_pp0_tp0_dcp0_ep2_rank0.1794416882663576039.pt.trace.json.gz",
+      "kernel_events": 36110,
+      "summed_kernel_us": 1728785.9089999998,
+      "mapper_kernel_us": 4030.410000000001,
+      "mapper_fraction_of_summed_kernel_time": 0.0023313528754589138,
+      "collective_kernel_us": 1257534.1739999999,
+      "collective_fraction_of_summed_kernel_time": 0.7274088523358042,
+      "moe_kernel_us": 95360.14400000099,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 696.2869999999996
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 547.9009999999997
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 420.835
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 1344,
+          "sum_us": 2365.387000000002
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 733945.8300000001
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 432161.62499999994
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > >::Params)",
+          "calls": 96,
+          "sum_us": 129510.42700000005
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 3072,
+          "sum_us": 95360.14400000099
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 1536,
+          "sum_us": 56627.252999998855
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 54536.372999999934
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 36890.34600000001
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 1440,
+          "sum_us": 18141.333999999926
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 1536,
+          "sum_us": 16731.618999999875
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 1440,
+          "sum_us": 16203.026999999996
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 1440,
+          "sum_us": 15724.766000000029
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 1536,
+          "sum_us": 12773.037000000015
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp2_pp0_tp0_dcp0_ep2_rank0.1794416922235175935.pt.trace.json.gz",
+      "kernel_events": 18971,
+      "summed_kernel_us": 150667.14599999992,
+      "mapper_kernel_us": 1510.2039999999984,
+      "mapper_fraction_of_summed_kernel_time": 0.01002344598735546,
+      "collective_kernel_us": 61632.53299999998,
+      "collective_fraction_of_summed_kernel_time": 0.40906418310996623,
+      "moe_kernel_us": 23430.954999999965,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1510.2039999999984
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 33802.82200000001
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 27829.710999999974
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 23430.954999999965
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8934.970999999987
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 768,
+          "sum_us": 7780.631999999989
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7770.935000000003
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4627.257
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3749.6840000000066
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3435.1950000000015
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3111.6189999999947
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2969.738999999992
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 2121.1250000000036
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp3_pp0_tp0_dcp0_ep3_rank0.1794416882699541349.pt.trace.json.gz",
+      "kernel_events": 36113,
+      "summed_kernel_us": 1720258.4399999985,
+      "mapper_kernel_us": 4044.396000000002,
+      "mapper_fraction_of_summed_kernel_time": 0.0023510397658621607,
+      "collective_kernel_us": 1327094.4019999998,
+      "collective_fraction_of_summed_kernel_time": 0.7714505978531928,
+      "moe_kernel_us": 96261.24600000032,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 696.9949999999992
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 557.2090000000006
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 419.8010000000002
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 1344,
+          "sum_us": 2370.391000000002
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 846226.5469999998
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 396928.641
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 3072,
+          "sum_us": 96261.24600000032
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > >::Params)",
+          "calls": 96,
+          "sum_us": 67629.898
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 1536,
+          "sum_us": 56688.4689999989
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 48527.13999999991
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 35412.074000000015
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 1440,
+          "sum_us": 18176.6029999999
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 1536,
+          "sum_us": 16879.97999999997
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 1440,
+          "sum_us": 16161.98199999998
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 1440,
+          "sum_us": 15717.101000000035
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 1536,
+          "sum_us": 12799.902999999887
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp3_pp0_tp0_dcp0_ep3_rank0.1794416922242105741.pt.trace.json.gz",
+      "kernel_events": 18971,
+      "summed_kernel_us": 147161.3180000001,
+      "mapper_kernel_us": 1520.343999999996,
+      "mapper_fraction_of_summed_kernel_time": 0.010331138784717836,
+      "collective_kernel_us": 57410.658000000025,
+      "collective_fraction_of_summed_kernel_time": 0.3901205750277392,
+      "moe_kernel_us": 23565.82300000003,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1520.343999999996
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 31846.243000000046
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 25564.41499999998
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 23565.82300000003
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8949.236999999983
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 768,
+          "sum_us": 8086.225000000008
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7746.369999999999
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4626.7
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3756.3090000000093
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3449.7420000000097
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3112.262999999999
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2978.8379999999956
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 2137.876000000004
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp4_pp0_tp0_dcp0_ep4_rank0.1794416877197801207.pt.trace.json.gz",
+      "kernel_events": 19212,
+      "summed_kernel_us": 1624616.3109999995,
+      "mapper_kernel_us": 2775.954999999996,
+      "mapper_fraction_of_summed_kernel_time": 0.001708683448026761,
+      "collective_kernel_us": 1081172.0369999998,
+      "collective_fraction_of_summed_kernel_time": 0.6654937720861034,
+      "moe_kernel_us": 89686.17299999986,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 697.0899999999996
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 552.6949999999993
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 419.3590000000003
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 624,
+          "sum_us": 1106.8109999999965
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 603695.26
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 445946.34599999984
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, false, false, cutlass::bfloat16_t, 8>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 256, true, true, false, false, 8>, flash::VarlenDynamicPersistentTileScheduler<128, 128, 256, 128, false, true, true, true, false, true> > >::Params)",
+          "calls": 144,
+          "sum_us": 224813.05999999997
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 89686.17299999986
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 55085.70399999963
+        },
+        {
+          "name": "nvjet_tst_320x128_64x3_1x2_h_bz_coopB_TNT",
+          "calls": 96,
+          "sum_us": 22593.541000000005
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 672,
+          "sum_us": 17265.004000000004
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 16715.79599999999
+        },
+        {
+          "name": "nvjet_tst_256x128_64x4_1x2_h_bz_coopA_TNT",
+          "calls": 96,
+          "sum_us": 16685.299999999992
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 15130.340000000033
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 14814.635000000002
+        },
+        {
+          "name": "triton_red_fused_2",
+          "calls": 799,
+          "sum_us": 14619.621999999965
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp4_pp0_tp0_dcp0_ep4_rank0.1794416922246787544.pt.trace.json.gz",
+      "kernel_events": 18971,
+      "summed_kernel_us": 147233.68499999997,
+      "mapper_kernel_us": 1530.1219999999962,
+      "mapper_fraction_of_summed_kernel_time": 0.010392472347615266,
+      "collective_kernel_us": 58548.150999999954,
+      "collective_fraction_of_summed_kernel_time": 0.39765459242563933,
+      "moe_kernel_us": 22545.497000000003,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1530.1219999999962
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 33920.26399999998
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 24627.886999999977
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 22545.497000000003
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8923.03499999999
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 768,
+          "sum_us": 7842.017000000002
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7759.203000000003
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4630.785
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3761.99200000001
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3454.907999999998
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3098.402999999997
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2980.3819999999964
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 2107.4580000000024
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp5_pp0_tp0_dcp0_ep5_rank0.1794416877192735706.pt.trace.json.gz",
+      "kernel_events": 19352,
+      "summed_kernel_us": 1637431.2999999989,
+      "mapper_kernel_us": 2813.9329999999986,
+      "mapper_fraction_of_summed_kernel_time": 0.0017185044648896112,
+      "collective_kernel_us": 1400622.4299999995,
+      "collective_fraction_of_summed_kernel_time": 0.855377828675927,
+      "moe_kernel_us": 89317.99999999981,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 695.6459999999995
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 546.8760000000001
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 414.42400000000043
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 624,
+          "sum_us": 1156.9869999999985
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 929009.6159999997
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 427983.0489999998
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 89317.99999999981
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 55050.280999999566
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 26889.948999999997
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 16739.815999999984
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 15244.248000000038
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 768,
+          "sum_us": 10842.258999999991
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 10437.63299999998
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 768,
+          "sum_us": 10102.69499999999
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 768,
+          "sum_us": 8664.350000000006
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4665.585
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp5_pp0_tp0_dcp0_ep5_rank0.1794416922243315575.pt.trace.json.gz",
+      "kernel_events": 18971,
+      "summed_kernel_us": 149932.61099999998,
+      "mapper_kernel_us": 1584.416000000001,
+      "mapper_fraction_of_summed_kernel_time": 0.010567520897771875,
+      "collective_kernel_us": 60994.60499999997,
+      "collective_fraction_of_summed_kernel_time": 0.40681346501729354,
+      "moe_kernel_us": 22368.232000000007,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1584.416000000001
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 34250.28399999996
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 26744.321000000004
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 22368.232000000007
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8920.164999999983
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7756.5970000000025
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 720,
+          "sum_us": 7507.764000000006
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4634.388
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3747.00700000001
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3466.257000000002
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3094.7489999999975
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2985.6919999999946
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 2114.826000000005
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp6_pp0_tp0_dcp0_ep6_rank0.1794416882660870040.pt.trace.json.gz",
+      "kernel_events": 36204,
+      "summed_kernel_us": 1734203.1319999986,
+      "mapper_kernel_us": 4026.0810000000024,
+      "mapper_fraction_of_summed_kernel_time": 0.0023215740565275403,
+      "collective_kernel_us": 1449272.09,
+      "collective_fraction_of_summed_kernel_time": 0.8356991538405325,
+      "moe_kernel_us": 95849.5739999999,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 695.9279999999994
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 547.9310000000005
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 416.7619999999999
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 1344,
+          "sum_us": 2365.4600000000028
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 914230.395
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 442414.551
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 3072,
+          "sum_us": 95849.5739999999
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 58652.794
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 1536,
+          "sum_us": 56628.475999998605
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 1344,
+          "sum_us": 33974.35000000004
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 1488,
+          "sum_us": 18857.368999999948
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 1536,
+          "sum_us": 16769.749999999967
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 1488,
+          "sum_us": 16403.01200000001
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 1488,
+          "sum_us": 15354.58699999999
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 1536,
+          "sum_us": 12745.406999999985
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 1488,
+          "sum_us": 7780.72500000001
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp6_pp0_tp0_dcp0_ep6_rank0.1794416922243186162.pt.trace.json.gz",
+      "kernel_events": 18971,
+      "summed_kernel_us": 152358.61899999998,
+      "mapper_kernel_us": 1514.5109999999947,
+      "mapper_fraction_of_summed_kernel_time": 0.009940435335660235,
+      "collective_kernel_us": 62142.74299999997,
+      "collective_fraction_of_summed_kernel_time": 0.4078715297360367,
+      "moe_kernel_us": 23420.689000000006,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1514.5109999999947
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 33908.53499999999
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 28234.207999999988
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 23420.689000000006
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8947.351999999988
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7867.006000000001
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 720,
+          "sum_us": 7003.874000000007
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4628.491
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3748.6220000000053
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3452.3650000000107
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3113.4049999999947
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2977.37399999999
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::FlashAttnFwdCombine<cute::tuple<cute::C<8>, cute::C<128> >, 5, 256, 1, false, true, cutlass::bfloat16_t, float, cutlass::arch::Sm90> >(flash::FlashAttnFwdCombine<cute::tuple<cute::C<8>, cute::C<128> >, 5, 256, 1, false, true, cutlass::bfloat16_t, float, cutlass::arch::Sm90>::Params)",
+          "calls": 816,
+          "sum_us": 2578.7779999999916
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp7_pp0_tp0_dcp0_ep7_rank0.1794416877192727473.pt.trace.json.gz",
+      "kernel_events": 19352,
+      "summed_kernel_us": 1635108.162999999,
+      "mapper_kernel_us": 2756.9959999999955,
+      "mapper_fraction_of_summed_kernel_time": 0.0016861245404962224,
+      "collective_kernel_us": 1401588.0869999996,
+      "collective_fraction_of_summed_kernel_time": 0.8571837134177407,
+      "moe_kernel_us": 89081.99899999975,
+      "mapper_kernels": [
+        {
+          "name": "partial_histogram",
+          "calls": 192,
+          "sum_us": 692.772999999999
+        },
+        {
+          "name": "plan_from_partial",
+          "calls": 192,
+          "sum_us": 544.1590000000001
+        },
+        {
+          "name": "apply_homes",
+          "calls": 192,
+          "sum_us": 413.438
+        },
+        {
+          "name": "fused_resident_map",
+          "calls": 624,
+          "sum_us": 1106.6259999999963
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGatherV_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 576,
+          "sum_us": 921656.2299999996
+        },
+        {
+          "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 192,
+          "sum_us": 436317.86000000004
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 89081.99899999975
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 55070.985999999495
+        },
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 27411.919999999995
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 624,
+          "sum_us": 16202.077000000005
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 15096.559000000014
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 816,
+          "sum_us": 10783.89799999998
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 10442.19199999995
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 816,
+          "sum_us": 9423.44600000001
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 816,
+          "sum_us": 9089.188000000002
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4654.972000000002
+        }
+      ]
+    },
+    {
+      "file": "/Users/hsing-yulin/Documents/Codex/2026-11-08/us-2/work/cs471/results/full-serving/cost-isolation-v1/packed-pilot-v1/resident_v2_packed/pilot/resident_v2_packed/profiles/dp7_pp0_tp0_dcp0_ep7_rank0.1794416922248026508.pt.trace.json.gz",
+      "kernel_events": 18970,
+      "summed_kernel_us": 149017.56500000003,
+      "mapper_kernel_us": 1522.5879999999968,
+      "mapper_fraction_of_summed_kernel_time": 0.01021750690933647,
+      "collective_kernel_us": 59560.652,
+      "collective_fraction_of_summed_kernel_time": 0.3996888017865544,
+      "moe_kernel_us": 23018.80300000002,
+      "mapper_kernels": [
+        {
+          "name": "fused_resident_map",
+          "calls": 816,
+          "sum_us": 1522.5879999999968
+        }
+      ],
+      "largest_kernels": [
+        {
+          "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 32518.403
+        },
+        {
+          "name": "ncclDevKernel_ReduceScatter_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+          "calls": 816,
+          "sum_us": 27042.249000000003
+        },
+        {
+          "name": "fused_moe_kernel",
+          "calls": 1632,
+          "sum_us": 23018.80300000002
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 8930.123999999982
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_4x1_v_bz_splitK_TNT",
+          "calls": 720,
+          "sum_us": 7757.903000000008
+        },
+        {
+          "name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, 128, cutlass::bfloat16_t, float, cutlass::arch::Sm90, true, false, false, true, true, false, false, false, true, true, true, true, false, cutlass::bfloat16_t, 1>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<64>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::bfloat16_t, cutlass::arch::Sm90, 128, true, true, true, false, 1>, flash::VarlenDynamicPersistentTileScheduler<64, 128, 128, 128, true, true, true, true, false, true> > >::Params)",
+          "calls": 720,
+          "sum_us": 7452.826999999994
+        },
+        {
+          "name": "nvjet_tst_384x8_64x4_2x1_v_bz_TNT",
+          "calls": 16,
+          "sum_us": 4630.43
+        },
+        {
+          "name": "nvjet_tst_64x8_64x16_2x1_v_bz_TNT",
+          "calls": 720,
+          "sum_us": 3742.4700000000053
+        },
+        {
+          "name": "void vllm::moe::topkGating<8, 128, 4, 16, 32, int, __nv_bfloat16, (vllm::moe::ScoringFunc)0>(__nv_bfloat16 const*, bool const*, float*, int, int*, int*, int, int, int, bool, float const*, double, bool const*)",
+          "calls": 816,
+          "sum_us": 3440.036000000001
+        },
+        {
+          "name": "void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, int, 8, true>(c10::BFloat16*, c10::BFloat16 const*, long, int, long, long, int const*, int const*, long, long)",
+          "calls": 816,
+          "sum_us": 3096.0019999999913
+        },
+        {
+          "name": "void vllm::moe::moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int*, int, int, int, int, unsigned long, int*, int, int, bool)",
+          "calls": 816,
+          "sum_us": 2970.9679999999953
+        },
+        {
+          "name": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&, float)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&, float)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float, float, float)",
+          "calls": 816,
+          "sum_us": 2127.869000000004
+        }
+      ]
+    }
+  ],
+  "scope": "Profiler perturbs execution. Per-trace summed CUDA kernel times may overlap; not a critical-path or unprofiled latency decomposition. Pilot inputs only."
+}

@@ -1,0 +1,28 @@
+{
+  "arm": "b3_light_packed",
+  "command": [
+    "srun",
+    "--jobid=4882284",
+    "--mpi=none",
+    "--exact",
+    "--nodes=2",
+    "--ntasks=2",
+    "--ntasks-per-node=1",
+    "--nodelist=kh074,kh077",
+    "--cpus-per-task=56",
+    "--gpus-per-node=4",
+    "--mem=300G",
+    "--kill-on-bad-exit=1",
+    "--input=none",
+    "--output=/work/cs-471/skewbench-hlin/full-serving/packed-development-20261111-v1/b3_light_packed/pilot/b3_light_packed/server-%t.log",
+    "--error=/work/cs-471/skewbench-hlin/full-serving/packed-development-20261111-v1/b3_light_packed/pilot/b3_light_packed/server-%t.err",
+    "bash",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/b79f435-packed-pilot/full_serving/packed_node.sh",
+    "b3_light_packed",
+    "/work/cs-471/skewbench-hlin/cache/huggingface/models--Qwen--Qwen3-30B-A3B/snapshots/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "10.91.54.74",
+    "/work/cs-471/skewbench-hlin/full-serving/deployments/b79f435-packed-pilot/results/full-serving/cost-isolation-v1/packed-development-v1/protocol.json"
+  ],
+  "dataset": "pilot",
+  "started_utc": "2026-11-11T16:33:04.026230+00:00"
+}

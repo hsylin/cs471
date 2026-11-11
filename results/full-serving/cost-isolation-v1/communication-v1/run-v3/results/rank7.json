@@ -1,0 +1,461 @@
+{
+  "status": "passed",
+  "rank": 7,
+  "local_rank": 3,
+  "cuda_visible_devices": "0,1,2,3",
+  "hostname": "kh077",
+  "job": "4882284",
+  "step": "144",
+  "gpu": "NVIDIA H100",
+  "records": [
+    {
+      "shape": {
+        "sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "hidden_dtype": "torch.bfloat16",
+        "weights_dtype": "torch.float32",
+        "ids_dtype": "torch.int32"
+      },
+      "rank": 7,
+      "correct_rank_payloads_and_sum": true,
+      "packed_arbitrary_bits_exact": true,
+      "timings": {
+        "dispatch_3_tensors/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 44.1868782043457,
+            "wall_us_per_call": 44.83216
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 43.52320194244385,
+            "wall_us_per_call": 43.98892
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 44.360318183898926,
+            "wall_us_per_call": 44.80052
+          }
+        ],
+        "dispatch_3_tensors/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 43.25523853302002,
+            "wall_us_per_call": 43.29092249999999
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 43.31620216369629,
+            "wall_us_per_call": 43.35684625
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 43.300957679748535,
+            "wall_us_per_call": 43.3567575
+          }
+        ],
+        "combine_1_tensor/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 26.73856019973755,
+            "wall_us_per_call": 27.24018
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 25.578880310058594,
+            "wall_us_per_call": 25.99772
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 26.139519214630127,
+            "wall_us_per_call": 26.54412
+          }
+        ],
+        "combine_1_tensor/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 25.265400409698486,
+            "wall_us_per_call": 25.3032325
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 25.33179998397827,
+            "wall_us_per_call": 25.3660275
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 25.27060031890869,
+            "wall_us_per_call": 25.3074775
+          }
+        ],
+        "packed_dispatch/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 61.8943977355957,
+            "wall_us_per_call": 62.4354
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 60.21376132965088,
+            "wall_us_per_call": 60.67616
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 60.33088207244873,
+            "wall_us_per_call": 60.76649999999999
+          }
+        ],
+        "packed_dispatch/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 35.0625205039978,
+            "wall_us_per_call": 35.096042499999996
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 34.91503953933716,
+            "wall_us_per_call": 34.95007625
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 35.011160373687744,
+            "wall_us_per_call": 35.04742125
+          }
+        ]
+      },
+      "per_rank_local_dispatch_input_bytes": 4160,
+      "per_rank_combine_input_bytes": 32768
+    },
+    {
+      "shape": {
+        "sizes": [
+          7827,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "hidden_dtype": "torch.bfloat16",
+        "weights_dtype": "torch.float32",
+        "ids_dtype": "torch.int32"
+      },
+      "rank": 7,
+      "correct_rank_payloads_and_sum": true,
+      "packed_arbitrary_bits_exact": true,
+      "timings": {
+        "dispatch_3_tensors/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1278.06396484375,
+            "wall_us_per_call": 1279.01482
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1268.8921356201172,
+            "wall_us_per_call": 1269.91106
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1265.9916687011719,
+            "wall_us_per_call": 1266.96946
+          }
+        ],
+        "dispatch_3_tensors/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1265.7420349121094,
+            "wall_us_per_call": 1265.8124075
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1274.416732788086,
+            "wall_us_per_call": 1274.50611625
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1270.06103515625,
+            "wall_us_per_call": 1270.1379362500002
+          }
+        ],
+        "combine_1_tensor/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1117.4310302734375,
+            "wall_us_per_call": 1118.27102
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1111.6358184814453,
+            "wall_us_per_call": 1112.53248
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1113.4515380859375,
+            "wall_us_per_call": 1114.34116
+          }
+        ],
+        "combine_1_tensor/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1119.5832824707031,
+            "wall_us_per_call": 1119.650455
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1118.8585662841797,
+            "wall_us_per_call": 1118.923835
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1121.85302734375,
+            "wall_us_per_call": 1121.918645
+          }
+        ],
+        "packed_dispatch/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1165.778579711914,
+            "wall_us_per_call": 1166.7376
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1158.4070587158203,
+            "wall_us_per_call": 1159.32716
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 1160.9945678710938,
+            "wall_us_per_call": 1162.0344
+          }
+        ],
+        "packed_dispatch/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1198.7055969238281,
+            "wall_us_per_call": 1198.78799875
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1188.73291015625,
+            "wall_us_per_call": 1188.83855625
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 1180.1592254638672,
+            "wall_us_per_call": 1180.24348
+          }
+        ]
+      },
+      "per_rank_local_dispatch_input_bytes": 4160,
+      "per_rank_combine_input_bytes": 32088064
+    },
+    {
+      "shape": {
+        "sizes": [
+          8192,
+          8192,
+          8192,
+          8192,
+          8192,
+          8192,
+          8192,
+          8192
+        ],
+        "hidden_dtype": "torch.bfloat16",
+        "weights_dtype": "torch.float32",
+        "ids_dtype": "torch.int32"
+      },
+      "rank": 7,
+      "correct_rank_payloads_and_sum": true,
+      "packed_arbitrary_bits_exact": true,
+      "timings": {
+        "dispatch_3_tensors/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 7201.68701171875,
+            "wall_us_per_call": 7203.19152
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 7185.6365966796875,
+            "wall_us_per_call": 7186.85738
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 7184.7503662109375,
+            "wall_us_per_call": 7185.81924
+          }
+        ],
+        "dispatch_3_tensors/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 7196.7120361328125,
+            "wall_us_per_call": 7196.84636875
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 7198.067626953125,
+            "wall_us_per_call": 7198.361096250001
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 7201.5771484375,
+            "wall_us_per_call": 7201.73899875
+          }
+        ],
+        "combine_1_tensor/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 6913.304443359375,
+            "wall_us_per_call": 6914.78876
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 6934.349365234375,
+            "wall_us_per_call": 6935.5608999999995
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 6904.5989990234375,
+            "wall_us_per_call": 6905.88308
+          }
+        ],
+        "combine_1_tensor/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 6929.6661376953125,
+            "wall_us_per_call": 6929.8007662499995
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 6929.427490234375,
+            "wall_us_per_call": 6929.589962499999
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 6932.939453125,
+            "wall_us_per_call": 6933.1547325
+          }
+        ],
+        "packed_dispatch/eager": [
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 7663.746337890625,
+            "wall_us_per_call": 7664.8843799999995
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 7651.7218017578125,
+            "wall_us_per_call": 7652.9977
+          },
+          {
+            "collective_calls": 50,
+            "graph_collectives_per_replay": null,
+            "event_us_per_call": 7674.5855712890625,
+            "wall_us_per_call": 7676.1001
+          }
+        ],
+        "packed_dispatch/cuda_graph": [
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 7870.169677734375,
+            "wall_us_per_call": 7870.28020875
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 7858.2647705078125,
+            "wall_us_per_call": 7858.4472175
+          },
+          {
+            "collective_calls": 800,
+            "graph_collectives_per_replay": 16,
+            "event_us_per_call": 7864.1876220703125,
+            "wall_us_per_call": 7864.310995
+          }
+        ]
+      },
+      "per_rank_local_dispatch_input_bytes": 34078720,
+      "per_rank_combine_input_bytes": 268435456
+    }
+  ],
+  "native_source_sha256": {
+    "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+    "distributed/eplb/async_worker.py": "b458e8252f3147982aa71670deae8264587f3ab01e552030641c2f9d8b6dbc43",
+    "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+    "distributed/eplb/rebalance_execute.py": "686eb68f425e7c1450abea9466178d430e95441bd74ea6aaed12c13090654431",
+    "model_executor/layers/fused_moe/prepare_finalize/naive_dp_ep.py": "5cc53791999bc0116f8d9d5a4658f8b39f53f59c1b7d644219cf4655011e29c4",
+    "model_executor/layers/fused_moe/router/base_router.py": "c909924fcfa461ccdaa6290d215d4d35bd4062fb02feeb23619b234da993f6bf",
+    "model_executor/layers/fused_moe/router/fused_topk_router.py": "1c80f4af4d781fd66b12aa6a7a0fd30082bc521df40f1252987a8ac4c0bef51c",
+    "v1/worker/gpu/eplb_utils.py": "98aaa1e7763faa3ae6fbd012f5a222f050ab2d5a6d8942193341f2e5716228ae",
+    "distributed/parallel_state.py": "a33fc846e0f4e682a644ce712d862806ecfa12dca6e5f641806e2e7991cd0087",
+    "distributed/device_communicators/cuda_communicator.py": "2a0695d8b46757be83b38fe657df605ba0bfb2ef2dfa690c78c57419bbad0762",
+    "distributed/device_communicators/pynccl.py": "4c51becc2ebfd41910526b93d7bd8e9e36312df444fdfb55fa2fbc92b0f8f88e"
+  },
+  "source_sha256": "590368fe4bd72e718fa2a21cae4675638605c694c5ed903ca204facf724dc710",
+  "packed_source_sha256": "4844f7b22290946996f222fa35ee6e60e0ae308a5397f65e57586ba5ee6f5e93",
+  "backend": "Pinned vLLM GroupCoordinator.all_gatherv/reduce_scatterv, same primitives called by AgRs; NCCL device communicator",
+  "scope": "Synthetic payload, observed sizes; component-only, excludes experts, compute imbalance and serving scheduler. Both eager and graph replay charged; no bandwidth-saturation or serving-speedup claim."
+}

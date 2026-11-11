@@ -1,0 +1,32 @@
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank3]:   File "<frozen runpy>", line 88, in _run_code
+[rank3]:   File "/work/cs-471/skewbench-hlin/full-serving/deployments/7179a6f-cost-replay/full_serving/communication_replay.py", line 139, in <module>
+[rank3]:     if __name__=='__main__':main()
+[rank3]:                             ^^^^^^
+[rank3]:   File "/work/cs-471/skewbench-hlin/full-serving/deployments/7179a6f-cost-replay/full_serving/communication_replay.py", line 138, in main
+[rank3]:     else:worker(json.loads(a.spec.read_text()),a.output,a.master)
+[rank3]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/work/cs-471/skewbench-hlin/full-serving/deployments/7179a6f-cost-replay/full_serving/communication_replay.py", line 46, in worker
+[rank3]:     group=GroupCoordinator([list(range(8))],0,'nccl',True,group_name='cost_replay',use_all2all=False)
+[rank3]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/parallel_state.py", line 550, in __init__
+[rank3]:     self.device_communicator = device_comm_cls(
+[rank3]:                                ^^^^^^^^^^^^^^^^
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/device_communicators/cuda_communicator.py", line 99, in __init__
+[rank3]:     self.pynccl_comm = PyNcclCommunicator(
+[rank3]:                        ^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/device_communicators/pynccl.py", line 163, in __init__
+[rank3]:     self._init_comm(device)
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/device_communicators/pynccl.py", line 190, in _init_comm
+[rank3]:     self.all_reduce(data)
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/device_communicators/pynccl.py", line 290, in all_reduce
+[rank3]:     self.nccl.ncclAllReduce(
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/device_communicators/pynccl_wrapper.py", line 504, in ncclAllReduce
+[rank3]:     self.NCCL_CHECK(
+[rank3]:   File "/work/cs-471/skewbench-hlin/venv/lib/python3.12/site-packages/vllm/distributed/device_communicators/pynccl_wrapper.py", line 448, in NCCL_CHECK
+[rank3]:     raise RuntimeError(f"NCCL error: {error_str}")
+[rank3]: RuntimeError: NCCL error: unhandled cuda error (run with NCCL_DEBUG=INFO for details)
+[rank3]:[W1111 17:10:06.707921791 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
