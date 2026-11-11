@@ -65,6 +65,19 @@
       "useful_mean_gain_vs_off": 0.05,
       "regression_guard": 0.02,
       "all_requests_complete": true
+    },
+    "payback_diagnostic": {
+      "arms": [
+        "allow",
+        "skip"
+      ],
+      "base": "b2",
+      "single_inflight": true,
+      "target_engine_step": 3750,
+      "earlier_later_cycles": "forced_noop",
+      "inputs": "same8pilot requests per dataset; matched pilot OFF lengths",
+      "admission": "predecision map/demand and output-prefix equality required; full KV state not cloned, limitations explicit",
+      "main_comparison": false
     }
   },
   "files": {
@@ -167,9 +180,9 @@
     "full_serving/sustained_bootstrap/cs471_sustained-0.1.dist-info/METADATA": "e93912fe4c3c10bcfdf2c6ce5cf6905e67a9cb1500fa3da020ff2a276aff40c7",
     "full_serving/sustained_bootstrap/cs471_sustained-0.1.dist-info/entry_points.txt": "63fa169eed5fe0d4f9bc7afe9a59e2364e4b2ed21c5b52d49cbde198becce50f",
     "full_serving/sustained_data.py": "af52ef43d3f17d39bc7361211201d1325a9bfa0a4c57c312b868b1d807e711b3",
-    "full_serving/sustained_experiment.py": "2c76fc3f7fed5fca97818c1f2b0956d309ee54f26ffecf454f2d7f5b938bc276",
+    "full_serving/sustained_experiment.py": "3de8e3485331d0b30b776dcea0e6e81b7044f2cd6af0f4810abb0648138a8116",
     "full_serving/sustained_node.sh": "6cdfaa17c8a39845c31e15cfc220ed4a8a6a64bd30b886463aef917a20132a05",
-    "full_serving/sustained_plugin.py": "eaa2b45b243504182f89609fd9ec5253f6f3eeebc03d0e5c9b921ad7f083793f",
+    "full_serving/sustained_plugin.py": "acea779ba0ffca208a71472dc6df9e695e3bc99e43b14e7827166a6e5939df8d",
     "full_serving/verify_data.py": "4f86df3d811e34fc22cad8789e77806ed6e103b9ff4c305d66ccf5a8d98380be",
     "full_serving/verify_suite.py": "79dcaf4024c68042d3c619fb724c1f9cb41594d57015e5f8f060119bcf1c5c29",
     "full_serving/wait_and_run.sh": "a5f0adc5d85803a021a69cdc498b215e092c89d0cb5052e745076f6668df1d63",
@@ -182,5 +195,5 @@
   "resident_sources": "results/full-serving/proposal-followup-v1/development/resident-sources.json",
   "native_pins": "results/full-serving/proposal-followup-v1/development/native-pins.json",
   "data_manifest_sha256": "f8d15ce716827fcca957a89f1f13c723bf76722b6ab56764e09c6627203688fd",
-  "seal": "f6c4bad9b1aee996ef987634d82146dfb978608fb32a48789dd94aa0b05f873c"
+  "seal": "f15865c8b869fa068bf56c28d0feebe302b96e22860d8cf2dc45ed2aee4d0379"
 }

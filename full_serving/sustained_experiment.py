@@ -132,6 +132,20 @@ def run(args):
         if not args.pilot:(out/'pilot-admission.json').write_bytes(args.pilot_admission.read_bytes())
         native.write_json(out/'controller-source.json',{'declared_git_revision':args.source_revision,'files':{str(p.relative_to(ROOT)):native.sha(p) for p in sorted((ROOT/'full_serving').rglob('*')) if p.is_file() and p.suffix in ('.py','.sh','.txt') and '__pycache__' not in p.parts}})
         inputs=copy_inputs(data,data_path,args.private_data,private,out,args.pilot)
+        if args.branch:
+            from full_serving.output_lengths import reference_targets
+            assert args.reference is not None
+            for ds,meta in data['datasets'].items():
+                for phase in ('warmup-00','warmup-01','pilot'):
+                    label=ds+'-'+phase
+                    ref=args.reference/'pilot'/'off'/(label+'.jsonl')
+                    target=out/(label+'-lengths.json')
+                    native.write_json(target,reference_targets(ref.read_bytes(),meta['items']['warmup'],8192))
+                    inputs[ds][phase+'-lengths']=target
+            native.write_json(out/'branch-contract.json',{'reference':str(args.reference),
+                'single_inflight':True,'decision_step':3750,'prior_and_later_migrations':'forced no-op',
+                'length_files':{p.name:native.sha(p) for p in out.glob('*-lengths.json')},
+                'warning':'Separate full-model replays, not cloned KV state. Require predecision demand/map/prefix checks; otherwise causal payback is inconclusive.'})
         if args.mode=='matched':
             assert not args.pilot and args.reference is not None
             for ds,meta in data['datasets'].items():
@@ -171,7 +185,7 @@ def run(args):
                         (directory/f'{label}-metrics-before.txt').write_bytes(native.get_url(url+'/metrics'))
                         client=[sys.executable,'-m','full_serving.client','--requests',str(item['requests']),'--base-url',url+'/v1','--output',str(directory/f'{label}.jsonl'),'--private-output',str(priv/f'{label}-outputs.jsonl'),'--run-id',f'{source}-{arm}-{phase}','--arm',arm,'--block-id',source+'-'+block['block_id'],'--load-id',phase,'--pair-id',source+'-'+block['block_id']+'-'+phase,'--max-inflight',str(1 if args.branch else 512),'--timeout-s','7200','--max-tokens',str(data['max_tokens'])]
                         client+=['--calendar',str(item['calendar'])] if measured else ['--rate','0']
-                        if args.mode=='matched':client+=['--output-lengths',str(inputs[source][phase+'-lengths'])]
+                        if args.mode=='matched' or args.branch:client+=['--output-lengths',str(inputs[source][phase+'-lengths'])]
                         if phase=='warmup-00' or args.branch:client+=['--logprobs']
                         native.command(client,directory/f'{label}-client.log',timeout=14400)
                         s=native.summary(directory/f'{label}.jsonl');assert s['completed_requests']==(512 if measured else 8) and not s['failed_requests']

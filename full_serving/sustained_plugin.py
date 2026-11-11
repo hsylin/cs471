@@ -69,9 +69,14 @@ def register():
             assert arm=='b2' and branch in ('allow','skip')
             admitted=new if branch=='allow' and cycle==target else current.clone()
         else:admitted=new
+        demand_sha=None
+        if branch:
+            with device_stream(stream):demand=ms.eplb_stats.global_expert_load_window.cpu()
+            demand_sha=hashlib.sha256(demand.numpy().tobytes()).hexdigest()
         emit('proposal',step=cycle,old_map=current.tolist(),candidate=new.tolist(),admitted=admitted.tolist(),
              changed_slots=int((admitted!=current).sum()),host_plan_ns=time.perf_counter_ns()-start,
-             old_map_sha256=hashlib.sha256(current.numpy().tobytes()).hexdigest(),branch=branch)
+             old_map_sha256=hashlib.sha256(current.numpy().tobytes()).hexdigest(),branch=branch,
+             diagnostic_native_demand_sha256=demand_sha)
         ms.cs471_observed_cycle=cycle
         return admitted
     def transfer(*args,**kwargs):
