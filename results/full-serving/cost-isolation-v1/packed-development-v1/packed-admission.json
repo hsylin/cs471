@@ -1,0 +1,14 @@
+{
+  "status": "admitted_to_model_pilot",
+  "implementation": "Lossless packing of BF16 hidden states, FP32 routing weights and int32 IDs; native all_gatherv, native reduce_scatterv unchanged",
+  "rule": "CUDA graph capture and sizes == [1]*8; no extras; no sequence parallelism; native eager fallback",
+  "selection_data": "Only eight pilot prompts/dataset and timing-independently selected observed shapes. Final requests not used for choice.",
+  "observed_small_graph_native_us": 43.31076145172119,
+  "observed_small_graph_packed_us": 35.011160373687744,
+  "ratio": 0.8083709267664326,
+  "all_eight_rank_payload_checks": "Known rank labels and reduction36, captured CUDA graph; arbitrary int32 bit patterns in eager packed/native gather matched exactly",
+  "eager_and_large_regressions": "Preserved in component summary; candidate does not replace these paths.",
+  "component_summary_sha256": "5259ea4dc0bf4e480e82dc87ba4dbe258d2b4c0f75e18dd5bf9f4478ed803e33",
+  "kernel_sha256": "4844f7b22290946996f222fa35ee6e60e0ae308a5397f65e57586ba5ee6f5e93",
+  "limitations": "Component result only. Three technical repetitions, no independent-run inference or serving speedup. Profile NCCL includes peer waiting; no unique explanation of all residual latency."
+}
