@@ -27,6 +27,12 @@ def complete(run,wrapper,inventory,repo,output,audits):
     spec=json.loads((run/'protocol.json').read_bytes())
     from full_serving.custom_compare import canonical_hash
     assert spec['seal']==canonical_hash({k:v for k,v in spec.items() if k!='seal'}) and spec['status']=='frozen'
+    protocol_name=spec['protocol_repository_path']
+    assert not Path(protocol_name).is_absolute() and '..' not in Path(protocol_name).parts
+    original_protocol=subprocess.run(['git','show',revision+':'+protocol_name],cwd=repo,check=True,capture_output=True).stdout
+    assert original_protocol==(run/'protocol.json').read_bytes(),'Frozen protocol differs from declared Git source'
+    admission=subprocess.run(['git','show',revision+':'+spec['pilot_admission']],cwd=repo,check=True,capture_output=True).stdout
+    assert hashlib.sha256(admission).hexdigest()==spec['pilot_admission_sha256']
     for name,sha in spec['files'].items():
         raw=subprocess.run(['git','show',revision+':'+name],cwd=repo,check=True,capture_output=True).stdout
         assert hashlib.sha256(raw).hexdigest()==sha,name

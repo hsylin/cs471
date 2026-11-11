@@ -61,9 +61,10 @@ def freeze(pilot_root,development_protocol,output):
     kernel=ROOT/spec['kernel_admission']
     assert sha(kernel)==spec['kernel_admission_sha256']
     check=json.loads(kernel.read_text());assert check['status']=='passed' and check['selected']==spec['history_implementation']
+    for name,digest in check['source_files'].items():assert spec['files'][name]==digest
     admission={'status':'passed','source_files':spec['files'],'pilots':pilots,'scope':'Correctness/feasibility pilot, no requirement to beat OFF; full-logit equivalence and long-horizon payback not established.'}
     output.mkdir(parents=True,exist_ok=False);ap=output/'pilot-admission.json';ap.write_text(json.dumps(admission,indent=2)+'\n')
-    spec.update(status='frozen',pilot_admission=str(ap.resolve().relative_to(ROOT)),pilot_admission_sha256=sha(ap))
+    spec.update(status='frozen',protocol_repository_path=str((output/'protocol.json').resolve().relative_to(ROOT)),pilot_admission=str(ap.resolve().relative_to(ROOT)),pilot_admission_sha256=sha(ap))
     spec.pop('seal');spec['seal']=canonical_hash(spec);protocol=output/'protocol.json';protocol.write_text(json.dumps(spec,indent=2,sort_keys=True)+'\n')
     load(protocol)
     return protocol
