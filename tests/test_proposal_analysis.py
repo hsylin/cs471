@@ -38,3 +38,6 @@ def test_gate_phase_evidence_does_not_count_warmup_decisions_as_measured(tmp_pat
     assert x['during_measurement']['proposal_steps']==[3750]
     assert x['during_measurement']['rank0_commit_gpu_completed']==1
     assert x['after_measurement']['rank0_commit_enqueued']==1
+    (tmp_path/'measured.jsonl').write_text(json.dumps({'type':'run_summary',
+        'epoch_wall_ns_approx':100,'completed_elapsed_ns':100})+'\n')
+    assert gate_phase_evidence(tmp_path)['partitions']==x

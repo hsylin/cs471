@@ -56,6 +56,8 @@ def complete(run,wrapper,inventory,repo,output,audits):
     body+=['<p>Recorded CUDA-event completion is distinct from drain. It does not establish full-weight or all-logit correctness. No automatic superiority or capacity claim.</p></html>']
     hp=output.with_suffix('.html');hp.write_text(''.join(body)+'\n')
     receipt={'status':'completed_and_audited','sessions':14,'measured_requests':224,'experiment_revision':revision,'verified_raw_files':len(actual),'verified_controller_source_files':len(source['files']),'verified_protocol_source_files':len(spec['files']),'independent_raw_arithmetic':'passed all sessions','artifacts':{str(p):digest(p) for p in (target,csvpath,hp)},'normal_native_b1_b2_commits':'not proven by native logs','automatic_superiority_claim':False}
+    receipt['analysis_files_sha256']={name:digest(repo/name) for name in
+        ('full_serving/proposal_analysis.py','full_serving/complete_proposal_report.py','full_serving/audit_final_statistics.py')}
     # Receipt last, and never silently overwrite an earlier closure.
     with (audits/'completion.json').open('x') as f:json.dump(receipt,f,indent=2);f.write('\n')
     return receipt

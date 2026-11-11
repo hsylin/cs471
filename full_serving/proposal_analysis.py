@@ -63,8 +63,15 @@ def profile_summary(directory):
     return {'files':results,'scope':'Profiler perturbs execution. Per-trace summed CUDA kernel times may overlap; not a critical-path or unprofiled latency decomposition. Pilot inputs only.'}
 
 
-def gate_phase_evidence(directory,summary):
+def gate_phase_evidence(directory,summary=None):
     """Distinguish measured decisions from warmup using same-host rank0 clock."""
+    if summary is None:
+        # read_phase exposes a reconstructed statistical summary, which omits
+        # the raw clock anchors needed to align independent gate records.
+        summaries=[r for line in (Path(directory)/'measured.jsonl').read_text().splitlines()
+                   if (r:=json.loads(line)).get('type')=='run_summary']
+        assert len(summaries)==1
+        summary=summaries[0]
     begin=summary['epoch_wall_ns_approx'];end=begin+summary['completed_elapsed_ns']
     rows=[json.loads(x) for x in (Path(directory)/'gate-events-rank0.jsonl').read_text().splitlines()]
     partitions={name:[] for name in ('before_measurement','during_measurement','after_measurement')}
@@ -168,7 +175,7 @@ def final_report(root):
             arms[arm]={'metrics':primary,'summary':summary,'runtime':identity,'phase_balance':balance,'native_metrics':metrics,'cache':cache_counter_deltas(p/'measured-metrics-before.txt',p/'measured-metrics-after.txt'),'eplb':eplb,'independent_arithmetic':'passed','header':item['header'],'signatures':signatures}
             if arm in ('b3','b4'):
                 arms[arm]['gate']=gate_audit(p,arm)
-                arms[arm]['gate']['phase_evidence']=gate_phase_evidence(p,summary)
+                arms[arm]['gate']['phase_evidence']=gate_phase_evidence(p)
             records[arm]=rows
         reference=arms['off']
         for arm in ARMS:
