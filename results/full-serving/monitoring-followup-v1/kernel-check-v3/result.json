@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "exact_snapshot_cases": 15,
+  "timings": {
+    "original": {
+      "three_cycle_wall_ms": [
+        84.392458,
+        85.459517,
+        85.487158
+      ],
+      "median_cycle_wall_ms": 85.459517,
+      "update_device_us_including_host_enqueue_gaps": 29.08639907836914
+    },
+    "reduction": {
+      "three_cycle_wall_ms": [
+        28.774031,
+        28.684047,
+        28.863604
+      ],
+      "median_cycle_wall_ms": 28.774031,
+      "update_device_us_including_host_enqueue_gaps": 9.749119877815247
+    }
+  },
+  "selection_rule": "Direct reduction is the only correctness-admitted fused candidate. Report both original and fused costs; do not select serving attempts by speed.",
+  "selected": "reduction",
+  "rejected_candidate": "Rolling prototype failed exact previous-window sums at step3749 with an intact ring/current window; not admitted.",
+  "limitations": "Synthetic counter state; component timing includes Python enqueue and GPU synchronization. Not a full-model latency prediction.",
+  "torch": "2.13.0+cu129",
+  "gpu": "NVIDIA H100"
+}

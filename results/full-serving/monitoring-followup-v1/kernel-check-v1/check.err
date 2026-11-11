@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/cs-471/skewbench-hlin/full-serving/monitoring-kernel-check-v1/full_serving/check_logical_history.py", line 93, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/monitoring-kernel-check-v1/full_serving/check_logical_history.py", line 92, in main
+    result=run();a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))
+           ^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/monitoring-kernel-check-v1/full_serving/check_logical_history.py", line 42, in run
+    assert np.array_equal(a.cpu().numpy(),expected[0]),(rolling,window,step,'previous')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (True, 1000, 3749, 'previous')

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/7f4eb41-latency-diagnostic/full_serving/monitoring_experiment.py", line 172, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/7f4eb41-latency-diagnostic/full_serving/monitoring_experiment.py", line 171, in main
+    (node if args.action=='node' else run)(args)
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/7f4eb41-latency-diagnostic/full_serving/monitoring_experiment.py", line 130, in run
+    native.wait_server(server,url,2400,directory);native.write_json(directory/'startup.json',{'elapsed_s':time.monotonic()-begin,'ready_utc':native.stamp()})
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/deployments/7f4eb41-latency-diagnostic/full_serving/orchestrate.py", line 124, in wait_server
+    raise RuntimeError(f"Server step exited during startup: {process.returncode}")
+RuntimeError: Server step exited during startup: 143

@@ -1,0 +1,135 @@
+{
+  "checked_at": "2026-11-11T11:35:35.452348+00:00",
+  "checkpoint_manifest": "/work/cs-471/skewbench-hlin/full-serving/monitoring-development-20261111-v1/b3_light/checkpoint-verified.json",
+  "checkpoint_manifest_sha256": "07d054c494e79e1c34dc2cb6697424af78519abb4c767ce7e1bc250c9be44cb9",
+  "checkpoint_verification": "full SHA256 record plus unchanged file stat fingerprints",
+  "cuda_compiler_toolchain": {
+    "critical_file_sha256": {
+      "bin/nvcc": "df9974db233a0b7a6c6d59c0e5d74e011566104098bcb3553495ff1b95bdeaf6",
+      "bin/ptxas": "983b0e9283855979f42cebfd80d43f9b6e786eb84f03f7570bf941c4d3a3c461",
+      "include/cub/cub.cuh": "bdc0b6b63f26e1aa9530afab101b45d4f9daf9e66d6d0e257ba586f67a179839",
+      "include/cuda_runtime.h": "1aaa84ed2ac4086acdf908390e4f742d28ecfb1bca94766944b9691fb2d47a13",
+      "include/curand.h": "4a21579dc1e0bd7004887ce1e87294fc02afd4c3efba447bbecbd6dfffb74902"
+    },
+    "cuda_home": "/work/cs-471/skewbench-hlin/tools/cuda-12.9.1",
+    "install_manifest_sha256": "03bee7165b2dde7945cc0435c1750076746a814fae9395e9a629fcfa14eebe9b",
+    "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0\n",
+    "runtime_library_environment_changed": false
+  },
+  "cuda_visible_devices": "0,1,2,3",
+  "devices": [
+    {
+      "cuda_index": 0,
+      "name": "NVIDIA H100",
+      "total_memory": 99981918208,
+      "uuid": "b67d59bc-afb6-c8c6-64e1-bd043d01be9d"
+    },
+    {
+      "cuda_index": 1,
+      "name": "NVIDIA H100",
+      "total_memory": 99981918208,
+      "uuid": "ecd8581a-dd4b-1bde-f988-c0aca0f15116"
+    },
+    {
+      "cuda_index": 2,
+      "name": "NVIDIA H100",
+      "total_memory": 99981918208,
+      "uuid": "b7649e7e-421d-744d-6e43-2ffefb31620a"
+    },
+    {
+      "cuda_index": 3,
+      "name": "NVIDIA H100",
+      "total_memory": 99981918208,
+      "uuid": "d3c8f4d5-9028-3064-204a-66ddf7db0c64"
+    }
+  ],
+  "flashinfer_prebuild": {
+    "checks": [
+      {
+        "exact_mask_match": true,
+        "top_k": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "exact_mask_match": true,
+        "top_k": [
+          1,
+          5,
+          32,
+          4096
+        ]
+      },
+      {
+        "exact_sample_match": true,
+        "operation": "top_k_top_p_sampling_from_logits",
+        "top_k": 1,
+        "top_p": 0.75
+      },
+      {
+        "distribution": "one-hot",
+        "exact_sample_match": true,
+        "operation": "top_p_sampling_from_probs",
+        "top_p": 0.9
+      }
+    ],
+    "get_sampling_module_elapsed_s": 0.06436312990263104,
+    "jit_dir": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074/.cache/flashinfer/0.7.0.post1/90a/cached_ops",
+    "report_path": "/work/cs-471/skewbench-hlin/full-serving/monitoring-development-20261111-v1/b3_light/pilot/b3_light/flashinfer-prebuild/kh074.json",
+    "report_sha256": "5572820619df17d3b456e05b7b87efebb18ec898922cfdb6c201b29275bb7ccd",
+    "sampling_lock_path": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074/.cache/flashinfer/0.7.0.post1/90a/cached_ops/tmp/sampling.lock",
+    "sampling_module_sha256": {
+      "sampling/sampling.so": "76fdd89682f5a10a98cc3d34d4b73c4f34fb81dc86f87a5e3ab03080df33b2f6"
+    },
+    "source_sha256": {
+      "jit/core.py": "059824e4b166e4a3f97a1d9062af5c4cad752ebed11e94ed597e0cdffa217dac",
+      "jit/cpp_ext.py": "dd806d68794d326b6f90f3e48020a3a534f1e3cdb11bab51e8fac3711863e8de",
+      "jit/env.py": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+      "sampling.py": "ee6e2521028064620fb7def8a28da30112d2d633deec73437a3770aca4e24ac4"
+    },
+    "timing_boundary": "prebuild is startup; executed before model loading and all measured requests",
+    "workspace_base": "/work/cs-471/skewbench-hlin/cache/flashinfer-jit/4882284/kh074"
+  },
+  "gpu_inventory": "index, uuid, name, memory.total [MiB]\n0, GPU-b67d59bc-afb6-c8c6-64e1-bd043d01be9d, NVIDIA H100, 95830 MiB\n1, GPU-ecd8581a-dd4b-1bde-f988-c0aca0f15116, NVIDIA H100, 95830 MiB\n2, GPU-b7649e7e-421d-744d-6e43-2ffefb31620a, NVIDIA H100, 95830 MiB\n3, GPU-d3c8f4d5-9028-3064-204a-66ddf7db0c64, NVIDIA H100, 95830 MiB\n",
+  "hostname": "kh074",
+  "job_id": "4882284",
+  "kind": "runtime_preflight",
+  "limits": "Does not validate collective execution, generation, rank agreement, or EPLB commits.",
+  "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+  "network_interfaces": "[{\"ifindex\":1,\"ifname\":\"lo\",\"flags\":[\"LOOPBACK\",\"UP\",\"LOWER_UP\"],\"mtu\":65536,\"qdisc\":\"noqueue\",\"operstate\":\"UNKNOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"loopback\",\"address\":\"00:00:00:00:00:00\",\"broadcast\":\"00:00:00:00:00:00\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"127.0.0.1\",\"prefixlen\":8,\"scope\":\"host\",\"label\":\"lo\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]},{\"ifindex\":2,\"ifname\":\"eth1\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"SLAVE\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"mq\",\"master\":\"bond0\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"8a:e8:62:03:f5:8e\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"permaddr\":\"a0:88:c2:fc:58:bc\",\"altnames\":[\"enp33s0f0np0\",\"ens27f0np0\"],\"addr_info\":[]},{\"ifindex\":3,\"ifname\":\"eth0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"SLAVE\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"mq\",\"master\":\"bond0\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"8a:e8:62:03:f5:8e\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"permaddr\":\"a0:88:c2:fc:58:bd\",\"altnames\":[\"enp33s0f1np1\",\"ens27f1np1\"],\"addr_info\":[]},{\"ifindex\":4,\"ifname\":\"bond0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":9000,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"8a:e8:62:03:f5:8e\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.91.54.74\",\"prefixlen\":21,\"broadcast\":\"10.91.55.255\",\"scope\":\"global\",\"label\":\"bond0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]},{\"ifindex\":5,\"ifname\":\"bond1\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"MASTER\",\"UP\",\"LOWER_UP\"],\"mtu\":2044,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"infiniband\",\"address\":\"00:00:11:67:fe:80:00:00:00:00:00:00:a0:88:c2:03:00:f6:67:a1\",\"broadcast\":\"00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"172.19.54.74\",\"prefixlen\":21,\"broadcast\":\"172.19.55.255\",\"scope\":\"global\",\"label\":\"bond1\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]},{\"ifindex\":6,\"ifname\":\"enp5s0f4u1u6\",\"flags\":[\"BROADCAST\",\"MULTICAST\"],\"mtu\":1500,\"qdisc\":\"noop\",\"operstate\":\"DOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"0a:3a:88:ff:fa:7a\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[]},{\"ifindex\":7,\"ifname\":\"ib0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"SLAVE\",\"UP\",\"LOWER_UP\"],\"mtu\":2044,\"qdisc\":\"mq\",\"master\":\"bond1\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":256,\"link_type\":\"infiniband\",\"address\":\"00:00:10:67:fe:80:00:00:00:00:00:00:a0:88:c2:03:00:f6:67:a0\",\"broadcast\":\"00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff\",\"altnames\":[\"ibp103s0f0\",\"ibs1f0\"],\"addr_info\":[]},{\"ifindex\":8,\"ifname\":\"ib1\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"SLAVE\",\"UP\",\"LOWER_UP\"],\"mtu\":2044,\"qdisc\":\"mq\",\"master\":\"bond1\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":256,\"link_type\":\"infiniband\",\"address\":\"00:00:11:67:fe:80:00:00:00:00:00:00:a0:88:c2:03:00:f6:67:a1\",\"broadcast\":\"00:ff:ff:ff:ff:12:40:1b:ff:ff:00:00:00:00:00:00:ff:ff:ff:ff\",\"altnames\":[\"ibp103s0f1\",\"ibs1f1\"],\"addr_info\":[]}]\n",
+  "optional_dependencies": {
+    "deep_ep": false,
+    "nixl": false,
+    "ray": false
+  },
+  "primary_ip": "10.91.54.74",
+  "role": "primary",
+  "schema": 1,
+  "selected_vllm_source_sha256": {
+    "config/parallel.py": "eee9418488deb7945562c3127106109bac632471a2c1a08a58169a48cd15684c",
+    "distributed/device_communicators/all2all.py": "e1671a092d64fa75e370680a4951d00c64a7d839e1e954ff16c6cf5d82350c8d",
+    "distributed/eplb/eplb_state.py": "eaac132acd438074343e5ee56c52e1df46f37a9bf7a303bd3b9373c69b513f17",
+    "engine/arg_utils.py": "95be1adb96f55933f6a52260c8cb2181d04707401ca21d97c33108c5ab58f3ac",
+    "entrypoints/cli/serve.py": "c182c88347f1eb3440a816986f1c2025a2ab2a13236cd68b0ad0146250d031ff",
+    "entrypoints/launchers/api_server/entry.py": "4f60dee4693159b79016c6a84f016eb0ade024433807ff393ea782a31bb9f7e4",
+    "entrypoints/launchers/api_server/routers.py": "c2f1bb2708f44f0fe24f3d8ab8f884c7262e551c6557ebc606263abc4d7b1db1",
+    "entrypoints/launchers/launcher.py": "d5ab9febbe139885c95b03b804680f3a404f74d6bfef7f3d433d506319b490e1",
+    "entrypoints/openai/api_server.py": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+    "model_executor/layers/fused_moe/layer.py": "0c30a9a56ff22c63a1498f61c72a349e4dba0d1e4fbe42efb333dda45d4bdecf",
+    "model_executor/models/qwen3_moe.py": "cac0cffc3e5b1ff805e9e15fe1d4bcfd5e55c27378e4a9ab23b0fa6c1b05e5ee",
+    "v1/engine/utils.py": "2f5b1b802ca31f19545ba00c68afc83cbbec4e55399e311e9102ce7a483254ab"
+  },
+  "slurm_nodes": "kh[074,077]",
+  "topology": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tNIC0\tNIC1\tNIC2\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tNV6\tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU1\tNV6\t X \tNV6\tNV6\tSYS\tSYS\tSYS\t24-31\t3\t\tN/A\nGPU2\tNV6\tNV6\t X \tNV6\tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nGPU3\tNV6\tNV6\tNV6\t X \tSYS\tSYS\tSYS\t40-47\t5\t\tN/A\nNIC0\tSYS\tSYS\tSYS\tSYS\t X \tPIX\tSYS\t\t\t\t\nNIC1\tSYS\tSYS\tSYS\tSYS\tPIX\t X \tSYS\t\t\t\t\nNIC2\tSYS\tSYS\tSYS\tSYS\tSYS\tSYS\t X \t\t\t\t\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n\nNIC Legend:\n\n  NIC0: mlx5_2\n  NIC1: mlx5_3\n  NIC2: mlx5_bond_0\n\n",
+  "torch_version": "2.13.0+cu129",
+  "transport_environment": {
+    "VLLM_CACHE_ROOT": "/work/cs-471/skewbench-hlin/cache/vllm",
+    "VLLM_NO_USAGE_STATS": "1"
+  },
+  "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+  "vllm_distribution_version": "0.31.0+cu129",
+  "vllm_version": "0.31.0"
+}

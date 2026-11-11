@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/cs-471/skewbench-hlin/full-serving/monitoring-kernel-check-v2/full_serving/check_logical_history.py", line 97, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/monitoring-kernel-check-v2/full_serving/check_logical_history.py", line 96, in main
+    result=run();a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))
+           ^^^^^
+  File "/work/cs-471/skewbench-hlin/full-serving/monitoring-kernel-check-v2/full_serving/check_logical_history.py", line 45, in run
+    raise AssertionError({'rolling':rolling,'window':window,'step':step,'ring_equal':bool(np.array_equal(actual_ring,ring)),'previous_max_error':int(np.abs(actual_a-expected[0]).max()),'recent_max_error':int(np.abs(actual_b-expected[1]).max()),'example':[(int(l),int(e),int(actual_a[l,e]),int(expected[0][l,e])) for l,e in zip(*np.nonzero(actual_a!=expected[0]))][:8]})
+AssertionError: {'rolling': True, 'window': 1000, 'step': 3749, 'ring_equal': True, 'previous_max_error': 115367, 'recent_max_error': 0, 'example': [(0, 65, 64255, 41571), (0, 67, 50080, 28954), (0, 69, 82385, 70963), (0, 71, 70495, 46069), (0, 73, 82945, 55443), (0, 75, 65395, 44089), (0, 77, 55310, 29250), (0, 79, 78270, 70694)]}
