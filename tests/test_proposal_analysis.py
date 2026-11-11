@@ -26,6 +26,12 @@ def test_logged_config_supports_only_known_literal_config_constructors():
     with pytest.raises(AssertionError):logged_config("non-default args: {'x': arbitrary_code()}")
 
 
+def test_non_default_args_omit_zero_replica_default_but_preserve_nonzero():
+    from full_serving.proposal_analysis import logged_config,logged_replica_count
+    assert logged_replica_count(logged_config("non-default args: {'enable_eplb': True}"))==0
+    assert logged_replica_count(logged_config("non-default args: {'enable_eplb': True, 'eplb_config': EPLBConfig(num_redundant_experts=32)}"))==32
+
+
 def test_gate_phase_evidence_does_not_count_warmup_decisions_as_measured(tmp_path):
     from full_serving.proposal_analysis import gate_phase_evidence
     rows=[{'kind':'decision','wall_ns':90,'step':750,'layers':[{'reason':'incomplete'}]},

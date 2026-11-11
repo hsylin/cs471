@@ -100,6 +100,14 @@ def logged_config(text):
     return ast.literal_eval(Config().visit(ast.parse(entries[0],mode='eval')))
 
 
+def logged_replica_count(config):
+    # This is a NON-default-args record. The pinned parallel.py defines
+    # EPLBConfig.num_redundant_experts = Field(default=0, ge=0), so the
+    # all-default B1 config is omitted. runtime also verifies the explicit
+    # zero-replica CLI on both nodes and the pinned native source hashes.
+    return config.get('eplb_config',{}).get('num_redundant_experts',0)
+
+
 def runtime(directory,arm):
     from full_serving.custom_runtime import runtime_identity,logged_arguments,engine_configuration,errors_before_shutdown
     root=Path(directory);texts={f'server-{n}.{suffix}':(root/f'server-{n}.{suffix}').read_text() for n in range(2) for suffix in ('log','err')}
@@ -113,7 +121,7 @@ def runtime(directory,arm):
         if arm=='off':assert cfg.get('enable_eplb',False) is False
         else:
             assert cfg['enable_eplb'] is True
-            assert cfg['eplb_config']['num_redundant_experts']==(0 if arm=='b1' else 32)
+            assert logged_replica_count(cfg)==(0 if arm=='b1' else 32)
     joined='\n'.join(texts.values())
     for marker in ('Using AgRsAll2AllManager','Using V2 Model Runner','Using FlashAttention version 3','Using TRITON Unquantized MoE'):assert marker in joined,marker
     if arm in ('b1','b2','b3','b4'):assert 'TorchDistGlooStagedEplbCommunicator' in joined
