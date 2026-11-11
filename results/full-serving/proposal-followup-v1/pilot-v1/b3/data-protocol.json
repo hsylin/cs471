@@ -1,0 +1,393 @@
+{
+  "acceptance": {
+    "acceptable_regression_percent": 2,
+    "correctness_required": [
+      "all admitted requests drain",
+      "no missing/duplicated logical tokens",
+      "routing and combining-weight preservation",
+      "declared numerical tolerances",
+      "rank agreement",
+      "resident copy equivalence",
+      "committed-state consistency evidence with explicit native observability limits",
+      "Every measured and warmup request completes exactly its frozen reference output-token count with length termination; reject early stopping and failed requests."
+    ],
+    "decision_rule": "Report point effects and intervals per source: useful point gain is ratio <= 0.95, material point regression is ratio >= 1.02. Label uncertainty explicitly; no automatic promotion or confirmatory pass with four blocks.",
+    "guard_endpoints": [
+      "p95_response",
+      "completed_elapsed"
+    ],
+    "numerical_scope": "The separate pilot admission verifies complete BF16 duplicate weights and bindings for all48 MoE layers, exact logical/physical routing and token conservation in diagnostic cases, and native/FP32 expert arithmetic at layers0,23,47 under the previously fixed atol0.02/rtol0.03. It does not certify full-model logits, exact generated texts, semantic answer quality, or native asynchronous committed weights. Generated-token and output-length differences remain explicit in all comparisons; no post-pilot tolerance relaxation is permitted.",
+    "useful_gain_percent": 5
+  },
+  "amendment": {
+    "created_utc": "2026-11-10T21:47:44.835044+00:00",
+    "parent_natural_protocol_sha256": "03dea2fbdc2b8a4fd3ee35ebf3a318c671fa779b5bc21393b416845f2970fd70",
+    "prior_measurements_preserved": true,
+    "private_payloads_read": false,
+    "reason": "User requested a fair equal-output-length comparison after the natural-EOS results.",
+    "same_prompts_arrivals_model_hardware_and_method": true,
+    "statistical_scope": "One group per workload, three arms; descriptive only, no confidence interval or reproducibility claim."
+  },
+  "analysis": {
+    "arrival_normalization_caveat": "Each external source block is uniformly time-rescaled to that dataset's previously fixed OFF-based pilot rate. OFF, ON and custom share the resulting exact absolute calendar. Scaling preserves relative timing and timestamp ties but changes the original production rate; calibration is not a sustainable-capacity estimate, and these results do not establish behavior at other loads or authentic joint content/arrival distributions.",
+    "cross_source_dependence": "Calendar dates and patterns are shared across sources; never pool sources or treat the 20 blocks as independent evidence for one universal effect.",
+    "estimand": "Per-dataset paired treatment/baseline response ratios for this one group; no pooling.",
+    "experimental_unit": "One reserved sixteen-request content group and its existing arrival calendar per dataset.",
+    "formal_hypothesis_tests": false,
+    "generation_caveat": "Equal generated token count per prompt, not identical token sequence, expert routing, batching or mathematical answer quality.",
+    "inferential_intervals": false,
+    "metrics": [
+      "mean_response",
+      "p95_response_with_n16_warning",
+      "TTFT_from_schedule_and_send",
+      "completed_elapsed_including_horizon_and_drain",
+      "drain",
+      "requests_per_second",
+      "generated_tokens_per_second",
+      "input_and_generated_token_counts",
+      "finish_reasons",
+      "native_queue_and_RUNNING_histograms",
+      "preemption_and_cache_hits"
+    ],
+    "multiplicity": "No tests or confidence intervals; point margins are descriptive, not acceptance guarantees.",
+    "pilot_precision_limit": "One completed pilot content/arrival block per source cannot estimate between-block variance or power. Four final blocks do not justify a confirmatory 5% gain or 2% regression guarantee.",
+    "primary_contrast": "custom/off",
+    "primary_endpoint": "mean full-response latency from scheduled arrival",
+    "secondary_contrast": "custom/on",
+    "timing_boundary": "Primary request and replay timing charge online decision/feature/communication overhead and complete output drain. Startup, pilot warmup and shutdown are separately reported, excluded from warmed replay latency; no claim about deployment-total time.",
+    "uncertainty": "Descriptive only: one group cannot estimate between-group or repeated-run variation."
+  },
+  "custom": {
+    "anticipated_control": "No further recording/rebalance after resident initialization.",
+    "anticipated_dispatch": "One-home resident assignment using globally agreed routing; per-pair active-copy cap plus longest-processing-time assignment. Exact implementation and correctness evidence await integration admission.",
+    "anticipated_physical_experts": 160,
+    "anticipated_physical_map_formula": "For rank r in 0..7: [16*r + i for i in 0..15] followed by [16*(r XOR 1) + i for i in 0..3].",
+    "anticipated_placement": "Each EP rank r owns its 16 logical experts plus the first 4 experts of its paired neighbor (r XOR 1); four independent rank pairs, 160 physical slots and 32 redundant copies total.",
+    "anticipated_redundant_experts": 32,
+    "bootstrap_path": "full_serving/bootstrap",
+    "config_file": "implementation/config.json",
+    "config_sha256": "4de70471ea35679dd8f3d940fcfa90dac898f29c859ba5b7ad4e0a423f5eef2d",
+    "contrast_scope": "Whole method: paired static placement plus resident dispatch plus disabled recurring control. Native ON retains its default initialization and async EPLB. Results cannot isolate dispatcher-only causality.",
+    "entrypoint": "full_serving.custom_entrypoint",
+    "mode": "resident_v1",
+    "placement_selection_basis": "Static structural CPU feasibility, independent of final inputs or outcomes; uniform activation admits 16 active physical experts per rank within each pair.",
+    "source_manifest_file": "implementation/source_manifest.json",
+    "source_manifest_sha256": "51f650a85016d1efdf4a1fead1f670337ef36f01153cfed5280c004b0a118f3c"
+  },
+  "datasets": [
+    {
+      "arm_position_counts": {
+        "custom": [
+          0,
+          0,
+          1
+        ],
+        "off": [
+          0,
+          1,
+          0
+        ],
+        "on": [
+          1,
+          0,
+          0
+        ]
+      },
+      "arrival_rate_requests_per_s": 1.8930422988665387,
+      "blocks": [
+        {
+          "arm_order": [
+            "on",
+            "off",
+            "custom"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "longbench-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/longbench-final-00.json",
+          "calendar_sha256": "a894106443db1e58c47f3b7f9086ce24a87f8efd1828325a4f1fd154327be1f1",
+          "content_block_id": "longbench-final-00",
+          "output_lengths_file": "output-lengths/longbench-measured.json",
+          "output_lengths_sha256": "5416135321c07e207ee460bece032bacc055062a2c002578ba93df583a8051e7",
+          "output_reference_file": "output-length-reference/longbench-measured.jsonl",
+          "output_reference_sha256": "333a24b7a1cd9ebf745946173c9edb9ee0fca383d37901079840c23f767f291b",
+          "request_count": 16,
+          "request_ids": [
+            "longbench-gov_report-052f22dafd736b1df286b3b4188184d3ee213281295b3ea0",
+            "longbench-qasper-72bf7a9599ea8ea1cf309f0dfe07f16f2e05d59ff82f4a37",
+            "longbench-qasper-3bb91d7f22ae15ff9fc6475233052ad0981ad7e812f7eaa7",
+            "longbench-qasper-3ca65b23b3cb316653709b469b4a9b42b790e0350c76ae1a",
+            "longbench-qasper-aaaf5a6e22afc0f84ee63ab9e8dfe9484462ef105aa44ec6",
+            "longbench-gov_report-caf5073d724df260e53ec2cab2e8cc627e97c0f93798cdba",
+            "longbench-gov_report-3aefe57b8fc0900533ff595b34971a18d6ca08c54c54b433",
+            "longbench-hotpotqa-d3249d0550c7105bdd4ed60c9ca9d955db08d362574c2086",
+            "longbench-hotpotqa-8a5d7c131d291d2c7cf2c20ea36a629f969402e0c50a8a8a",
+            "longbench-hotpotqa-670498f9d7fd2582c5791cad2fe212f580d316fa49a8a984",
+            "longbench-hotpotqa-d18fde9d0b8da2a2febb67a679847ee4ee3259e85a9565f4",
+            "longbench-gov_report-8715d32b4155d9bfe5ec4f00d13dbe44c5c57a75b58ce2dc",
+            "longbench-qasper-78ec3790de7582388e6f9f2e428ddd2f6cccef851a8fcd57",
+            "longbench-qasper-07484380079dcec47eb573ab62eaff39a1a44b32006ec74e",
+            "longbench-gov_report-2ffa8e41905ff69637e32b478476fd68758395f1ac7d3dcd",
+            "longbench-qasper-7e339da53449dbd58a1e815d55e440e712af6a1950f342b7"
+          ],
+          "request_ids_sha256": "9fe493cf1b435bf53f2e26e997b7424f1f9a4b247933bf094c593a3e29434d7d",
+          "requests_file": "longbench/final-block-00.jsonl",
+          "requests_sha256": "b6088cb540a2edb9162d4d8d123d5647daf28f1d11ad75cf4ffb82e360ea023e",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "941dd37627e763328791b8a0080bc77db6f9bd995f56ed0549f7428beeb2cf43",
+          "split": "final"
+        }
+      ],
+      "dataset": "longbench",
+      "pilot_calendar_file": "pilot-calendars/longbench.json",
+      "pilot_calendar_sha256": "9a946323481716b9daf802fb7df727824d18b8de6149ceb6b510f35bf8adbccc",
+      "reserved_source_final_file_sha256": "372dabd912e81c268cedc306873a652dbf378026d37df811830249b03f6dcc77",
+      "source_group_unit": "group_id",
+      "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+      "warmup": {
+        "output_lengths_file": "output-lengths/longbench-warmup.json",
+        "output_lengths_sha256": "06602c5b5dbb3f16a6b71948f18cced9834f5405aaa8124bafbc454f150d81c7",
+        "output_reference_file": "output-length-reference/longbench-warmup.jsonl",
+        "output_reference_sha256": "9d08388996a7f675e97e558a752bf1b1a758e345457f43a7310e3fa9811b518a",
+        "request_count": 8,
+        "request_ids": [
+          "longbench-qasper-43ffd7775c3b4a541e227c120bffcc7c7b31fb184ba94d69",
+          "longbench-qasper-ac6538e9c173ba7b453d6bf62480d56eb3761b5f6f73c328",
+          "longbench-gov_report-505fee99f21568a0ba3f034052073611384ef23894390ab1",
+          "longbench-gov_report-ddc72d28a1a4b317307130a46e60fb1d482edb9790b9e742",
+          "longbench-hotpotqa-963e90eba94bba5bf5cf56755032d7bd4a3e4e225d3b8d14",
+          "longbench-hotpotqa-bf8ee342564ae21a17b169023f83a20220a63198827a0232",
+          "longbench-hotpotqa-105e7f4d337799315ddf870acc4ff2a62a1e6cdf489086cd",
+          "longbench-gov_report-a6b66279eee0135505b08462e35738e68080a9214e36f710"
+        ],
+        "requests_file": "longbench/warmup.jsonl",
+        "requests_sha256": "a35291916fc02dcccdb84cd1b90d2dc5152aadce82e934385fa005b50c288af9",
+        "split": "pilot"
+      }
+    },
+    {
+      "arm_position_counts": {
+        "custom": [
+          1,
+          0,
+          0
+        ],
+        "off": [
+          0,
+          0,
+          1
+        ],
+        "on": [
+          0,
+          1,
+          0
+        ]
+      },
+      "arrival_rate_requests_per_s": 0.82110153213484,
+      "blocks": [
+        {
+          "arm_order": [
+            "custom",
+            "on",
+            "off"
+          ],
+          "arrival_block_id": "full-azure-code-2024-05-10-final-rows-00-15",
+          "block_id": "numinamath-final-00",
+          "calendar_date_cluster": "2024-05-10",
+          "calendar_file": "calendars/numinamath-final-00.json",
+          "calendar_sha256": "1f6b4435c2ee95a20d5c055f4c3836f191a313445686899398d529c862d0d889",
+          "content_block_id": "numinamath-final-00",
+          "output_lengths_file": "output-lengths/numinamath-measured.json",
+          "output_lengths_sha256": "cd8e5cded684ebce5da5945f1e3b78c9299e26b7900529acd4fe1c9c6201c83f",
+          "output_reference_file": "output-length-reference/numinamath-measured.jsonl",
+          "output_reference_sha256": "0a9de48000b78ff862673b371739962da30ab538236b53db09b1ff5c254f2efb",
+          "request_count": 16,
+          "request_ids": [
+            "numinamath:train-00000-of-00003.parquet:107885",
+            "numinamath:train-00002-of-00003.parquet:238065",
+            "numinamath:train-00001-of-00003.parquet:51578",
+            "numinamath:train-00001-of-00003.parquet:2902",
+            "numinamath:train-00000-of-00003.parquet:250626",
+            "numinamath:train-00000-of-00003.parquet:241975",
+            "numinamath:train-00001-of-00003.parquet:30445",
+            "numinamath:train-00000-of-00003.parquet:127490",
+            "numinamath:train-00002-of-00003.parquet:290237",
+            "numinamath:train-00000-of-00003.parquet:196603",
+            "numinamath:train-00001-of-00003.parquet:298488",
+            "numinamath:train-00002-of-00003.parquet:191085",
+            "numinamath:train-00000-of-00003.parquet:11416",
+            "numinamath:train-00002-of-00003.parquet:76067",
+            "numinamath:train-00002-of-00003.parquet:61623",
+            "numinamath:train-00001-of-00003.parquet:262964"
+          ],
+          "request_ids_sha256": "41a7f2d88aeb688ebc681a870d73df23d5f94568da30bc8333089e9cdbdaae88",
+          "requests_file": "numinamath/final-block-00.jsonl",
+          "requests_sha256": "bbe4b9fb88674bb3a706f02c32c5c38b84eea8ba525e98fa5111569ed4bcb33a",
+          "source_final_index_range_half_open": [
+            0,
+            16
+          ],
+          "source_group_ids_sha256": "0076b5803f453e62f635719137db82b589a03eb58d791b5305b420149e3c4c8e",
+          "split": "final"
+        }
+      ],
+      "dataset": "numinamath",
+      "pilot_calendar_file": "pilot-calendars/numinamath.json",
+      "pilot_calendar_sha256": "4a1f79ea84a9d9ddbac54a5e48afe1c35d94aac64d536dce4dbdb4d35f9fc4ea",
+      "reserved_source_final_file_sha256": "9f8c860d51e78dcea55e8285f866ce9e8d901bb3aac1f8eb0973f09b3bb785e9",
+      "source_group_unit": "group_id",
+      "source_public_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+      "warmup": {
+        "output_lengths_file": "output-lengths/numinamath-warmup.json",
+        "output_lengths_sha256": "621aeafd8800efefd09cf3cd51a56ff2b6e926cad5ed87a69f6298327ac842cf",
+        "output_reference_file": "output-length-reference/numinamath-warmup.jsonl",
+        "output_reference_sha256": "4800799a83c74a49f55081cad51f23275c41f6a7f28dec0d156ee00a316067d8",
+        "request_count": 8,
+        "request_ids": [
+          "numinamath:train-00002-of-00003.parquet:280692",
+          "numinamath:train-00000-of-00003.parquet:242767",
+          "numinamath:train-00002-of-00003.parquet:268045",
+          "numinamath:train-00001-of-00003.parquet:82468",
+          "numinamath:train-00002-of-00003.parquet:113032",
+          "numinamath:train-00000-of-00003.parquet:33859",
+          "numinamath:train-00001-of-00003.parquet:248081",
+          "numinamath:train-00001-of-00003.parquet:50696"
+        ],
+        "requests_file": "numinamath/warmup.jsonl",
+        "requests_sha256": "b0c860e00d2a8bcedbe677dd49aa9c6ca6c1d774078573281ceabb6fde6b30eb",
+        "split": "pilot"
+      }
+    }
+  ],
+  "equal_length_reference": {
+    "freshness": "Fresh server executions of previously used content and unchanged calendars; not fresh payloads or an independent generalization sample.",
+    "meaning": "Equal generated token count per prompt, not identical token sequence, expert routing, batching or mathematical answer quality.",
+    "natural_protocol_sha256": "03dea2fbdc2b8a4fd3ee35ebf3a318c671fa779b5bc21393b416845f2970fd70",
+    "request_settings": "Each request sends max_tokens=N, min_tokens=N, ignore_eos=true, stop=[], stop_token_ids=[]. All arms charge this common sampling/control overhead.",
+    "rule": "Per-request target equals the previous natural-EOS OFF completion count. No speed-based selection. Pilot warmup00 counts are reused for both warmup passes; measured counts bind each of the same16 prompts."
+  },
+  "equal_output_length": true,
+  "execution": {
+    "absolute_arrivals_preserved": true,
+    "arm_order_rule": "Reverse the previous fixed arm order in each workload before execution; no outcome-based order selection.",
+    "budget_note": "Six fresh server launches; previous startups take several minutes each. No shortening admitted work.",
+    "cache_conditioning": "Identical pilot warmup file, order and two-pass policy per dataset and arm; record cache hits, preemptions, graph/config/compiler/cache fingerprints; no final-informed prewarming.",
+    "calibration_on_final": false,
+    "drain_every_admitted_request": true,
+    "eplb_completion": "HTTP drain or drain_async is not proof of committed weights; preserve normal-commit and rank-consistency diagnostics and any unresolved coverage.",
+    "estimated_budget_hours": [
+      1,
+      2
+    ],
+    "failure_policy": "Retain all failures, halt on correctness failures, never select fastest attempts. Infrastructure-only retry must repeat the complete paired triple with unchanged hashes and use the first complete valid triple. No algorithm/rate/data changes after final freeze.",
+    "global_arm_position_counts": {
+      "custom": [
+        1,
+        0,
+        1
+      ],
+      "off": [
+        0,
+        1,
+        1
+      ],
+      "on": [
+        1,
+        1,
+        0
+      ]
+    },
+    "http_timeout_s": 1800,
+    "initial_state": "Fresh server/checkpoint and arm-defined placement before identical warmup; native ON may adapt its map during warmup as part of its treatment. Record this history; do not equate HTTP drain with EPLB commit.",
+    "max_inflight": 64,
+    "new_server_each_arm_each_block": true,
+    "order_seed": 471111,
+    "repeats": 1,
+    "startup_timeout_s": 2400,
+    "warmup_diagnostics": {
+      "pass_0": "Prompt/output token IDs and selected-token logprobs requested",
+      "pass_1": "Same 8 inputs without diagnostic logprobs/token-ID return; warm native execution shapes"
+    },
+    "warmup_passes": 2,
+    "warmup_passes_status": "Fixed before final admission: the same 8 pilot requests run twice per server, 16 warmup executions total."
+  },
+  "final_execution_allowed": true,
+  "freeze": {
+    "created_utc": "2026-11-10T21:47:44.835044+00:00",
+    "no_fixed_length_model_execution_performed": true,
+    "previous_natural_payload_execution_disclosed": true
+  },
+  "generation": {
+    "enable_thinking": false,
+    "ignore_eos": true,
+    "max_model_len": 32768,
+    "max_tokens": 2048,
+    "temperature": 0,
+    "truncate_prompts": false
+  },
+  "generation_by_dataset": {
+    "longbench": {
+      "max_tokens": 16
+    },
+    "numinamath": {
+      "max_tokens": 2048
+    }
+  },
+  "native_arms": {
+    "off": "Unmodified vLLM, EPLB disabled, no redundant experts",
+    "on": "Unmodified vLLM, native async EPLB,32 redundant experts,default linear initial map; ordinary native intervals unchanged"
+  },
+  "pilot_admission": {
+    "file": "implementation/pilot-admission.json",
+    "sha256": "6210769017559ed0c4993965624455b7c1260eb2dc7a0be4e8b529ee59e11d5e",
+    "status": "passed"
+  },
+  "protocol_sha256": "e393c447e3b75b09c99f8f5877e95a1466c13322481fa7d065b95d4f061d7c7e",
+  "schema": "resident_compare_two_workloads_v1",
+  "scope": {
+    "activation_backend": "allgather_reducescatter",
+    "dp": 8,
+    "dtype": "bfloat16",
+    "ep": 8,
+    "final_distinct_requests": 32,
+    "fresh_server_launches": 6,
+    "hardware": "Same 8 H100s on kh074/kh077, Slurm 4882284",
+    "main_content_sources": 2,
+    "measured_arms_per_request": 3,
+    "measured_http_executions": 96,
+    "model": "Qwen/Qwen3-30B-A3B",
+    "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "scope_limit": "Two descriptive short full-model episodes, one group each; no repeated-run uncertainty or production-capacity claim.",
+    "sustained_adaptation_claim": false,
+    "total_planned_warmup_and_measured_http_executions": 192,
+    "tp": 1,
+    "vllm_commit": "db9527a46873454610df6dbedf79a36d6bf1a7f6",
+    "warmup_http_executions": 96,
+    "warmup_requests_per_server": 16
+  },
+  "source_admission": {
+    "arrival_manifest_file": "source-admission/arrival_manifest.json",
+    "arrival_manifest_sha256": "a7208571234de4d0cfde30ff707be83285b706d467ec64eed090b808fd5e3628",
+    "parent_protocol_file": "parent-protocol.json",
+    "parent_protocol_sha256": "a97cd98a032e0639fcf3f1e2471c6f962d98ea25c0b0b76c73dc7ad98105a6a2",
+    "suite_admission_file": "source-admission/suite_admission.json",
+    "suite_admission_sha256": "45cd5f42cdb5ca53548f864ab2fc9259debfc406c06581ca38a754e8b4deb5a3",
+    "suite_manifest_file": "source-admission/suite_manifest.json",
+    "suite_manifest_sha256": "f5a6fc2d350fdc5caf919b3393b27e6f6db6f0dbf30b39f2d59951fd78d158c0",
+    "wildchat_manifest_file": "source-admission/wildchat_manifest.json",
+    "wildchat_manifest_sha256": "682968a681c304670db81a5f87a3b74586067d32a663568b3352e6ee9c5a0558"
+  },
+  "status": "frozen",
+  "workload_phase_check": {
+    "intended": {
+      "longbench": "prefill",
+      "numinamath": "decode"
+    },
+    "limit": "Request-phase dominance is not proof of GPU compute/bandwidth boundedness. Report any failure to achieve intended phase dominance.",
+    "rule": "Classify each arm by its larger summed native request prefill/decode duration, with16 completed counts in each phase. No outcome-based retuning or replacement.",
+    "selection": "First reserved group of each dataset, unchanged full prompts/calendar/rate; dataset and output-budget choice follows the user's phase-focused scope reduction, not final speed rankings."
+  }
+}
