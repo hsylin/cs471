@@ -1,6 +1,7 @@
 """Audit proposal decisions and equal-length results without private payloads."""
 from __future__ import annotations
 import argparse
+import ast
 from collections import Counter
 import gzip
 import hashlib
@@ -58,8 +59,19 @@ def profile_summary(directory):
         for e in kernels:by_name[e['name']]+=e['dur'];counts[e['name']]+=1
         mapper_names=[n for n in by_name if any(k in n for k in ('fused_resident_map','plan_from_partial','partial_histogram','apply_homes'))]
         total=sum(by_name.values());mapper=sum(by_name[n] for n in mapper_names)
-        results.append({'file':str(path),'kernel_events':len(kernels),'summed_kernel_us':total,'mapper_kernel_us':mapper,'mapper_fraction_of_summed_kernel_time':mapper/total if total else None,'mapper_kernels':[{'name':n,'calls':counts[n],'sum_us':by_name[n]} for n in mapper_names],'largest_kernels':[{'name':n,'calls':counts[n],'sum_us':v} for n,v in by_name.most_common(12)]})
+        results.append({'file':str(path),'kernel_events':len(kernels),'summed_kernel_us':total,'mapper_kernel_us':mapper,'mapper_fraction_of_summed_kernel_time':mapper/total if total else None,'collective_kernel_us':sum(v for n,v in by_name.items() if 'nccl' in n.lower()),'collective_fraction_of_summed_kernel_time':sum(v for n,v in by_name.items() if 'nccl' in n.lower())/total if total else None,'moe_kernel_us':sum(v for n,v in by_name.items() if 'fused_moe_kernel' in n),'mapper_kernels':[{'name':n,'calls':counts[n],'sum_us':by_name[n]} for n in mapper_names],'largest_kernels':[{'name':n,'calls':counts[n],'sum_us':v} for n,v in by_name.most_common(12)]})
     return {'files':results,'scope':'Profiler perturbs execution. Per-trace summed CUDA kernel times may overlap; not a critical-path or unprofiled latency decomposition. Pilot inputs only.'}
+
+
+def logged_config(text):
+    entries=[line.split("non-default args: ",1)[1] for line in text.splitlines() if "non-default args: " in line]
+    assert len(entries)==1, "Expected one primary API configuration record"
+    class Config(ast.NodeTransformer):
+        def visit_Call(self,node):
+            assert isinstance(node.func,ast.Name) and node.func.id in ('EPLBConfig','ProfilerConfig')
+            assert not node.args and all(k.arg is not None for k in node.keywords)
+            return ast.Dict(keys=[ast.Constant(k.arg) for k in node.keywords],values=[self.visit(k.value) for k in node.keywords])
+    return ast.literal_eval(Config().visit(ast.parse(entries[0],mode='eval')))
 
 
 def runtime(directory,arm):
@@ -67,7 +79,9 @@ def runtime(directory,arm):
     root=Path(directory);texts={f'server-{n}.{suffix}':(root/f'server-{n}.{suffix}').read_text() for n in range(2) for suffix in ('log','err')}
     assert errors_before_shutdown(texts)==0,'Runtime error before shutdown'
     identities=[runtime_identity(json.loads((root/f'preflight-{role}.json').read_bytes()),role) for role in ('primary','worker')]
-    configs=[logged_arguments(texts[f'server-{n}.log']) for n in range(2)]
+    # Headless worker does not emit API non-default args; its actual engine
+    # initialization and exact issued CLI are checked separately below.
+    configs=[logged_config(texts['server-0.log'])]
     engines=[engine_configuration(texts[f'server-{n}.log']) for n in range(2)];assert engines[0]==engines[1]
     for cfg in configs:
         if arm=='off':assert cfg.get('enable_eplb',False) is False
@@ -81,6 +95,15 @@ def runtime(directory,arm):
     for role in ('primary','worker'):
         launch=json.loads((root/f'effective-launch-{role}.json').read_bytes())
         assert launch['arm']==arm
+        from full_serving.proposal_experiment import server_arguments
+        command=launch['command'];assert command[0]=='vllm'
+        ip=command[command.index('--data-parallel-address')+1]
+        expected=['vllm',*server_arguments(arm,command[2],ip,role)]
+        assert command[:len(expected)]==expected
+        if launch['pilot'] and arm.startswith('resident'):
+            assert command[len(expected)]=='--profiler-config'
+            profiler=json.loads(command[len(expected)+1]);assert profiler['profiler']=='torch' and profiler['max_iterations']==16
+        else:assert command==expected
         if arm in ('off','b1','b2'):assert launch['plugin'] is None
         else:assert launch['plugin']=='cs471_proposal'
     if arm.startswith('resident'):

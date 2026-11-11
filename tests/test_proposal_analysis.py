@@ -17,3 +17,10 @@ def test_gate_audit_reconstructs_rejection_and_censors_unobserved_completion(tmp
     assert result['layer_decisions_rank0']=={'unchanged':48}
     p=tmp_path/'gate-events-rank0.jsonl';rows=[json.loads(x) for x in p.read_text().splitlines()];rows[1]['admitted_map'][0][0]=7;p.write_text(''.join(json.dumps(r)+'\n' for r in rows))
     with pytest.raises(AssertionError):gate_audit(tmp_path,'b4')
+
+
+def test_logged_config_supports_only_known_literal_config_constructors():
+    from full_serving.proposal_analysis import logged_config
+    d=logged_config("prefix non-default args: {'eplb_config': EPLBConfig(num_redundant_experts=32), 'profiler_config': ProfilerConfig(profiler='torch')}")
+    assert d['eplb_config']['num_redundant_experts']==32 and d['profiler_config']['profiler']=='torch'
+    with pytest.raises(AssertionError):logged_config("non-default args: {'x': arbitrary_code()}")
