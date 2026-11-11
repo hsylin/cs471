@@ -1,0 +1,793 @@
+{
+  "review_date": "2026-11-11",
+  "scope": "Focused full-model optimization review; no new GPU measurements or policy tuning",
+  "papers": [
+    {
+      "id": "deepspeed_moe",
+      "title": "DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training to Power Next-Generation AI Scale",
+      "publication_status": "conference_paper",
+      "venue": "ICML (PMLR 162)",
+      "url": "https://proceedings.mlr.press/v162/rajbhandari22a.html",
+      "methods_evaluation_evidence": [
+        "\u00a75.1/Figs.5\u20136 mechanism",
+        "\u00a75.2/Figs.7\u201311 inference",
+        "Appendix C/Table6 configurations"
+      ],
+      "model_hardware": "52B standard MoE (1.3B base, 128 experts), larger 1T/2T inference configurations; NVIDIA A100 Azure clusters. Standard 52B scaling uses 8\u201364 GPUs; larger comparisons reach hundreds.",
+      "workloads": "Training/quality experiments include pretrained language-model data and zero-shot tasks. Inference scaling uses configured model/batch shapes; natural request-arrival trace construction is not reported in \u00a75.2.",
+      "metrics": "Inference latency and tokens/s; system/kernel optimizations. Open-loop queueing, request-tail latency and timing-repetition protocol not specified in read \u00a75.2.",
+      "reported_results": "\u00a75.2/Fig.7 reports up to 7.3\u00d7 latency/throughput improvement for trillion-parameter models; this combines multiple system changes and is not a replica-dispatch-only gain.",
+      "limitations": "Different model scale, network and communication collectives; exact serving arrival process absent. Quality-equivalent dense comparisons do not imply identical arithmetic.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": "https://github.com/microsoft/DeepSpeed",
+        "inspection": "Public project named by paper; historical paper configuration not independently executed or fully audited in this review."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "tutel",
+      "title": "Tutel: Adaptive Mixture-of-Experts at Scale",
+      "publication_status": "conference_paper",
+      "venue": "MLSys",
+      "url": "https://proceedings.mlsys.org/paper_files/paper/2023/hash/5616d34cf8ff73942cfd5aa922842556-Abstract-mlsys2023.html",
+      "methods_evaluation_evidence": [
+        "\u00a73\u20134 adaptation and implementation",
+        "\u00a75 evaluation/Fig.14",
+        "Appendices B\u2013C"
+      ],
+      "model_hardware": "Up to 2,048 A100 SXM 80GB GPUs (8 per Azure VM, 1,600-Gbps aggregate interconnect); single-layer grids and SwinV2-MoE.",
+      "workloads": "243 single-layer configurations and capacity-factor variation as a workload proxy; ImageNet and COCO for vision-model training/inference quality. These are not natural request-arrival traces.",
+      "metrics": "Layer step latency/throughput, end-to-end model training and inference throughput, memory and accuracy.",
+      "reported_results": "Paper reports 4.96\u00d7 speedup at 16 GPUs and 5.75\u00d7 at 2,048 GPUs for layer benchmarks; SwinV2-MoE training/inference improvements are 1.55\u00d7/2.11\u00d7. Different denominators must not be pooled.",
+      "limitations": "Scale and training/vision workloads differ; capacity-factor stress does not reproduce measured LLM temporal routing. Current repository has evolved since paper.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": "https://github.com/microsoft/tutel",
+        "inspection": "README and source tree inspected at f6610fd55b6b694ad9f033306b87cf37468f87c3; public implementation, no reproduction run."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "megablocks",
+      "title": "MegaBlocks: Efficient Sparse Training with Mixture-of-Experts",
+      "publication_status": "conference_paper",
+      "venue": "MLSys",
+      "url": "https://proceedings.mlsys.org/paper_files/paper/2023/hash/5a54f79333768effe7e8927bcccffe40-Abstract-mlsys2023.html",
+      "methods_evaluation_evidence": [
+        "\u00a74\u20135 sparse formulation/kernels",
+        "\u00a76.1\u20136.2/Figs.7\u20138 end-to-end training",
+        "\u00a76.3/Fig.9 kernel timing and metadata exclusion"
+      ],
+      "model_hardware": "GPT-style XS\u2013Medium models, 64 experts and top-1 routing; 8 A100 SXM4 80GB GPUs, CUDA11.5/CUTLASS2.5.",
+      "workloads": "The Pile training and validation; layer microbenchmarks with training-sized expert token groups. Paper expects thousands of tokens/expert, unlike B128 inference.",
+      "metrics": "Full training wall time and validation loss; \u00a76.3 microbenchmark averages100 kernel executions but EXCLUDES sparse-metadata construction, arguing amortization across six operations. Do not use that microbenchmark as all-overhead latency.",
+      "reported_results": "Up to 40% over the best Tutel configurations and 1.8\u20132.4\u00d7 relative to dense models at comparable validation loss. Dropless-only comparisons have larger gains and are a different claim.",
+      "limitations": "Training and large token groups; padding-count reductions alone do not establish latency. Architecture/model-quality comparisons differ from exact-layer route preservation.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": "https://github.com/databricks/megablocks",
+        "inspection": "Current README and source tree inspected at952db33d6eac334d22c61e47a0d5d41446298784; dmoe.py and BF16 forward tests subsequently inspected. Public code, no reproduction run; no archival DOI asserted."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "smartmoe",
+      "title": "SmartMoE: Efficiently Training Sparsely-Activated Models through Combining Offline and Online Parallelization",
+      "publication_status": "conference_paper",
+      "venue": "USENIX ATC",
+      "url": "https://www.usenix.org/conference/atc23/presentation/zhai",
+      "methods_evaluation_evidence": [
+        "\u00a74\u20136 method",
+        "\u00a76.2 admission/search heuristic",
+        "\u00a77.1 setup",
+        "\u00a77.4 online frequency"
+      ],
+      "model_hardware": "32 V100 PCIe/50-Gbps, 64 V100 SXM/100-Gbps and 32 A100 SXM/200-Gbps clusters; GPT-MoE 4.5\u201314B and Swin-MoE.",
+      "workloads": "Actual model-training routing traces and capacity factors1.2/2.4/4.8/infinite. Exact source dataset names for all system sweeps were not established in this extraction.",
+      "metrics": "Full training iteration time and throughput, memory, model search overhead and cost prediction.",
+      "reported_results": "Up to 1.88\u00d7 over FasterMoE; reported average speedups depend on cluster/model (e.g.1.53\u00d7 A100 and1.17\u00d7 V100-SXM GPT workloads).",
+      "limitations": "Training, mutable placement and different parallelism. Thresholded rebalancing and stability/cost concerns already exist; a new threshold alone has little novelty.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": "https://github.com/thu-pacman/SmartMoE-AE",
+        "inspection": "README/source tree inspected at e19b3a994db5f7614778fd02c48f602ba9d9ac6e; available artifact, not executed."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "lina",
+      "title": "Accelerating Distributed MoE Training and Inference with Lina",
+      "publication_status": "conference_paper",
+      "venue": "USENIX ATC",
+      "url": "https://www.usenix.org/conference/atc23/presentation/li-jiamin",
+      "methods_evaluation_evidence": [
+        "\u00a75\u20136 inference method",
+        "\u00a77.1 setup/timing",
+        "\u00a77.3/Figs.16\u201319",
+        "Table6"
+      ],
+      "model_hardware": "4 nodes\u00d74 A10040GB, 100-Gbps InfiniBand; Transformer-XL, GPT2 and BERT-related MoE models, 2\u201316 experts; inference top-1 versus training top-2.",
+      "workloads": "Enwik8 text generation and WMT English\u2013German for inference; additional training/model tasks in \u00a77.1/Table6.",
+      "metrics": "End-to-end batch median/p95 inference latency; training iteration time and profiler breakdown in separate runs.",
+      "reported_results": "\u00a77.3 reports median improvements of1.54\u00d7 and1.45\u00d7 for Transformer-XL with4/16experts;16expert p95 improvements1.82\u00d7 (TXL) and1.68\u00d7 (BERT).",
+      "limitations": "Inference includes offloading/prefetch and model-specific path prediction, unlike permanently resident experts. Ideal-gate references are not exact-routing controls.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": null,
+        "inspection": "No dedicated downloadable Lina implementation verified in this review; cited upstream DeepSpeed/Tutel are not substitutes for its artifact."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "megascale",
+      "title": "MegaScale-Infer: Efficient Mixture-of-Experts Model Serving with Disaggregated Expert Parallelism",
+      "publication_status": "conference_paper",
+      "venue": "ACM SIGCOMM",
+      "url": "https://doi.org/10.1145/3718958.3750506",
+      "methods_evaluation_evidence": [
+        "\u00a73\u20135 architecture/transport",
+        "\u00a76 compute-aware balancing",
+        "\u00a77 setup/evaluation"
+      ],
+      "model_hardware": "Homogeneous8nodes\u00d78Ampere80GB,400GB/sNVLink and8\u00d7200GbpsNICs; heterogeneousH20/L40S. BF16Mixtral8\u00d722B,DBRX and317B scaled MoE.",
+      "workloads": "Private production request trace with median input571/output159; configured microbatch and shape sweeps.",
+      "metrics": "Per-GPU/cost throughput, time between tokens, prefill/decode latency and M2N median/tail latency.",
+      "reported_results": "Up to1.90\u00d7 per-GPU serving throughput versus TensorRT-LLM within the paper\u2019s latency constraints; multi-component system result.",
+      "limitations": "Private workload and substantial transport/architecture changes. Floor cost already recognizes activated-expert overhead; the current generic insight is not novel.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": null,
+        "inspection": "Paper references constituent public communication libraries, but a complete system plus private request trace was not verified as available."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "comet",
+      "title": "COMET: Fine-grained Computation-communication Overlapping for Mixture-of-Experts",
+      "publication_status": "conference_paper",
+      "venue": "MLSys",
+      "url": "https://proceedings.mlsys.org/paper_files/paper/2025/hash/e27ea0cd50b798ff8942caf9203f0992-Abstract-Conference.html",
+      "methods_evaluation_evidence": [
+        "\u00a73.1 shared-tensor dependency method",
+        "\u00a73.2 resource split",
+        "\u00a75.1\u20135.5/Figs.9\u201314"
+      ],
+      "model_hardware": "8H80080GBNVLink and8L20PCIe; Mixtral8\u00d77B,Qwen2-MoE,Phi3.5-MoE;CUDA12.3,NVSHMEM2.11,PyTorch2.4.",
+      "workloads": "Input token-length/model/parallelism sweeps; synthetic imbalance varied by token-distribution standard deviation with a production-training reference std0.032. Natural serving arrival trace not provided.",
+      "metrics": "MoE/full-model latency, communication overlap, host overhead and memory; local indexing/dispatch counted as computation rather than GPU\u2013GPU communication.",
+      "reported_results": "\u00a75.2 average full-model latency reductions31.8% versusTutel and34.1% versusMegatron-CUTLASS; layer speedups1.28\u20132.37\u00d7. They include changed communication and scheduling.",
+      "limitations": "Most groups are much larger than current small-layer inference; communication fusion changes the intervention. Production trace is only a distribution reference.",
+      "uncertainty": "No independent-run confidence interval or experimental-unit resampling identified in the cited evaluation sections; iteration averages are not independent workload samples.",
+      "artifact": {
+        "url": "https://github.com/bytedance/flux",
+        "inspection": "Paper-linked public Flux repository; README retrieval/commit recorded separately. Whole artifact not executed. Actual repository README inspected at 19831ca2d820e3e782ed1d15d8b52d0898b78b26."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-moe.json",
+        "sha256": "e91519540ce328312d8bae906f82cd5021f764f5ee2087d9ff51a1809692ae67",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "orca",
+      "title": "Orca: A Distributed Serving System for Transformer-Based Generative Models",
+      "publication_status": "peer-reviewed conference paper; proceedings identity confirmed",
+      "venue": "OSDI 2022",
+      "url": "https://www.usenix.org/conference/osdi22/presentation/yu",
+      "methods_evaluation_evidence": "\u00a7\u00a73\u20134 methods; \u00a76 evaluation, PDF pp.11\u201315; engine and end-to-end figures.",
+      "model_hardware": "GPT-shaped 13B\u2013341B FP16; up to 32 A100 40GB across four Azure VMs.",
+      "workloads": "Synthetic uniform input/output lengths and Poisson arrivals; no trained checkpoint or semantic prompts; EOS disabled.",
+      "metrics": "Median end-to-end latency per generated token versus offered rate; engine latency.",
+      "reported_results": "Reports up to 36.9\u00d7 throughput at comparable latency in its evaluated configurations.",
+      "limitations": "Synthetic lengths and dummy-weight workload cannot establish content-dependent MoE routing generality.",
+      "uncertainty": "No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.",
+      "artifact": {
+        "url": null,
+        "inspection": "No public implementation inspected; later papers reimplement Orca."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-serving.json",
+        "sha256": "866d9b0bfe1e4cc2a2b10953ea3782eb2405655d55a586416c663172991c8378",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "vllm",
+      "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "publication_status": "peer-reviewed conference paper; proceedings identity confirmed",
+      "venue": "SOSP 2023",
+      "url": "https://doi.org/10.1145/3600006.3613165",
+      "methods_evaluation_evidence": "\u00a76.1\u20136.5 evaluation, PDF pp.10\u201312; \u00a77 ablations, pp.12\u201313.",
+      "model_hardware": "OPT 13/66/175B and LLaMA13B; Google Cloud A100, 1/4/8 GPUs.",
+      "workloads": "ShareGPT/Alpaca request lengths, newly generated Poisson timestamps; one-hour traces except 175B fifteen minutes.",
+      "metrics": "Mean normalized request latency (end-to-end divided by output length), capacity and KV memory.",
+      "reported_results": "ShareGPT capacity 1.7\u20132.7\u00d7 Orca-Oracle; attention kernel itself is 20\u201326% slower in the reported microbenchmark.",
+      "limitations": "Kernel slowdown can coexist with system speedup; full-model KV gains do not predict fixed-layer gains.",
+      "uncertainty": "No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.",
+      "artifact": {
+        "url": "https://github.com/vllm-project/vllm",
+        "inspection": "Artifact identity from paper; current repository not reproduced for this review."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-serving.json",
+        "sha256": "866d9b0bfe1e4cc2a2b10953ea3782eb2405655d55a586416c663172991c8378",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "sarathi",
+      "title": "Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve",
+      "publication_status": "peer-reviewed conference paper; proceedings identity confirmed",
+      "venue": "OSDI 2024",
+      "url": "https://www.usenix.org/conference/osdi24/presentation/agrawal",
+      "methods_evaluation_evidence": "\u00a74.1\u20134.4 methods; \u00a75, Tables1\u20134, Figs10\u201314, proceedings pp.126\u2013129.",
+      "model_hardware": "Mistral7B/A100; Yi34B/2 A100; Llama2-70B/8 A40; Falcon180B/8 A100 across two nodes.",
+      "workloads": "ShareGPT and arXiv summarization lengths; Poisson arrivals; long-sequence filtering.",
+      "metrics": "p50 TTFT, p99 time-between-tokens, capacity subject to queue and TBT constraints.",
+      "reported_results": "Yi34B on ShareGPT under the strict SLO supports up to 3.7\u00d7 capacity versus vLLM; a 512-token prefill chunk adds about 25% cost versus unchunked Yi34B prefill in the reported comparison.",
+      "limitations": "Thresholds follow measured SLO profiles, not universal constants; Poisson timestamps are not production replay.",
+      "uncertainty": "No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.",
+      "artifact": {
+        "url": "https://github.com/microsoft/sarathi-serve",
+        "inspection": "Artifact linked by paper; no reproduction here."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-serving.json",
+        "sha256": "866d9b0bfe1e4cc2a2b10953ea3782eb2405655d55a586416c663172991c8378",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "llumnix",
+      "title": "Llumnix: Dynamic Scheduling for Large Language Model Serving",
+      "publication_status": "peer-reviewed conference paper; proceedings identity confirmed",
+      "venue": "OSDI 2024",
+      "url": "https://www.usenix.org/conference/osdi24/presentation/sun-biao",
+      "methods_evaluation_evidence": "\u00a74.2 migration, \u00a74.4 scheduling; \u00a76 evaluation and migration breakdown.",
+      "model_hardware": "Llama7/30B FP16; sixteen A10 24GB across four Alibaba VMs.",
+      "workloads": "10,000-request runs; ShareGPT/BurstGPT lengths plus synthetic length families; Poisson/Gamma arrival generation.",
+      "metrics": "Mean/p99 end-to-end, prefill/decode latency; cost and migration downtime.",
+      "reported_results": "Selected real-length workloads show up to2\u00d7 mean/2.9\u00d7 p99 end-to-end improvement; migration downtime20\u201330ms.",
+      "limitations": "Overlap reduces visible stall without eliminating work; original BurstGPT timestamps are not necessarily replayed.",
+      "uncertainty": "No independent-run confidence interval or resampling procedure was identified in the inspected evaluation; request quantiles are not uncertainty intervals.",
+      "artifact": {
+        "url": "https://github.com/AlibabaPAI/llumnix",
+        "inspection": "Artifact identity from paper; no execution."
+      },
+      "extraction_provenance": {
+        "file": "docs/generalization/literature-serving.json",
+        "sha256": "866d9b0bfe1e4cc2a2b10953ea3782eb2405655d55a586416c663172991c8378",
+        "scope": "Existing project methods/evaluation extraction, selectively re-inspected for this optimization review; old one-layer applicability text is not carried forward."
+      }
+    },
+    {
+      "id": "metro",
+      "title": "Efficient MoE Serving in the Memory-Bound Regime: Balance Activated Experts, Not Tokens",
+      "url": "https://arxiv.org/html/2512.09277v1",
+      "publication_status": "preprint",
+      "inspected_sections": "IV\u2013VI",
+      "configuration_and_transfer_limit": "Qwen3-30B-A3B; eight A100 40GB; NuminaMath/InstructCoder; larger-model simulation separate",
+      "lesson": "Activation-aware replica selection; EPLB comparison does not establish an OFF win.",
+      "artifact_reproduction": "Not executed in this review; availability and full integration compatibility not established."
+    },
+    {
+      "id": "tempo",
+      "title": "TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes",
+      "url": "https://arxiv.org/html/2608.13057v2",
+      "publication_status": "preprint",
+      "inspected_sections": "2\u20135, Appendix D",
+      "configuration_and_transfer_limit": "SGLang; multiple models; FP8/BF16; anonymized hardware testbeds",
+      "lesson": "Runtime objective and integration overhead both matter; no borrowed crossover threshold.",
+      "artifact_reproduction": "Not executed in this review; availability and full integration compatibility not established."
+    },
+    {
+      "id": "gimbal",
+      "title": "Coordinated Scheduling for MoE LLM Serving",
+      "url": "https://arxiv.org/html/2606.15177v1",
+      "publication_status": "arXiv manuscript bearing ATC 2026 header; publisher confirmation not obtained",
+      "inspected_sections": "4\u20137",
+      "configuration_and_transfer_limit": "Qwen3-30B-A3B; four H100; DP2/TP2/EP4; reshaped BurstGPT lengths",
+      "lesson": "Frontend pressure and source placement coupled; different transport and trace construction.",
+      "artifact_reproduction": "Not executed in this review; availability and full integration compatibility not established."
+    },
+    {
+      "id": "freebalance",
+      "title": "FreeBalance: Pre-Routing Online MoE Load Balancing via Residual Workload Prediction",
+      "url": "https://arxiv.org/html/2608.14205v1",
+      "publication_status": "preprint",
+      "inspected_sections": "3.3\u20134",
+      "configuration_and_transfer_limit": "Qwen3/Moonlight; eight A800; LongBench; batch16/input8K default",
+      "lesson": "Budgeted swaps borrow attention overlap; prefill timings do not establish decode benefits.",
+      "artifact_reproduction": "Not executed in this review; availability and full integration compatibility not established."
+    },
+    {
+      "id": "eldr",
+      "title": "ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving",
+      "url": "https://arxiv.org/html/2607.00466",
+      "publication_status": "preprint",
+      "inspected_sections": "4\u20136 selectively inspected; no full artifact execution",
+      "configuration_and_transfer_limit": "Prefill/decode-disaggregated worker pools; multiple model/domain settings",
+      "lesson": "Request locality needs separate decoder pools; not a direct AgRs dispatch patch.",
+      "artifact_reproduction": "Not executed in this review; availability and full integration compatibility not established."
+    },
+    {
+      "id": "megaflux",
+      "title": "MegaFlux: Skew-Resilient MoE Megakernels via Pipelined Expert Replication",
+      "url": "https://arxiv.org/html/2610.00671",
+      "publication_status": "preprint",
+      "inspected_sections": "3\u20134; appendix descriptions",
+      "configuration_and_transfer_limit": "Eight B200 full-model prefill; single NVLink domain; layer/training studies separate",
+      "lesson": "Avoid replication when overhead dominates; one-token prefill completion is not decode response.",
+      "artifact_reproduction": "Not executed in this review; availability and full integration compatibility not established."
+    }
+  ],
+  "counts": {
+    "conference_records_reused_and_selectively_reinspected": 11,
+    "manuscripts": 6,
+    "supplementary_project_or_blog_sources": 4
+  },
+  "supplementary": [
+    {
+      "id": "metashuffling",
+      "url": "https://pytorch.org/blog/metashuffling-accelerating-llama-4-moe-inference/",
+      "kind": "company engineering article",
+      "scope": "Top-1 Llama-4 indexing/grouped execution; not a top-8 Qwen performance result."
+    },
+    {
+      "id": "pytorch_locality",
+      "url": "https://pytorch.org/blog/accelerating-moe-model/",
+      "kind": "engineering article",
+      "scope": "Locality/scheduling experiment; precision and full-model correctness qualifications prevent direct speedup transfer."
+    },
+    {
+      "id": "deepep",
+      "url": "https://github.com/deepseek-ai/DeepEP",
+      "kind": "open-source repository",
+      "scope": "Current README inspected; no build or pinned-vLLM compatibility test."
+    },
+    {
+      "id": "vllm_ep",
+      "url": "https://docs.vllm.ai/en/latest/serving/expert_parallel_deployment/",
+      "kind": "official documentation",
+      "scope": "Latest backend guidance; installed pin remains authoritative."
+    }
+  ],
+  "metadata_search": {
+    "crossref_raw_results": {
+      "MegaScale-Infer: Efficient Mixture-of-Experts Model Serving with Disaggregated Expert Parallelism": {
+        "doi": "10.1145/3718958.3750506",
+        "title": "MegaScale-Infer: Efficient Mixture-of-Experts Model Serving with Disaggregated Expert Parallelism",
+        "year": 2025,
+        "score": 61.861877
+      },
+      "Efficient Memory Management for Large Language Model Serving with PagedAttention": {
+        "doi": "10.1145/3600006.3613165",
+        "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+        "year": 2023,
+        "score": 47.091908
+      },
+      "Coordinated Scheduling for MoE LLM Serving": {
+        "doi": "10.2139/ssrn.5159339",
+        "title": "ECCOS: Efficient Capability and Cost Coordinated Scheduling for Multi-LLM Serving",
+        "year": 2025,
+        "score": 38.71219
+      },
+      "TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes": {
+        "doi": "10.1016/j.parco.2004.05.001",
+        "title": "Adaptive Quality Equalizing: High-performance load balancing for parallel branch-and-bound across applications and computing systems",
+        "year": 2004,
+        "score": 37.101067
+      },
+      "FreeBalance: Pre-Routing Online MoE Load Balancing via Residual Workload Prediction": null,
+      "Efficient MoE Serving in the Memory-Bound Regime: Balance Activated Experts, Not Tokens": {
+        "doi": "10.21203/rs.3.rs-10741449/v1",
+        "title": "Predatory MoE: Serving Mixture-of-Experts with a Sequence-Local Expert Roster",
+        "year": 2026,
+        "score": 33.817623
+      }
+    },
+    "accepted_title_matches": [
+      "10.1145/3718958.3750506",
+      "10.1145/3600006.3613165"
+    ],
+    "rejected": "All other non-null Crossref matches have unrelated titles and are not publication verification.",
+    "citation_walks": {
+      "10.1145/3718958.3750506": {
+        "references": [
+          {
+            "doi": "10.48550/arxiv.2303.08774",
+            "title": "GPT-4 Technical Report",
+            "year": 2023,
+            "cited_by": 38110
+          },
+          {
+            "doi": "10.48550/arxiv.2302.13971",
+            "title": "LLaMA: Open and Efficient Foundation Language Models",
+            "year": 2023,
+            "cited_by": 23690
+          },
+          {
+            "doi": "10.48550/arxiv.2407.21783",
+            "title": "The Llama 3 Herd of Models",
+            "year": 2024,
+            "cited_by": 23674
+          },
+          {
+            "doi": "10.48550/arxiv.2001.08361",
+            "title": "Scaling Laws for Neural Language Models",
+            "year": 2020,
+            "cited_by": 9945
+          },
+          {
+            "doi": "10.48550/arxiv.1909.08053",
+            "title": "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+            "year": 2019,
+            "cited_by": 3272
+          },
+          {
+            "doi": "10.1145/1498765.1498785",
+            "title": "Roofline",
+            "year": 2009,
+            "cited_by": 2811
+          },
+          {
+            "doi": "10.48550/arxiv.2006.16668",
+            "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+            "year": 2020,
+            "cited_by": 1622
+          },
+          {
+            "doi": "10.18653/v1/2023.emnlp-main.298",
+            "title": "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints",
+            "year": 2023,
+            "cited_by": 1515
+          },
+          {
+            "doi": "10.1145/3773772",
+            "title": "Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving",
+            "year": 2025,
+            "cited_by": 278
+          },
+          {
+            "doi": "10.48550/arxiv.2105.04663",
+            "title": "GSPMD: General and Scalable Parallelization for ML Computation Graphs",
+            "year": 2021,
+            "cited_by": 196
+          }
+        ],
+        "cited_by": [
+          {
+            "doi": "10.1145/3803798",
+            "title": "A Survey on Inference Engines for Large Language Models: Perspectives on Optimization and Efficiency",
+            "year": 2026,
+            "cited_by": 38
+          },
+          {
+            "doi": "10.1016/j.jpdc.2026.105350",
+            "title": "APEX: An extensible and dynamism-aware simulator for automated parallel execution in LLM serving",
+            "year": 2026,
+            "cited_by": 21
+          },
+          {
+            "doi": "10.1145/3797905.3807874",
+            "title": "Latency-SLO-Aware Memory Offloading for Large Language Model Inference",
+            "year": 2026,
+            "cited_by": 6
+          },
+          {
+            "doi": "10.1145/3845814.3850079",
+            "title": "NanoCP: Taming Load Imbalance in Data-Expert Parallel Decoding under Variable-Length Workloads",
+            "year": 2026,
+            "cited_by": 4
+          },
+          {
+            "doi": "10.1002/spe.70121",
+            "title": "Cloud\u2010Native and Distributed Systems for Efficient and Scalable Large Language Models\u2014A Research Agenda",
+            "year": 2026,
+            "cited_by": 4
+          },
+          {
+            "doi": "10.1109/isca66397.2026.00056",
+            "title": "CHIME: A Case for Efficient Long-Context Attention-FC Disaggregated Inference with DIMM-PIM",
+            "year": 2026,
+            "cited_by": 3
+          },
+          {
+            "doi": "10.48550/arxiv.2609.13134",
+            "title": "Rethinking Heterogeneous System Disaggregation for Subquadratic Attention",
+            "year": 2026,
+            "cited_by": 2
+          },
+          {
+            "doi": "10.1109/isca66397.2026.00183",
+            "title": "Early Silicon of Raptor: The First 3D-DRAM Accelerator for Generative Inference",
+            "year": 2026,
+            "cited_by": 2
+          },
+          {
+            "doi": "10.1145/3816891.3834848",
+            "title": "InfiniLoRA: Disaggregated Multi-LoRA Serving for Large Language Models",
+            "year": 2026,
+            "cited_by": 1
+          },
+          {
+            "doi": "10.48550/arxiv.2609.02737",
+            "title": "Language Models Can Control Their Own Attention",
+            "year": 2026,
+            "cited_by": 1
+          }
+        ]
+      },
+      "10.1145/3600006.3613165": {
+        "references": [
+          {
+            "doi": "10.1109/cvpr.2016.90",
+            "title": "Deep Residual Learning for Image Recognition",
+            "year": 2016,
+            "cited_by": 243173
+          },
+          {
+            "doi": "10.48550/arxiv.2303.08774",
+            "title": "GPT-4 Technical Report",
+            "year": 2023,
+            "cited_by": 38110
+          },
+          {
+            "doi": "10.48550/arxiv.2302.13971",
+            "title": "LLaMA: Open and Efficient Foundation Language Models",
+            "year": 2023,
+            "cited_by": 23690
+          },
+          {
+            "doi": "10.48550/arxiv.1607.06450",
+            "title": "Layer Normalization",
+            "year": 2016,
+            "cited_by": 12682
+          },
+          {
+            "doi": "10.48550/arxiv.2107.03374",
+            "title": "Evaluating Large Language Models Trained on Code",
+            "year": 2021,
+            "cited_by": 12088
+          },
+          {
+            "doi": "10.18653/v1/2020.emnlp-demos.6",
+            "title": "Transformers: State-of-the-Art Natural Language Processing",
+            "year": 2020,
+            "cited_by": 9970
+          },
+          {
+            "doi": "10.48550/arxiv.1609.08144",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+            "year": 2016,
+            "cited_by": 8198
+          },
+          {
+            "doi": "10.48550/arxiv.2204.02311",
+            "title": "PaLM: Scaling Language Modeling with Pathways",
+            "year": 2022,
+            "cited_by": 5404
+          },
+          {
+            "doi": "10.18653/v1/2021.emnlp-main.243",
+            "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+            "year": 2021,
+            "cited_by": 4962
+          },
+          {
+            "doi": "10.18653/v1/2021.acl-long.353",
+            "title": "Prefix-Tuning: Optimizing Continuous Prompts for Generation",
+            "year": 2021,
+            "cited_by": 4633
+          }
+        ],
+        "cited_by": [
+          {
+            "doi": "10.1038/s41586-025-09422-z",
+            "title": "DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning",
+            "year": 2025,
+            "cited_by": 16737
+          },
+          {
+            "doi": "10.1007/s11704-026-60308-3",
+            "title": "A Survey of Large Language Models",
+            "year": 2026,
+            "cited_by": 8505
+          },
+          {
+            "doi": "10.1145/3744746",
+            "title": "A Comprehensive Overview of Large Language Models",
+            "year": 2025,
+            "cited_by": 2813
+          },
+          {
+            "doi": "10.1145/3689031.3696075",
+            "title": "HybridFlow: A Flexible and Efficient RLHF Framework",
+            "year": 2025,
+            "cited_by": 1716
+          },
+          {
+            "doi": "10.18653/v1/2025.emnlp-main.1025",
+            "title": "s1: Simple test-time scaling",
+            "year": 2025,
+            "cited_by": 1418
+          },
+          {
+            "doi": "10.48550/arxiv.2310.11511",
+            "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+            "year": 2023,
+            "cited_by": 1081
+          },
+          {
+            "doi": "10.48550/arxiv.2403.04652",
+            "title": "Yi: Open Foundation Models by 01.AI",
+            "year": 2024,
+            "cited_by": 1004
+          },
+          {
+            "doi": "10.1109/isca59077.2024.00019",
+            "title": "Splitwise: Efficient Generative LLM Inference Using Phase Splitting",
+            "year": 2024,
+            "cited_by": 604
+          },
+          {
+            "doi": "10.48550/arxiv.2505.07062",
+            "title": "Seed1.5-VL Technical Report",
+            "year": 2025,
+            "cited_by": 489
+          },
+          {
+            "doi": "10.1098/rsta",
+            "title": "Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences",
+            "year": 2019,
+            "cited_by": 396
+          }
+        ]
+      },
+      "10.48550/arXiv.2512.09277": {
+        "references": [
+          {
+            "doi": "10.48550/arxiv.2505.09388",
+            "title": "Qwen3 Technical Report",
+            "year": 2025,
+            "cited_by": 17561
+          },
+          {
+            "doi": "10.48550/arxiv.2110.14168",
+            "title": "Socratic guiding questions in synthetic arithmetic data: matched LoRA runs (revision v2)",
+            "year": 2021,
+            "cited_by": 11341
+          },
+          {
+            "doi": "10.48550/arxiv.2403.05530",
+            "title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+            "year": 2024,
+            "cited_by": 4614
+          },
+          {
+            "doi": "10.1145/3600006.3613165",
+            "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+            "year": 2023,
+            "cited_by": 3852
+          },
+          {
+            "doi": "10.48550/arxiv.1701.06538",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+            "year": 2017,
+            "cited_by": 3830
+          },
+          {
+            "doi": "10.48550/arxiv.2101.03961",
+            "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+            "year": 2021,
+            "cited_by": 1663
+          },
+          {
+            "doi": "10.48550/arxiv.2006.16668",
+            "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+            "year": 2020,
+            "cited_by": 1622
+          },
+          {
+            "doi": "10.48550/arxiv.2402.16363",
+            "title": "LLM Inference Unveiled: Survey and Roofline Model Insights",
+            "year": 2024,
+            "cited_by": 244
+          },
+          {
+            "doi": "10.48550/arxiv.2201.05596",
+            "title": "DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training to Power Next-Generation AI Scale",
+            "year": 2022,
+            "cited_by": 187
+          },
+          {
+            "doi": "10.48550/arxiv.2510.06189",
+            "title": "Barbarians at the Gate: How AI is Upending Systems Research",
+            "year": 2025,
+            "cited_by": 81
+          }
+        ],
+        "cited_by": [
+          {
+            "doi": "10.18653/2026.emnlp-main.579",
+            "title": "Routing-Free Mixture of Experts",
+            "year": 2026,
+            "cited_by": 4
+          },
+          {
+            "doi": "10.48550/arxiv.2607.00466",
+            "title": "ELDR: Expert-Locality-Aware Decode Routing for PD-Disaggregated MoE Serving",
+            "year": 2026,
+            "cited_by": 3
+          },
+          {
+            "doi": "10.48550/arxiv.2602.00879",
+            "title": "Dynamic Expert Sharing: Decoupling Memory from Parallelism in Mixture-of-Experts Diffusion LLMs",
+            "year": 2026,
+            "cited_by": 3
+          },
+          {
+            "doi": "10.48550/arxiv.2610.00671",
+            "title": "MegaFlux: Skew-Resilient MoE Megakernels via Pipelined Expert Replication",
+            "year": 2026,
+            "cited_by": 1
+          },
+          {
+            "doi": "10.48550/arxiv.2608.13057",
+            "title": "TEMPO: Makespan-Aware Expert-Parallel Load Balancing Across Memory- and Compute-Bound Regimes",
+            "year": 2026,
+            "cited_by": 1
+          },
+          {
+            "doi": "10.48550/arxiv.2607.23264",
+            "title": "X-Stage: Modeling Post-Issue Backpressure in GPU Communication--Computation Fusion",
+            "year": 2026,
+            "cited_by": 1
+          }
+        ]
+      }
+    },
+    "screening": "Bounded 10-backward/10-forward neighborhoods plus manuscript reference lists. ELDR/MegaFlux added; TEMPO retained. Unrelated works, a wrong-title GSM8K association and journal-container record discarded. Metadata is discovery only."
+  },
+  "source_audit": "../outputs/full-serving/optimization-review-audit.json",
+  "review_limits": [
+    "Not a systematic exhaustive survey.",
+    "Conference methods/evaluation evidence is inherited with source hashes, not falsely claimed as seventeen new full-text reads.",
+    "No literature headline speedup is a prediction for this hardware or baseline."
+  ],
+  "reviewed_code": {
+    "full_serving/proposal_gate_plugin.py": "c6782979137f97b788ea7b0cb54e6197c7842b3f99a4df95a8ec9300d547ffab",
+    "full_serving/proposal_gate.py": "61867d46b25a4b5f0a5b43ef7f1f22c50eb97147daf5b0a7e6efb45eca0a7b51",
+    "full_serving/resident_policy.py": "68156d7a01c5d919017f8a57e4534e2e99d4dc8c8b499a10ef96952ed362add2",
+    "full_serving/resident_pair.py": "a2c20e7405b05385ec2e73a3831f79995f9e8626357ee1f18e2787ba69fd4118",
+    "full_serving/resident_pair_gpu.py": "8334c3805cacaf5d171b6ab69edf2823677ab82824b376a37bef1f8042b78af0",
+    "full_serving/resident_gpu.py": "d0e6c8b599f1d1adff6c7f71a9de70bd82b68a32af52610a04a9050fd3996633"
+  },
+  "experiment_source": "cb9585b0c0c1a09c648f7ca83ae8e3ccfb1b7087",
+  "vllm_pin": "db9527a46873454610df6dbedf79a36d6bf1a7f6"
+}
