@@ -30,7 +30,7 @@ def select_shapes(root):
             'shapes':selected,'source_files':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path(root).rglob('cost-events-rank0.jsonl')}}
 
 
-def worker(spec,output,master):
+def worker(spec,output,master,packed_candidate=False):
     import torch
     import torch.distributed as dist
     import vllm
@@ -63,14 +63,31 @@ def worker(spec,output,master):
             for peer,count in enumerate(sizes):
                 assert bool(torch.all(tensor[start:start+count]==peer+1));start+=count
         assert bool(torch.all(combined==36))
+        functions=[('dispatch_3_tensors',gather),('combine_1_tensor',scatter)]
+        if packed_candidate:
+            from full_serving.packed_dispatch import packed_gather
+            def coalesced():return packed_gather(group,inputs,sizes)
+            # Check arbitrary bit patterns including sign bits, NaNs and -1 IDs.
+            generator=torch.Generator(device='cuda').manual_seed(471+rank)
+            random_inputs=[torch.randint(-2**31,2**31,(n,1024),device='cuda',dtype=torch.int32,generator=generator).view(torch.bfloat16),
+                           torch.randint(-2**31,2**31,(n,8),device='cuda',dtype=torch.int32,generator=generator).view(torch.float32),
+                           torch.randint(-1,160,(n,8),device='cuda',dtype=torch.int32,generator=generator)]
+            reference=group.all_gatherv(random_inputs,dim=0,sizes=sizes)
+            actual=packed_gather(group,random_inputs,sizes)
+            assert all(torch.equal(a.view(torch.int32),b.view(torch.int32)) for a,b in zip(actual,reference))
+            functions.append(('packed_dispatch',coalesced))
         timings={}
-        for name,fn in (('dispatch_3_tensors',gather),('combine_1_tensor',scatter)):
+        for name,fn in functions:
             for _ in range(5):fn()
             torch.cuda.synchronize();dist.barrier(group=group.cpu_group)
             graph=torch.cuda.CUDAGraph()
-            with torch.cuda.graph(graph):captured=fn()
+            # A serving graph contains many layer collectives. Capture a fixed
+            # sequence so timing does not mainly measure one Python graph launch
+            # per collective. Native and candidate use the same sequence length.
+            with torch.cuda.graph(graph):
+                for _ in range(16):captured=fn()
             graph.replay();torch.cuda.synchronize()
-            if name=='dispatch_3_tensors':
+            if name in ('dispatch_3_tensors','packed_dispatch'):
                 for tensor in captured:
                     offset=0
                     for peer,count in enumerate(sizes):
@@ -86,14 +103,17 @@ def worker(spec,output,master):
                     wall=time.perf_counter_ns();start.record()
                     for _ in range(50):call()
                     end.record();end.synchronize()
-                    samples.append({'event_us_per_call':start.elapsed_time(end)*1000/50,'wall_us_per_call':(time.perf_counter_ns()-wall)/1000/50})
+                    calls=50*(16 if mode=='cuda_graph' else 1)
+                    samples.append({'collective_calls':calls,'graph_collectives_per_replay':16 if mode=='cuda_graph' else None,
+                                    'event_us_per_call':start.elapsed_time(end)*1000/calls,'wall_us_per_call':(time.perf_counter_ns()-wall)/1000/calls})
                 timings[name+'/'+mode]=samples
-        records.append({'shape':shape,'rank':rank,'correct_rank_payloads_and_sum':True,'timings':timings,
+        records.append({'shape':shape,'rank':rank,'correct_rank_payloads_and_sum':True,'packed_arbitrary_bits_exact':packed_candidate,'timings':timings,
                         'per_rank_local_dispatch_input_bytes':sum(t.numel()*t.element_size() for t in inputs),
                         'per_rank_combine_input_bytes':partial.numel()*partial.element_size()})
     output.mkdir(parents=True,exist_ok=True)
     (output/f'rank{rank}.json').write_text(json.dumps({'status':'passed','rank':rank,'local_rank':local_rank,'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'hostname':socket.gethostname(),'job':os.environ['SLURM_JOB_ID'],'step':os.environ['SLURM_STEP_ID'],'gpu':torch.cuda.get_device_name(),'records':records,
       'native_source_sha256':spec['native_source_sha256'],'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+      'packed_source_sha256':hashlib.sha256(Path(__file__).with_name('packed_dispatch.py').read_bytes()).hexdigest() if packed_candidate else None,
       'backend':'Pinned vLLM GroupCoordinator.all_gatherv/reduce_scatterv, same primitives called by AgRs; NCCL device communicator',
       'scope':'Synthetic payload, observed sizes; component-only, excludes experts, compute imbalance and serving scheduler. Both eager and graph replay charged; no bandwidth-saturation or serving-speedup claim.'},indent=2)+'\n')
     dist.barrier(group=group.cpu_group);dist.destroy_process_group()
@@ -118,7 +138,11 @@ def summarize(root,spec,source_sha256):
     shapes=[]
     for i,shape in enumerate(spec['shapes']):
         timings={}
-        expected={op+'/'+mode for op in ('dispatch_3_tensors','combine_1_tensor') for mode in ('eager','cuda_graph')}
+        ops=['dispatch_3_tensors','combine_1_tensor']
+        if ranks[0].get('packed_source_sha256'):
+            assert all(r.get('packed_source_sha256')==ranks[0]['packed_source_sha256'] and r['records'][i]['packed_arbitrary_bits_exact'] for r in ranks)
+            ops.append('packed_dispatch')
+        expected={op+'/'+mode for op in ops for mode in ('eager','cuda_graph')}
         assert all(set(r['records'][i]['timings'])==expected for r in ranks)
         for key in sorted(expected):
             samples=[r['records'][i]['timings'][key] for r in ranks]
@@ -136,7 +160,7 @@ def summarize(root,spec,source_sha256):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=('select','run'));p.add_argument('--root',type=Path);p.add_argument('--spec',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--master');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=('select','run'));p.add_argument('--root',type=Path);p.add_argument('--spec',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--master');p.add_argument('--packed-candidate',action='store_true');a=p.parse_args()
     if a.mode=='select':a.output.write_text(json.dumps(select_shapes(a.root),indent=2)+'\n')
-    else:worker(json.loads(a.spec.read_text()),a.output,a.master)
+    else:worker(json.loads(a.spec.read_text()),a.output,a.master,a.packed_candidate)
 if __name__=='__main__':main()
