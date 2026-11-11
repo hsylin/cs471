@@ -67,6 +67,14 @@ def worker(spec,output,master):
             graph=torch.cuda.CUDAGraph()
             with torch.cuda.graph(graph):captured=fn()
             graph.replay();torch.cuda.synchronize()
+            if name=='dispatch_3_tensors':
+                for tensor in captured:
+                    offset=0
+                    for peer,count in enumerate(sizes):
+                        assert bool(torch.all(tensor[offset:offset+count]==peer+1))
+                        offset+=count
+            else:
+                assert bool(torch.all(captured==36))
             for mode,call in (('eager',fn),('cuda_graph',graph.replay)):
                 samples=[]
                 for repeat in range(3):
@@ -86,6 +94,42 @@ def worker(spec,output,master):
       'backend':'Pinned vLLM GroupCoordinator.all_gatherv/reduce_scatterv, same primitives called by AgRs; NCCL device communicator',
       'scope':'Synthetic payload, observed sizes; component-only, excludes experts, compute imbalance and serving scheduler. Both eager and graph replay charged; no bandwidth-saturation or serving-speedup claim.'},indent=2)+'\n')
     dist.barrier(group=group.cpu_group);dist.destroy_process_group()
+
+
+def summarize(root,spec,source_sha256):
+    """Pair repeats across all ranks; retain slowest-rank latency, never fastest."""
+    import math
+    import statistics
+    ranks=[json.loads((Path(root)/f'rank{rank}.json').read_text()) for rank in range(8)]
+    assert len({r['step'] for r in ranks})==1
+    assert {r['hostname'].split('.')[0] for r in ranks}=={'kh074','kh077'}
+    for rank,r in enumerate(ranks):
+        assert r['status']=='passed' and r['rank']==rank and r['job']=='4882284'
+        assert 'H100' in r['gpu']
+        assert r['source_sha256']==source_sha256
+        assert r['native_source_sha256']==spec['native_source_sha256']
+        assert len(r['records'])==len(spec['shapes'])
+        for record,shape in zip(r['records'],spec['shapes']):
+            assert record['shape']==shape and record['rank']==rank
+            assert record['correct_rank_payloads_and_sum']
+    shapes=[]
+    for i,shape in enumerate(spec['shapes']):
+        timings={}
+        expected={op+'/'+mode for op in ('dispatch_3_tensors','combine_1_tensor') for mode in ('eager','cuda_graph')}
+        assert all(set(r['records'][i]['timings'])==expected for r in ranks)
+        for key in sorted(expected):
+            samples=[r['records'][i]['timings'][key] for r in ranks]
+            assert all(len(s)==3 for s in samples)
+            fields={}
+            for field in ('event_us_per_call','wall_us_per_call'):
+                assert all(math.isfinite(x[field]) and x[field]>0 for s in samples for x in s)
+                maxima=[max(s[rep][field] for s in samples) for rep in range(3)]
+                fields[field]={'all_rank_samples':[[x[field] for x in s] for s in samples],
+                               'max_rank_each_repeat':maxima,'median_max_rank':statistics.median(maxima)}
+            timings[key]=fields
+        shapes.append({'shape':shape,'timings':timings})
+    return {'status':'passed','ranks':8,'source_sha256':source_sha256,'shapes':shapes,
+            'scope':'Synthetic collective replay, three technical repeats. Maximum across ranks for each paired repeat; no independent-run uncertainty. Peer waiting is still included; not a wire-time lower bound or an end-to-end speedup.'}
 
 
 def main():
