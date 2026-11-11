@@ -34,6 +34,42 @@ def request(rid="r0"):
     return {"id": rid, "messages": [{"role": "user", "content": rid}], "input_tokens": 4}
 
 
+def test_force_close_uses_new_connections_without_changing_arrivals():
+    async def run():
+        transports=[]
+        async def handler(req):
+            transports.append(req.transport)
+            response=web.StreamResponse(headers={"Content-Type":"text/event-stream"})
+            await response.prepare(req)
+            await response.write(b"".join(events()))
+            await response.write_eof()
+            return response
+        offsets=[0,20_000_000,40_000_000]
+        async with mock_server(handler) as endpoint:
+            rows,timing=await run_workload([request(str(i)) for i in range(3)],
+                {"arrival_offsets_ns":offsets},endpoint=endpoint,start_delay_s=0,
+                max_inflight=1,force_close=True)
+        assert len(transports)==3 and len({id(t) for t in transports})==3
+        assert all(r['success'] for r in rows)
+        assert [r['scheduled_ns']-timing['epoch_monotonic_ns'] for r in rows]==offsets
+    asyncio.run(run())
+
+
+def test_force_close_does_not_retry_disconnected_post():
+    async def run():
+        calls=[]
+        async def handler(req):
+            calls.append(await req.json())
+            req.transport.close()
+            return web.Response()
+        async with mock_server(handler) as endpoint:
+            rows,_=await run_workload([request()],{'arrival_offsets_ns':[0]},
+                endpoint=endpoint,start_delay_s=0,force_close=True)
+        assert len(calls)==1 and len(rows)==1 and not rows[0]['success']
+        assert rows[0]['error_type']=='ServerDisconnectedError'
+    asyncio.run(run())
+
+
 def events(*, usage=True, done=True, prompt_tokens=4, private_logprobs=False):
     def diagnostic(token, token_id):
         return {"logprobs": {"content": [{"token": token, "logprob": -0.1, "bytes": None, "top_logprobs": []}]},

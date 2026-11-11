@@ -352,7 +352,8 @@ async def run_workload(requests: list[dict], calendar: dict, *, endpoint: str,
                        start_delay_s: float = 1.0,
                        on_record: Callable[[dict, dict], None] | None = None,
                        epoch_ns: int | None = None, logprobs: bool = False,
-                       output_lengths: dict[str, int] | None = None) -> tuple[list[dict], dict]:
+                       output_lengths: dict[str, int] | None = None,
+                       force_close: bool = False) -> tuple[list[dict], dict]:
     """One task per offered request; all tasks, including failures, are drained."""
     import aiohttp
     if output_lengths is not None:
@@ -369,7 +370,8 @@ async def run_workload(requests: list[dict], calendar: dict, *, endpoint: str,
     epoch_wall_ns = time.time_ns() + epoch_ns - time.monotonic_ns()
     semaphore = asyncio.Semaphore(max_inflight)
     timeout = aiohttp.ClientTimeout(total=timeout_s, connect=min(60, timeout_s), sock_read=timeout_s)
-    connector = aiohttp.TCPConnector(limit=max_inflight, limit_per_host=max_inflight)
+    connector = aiohttp.TCPConnector(limit=max_inflight, limit_per_host=max_inflight,
+                                     force_close=force_close)
     records = []
     async with aiohttp.ClientSession(timeout=timeout, connector=connector,
                                      trust_env=False, raise_for_status=False) as session:
@@ -423,6 +425,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--max-inflight", type=int, default=256)
     parser.add_argument("--timeout-s", type=float, default=1800)
     parser.add_argument("--start-delay-s", type=float, default=1)
+    parser.add_argument("--force-close", action="store_true",
+                        help="Fresh TCP connection per request; connection establishment remains inside measured response time; no retries")
     parser.add_argument("--logprobs", action="store_true", help="Correctness diagnostic: validate/save prompt/output IDs and finite generated token logprobs privately")
     args = parser.parse_args(argv)
     if args.max_tokens <= 0 or args.max_model_len <= args.max_tokens:
@@ -450,6 +454,7 @@ def main(argv: list[str] | None = None) -> int:
               "output_lengths_sha256": sha256_bytes(length_bytes) if length_bytes is not None else None,
               "output_length_mode": "fixed_previous_off_reference" if output_lengths is not None else "natural_eos",
               "max_inflight": args.max_inflight, "http_timeout_s": args.timeout_s,
+              "http_force_close": args.force_close,
               "logprobs": args.logprobs, "arrival_kind": calendar.get("kind", "external_calendar"),
               "diagnostic_return_token_ids": args.logprobs,
               "synthetic_rate_requests_per_s": args.rate,
@@ -470,7 +475,7 @@ def main(argv: list[str] | None = None) -> int:
             requests, calendar, endpoint=header["endpoint"], model=args.model,
             max_tokens=args.max_tokens, max_inflight=args.max_inflight,
             timeout_s=args.timeout_s, start_delay_s=args.start_delay_s, on_record=write, logprobs=args.logprobs,
-            output_lengths=output_lengths))
+            output_lengths=output_lengths, force_close=args.force_close))
         from full_serving.analyze import summarize_run
         summary = summarize_run(records, timing)
         public.write(json.dumps({"type": "run_summary", **timing, **summary}, allow_nan=False) + "\n")

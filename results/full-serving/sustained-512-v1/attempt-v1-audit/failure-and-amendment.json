@@ -1,0 +1,17 @@
+{
+  "reason": "One OFF request disconnected before HTTP headers;511 completed,all512 retained. No valid main comparison from attempt1.",
+  "observed_failure": "request_index147,ServerDisconnectedError,no status/headers/stream,0.750909ms;365 subsequent successes",
+  "hypothesis": "Potential idle HTTP connection reuse race; not proven by available logs.",
+  "change": "Enable client force_close for every request in all arms/stages, no retries; charge connection setup in response time.",
+  "unchanged": [
+    "data membership/order",
+    "arrival calendars/rates",
+    "generation limits",
+    "native source/checkpoint",
+    "policies/thresholds",
+    "replica budget",
+    "hardware"
+  ],
+  "selection": "Rerun all pilots and all main arms under common connection policy; never select fastest attempts.",
+  "tests": "27 client and experiment tests passed including distinct-connection and no-retry POST tests. Initial sandbox-only test run could not bind loopback; rerun with loopback access passed."
+}

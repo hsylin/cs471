@@ -184,6 +184,7 @@ def run(args):
                             req=urllib.request.Request(url+'/start_profile',method='POST');urllib.request.urlopen(req,timeout=120).read()
                         (directory/f'{label}-metrics-before.txt').write_bytes(native.get_url(url+'/metrics'))
                         client=[sys.executable,'-m','full_serving.client','--requests',str(item['requests']),'--base-url',url+'/v1','--output',str(directory/f'{label}.jsonl'),'--private-output',str(priv/f'{label}-outputs.jsonl'),'--run-id',f'{source}-{arm}-{phase}','--arm',arm,'--block-id',source+'-'+block['block_id'],'--load-id',phase,'--pair-id',source+'-'+block['block_id']+'-'+phase,'--max-inflight',str(1 if args.branch else 512),'--timeout-s','7200','--max-tokens',str(data['max_tokens'])]
+                        client+=['--force-close']
                         client+=['--calendar',str(item['calendar'])] if measured else ['--rate','0']
                         if args.mode=='matched' or args.branch:client+=['--output-lengths',str(inputs[source][phase+'-lengths'])]
                         if phase=='warmup-00' or args.branch:client+=['--logprobs']
