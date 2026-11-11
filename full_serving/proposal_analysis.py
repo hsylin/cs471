@@ -63,6 +63,25 @@ def profile_summary(directory):
     return {'files':results,'scope':'Profiler perturbs execution. Per-trace summed CUDA kernel times may overlap; not a critical-path or unprofiled latency decomposition. Pilot inputs only.'}
 
 
+def gate_phase_evidence(directory,summary):
+    """Distinguish measured decisions from warmup using same-host rank0 clock."""
+    begin=summary['epoch_wall_ns_approx'];end=begin+summary['completed_elapsed_ns']
+    rows=[json.loads(x) for x in (Path(directory)/'gate-events-rank0.jsonl').read_text().splitlines()]
+    partitions={name:[] for name in ('before_measurement','during_measurement','after_measurement')}
+    for row in rows:
+        key='before_measurement' if row['wall_ns']<begin else 'during_measurement' if row['wall_ns']<=end else 'after_measurement'
+        partitions[key].append(row)
+    result={}
+    for name,part in partitions.items():
+        decisions=[r for r in part if r['kind']=='decision']
+        result[name]={'proposal_cycles':len(decisions),'proposal_steps':[r['step'] for r in decisions],
+            'layer_decisions':dict(Counter(d['reason'] for r in decisions for d in r['layers'])),
+            'rank0_commit_enqueued':sum(r['kind']=='commit_enqueued' for r in part),
+            'rank0_commit_gpu_completed':sum(r['kind']=='commit_completed' for r in part)}
+    return {'approximate_measured_wall_bounds_ns':[begin,end],'partitions':result,
+        'scope':'Rank0 and client run on kh074; approximate wall-clock alignment, not a cross-node clock synchronization proof. Counts classify event observation time: a completion during measurement can belong to an earlier proposal. Full-session all-rank commit audit is reported separately. Warmup decisions may affect measured placement.'}
+
+
 def logged_config(text):
     entries=[line.split("non-default args: ",1)[1] for line in text.splitlines() if "non-default args: " in line]
     assert len(entries)==1, "Expected one primary API configuration record"
@@ -147,7 +166,9 @@ def final_report(root):
             assert balance['available']
             eplb=eplb_log_evidence(p);assert not eplb['async_error_log_entries'] and not eplb['coordinated_stop_log_entries']
             arms[arm]={'metrics':primary,'summary':summary,'runtime':identity,'phase_balance':balance,'native_metrics':metrics,'cache':cache_counter_deltas(p/'measured-metrics-before.txt',p/'measured-metrics-after.txt'),'eplb':eplb,'independent_arithmetic':'passed','header':item['header'],'signatures':signatures}
-            if arm in ('b3','b4'):arms[arm]['gate']=gate_audit(p,arm)
+            if arm in ('b3','b4'):
+                arms[arm]['gate']=gate_audit(p,arm)
+                arms[arm]['gate']['phase_evidence']=gate_phase_evidence(p,summary)
             records[arm]=rows
         reference=arms['off']
         for arm in ARMS:

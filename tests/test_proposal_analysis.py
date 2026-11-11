@@ -24,3 +24,17 @@ def test_logged_config_supports_only_known_literal_config_constructors():
     d=logged_config("prefix non-default args: {'eplb_config': EPLBConfig(num_redundant_experts=32), 'profiler_config': ProfilerConfig(profiler='torch')}")
     assert d['eplb_config']['num_redundant_experts']==32 and d['profiler_config']['profiler']=='torch'
     with pytest.raises(AssertionError):logged_config("non-default args: {'x': arbitrary_code()}")
+
+
+def test_gate_phase_evidence_does_not_count_warmup_decisions_as_measured(tmp_path):
+    from full_serving.proposal_analysis import gate_phase_evidence
+    rows=[{'kind':'decision','wall_ns':90,'step':750,'layers':[{'reason':'incomplete'}]},
+          {'kind':'commit_completed','wall_ns':110,'cycle_step':750},
+          {'kind':'decision','wall_ns':150,'step':3750,'layers':[{'reason':'allow'}]},
+          {'kind':'commit_enqueued','wall_ns':210,'cycle_step':3750}]
+    (tmp_path/'gate-events-rank0.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
+    x=gate_phase_evidence(tmp_path,{'epoch_wall_ns_approx':100,'completed_elapsed_ns':100})['partitions']
+    assert x['before_measurement']['proposal_steps']==[750]
+    assert x['during_measurement']['proposal_steps']==[3750]
+    assert x['during_measurement']['rank0_commit_gpu_completed']==1
+    assert x['after_measurement']['rank0_commit_enqueued']==1
