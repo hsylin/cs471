@@ -40,10 +40,13 @@ def worker(spec,output,master):
     assert socket.gethostname().split('.')[0] in ('kh074','kh077')
     for name,digest in spec['native_source_sha256'].items():
         assert hashlib.sha256((Path(vllm.__file__).parent/name).read_bytes()).hexdigest()==digest,name
-    # srun gives each process one visible GPU; local CUDA index is therefore zero.
-    assert torch.cuda.device_count()==1;torch.cuda.set_device(0)
-    init_distributed_environment(world_size=8,rank=rank,local_rank=0,distributed_init_method=master,backend='nccl')
-    group=GroupCoordinator([list(range(8))],0,'nccl',True,group_name='cost_replay',use_all2all=False)
+    # Match the serving workers' four-visible-device namespace. On this pinned
+    # NCCL stack, one-visible-device tasks fail P2P/CUMEM peer setup with CUDA101.
+    local_rank=int(os.environ['SLURM_LOCALID'])
+    assert torch.cuda.device_count()==4 and local_rank==rank%4
+    torch.cuda.set_device(local_rank)
+    init_distributed_environment(world_size=8,rank=rank,local_rank=local_rank,distributed_init_method=master,backend='nccl')
+    group=GroupCoordinator([list(range(8))],local_rank,'nccl',True,group_name='cost_replay',use_all2all=False)
     records=[]
     for shape in spec['shapes']:
         sizes=shape['sizes'];n=sizes[rank];total=sum(sizes)
@@ -89,7 +92,7 @@ def worker(spec,output,master):
                         'per_rank_local_dispatch_input_bytes':sum(t.numel()*t.element_size() for t in inputs),
                         'per_rank_combine_input_bytes':partial.numel()*partial.element_size()})
     output.mkdir(parents=True,exist_ok=True)
-    (output/f'rank{rank}.json').write_text(json.dumps({'status':'passed','rank':rank,'hostname':socket.gethostname(),'job':os.environ['SLURM_JOB_ID'],'step':os.environ['SLURM_STEP_ID'],'gpu':torch.cuda.get_device_name(),'records':records,
+    (output/f'rank{rank}.json').write_text(json.dumps({'status':'passed','rank':rank,'local_rank':local_rank,'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'hostname':socket.gethostname(),'job':os.environ['SLURM_JOB_ID'],'step':os.environ['SLURM_STEP_ID'],'gpu':torch.cuda.get_device_name(),'records':records,
       'native_source_sha256':spec['native_source_sha256'],'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
       'backend':'Pinned vLLM GroupCoordinator.all_gatherv/reduce_scatterv, same primitives called by AgRs; NCCL device communicator',
       'scope':'Synthetic payload, observed sizes; component-only, excludes experts, compute imbalance and serving scheduler. Both eager and graph replay charged; no bandwidth-saturation or serving-speedup claim.'},indent=2)+'\n')
