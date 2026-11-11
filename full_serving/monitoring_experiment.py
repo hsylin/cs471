@@ -70,10 +70,11 @@ def node(args):
             env.update(FULL_SERVING_CUSTOM_MODE='resident_v1',FULL_SERVING_CUSTOM_CONFIG=str(cfg),FULL_SERVING_CUSTOM_SOURCE_MANIFEST=str(sources),FULL_SERVING_CUSTOM_CONFIG_SHA256=native.sha(cfg),FULL_SERVING_CUSTOM_SOURCE_MANIFEST_SHA256=native.sha(sources))
         else:env.update(CS471_GATE_MODE=args.arm.removesuffix('_light'),CS471_GATE_NATIVE_PINS=str(ROOT/spec['native_pins']))
     if args.arm.endswith('_light'):
-        env['CS471_GATE_LIGHT']='1'
+        env.update(VLLM_PLUGINS='cs471_monitoring',PYTHONPATH=os.pathsep.join((str(ROOT),str(ROOT/'full_serving/monitoring_bootstrap'))),CS471_GATE_HISTORY=spec['history_implementation'])
+        if pilot:env['CS471_GATE_SHADOW']='1'
     diagnostic=env.get('FULL_SERVING_LATENCY_DIAGNOSTIC')=='1'
     if diagnostic:
-        env['PYTHONPATH']=os.pathsep.join((str(ROOT),str(ROOT/'full_serving/proposal_bootstrap')))
+        env['PYTHONPATH']=env.get('PYTHONPATH',str(ROOT))
         command+=['--middleware','full_serving.latency_probe.LatencyMiddleware']
     if pilot:
         command+=['--profiler-config',json.dumps({'profiler':'torch','torch_profiler_dir':str(directory/'profiles'),'torch_profiler_with_stack':False,'torch_profiler_activities':['CPU','CUDA'],'ignore_frontend':True,'max_iterations':16})]

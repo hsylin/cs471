@@ -1,0 +1,8 @@
+{
+  "status": "failed_before_requests",
+  "run": "full-latency-diagnostic-20261111-v1",
+  "source": "7f4eb41",
+  "cause": "Diagnostic OFF PYTHONPATH included proposal dist-info bootstrap while VLLM_PLUGINS was unset, causing auto-discovery and rejection of custom plugin.",
+  "fix": "Middleware-only native arms expose repository root without custom-plugin bootstrap.",
+  "selection": "Preserve failed attempt; no latency result obtained or discarded."
+}
