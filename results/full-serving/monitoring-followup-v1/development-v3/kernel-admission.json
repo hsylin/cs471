@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "exact_snapshot_cases": 15,
+  "timings": {
+    "original": {
+      "three_cycle_wall_ms": [
+        84.392458,
+        85.459517,
+        85.487158
+      ],
+      "median_cycle_wall_ms": 85.459517,
+      "update_device_us_including_host_enqueue_gaps": 29.08639907836914
+    },
+    "reduction": {
+      "three_cycle_wall_ms": [
+        28.774031,
+        28.684047,
+        28.863604
+      ],
+      "median_cycle_wall_ms": 28.774031,
+      "update_device_us_including_host_enqueue_gaps": 9.749119877815247
+    }
+  },
+  "selection_rule": "Direct reduction is the only correctness-admitted fused candidate. Report both original and fused costs; do not select serving attempts by speed.",
+  "selected": "reduction",
+  "rejected_candidate": "Rolling prototype failed exact previous-window sums at step3749 with an intact ring/current window; not admitted.",
+  "limitations": "Synthetic counter state; component timing includes Python enqueue and GPU synchronization. Not a full-model latency prediction.",
+  "torch": "2.13.0+cu129",
+  "gpu": "NVIDIA H100",
+  "source_files": {
+    "full_serving/logical_history_gpu.py": "faccc53855e75bf0d9e2e6fed26a2e1283e02dcad31a8f9d5bb86cc9d59f607c",
+    "full_serving/check_logical_history.py": "5cc10c3745b273b189464fc764dae2f73e21019405fba2551640586a5eeb0870"
+  },
+  "raw_result_sha256": "bdf17d6bf671cdfdc726405c95d077c6e84e1cb9bbecff8a5fe29902a13b674b",
+  "source_verification": "Remote sha256sum, collected local bytes, and Git HEAD agree",
+  "source_revision": "2153d2ef8493f1aa52217a147a4b09b91c890019"
+}
