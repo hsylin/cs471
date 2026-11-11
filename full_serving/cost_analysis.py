@@ -2,6 +2,7 @@
 import argparse
 from collections import Counter
 import gzip
+import hashlib
 import json
 from pathlib import Path
 
@@ -91,8 +92,20 @@ def union_us(events):
 def profiles(root):
     files=[]
     for p in sorted(Path(root).rglob('*.pt.trace.json.gz')):
-        with gzip.open(p,'rt') as f:events=json.load(f).get('traceEvents',[])
+        with gzip.open(p,'rt') as f:trace=json.load(f)
+        events=trace.get('traceEvents',[])
         kernels=[e for e in events if e.get('cat')=='kernel' and isinstance(e.get('dur'),(int,float))]
+        base=trace.get('baseTimeNanoseconds',0)
+        bounds=[base+min(e['ts'] for e in kernels)*1000,base+max(e['ts']+e['dur'] for e in kernels)*1000] if kernels else None
+        matched=[];phase_intervals={}
+        for dataset in ('longbench','numinamath'):
+            raw=p.parent.parent/(dataset+'-profile.jsonl')
+            if not raw.exists():continue
+            summaries=[r for line in raw.read_text().splitlines() if (r:=json.loads(line)).get('type')=='run_summary']
+            assert len(summaries)==1
+            summary=summaries[0];start=summary['epoch_wall_ns_approx'];end=start+summary['completed_elapsed_ns']
+            phase_intervals[dataset]=[start,end]
+            if bounds and bounds[0]<end and bounds[1]>start:matched.append(dataset)
         names=Counter();counts=Counter()
         for e in kernels:names[e['name']]+=e['dur'];counts[e['name']]+=1
         cats={
@@ -102,7 +115,10 @@ def profiles(root):
             'logical_history':[e for e in kernels if any(k in e['name'] for k in ('update_history','reduce_history'))],
             'expert_gemm':[e for e in kernels if 'fused_moe_kernel' in e['name']],
         }
-        files.append({'file':str(p),'kernels':len(kernels),'kernel_union_us':union_us(kernels),'summed_kernel_us':sum(names.values()),
+        files.append({'file':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rank':trace.get('distributedInfo',{}).get('rank'),'host':trace.get('host_name'),
+          'approximate_kernel_wall_bounds_ns':bounds,'client_profile_intervals_ns':phase_intervals,'dataset':matched[0] if len(matched)==1 else 'unclassified',
+          'phase_classification_limit':'Approximate host wall clocks; ambiguous/non-overlapping traces remain unclassified.',
+          'kernels':len(kernels),'kernel_union_us':union_us(kernels),'summed_kernel_us':sum(names.values()),
           'categories':{name:{'calls':len(es),'sum_us':sum(e['dur'] for e in es),'union_us':union_us(es)} for name,es in cats.items()},
           'top_kernels':[{'name':n,'calls':counts[n],'sum_us':v} for n,v in names.most_common(20)]})
     return {'files':files,'scope':'Per-trace device timeline union and sums, not synchronized cross-rank critical path. NCCL durations include peer waiting; do not call them wire time or bandwidth saturation. Python hooks catalogue graph construction/eager shapes, not actual graph replay frequency.'}
