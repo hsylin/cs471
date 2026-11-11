@@ -86,13 +86,14 @@ def register():
         emit('transfer_enqueued',cycle_step=cycle,layer=kwargs.get('layer_idx'),
              host_call_ns=time.perf_counter_ns()-start,received_experts=int(result.recv_count))
         return result
-    def move(ms,rank):
+    def move(model_state,ep_rank):
+        ms=model_state
         result=ms.pending_result;layer=result.layer_idx
         record=dict(cycle_step=getattr(ms,'cs471_observed_cycle',None),layer=layer,
             remote_received_tensor_bytes=int(result.transfer_metadata.recv_count)*sum(w[0].numel()*w.element_size() for w in ms.model.expert_weights[layer]),
             map_sha256=hashlib.sha256(result.new_physical_to_logical_map.numpy().tobytes()).hexdigest())
         start,end=torch.cuda.Event(enable_timing=True),torch.cuda.Event(enable_timing=True)
-        start.record();old_move(ms,rank);end.record();pending.append((start,end,record))
+        start.record();old_move(ms,ep_rank);end.record();pending.append((start,end,record))
         emit('commit_enqueued',step=clock,**record)
     state.EplbState.add_model=add;state.EplbState.step=step;state.EplbState.rearrange=rearrange
     worker.run_rebalance_experts=plan;worker.transfer_layer=transfer;state._move_to_workspace=move

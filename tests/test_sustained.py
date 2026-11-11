@@ -5,6 +5,14 @@ from full_serving.sustained_experiment import ARMS, server_arguments, clean, cop
 from full_serving.data import digest
 
 
+def test_observer_accepts_native_workspace_keyword_arguments():
+    import ast
+    path=Path(__file__).resolve().parents[1]/'full_serving/sustained_plugin.py'
+    tree=ast.parse(path.read_text())
+    move=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='move')
+    assert [a.arg for a in move.args.args]==['model_state','ep_rank']
+
+
 def test_six_arms_hold_native_transport_and_replica_contract():
     assert len(ARMS)==6
     for arm in ARMS:
