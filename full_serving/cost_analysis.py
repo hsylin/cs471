@@ -67,7 +67,7 @@ def pilots(root):
                 assert item['header']['requests_sha256']==warm['requests_sha256']
                 assert [r['request_id'] for r in rows]==warm['request_ids']
                 assert all(r['requested_output_tokens']==targets[r['request_id']]==r['usage']['completion_tokens'] and r['finish_reason']=='length' for r in rows)
-                phases[label]={'summary':item['summary'],'native_phase':phase_balance(metric_deltas(p/(label+'-metrics-before.txt'),p/(label+'-metrics-after.txt')))}
+                phases[label]={'summary':item['summary'],'native_phase':phase_balance(metric_deltas(p/(label+'-metrics-before.txt'),p/(label+'-metrics-after.txt')),request_count=len(rows))}
         out[arm]={'runtime':identity,'phases':phases,'timing_admissible_for_attribution':arm!='b4_light',
                   'scope':'Pilot-only, same eight inputs and exact lengths; two warmups are technical passes, not independent groups. B4-light retains reference history shadow and is a diagnostic coverage control, not a fair cost baseline.'}
     return {'status':'completed_pilots' if len(out)==len(ARMS) else 'partial','arms':out,
