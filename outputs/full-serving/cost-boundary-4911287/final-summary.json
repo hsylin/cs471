@@ -1,0 +1,688 @@
+{
+  "status": "reviewed",
+  "source_revision": "e72cebb24b62b6eaaa3d929809bbfb59bdf3d697",
+  "protocol_sha256": "f80a889f05c7d4861c90e86ca490cba180d09af8edc036882cdaca67fdf0da58",
+  "admission_sha256": "f461773f5ed399b3c1561e3f43a471249ed55c0d182bca435ca418f225053d9a",
+  "report_sha256": "6a22b1927273f0fd1d5543cafb4494d39b6745f36625dbbe976f28942859a4c7",
+  "raw_archives_private": true,
+  "groups_per_dataset_arm": 1,
+  "rows": [
+    {
+      "dataset": "longbench",
+      "treatment": "off",
+      "requests": 512,
+      "failures": 0,
+      "mean_response_ms": 4346.499190824219,
+      "p95_response_ms": 13888.86890825,
+      "mean_ttft_ms": 709.2955213378906,
+      "p95_ttft_ms": 1577.5307708,
+      "elapsed_s": 275.558985157,
+      "offered_horizon_s": 270.464109707,
+      "drain_s": 5.09487545,
+      "output_tokens": 75246,
+      "inherited_8192_targets": 0,
+      "native_request_phase_duration_sum_s": {
+        "prefill": 301.83744746702723,
+        "decode": 1864.4426621207967
+      }
+    },
+    {
+      "dataset": "longbench",
+      "treatment": "b4",
+      "requests": 512,
+      "failures": 0,
+      "mean_response_ms": 4587.736097201172,
+      "p95_response_ms": 14437.42675605,
+      "mean_ttft_ms": 718.9238797597657,
+      "p95_ttft_ms": 1575.4608798499999,
+      "elapsed_s": 276.800885647,
+      "offered_horizon_s": 270.464109707,
+      "drain_s": 6.33677594,
+      "output_tokens": 75246,
+      "inherited_8192_targets": 0,
+      "native_request_phase_duration_sum_s": {
+        "prefill": 303.68689255951904,
+        "decode": 1983.2894655624405
+      }
+    },
+    {
+      "dataset": "longbench",
+      "treatment": "b4_noop",
+      "requests": 512,
+      "failures": 0,
+      "mean_response_ms": 4546.301704929688,
+      "p95_response_ms": 14296.615328649998,
+      "mean_ttft_ms": 712.8172767363282,
+      "p95_ttft_ms": 1564.1665481,
+      "elapsed_s": 275.885790558,
+      "offered_horizon_s": 270.464109707,
+      "drain_s": 5.421680851,
+      "output_tokens": 75246,
+      "inherited_8192_targets": 0,
+      "native_request_phase_duration_sum_s": {
+        "prefill": 302.2915728762746,
+        "decode": 1965.076954442542
+      }
+    },
+    {
+      "dataset": "numinamath",
+      "treatment": "off",
+      "requests": 512,
+      "failures": 0,
+      "mean_response_ms": 17006.289309945314,
+      "p95_response_ms": 77001.9624528,
+      "mean_ttft_ms": 53.84348626367188,
+      "p95_ttft_ms": 74.558882,
+      "elapsed_s": 691.018065351,
+      "offered_horizon_s": 623.552605813,
+      "drain_s": 67.465459538,
+      "output_tokens": 741753,
+      "inherited_8192_targets": 26,
+      "native_request_phase_duration_sum_s": {
+        "prefill": 20.686895051039755,
+        "decode": 8679.663335920544
+      }
+    },
+    {
+      "dataset": "numinamath",
+      "treatment": "b4",
+      "requests": 512,
+      "failures": 0,
+      "mean_response_ms": 18365.41650509375,
+      "p95_response_ms": 81777.92607304997,
+      "mean_ttft_ms": 55.97233095703125,
+      "p95_ttft_ms": 79.94206595,
+      "elapsed_s": 694.3537179,
+      "offered_horizon_s": 623.552605813,
+      "drain_s": 70.801112087,
+      "output_tokens": 741753,
+      "inherited_8192_targets": 26,
+      "native_request_phase_duration_sum_s": {
+        "prefill": 21.842914768029004,
+        "decode": 9374.443046831992
+      }
+    },
+    {
+      "dataset": "numinamath",
+      "treatment": "b4_noop",
+      "requests": 512,
+      "failures": 0,
+      "mean_response_ms": 17960.02502402539,
+      "p95_response_ms": 81018.33661699996,
+      "mean_ttft_ms": 54.91612531835938,
+      "p95_ttft_ms": 77.7072487,
+      "elapsed_s": 693.553094316,
+      "offered_horizon_s": 623.552605813,
+      "drain_s": 70.000488503,
+      "output_tokens": 741753,
+      "inherited_8192_targets": 26,
+      "native_request_phase_duration_sum_s": {
+        "prefill": 21.4283515017014,
+        "decode": 9167.423016133951
+      }
+    }
+  ],
+  "comparisons": {
+    "longbench": {
+      "b4/off": {
+        "metrics": {
+          "response_ms": {
+            "mean": {
+              "ratio": 1.0555014267312466,
+              "change_percent": 5.550142673124658
+            },
+            "p95": {
+              "ratio": 1.0394962218611017,
+              "change_percent": 3.949622186110169
+            }
+          },
+          "ttft_ms": {
+            "mean": {
+              "ratio": 1.0135745371741722,
+              "change_percent": 1.357453717417223
+            },
+            "p95": {
+              "ratio": 0.9986878918698046,
+              "change_percent": -0.1312108130195444
+            }
+          }
+        },
+        "mean_response_gain_percent": -5.550142673124658,
+        "useful_mean_gain_at_least5percent": false,
+        "mean_response_regression_exceeds2percent": true
+      },
+      "b4_noop/off": {
+        "metrics": {
+          "response_ms": {
+            "mean": {
+              "ratio": 1.0459686072246985,
+              "change_percent": 4.596860722469853
+            },
+            "p95": {
+              "ratio": 1.0293577845030848,
+              "change_percent": 2.9357784503084794
+            }
+          },
+          "ttft_ms": {
+            "mean": {
+              "ratio": 1.0049651454048303,
+              "change_percent": 0.49651454048302845
+            },
+            "p95": {
+              "ratio": 0.9915283917452699,
+              "change_percent": -0.8471608254730145
+            }
+          }
+        },
+        "mean_response_gain_percent": -4.596860722469853,
+        "useful_mean_gain_at_least5percent": false,
+        "mean_response_regression_exceeds2percent": true
+      },
+      "b4_noop/b4": {
+        "metrics": {
+          "response_ms": {
+            "mean": {
+              "ratio": 0.9909684446982986,
+              "change_percent": -0.903155530170141
+            },
+            "p95": {
+              "ratio": 0.9902467780596016,
+              "change_percent": -0.9753221940398404
+            }
+          },
+          "ttft_ms": {
+            "mean": {
+              "ratio": 0.9915059115500822,
+              "change_percent": -0.8494088449917836
+            },
+            "p95": {
+              "ratio": 0.9928310934949555,
+              "change_percent": -0.7168906505044537
+            }
+          }
+        },
+        "mean_response_gain_percent": 0.903155530170141,
+        "useful_mean_gain_at_least5percent": false,
+        "mean_response_regression_exceeds2percent": false
+      }
+    },
+    "numinamath": {
+      "b4/off": {
+        "metrics": {
+          "response_ms": {
+            "mean": {
+              "ratio": 1.0799190917182397,
+              "change_percent": 7.991909171823974
+            },
+            "p95": {
+              "ratio": 1.062023920795233,
+              "change_percent": 6.202392079523289
+            }
+          },
+          "ttft_ms": {
+            "mean": {
+              "ratio": 1.0395376458896886,
+              "change_percent": 3.9537645889688555
+            },
+            "p95": {
+              "ratio": 1.0722004381718062,
+              "change_percent": 7.220043817180621
+            }
+          }
+        },
+        "mean_response_gain_percent": -7.991909171823974,
+        "useful_mean_gain_at_least5percent": false,
+        "mean_response_regression_exceeds2percent": true
+      },
+      "b4_noop/off": {
+        "metrics": {
+          "response_ms": {
+            "mean": {
+              "ratio": 1.0560813530040518,
+              "change_percent": 5.6081353004051815
+            },
+            "p95": {
+              "ratio": 1.052159374076497,
+              "change_percent": 5.215937407649696
+            }
+          },
+          "ttft_ms": {
+            "mean": {
+              "ratio": 1.0199214265108092,
+              "change_percent": 1.9921426510809193
+            },
+            "p95": {
+              "ratio": 1.0422265814017972,
+              "change_percent": 4.222658140179725
+            }
+          }
+        },
+        "mean_response_gain_percent": -5.6081353004051815,
+        "useful_mean_gain_at_least5percent": false,
+        "mean_response_regression_exceeds2percent": true
+      },
+      "b4_noop/b4": {
+        "metrics": {
+          "response_ms": {
+            "mean": {
+              "ratio": 0.9779263660611278,
+              "change_percent": -2.2073633938872184
+            },
+            "p95": {
+              "ratio": 0.9907115588212462,
+              "change_percent": -0.9288441178753826
+            }
+          },
+          "ttft_ms": {
+            "mean": {
+              "ratio": 0.9811298614759729,
+              "change_percent": -1.887013852402708
+            },
+            "p95": {
+              "ratio": 0.9720445397120737,
+              "change_percent": -2.795546028792628
+            }
+          }
+        },
+        "mean_response_gain_percent": 2.2073633938872184,
+        "useful_mean_gain_at_least5percent": false,
+        "mean_response_regression_exceeds2percent": false
+      }
+    }
+  },
+  "gate_and_commit_evidence": [
+    {
+      "dataset": "longbench",
+      "treatment": "b4",
+      "proposal_cycles_all_phases": 5,
+      "layer_decisions_rank0_all_phases": {
+        "incomplete_recent": 48,
+        "allow": 44,
+        "unstable": 71,
+        "insufficient_gain": 77
+      },
+      "measured_window": {
+        "proposal_cycles": 4,
+        "proposal_steps": [
+          3750,
+          6750,
+          9750,
+          12750
+        ],
+        "layer_decisions": {
+          "allow": 44,
+          "unstable": 71,
+          "insufficient_gain": 77
+        },
+        "rank0_commit_enqueued": 192,
+        "rank0_commit_gpu_completed": 192
+      },
+      "before_measurement": {
+        "proposal_cycles": 1,
+        "proposal_steps": [
+          750
+        ],
+        "layer_decisions": {
+          "incomplete_recent": 48
+        },
+        "rank0_commit_enqueued": 48,
+        "rank0_commit_gpu_completed": 48
+      },
+      "all_rank_layer_commits_completed": 240,
+      "unobserved_completion_count": 0,
+      "no_op": null,
+      "scope": "Phase partition uses approximate rank0 walltime; completion may belong to an earlier proposal. All-rank native completion does not imply equal final tokens or quality. Elision totals include warmup."
+    },
+    {
+      "dataset": "longbench",
+      "treatment": "b4_noop",
+      "proposal_cycles_all_phases": 5,
+      "layer_decisions_rank0_all_phases": {
+        "incomplete_recent": 48,
+        "allow": 43,
+        "unstable": 73,
+        "insufficient_gain": 76
+      },
+      "measured_window": {
+        "proposal_cycles": 4,
+        "proposal_steps": [
+          3750,
+          6750,
+          9750,
+          12750
+        ],
+        "layer_decisions": {
+          "allow": 43,
+          "unstable": 73,
+          "insufficient_gain": 76
+        },
+        "rank0_commit_enqueued": 192,
+        "rank0_commit_gpu_completed": 192
+      },
+      "before_measurement": {
+        "proposal_cycles": 1,
+        "proposal_steps": [
+          750
+        ],
+        "layer_decisions": {
+          "incomplete_recent": 48
+        },
+        "rank0_commit_enqueued": 48,
+        "rank0_commit_gpu_completed": 48
+      },
+      "all_rank_layer_commits_completed": 240,
+      "unobserved_completion_count": 0,
+      "no_op": {
+        "ranks": [
+          {
+            "rank": 0,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 1,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 2,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 3,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 4,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 5,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 6,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 7,
+            "proposal_cycles": 5,
+            "eligible_layer_opportunities": 197,
+            "elided_map_commits": 197,
+            "observed_elided_commits": 197,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          }
+        ],
+        "scope": "All phases; eligibility is not GPU completion. No observed completion is inferred from drain."
+      },
+      "scope": "Phase partition uses approximate rank0 walltime; completion may belong to an earlier proposal. All-rank native completion does not imply equal final tokens or quality. Elision totals include warmup."
+    },
+    {
+      "dataset": "numinamath",
+      "treatment": "b4",
+      "proposal_cycles_all_phases": 25,
+      "layer_decisions_rank0_all_phases": {
+        "incomplete_recent": 48,
+        "insufficient_gain": 211,
+        "unstable": 813,
+        "allow": 128
+      },
+      "measured_window": {
+        "proposal_cycles": 19,
+        "proposal_steps": [
+          18750,
+          21750,
+          24750,
+          27750,
+          30750,
+          33750,
+          36750,
+          39750,
+          42750,
+          45750,
+          48750,
+          51750,
+          54750,
+          57750,
+          60750,
+          63750,
+          66750,
+          69750,
+          72750
+        ],
+        "layer_decisions": {
+          "unstable": 747,
+          "allow": 88,
+          "insufficient_gain": 77
+        },
+        "rank0_commit_enqueued": 912,
+        "rank0_commit_gpu_completed": 912
+      },
+      "before_measurement": {
+        "proposal_cycles": 6,
+        "proposal_steps": [
+          750,
+          3750,
+          6750,
+          9750,
+          12750,
+          15750
+        ],
+        "layer_decisions": {
+          "incomplete_recent": 48,
+          "insufficient_gain": 134,
+          "unstable": 66,
+          "allow": 40
+        },
+        "rank0_commit_enqueued": 288,
+        "rank0_commit_gpu_completed": 288
+      },
+      "all_rank_layer_commits_completed": 1200,
+      "unobserved_completion_count": 0,
+      "no_op": null,
+      "scope": "Phase partition uses approximate rank0 walltime; completion may belong to an earlier proposal. All-rank native completion does not imply equal final tokens or quality. Elision totals include warmup."
+    },
+    {
+      "dataset": "numinamath",
+      "treatment": "b4_noop",
+      "proposal_cycles_all_phases": 25,
+      "layer_decisions_rank0_all_phases": {
+        "incomplete_recent": 48,
+        "allow": 107,
+        "insufficient_gain": 234,
+        "unstable": 811
+      },
+      "measured_window": {
+        "proposal_cycles": 19,
+        "proposal_steps": [
+          18750,
+          21750,
+          24750,
+          27750,
+          30750,
+          33750,
+          36750,
+          39750,
+          42750,
+          45750,
+          48750,
+          51750,
+          54750,
+          57750,
+          60750,
+          63750,
+          66750,
+          69750,
+          72750
+        ],
+        "layer_decisions": {
+          "unstable": 763,
+          "allow": 58,
+          "insufficient_gain": 91
+        },
+        "rank0_commit_enqueued": 912,
+        "rank0_commit_gpu_completed": 912
+      },
+      "before_measurement": {
+        "proposal_cycles": 6,
+        "proposal_steps": [
+          750,
+          3750,
+          6750,
+          9750,
+          12750,
+          15750
+        ],
+        "layer_decisions": {
+          "incomplete_recent": 48,
+          "allow": 49,
+          "insufficient_gain": 143,
+          "unstable": 48
+        },
+        "rank0_commit_enqueued": 288,
+        "rank0_commit_gpu_completed": 288
+      },
+      "all_rank_layer_commits_completed": 1200,
+      "unobserved_completion_count": 0,
+      "no_op": {
+        "ranks": [
+          {
+            "rank": 0,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 1,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 2,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 3,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 4,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 5,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 6,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          },
+          {
+            "rank": 7,
+            "proposal_cycles": 25,
+            "eligible_layer_opportunities": 1093,
+            "elided_map_commits": 1093,
+            "observed_elided_commits": 1093,
+            "censored_elided_commits": 0,
+            "unelided_eligible_layer_opportunities": 0
+          }
+        ],
+        "scope": "All phases; eligibility is not GPU completion. No observed completion is inferred from drain."
+      },
+      "scope": "Phase partition uses approximate rank0 walltime; completion may belong to an earlier proposal. All-rank native completion does not imply equal final tokens or quality. Elision totals include warmup."
+    }
+  ],
+  "criteria": {
+    "useful_mean_gain_percent": 5,
+    "regression_guard_percent": 2,
+    "application": "Shown per dataset and comparator; no pooled weighting or statistical significance."
+  },
+  "conclusion": {
+    "useful_gain_established": false,
+    "fix_beats_off": false,
+    "relative_b4_improvement_percent": {
+      "longbench": 0.903155530170141,
+      "numinamath": 2.2073633938872184
+    }
+  },
+  "limitations": [
+    "One group per dataset/arm; descriptive results, no confidence intervals or significance claims.",
+    "Matched output counts do not guarantee identical generated tokens, routes, quality, batching or active KV state.",
+    "Counts at8192 are matched targets inherited from designated natural OFF output counts; they do not establish natural EOS truncation for the matched arms.",
+    "Content and arrivals are independent sources; cohorts overlap previous studies and are not fresh content.",
+    "Full response and TTFT include connection setup and scheduled waiting; no POST retry.",
+    "Native phase metrics and host/copy timings are not exposed critical-path or causal individual-migration payback evidence.",
+    "Only observed GPU commit completions count; unenqueued/unobserved commits remain censored.",
+    "Earlier failed attempts and negative findings are retained. No fastest-attempt selection.",
+    "Raw logs, prompts, outputs and token arrays remain private. This generated report requires review before publication.",
+    "B4 and fix realize different routing/gate decisions despite identical policies; timings do not isolate the commit operation.",
+    "No detailed exposed-critical-path trace was collected; bottleneck attribution remains unresolved.",
+    "Public artifacts contain aggregates, source code and manifests only. Full raw-request reproduction requires separately authorized private archive access."
+  ]
+}
