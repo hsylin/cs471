@@ -1,0 +1,237 @@
+{
+  "schema": "cs471_bounded_failure_isolation_review_v1",
+  "utc": "2026-11-13T16:58:13.209293+00:00",
+  "status": "bounded_isolation_completed_original_charged_admission_not_passed",
+  "formal_comparison_unchanged": true,
+  "formal_runtime_files_checked": 139,
+  "same_map_main_launched": false,
+  "cases": [
+    {
+      "case": "no-sync-activity",
+      "factor": "native sync activity 關閉",
+      "paired_parent": "prior_sync_activity_enabled_charged",
+      "runtime_source": "e8571569ed51cc939e5a681063c2d2a121f736cd",
+      "contract_sha256": "6321832ae525f1399c2168bab07440b36b15b8a21f5e3bc277bcfa08586d5afa",
+      "success": 20,
+      "failed": 4,
+      "complete8rank_capture": false,
+      "outcome": "CUDA_launch_failure",
+      "new_Xid_observed": true,
+      "original_serving_admitted": false
+    },
+    {
+      "case": "single-window",
+      "factor": "移除中間邏輯捕捉邊界",
+      "paired_parent": "no-sync-activity",
+      "runtime_source": "9c173ca6c4167d66977518092f80922484cbff35",
+      "contract_sha256": "be182b795e5cad82c50aee59216c5d7639db5eabf4c8c447113dde268d7387c2",
+      "success": 20,
+      "failed": 4,
+      "complete8rank_capture": false,
+      "outcome": "CUDA_launch_failure",
+      "new_Xid_observed": true,
+      "original_serving_admitted": false
+    },
+    {
+      "case": "graph-none",
+      "factor": "模型 CUDA graph replay 關閉",
+      "paired_parent": "single-window",
+      "runtime_source": "fc4cede7f1ebf001b19b8274570880d01ccec17c",
+      "contract_sha256": "dfaed28f9bab0865ee84353618ffef5aa150baa59f64b4e6dbef022583461f2a",
+      "success": 22,
+      "failed": 2,
+      "complete8rank_capture": true,
+      "outcome": "post_capture_CPU_slice_RPC_timeout",
+      "new_Xid_observed": false,
+      "original_serving_admitted": false
+    },
+    {
+      "case": "output-wait",
+      "factor": "既有輸出 copy-event 改在產生端先等待",
+      "paired_parent": "single-window",
+      "runtime_source": "aaaf9692233afa2f13ee6599125e385581bba7c2",
+      "contract_sha256": "7bca9e960041232dcce3a52d4d4639dbcebb03f9c0820ae687f0fdd12bcc7239",
+      "success": 20,
+      "failed": 4,
+      "complete8rank_capture": false,
+      "outcome": "CUDA_launch_failure",
+      "new_Xid_observed": true,
+      "original_serving_admitted": false
+    },
+    {
+      "case": "no-external",
+      "factor": "profiler external correlation 關閉",
+      "paired_parent": "single-window",
+      "runtime_source": "de665dc8e89ebab1f4bb63f3ca679a10227982bb",
+      "contract_sha256": "95d9a203ee105df5cabbf4c80f67d85dcde91dfefe47b0e93a9126a5bb1f94e0",
+      "success": 20,
+      "failed": 4,
+      "complete8rank_capture": false,
+      "outcome": "CUDA_launch_failure",
+      "new_Xid_observed": true,
+      "original_serving_admitted": false
+    }
+  ],
+  "failed_request_review": {
+    "requests": 120,
+    "success": 102,
+    "failed": 18,
+    "all_inputs_and_successful_output_targets_verified": true,
+    "independent_success_only_mean_p95_response_TTFT": true,
+    "all8_startup_weights_routing_fixed_map_verified": true,
+    "performance_comparison_prohibited": true
+  },
+  "initial_component_cases": {
+    "count": 5,
+    "ranks_per_case": 8,
+    "steps_per_rank": 512,
+    "captured_per_rank": 384,
+    "functional_pass": true,
+    "new_Xid_observed": false,
+    "driver_warnings_remain": true,
+    "complete_native_worker": false
+  },
+  "native_record_components": {
+    "source": "af923c1e5907ba28a772b66b4703aa60c5973c96",
+    "cases": [
+      {
+        "case": "map_record_off",
+        "parent": null,
+        "changed_factor": [],
+        "ranks": 8,
+        "steps_per_rank": 512,
+        "captured_per_rank": 384,
+        "native_map_record_kernels_per_rank": 18432,
+        "oracle_checkpoints_per_rank": 8,
+        "worker_cycles_per_rank": 4,
+        "retirements_per_rank": 192,
+        "captured_retirements_per_rank": 144
+      },
+      {
+        "case": "map_record_on",
+        "parent": "map_record_off",
+        "changed_factor": [
+          "recording"
+        ],
+        "ranks": 8,
+        "steps_per_rank": 512,
+        "captured_per_rank": 384,
+        "native_map_record_kernels_per_rank": 18432,
+        "oracle_checkpoints_per_rank": 8,
+        "worker_cycles_per_rank": 4,
+        "retirements_per_rank": 192,
+        "captured_retirements_per_rank": 144
+      },
+      {
+        "case": "blocking_output",
+        "parent": "map_record_on",
+        "changed_factor": [
+          "blocking_output"
+        ],
+        "ranks": 8,
+        "steps_per_rank": 512,
+        "captured_per_rank": 384,
+        "native_map_record_kernels_per_rank": 18432,
+        "oracle_checkpoints_per_rank": 8,
+        "worker_cycles_per_rank": 4,
+        "retirements_per_rank": 192,
+        "captured_retirements_per_rank": 144
+      },
+      {
+        "case": "eager_record",
+        "parent": "map_record_on",
+        "changed_factor": [
+          "graph"
+        ],
+        "ranks": 8,
+        "steps_per_rank": 512,
+        "captured_per_rank": 384,
+        "native_map_record_kernels_per_rank": 18432,
+        "oracle_checkpoints_per_rank": 8,
+        "worker_cycles_per_rank": 4,
+        "retirements_per_rank": 192,
+        "captured_retirements_per_rank": 144
+      }
+    ],
+    "functional_pass": true,
+    "new_Xid_observed": false,
+    "driver_warnings_observed": true,
+    "driver_health_proven": false,
+    "not_model_admission": true,
+    "missing": [
+      "real model attention/MoE and GPU collectives",
+      "native planner and actual model weight transfer",
+      "full-model allocation/KV/cache pressure",
+      "native nonblocking readiness scheduling; synthetic loop waits for worker result"
+    ]
+  },
+  "graph_disabled_recovery": {
+    "status": "recovered_all8_completed_capture_not_serving_admission",
+    "ranks": 8,
+    "captured_iterations_per_rank": 320,
+    "local_event_counts": {
+      "observed_event_calls": 6060,
+      "observed_wait_calls": 1515,
+      "linked_waits": 1515,
+      "cross_stream_links": 1515,
+      "source_activity_observed": 1515
+    },
+    "unknown_waits_by_rank": {
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {},
+      "5": {},
+      "6": {},
+      "7": {}
+    },
+    "after_clock_calibration_missing": true,
+    "cross_rank_absolute_order_unknown": true,
+    "original_failed_request_status_preserved": true,
+    "GPU_rerun": false
+  },
+  "pre_capture_native_cycles": {
+    "single-window": {
+      "commits_per_rank": 48,
+      "last_commit_before_capture_ms_range": [
+        5205.159572,
+        5217.475522
+      ],
+      "active_cycle_observed_in_capture": false
+    },
+    "output-wait": {
+      "commits_per_rank": 48,
+      "last_commit_before_capture_ms_range": [
+        6437.660505,
+        6572.92495
+      ],
+      "active_cycle_observed_in_capture": false
+    },
+    "graph-none": {
+      "commits_per_rank": 48,
+      "last_commit_before_capture_ms_range": [
+        13684.682425,
+        13695.464909
+      ],
+      "active_cycle_observed_in_capture": false
+    }
+  },
+  "CPU_corrections": {
+    "slice_algorithm": "linear uniqueness count instead of repeated scan",
+    "slice_real_windows_exact_equal": 3,
+    "event_algorithm": "indexed submitted predecessor with original tie and ambiguity rules",
+    "event_real_windows_exact_equal": 3,
+    "event_real_links_exact_equal": 316,
+    "query_only_previous_full_model_links_verified": 1512
+  },
+  "conclusion": [
+    "Changing intermediate boundaries, native-sync activity, producer output wait or external correlation did not yield original-config charged admission.",
+    "Disabling model CUDA graph replay completed all8 capture windows but the run failed in post-capture CPU slicing; this is not a full serving admission pass.",
+    "Native map/record/history/event components did not reproduce the full-model CUDA failure in these bounded cases.",
+    "Graph/full-model/profiler interaction remains a priority hypothesis, not a unique failing kernel or driver diagnosis.",
+    "No profile-based speedup, B4/OFF residual attribution, new policy, or removal of correctness-required waits is justified."
+  ],
+  "next_gate": "Original graph/async-output/worker serving mode must pass capture with an actually observed native proposal/commit before same-map controls. Do not use graph-disabled or producer-blocked diagnostic success as that admission.",
+  "privacy": "Raw traces/logs/prompts/outputs/token arrays and private per-file hash receipts remain private; public files contain reviewed aggregates and selected code only."
+}
