@@ -1,0 +1,122 @@
+{
+  "schema": "cs471-bounded-capture-review-v1",
+  "date_utc": "2026-11-13",
+  "status": "partial_event_correlation_passed_model_capture_admission_failed",
+  "same_map_main_completed": false,
+  "same_map_main_launched": false,
+  "formal_comparison_rerun": false,
+  "original_final_files_rechecked": 139,
+  "fixed_control_segment_unchanged": true,
+  "synthetic": {
+    "ranks": 8,
+    "windows_per_rank": 6,
+    "continuous_verified_cross_stream_links": 6144,
+    "model_stability_proof": false
+  },
+  "fixed_idle": {
+    "successful_requests": 24,
+    "failed_requests": 0,
+    "warmup_requests": 16,
+    "probe_requests": 8,
+    "logical_window_iterations": [
+      64,
+      64,
+      192
+    ],
+    "interior_iterations": [
+      62,
+      62,
+      190
+    ],
+    "all_rank_boundaries_agree": true,
+    "minimum_kernel_correlation": 0.9874160566277451,
+    "observed_event_calls": 6048,
+    "linked_cross_stream_waits": 1512,
+    "source_activity_observed": 1512,
+    "next_destination_activity_counts": {
+      "Memcpy DtoH (Device -> Pinned)": 1512
+    },
+    "source_unfinished_at_wait_API_return": 1512,
+    "source_finishes_after_previous_observed_destination": 1497,
+    "missing_previous_destination_activity": 15,
+    "exclusive_dependency_established": false,
+    "removable_time_established": false,
+    "residual_latency_attributed": false,
+    "coverage": "Short LongBench decode pilot; not sustained early/middle/late or mixed coverage"
+  },
+  "attempts": [
+    {
+      "id": "sync-model-admission-v1",
+      "control": "fixed_idle",
+      "method": "Repeated profiler sessions",
+      "success": 19,
+      "failed": 5,
+      "result": "CUDA launch error; third aligned window not exported; Xid13"
+    },
+    {
+      "id": "gated-model-admission-v2",
+      "control": "fixed_idle",
+      "method": "Single session, timed collection windows",
+      "success": 24,
+      "failed": 0,
+      "result": "Incomplete capture: probe ended before third due window; no session export; not admitted"
+    },
+    {
+      "id": "stream-identity-admission-v1",
+      "control": "fixed_idle",
+      "method": "Single session, contiguous collection windows, explicit stream identity",
+      "success": 24,
+      "failed": 0,
+      "result": "Bounded pilot and event correlation passed"
+    },
+    {
+      "id": "stream-identity-charged-admission-v1",
+      "control": "fixed_charged",
+      "method": "Single session, contiguous gated windows",
+      "success": 20,
+      "failed": 4,
+      "result": "CUDA launch error; third window not exported; Xid13 on GPU0 of both nodes"
+    },
+    {
+      "id": "continuous-charged-admission-v1",
+      "control": "fixed_charged",
+      "method": "Single continuous session, no collection toggles",
+      "success": 20,
+      "failed": 4,
+      "result": "sample_tokens RPC timeout; Xid13 on kh023 GPU3; no session export"
+    }
+  ],
+  "latest_failure": {
+    "all_rank_third_window_start": 1152,
+    "planned_end": 1344,
+    "exported_windows": 0,
+    "after_clock_calibration": false,
+    "new_Xid13": true,
+    "manual_cancellation": false,
+    "root_cause": "Unresolved",
+    "original_native_cycle": 750,
+    "observed_commits_per_rank": 48,
+    "all_commits_before_first_capture": true,
+    "computed_changed_slots": 0,
+    "actual_changed_slots": 0,
+    "active_planner_transfer_commit_capture_established": false
+  },
+  "decision": "Do not launch the four same-map main cells: full-model fixed_charged capture stability gate failed. Preserve all attempts; no blind repeat or formal comparison rerun.",
+  "limitations": [
+    "Synthetic success does not establish full-model stability.",
+    "Repeated profiler starts and collection toggles are not necessary for the latest failure; no unique root cause follows.",
+    "Diagnostic barriers, boundary GPU synchronization, event hooks, CUDA graphs, driver and application interactions remain possible.",
+    "Asynchronous output-copy error location does not identify a failing kernel.",
+    "Thread-local CPU profiling omits background annotations; C++ and graph-internal dependencies are incomplete.",
+    "Event dependencies order work but do not establish exclusive blocking, removable time or the unprofiled B4/OFF residual.",
+    "The charged pilot commits occurred before capture; changed-candidate suppression and active-worker capture remain unverified in the requested sustained same-map controls.",
+    "Matched requests and routing rule do not imply identical tokens, batches or live demand."
+  ],
+  "next_step": "Reduce the failure to a fixed-shape CUDA-graph plus async-output-copy/event reproducer with B4 history/worker behavior, changing one observation mechanism at a time. Require a stable full-model charged pilot with actual native-cycle coverage before sustained same-map controls.",
+  "sources": {
+    "idle_runtime": "24f1ee916d877eebebb999a462f1f3b3b3e4a92e",
+    "continuous_runtime": "0c3fb034eb9b9a532db5dc3258464f2dd74ada59",
+    "event_dependency_review": "50ece6c26820fb72aec661a2b9f7aea1651658f2",
+    "readiness_review": "cd5f64dceaccc96f8c92da83af69c7b16f336599"
+  }
+}
