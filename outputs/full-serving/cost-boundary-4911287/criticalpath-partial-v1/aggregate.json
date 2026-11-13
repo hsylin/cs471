@@ -1,0 +1,211 @@
+{
+  "status": "diagnostic_incomplete_partial_evidence_reviewed",
+  "date": "2026-11-13",
+  "original_final_comparison_unchanged": true,
+  "matrix": {
+    "planned_cells": 8,
+    "complete_cells": [
+      "longbench-off",
+      "longbench-b4"
+    ],
+    "failed_cell": "longbench-fixed_idle",
+    "failed_cell_success": 115,
+    "failed_cell_failures": 397,
+    "unrun_cells": [
+      "longbench-fixed_charged",
+      "numinamath-fixed_charged",
+      "numinamath-fixed_idle",
+      "numinamath-b4",
+      "numinamath-off"
+    ]
+  },
+  "final_comparison": {
+    "longbench": {
+      "fix_gain_vs_b4_percent": 0.903,
+      "fix_slower_vs_off_percent": 4.597
+    },
+    "numinamath": {
+      "fix_gain_vs_b4_percent": 2.207,
+      "fix_slower_vs_off_percent": 5.608
+    },
+    "interpretation": "One descriptive group, no5% usefulgain; profiler timings do not replace these results."
+  },
+  "readiness": {
+    "all_rank_paired_calls": 88,
+    "ready": 25,
+    "deferred": 63,
+    "positive_conservative_fleet_inactive_calls": 4,
+    "not_removable_time": true
+  },
+  "predecessor": {
+    "off": {
+      "onset": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 6240,
+          "resolved_late_pairs": 200,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 200
+        },
+        "resolved_late_predecessor_categories": {
+          "moe_candidate": 200
+        },
+        "resolved_finish_iterations": 0,
+        "resolved_finish_with_max_tokens": 0,
+        "resolved_finish_with_max_attention_proxy": 0
+      },
+      "early": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 6432,
+          "resolved_late_pairs": 2875,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 289
+        },
+        "resolved_late_predecessor_categories": {
+          "moe_candidate": 291,
+          "collective": 210,
+          "unknown_predecessor": 2374
+        },
+        "resolved_finish_iterations": 27,
+        "resolved_finish_with_max_tokens": 26,
+        "resolved_finish_with_max_attention_proxy": 1
+      },
+      "middle": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 6432,
+          "resolved_late_pairs": 2777,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 401
+        },
+        "resolved_late_predecessor_categories": {
+          "moe_candidate": 402,
+          "collective": 380,
+          "unknown_predecessor": 1995
+        },
+        "resolved_finish_iterations": 25,
+        "resolved_finish_with_max_tokens": 1,
+        "resolved_finish_with_max_attention_proxy": 0
+      },
+      "late": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 7008,
+          "resolved_late_pairs": 6278,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 843
+        },
+        "resolved_late_predecessor_categories": {
+          "moe_candidate": 846,
+          "collective": 682,
+          "unknown_predecessor": 4750
+        },
+        "resolved_finish_iterations": 57,
+        "resolved_finish_with_max_tokens": 7,
+        "resolved_finish_with_max_attention_proxy": 0
+      }
+    },
+    "b4": {
+      "onset": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 6240,
+          "resolved_late_pairs": 200,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 199
+        },
+        "resolved_late_predecessor_categories": {
+          "other_or_unclassified": 197,
+          "moe_candidate": 3
+        },
+        "resolved_finish_iterations": 0,
+        "resolved_finish_with_max_tokens": 0,
+        "resolved_finish_with_max_attention_proxy": 0
+      },
+      "early": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 5952,
+          "resolved_late_pairs": 3052,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 29
+        },
+        "resolved_late_predecessor_categories": {
+          "unknown_predecessor": 3022,
+          "other_or_unclassified": 30
+        },
+        "resolved_finish_iterations": 32,
+        "resolved_finish_with_max_tokens": 32,
+        "resolved_finish_with_max_attention_proxy": 0
+      },
+      "middle": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 6432,
+          "resolved_late_pairs": 3943,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 472
+        },
+        "resolved_late_predecessor_categories": {
+          "other_or_unclassified": 272,
+          "collective": 428,
+          "moe_candidate": 203,
+          "unknown_predecessor": 3040
+        },
+        "resolved_finish_iterations": 37,
+        "resolved_finish_with_max_tokens": 8,
+        "resolved_finish_with_max_attention_proxy": 0
+      },
+      "late": {
+        "interior_iterations": 62,
+        "counts": {
+          "hypothesized_collective_pairs": 6432,
+          "resolved_late_pairs": 5118,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 383
+        },
+        "resolved_late_predecessor_categories": {
+          "other_or_unclassified": 288,
+          "unknown_predecessor": 4542,
+          "collective": 192,
+          "moe_candidate": 96
+        },
+        "resolved_finish_iterations": 50,
+        "resolved_finish_with_max_tokens": 0,
+        "resolved_finish_with_max_attention_proxy": 0
+      },
+      "proposal": {
+        "interior_iterations": 190,
+        "counts": {
+          "hypothesized_collective_pairs": 19392,
+          "resolved_late_pairs": 10195,
+          "late_noncollective_predecessor_ends_after_all_peer_arrivals": 1108,
+          "unpaired_iterations": 2
+        },
+        "resolved_late_predecessor_categories": {
+          "unknown_predecessor": 8408,
+          "other_or_unclassified": 743,
+          "collective": 675,
+          "moe_candidate": 369
+        },
+        "resolved_finish_iterations": 101,
+        "resolved_finish_with_max_tokens": 6,
+        "resolved_finish_with_max_attention_proxy": 6
+      }
+    }
+  },
+  "sources": {
+    "runtime": "0aa85101496d55e5fbc91b31679e4e1a36db9f91",
+    "corrected_attribution": "12756284cab147bc85c376cf40b601eca32ca013",
+    "barrier": "c5dbe6dce735283b237a771166dc000d963b2cfa",
+    "predecessor": "13d0aa97f51595e6981562514978e19a4df9e3a8"
+  },
+  "reviewed_evidence_hashes": {
+    "off": "6fca556a65af32fd3b3c990ad01cd6d9f42834f2476e49e32ec2c1fd3a078b68",
+    "b4": "af8aa32ad9ddd699e9d286fe69de7d69afa9d5c05dada1673c91697f93adfb5b"
+  },
+  "causal_residual_explained": false,
+  "next_optimization_selected": null,
+  "decision": "Do not launch more full diagnostic cells without a justified capture-stability recovery; current CUDA/Xid13 error has no unique identified cause. Finish and publish an honest partial report, not a claim of completed8cell diagnosis.",
+  "limits": [
+    "Same-placement/routing main pair incomplete; no puremanagementtax estimate.",
+    "No Numina main criticalpath data.",
+    "NCCL name/order pairing onlyhypothesis; no bandwidth claim.",
+    "Same-stream predecessor absence leaves cross-stream dependenciesunknown.",
+    "Readiness false deferscommit,notproofservingstall.",
+    "No profiler speedup or future-length policy."
+  ]
+}
